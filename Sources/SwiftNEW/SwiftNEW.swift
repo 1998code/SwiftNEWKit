@@ -45,14 +45,20 @@ public struct SwiftNEW: View {
             VStack(alignment: align) {
                 Spacer()
                 Text("What's New?").bold().font(.largeTitle)
+                #if os(iOS)
                 Text("Version \(UIApplication.versionBuild)")
                     .bold().font(.title).foregroundColor(.secondary)
+                #elseif os(macOS)
+                Text("Version \(NSApplication.versionBuild)")
+                    .bold().font(.title).foregroundColor(.secondary)
+                #endif
                 Spacer()
                 if loading {
                     ProgressView()
                 } else {
                     ScrollView {
                         ForEach(items, id: \.self) { item in
+                            #if os(iOS)
                             if item.version == UIApplication.version {
                                 ForEach(item.new, id: \.self) { new in
                                     HStack {
@@ -73,6 +79,28 @@ public struct SwiftNEW: View {
                                     }.padding(.bottom)
                                 }
                             }
+                            #elseif os(macOS)
+                            if item.version == NSApplication.version {
+                                ForEach(item.new, id: \.self) { new in
+                                    HStack {
+                                        ZStack {
+                                            color
+                                            Image(systemName: new.icon)
+                                                .foregroundColor(.white)
+                                        }
+                                        .frame(width: 50, height:50)
+                                        .cornerRadius(15)
+                                        .padding(.trailing)
+                                        VStack(alignment: .leading) {
+                                            Text(new.title).font(.headline).lineLimit(1)
+                                            Text(new.subtitle).font(.subheadline).foregroundColor(.secondary).lineLimit(1)
+                                            Text(new.body).font(.caption).foregroundColor(.secondary).lineLimit(2)
+                                        }
+                                        Spacer()
+                                    }.padding(.bottom)
+                                }
+                            }
+                            #endif
                         }
                     }.frame(width: 300, height: 450)
                 }
@@ -109,8 +137,8 @@ public struct SwiftNEW: View {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
                     show = true
                 }
-                version = Double(UIApplication.version)!
-                build = Double(UIApplication.build)!
+                version = Double(NSApplication.version)!
+                build = Double(NSApplication.build)!
             }
         }
         #endif
