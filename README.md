@@ -1,3 +1,5 @@
-# SwiftNEW
+# SwiftNEWKit
+### Powered by Apple SwiftUI
 
-A description of this package.
+## Aims
+Provide an easy way for Apple Developers to Show "What's New" to the end users.
