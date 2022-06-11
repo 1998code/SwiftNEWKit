@@ -80,6 +80,7 @@ public struct Model: Codable, Hashable {
 }
 ```
 ### Sample
+![68747470733a2f2f76616c696461746f722e737761676765722e696f2f76616c696461746f723f75726c3d68747470733a2f2f7261772e67697468756275736572636f6e74656e742e636f6d2f4f41492f4f70656e4150492d53706563696669636174696f6e2f6d61737465722f6578616d706c65732f76](https://user-images.githubusercontent.com/54872601/173190828-8ee763b9-4e33-4231-92ac-eb81b556c462.png)
 ```
 [
     {
@@ -121,7 +122,8 @@ public struct Model: Codable, Hashable {
 
 
 ## Developer Note
-- 
+- Please report bugs in Issues section.
+- If you want to discuss future roadmap or contribution, please find on Discussions.
 
 ## Preview
 ![IMG_3472](https://user-images.githubusercontent.com/54872601/173187065-14d78119-47e7-4dcb-a3e6-c7fee4f0c67f.PNG) | ![IMG_3471](https://user-images.githubusercontent.com/54872601/173187067-fe3b5cac-54b5-4482-b73f-42e6c500546f.PNG)
