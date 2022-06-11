@@ -1,12 +1,18 @@
 # SwiftNEWKit
 ### Powered by Apple SwiftUI
 
-![IMG_3472](https://user-images.githubusercontent.com/54872601/173187065-14d78119-47e7-4dcb-a3e6-c7fee4f0c67f.PNG) | ![IMG_3471](https://user-images.githubusercontent.com/54872601/173187067-fe3b5cac-54b5-4482-b73f-42e6c500546f.PNG)
-------------- | ------------
-Light Preview | Dark Preview
-
 ## Aims
 Provide an easy way for Apple Developers to Show "What's New" to the end users.
+
+## Features
+- Auto trigger the `.sheet` from Version and/or Build increase
+- One-line coding
+- JSON compatible
+- Versioning
+- Local available
+- Simple Binding
+- Simple Model
+- Open source
 
 ## Version
 ![GitHub release (latest by date)](https://img.shields.io/github/v/release/1998code/SwiftNEWKit?color=g&label=STABLE&style=for-the-badge)
@@ -20,7 +26,7 @@ iOS       | 16     | > 14
 iPadOS    | 16     | > 14
 
 ## Guide
-English | Feel free to add new language(s) via pull requests
+[English](https://github.com/1998code/SwiftNEWKit) | Feel free to add new language(s) via `pull requests`
 
 ## Get Started
 ### Full Tutorial: 
@@ -43,6 +49,9 @@ size        | "normal"                  | "mini", "normal"             | String
 label       | "Show Release Note"       | All Strings                  | String
 labelImage  | "arrow.up.circle.fill"    | All SF Symbols               | String
 
+### Usage
+`SwiftNEW(show: $showNew, align: $align, color: $color, size: $size, label: $label, labelImage: $labelImage)`
+
 #### Samples:
 ```
 @State var showNew: Bool = false
@@ -53,8 +62,71 @@ labelImage  | "arrow.up.circle.fill"    | All SF Symbols               | String
 @State var labelImage: String = "arrow.up.circle.fill"
 ```
 
+### JSON
+#### Structure / Model
+```
+public struct Vmodel: Codable, Hashable {
+    var version: String
+    var new: [Model]
+}
+public struct Model: Codable, Hashable {
+    var icon: String
+    var title: String
+    var subtitle: String
+    var body: String
+}
+```
+### Sample
+```
+[
+    {
+        "version": "1.1",
+        "new": [{
+            "icon": "pencil.and.ruler.fill",
+            "title": "Apple Pencil 3",
+            "subtitle": "Supported",
+            "body": "Available for the new iPad Pro"
+        },
+            {
+                "icon": "hammer.fill",
+                "title": "Bug fixes",
+                "subtitle": "Broken UI",
+                "body": "Available for iOS 16, iPadOS 16, macOS 13"
+            },
+            {
+                "icon": "square.and.arrow.down.fill",
+                "title": "Local File",
+                "subtitle": "Supported",
+                "body": "Direct load via local storage. Super fast!"
+            },
+            {
+                "icon": "macpro.gen3.server",
+                "title": "Serverless",
+                "subtitle": "Design",
+                "body": "Free and open source! Created by Ming with ❤️‍🔥"
+            },
+            {
+                "icon": "arrow.triangle.pull",
+                "title": "Contribute",
+                "subtitle": "Together",
+                "body": "Pull requests and make it better for everyone!"
+            }
+        ]
+    }
+]
+```
+
+
+## Developer Note
+- 
+
+## Preview
+![IMG_3472](https://user-images.githubusercontent.com/54872601/173187065-14d78119-47e7-4dcb-a3e6-c7fee4f0c67f.PNG) | ![IMG_3471](https://user-images.githubusercontent.com/54872601/173187067-fe3b5cac-54b5-4482-b73f-42e6c500546f.PNG)
+------------- | ------------
+Light Native | Dark Native
+
 ## Demo
-Path: <code>./Demo</code>
+Path: `./Demo`
 
 ## License
 MIT
