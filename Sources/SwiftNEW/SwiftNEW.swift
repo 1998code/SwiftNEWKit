@@ -36,9 +36,11 @@ public struct SwiftNEW: View {
             else if size == "normal" {
                 Label(label, systemImage: labelImage)
                     .frame(width: 300, height: 50)
+                    #if os(iOS)
                     .foregroundColor(.white)
                     .background(color)
                     .cornerRadius(15)
+                    #endif
             }
         }
         .sheet(isPresented: $show) {
@@ -108,9 +110,11 @@ public struct SwiftNEW: View {
                 Button(action: { show = false }) {
                     Text("Continue").bold()
                     .frame(width: 300, height: 50)
+                    #if os(iOS)
                     .foregroundColor(.white)
                     .background(color)
                     .cornerRadius(15)
+                    #endif
                 }
                 .padding(.bottom)
             }
