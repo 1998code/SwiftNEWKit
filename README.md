@@ -21,13 +21,29 @@ English | Feel free to add new language(s) via pull requests
 ## Get Started
 ### Full Tutorial: 
 
-### Steps:
+### Setup
 Steps | Description | Screenshot
 ------| ----------- | ----------
 1 | Navigate to root project | <img width="274" alt="CleanShot 2022-06-11 at 17 39 39@2x" src="https://user-images.githubusercontent.com/54872601/173182521-27481cf2-c9bf-4f87-95cc-76f5d1c05094.png">
 2 | Select Project | <img width="174" alt="CleanShot 2022-06-11 at 17 39 48@2x" src="https://user-images.githubusercontent.com/54872601/173182523-6a24c67a-8f27-4ef7-a3f4-ea63cfd8436f.png">
 3 | Select Package Dependencies | <img width="309" alt="CleanShot 2022-06-11 at 17 39 53@2x" src="https://user-images.githubusercontent.com/54872601/173182526-e5660b7f-c50c-4173-81f5-83c10c514659.png">
 4 | Click + and paste <code>https://github.com/1998code/SwiftNEWKit</code> to the searchbox | <img width="614" alt="CleanShot 2022-06-11 at 17 39 32@2x" src="https://user-images.githubusercontent.com/54872601/173182527-2a151198-7ac0-4735-8257-11580ada3d5e.png">
+
+### State
+var     | Suggested           | Options                      | Type
+------- | ------------------- | ---------------------------- | ----
+showNew | false               | false, true                  | Bool
+align   | .center             | .leading, .center, .trailing | HorizontalAlignment
+color   | .accentColor        | All Colors Supported         | Color
+label   | "Show Release Note" | All Strings                  | String
+
+#### Samples:
+```
+@State var showNew: Bool = false
+@State var align: HorizontalAlignment = .center
+@State var color: Color = .accentColor
+@State var label: String = "Show Release Note"
+```
 
 ## Demo
 Path: <code>./Demo</code>
