@@ -2,13 +2,17 @@
 //  Created by Ming on 11/6/2022.
 //
 
+//
+//  Created by Ming on 11/6/2022.
+//
+
 import SwiftUI
  
 @available(iOS 14, watchOS 7.0, macOS 11.0, *)
 public struct SwiftNEW: View {
     @AppStorage("version") var version = 1.0
     @AppStorage("build") var build: Double = 1
-    @State var items: [Model] = []
+    @State var items: [Vmodel] = []
     @State var loading = true
     
     @Binding var show: Bool
@@ -29,7 +33,7 @@ public struct SwiftNEW: View {
             Text(label)
                 .frame(width: 300, height: 50)
                 .foregroundColor(.white)
-                .background(Color.accentColor)
+                .background(color)
                 .cornerRadius(15)
         }
         .sheet(isPresented: $show) {
@@ -44,20 +48,25 @@ public struct SwiftNEW: View {
                 } else {
                     ScrollView {
                         ForEach(items, id: \.self) { item in
-                            HStack {
-                                Image(systemName: item.icon)
-                                    .padding()
-                                    .foregroundColor(.white)
-                                    .background(Color.accentColor)
-                                    .frame(width: 50, height:50)
-                                    .cornerRadius(15)
-                                    .padding(.trailing)
-                                VStack(alignment: .leading) {
-                                    Text(item.title).font(.headline).lineLimit(1)
-                                    Text(item.subtitle).font(.subheadline).foregroundColor(.secondary).lineLimit(1)
-                                    Text(item.body).font(.caption).foregroundColor(.secondary).lineLimit(2)
+                            if item.version == UIApplication.version {
+                                ForEach(item.new, id: \.self) { new in
+                                    HStack {
+                                        ZStack {
+                                            color
+                                            Image(systemName: new.icon)
+                                                .foregroundColor(.white)
+                                        }
+                                        .frame(width: 50, height:50)
+                                        .cornerRadius(15)
+                                        .padding(.trailing)
+                                        VStack(alignment: .leading) {
+                                            Text(new.title).font(.headline).lineLimit(1)
+                                            Text(new.subtitle).font(.subheadline).foregroundColor(.secondary).lineLimit(1)
+                                            Text(new.body).font(.caption).foregroundColor(.secondary).lineLimit(2)
+                                        }
+                                        Spacer()
+                                    }.padding(.bottom)
                                 }
-                                Spacer()
                             }
                         }.frame(width: 300)
                     }.frame(height: 450)
@@ -67,7 +76,7 @@ public struct SwiftNEW: View {
                     Text("Continue").bold()
                 }.frame(width: 300, height: 50)
                 .foregroundColor(.white)
-                .background(Color.accentColor)
+                .background(color)
                 .cornerRadius(15)
             }
             .onAppear {
@@ -105,7 +114,7 @@ public struct SwiftNEW: View {
             do {
                 let data = try Data(contentsOf: url)
                 let decoder = JSONDecoder()
-                items = try decoder.decode([Model].self, from: data)
+                items = try decoder.decode([Vmodel].self, from: data)
                 loading = false
             } catch {
                 print("error: \(error)")
@@ -142,10 +151,13 @@ public extension NSApplication {
 #endif
 
 // MARK: - Model
+public struct Vmodel: Codable, Hashable {
+    var version: String
+    var new: [Model]
+}
 public struct Model: Codable, Hashable {
     var icon: String
     var title: String
     var subtitle: String
     var body: String
 }
-
