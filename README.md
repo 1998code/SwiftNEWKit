@@ -40,6 +40,11 @@ Steps | Description | Screenshot
 3 | Select Package Dependencies | <img width="309" alt="CleanShot 2022-06-11 at 17 39 53@2x" src="https://user-images.githubusercontent.com/54872601/173182526-e5660b7f-c50c-4173-81f5-83c10c514659.png">
 4 | Click + and paste <code>https://github.com/1998code/SwiftNEWKit</code> to the searchbox | <img width="614" alt="CleanShot 2022-06-11 at 17 39 32@2x" src="https://user-images.githubusercontent.com/54872601/173182527-2a151198-7ac0-4735-8257-11580ada3d5e.png">
 
+### Usage
+```
+SwiftNEW(show: $showNew, align: $align, color: $color, size: $size, label: $label, labelImage: $labelImage)
+```
+
 ### State
 var         | Suggested                 | Options                      | Type
 ----------- | ------------------------- | ---------------------------- | ----
@@ -49,13 +54,7 @@ color       | .accentColor              | All Colors Supported         | Color
 size        | "normal"                  | "mini", "normal"             | String
 label       | "Show Release Note"       | All Strings                  | String
 labelImage  | "arrow.up.circle.fill"    | All SF Symbols               | String
-
-### Usage
-```
-SwiftNEW(show: $showNew, align: $align, color: $color, size: $size, label: $label, labelImage: $labelImage)
-```
-
-#### Samples:
+##### Samples:
 ```
 @State var showNew: Bool = false
 @State var align: HorizontalAlignment = .center
