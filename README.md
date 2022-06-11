@@ -30,4 +30,7 @@ Steps | Description | Screenshot
 4 | Click + and paste <code>https://github.com/1998code/SwiftNEWKit</code> to the searchbox | <img width="614" alt="CleanShot 2022-06-11 at 17 39 32@2x" src="https://user-images.githubusercontent.com/54872601/173182527-2a151198-7ac0-4735-8257-11580ada3d5e.png">
 
 ## Demo
-Path: ./Demo
+Path: <code>./Demo</code>
+
+## License
+MIT
