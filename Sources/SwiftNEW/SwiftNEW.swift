@@ -2,14 +2,6 @@
 //  Created by Ming on 11/6/2022.
 //
 
-//
-//  Created by Ming on 11/6/2022.
-//
-
-//
-//  Created by Ming on 11/6/2022.
-//
-
 import SwiftUI
  
 @available(iOS 14, watchOS 7.0, macOS 11.0, *)
@@ -87,10 +79,12 @@ public struct SwiftNEW: View {
                 Spacer()
                 Button(action: { show = false }) {
                     Text("Continue").bold()
-                }.frame(width: 300, height: 50)
-                .foregroundColor(.white)
-                .background(color)
-                .cornerRadius(15)
+                    .frame(width: 300, height: 50)
+                    .foregroundColor(.white)
+                    .background(color)
+                    .cornerRadius(15)
+                }
+                .padding(.bottom)
             }
             .onAppear {
                 loadData()
