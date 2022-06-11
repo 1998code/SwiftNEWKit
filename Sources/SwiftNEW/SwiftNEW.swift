@@ -14,16 +14,19 @@ public struct SwiftNEW: View {
     @Binding var show: Bool
     @Binding var align: HorizontalAlignment
     @Binding var color: Color
-    
-    public init( show: Binding<Bool>, align: Binding<HorizontalAlignment>, color: Binding<Color>) {
+    @Binding var label: String
+
+    public init( show: Binding<Bool>, align: Binding<HorizontalAlignment>, color: Binding<Color>, label: Binding<String> ) {
         _show = show
         _align = align
         _color = color
+        _label = label
+        compareVersion()
     }
  
     public var body: some View {
         Button(action: { show = true }) {
-            Text("Show Release Note")
+            Text(label)
                 .frame(width: 300, height: 50)
                 .foregroundColor(.white)
                 .background(Color.accentColor)
@@ -33,13 +36,8 @@ public struct SwiftNEW: View {
             VStack(alignment: align) {
                 Spacer()
                 Text("What's New?").bold().font(.largeTitle)
-                #if os(iOS)
                 Text("Version \(UIApplication.versionBuild)")
                     .bold().font(.title).foregroundColor(.secondary)
-                #elseif os(macOS)
-                Text("Version \(NSApplication.versionBuild)")
-                    .bold().font(.title).foregroundColor(.secondary)
-                #endif
                 Spacer()
                 if loading {
                     ProgressView()
@@ -55,9 +53,9 @@ public struct SwiftNEW: View {
                                     .cornerRadius(15)
                                     .padding(.trailing)
                                 VStack(alignment: .leading) {
-                                    Text(item.title).font(.headline)
-                                    Text(item.subtitle).font(.subheadline).foregroundColor(.secondary)
-                                    Text(item.body).font(.caption).foregroundColor(.secondary)
+                                    Text(item.title).font(.headline).lineLimit(1)
+                                    Text(item.subtitle).font(.subheadline).foregroundColor(.secondary).lineLimit(1)
+                                    Text(item.body).font(.caption).foregroundColor(.secondary).lineLimit(2)
                                 }
                                 Spacer()
                             }
@@ -73,7 +71,6 @@ public struct SwiftNEW: View {
                 .cornerRadius(15)
             }
             .onAppear {
-                compareVersion()
                 loadData()
             }
         }
@@ -82,15 +79,23 @@ public struct SwiftNEW: View {
     public func compareVersion() {
         #if os(iOS)
         if Double(UIApplication.version)! > version || Double(UIApplication.build)! > build {
-            show = true
-            version = Double(UIApplication.version)!
-            build = Double(UIApplication.build)!
+            withAnimation {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                    show = true
+                }
+                version = Double(UIApplication.version)!
+                build = Double(UIApplication.build)!
+            }
         }
         #elseif os(macOS)
         if Double(NSApplication.version)! > version || Double(NSApplication.build)! > build {
-            show = true
-            version = Double(UIApplication.version)!
-            build = Double(UIApplication.build)!
+            withAnimation {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                    show = true
+                }
+                version = Double(UIApplication.version)!
+                build = Double(UIApplication.build)!
+            }
         }
         #endif
     }
@@ -136,9 +141,11 @@ public extension NSApplication {
 }
 #endif
 
+// MARK: - Model
 public struct Model: Codable, Hashable {
     var icon: String
     var title: String
     var subtitle: String
     var body: String
 }
+
