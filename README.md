@@ -1,6 +1,10 @@
 # SwiftNEWKit
 ### Powered by Apple SwiftUI
 
+![IMG_3472](https://user-images.githubusercontent.com/54872601/173187065-14d78119-47e7-4dcb-a3e6-c7fee4f0c67f.PNG) | ![IMG_3471](https://user-images.githubusercontent.com/54872601/173187067-fe3b5cac-54b5-4482-b73f-42e6c500546f.PNG)
+------------- | ------------
+Light Preview | Dark Preview
+
 ## Aims
 Provide an easy way for Apple Developers to Show "What's New" to the end users.
 
