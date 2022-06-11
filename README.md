@@ -30,19 +30,23 @@ Steps | Description | Screenshot
 4 | Click + and paste <code>https://github.com/1998code/SwiftNEWKit</code> to the searchbox | <img width="614" alt="CleanShot 2022-06-11 at 17 39 32@2x" src="https://user-images.githubusercontent.com/54872601/173182527-2a151198-7ac0-4735-8257-11580ada3d5e.png">
 
 ### State
-var     | Suggested           | Options                      | Type
-------- | ------------------- | ---------------------------- | ----
-showNew | false               | false, true                  | Bool
-align   | .center             | .leading, .center, .trailing | HorizontalAlignment
-color   | .accentColor        | All Colors Supported         | Color
-label   | "Show Release Note" | All Strings                  | String
+var         | Suggested                 | Options                      | Type
+----------- | ------------------------- | ---------------------------- | ----
+showNew     | false                     | false, true                  | Bool
+align       | .center                   | .leading, .center, .trailing | HorizontalAlignment
+color       | .accentColor              | All Colors Supported         | Color
+size        | "normal"                  | "mini", "normal"             | String
+label       | "Show Release Note"       | All Strings                  | String
+labelImage  | "arrow.up.circle.fill"    | All SF Symbols               | String
 
 #### Samples:
 ```
 @State var showNew: Bool = false
 @State var align: HorizontalAlignment = .center
 @State var color: Color = .accentColor
+@State var size: String = "normal"
 @State var label: String = "Show Release Note"
+@State var labelImage: String = "arrow.up.circle.fill"
 ```
 
 ## Demo

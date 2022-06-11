@@ -6,6 +6,10 @@
 //  Created by Ming on 11/6/2022.
 //
 
+//
+//  Created by Ming on 11/6/2022.
+//
+
 import SwiftUI
  
 @available(iOS 14, watchOS 7.0, macOS 11.0, *)
@@ -18,23 +22,32 @@ public struct SwiftNEW: View {
     @Binding var show: Bool
     @Binding var align: HorizontalAlignment
     @Binding var color: Color
+    @Binding var size: String
     @Binding var label: String
+    @Binding var labelImage: String
 
-    public init( show: Binding<Bool>, align: Binding<HorizontalAlignment>, color: Binding<Color>, label: Binding<String> ) {
+    public init( show: Binding<Bool>, align: Binding<HorizontalAlignment>, color: Binding<Color>, size: Binding<String>, label: Binding<String>, labelImage: Binding<String>) {
         _show = show
         _align = align
         _color = color
+        _size = size
         _label = label
+        _labelImage = labelImage
         compareVersion()
     }
  
     public var body: some View {
         Button(action: { show = true }) {
-            Text(label)
-                .frame(width: 300, height: 50)
-                .foregroundColor(.white)
-                .background(color)
-                .cornerRadius(15)
+            if size == "mini" {
+                Label(label, systemImage: labelImage)
+            }
+            else if size == "normal" {
+                Label(label, systemImage: labelImage)
+                    .frame(width: 300, height: 50)
+                    .foregroundColor(.white)
+                    .background(color)
+                    .cornerRadius(15)
+            }
         }
         .sheet(isPresented: $show) {
             VStack(alignment: align) {
@@ -68,8 +81,8 @@ public struct SwiftNEW: View {
                                     }.padding(.bottom)
                                 }
                             }
-                        }.frame(width: 300)
-                    }.frame(height: 450)
+                        }
+                    }.frame(width: 300, height: 450)
                 }
                 Spacer()
                 Button(action: { show = false }) {
