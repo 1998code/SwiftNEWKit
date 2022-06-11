@@ -1,6 +1,8 @@
 # SwiftNEWKit
 ### Powered by Apple SwiftUI
 
+![CleanShot 2022-06-11 at 22 54 15@2x](https://user-images.githubusercontent.com/54872601/173192927-ca2a8bef-2114-44f8-8d4d-47baadb8b4a8.png)
+
 ## Aims
 Provide an easy way for Apple Developers to Show "What's New" to the end users.
 
