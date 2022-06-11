@@ -50,7 +50,9 @@ label       | "Show Release Note"       | All Strings                  | String
 labelImage  | "arrow.up.circle.fill"    | All SF Symbols               | String
 
 ### Usage
-`SwiftNEW(show: $showNew, align: $align, color: $color, size: $size, label: $label, labelImage: $labelImage)`
+```
+SwiftNEW(show: $showNew, align: $align, color: $color, size: $size, label: $label, labelImage: $labelImage)
+```
 
 #### Samples:
 ```
