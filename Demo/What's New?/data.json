@@ -1,0 +1,36 @@
+[
+    {
+        "version": "1.1",
+        "new": [{
+            "icon": "pencil.and.ruler.fill",
+            "title": "Apple Pencil 3",
+            "subtitle": "Supported",
+            "body": "Available for the new iPad Pro"
+        },
+            {
+                "icon": "hammer.fill",
+                "title": "Bug fixes",
+                "subtitle": "Broken UI",
+                "body": "Available for iOS 16, iPadOS 16, macOS 13"
+            },
+            {
+                "icon": "square.and.arrow.down.fill",
+                "title": "Local File",
+                "subtitle": "Supported",
+                "body": "Direct load via local storage. Super fast!"
+            },
+            {
+                "icon": "macpro.gen3.server",
+                "title": "Serverless",
+                "subtitle": "Design",
+                "body": "Free and open source! Created by Ming with ❤️‍🔥"
+            },
+            {
+                "icon": "arrow.triangle.pull",
+                "title": "Contribute",
+                "subtitle": "Together",
+                "body": "Pull requests and make it better for everyone!"
+            }
+        ]
+    }
+]
