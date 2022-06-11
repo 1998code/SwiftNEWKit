@@ -27,7 +27,7 @@ iPadOS    | 16     | > 14
 macOS     | 13     | > 11
 
 ## Guide
-[English](https://github.com/1998code/SwiftNEWKit) | Feel free to add new language(s) via `pull requests`
+[English](https://github.com/1998code/SwiftNEWKit) | [中文](https://github.com/1998code/SwiftNEWKit/blob/main/doc/README_zh.md) | Feel free to add new language(s) via `pull requests`
 
 ## Get Started
 ### Full Tutorial: 
