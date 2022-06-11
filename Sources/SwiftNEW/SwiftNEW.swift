@@ -1,15 +1,24 @@
+//
+//  Created by Ming on 11/6/2022.
+//
+
 import SwiftUI
  
 @available(iOS 14, watchOS 7.0, macOS 11.0, *)
 public struct SwiftNEW: View {
     @AppStorage("version") var version = 1.0
     @AppStorage("build") var build: Double = 1
-    @State var show = false
     @State var items: [Model] = []
-    @State var align: HorizontalAlignment = .center
     @State var loading = true
     
-    public init() {
+    @Binding var show: Bool
+    @Binding var align: HorizontalAlignment
+    @Binding var color: Color
+    
+    public init( show: Binding<Bool>, align: Binding<HorizontalAlignment>, color: Binding<Color>) {
+        _show = show
+        _align = align
+        _color = color
     }
  
     public var body: some View {
@@ -24,8 +33,13 @@ public struct SwiftNEW: View {
             VStack(alignment: align) {
                 Spacer()
                 Text("What's New?").bold().font(.largeTitle)
+                #if os(iOS)
                 Text("Version \(UIApplication.versionBuild)")
                     .bold().font(.title).foregroundColor(.secondary)
+                #elseif os(macOS)
+                Text("Version \(NSApplication.versionBuild)")
+                    .bold().font(.title).foregroundColor(.secondary)
+                #endif
                 Spacer()
                 if loading {
                     ProgressView()
