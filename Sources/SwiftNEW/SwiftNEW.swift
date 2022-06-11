@@ -117,6 +117,10 @@ public struct SwiftNEW: View {
             .onAppear {
                 loadData()
             }
+            #if os(macOS)
+            .padding()
+            .frame(width: 600, height: 600)
+            #endif
         }
     }
 
