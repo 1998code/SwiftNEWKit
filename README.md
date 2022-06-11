@@ -20,8 +20,9 @@ Provide an easy way for Apple Developers to Show "What's New" to the end users.
 ![GitHub release (latest by date)](https://img.shields.io/github/v/release/1998code/SwiftNEWKit?color=g&label=STABLE&style=for-the-badge)
 ![GitHub release (latest by date including pre-releases)](https://img.shields.io/github/v/release/1998code/SwiftNEWKit?color=green&include_prereleases&label=BETA&style=for-the-badge)
 
-## Environment
+![swiftui-128x128_2x](https://user-images.githubusercontent.com/54872601/173193069-2eb486b0-1347-4448-ac2b-235b8f2f1bb0.png)
 
+## Environment
 Tested on | Latest | Compatible
 --------- | ------ | ----------
 iOS       | 16     | > 14
