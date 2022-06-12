@@ -93,12 +93,13 @@ public struct Model: Codable, Hashable {
 [
     {
         "version": "1.1",
-        "new": [{
-            "icon": "pencil.and.ruler.fill",
-            "title": "Apple Pencil 3",
-            "subtitle": "Supported",
-            "body": "Available for the new iPad Pro"
-        },
+        "new": [
+            {
+                "icon": "pencil.and.ruler.fill",
+                "title": "Apple Pencil 3",
+                "subtitle": "Supported",
+                "body": "Available for the new iPad Pro"
+            },
             {
                 "icon": "hammer.fill",
                 "title": "Bug fixes",
