@@ -33,7 +33,7 @@ macOS     | 13     | > 11
 [English](https://github.com/1998code/SwiftNEWKit) | [中文](https://github.com/1998code/SwiftNEWKit/blob/main/doc/README_zh.md) | Feel free to add new language(s) via `pull requests`
 
 ## Get Started
-### Full Tutorial: 
+### Full Tutorial: https://bit.ly/3NOvJB8
 
 ### Setup
 Steps | Description | Screenshot
