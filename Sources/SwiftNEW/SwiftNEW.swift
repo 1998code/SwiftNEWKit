@@ -8,6 +8,7 @@ import SwiftUI
 public struct SwiftNEW: View {
     @AppStorage("version") var version = 1.0
     @AppStorage("build") var build: Double = 1
+    
     @State var items: [Vmodel] = []
     @State var loading = true
     
