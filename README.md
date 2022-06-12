@@ -45,7 +45,11 @@ Steps | Description | Screenshot
 5 | Create a new file called `data.json` | You may copy the [JSON sample](https://github.com/1998code/SwiftNEWKit#sample) below. 
 
 ### Major Usage
-Paste this code inside `body` or any `some View`.
+1. Import first.
+```
+import SwiftNEW
+```
+2. Then, paste this code inside `body` or any `some View`.
 ```
 SwiftNEW(show: $showNew, align: $align, color: $color, size: $size, label: $label, labelImage: $labelImage)
 ```
