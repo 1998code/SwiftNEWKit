@@ -8,11 +8,6 @@ import PackageDescription
 
 let package = Package(
     name: "SwiftNEW",
-    platforms: [
-        .iOS(.v14),
-        .watchOS(.v7),
-        .macOS(.v11)
-    ],
     products: [
         .library(
             name: "SwiftNEW",
