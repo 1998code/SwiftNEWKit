@@ -23,11 +23,17 @@ Provide an easy way for Apple Developers to Show "What's New" to the end users.
 ![swiftui-128x128_2x](https://user-images.githubusercontent.com/54872601/173193069-2eb486b0-1347-4448-ac2b-235b8f2f1bb0.png)
 
 ## Environment
+### Xcode Local
 Tested on | Latest | Compatible
 --------- | ------ | ----------
 iOS       | 16     | > 14
 iPadOS    | 16     | > 14
 macOS     | 13     | > 11
+### Xcode Cloud
+Tested on | Compatible
+--------- | ----------
+Xcode     | 13.4 (13F17a)
+macOS     | 12.3.1 (21E258)
 
 ## Guide
 [English](https://github.com/1998code/SwiftNEWKit) | [中文](https://github.com/1998code/SwiftNEWKit/blob/main/doc/README_zh.md) | Feel free to add new language(s) via `pull requests`
@@ -132,8 +138,6 @@ public struct Model: Codable, Hashable {
 ## Developer Note
 - Please report bugs in Issues section.
 - If you want to discuss future roadmap or contribution, please find on Discussions.
-### Known Issues
-- Xcode Cloud Build may have errors, using the manual archive will work.
 
 ## Preview
 ![IMG_3472](https://user-images.githubusercontent.com/54872601/173187065-14d78119-47e7-4dcb-a3e6-c7fee4f0c67f.PNG) | ![IMG_3471](https://user-images.githubusercontent.com/54872601/173187067-fe3b5cac-54b5-4482-b73f-42e6c500546f.PNG)
