@@ -18,7 +18,7 @@ struct ContentView: View {
     @State var labelImage: String = "arrow.up.circle.fill"
     var body: some View {
         NavigationView {
-            // MARK: Choose either one size
+            // MARK: Choose either one size (Normal, Mini or invisible)
             
             // MARK: Normal
             SwiftNEW(show: $showNew, align: $align, color: $color, size: $size, label: $label, labelImage: $labelImage)
