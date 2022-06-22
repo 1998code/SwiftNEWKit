@@ -18,13 +18,21 @@ struct ContentView: View {
     @State var labelImage: String = "arrow.up.circle.fill"
     var body: some View {
         NavigationView {
+            // MARK: Choose either one size
             
             // MARK: Normal
             SwiftNEW(show: $showNew, align: $align, color: $color, size: $size, label: $label, labelImage: $labelImage)
             
                 .toolbar {
-                    // MARK: Mini
-                    SwiftNEW(show: $showNew, align: $align, color: $color, size: .constant("mini"), label: $label, labelImage: $labelImage)
+                    ToolbarItemGroup(placement: .navigationBarLeading) {
+                        // MARK: Invisible
+                        SwiftNEW(show: $showNew, align: $align, color: $color, size: .constant("invisible"), label: $label, labelImage: $labelImage)
+                    }
+                    ToolbarItemGroup(placement: .navigationBarTrailing) {
+                        // MARK: Mini
+                        SwiftNEW(show: $showNew, align: $align, color: $color, size: .constant("mini"), label: $label, labelImage: $labelImage)
+                    }
+                    
                 }
             
         }
