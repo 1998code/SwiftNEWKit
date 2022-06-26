@@ -3,7 +3,7 @@
 //
 
 import SwiftUI
-import SwiftVBKit
+import SwiftVB
  
 @available(iOS 14, watchOS 7.0, macOS 11.0, *)
 public struct SwiftNEW: View {
