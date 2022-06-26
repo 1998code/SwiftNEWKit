@@ -24,9 +24,11 @@ let package = Package(
     targets: [
         .target(
             name: "SwiftNEW",
-            dependencies: []),
-        .testTarget(
-            name: "SwiftNEWTests",
-            dependencies: ["SwiftNEW"]),
+            dependencies: [
+                "SwiftVB"
+            ]),
+//        .testTarget(
+//            name: "SwiftNEWTests",
+//            dependencies: ["SwiftNEW"]),
     ]
 )
