@@ -18,7 +18,9 @@ let package = Package(
             name: "SwiftNEW",
             targets: ["SwiftNEW"]),
     ],
-    dependencies: [],
+    dependencies: [
+        .package(url: "https://github.com/1998code/SwiftVBKit.git", .upToNextMinor(from: "1.1.2")),
+    ],
     targets: [
         .target(
             name: "SwiftNEW",
