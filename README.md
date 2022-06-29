@@ -61,15 +61,15 @@ SwiftNEW(show: $showNew, align: $align, color: $color, size: $size, label: $labe
 ```
 
 ### State
-var         | Suggested                       | Options                      | Type
------------ | ------------------------------- | ---------------------------- | ----
-showNew     | false                           | false, true                  | Bool
-align       | .center                         | .leading, .center, .trailing | HorizontalAlignment
-color       | .accentColor                    | All Colors Supported         | Color
-textColor   | Color(UIColor.systemBackground) | All Colors Supported         | Color
-size        | "normal"                        | "invisible", "mini", "normal"| String
-label       | "Show Release Note"             | All Strings                  | String
-labelImage  | "arrow.up.circle.fill"          | All SF Symbols               | String
+var         | Suggested                       | Options                       | Type
+----------- | ------------------------------- | ----------------------------- | ----
+showNew     | false                           | false, true                   | Bool
+align       | .center                         | .leading, .center, .trailing  | HorizontalAlignment
+color       | .accentColor                    | All Colors Supported          | Color
+size        | "normal"                        | "invisible", "mini", "normal" | String
+labelColor  | Color(UIColor.systemBackground) | All Colors Supported          | Color
+label       | "Show Release Note"             | All Strings                   | String
+labelImage  | "arrow.up.circle.fill"          | All SF Symbols                | String
 ##### Samples:
 ```
 @State var showNew: Bool = false
