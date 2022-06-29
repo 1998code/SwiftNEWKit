@@ -16,14 +16,16 @@ public struct SwiftNEW: View {
     @Binding var show: Bool
     @Binding var align: HorizontalAlignment
     @Binding var color: Color
+    @Binding var textColor: Color
     @Binding var size: String
     @Binding var label: String
     @Binding var labelImage: String
 
-    public init( show: Binding<Bool>, align: Binding<HorizontalAlignment>, color: Binding<Color>, size: Binding<String>, label: Binding<String>, labelImage: Binding<String>) {
+    public init( show: Binding<Bool>, align: Binding<HorizontalAlignment>, color: Binding<Color>, textColor: Binding<Color>, size: Binding<String>, label: Binding<String>, labelImage: Binding<String>) {
         _show = show
         _align = align
         _color = color
+        _textColor = textColor
         _size = size
         _label = label
         _labelImage = labelImage
@@ -39,7 +41,7 @@ public struct SwiftNEW: View {
                 Label(label, systemImage: labelImage)
                     .frame(width: 300, height: 50)
                     #if os(iOS)
-                    .foregroundColor(color == .black ? .white : .black)
+                    .foregroundColor(textColor)
                     .background(color)
                     .cornerRadius(15)
                     #endif
