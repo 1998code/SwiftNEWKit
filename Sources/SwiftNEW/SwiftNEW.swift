@@ -21,12 +21,12 @@ public struct SwiftNEW: View {
     @Binding var label: String
     @Binding var labelImage: String
 
-    public init( show: Binding<Bool>, align: Binding<HorizontalAlignment>, color: Binding<Color>, labelColor: Binding<Color>, size: Binding<String>, label: Binding<String>, labelImage: Binding<String>) {
+    public init( show: Binding<Bool>, align: Binding<HorizontalAlignment>, color: Binding<Color>, size: Binding<String>, labelColor: Binding<Color>, label: Binding<String>, labelImage: Binding<String>) {
         _show = show
         _align = align
         _color = color
-        _labelColor = labelColor
         _size = size
+        _labelColor = labelColor
         _label = label
         _labelImage = labelImage
         compareVersion()
