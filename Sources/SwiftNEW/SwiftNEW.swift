@@ -39,7 +39,7 @@ public struct SwiftNEW: View {
                 Label(label, systemImage: labelImage)
                     .frame(width: 300, height: 50)
                     #if os(iOS)
-                    .foregroundColor(.white)
+                    .foregroundColor(color == .black ? .white : .black)
                     .background(color)
                     .cornerRadius(15)
                     #endif
