@@ -124,6 +124,7 @@ public struct SwiftNEW: View {
     
     public var sheetHistory: some View {
         VStack(alignment: align) {
+            Spacer()
             Text("History").bold().font(.headline)
             ScrollView {
                 ForEach(items, id: \.self) { item in
@@ -146,7 +147,7 @@ public struct SwiftNEW: View {
                         }.padding(.bottom)
                     }
                 }
-            }
+            }.frame(width: 300, height: 450)
             Button(action: { showHistory = false }) {
                 HStack{
                     Text("Return").bold()
