@@ -134,6 +134,7 @@ public struct SwiftNEW: View {
                         Text(item.version).bold().font(.title2).foregroundColor(color)
                     }.frame(width: 75, height: 30)
                     .cornerRadius(15)
+                    .padding(.bottom)
                     ForEach(item.new, id: \.self) { new in
                         HStack {
                             ZStack {
