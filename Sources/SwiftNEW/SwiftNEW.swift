@@ -129,6 +129,7 @@ public struct SwiftNEW: View {
             Spacer()
             ScrollView {
                 ForEach(items, id: \.self) { item in
+                    Text(item.version).font(.headline)
                     ForEach(item.new, id: \.self) { new in
                         HStack {
                             ZStack {
