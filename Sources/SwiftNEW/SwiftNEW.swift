@@ -51,9 +51,9 @@ public struct SwiftNEW: View {
         }
         .sheet(isPresented: $show) {
             sheetContent
-        }
-        .sheet(isPresented: $showHistory) {
-            sheetHistory
+                .sheet(isPresented: $showHistory) {
+                    sheetHistory
+                }
         }
     }
     
