@@ -123,9 +123,9 @@ public struct SwiftNEW: View {
     }
     
     public var sheetHistory: some View {
-        VStack {
-            Text("History").font(.largeTitle)
-            List {
+        VStack(alignment: align) {
+            Text("History").bold().font(.headline)
+            ScrollView {
                 ForEach(items, id: \.self) { item in
                     ForEach(item.new, id: \.self) { new in
                         HStack {
@@ -161,6 +161,10 @@ public struct SwiftNEW: View {
             }
             .padding(.bottom)
         }
+        #if os(macOS)
+        .padding()
+        .frame(width: 600, height: 600)
+        #endif
     }
 
     public func compareVersion() {
