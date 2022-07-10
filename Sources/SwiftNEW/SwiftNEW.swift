@@ -129,7 +129,11 @@ public struct SwiftNEW: View {
             Spacer()
             ScrollView(showsIndicators: false) {
                 ForEach(items, id: \.self) { item in
-                    Text(item.version).bold().font(.title2)
+                    ZStack {
+                        color.opacity(0.25)
+                        Text(item.version).bold().font(.title2).foregroundColor(color)
+                    }.frame(width: 75, height: 30)
+                    .cornerRadius(15)
                     ForEach(item.new, id: \.self) { new in
                         HStack {
                             ZStack {
@@ -211,5 +215,6 @@ public struct Model: Codable, Hashable {
 
 //struct Previews: PreviewProvider {
 //    static var previews: some View {
+//
 //    }
 //}
