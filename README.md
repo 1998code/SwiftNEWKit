@@ -8,13 +8,14 @@ Provide an easy way for Apple Developers to Show "What's New" to the end users.
 
 ## Features
 - Auto trigger the `.sheet` from Version and/or Build increase
-- One-line coding
-- JSON compatible
-- Versioning
-- Local available
-- Simple Binding
-- Simple Model
-- Open source
+- One-line Coding
+- JSON Compatible
+- Data Versioning
+- View History (2.0.0 or above)
+- Fast Loading from local storage
+- Simple Binding and pass data
+- Simple Model, easy to modify
+- Open Source for all developers
 
 ## Version
 ![GitHub release (latest by date)](https://img.shields.io/github/v/release/1998code/SwiftNEWKit?color=g&label=STABLE&style=for-the-badge)
@@ -57,7 +58,7 @@ import SwiftNEW
 ```
 2. Then, paste this code inside `body` or any `some View`.
 ```
-SwiftNEW(show: $showNew, align: $align, color: $color, size: $size, label: $label, labelImage: $labelImage)
+SwiftNEW(show: $showNew, align: $align, color: $color, size: $size, labelColor: $labelColor, label: $label, labelImage: $labelImage)
 ```
 
 ### State
@@ -76,6 +77,7 @@ labelImage  | "arrow.up.circle.fill"          | All SF Symbols                | 
 @State var align: HorizontalAlignment = .center
 @State var color: Color = .accentColor
 @State var size: String = "normal"
+@State var labelColor: Color = Color(UIColor.systemBackground)
 @State var label: String = "Show Release Note"
 @State var labelImage: String = "arrow.up.circle.fill"
 ```
@@ -144,6 +146,10 @@ public struct Model: Codable, Hashable {
 ![IMG_3472](https://user-images.githubusercontent.com/54872601/173187065-14d78119-47e7-4dcb-a3e6-c7fee4f0c67f.PNG) | ![IMG_3471](https://user-images.githubusercontent.com/54872601/173187067-fe3b5cac-54b5-4482-b73f-42e6c500546f.PNG)
 ------------- | ------------
 Light Native | Dark Native
+
+![Simulator Screen Shot - iPhone 13 Pro Max - 2022-07-10 at 11 19 40](https://user-images.githubusercontent.com/54872601/178129999-ad63b0ce-d65e-4d86-9882-37a5090e92bc.png)  |
+----------------------- |
+History View (2.0.0)
 
 ## Demo
 Path: `./Demo`
