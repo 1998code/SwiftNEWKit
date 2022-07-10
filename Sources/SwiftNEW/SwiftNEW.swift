@@ -123,27 +123,43 @@ public struct SwiftNEW: View {
     }
     
     public var sheetHistory: some View {
-        List {
-            ForEach(items, id: \.self) { item in
-                ForEach(item.new, id: \.self) { new in
-                    HStack {
-                        ZStack {
-                            color
-                            Image(systemName: new.icon)
-                                .foregroundColor(.white)
-                        }
-                        .frame(width: 50, height:50)
-                        .cornerRadius(15)
-                        .padding(.trailing)
-                        VStack(alignment: .leading) {
-                            Text(new.title).font(.headline).lineLimit(1)
-                            Text(new.subtitle).font(.subheadline).foregroundColor(.secondary).lineLimit(1)
-                            Text(new.body).font(.caption).foregroundColor(.secondary).lineLimit(2)
-                        }
-                        Spacer()
-                    }.padding(.bottom)
+        VStack {
+            Text("History").font(.largeTitle)
+            List {
+                ForEach(items, id: \.self) { item in
+                    ForEach(item.new, id: \.self) { new in
+                        HStack {
+                            ZStack {
+                                color
+                                Image(systemName: new.icon)
+                                    .foregroundColor(.white)
+                            }
+                            .frame(width: 50, height:50)
+                            .cornerRadius(15)
+                            .padding(.trailing)
+                            VStack(alignment: .leading) {
+                                Text(new.title).font(.headline).lineLimit(1)
+                                Text(new.subtitle).font(.subheadline).foregroundColor(.secondary).lineLimit(1)
+                                Text(new.body).font(.caption).foregroundColor(.secondary).lineLimit(2)
+                            }
+                            Spacer()
+                        }.padding(.bottom)
+                    }
                 }
             }
+            Button(action: { showHistory = false }) {
+                HStack{
+                    Text("Return").bold()
+                    Image(systemName: "arrow.down.circle.fill")
+                }
+                .frame(width: 300, height: 50)
+                #if os(iOS)
+                .foregroundColor(.white)
+                .background(color)
+                .cornerRadius(15)
+                #endif
+            }
+            .padding(.bottom)
         }
     }
 
