@@ -14,6 +14,7 @@ struct ContentView: View {
     @State var align: HorizontalAlignment = .center
     @State var color: Color = .accentColor
     @State var size: String = "normal"
+    @State var labelColor: Color = Color(UIColor.systemBackground)
     @State var label: String = "Show Release Note"
     @State var labelImage: String = "arrow.up.circle.fill"
     var body: some View {
@@ -21,16 +22,16 @@ struct ContentView: View {
             // MARK: Choose either one size (Normal, Mini or invisible)
             
             // MARK: Normal
-            SwiftNEW(show: $showNew, align: $align, color: $color, size: $size, label: $label, labelImage: $labelImage)
+            SwiftNEW(show: $showNew, align: $align, color: $color, size: $size, labelColor: $labelColor, label: $label, labelImage: $labelImage)
             
                 .toolbar {
                     ToolbarItemGroup(placement: .navigationBarLeading) {
                         // MARK: Invisible
-                        SwiftNEW(show: $showNew, align: $align, color: $color, size: .constant("invisible"), label: $label, labelImage: $labelImage)
+                        SwiftNEW(show: $showNew, align: $align, color: $color, size: .constant("invisible"), labelColor: $labelColor, label: $label, labelImage: $labelImage)
                     }
                     ToolbarItemGroup(placement: .navigationBarTrailing) {
                         // MARK: Mini
-                        SwiftNEW(show: $showNew, align: $align, color: $color, size: .constant("mini"), label: $label, labelImage: $labelImage)
+                        SwiftNEW(show: $showNew, align: $align, color: $color, size: .constant("mini"), labelColor: $labelColor, label: $label, labelImage: $labelImage)
                     }
                     
                 }

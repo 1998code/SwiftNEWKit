@@ -12,6 +12,7 @@
 		3A46CBB4285444CD00BE79A3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A46CBB3285444CD00BE79A3 /* Assets.xcassets */; };
 		3A46CBB8285444CD00BE79A3 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A46CBB7285444CD00BE79A3 /* Preview Assets.xcassets */; };
 		3A46CBCE28544C9C00BE79A3 /* data.json in Resources */ = {isa = PBXBuildFile; fileRef = 3A46CBCD28544C9C00BE79A3 /* data.json */; };
+		3A89B113287A718F00CC6CD0 /* SwiftNEW in Frameworks */ = {isa = PBXBuildFile; productRef = 3A89B112287A718F00CC6CD0 /* SwiftNEW */; };
 		3AB7E09128630E380059EEFE /* SwiftNEW in Frameworks */ = {isa = PBXBuildFile; productRef = 3AB7E09028630E380059EEFE /* SwiftNEW */; };
 /* End PBXBuildFile section */
 
@@ -24,7 +25,6 @@
 		3A46CBB7285444CD00BE79A3 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		3A46CBC4285447F600BE79A3 /* SwiftNEW */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = SwiftNEW; path = ../../../SwiftNEW; sourceTree = "<group>"; };
 		3A46CBCD28544C9C00BE79A3 /* data.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = data.json; sourceTree = "<group>"; };
-		3AB7E08E28630E2A0059EEFE /* SwiftNEWKit */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = SwiftNEWKit; path = ..; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,6 +33,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3AB7E09128630E380059EEFE /* SwiftNEW in Frameworks */,
+				3A89B113287A718F00CC6CD0 /* SwiftNEW in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -42,7 +43,6 @@
 		3A46CBA3285444CC00BE79A3 = {
 			isa = PBXGroup;
 			children = (
-				3AB7E08D28630E2A0059EEFE /* Packages */,
 				3A46CBAE285444CC00BE79A3 /* What's New? */,
 				3A46CBAD285444CC00BE79A3 /* Products */,
 				3AB7E08F28630E380059EEFE /* Frameworks */,
@@ -79,14 +79,6 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		3AB7E08D28630E2A0059EEFE /* Packages */ = {
-			isa = PBXGroup;
-			children = (
-				3AB7E08E28630E2A0059EEFE /* SwiftNEWKit */,
-			);
-			name = Packages;
-			sourceTree = "<group>";
-		};
 		3AB7E08F28630E380059EEFE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -112,6 +104,7 @@
 			name = "What's New?";
 			packageProductDependencies = (
 				3AB7E09028630E380059EEFE /* SwiftNEW */,
+				3A89B112287A718F00CC6CD0 /* SwiftNEW */,
 			);
 			productName = "What's New?";
 			productReference = 3A46CBAC285444CC00BE79A3 /* What's New?.app */;
@@ -142,6 +135,7 @@
 			);
 			mainGroup = 3A46CBA3285444CC00BE79A3;
 			packageReferences = (
+				3A89B111287A718F00CC6CD0 /* XCRemoteSwiftPackageReference "SwiftNEWKit" */,
 			);
 			productRefGroup = 3A46CBAD285444CC00BE79A3 /* Products */;
 			projectDirPath = "";
@@ -376,7 +370,23 @@
 		};
 /* End XCConfigurationList section */
 
+/* Begin XCRemoteSwiftPackageReference section */
+		3A89B111287A718F00CC6CD0 /* XCRemoteSwiftPackageReference "SwiftNEWKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/1998code/SwiftNEWKit";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
 /* Begin XCSwiftPackageProductDependency section */
+		3A89B112287A718F00CC6CD0 /* SwiftNEW */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3A89B111287A718F00CC6CD0 /* XCRemoteSwiftPackageReference "SwiftNEWKit" */;
+			productName = SwiftNEW;
+		};
 		3AB7E09028630E380059EEFE /* SwiftNEW */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = SwiftNEW;
