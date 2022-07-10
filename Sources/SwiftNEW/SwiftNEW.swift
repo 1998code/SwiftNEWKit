@@ -67,7 +67,7 @@ public struct SwiftNEW: View {
             if loading {
                 ProgressView()
             } else {
-                ScrollView {
+                ScrollView(showsIndicators: false) {
                     ForEach(items, id: \.self) { item in
                         if item.version == Bundle.version {
                             ForEach(item.new, id: \.self) { new in
@@ -127,9 +127,9 @@ public struct SwiftNEW: View {
             Spacer()
             Text("History").bold().font(.largeTitle)
             Spacer()
-            ScrollView {
+            ScrollView(showsIndicators: false) {
                 ForEach(items, id: \.self) { item in
-                    Text(item.version).font(.headline)
+                    Text(item.version).bold().font(.title2)
                     ForEach(item.new, id: \.self) { new in
                         HStack {
                             ZStack {
