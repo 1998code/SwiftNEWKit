@@ -97,13 +97,13 @@ public struct SwiftNEW: View {
                 HStack {
                     Text("Show History")
                     Image(systemName: "arrow.up.bin")
-                }
+                }.font(.body)
             }
             Button(action: { show = false }) {
                 HStack{
                     Text("Continue").bold()
                     Image(systemName: "arrow.right.circle.fill")
-                }
+                }.font(.body)
                 .frame(width: 300, height: 50)
                 #if os(iOS)
                 .foregroundColor(.white)
@@ -160,7 +160,7 @@ public struct SwiftNEW: View {
                 HStack{
                     Text("Return").bold()
                     Image(systemName: "arrow.down.circle.fill")
-                }
+                }.font(.body)
                 .frame(width: 300, height: 50)
                 #if os(iOS)
                 .foregroundColor(.white)
