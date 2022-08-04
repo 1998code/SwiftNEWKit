@@ -98,7 +98,7 @@ public struct SwiftNEW: View {
                     Text("Show History")
                     Image(systemName: "arrow.up.bin")
                 }.font(.body)
-            }
+            }.foregroundColor(color)
             Button(action: { show = false }) {
                 HStack{
                     Text("Continue").bold()
