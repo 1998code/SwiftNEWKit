@@ -53,11 +53,11 @@ Steps | Description | Screenshot
 
 ### Major Usage
 1. Import first.
-```
+```swift
 import SwiftNEW
 ```
 2. Then, paste this code inside `body` or any `some View`.
-```
+```swift
 SwiftNEW(show: $showNew, align: $align, color: $color, size: $size, labelColor: $labelColor, label: $label, labelImage: $labelImage)
 ```
 
@@ -72,7 +72,7 @@ labelColor  | Color(UIColor.systemBackground) | All Colors Supported          | 
 label       | "Show Release Note"             | All Strings                   | String
 labelImage  | "arrow.up.circle.fill"          | All SF Symbols                | String
 ##### Samples:
-```
+```swift
 @State var showNew: Bool = false
 @State var align: HorizontalAlignment = .center
 @State var color: Color = .accentColor
@@ -84,7 +84,8 @@ labelImage  | "arrow.up.circle.fill"          | All SF Symbols                | 
 
 ### JSON
 #### Structure / Model
-```
+* The below code is just for reference only. You don't need to copy the structure or model.
+```swift
 public struct Vmodel: Codable, Hashable {
     var version: String
     var new: [Model]
@@ -97,8 +98,9 @@ public struct Model: Codable, Hashable {
 }
 ```
 #### Sample
+* Copy the JSON sample to `data.json` file (If you don't have it, simply create a new one.)
 ![68747470733a2f2f76616c696461746f722e737761676765722e696f2f76616c696461746f723f75726c3d68747470733a2f2f7261772e67697468756275736572636f6e74656e742e636f6d2f4f41492f4f70656e4150492d53706563696669636174696f6e2f6d61737465722f6578616d706c65732f76](https://user-images.githubusercontent.com/54872601/173190828-8ee763b9-4e33-4231-92ac-eb81b556c462.png)
-```
+```json
 [
     {
         "version": "1.1",
