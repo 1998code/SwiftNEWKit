@@ -16,6 +16,8 @@ Provide an easy way for Apple Developers to Show "What's New" to the end users.
 - Simple Binding and pass data
 - Simple Model, easy to modify
 - Open Source for all developers
+- Support Remote JSON File (>3.0.0)
+- Support Firebase Real Time Database (>3.0.0)
 
 ## Version
 ![GitHub release (latest by date)](https://img.shields.io/github/v/release/1998code/SwiftNEWKit?color=g&label=STABLE&style=for-the-badge)
@@ -49,7 +51,8 @@ Steps | Description | Screenshot
 2 | Select Project | <img width="174" alt="CleanShot 2022-06-11 at 17 39 48@2x" src="https://user-images.githubusercontent.com/54872601/173182523-6a24c67a-8f27-4ef7-a3f4-ea63cfd8436f.png">
 3 | Select Package Dependencies | <img width="309" alt="CleanShot 2022-06-11 at 17 39 53@2x" src="https://user-images.githubusercontent.com/54872601/173182526-e5660b7f-c50c-4173-81f5-83c10c514659.png">
 4 | Click + and paste <code>https://github.com/1998code/SwiftNEWKit</code> to the searchbox | <img width="614" alt="CleanShot 2022-06-11 at 17 39 32@2x" src="https://user-images.githubusercontent.com/54872601/173182527-2a151198-7ac0-4735-8257-11580ada3d5e.png">
-5 | Create a new file called `data.json` | You may copy the [JSON sample](https://github.com/1998code/SwiftNEWKit#sample) below. 
+5L | Create a new local file called `data.json` | You may copy the [JSON sample](https://github.com/1998code/SwiftNEWKit#sample) below. 
+5R | You can use remote json / firebase realtime database too. | 
 
 ### Major Usage
 1. Import first.
@@ -58,7 +61,7 @@ import SwiftNEW
 ```
 2. Then, paste this code inside `body` or any `some View`.
 ```swift
-SwiftNEW(show: $showNew, align: $align, color: $color, size: $size, labelColor: $labelColor, label: $label, labelImage: $labelImage)
+SwiftNEW(show: $showNew, align: $align, color: $color, size: $size, labelColor: $labelColor, label: $label, labelImage: $labelImage, history: $history, data: $data)
 ```
 
 ### State
@@ -71,6 +74,8 @@ size        | "normal"                        | "invisible", "mini", "normal" | 
 labelColor  | Color(UIColor.systemBackground) | All Colors Supported          | Color
 label       | "Show Release Note"             | All Strings                   | String
 labelImage  | "arrow.up.circle.fill"          | All SF Symbols                | String
+history     | true                            | true, false                   | Bool
+data        | "data" or "https://.../{}.json" | "{LOCAL_JSON_FILE}" or Remote | String
 ##### Samples:
 ```swift
 @State var showNew: Bool = false
@@ -80,6 +85,9 @@ labelImage  | "arrow.up.circle.fill"          | All SF Symbols                | 
 @State var labelColor: Color = Color(UIColor.systemBackground)
 @State var label: String = "Show Release Note"
 @State var labelImage: String = "arrow.up.circle.fill"
+// 3.0 Update
+@State var history: Bool = true
+@State var data: String = "data"
 ```
 
 ### JSON
@@ -98,7 +106,8 @@ public struct Model: Codable, Hashable {
 }
 ```
 #### Sample
-* Copy the JSON sample to `data.json` file (If you don't have it, simply create a new one.)
+Copy the JSON sample to `data.json` file (If you don't have it, simply create a new one.)
+
 ![68747470733a2f2f76616c696461746f722e737761676765722e696f2f76616c696461746f723f75726c3d68747470733a2f2f7261772e67697468756275736572636f6e74656e742e636f6d2f4f41492f4f70656e4150492d53706563696669636174696f6e2f6d61737465722f6578616d706c65732f76](https://user-images.githubusercontent.com/54872601/173190828-8ee763b9-4e33-4231-92ac-eb81b556c462.png)
 ```json
 [
