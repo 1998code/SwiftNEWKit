@@ -12,6 +12,7 @@ public struct SwiftNEW: View {
     
     @State var items: [Vmodel] = []
     @State var loading = true
+    @State var historySheet: Bool = false
     
     @Binding var show: Bool
     @Binding var align: HorizontalAlignment
@@ -20,10 +21,10 @@ public struct SwiftNEW: View {
     @Binding var labelColor: Color
     @Binding var label: String
     @Binding var labelImage: String
-    
-    @State var showHistory: Bool = false
+    @Binding var history: Bool
+    @Binding var data: String
 
-    public init( show: Binding<Bool>, align: Binding<HorizontalAlignment>, color: Binding<Color>, size: Binding<String>, labelColor: Binding<Color>, label: Binding<String>, labelImage: Binding<String>) {
+    public init( show: Binding<Bool>, align: Binding<HorizontalAlignment>, color: Binding<Color>, size: Binding<String>, labelColor: Binding<Color>, label: Binding<String>, labelImage: Binding<String>, history: Binding<Bool>, data: Binding<String>) {
         _show = show
         _align = align
         _color = color
@@ -31,6 +32,8 @@ public struct SwiftNEW: View {
         _labelColor = labelColor
         _label = label
         _labelImage = labelImage
+        _history = history
+        _data = data
         compareVersion()
     }
  
@@ -50,14 +53,14 @@ public struct SwiftNEW: View {
             }
         }
         .sheet(isPresented: $show) {
-            sheetContent
-                .sheet(isPresented: $showHistory) {
+            sheetCurrent
+                .sheet(isPresented: $historySheet) {
                     sheetHistory
                 }
         }
     }
     
-    public var sheetContent: some View {
+    public var sheetCurrent: some View {
         VStack(alignment: align) {
             Spacer()
             Text("What's New?").bold().font(.largeTitle)
@@ -93,12 +96,14 @@ public struct SwiftNEW: View {
                 }.frame(width: 300, height: 450)
             }
             Spacer()
-            Button(action: { showHistory = true }) {
-                HStack {
-                    Text("Show History")
-                    Image(systemName: "arrow.up.bin")
-                }.font(.body)
-            }.foregroundColor(color)
+            if history {
+                Button(action: { historySheet = true }) {
+                    HStack {
+                        Text("Show History")
+                        Image(systemName: "arrow.up.bin")
+                    }.font(.body)
+                }.foregroundColor(color)
+            }
             Button(action: { show = false }) {
                 HStack{
                     Text("Continue").bold()
@@ -156,7 +161,7 @@ public struct SwiftNEW: View {
                 }
             }.frame(width: 300, height: 450)
             Spacer()
-            Button(action: { showHistory = false }) {
+            Button(action: { historySheet = false }) {
                 HStack{
                     Text("Return").bold()
                     Image(systemName: "arrow.down.circle.fill")
@@ -188,15 +193,31 @@ public struct SwiftNEW: View {
         }
     }
     public func loadData() {
-        // MARK :- Local Data
-        if let url = Bundle.main.url(forResource: "data", withExtension: "json") {
-            do {
-                let data = try Data(contentsOf: url)
-                let decoder = JSONDecoder()
-                items = try decoder.decode([Vmodel].self, from: data)
-                loading = false
-            } catch {
-                print("error: \(error)")
+        if data.contains("http") {
+            // MARK: Remote Data
+            let url = URL(string: data)
+            URLSession.shared.dataTask(with: url!) { data, response, error in
+                if let data = data {
+                    do {
+                        let decoder = JSONDecoder()
+                        items = try decoder.decode([Vmodel].self, from: data)
+                        self.loading = false
+                    } catch {
+                        print(error)
+                    }
+                }
+            }.resume()
+        } else {
+            // MARK: Local Data
+            if let url = Bundle.main.url(forResource: data, withExtension: "json") {
+                do {
+                    let data = try Data(contentsOf: url)
+                    let decoder = JSONDecoder()
+                    items = try decoder.decode([Vmodel].self, from: data)
+                    loading = false
+                } catch {
+                    print("error: \(error)")
+                }
             }
         }
     }
@@ -213,9 +234,3 @@ public struct Model: Codable, Hashable {
     var subtitle: String
     var body: String
 }
-
-//struct Previews: PreviewProvider {
-//    static var previews: some View {
-//
-//    }
-//}
