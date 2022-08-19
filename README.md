@@ -16,8 +16,8 @@ Provide an easy way for Apple Developers to Show "What's New" to the end users.
 - Simple Binding and pass data
 - Simple Model, easy to modify
 - Open Source for all developers
-- Support Remote JSON File (>3.0.0)
-- Support Firebase Real Time Database (>3.0.0)
+- Support Remote JSON File (3.0.0 or above)
+- Support Firebase Real Time Database (3.0.0 or above)
 
 ## Version
 ![GitHub release (latest by date)](https://img.shields.io/github/v/release/1998code/SwiftNEWKit?color=g&label=STABLE&style=for-the-badge)
@@ -86,7 +86,6 @@ data        | "data" or "https://.../{}.json" | "{LOCAL_JSON_FILE}" or Remote | 
 @State var labelColor: Color = Color(UIColor.systemBackground)
 @State var label: String = "Show Release Note"
 @State var labelImage: String = "arrow.up.circle.fill"
-// 3.0 Update
 @State var history: Bool = true
 @State var data: String = "data"
 ```
@@ -113,41 +112,64 @@ Copy the JSON sample to `data.json` file (If you don't have it, simply create a 
 ![68747470733a2f2f76616c696461746f722e737761676765722e696f2f76616c696461746f723f75726c3d68747470733a2f2f7261772e67697468756275736572636f6e74656e742e636f6d2f4f41492f4f70656e4150492d53706563696669636174696f6e2f6d61737465722f6578616d706c65732f76](https://user-images.githubusercontent.com/54872601/173190828-8ee763b9-4e33-4231-92ac-eb81b556c462.png)
 ```json
 [
-    {
-        "version": "1.1",
-        "new": [
-            {
-                "icon": "pencil.and.ruler.fill",
-                "title": "Apple Pencil 3",
-                "subtitle": "Supported",
-                "body": "Available for the new iPad Pro"
-            },
-            {
-                "icon": "hammer.fill",
-                "title": "Bug fixes",
-                "subtitle": "Broken UI",
-                "body": "Available for iOS 16, iPadOS 16, macOS 13"
-            },
-            {
-                "icon": "square.and.arrow.down.fill",
-                "title": "Local File",
-                "subtitle": "Supported",
-                "body": "Direct load via local storage. Super fast!"
-            },
-            {
-                "icon": "macpro.gen3.server",
-                "title": "Serverless",
-                "subtitle": "Design",
-                "body": "Free and open source! Created by Ming with ❤️‍🔥"
-            },
-            {
-                "icon": "arrow.triangle.pull",
-                "title": "Contribute",
-                "subtitle": "Together",
-                "body": "Pull requests and make it better for everyone!"
-            }
-        ]
-    }
+  {
+    "version": "1.2",
+    "new": [
+      {
+        "body": "Available for iOS 16, iPadOS 16, macOS 13",
+        "icon": "hammer.fill",
+        "subtitle": "Broken UI",
+        "title": "Bug fixes"
+      },
+      {
+        "body": "Direct load via remote storage. Easy!",
+        "icon": "square.and.arrow.down.fill",
+        "subtitle": "Supported",
+        "title": "Firebase Remote"
+      },
+      {
+        "body": "Free and open source! Created by Ming with ❤️‍🔥",
+        "icon": "macpro.gen3.server",
+        "subtitle": "Design",
+        "title": "Serverless"
+      },
+      {
+        "body": "Pull requests and make it better for everyone!",
+        "icon": "arrow.triangle.pull",
+        "subtitle": "Together",
+        "title": "Contribute"
+      }
+    ]
+  },
+  {
+   "version": "1.1",
+    "new": [
+      {
+        "body": "Available for iOS 16, iPadOS 16, macOS 13",
+        "icon": "hammer.fill",
+        "subtitle": "Broken UI",
+        "title": "Bug fixes"
+      },
+      {
+        "body": "Direct load via local storage. Super fast!",
+        "icon": "square.and.arrow.down.fill",
+        "subtitle": "Supported",
+        "title": "Local File"
+      },
+      {
+        "body": "Free and open source! Created by Ming with ❤️‍🔥",
+        "icon": "macpro.gen3.server",
+        "subtitle": "Design",
+        "title": "Serverless"
+      },
+      {
+        "body": "Pull requests and make it better for everyone!",
+        "icon": "arrow.triangle.pull",
+        "subtitle": "Together",
+        "title": "Contribute"
+      }
+    ]
+  }
 ]
 ```
 
