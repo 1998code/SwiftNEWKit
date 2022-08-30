@@ -24,8 +24,9 @@ public struct SwiftNEW: View {
     @Binding var labelImage: String
     @Binding var history: Bool
     @Binding var data: String
+    @Binding var showDrop: Bool
 
-    public init( show: Binding<Bool>, align: Binding<HorizontalAlignment>, color: Binding<Color>, size: Binding<String>, labelColor: Binding<Color>, label: Binding<String>, labelImage: Binding<String>, history: Binding<Bool>, data: Binding<String>) {
+    public init( show: Binding<Bool>, align: Binding<HorizontalAlignment>, color: Binding<Color>, size: Binding<String>, labelColor: Binding<Color>, label: Binding<String>, labelImage: Binding<String>, history: Binding<Bool>, data: Binding<String>, showDrop: Binding<Bool>) {
         _show = show
         _align = align
         _color = color
@@ -35,11 +36,18 @@ public struct SwiftNEW: View {
         _labelImage = labelImage
         _history = history
         _data = data
+        _showDrop = showDrop
         compareVersion()
     }
  
     public var body: some View {
-        Button(action: { show = true }) {
+        Button(action: {
+            if showDrop {
+                drop()
+            } else {
+                show = true
+            }
+        }) {
             if size == "mini" {
                 Label(label, systemImage: labelImage)
             }
@@ -186,7 +194,11 @@ public struct SwiftNEW: View {
         if Double(Bundle.version)! > version || Double(Bundle.build)! > build {
             withAnimation {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-                    show = true
+                    if showDrop {
+                        drop()
+                    } else {
+                        show = true
+                    }
                 }
                 version = Double(Bundle.version)!
                 build = Double(Bundle.build)!
@@ -223,7 +235,7 @@ public struct SwiftNEW: View {
         }
     }
     
-    public func showDrop() {
+    public func drop() {
         let drop = Drop( title: "Tap here", subtitle: "To see what's New.", icon: UIImage(systemName: "star.fill"),
                          action: .init {
                                         Drops.hideCurrent()
