@@ -18,6 +18,7 @@ Provide an easy way for Apple Developers to Show "What's New" to the end users.
 - Open Source for all developers
 - Support Remote JSON File (3.0.0 or above)
 - Support Firebase Real Time Database (3.0.0 or above)
+- Support Remote Drop Notification (3.5.0 or above)
 
 ## Version
 ![GitHub release (latest by date)](https://img.shields.io/github/v/release/1998code/SwiftNEWKit?color=g&label=STABLE&style=for-the-badge)
@@ -39,7 +40,7 @@ Xcode     | 13.4 (13F17a)
 macOS     | 12.3.1 (21E258)
 
 ## Guide
-[English](https://github.com/1998code/SwiftNEWKit) | [中文](https://github.com/1998code/SwiftNEWKit/blob/main/doc/README_zh.md) | Feel free to add new language(s) via `pull requests`
+[English](https://github.com/1998code/SwiftNEWKit) | [中文(Outdated)](https://github.com/1998code/SwiftNEWKit/blob/main/doc/README_zh.md) | Feel free to add/update new language(s) via `pull requests`
 
 ## Get Started
 ### Full Tutorial: https://bit.ly/3NOvJB8
@@ -61,7 +62,7 @@ import SwiftNEW
 ```
 2. Then, paste this code inside `body` or any `some View`.
 ```swift
-SwiftNEW(show: $showNew, align: $align, color: $color, size: $size, labelColor: $labelColor, label: $label, labelImage: $labelImage, history: $history, data: $data)
+SwiftNEW(show: $showNew, align: $align, color: $color, size: $size, labelColor: $labelColor, label: $label, labelImage: $labelImage, history: $history, data: $data, showDrop: $showDrop)
 ```
 
 ### State
@@ -76,6 +77,7 @@ label       | "Show Release Note"             | All Strings                   | 
 labelImage  | "arrow.up.circle.fill"          | All SF Symbols                | String
 history     | true                            | true, false                   | Bool
 data        | "data" or "https://.../{}.json" | "{LOCAL_JSON_FILE}" or Remote | String
+showDrop    | false                           | false, true                   | Bool
 
 ##### Samples:
 ```swift
@@ -88,6 +90,7 @@ data        | "data" or "https://.../{}.json" | "{LOCAL_JSON_FILE}" or Remote | 
 @State var labelImage: String = "arrow.up.circle.fill"
 @State var history: Bool = true
 @State var data: String = "data"
+@State var showDrop: Bool = false
 ```
 
 ### JSON
