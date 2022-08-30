@@ -4,6 +4,7 @@
 
 import SwiftUI
 import SwiftVB
+import Drops
  
 @available(iOS 14, watchOS 7.0, macOS 11.0, *)
 public struct SwiftNEW: View {
@@ -220,6 +221,16 @@ public struct SwiftNEW: View {
                 }
             }
         }
+    }
+    
+    public func showDrop() {
+        let drop = Drop( title: "Tap here", subtitle: "To see what's New.", icon: UIImage(systemName: "star.fill"),
+                         action: .init {
+                                        Drops.hideCurrent()
+                                        show = true
+                                },
+                         position: .top, duration: 3.0, accessibility: "Alert: Tap here to see what's New." )
+        Drops.show(drop)
     }
 }
 
