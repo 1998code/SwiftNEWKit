@@ -236,12 +236,12 @@ public struct SwiftNEW: View {
     }
     
     public func drop() {
-        let drop = Drop( title: "Tap here", subtitle: "To see what's New.", icon: UIImage(systemName: "star.fill"),
+        let drop = Drop( title: "Tap", subtitle: "To See What's New.", icon: UIImage(systemName: labelImage),
                          action: .init {
                                         Drops.hideCurrent()
                                         show = true
                                 },
-                         position: .top, duration: 3.0, accessibility: "Alert: Tap here to see what's New." )
+                         position: .top, duration: 3.0, accessibility: "Alert: Tap to see what's new." )
         Drops.show(drop)
     }
 }

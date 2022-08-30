@@ -44,7 +44,7 @@ struct ContentView: View {
     
     var drop: some View {
         // MARK: Drop (>3.4.0) - Recommended trigger with Remote Notification
-        SwiftNEW(show: $showNew, align: $align, color: $color, size: $size, labelColor: $labelColor, label: .constant("Show Drop"), labelImage: .constant("bell.badge"), history: $history, data: .constant("https://testground-a937f-default-rtdb.firebaseio.com/.json?print=pretty"), showDrop: .constant(true))
+        SwiftNEW(show: $showNew, align: $align, color: $color, size: $size, labelColor: $labelColor, label: .constant("Notification"), labelImage: .constant("bell.badge"), history: $history, data: .constant("https://testground-a937f-default-rtdb.firebaseio.com/.json?print=pretty"), showDrop: .constant(true))
     }
     
     var body: some View {
