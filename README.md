@@ -61,7 +61,8 @@ Steps | Description | Screenshot
 import SwiftNEW
 ```
 
-### State
+2. Add States before `body` or any `some View`.
+### States
 var         | Suggested                       | Options                       | Type
 ----------- | ------------------------------- | ----------------------------- | ----
 showNew     | false                           | false, true                   | Bool
@@ -88,7 +89,8 @@ showDrop    | false                           | false, true                   | 
 @State var data: String = "data"
 @State var showDrop: Bool = false
 ```
-2. Then, paste this code inside `body` or any `some View`.
+
+3. Then, paste this code inside `body` or any `some View`.
 ```swift
 SwiftNEW(show: $showNew, align: $align, color: $color, size: $size, labelColor: $labelColor, label: $label, labelImage: $labelImage, history: $history, data: $data, showDrop: $showDrop)
 ```
