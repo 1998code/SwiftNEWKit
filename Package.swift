@@ -20,7 +20,7 @@ let package = Package(
     ],
     dependencies: [
         .package(name: "SwiftVB", url: "https://github.com/1998code/SwiftVBKit.git", .upToNextMinor(from: "1.4.0")),
-        .package(name: "Drops", url: "https://github.com/omaralbeik/Drops.git", .upToNextMinor(from: "1.5.0")),
+        .package(name: "Drops", url: "https://github.com/1998code/Drops.git", .upToNextMinor(from: "2.1.0"))
     ],
     targets: [
         .target(
@@ -28,9 +28,6 @@ let package = Package(
             dependencies: [
                 "SwiftVB",
                 "Drops"
-            ]),
-//        .testTarget(
-//            name: "SwiftNEWTests",
-//            dependencies: ["SwiftNEW"]),
+            ])
     ]
 )
