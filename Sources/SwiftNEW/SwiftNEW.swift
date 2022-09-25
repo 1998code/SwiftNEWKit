@@ -4,7 +4,9 @@
 
 import SwiftUI
 import SwiftVB
+#if os(iOS)
 import Drops
+#endif
  
 @available(iOS 14, watchOS 7.0, macOS 11.0, *)
 public struct SwiftNEW: View {
@@ -43,7 +45,9 @@ public struct SwiftNEW: View {
     public var body: some View {
         Button(action: {
             if showDrop {
+                #if os(iOS)
                 drop()
+                #endif
             } else {
                 show = true
             }
@@ -195,7 +199,9 @@ public struct SwiftNEW: View {
             withAnimation {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
                     if showDrop {
+                        #if os(iOS)
                         drop()
+                        #endif
                     } else {
                         show = true
                     }
@@ -235,6 +241,7 @@ public struct SwiftNEW: View {
         }
     }
     
+    #if os(iOS)
     public func drop() {
         let drop = Drop( title: "Tap", subtitle: "To See What's New.", icon: UIImage(systemName: labelImage),
                          action: .init {
@@ -244,6 +251,7 @@ public struct SwiftNEW: View {
                          position: .top, duration: 3.0, accessibility: "Alert: Tap to see what's new." )
         Drops.show(drop)
     }
+    #endif
 }
 
 // MARK: - Model
