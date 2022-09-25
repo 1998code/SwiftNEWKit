@@ -1,5 +1,28 @@
 [
     {
+        "version": "1.4",
+        "new": [
+            {
+                "icon": "hammer",
+                "title": "Crash",
+                "subtitle": "Fixed",
+                "body": "on macOS."
+            },
+            {
+                "icon": "macpro.gen3.server",
+                "title": "Serverless",
+                "subtitle": "Design",
+                "body": "Free and open source! Created by Ming with ❤️‍🔥"
+            },
+            {
+                "icon": "arrow.triangle.pull",
+                "title": "Contribute",
+                "subtitle": "Together",
+                "body": "Pull requests and make it better for everyone!"
+            }
+        ]
+    },
+    {
         "version": "1.3",
         "new": [
             {
