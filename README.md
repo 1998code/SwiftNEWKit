@@ -60,12 +60,9 @@ Steps | Description | Screenshot
 ```swift
 import SwiftNEW
 ```
-2. Then, paste this code inside `body` or any `some View`.
-```swift
-SwiftNEW(show: $showNew, align: $align, color: $color, size: $size, labelColor: $labelColor, label: $label, labelImage: $labelImage, history: $history, data: $data, showDrop: $showDrop)
-```
 
-### State
+2. Add States before `body` or any `some View`.
+### States
 var         | Suggested                       | Options                       | Type
 ----------- | ------------------------------- | ----------------------------- | ----
 showNew     | false                           | false, true                   | Bool
@@ -91,6 +88,15 @@ showDrop    | false                           | false, true                   | 
 @State var history: Bool = true
 @State var data: String = "data"
 @State var showDrop: Bool = false
+```
+
+3. Then, paste this code inside `body` or any `some View`.
+```swift
+SwiftNEW(show: $showNew, align: $align, color: $color, size: $size, labelColor: $labelColor, label: $label, labelImage: $labelImage, history: $history, data: $data, showDrop: $showDrop)
+```
+Instead of using seperate states, inline states works too. *`Show Bool` cannot be inline.
+```swift
+SwiftNEW(show: $showNew, align: .constant(.center), color: .constant(.accentColor), size: .constant("normal"), labelColor: .constant(Color(UIColor.systemBackground)), label: .constant("Show Release Note"), labelImage: .constant("arrow.up.circle.fill"), history: .constant(true), data: .constant("data"), showDrop: .constant(false))
 ```
 
 ### JSON
