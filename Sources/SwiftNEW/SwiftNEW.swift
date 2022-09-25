@@ -135,7 +135,7 @@ public struct SwiftNEW: View {
             loadData()
         }
         #if os(macOS)
-        .padding()
+        .padding(25)
         .frame(width: 600, height: 600)
         #endif
     }
