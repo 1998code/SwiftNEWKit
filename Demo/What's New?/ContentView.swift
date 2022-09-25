@@ -17,7 +17,11 @@ struct ContentView: View {
     @State var align: HorizontalAlignment = .center
     @State var color: Color = .accentColor
     @State var size: String = "normal"
+    #if os(iOS)
     @State var labelColor: Color = Color(UIColor.systemBackground)
+    #elseif os(macOS)
+    @State var labelColor: Color = Color(NSColor.windowBackgroundColor)
+    #endif
     @State var label: String = "Show Release Note"
     @State var labelImage: String = "arrow.up.circle.fill"
     @State var history: Bool = true
