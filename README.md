@@ -40,7 +40,7 @@ Xcode     | 13.4 (13F17a)
 macOS     | 12.3.1 (21E258)
 
 ## Guide
-[English](https://github.com/1998code/SwiftNEWKit) | [中文(Outdated)](https://github.com/1998code/SwiftNEWKit/blob/main/doc/README_zh.md) | Feel free to add/update new language(s) via `pull requests`
+[English](https://github.com/1998code/SwiftNEWKit) | [中文](https://github.com/1998code/SwiftNEWKit/blob/main/doc/README_zh.md) | Feel free to add/update new language(s) via `pull requests`
 
 ## Get Started
 ### Full Tutorial: https://bit.ly/3NOvJB8
