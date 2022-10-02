@@ -76,9 +76,8 @@ public struct SwiftNEW: View {
     public var sheetCurrent: some View {
         VStack(alignment: align) {
             Spacer()
-            Text("What's New?").bold().font(.largeTitle)
-            Text("Version \(Bundle.versionBuild)")
-                .bold().font(.title).foregroundColor(.secondary)
+            Text("What's New in").bold().font(.largeTitle)
+            Text("Version \(Bundle.versionBuild)").bold().font(.title).foregroundColor(.secondary)
             Spacer()
             if loading {
                 ProgressView()
@@ -106,7 +105,8 @@ public struct SwiftNEW: View {
                             }
                         }
                     }
-                }.frame(width: 300, height: 450)
+                }.frame(width: 300)
+                .frame(maxHeight: 450)
             }
             Spacer()
             if history {
@@ -172,7 +172,8 @@ public struct SwiftNEW: View {
                         }.padding(.bottom)
                     }
                 }
-            }.frame(width: 300, height: 450)
+            }.frame(width: 300)
+            .frame(maxHeight: 450)
             Spacer()
             Button(action: { historySheet = false }) {
                 HStack{
