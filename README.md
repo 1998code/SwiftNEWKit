@@ -69,7 +69,7 @@ showNew     | false                           | false, true                   | 
 align       | .center                         | .leading, .center, .trailing  | HorizontalAlignment
 color       | .accentColor                    | All Colors Supported          | Color
 size        | "normal"                        | "invisible", "mini", "normal" | String
-labelColor  | Color(UIColor.systemBackground) | All Colors Supported          | Color
+labelColor  | Color(UIColor.systemBackground) or Color(NSColor.windowBackgroundColor) | All Colors Supported          | Color
 label       | "Show Release Note"             | All Strings                   | String
 labelImage  | "arrow.up.circle.fill"          | All SF Symbols                | String
 history     | true                            | true, false                   | Bool
