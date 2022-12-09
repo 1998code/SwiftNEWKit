@@ -77,11 +77,11 @@ public struct SwiftNEW: View {
     public var sheetCurrent: some View {
         VStack(alignment: align) {
             Spacer()
-            AppIcon()
-                .clipShape(RoundedRectangle(cornerRadius: 12))
-                .frame(width: 128, height: 128)
             Text("What's New in").bold().font(.largeTitle)
             Text("Version \(Bundle.versionBuild)").bold().font(.title).foregroundColor(.secondary)
+            AppIcon()
+                .clipShape(RoundedRectangle(cornerRadius: 12))
+                .frame(width: 100, height: 100)
             Spacer()
             if loading {
                 ProgressView()
@@ -288,7 +288,7 @@ struct AppIcon: View {
             .flatMap { UIImage(named: $0) }
             .map { Image(uiImage: $0)
                     .resizable()
-                    .frame(width: 128, height: 128)
+                    .frame(width: 80, height: 80)
             }
     }
 }
