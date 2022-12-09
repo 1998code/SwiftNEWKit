@@ -78,7 +78,6 @@ public struct SwiftNEW: View {
         VStack(alignment: align) {
             Spacer()
             AppIcon()
-                .frame(width: 128, height: 128)
                 .clipShape(RoundedRectangle(cornerRadius: 12))
             Text("What's New in").bold().font(.largeTitle)
             Text("Version \(Bundle.versionBuild)").bold().font(.title).foregroundColor(.secondary)
