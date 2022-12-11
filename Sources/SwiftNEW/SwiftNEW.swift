@@ -4,6 +4,7 @@
 
 import SwiftUI
 import SwiftVB
+
 #if os(iOS)
 import Drops
 #endif
@@ -76,8 +77,12 @@ public struct SwiftNEW: View {
     public var sheetCurrent: some View {
         VStack(alignment: align) {
             Spacer()
+            AppIcon()
+                .clipShape(RoundedRectangle(cornerRadius: 19))
+                
             Text("What's New in").bold().font(.largeTitle)
             Text("Version \(Bundle.versionBuild)").bold().font(.title).foregroundColor(.secondary)
+           
             Spacer()
             if loading {
                 ProgressView()
@@ -265,4 +270,30 @@ public struct Model: Codable, Hashable {
     var title: String
     var subtitle: String
     var body: String
+}
+
+extension Bundle {
+    var iconFileName: String? {
+        guard let icons = infoDictionary?["CFBundleIcons"] as? [String: Any],
+              let primaryIcon = icons["CFBundlePrimaryIcon"] as? [String: Any],
+              let iconFiles = primaryIcon["CFBundleIconFiles"] as? [String],
+              let iconFileName = iconFiles.last
+        else { return nil }
+        return iconFileName
+    }
+}
+
+struct AppIcon: View {
+    var body: some View {
+        Bundle.main.iconFileName
+            .flatMap { UIImage(named: $0) }
+            .map { Image(uiImage: $0)
+                    .resizable()
+                    .frame(width: 80, height: 80)
+                    .overlay(
+                            RoundedRectangle(cornerRadius: 19)
+                                .stroke(.gray, lineWidth: 1)
+                        )
+            }
+    }
 }
