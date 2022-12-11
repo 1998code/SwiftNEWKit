@@ -157,8 +157,14 @@ public struct SwiftNEW: View {
                 appIcon
             }
             VStack(alignment: align) {
+                if align == .center {
+                    appIcon
+                }
                 Text("What's New in").bold().font(.largeTitle)
                 Text("Version \(Bundle.versionBuild)").bold().font(.title).foregroundColor(.secondary)
+            }
+            if align == .trailing {
+                appIcon
             }
         }
     }
@@ -181,8 +187,14 @@ public struct SwiftNEW: View {
     public var closeCurrentButton: some View {
         Button(action: { show = false }) {
             HStack{
+                if align == .trailing {
+                    Spacer()
+                }
                 Text("Continue").bold()
                 Image(systemName: "arrow.right.circle.fill")
+                if align == .leading {
+                    Spacer()
+                }
             }.font(.body)
             .frame(width: 300, height: 50)
             #if os(iOS)
@@ -245,8 +257,14 @@ public struct SwiftNEW: View {
     public var closeHistoryButton: some View {
         Button(action: { historySheet = false }) {
             HStack{
+                if align == .trailing {
+                    Spacer()
+                }
                 Text("Return").bold()
                 Image(systemName: "arrow.down.circle.fill")
+                if align == .leading {
+                    Spacer()
+                }
             }.font(.body)
             .frame(width: 300, height: 50)
             #if os(iOS)
