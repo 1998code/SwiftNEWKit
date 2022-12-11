@@ -28,7 +28,7 @@ public struct SwiftNEW: View {
     @Binding var history: Bool
     @Binding var data: String
     @Binding var showDrop: Bool
-
+    
     public init( show: Binding<Bool>, align: Binding<HorizontalAlignment>, color: Binding<Color>, size: Binding<String>, labelColor: Binding<Color>, label: Binding<String>, labelImage: Binding<String>, history: Binding<Bool>, data: Binding<String>, showDrop: Binding<Bool>) {
         _show = show
         _align = align
@@ -42,13 +42,13 @@ public struct SwiftNEW: View {
         _showDrop = showDrop
         compareVersion()
     }
- 
+    
     public var body: some View {
         Button(action: {
             if showDrop {
-                #if os(iOS)
+#if os(iOS)
                 drop()
-                #endif
+#endif
             } else {
                 show = true
             }
@@ -59,11 +59,11 @@ public struct SwiftNEW: View {
             else if size == "normal" {
                 Label(label, systemImage: labelImage)
                     .frame(width: 300, height: 50)
-                    #if os(iOS)
+#if os(iOS)
                     .foregroundColor(labelColor)
                     .background(color)
                     .cornerRadius(15)
-                    #endif
+#endif
             }
         }
         .sheet(isPresented: $show) {
@@ -79,14 +79,8 @@ public struct SwiftNEW: View {
         VStack(alignment: align) {
             Spacer()
             
-            #if os(iOS)
-            appIcon
-                .clipShape(RoundedRectangle(cornerRadius: 19))
-            #endif
-                
-            Text("What's New in").bold().font(.largeTitle)
-            Text("Version \(Bundle.versionBuild)").bold().font(.title).foregroundColor(.secondary)
-           
+            heading
+            
             Spacer()
             
             if loading {
@@ -120,7 +114,7 @@ public struct SwiftNEW: View {
                         }
                     }
                 }.frame(width: 300)
-                .frame(maxHeight: 450)
+                    .frame(maxHeight: 450)
             }
             
             Spacer()
@@ -135,12 +129,12 @@ public struct SwiftNEW: View {
         .onAppear {
             loadData()
         }
-        #if os(macOS)
+#if os(macOS)
         .padding(25)
         .frame(width: 600, height: 600)
-        #endif
+#endif
     }
-    #if os(iOS)
+#if os(iOS)
     public var appIcon: some View {
         Bundle.main.iconFileName
             .flatMap {
@@ -149,14 +143,40 @@ public struct SwiftNEW: View {
             .map {
                 Image(uiImage: $0)
                     .resizable()
-                    .frame(width: 80, height: 80)
+                    .frame(width: 65, height: 65)
                     .overlay(
-                        RoundedRectangle(cornerRadius: 19)
+                        RoundedRectangle(cornerRadius: 19, style: .continuous)
                             .stroke(.gray, lineWidth: 1)
                     )
             }
     }
-    #endif
+    public var heading: some View {
+        if align == .leading {
+            HStack {
+                appIcon
+                    .clipShape(RoundedRectangle(cornerRadius: 19))
+                VStack {
+                    Text("What's New in").bold().font(.largeTitle)
+                    Text("Version \(Bundle.versionBuild)").bold().font(.title).foregroundColor(.secondary)
+                }
+            }
+        } else {
+            VStack {
+                appIcon
+                    .clipShape(RoundedRectangle(cornerRadius: 19))
+                Text("What's New in").bold().font(.largeTitle)
+                Text("Version \(Bundle.versionBuild)").bold().font(.title).foregroundColor(.secondary)
+            }
+        }
+    }
+#elseif os(macOS)
+    public var heading: some View {
+        VStack {
+            Text("What's New in").bold().font(.largeTitle)
+            Text("Version \(Bundle.versionBuild)").bold().font(.title).foregroundColor(.secondary)
+        }
+    }
+#endif
     public var showHistoryButton: some View {
         Button(action: { historySheet = true }) {
             HStack {
