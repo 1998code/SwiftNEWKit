@@ -19,6 +19,7 @@ Provide an easy way for Apple Developers to Show "What's New" to the end users.
 - Support Remote JSON File (3.0.0 or above)
 - Support Firebase Real Time Database (3.0.0 or above)
 - Support Remote Drop Notification (3.5.0 or above)
+- Support App Icon (3.9.6 or above)
 
 ## Version
 ![GitHub release (latest by date)](https://img.shields.io/github/v/release/1998code/SwiftNEWKit?color=g&label=STABLE&style=for-the-badge)
@@ -36,8 +37,8 @@ macOS     | 13     | > 11
 ### Xcode Cloud
 Tested on | Compatible
 --------- | ----------
-Xcode     | 13.4 (13F17a)
-macOS     | 12.3.1 (21E258)
+Xcode     | > 13.4 (13F17a)
+macOS     | > 12.3.1 (21E258)
 
 ## Guide
 [English](https://github.com/1998code/SwiftNEWKit) | [中文](https://github.com/1998code/SwiftNEWKit/blob/main/doc/README_zh.md) | Feel free to add/update new language(s) via `pull requests`
@@ -195,12 +196,12 @@ Copy the JSON sample to `data.json` file (If you don't have it, simply create a 
 ------------- | ------------
 Light Native | Dark Native
 
-![Simulator Screen Shot - iPhone 13 Pro Max - 2022-07-10 at 11 19 40](https://user-images.githubusercontent.com/54872601/178129999-ad63b0ce-d65e-4d86-9882-37a5090e92bc.png)  |
------------------------ |
-History View (2.0.0)
+![Simulator Screen Shot - iPhone 13 Pro Max](https://user-images.githubusercontent.com/54872601/178129999-ad63b0ce-d65e-4d86-9882-37a5090e92bc.png) | ![CleanShot 2022-12-11 at 12 46 30@2x](https://user-images.githubusercontent.com/54872601/206886933-bc4d0d33-e0fc-4013-9456-f19679b10f5b.png) ![CleanShot 2022-12-11 at 12 49 12@2x](https://user-images.githubusercontent.com/54872601/206887046-8ec82853-4e32-4a07-8b64-4cc984e7ec90.png)
+----------------------- | --------------
+History View (2.0.0) | App Icon (3.9.6)
 
 ## Demo
-Path: `./Demo`
+Path: `./Demo` (Xcode Project in SwiftUI)
 
 ## License
 MIT
