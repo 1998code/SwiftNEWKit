@@ -203,5 +203,13 @@ History View (2.0.0) | App Icon (3.9.6)
 ## Demo
 Path: `./Demo` (Xcode Project in SwiftUI)
 
+## FAQ
+Q1. Why did the sheet not popup/show loading/show blank?
+A1. Firstly, be sure the latest version in json is matching your app version. If you are using data.json locally, please check ```,``` is missing or any typo that casue the json no longer valid. If you are using remote data (e.g. Firebase), make sure the json structure is the same as the example.
+Q2. How can I contribute to the project?
+A2. Simply pull a request, and someone will review your code. If everything is okay, your changes will be merged and reflected in the next minor version.
+Q3. Can I use it in Educational (includ. Student's Homework, Class's demo) or NGO or Commerical Project?
+A3. YES. This project is under license of MIT. Feel free to use it :)
+
 ## License
 MIT
