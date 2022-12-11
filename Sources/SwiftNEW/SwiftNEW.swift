@@ -149,25 +149,16 @@ public struct SwiftNEW: View {
                             .stroke(.gray, lineWidth: 1)
                     )
             }
+            .clipShape(RoundedRectangle(cornerRadius: 19, style: .continuous))
     }
     public var headings: some View {
-        Group {
+        HStack {
             if align == .leading {
-                HStack {
-                    appIcon
-                        .clipShape(RoundedRectangle(cornerRadius: 19))
-                    VStack {
-                        Text("What's New in").bold().font(.largeTitle)
-                        Text("Version \(Bundle.versionBuild)").bold().font(.title).foregroundColor(.secondary)
-                    }
-                }
-            } else {
-                VStack {
-                    appIcon
-                        .clipShape(RoundedRectangle(cornerRadius: 19))
-                    Text("What's New in").bold().font(.largeTitle)
-                    Text("Version \(Bundle.versionBuild)").bold().font(.title).foregroundColor(.secondary)
-                }
+                appIcon
+            }
+            VStack(alignment: align) {
+                Text("What's New in").bold().font(.largeTitle)
+                Text("Version \(Bundle.versionBuild)").bold().font(.title).foregroundColor(.secondary)
             }
         }
     }
