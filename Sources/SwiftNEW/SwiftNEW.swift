@@ -74,19 +74,28 @@ public struct SwiftNEW: View {
         }
     }
     
+    // MARK: - Current Version Changes View
     public var sheetCurrent: some View {
         VStack(alignment: align) {
             Spacer()
-            AppIcon()
+            
+            #if os(iOS)
+            appIcon
                 .clipShape(RoundedRectangle(cornerRadius: 19))
+            #endif
                 
             Text("What's New in").bold().font(.largeTitle)
             Text("Version \(Bundle.versionBuild)").bold().font(.title).foregroundColor(.secondary)
            
             Spacer()
+            
             if loading {
-                ProgressView()
-            } else {
+                VStack {
+                    Text("Loading...").padding(.bottom)
+                    ProgressView()
+                }
+            }
+            else {
                 ScrollView(showsIndicators: false) {
                     ForEach(items, id: \.self) { item in
                         if item.version == Bundle.version {
@@ -113,28 +122,15 @@ public struct SwiftNEW: View {
                 }.frame(width: 300)
                 .frame(maxHeight: 450)
             }
+            
             Spacer()
+            
             if history {
-                Button(action: { historySheet = true }) {
-                    HStack {
-                        Text("Show History")
-                        Image(systemName: "arrow.up.bin")
-                    }.font(.body)
-                }.foregroundColor(color)
+                showHistoryButton
             }
-            Button(action: { show = false }) {
-                HStack{
-                    Text("Continue").bold()
-                    Image(systemName: "arrow.right.circle.fill")
-                }.font(.body)
-                .frame(width: 300, height: 50)
-                #if os(iOS)
-                .foregroundColor(.white)
-                .background(color)
-                .cornerRadius(15)
-                #endif
-            }
-            .padding(.bottom)
+            
+            closeCurrentButton
+                .padding(.bottom)
         }
         .onAppear {
             loadData()
@@ -144,12 +140,55 @@ public struct SwiftNEW: View {
         .frame(width: 600, height: 600)
         #endif
     }
+    #if os(iOS)
+    public var appIcon: some View {
+        Bundle.main.iconFileName
+            .flatMap {
+                UIImage(named: $0)
+            }
+            .map {
+                Image(uiImage: $0)
+                    .resizable()
+                    .frame(width: 80, height: 80)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 19)
+                            .stroke(.gray, lineWidth: 1)
+                    )
+            }
+    }
+    #endif
+    public var showHistoryButton: some View {
+        Button(action: { historySheet = true }) {
+            HStack {
+                Text("Show History")
+                Image(systemName: "arrow.up.bin")
+            }.font(.body)
+        }.foregroundColor(color)
+    }
+    public var closeCurrentButton: some View {
+        Button(action: { show = false }) {
+            HStack{
+                Text("Continue").bold()
+                Image(systemName: "arrow.right.circle.fill")
+            }.font(.body)
+            .frame(width: 300, height: 50)
+            #if os(iOS)
+            .foregroundColor(.white)
+            .background(color)
+            .cornerRadius(15)
+            #endif
+        }
+    }
     
+    // MARK: - History List View
     public var sheetHistory: some View {
         VStack(alignment: align) {
             Spacer()
+            
             Text("History").bold().font(.largeTitle)
+            
             Spacer()
+            
             ScrollView(showsIndicators: false) {
                 ForEach(items, id: \.self) { item in
                     ZStack {
@@ -179,27 +218,33 @@ public struct SwiftNEW: View {
                 }
             }.frame(width: 300)
             .frame(maxHeight: 450)
+            
             Spacer()
-            Button(action: { historySheet = false }) {
-                HStack{
-                    Text("Return").bold()
-                    Image(systemName: "arrow.down.circle.fill")
-                }.font(.body)
-                .frame(width: 300, height: 50)
-                #if os(iOS)
-                .foregroundColor(.white)
-                .background(color)
-                .cornerRadius(15)
-                #endif
-            }
-            .padding(.bottom)
+            
+            closeHistoryButton
+                .padding(.bottom)
         }
         #if os(macOS)
         .padding()
         .frame(width: 600, height: 600)
         #endif
     }
+    public var closeHistoryButton: some View {
+        Button(action: { historySheet = false }) {
+            HStack{
+                Text("Return").bold()
+                Image(systemName: "arrow.down.circle.fill")
+            }.font(.body)
+            .frame(width: 300, height: 50)
+            #if os(iOS)
+            .foregroundColor(.white)
+            .background(color)
+            .cornerRadius(15)
+            #endif
+        }
+    }
 
+    // MARK: - Functions
     public func compareVersion() {
         if Double(Bundle.version)! > version || Double(Bundle.build)! > build {
             withAnimation {
@@ -249,12 +294,12 @@ public struct SwiftNEW: View {
     
     #if os(iOS)
     public func drop() {
-        let drop = Drop( title: "Tap", subtitle: "To See What's New.", icon: UIImage(systemName: labelImage),
-                         action: .init {
-                                        Drops.hideCurrent()
-                                        show = true
-                                },
-                         position: .top, duration: 3.0, accessibility: "Alert: Tap to see what's new." )
+        let drop = Drop(title: "Tap", subtitle: "To See What's New.", icon: UIImage(systemName: labelImage),
+                        action: .init {
+                            Drops.hideCurrent()
+                            show = true
+                        },
+                        position: .top, duration: 3.0, accessibility: "Alert: Tap to see what's new." )
         Drops.show(drop)
     }
     #endif
@@ -272,6 +317,7 @@ public struct Model: Codable, Hashable {
     var body: String
 }
 
+// MARK: - For App Icon
 extension Bundle {
     var iconFileName: String? {
         guard let icons = infoDictionary?["CFBundleIcons"] as? [String: Any],
@@ -280,20 +326,5 @@ extension Bundle {
               let iconFileName = iconFiles.last
         else { return nil }
         return iconFileName
-    }
-}
-
-struct AppIcon: View {
-    var body: some View {
-        Bundle.main.iconFileName
-            .flatMap { UIImage(named: $0) }
-            .map { Image(uiImage: $0)
-                    .resizable()
-                    .frame(width: 80, height: 80)
-                    .overlay(
-                            RoundedRectangle(cornerRadius: 19)
-                                .stroke(.gray, lineWidth: 1)
-                        )
-            }
     }
 }
