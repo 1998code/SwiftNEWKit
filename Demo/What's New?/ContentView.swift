@@ -56,15 +56,30 @@ struct ContentView: View {
             // MARK: Choose either one size (Normal, Mini or Invisible)
             TabView(selection: $preview) {
                 normal
-                    .tabItem { Text("Normal") }.tag("Normal")
+                    .tabItem {
+                        Label("Normal", systemImage: "textformat.size.larger")
+                    }
+                    .tag("Normal")
                 mini
-                    .tabItem { Text("Mini") }.tag("Mini")
+                    .tabItem {
+                        Label("Mini", systemImage: "textformat.size.smaller")
+                    }
+                    .tag("Mini")
                 invisible
-                    .tabItem { Text("Invisible") }.tag("Invisible")
+                    .tabItem {
+                        Label("Invisible", systemImage: "questionmark.square.dashed")
+                    }
+                    .tag("Invisible")
                 remote
-                    .tabItem { Text("Remote") }.tag("Remote")
+                    .tabItem {
+                        Label("Remote", systemImage: "cloud")
+                    }
+                    .tag("Remote")
                 drop
-                    .tabItem { Text("Drop") }.tag("Drop")
+                    .tabItem {
+                        Label("Remote", systemImage: "capsule")
+                    }
+                    .tag("Drop")
             }
             .toolbar {
                 if preview == "Mini" {

@@ -1,5 +1,34 @@
 [
     {
+        "version": "3.9",
+        "new": [
+            {
+                "icon": "app.fill",
+                "title": "App Icon",
+                "subtitle": "Supported",
+                "body": "on iOS."
+            },
+            {
+                "icon": "appclip",
+                "title": "Demo",
+                "subtitle": "is Better now",
+                "body": "Following the Package Version."
+            },
+            {
+                "icon": "macpro.gen3.server",
+                "title": "Serverless",
+                "subtitle": "Design",
+                "body": "Free and open source! ❤️‍🔥"
+            },
+            {
+                "icon": "arrow.triangle.pull",
+                "title": "Contribute",
+                "subtitle": "Together",
+                "body": "Pull requests and make it better for everyone! 🎉"
+            }
+        ]
+    },
+    {
         "version": "1.5",
         "new": [
             {
