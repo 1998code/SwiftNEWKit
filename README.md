@@ -187,6 +187,10 @@ Copy the JSON sample to `data.json` file (If you don't have it, simply create a 
 ]
 ```
 
+i18n Sample Available in v```3.9.7```
+
+<img width="249" alt="CleanShot 2023-01-02 at 17 58 49@2x" src="https://user-images.githubusercontent.com/54872601/210216593-5b9aaf46-5684-48d2-994e-831e5d421f76.png">
+
 ## Developer Note
 - Please report bugs in Issues section.
 - If you want to discuss future roadmap or contribution, please find on Discussions.
