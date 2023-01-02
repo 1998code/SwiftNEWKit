@@ -11,8 +11,8 @@
 		3A46CBB2285444CC00BE79A3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A46CBB1285444CC00BE79A3 /* ContentView.swift */; };
 		3A46CBB4285444CD00BE79A3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A46CBB3285444CD00BE79A3 /* Assets.xcassets */; };
 		3A46CBB8285444CD00BE79A3 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A46CBB7285444CD00BE79A3 /* Preview Assets.xcassets */; };
-		3A46CBCE28544C9C00BE79A3 /* data.json in Resources */ = {isa = PBXBuildFile; fileRef = 3A46CBCD28544C9C00BE79A3 /* data.json */; };
 		3AB7E09128630E380059EEFE /* SwiftNEW in Frameworks */ = {isa = PBXBuildFile; productRef = 3AB7E09028630E380059EEFE /* SwiftNEW */; };
+		3AE0026A2962DD540055979A /* data.json in Resources */ = {isa = PBXBuildFile; fileRef = 3AE0026C2962DD540055979A /* data.json */; };
 		3AE7A52728BDB0BF00B4789E /* SwiftNEW in Frameworks */ = {isa = PBXBuildFile; productRef = 3AE7A52628BDB0BF00B4789E /* SwiftNEW */; };
 /* End PBXBuildFile section */
 
@@ -24,7 +24,8 @@
 		3A46CBB5285444CD00BE79A3 /* What_s_New_.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = What_s_New_.entitlements; sourceTree = "<group>"; };
 		3A46CBB7285444CD00BE79A3 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		3A46CBC4285447F600BE79A3 /* SwiftNEW */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = SwiftNEW; path = ../../../SwiftNEW; sourceTree = "<group>"; };
-		3A46CBCD28544C9C00BE79A3 /* data.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = data.json; sourceTree = "<group>"; };
+		3AE0026B2962DD540055979A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = en; path = en.lproj/data.json; sourceTree = "<group>"; };
+		3AE0026D2962DD810055979A /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = "zh-Hant"; path = "zh-Hant.lproj/data.json"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,7 +63,7 @@
 			children = (
 				3A46CBAF285444CC00BE79A3 /* What_s_New_App.swift */,
 				3A46CBB1285444CC00BE79A3 /* ContentView.swift */,
-				3A46CBCD28544C9C00BE79A3 /* data.json */,
+				3AE0026C2962DD540055979A /* data.json */,
 				3A46CBB3285444CD00BE79A3 /* Assets.xcassets */,
 				3A46CBB5285444CD00BE79A3 /* What_s_New_.entitlements */,
 				3A46CBB6285444CD00BE79A3 /* Preview Content */,
@@ -132,6 +133,7 @@
 			knownRegions = (
 				en,
 				Base,
+				"zh-Hant",
 			);
 			mainGroup = 3A46CBA3285444CC00BE79A3;
 			packageReferences = (
@@ -153,7 +155,7 @@
 			files = (
 				3A46CBB8285444CD00BE79A3 /* Preview Assets.xcassets in Resources */,
 				3A46CBB4285444CD00BE79A3 /* Assets.xcassets in Resources */,
-				3A46CBCE28544C9C00BE79A3 /* data.json in Resources */,
+				3AE0026A2962DD540055979A /* data.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -171,11 +173,24 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXVariantGroup section */
+		3AE0026C2962DD540055979A /* data.json */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3AE0026B2962DD540055979A /* en */,
+				3AE0026D2962DD810055979A /* zh-Hant */,
+			);
+			name = data.json;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
 /* Begin XCBuildConfiguration section */
 		3A46CBB9285444CD00BE79A3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
@@ -234,6 +249,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";

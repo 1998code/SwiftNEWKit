@@ -1,0 +1,31 @@
+[
+    {
+        "version": "3.9",
+        "new": [
+            {
+                "icon": "app.fill",
+                "title": "應用圖標",
+                "subtitle": "支持",
+                "body": "在 iOS 上。"
+            },
+            {
+                "icon": "app",
+                "title": "演示",
+                "subtitle": "現在好多了",
+                "body": "遵循包版本。"
+            },
+            {
+                "icon": "macpro.gen3.server",
+                "title": "無服務器",
+                "subtitle": "設計",
+                "body": "免費開源! ❤️‍🔥"
+            },
+            {
+                "icon": "arrow.triangle.pull",
+                "title": "貢獻",
+                "subtitle": "一起",
+                "body": "提出請求，變得更好! 🎉"
+            }
+        ]
+    }
+]
