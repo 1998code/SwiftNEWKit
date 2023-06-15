@@ -8,7 +8,7 @@
 Provide an easy way for Apple Developers to Show "What's New" to the end users.
 
 ## Features
-- Auto trigger / pop-up the `.sheet` from Version and/or Build increase
+- Auto trigger / pop-up the `.sheet` from Version and/or Build ~~increase~~ changes (starting from 4.0.0)
 - One-line Coding
 - JSON Compatible
 - Data Versioning
