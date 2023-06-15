@@ -92,7 +92,7 @@ public struct SwiftNEW: View {
             else {
                 ScrollView(showsIndicators: false) {
                     ForEach(items, id: \.self) { item in
-                        if item.version == Bundle.version {
+                        if item.version == Bundle.version || item.subVersion == Bundle.version {
                             ForEach(item.new, id: \.self) { new in
                                 HStack {
                                     ZStack {
@@ -277,7 +277,13 @@ public struct SwiftNEW: View {
 
     // MARK: - Functions
     public func compareVersion() {
-        if Double(Bundle.version)! > version || Double(Bundle.build)! > build {
+        let currentVersion = Bundle.version.replacingOccurrences(of: ".", with: "")
+        let currentBuild = Bundle.build.replacingOccurrences(of: ".", with: "")
+
+        let savedVersion = String(version).replacingOccurrences(of: ".", with: "")
+        let savedBuild = String(build).replacingOccurrences(of: ".", with: "")
+
+        if Int(currentVersion)! != Int(savedVersion)! || Int(currentBuild)! != Int(savedBuild)! {
             withAnimation {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
                     if showDrop {
@@ -288,8 +294,8 @@ public struct SwiftNEW: View {
                         show = true
                     }
                 }
-                version = Double(Bundle.version)!
-                build = Double(Bundle.build)!
+                version = Double(currentVersion)! / 10
+                build = Double(currentBuild)! / 10
             }
         }
     }
@@ -339,6 +345,7 @@ public struct SwiftNEW: View {
 // MARK: - Model
 public struct Vmodel: Codable, Hashable {
     var version: String
+    var subVersion: String?
     var new: [Model]
 }
 public struct Model: Codable, Hashable {

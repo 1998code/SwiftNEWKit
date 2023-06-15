@@ -33,8 +33,12 @@ struct ContentView: View {
     }
     
     var mini: some View {
-        // MARK: Mini (Toolbar only)
-        Text("Compatible with Toolbar")
+        // MARK: Mini (Toolbar / List only)
+        List {
+            Section(header: Text("Compatible with Toolbar / List")) {
+                SwiftNEW(show: $showNew, align: $align, color: $color, size: .constant("mini"), labelColor: $labelColor, label: $label, labelImage: $labelImage, history: $history, data: $data, showDrop: $showDrop)
+            }
+        }
     }
     
     var invisible: some View {

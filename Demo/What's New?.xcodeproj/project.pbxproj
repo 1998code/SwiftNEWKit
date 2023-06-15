@@ -3,17 +3,17 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 60;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3A23CAF52A3AC05C0099CC42 /* SwiftNEW in Frameworks */ = {isa = PBXBuildFile; productRef = 3A23CAF42A3AC05C0099CC42 /* SwiftNEW */; };
 		3A46CBB0285444CC00BE79A3 /* What_s_New_App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A46CBAF285444CC00BE79A3 /* What_s_New_App.swift */; };
 		3A46CBB2285444CC00BE79A3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A46CBB1285444CC00BE79A3 /* ContentView.swift */; };
 		3A46CBB4285444CD00BE79A3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A46CBB3285444CD00BE79A3 /* Assets.xcassets */; };
 		3A46CBB8285444CD00BE79A3 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A46CBB7285444CD00BE79A3 /* Preview Assets.xcassets */; };
 		3AB7E09128630E380059EEFE /* SwiftNEW in Frameworks */ = {isa = PBXBuildFile; productRef = 3AB7E09028630E380059EEFE /* SwiftNEW */; };
 		3AE0026A2962DD540055979A /* data.json in Resources */ = {isa = PBXBuildFile; fileRef = 3AE0026C2962DD540055979A /* data.json */; };
-		3AE7A52728BDB0BF00B4789E /* SwiftNEW in Frameworks */ = {isa = PBXBuildFile; productRef = 3AE7A52628BDB0BF00B4789E /* SwiftNEW */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,7 +34,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3AB7E09128630E380059EEFE /* SwiftNEW in Frameworks */,
-				3AE7A52728BDB0BF00B4789E /* SwiftNEW in Frameworks */,
+				3A23CAF52A3AC05C0099CC42 /* SwiftNEW in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -105,7 +105,7 @@
 			name = "What's New?";
 			packageProductDependencies = (
 				3AB7E09028630E380059EEFE /* SwiftNEW */,
-				3AE7A52628BDB0BF00B4789E /* SwiftNEW */,
+				3A23CAF42A3AC05C0099CC42 /* SwiftNEW */,
 			);
 			productName = "What's New?";
 			productReference = 3A46CBAC285444CC00BE79A3 /* What's New?.app */;
@@ -137,7 +137,7 @@
 			);
 			mainGroup = 3A46CBA3285444CC00BE79A3;
 			packageReferences = (
-				3AE7A52528BDB0BF00B4789E /* XCRemoteSwiftPackageReference "SwiftNEWKit" */,
+				3A23CAF32A3AC05C0099CC42 /* XCLocalSwiftPackageReference ".." */,
 			);
 			productRefGroup = 3A46CBAD285444CC00BE79A3 /* Products */;
 			projectDirPath = "";
@@ -304,7 +304,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "What's New?/What_s_New_.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_ASSET_PATHS = "\"What's New?/Preview Content\"";
 				DEVELOPMENT_TEAM = "";
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -318,7 +318,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = 3.9;
+				MARKETING_VERSION = 4.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = io.startway.WhatsNew;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
@@ -336,7 +336,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "What's New?/What_s_New_.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_ASSET_PATHS = "\"What's New?/Preview Content\"";
 				DEVELOPMENT_TEAM = "";
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -350,7 +350,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = 3.9;
+				MARKETING_VERSION = 4.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = io.startway.WhatsNew;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
@@ -384,25 +384,20 @@
 		};
 /* End XCConfigurationList section */
 
-/* Begin XCRemoteSwiftPackageReference section */
-		3AE7A52528BDB0BF00B4789E /* XCRemoteSwiftPackageReference "SwiftNEWKit" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/1998code/SwiftNEWKit";
-			requirement = {
-				branch = main;
-				kind = branch;
-			};
+/* Begin XCLocalSwiftPackageReference section */
+		3A23CAF32A3AC05C0099CC42 /* XCLocalSwiftPackageReference ".." */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = ..;
 		};
-/* End XCRemoteSwiftPackageReference section */
+/* End XCLocalSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		3AB7E09028630E380059EEFE /* SwiftNEW */ = {
+		3A23CAF42A3AC05C0099CC42 /* SwiftNEW */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = SwiftNEW;
 		};
-		3AE7A52628BDB0BF00B4789E /* SwiftNEW */ = {
+		3AB7E09028630E380059EEFE /* SwiftNEW */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 3AE7A52528BDB0BF00B4789E /* XCRemoteSwiftPackageReference "SwiftNEWKit" */;
 			productName = SwiftNEW;
 		};
 /* End XCSwiftPackageProductDependency section */
