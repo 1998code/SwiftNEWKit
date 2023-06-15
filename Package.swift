@@ -28,6 +28,7 @@ let package = Package(
             dependencies: [
                 "SwiftVB",
                 "Drops"
-            ])
+            ]
+        )
     ]
 )
