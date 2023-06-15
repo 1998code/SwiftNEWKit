@@ -8,7 +8,7 @@
 Provide an easy way for Apple Developers to Show "What's New" to the end users.
 
 ## Features
-- Auto trigger the `.sheet` from Version and/or Build increase
+- Auto trigger / pop-up the `.sheet` from Version and/or Build increase
 - One-line Coding
 - JSON Compatible
 - Data Versioning
@@ -21,6 +21,7 @@ Provide an easy way for Apple Developers to Show "What's New" to the end users.
 - Support Firebase Real Time Database (3.0.0 or above)
 - Support Remote Drop Notification (3.5.0 or above)
 - Support App Icon (3.9.6 or above)
+- Support Version Number in x.y.z and/or x.y (4.0.0 or above)
 
 ## Version
 ![GitHub release (latest by date)](https://img.shields.io/github/v/release/1998code/SwiftNEWKit?color=g&label=STABLE&style=for-the-badge)
