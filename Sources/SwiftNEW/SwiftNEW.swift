@@ -5,9 +5,9 @@
 import SwiftUI
 import SwiftVB
 
-#if os(iOS)
-import Drops
-#endif
+//#if os(iOS)
+//import Drops
+//#endif
  
 @available(iOS 14, watchOS 7.0, macOS 11.0, *)
 public struct SwiftNEW: View {
@@ -59,7 +59,7 @@ public struct SwiftNEW: View {
             else if size == "normal" {
                 Label(label, systemImage: labelImage)
                     .frame(width: 300, height: 50)
-#if os(iOS)
+#if os(iOS) && !os(xrOS)
                     .foregroundColor(labelColor)
                     .background(color)
                     .cornerRadius(15)
@@ -71,6 +71,9 @@ public struct SwiftNEW: View {
                 .sheet(isPresented: $historySheet) {
                     sheetHistory
                 }
+            #if os(xrOS)
+                .padding()
+            #endif
         }
     }
     
@@ -182,7 +185,10 @@ public struct SwiftNEW: View {
                 Text("Show History")
                 Image(systemName: "arrow.up.bin")
             }.font(.body)
-        }.foregroundColor(color)
+        }
+#if !os(xrOS)
+        .foregroundColor(color)
+#endif
     }
     public var closeCurrentButton: some View {
         Button(action: { show = false }) {
@@ -197,11 +203,11 @@ public struct SwiftNEW: View {
                 }
             }.font(.body)
             .frame(width: 300, height: 50)
-            #if os(iOS)
+#if os(iOS) && !os(xrOS)
             .foregroundColor(.white)
             .background(color)
             .cornerRadius(15)
-            #endif
+#endif
         }
     }
     
@@ -331,13 +337,13 @@ public struct SwiftNEW: View {
     
     #if os(iOS)
     public func drop() {
-        let drop = Drop(title: "Tap", subtitle: "To See What's New.", icon: UIImage(systemName: labelImage),
-                        action: .init {
-                            Drops.hideCurrent()
-                            show = true
-                        },
-                        position: .top, duration: 3.0, accessibility: "Alert: Tap to see what's new." )
-        Drops.show(drop)
+//        let drop = Drop(title: "Tap", subtitle: "To See What's New.", icon: UIImage(systemName: labelImage),
+//                        action: .init {
+//                            Drops.hideCurrent()
+//                            show = true
+//                        },
+//                        position: .top, duration: 3.0, accessibility: "Alert: Tap to see what's new." )
+//        Drops.show(drop)
     }
     #endif
 }

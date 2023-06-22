@@ -1,15 +1,6 @@
 {
   "pins" : [
     {
-      "identity" : "drops",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/1998code/Drops.git",
-      "state" : {
-        "revision" : "96e34eb051a5f3b14836d723adad292d0f34699f",
-        "version" : "2.1.0"
-      }
-    },
-    {
       "identity" : "swiftvbkit",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/1998code/SwiftVBKit.git",

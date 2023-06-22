@@ -1,5 +1,29 @@
 [
     {
+        "version": "4.1",
+        "subVersion": "4.1.0",
+        "new": [
+            {
+                "icon": "eye",
+                "title": "支持 Vision Pro",
+                "subtitle": "和 visionOS",
+                "body": "Drops Framework 由於衝突而被臨時禁用。"
+            },
+            {
+                "icon": "macpro.gen3.server",
+                "title": "無服務器",
+                "subtitle": "設計",
+                "body": "免費開源! ❤️‍🔥"
+            },
+            {
+                "icon": "arrow.triangle.pull",
+                "title": "貢獻",
+                "subtitle": "一起",
+                "body": "提出請求，變得更好! 🎉"
+            }
+        ]
+    },
+    {
         "version": "4.0",
         "subVersion": "4.0.0",
         "new": [
