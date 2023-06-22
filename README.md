@@ -22,6 +22,9 @@ Provide an easy way for Apple Developers to Show "What's New" to the end users.
 - Support Remote Drop Notification (3.5.0 or above)
 - Support App Icon (3.9.6 or above)
 - Support Version Number in x.y.z and/or x.y (4.0.0 or above)
+- Support visionOS & Vision Pro (4.1.0 or above)
+  
+![CleanShot 2023-06-22 at 14 24 07@2x](https://github.com/1998code/SwiftNEWKit/assets/54872601/12a8ab01-76e5-42a1-96b4-848ef5e5f36b)
 
 ## Version
 ![GitHub release (latest by date)](https://img.shields.io/github/v/release/1998code/SwiftNEWKit?color=g&label=STABLE&style=for-the-badge)
