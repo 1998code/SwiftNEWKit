@@ -5,9 +5,9 @@
 import SwiftUI
 import SwiftVB
 
-//#if os(iOS)
-//import Drops
-//#endif
+#if os(iOS)
+import Drops
+#endif
  
 @available(iOS 14, watchOS 7.0, macOS 11.0, *)
 public struct SwiftNEW: View {
@@ -66,6 +66,7 @@ public struct SwiftNEW: View {
 #endif
             }
         }
+        .opacity(size == "invisible" ? 0 : 100)
         .sheet(isPresented: $show) {
             sheetCurrent
                 .sheet(isPresented: $historySheet) {
@@ -83,6 +84,7 @@ public struct SwiftNEW: View {
             Spacer()
             
             headings
+                .padding(.bottom)
             
             Spacer()
             
@@ -117,7 +119,7 @@ public struct SwiftNEW: View {
                         }
                     }
                 }.frame(width: 300)
-                    .frame(maxHeight: 450)
+                .frame(maxHeight: 450)
             }
             
             Spacer()
@@ -171,7 +173,7 @@ public struct SwiftNEW: View {
             }
         }
     }
-#elseif os(macOS)
+#elseif os(macOS) || os(xrOS)
     public var headings: some View {
         VStack {
             Text("What's New in").bold().font(.largeTitle)
@@ -182,9 +184,20 @@ public struct SwiftNEW: View {
     public var showHistoryButton: some View {
         Button(action: { historySheet = true }) {
             HStack {
+                if align == .trailing {
+                    Spacer()
+                }
                 Text("Show History")
                 Image(systemName: "arrow.up.bin")
+                if align == .leading {
+                    Spacer()
+                }
             }.font(.body)
+            #if os(iOS)
+            .frame(width: 300, height: 50)
+            #elseif os(macOS)
+            .frame(width: 200, height: 25)
+            #endif
         }
 #if !os(xrOS)
         .foregroundColor(color)
@@ -202,7 +215,11 @@ public struct SwiftNEW: View {
                     Spacer()
                 }
             }.font(.body)
+            #if os(iOS)
             .frame(width: 300, height: 50)
+            #elseif os(macOS)
+            .frame(width: 200, height: 25)
+            #endif
 #if os(iOS) && !os(xrOS)
             .foregroundColor(.white)
             .background(color)
@@ -272,7 +289,11 @@ public struct SwiftNEW: View {
                     Spacer()
                 }
             }.font(.body)
+            #if os(iOS)
             .frame(width: 300, height: 50)
+            #elseif os(macOS)
+            .frame(width: 300, height: 25)
+            #endif
             #if os(iOS)
             .foregroundColor(.white)
             .background(color)
@@ -337,13 +358,13 @@ public struct SwiftNEW: View {
     
     #if os(iOS)
     public func drop() {
-//        let drop = Drop(title: "Tap", subtitle: "To See What's New.", icon: UIImage(systemName: labelImage),
-//                        action: .init {
-//                            Drops.hideCurrent()
-//                            show = true
-//                        },
-//                        position: .top, duration: 3.0, accessibility: "Alert: Tap to see what's new." )
-//        Drops.show(drop)
+        let drop = Drop(title: "Tap", subtitle: "To See What's New.", icon: UIImage(systemName: labelImage),
+                        action: .init {
+                            Drops.hideCurrent()
+                            show = true
+                        },
+                        position: .top, duration: 3.0, accessibility: "Alert: Tap to see what's new." )
+        Drops.show(drop)
     }
     #endif
 }

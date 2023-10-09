@@ -17,7 +17,7 @@ struct ContentView: View {
     @State var align: HorizontalAlignment = .center
     @State var color: Color = .accentColor
     @State var size: String = "normal"
-    #if os(iOS)
+    #if os(iOS) || os(xrOS)
     @State var labelColor: Color = Color(UIColor.systemBackground)
     #elseif os(macOS)
     @State var labelColor: Color = Color(NSColor.windowBackgroundColor)
@@ -56,44 +56,52 @@ struct ContentView: View {
     }
     
     var body: some View {
+        #if os(iOS)
         NavigationView {
-            // MARK: Choose either one size (Normal, Mini or Invisible)
-            TabView(selection: $preview) {
-                normal
-                    .tabItem {
-                        Label("Normal", systemImage: "textformat.size.larger")
-                    }
-                    .tag("Normal")
-                mini
-                    .tabItem {
-                        Label("Mini", systemImage: "textformat.size.smaller")
-                    }
-                    .tag("Mini")
-                invisible
-                    .tabItem {
-                        Label("Invisible", systemImage: "questionmark.square.dashed")
-                    }
-                    .tag("Invisible")
-                remote
-                    .tabItem {
-                        Label("Remote", systemImage: "cloud")
-                    }
-                    .tag("Remote")
-                drop
-                    .tabItem {
-                        Label("Remote", systemImage: "capsule")
-                    }
-                    .tag("Drop")
-            }
-            .toolbar {
-                if preview == "Mini" {
-                    SwiftNEW(show: $showNew, align: $align, color: $color, size: .constant("mini"), labelColor: $labelColor, label: $label, labelImage: $labelImage, history: $history, data: $data, showDrop: $showDrop)
+            tab
+        }
+        .navigationViewStyle(.stack)
+        #elseif os(macOS) || os(xrOS)
+        tab.padding()
+        #endif
+    }
+    
+    var tab: some View {
+        // MARK: Choose either one size (Normal, Mini or Invisible)
+        TabView(selection: $preview) {
+            normal
+                .tabItem {
+                    Label("Normal", systemImage: "textformat.size.larger")
                 }
+                .tag("Normal")
+            mini
+                .tabItem {
+                    Label("Mini", systemImage: "textformat.size.smaller")
+                }
+                .tag("Mini")
+            invisible
+                .tabItem {
+                    Label("Invisible", systemImage: "questionmark.square.dashed")
+                }
+                .tag("Invisible")
+            remote
+                .tabItem {
+                    Label("Remote", systemImage: "cloud")
+                }
+                .tag("Remote")
+            #if os(iOS)
+            drop
+                .tabItem {
+                    Label("Remote", systemImage: "capsule")
+                }
+                .tag("Drop")
+            #endif
+        }
+        .toolbar {
+            if preview == "Mini" {
+                SwiftNEW(show: $showNew, align: $align, color: $color, size: .constant("mini"), labelColor: $labelColor, label: $label, labelImage: $labelImage, history: $history, data: $data, showDrop: $showDrop)
             }
         }
-        #if os(iOS)
-        .navigationViewStyle(.stack)
-        #endif
     }
 }
 
