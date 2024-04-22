@@ -9,7 +9,7 @@ import SwiftVB
 import Drops
 #endif
  
-@available(iOS 14, watchOS 7.0, macOS 11.0, *)
+@available(iOS 15, watchOS 8.0, macOS 12.0, *)
 public struct SwiftNEW: View {
     @AppStorage("version") var version = 1.0
     @AppStorage("build") var build: Double = 1
@@ -90,7 +90,8 @@ public struct SwiftNEW: View {
             
             if loading {
                 VStack {
-                    Text("Loading...").padding(.bottom)
+                    Text(String(localized: "Loading...", bundle: .module))
+                        .padding(.bottom)
                     ProgressView()
                 }
             }
@@ -165,8 +166,10 @@ public struct SwiftNEW: View {
                 if align == .center {
                     appIcon
                 }
-                Text("What's New in").bold().font(.largeTitle)
-                Text("Version \(Bundle.versionBuild)").bold().font(.title).foregroundColor(.secondary)
+                Text(String(localized: "What's New in", bundle: .module))
+                    .bold().font(.largeTitle)
+                Text("\(String(localized: "Version", bundle: .module)) \(Bundle.versionBuild)")
+                    .bold().font(.title).foregroundColor(.secondary)
             }
             if align == .trailing {
                 appIcon
@@ -176,8 +179,10 @@ public struct SwiftNEW: View {
 #elseif os(macOS) || os(xrOS)
     public var headings: some View {
         VStack {
-            Text("What's New in").bold().font(.largeTitle)
-            Text("Version \(Bundle.versionBuild)").bold().font(.title).foregroundColor(.secondary)
+            Text(String(localized: "What's New in", bundle: .module))
+                .bold().font(.largeTitle)
+            Text("\(String(localized: "Version", bundle: .module)) \(Bundle.versionBuild)")
+                .bold().font(.title).foregroundColor(.secondary)
         }
     }
 #endif
@@ -187,7 +192,7 @@ public struct SwiftNEW: View {
                 if align == .trailing {
                     Spacer()
                 }
-                Text("Show History")
+                Text(String(localized: "Show History", bundle: .module))
                 Image(systemName: "arrow.up.bin")
                 if align == .leading {
                     Spacer()
@@ -209,7 +214,8 @@ public struct SwiftNEW: View {
                 if align == .trailing {
                     Spacer()
                 }
-                Text("Continue").bold()
+                Text(String(localized: "Continue", bundle: .module))
+                    .bold()
                 Image(systemName: "arrow.right.circle.fill")
                 if align == .leading {
                     Spacer()
@@ -233,7 +239,8 @@ public struct SwiftNEW: View {
         VStack(alignment: align) {
             Spacer()
             
-            Text("History").bold().font(.largeTitle)
+            Text(String(localized: "History", bundle: .module))
+                .bold().font(.largeTitle)
             
             Spacer()
             
@@ -283,7 +290,8 @@ public struct SwiftNEW: View {
                 if align == .trailing {
                     Spacer()
                 }
-                Text("Return").bold()
+                Text(String(localized: "Return", bundle: .module))
+                    .bold()
                 Image(systemName: "arrow.down.circle.fill")
                 if align == .leading {
                     Spacer()
