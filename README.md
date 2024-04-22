@@ -1,5 +1,5 @@
 # SwiftNEWKit
-[![Swift](https://github.com/1998code/SwiftNEWKit/actions/workflows/swift.yml/badge.svg?branch=main)](https://github.com/1998code/SwiftNEWKit/actions/workflows/swift.yml)
+<!--[![Swift](https://github.com/1998code/SwiftNEWKit/actions/workflows/swift.yml/badge.svg?branch=main)](https://github.com/1998code/SwiftNEWKit/actions/workflows/swift.yml)-->
 ### Accelerated by Apple SwiftUI
 
 ![CleanShot 2022-06-11 at 22 54 15@2x](https://user-images.githubusercontent.com/54872601/173192927-ca2a8bef-2114-44f8-8d4d-47baadb8b4a8.png)
