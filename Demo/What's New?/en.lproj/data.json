@@ -1,5 +1,59 @@
 [
     {
+        "version": "5.1",
+        "subVersion": "5.1.0",
+        "new": [
+            {
+                "icon": "character.book.closed",
+                "title": "Update",
+                "subtitle": "Demo",
+                "body": "For 5.0 version."
+            },
+            {
+                "icon": "macpro.gen3.server",
+                "title": "Serverless",
+                "subtitle": "Design",
+                "body": "Free and open source! ❤️‍🔥"
+            },
+            {
+                "icon": "arrow.triangle.pull",
+                "title": "Contribute",
+                "subtitle": "Together",
+                "body": "Pull requests and make it better for everyone! 🎉"
+            }
+        ]
+    },
+    {
+        "version": "5.0",
+        "subVersion": "5.0.0",
+        "new": [
+            {
+                "icon": "character.book.closed",
+                "title": "Support",
+                "subtitle": "Localization",
+                "body": "Powered by Apple String Catalog."
+            },
+            {
+                "icon": "pip.remove",
+                "title": "Drop",
+                "subtitle": "Support",
+                "body": "For iOS14, watchOS7, and macOS11."
+            },
+            {
+                "icon": "macpro.gen3.server",
+                "title": "Serverless",
+                "subtitle": "Design",
+                "body": "Free and open source! ❤️‍🔥"
+            },
+            {
+                "icon": "arrow.triangle.pull",
+                "title": "Contribute",
+                "subtitle": "Together",
+                "body": "Pull requests and make it better for everyone! 🎉"
+            }
+        ]
+    },
+    {
         "version": "4.2",
         "subVersion": "4.2.0",
         "new": [

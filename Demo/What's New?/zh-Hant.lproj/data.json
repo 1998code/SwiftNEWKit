@@ -1,5 +1,59 @@
 [
     {
+        "version": "5.1",
+        "subVersion": "5.1.0",
+        "new": [
+            {
+                "icon": "character.book.closed",
+                "title": "更新",
+                "subtitle": "示範內容",
+                "body": "針對 5.0 版本。"
+            },
+            {
+                "icon": "macpro.gen3.server",
+                "title": "無服務器",
+                "subtitle": "設計",
+                "body": "免費開源! ❤️‍🔥"
+            },
+            {
+                "icon": "arrow.triangle.pull",
+                "title": "貢獻",
+                "subtitle": "一起",
+                "body": "提出請求，變得更好! 🎉"
+            }
+        ]
+    },
+    {
+        "version": "5.0",
+        "subVersion": "5.0.0",
+        "new": [
+            {
+                "icon": "character.book.closed",
+                "title": "支援",
+                "subtitle": "翻譯",
+                "body": "由 Apple String Catalog 技術提供。"
+            },
+            {
+                "icon": "pip.remove",
+                "title": "終結",
+                "subtitle": "支援",
+                "body": "iOS14, watchOS7, and macOS11。"
+            },
+            {
+                "icon": "macpro.gen3.server",
+                "title": "無服務器",
+                "subtitle": "設計",
+                "body": "免費開源! ❤️‍🔥"
+            },
+            {
+                "icon": "arrow.triangle.pull",
+                "title": "貢獻",
+                "subtitle": "一起",
+                "body": "提出請求，變得更好! 🎉"
+            }
+        ]
+    },
+    {
         "version": "4.2",
         "subVersion": "4.2.0",
         "new": [
