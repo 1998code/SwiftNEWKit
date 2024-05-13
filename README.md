@@ -23,8 +23,18 @@ Provide an easy way for Apple Developers to Show "What's New" to the end users.
 - Support App Icon (3.9.6 or above)
 - Support Version Number in x.y.z and/or x.y (4.0.0 or above)
 - Support visionOS & Vision Pro (4.1.0 or above)
-  
-![CleanShot 2023-06-22 at 14 24 07@2x](https://github.com/1998code/SwiftNEWKit/assets/54872601/12a8ab01-76e5-42a1-96b4-848ef5e5f36b)
+
+## Preview
+![IMG_3472](https://user-images.githubusercontent.com/54872601/173187065-14d78119-47e7-4dcb-a3e6-c7fee4f0c67f.PNG) | ![IMG_3471](https://user-images.githubusercontent.com/54872601/173187067-fe3b5cac-54b5-4482-b73f-42e6c500546f.PNG)
+------------- | ------------
+Light Native | Dark Native
+![Simulator Screen Shot - iPhone 13 Pro Max](https://user-images.githubusercontent.com/54872601/178129999-ad63b0ce-d65e-4d86-9882-37a5090e92bc.png) | ![CleanShot 2022-12-11 at 12 46 30@2x](https://user-images.githubusercontent.com/54872601/206886933-bc4d0d33-e0fc-4013-9456-f19679b10f5b.png) ![CleanShot 2022-12-11 at 12 49 12@2x](https://user-images.githubusercontent.com/54872601/206887046-8ec82853-4e32-4a07-8b64-4cc984e7ec90.png)
+History View (2.0.0) | App Icon (3.9.6)
+![CleanShot 2023-06-22 at 14 24 07@2x](https://github.com/1998code/SwiftNEWKit/assets/54872601/12a8ab01-76e5-42a1-96b4-848ef5e5f36b) |
+VisionOS |
+
+## Sample
+Path: `./Demo` (Xcode Project with SwiftUI)
 
 ## Version
 ![GitHub release (latest by date)](https://img.shields.io/github/v/release/1998code/SwiftNEWKit?color=g&label=STABLE&style=for-the-badge)
@@ -199,18 +209,6 @@ i18n Sample Available in v```3.9.7```
 ## Developer Note
 - Please report bugs in Issues section.
 - If you want to discuss future roadmap or contribution, please find on Discussions.
-
-## Preview
-![IMG_3472](https://user-images.githubusercontent.com/54872601/173187065-14d78119-47e7-4dcb-a3e6-c7fee4f0c67f.PNG) | ![IMG_3471](https://user-images.githubusercontent.com/54872601/173187067-fe3b5cac-54b5-4482-b73f-42e6c500546f.PNG)
-------------- | ------------
-Light Native | Dark Native
-
-![Simulator Screen Shot - iPhone 13 Pro Max](https://user-images.githubusercontent.com/54872601/178129999-ad63b0ce-d65e-4d86-9882-37a5090e92bc.png) | ![CleanShot 2022-12-11 at 12 46 30@2x](https://user-images.githubusercontent.com/54872601/206886933-bc4d0d33-e0fc-4013-9456-f19679b10f5b.png) ![CleanShot 2022-12-11 at 12 49 12@2x](https://user-images.githubusercontent.com/54872601/206887046-8ec82853-4e32-4a07-8b64-4cc984e7ec90.png)
------------------------ | --------------
-History View (2.0.0) | App Icon (3.9.6)
-
-## Demo
-Path: `./Demo` (Xcode Project in SwiftUI)
 
 ## FAQ
 Q1. Why did the sheet not popup/show loading/show blank?<br />
