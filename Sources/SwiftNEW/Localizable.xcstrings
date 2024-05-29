@@ -39,6 +39,12 @@
             "state" : "translated",
             "value" : "Continua"
           }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Weiter"
+          }
         }
       }
     },
@@ -79,6 +85,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Cronologia"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Historie"
           }
         }
       }
@@ -121,6 +133,12 @@
             "state" : "translated",
             "value" : "Caricamento..."
           }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Laden..."
+          }
         }
       }
     },
@@ -161,6 +179,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "In Dietro"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zurück"
           }
         }
       }
@@ -203,6 +227,12 @@
             "state" : "translated",
             "value" : "Mostra Cronologia"
           }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Historie anzeigen"
+          }
         }
       }
     },
@@ -244,6 +274,12 @@
             "state" : "translated",
             "value" : "La Versione"
           }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Version"
+          }
         }
       }
     },
@@ -284,6 +320,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Le novità"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Was gibt's Neues"
           }
         }
       }
