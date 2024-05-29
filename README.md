@@ -88,7 +88,7 @@ var         | Suggested                       | Options                       | 
 showNew     | false                           | false, true                   | Bool
 align       | .center                         | .leading, .center, .trailing  | HorizontalAlignment
 color       | .accentColor                    | All Colors Supported          | Color
-size        | "normal"                        | "invisible", "mini", "normal" | String
+size        | "simple"                        | "invisible", "mini", "simple" | String
 labelColor  | Color(UIColor.systemBackground) or Color(NSColor.windowBackgroundColor) | All Colors Supported          | Color
 label       | "Show Release Note"             | All Strings                   | String
 labelImage  | "arrow.up.circle.fill"          | All SF Symbols                | String

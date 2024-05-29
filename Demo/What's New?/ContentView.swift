@@ -10,49 +10,50 @@ import SwiftNEW
 
 struct ContentView: View {
     
-    @State var preview: String = "Normal"
+    @State var preview: String = "Simple"
     
     // MARK: All States
     @State var showNew: Bool = false
-    @State var align: HorizontalAlignment = .center
-    @State var color: Color = .accentColor
-    @State var size: String = "normal"
-    #if os(iOS) || os(xrOS)
-    @State var labelColor: Color = Color(UIColor.systemBackground)
-    #elseif os(macOS)
-    @State var labelColor: Color = Color(NSColor.windowBackgroundColor)
-    #endif
-    @State var label: String = "Show Release Note"
-    @State var labelImage: String = "arrow.up.circle.fill"
-    @State var history: Bool = true
-    @State var data: String = "data"
-    @State var showDrop: Bool = false
+//    Optional
+//    @State var align: HorizontalAlignment = .center
+//    @State var color: Color = .accentColor
+//    @State var size: String = "simple"
+//    #if os(iOS) || os(visionOS)
+//    @State var labelColor: Color = Color(UIColor.systemBackground)
+//    #elseif os(macOS)
+//    @State var labelColor: Color = Color(NSColor.windowBackgroundColor)
+//    #endif
+//    @State var label: String = "Show Release Note"
+//    @State var labelImage: String = "arrow.up.circle.fill"
+//    @State var history: Bool = true
+//    @State var data: String = "data"
+//    @State var showDrop: Bool = false
     
-    var normal: some View {
-        SwiftNEW(show: $showNew, align: $align, color: $color, size: $size, labelColor: $labelColor, label: $label, labelImage: $labelImage, history: $history, data: $data, showDrop: $showDrop)
+    var simple: some View {
+        SwiftNEW(show: $showNew)
     }
     
     var mini: some View {
         // MARK: Mini (Toolbar / List only)
         List {
             Section(header: Text("Compatible with Toolbar / List")) {
-                SwiftNEW(show: $showNew, align: $align, color: $color, size: .constant("mini"), labelColor: $labelColor, label: $label, labelImage: $labelImage, history: $history, data: $data, showDrop: $showDrop)
+                SwiftNEW(show: $showNew, size: .constant("mini"))
             }
         }
     }
     
     var invisible: some View {
-        SwiftNEW(show: $showNew, align: $align, color: $color, size: .constant("invisible"), labelColor: $labelColor, label: $label, labelImage: $labelImage, history: $history, data: $data, showDrop: $showDrop)
+        SwiftNEW(show: $showNew, size: .constant("invisible"))
     }
     
     var remote: some View {
         // MARK: Remote (>3.0.0) - Firebase Real Time Database Demo (Compatible with json format)
-        SwiftNEW(show: $showNew, align: $align, color: $color, size: $size, labelColor: $labelColor, label: $label, labelImage: .constant("icloud"), history: $history, data: .constant("https://testground-a937f-default-rtdb.firebaseio.com/.json?print=pretty"), showDrop: $showDrop)
+        SwiftNEW(show: $showNew, labelImage: .constant("icloud"), data: .constant("https://testground-a937f-default-rtdb.firebaseio.com/.json?print=pretty"))
     }
     
     var drop: some View {
         // MARK: Drop (>3.4.0) - Recommended trigger with Remote Notification
-        SwiftNEW(show: $showNew, align: $align, color: $color, size: $size, labelColor: $labelColor, label: .constant("Notification"), labelImage: .constant("bell.badge"), history: $history, data: .constant("https://testground-a937f-default-rtdb.firebaseio.com/.json?print=pretty"), showDrop: .constant(true))
+        SwiftNEW(show: $showNew, label: .constant("Notification"), labelImage: .constant("bell.badge"), data: .constant("https://testground-a937f-default-rtdb.firebaseio.com/.json?print=pretty"), showDrop: .constant(true))
     }
     
     var body: some View {
@@ -61,19 +62,19 @@ struct ContentView: View {
             tab
         }
         .navigationViewStyle(.stack)
-        #elseif os(macOS) || os(xrOS)
+        #elseif os(macOS) || os(visionOS)
         tab.padding()
         #endif
     }
     
     var tab: some View {
-        // MARK: Choose either one size (Normal, Mini or Invisible)
+        // MARK: Choose either one size (Simple, Mini or Invisible)
         TabView(selection: $preview) {
-            normal
+            simple
                 .tabItem {
-                    Label("Normal", systemImage: "textformat.size.larger")
+                    Label("Simple", systemImage: "textformat.size.larger")
                 }
-                .tag("Normal")
+                .tag("Simple")
             mini
                 .tabItem {
                     Label("Mini", systemImage: "textformat.size.smaller")
@@ -99,7 +100,7 @@ struct ContentView: View {
         }
         .toolbar {
             if preview == "Mini" {
-                SwiftNEW(show: $showNew, align: $align, color: $color, size: .constant("mini"), labelColor: $labelColor, label: $label, labelImage: $labelImage, history: $history, data: $data, showDrop: $showDrop)
+                SwiftNEW(show: $showNew, size: .constant("mini"))
             }
         }
     }

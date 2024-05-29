@@ -4,6 +4,30 @@
         "subVersion": "5.1.0",
         "new": [
             {
+                "icon": "hammer",
+                "title": "預設",
+                "subtitle": "選項",
+                "body": "減少重複程式碼"
+            },
+            {
+                "icon": "macpro.gen3.server",
+                "title": "無服務器",
+                "subtitle": "設計",
+                "body": "免費開源! ❤️‍🔥"
+            },
+            {
+                "icon": "arrow.triangle.pull",
+                "title": "貢獻",
+                "subtitle": "一起",
+                "body": "提出請求，變得更好! 🎉"
+            }
+        ]
+    },
+    {
+        "version": "5.1",
+        "subVersion": "5.1.0",
+        "new": [
+            {
                 "icon": "character.book.closed",
                 "title": "更新",
                 "subtitle": "示範內容",

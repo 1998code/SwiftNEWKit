@@ -29,19 +29,57 @@ public struct SwiftNEW: View {
     @Binding var data: String
     @Binding var showDrop: Bool
     
-    public init( show: Binding<Bool>, align: Binding<HorizontalAlignment>, color: Binding<Color>, size: Binding<String>, labelColor: Binding<Color>, label: Binding<String>, labelImage: Binding<String>, history: Binding<Bool>, data: Binding<String>, showDrop: Binding<Bool>) {
+    #if os(iOS) || os(visionOS)
+    public init(
+        show: Binding<Bool>,
+        align: Binding<HorizontalAlignment>? = .constant(.center),
+        color: Binding<Color>? = .constant(Color.accentColor),
+        size: Binding<String>? = .constant("simple"),
+        labelColor: Binding<Color>? = .constant(Color(UIColor.systemBackground)),
+        label: Binding<String>? = .constant("Show Release Note"),
+        labelImage: Binding<String>? = .constant("arrow.up.circle.fill"),
+        history: Binding<Bool>? = .constant(true),
+        data: Binding<String>? = .constant("data"),
+        showDrop: Binding<Bool>? = .constant(false)
+    ) {
         _show = show
-        _align = align
-        _color = color
-        _size = size
-        _labelColor = labelColor
-        _label = label
-        _labelImage = labelImage
-        _history = history
-        _data = data
-        _showDrop = showDrop
+        _align = align ?? .constant(.center)
+        _color = color ?? .constant(Color.accentColor)
+        _size = size ?? .constant("simple")
+        _labelColor = labelColor ?? .constant(Color(UIColor.systemBackground))
+        _label = label ?? .constant("Show Release Note")
+        _labelImage = labelImage ?? .constant("arrow.up.circle.fill")
+        _history = history ?? .constant(true)
+        _data = data ?? .constant("data")
+        _showDrop = showDrop ?? .constant(false)
         compareVersion()
     }
+    #elseif os(macOS)
+    public init(
+        show: Binding<Bool>,
+        align: Binding<HorizontalAlignment>? = .constant(.center),
+        color: Binding<Color>? = .constant(Color.accentColor),
+        size: Binding<String>? = .constant("simple"),
+        labelColor: Binding<Color>? = .constant(Color(NSColor.windowBackgroundColor)),
+        label: Binding<String>? = .constant("Show Release Note"),
+        labelImage: Binding<String>? = .constant("arrow.up.circle.fill"),
+        history: Binding<Bool>? = .constant(true),
+        data: Binding<String>? = .constant("data"),
+        showDrop: Binding<Bool>? = .constant(false)
+    ) {
+        _show = show
+        _align = align ?? .constant(.center)
+        _color = color ?? .constant(Color.accentColor)
+        _size = size ?? .constant("simple")
+        _labelColor = labelColor ?? .constant(Color(NSColor.windowBackgroundColor))
+        _label = label ?? .constant("Show Release Note")
+        _labelImage = labelImage ?? .constant("arrow.up.circle.fill")
+        _history = history ?? .constant(true)
+        _data = data ?? .constant("data")
+        _showDrop = showDrop ?? .constant(false)
+        compareVersion()
+    }
+    #endif
     
     public var body: some View {
         Button(action: {
@@ -56,7 +94,7 @@ public struct SwiftNEW: View {
             if size == "mini" {
                 Label(label, systemImage: labelImage)
             }
-            else if size == "normal" {
+            else if size == "normal" || size == "simple" {
                 Label(label, systemImage: labelImage)
                     .frame(width: 300, height: 50)
 #if os(iOS) && !os(xrOS)

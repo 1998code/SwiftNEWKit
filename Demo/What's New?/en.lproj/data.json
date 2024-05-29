@@ -1,5 +1,29 @@
 [
     {
+        "version": "5.2",
+        "subVersion": "5.2.0",
+        "new": [
+            {
+                "icon": "hammer",
+                "title": "Default",
+                "subtitle": "Option",
+                "body": "New optional binding for less code."
+            },
+            {
+                "icon": "macpro.gen3.server",
+                "title": "Serverless",
+                "subtitle": "Design",
+                "body": "Free and open source! ❤️‍🔥"
+            },
+            {
+                "icon": "arrow.triangle.pull",
+                "title": "Contribute",
+                "subtitle": "Together",
+                "body": "Pull requests and make it better for everyone! 🎉"
+            }
+        ]
+    },
+    {
         "version": "5.1",
         "subVersion": "5.1.0",
         "new": [
