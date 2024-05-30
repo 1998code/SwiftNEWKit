@@ -1,36 +1,24 @@
 // swift-tools-version: 5.9
-// The swift-tools-version declares the minimum version of Swift required to build this package.
-//
-//  Created by Ming on 11/6/2022.
-//
-
+// This is a Skip (https://skip.tools) package,
+// containing a Swift Package Manager project
+// that will use the Skip build plugin to transpile the
+// Swift Package, Sources, and Tests into an
+// Android Gradle Project with Kotlin sources and JUnit tests.
 import PackageDescription
 
 let package = Package(
-    name: "SwiftNEW",
+    name: "universal",
     defaultLocalization: "en",
-    platforms: [
-        .iOS(.v15),
-        .watchOS(.v8),
-        .macOS(.v12),
-        .custom("xros", versionString: "1.0")
-    ],
+    platforms: [.iOS(.v16), .macOS(.v13), .tvOS(.v16), .watchOS(.v9), .macCatalyst(.v16)],
     products: [
-        .library(
-            name: "SwiftNEW",
-            targets: ["SwiftNEW"]),
+        .library(name: "UniversalApp", type: .dynamic, targets: ["Universal"]),
     ],
     dependencies: [
-        .package(name: "SwiftVB", url: "https://github.com/1998code/SwiftVBKit.git", .upToNextMinor(from: "1.4.0")),
-        .package(name: "Drops", url: "https://github.com/omaralbeik/Drops.git", .upToNextMinor(from: "1.7.0"))
+        .package(url: "https://source.skip.tools/skip.git", from: "0.8.45"),
+        .package(url: "https://source.skip.tools/skip-ui.git", from: "0.0.0")
     ],
     targets: [
-        .target(
-            name: "SwiftNEW",
-            dependencies: [
-                "SwiftVB",
-                "Drops"
-            ]
-        )
+        .target(name: "Universal", dependencies: [.product(name: "SkipUI", package: "skip-ui")], resources: [.process("Resources")], plugins: [.plugin(name: "skipstone", package: "skip")]),
+        .testTarget(name: "UniversalTests", dependencies: ["Universal", .product(name: "SkipTest", package: "skip")], resources: [.process("Resources")], plugins: [.plugin(name: "skipstone", package: "skip")]),
     ]
 )

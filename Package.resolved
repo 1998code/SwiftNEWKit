@@ -1,21 +1,57 @@
 {
   "pins" : [
     {
-      "identity" : "drops",
+      "identity" : "skip",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/omaralbeik/Drops.git",
+      "location" : "https://source.skip.tools/skip.git",
       "state" : {
-        "revision" : "a183ee6f79f21c940092a19c2cba756555422371",
-        "version" : "1.7.0"
+        "revision" : "52f2383a64059cbcbcd68985cbd15470e379ec9d",
+        "version" : "0.8.46"
       }
     },
     {
-      "identity" : "swiftvbkit",
+      "identity" : "skip-foundation",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/1998code/SwiftVBKit.git",
+      "location" : "https://source.skip.tools/skip-foundation.git",
       "state" : {
-        "revision" : "efd706f9b2522cb8f08c75a012c3c5478757379c",
-        "version" : "1.4.0"
+        "revision" : "ed345b753237dfa1746e2d7365083fb9143963ee",
+        "version" : "0.6.11"
+      }
+    },
+    {
+      "identity" : "skip-lib",
+      "kind" : "remoteSourceControl",
+      "location" : "https://source.skip.tools/skip-lib.git",
+      "state" : {
+        "revision" : "bd6882dfd2d7bcfe9f1affa3a7961badc769e894",
+        "version" : "0.7.13"
+      }
+    },
+    {
+      "identity" : "skip-model",
+      "kind" : "remoteSourceControl",
+      "location" : "https://source.skip.tools/skip-model.git",
+      "state" : {
+        "revision" : "1cc61fc5affe418d5ea14dbcf12e09ca3b6c54b1",
+        "version" : "0.7.0"
+      }
+    },
+    {
+      "identity" : "skip-ui",
+      "kind" : "remoteSourceControl",
+      "location" : "https://source.skip.tools/skip-ui.git",
+      "state" : {
+        "revision" : "8634f96640ea6721a5fdb9c9a023b804bc016076",
+        "version" : "0.9.5"
+      }
+    },
+    {
+      "identity" : "skip-unit",
+      "kind" : "remoteSourceControl",
+      "location" : "https://source.skip.tools/skip-unit.git",
+      "state" : {
+        "revision" : "a62fa64b3a55ffe2866d6b0c8875b69ba082e132",
+        "version" : "0.7.0"
       }
     }
   ],
