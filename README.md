@@ -1,5 +1,7 @@
 # Universal
 
+<img width="2526" alt="Screenshot 2024-05-30 at 9 41 31 PM" src="https://github.com/1998code/SwiftNEWKit/assets/54872601/b28af53c-f13d-42a2-96cc-c7be55c3a667">
+
 This is a free [Skip](https://skip.tools) dual-platform app project.
 It builds a native app for both iOS and Android.
 
