@@ -1,2 +1,0 @@
--keep class skip.** { *; }
--keep class universal.module.** { *; }
