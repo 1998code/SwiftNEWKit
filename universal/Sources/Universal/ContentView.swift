@@ -63,7 +63,7 @@ public struct ContentView: View {
                 }
                 .tag("Drop")
             #endif
-        }.padding(.bottom)
+        }
     }
 
     public var simple: some View {

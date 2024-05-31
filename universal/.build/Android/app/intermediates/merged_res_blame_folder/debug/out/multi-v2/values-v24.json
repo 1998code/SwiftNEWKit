@@ -1,0 +1,19 @@
+{
+    "logs": [
+        {
+            "outputFile": "universal.module.app-mergeDebugResources-54:/values-v24/values-v24.xml",
+            "map": [
+                {
+                    "source": "/Users/ming/.gradle/caches/transforms-4/ced95d8236109a0c33d3d19594b8dfd6/transformed/appcompat-1.6.1/res/values-v24/values-v24.xml",
+                    "from": {
+                        "startLines": "2,3",
+                        "startColumns": "4,4",
+                        "startOffsets": "55,212",
+                        "endColumns": "156,134",
+                        "endOffsets": "207,342"
+                    }
+                }
+            ]
+        }
+    ]
+}
