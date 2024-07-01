@@ -28,6 +28,7 @@ public struct SwiftNEW: View {
     @Binding var history: Bool
     @Binding var data: String
     @Binding var showDrop: Bool
+    @Binding var mesh: Bool
     
     #if os(iOS) || os(visionOS)
     public init(
@@ -40,7 +41,8 @@ public struct SwiftNEW: View {
         labelImage: Binding<String>? = .constant("arrow.up.circle.fill"),
         history: Binding<Bool>? = .constant(true),
         data: Binding<String>? = .constant("data"),
-        showDrop: Binding<Bool>? = .constant(false)
+        showDrop: Binding<Bool>? = .constant(false),
+        mesh: Binding<Bool>? = .constant(false)
     ) {
         _show = show
         _align = align ?? .constant(.center)
@@ -52,6 +54,7 @@ public struct SwiftNEW: View {
         _history = history ?? .constant(true)
         _data = data ?? .constant("data")
         _showDrop = showDrop ?? .constant(false)
+        _mesh = mesh ?? .constant(false)
         compareVersion()
     }
     #elseif os(macOS)
@@ -65,7 +68,8 @@ public struct SwiftNEW: View {
         labelImage: Binding<String>? = .constant("arrow.up.circle.fill"),
         history: Binding<Bool>? = .constant(true),
         data: Binding<String>? = .constant("data"),
-        showDrop: Binding<Bool>? = .constant(false)
+        showDrop: Binding<Bool>? = .constant(false),
+        mesh: Binding<Bool>? = .constant(false)
     ) {
         _show = show
         _align = align ?? .constant(.center)
@@ -77,6 +81,7 @@ public struct SwiftNEW: View {
         _history = history ?? .constant(true)
         _data = data ?? .constant("data")
         _showDrop = showDrop ?? .constant(false)
+        _mesh = mesh ?? .constant(false)
         compareVersion()
     }
     #endif
@@ -106,13 +111,36 @@ public struct SwiftNEW: View {
         }
         .opacity(size == "invisible" ? 0 : 100)
         .sheet(isPresented: $show) {
-            sheetCurrent
-                .sheet(isPresented: $historySheet) {
-                    sheetHistory
+            ZStack {
+                if mesh {
+                    if #available(iOS 18.0, macOS 15.0, *) {
+                        MeshGradient(width: 3, height: 3, points: [
+                            .init(0, 0), .init(0.5, 0), .init(1, 0),
+                            .init(0, 0.5), .init(0.5, 0.5), .init(1, 0.5),
+                            .init(0, 1), .init(0.5, 1), .init(1, 1)
+                        ], colors: [
+                            Color(.clear), Color(.clear), Color(.clear),
+                            .accentColor.opacity(0.1), .accentColor.opacity(0.1), .accentColor.opacity(0.2),
+                            .accentColor.opacity(0.5), .accentColor.opacity(0.6), .accentColor.opacity(0.7)
+                        ])
+                        .ignoresSafeArea(.all)
+                        .overlay(
+                            NoiseView(size: 100000)
+                        )
+                    } else {
+                        // Fallback on earlier versions
+                        LinearGradient(colors: [Color.accentColor.opacity(0.5), Color(.clear)], startPoint: .topLeading, endPoint: .bottomTrailing)
+                            .ignoresSafeArea(.all)
+                    }
                 }
-            #if os(xrOS)
-                .padding()
-            #endif
+                sheetCurrent
+                    .sheet(isPresented: $historySheet) {
+                        sheetHistory
+                    }
+#if os(xrOS)
+                    .padding()
+#endif
+            }
         }
     }
     
@@ -199,6 +227,8 @@ public struct SwiftNEW: View {
         HStack {
             if align == .leading {
                 appIcon
+                    .padding(.leading, -8)
+                    .padding(.trailing, 8)
             }
             VStack(alignment: align) {
                 if align == .center {
@@ -413,6 +443,25 @@ public struct SwiftNEW: View {
         Drops.show(drop)
     }
     #endif
+}
+
+struct NoiseView: View {
+    let size: Int
+
+    var body: some View {
+        Canvas { context, size in
+            for _ in 0..<self.size {
+                let x = Double.random(in: 0..<Double(size.width))
+                let y = Double.random(in: 0..<Double(size.height))
+#if os(iOS)
+                context.fill(Ellipse().path(in: CGRect(x: x, y: y, width: 1, height: 1)), with: .color(Color(.systemBackground).opacity(0.1)))
+#elseif os(macOS)
+                context.fill(Ellipse().path(in: CGRect(x: x, y: y, width: 1, height: 1)), with: .color(Color(NSColor.windowBackgroundColor).opacity(0.1)))
+#endif
+            }
+        }
+        .opacity(0.5)
+    }
 }
 
 // MARK: - Model

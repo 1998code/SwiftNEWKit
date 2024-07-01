@@ -1,14 +1,8 @@
 [
     {
-        "version": "5.2",
-        "subVersion": "5.2.0",
+        "version": "5.3",
+        "subVersion": "5.3.0",
         "new": [
-            {
-                "icon": "hammer",
-                "title": "Default",
-                "subtitle": "Option",
-                "body": "New optional binding for less code."
-            },
             {
                 "icon": "macpro.gen3.server",
                 "title": "Serverless",
@@ -24,6 +18,18 @@
         ]
     },
     {
+        "version": "5.2",
+        "subVersion": "5.2.0",
+        "new": [
+            {
+                "icon": "hammer",
+                "title": "Default",
+                "subtitle": "Option",
+                "body": "New optional binding for less code."
+            }
+        ]
+    },
+    {
         "version": "5.1",
         "subVersion": "5.1.0",
         "new": [
@@ -32,18 +38,6 @@
                 "title": "Update",
                 "subtitle": "Demo",
                 "body": "For 5.0 version."
-            },
-            {
-                "icon": "macpro.gen3.server",
-                "title": "Serverless",
-                "subtitle": "Design",
-                "body": "Free and open source! ❤️‍🔥"
-            },
-            {
-                "icon": "arrow.triangle.pull",
-                "title": "Contribute",
-                "subtitle": "Together",
-                "body": "Pull requests and make it better for everyone! 🎉"
             }
         ]
     },
@@ -62,18 +56,6 @@
                 "title": "Drop",
                 "subtitle": "Support",
                 "body": "For iOS14, watchOS7, and macOS11."
-            },
-            {
-                "icon": "macpro.gen3.server",
-                "title": "Serverless",
-                "subtitle": "Design",
-                "body": "Free and open source! ❤️‍🔥"
-            },
-            {
-                "icon": "arrow.triangle.pull",
-                "title": "Contribute",
-                "subtitle": "Together",
-                "body": "Pull requests and make it better for everyone! 🎉"
             }
         ]
     },
@@ -86,18 +68,6 @@
                 "title": "Minor",
                 "subtitle": "Update",
                 "body": "Minor bug fixes, and UI improvement."
-            },
-            {
-                "icon": "macpro.gen3.server",
-                "title": "Serverless",
-                "subtitle": "Design",
-                "body": "Free and open source! ❤️‍🔥"
-            },
-            {
-                "icon": "arrow.triangle.pull",
-                "title": "Contribute",
-                "subtitle": "Together",
-                "body": "Pull requests and make it better for everyone! 🎉"
             }
         ]
     },
@@ -110,18 +80,6 @@
                 "title": "Support Vision Pro",
                 "subtitle": "& visionOS",
                 "body": "Drops Framework is temp-disabled due to conflict."
-            },
-            {
-                "icon": "macpro.gen3.server",
-                "title": "Serverless",
-                "subtitle": "Design",
-                "body": "Free and open source! ❤️‍🔥"
-            },
-            {
-                "icon": "arrow.triangle.pull",
-                "title": "Contribute",
-                "subtitle": "Together",
-                "body": "Pull requests and make it better for everyone! 🎉"
             }
         ]
     },
@@ -134,18 +92,6 @@
                 "title": "Better Compatible",
                 "subtitle": "in Version & Build",
                 "body": "You can use x.y.z or x.y now."
-            },
-            {
-                "icon": "macpro.gen3.server",
-                "title": "Serverless",
-                "subtitle": "Design",
-                "body": "Free and open source! ❤️‍🔥"
-            },
-            {
-                "icon": "arrow.triangle.pull",
-                "title": "Contribute",
-                "subtitle": "Together",
-                "body": "Pull requests and make it better for everyone! 🎉"
             }
         ]
     },
@@ -163,18 +109,6 @@
                 "title": "Demo",
                 "subtitle": "is Better now",
                 "body": "Following the Package Version."
-            },
-            {
-                "icon": "macpro.gen3.server",
-                "title": "Serverless",
-                "subtitle": "Design",
-                "body": "Free and open source! ❤️‍🔥"
-            },
-            {
-                "icon": "arrow.triangle.pull",
-                "title": "Contribute",
-                "subtitle": "Together",
-                "body": "Pull requests and make it better for everyone! 🎉"
             }
         ]
     },
