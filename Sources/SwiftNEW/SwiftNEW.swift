@@ -113,7 +113,7 @@ public struct SwiftNEW: View {
         .sheet(isPresented: $show) {
             ZStack {
                 if mesh {
-                    if #available(iOS 18.0, macOS 15.0, *) {
+                    if #available(iOS 18.0, macOS 15.0, visionOS 2.0, *) {
                         MeshGradient(width: 3, height: 3, points: [
                             .init(0, 0), .init(0.5, 0), .init(1, 0),
                             .init(0, 0.5), .init(0.5, 0.5), .init(1, 0.5),
