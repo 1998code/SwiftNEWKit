@@ -8,21 +8,22 @@
 Provide an easy way for Apple Developers to Show "What's New" to the end users.
 
 ## Features
-- Auto trigger / pop-up the `.sheet` from Version and/or Build ~~increase~~ changes (starting from 4.0.0)
+- Auto trigger/pop-up the `.sheet` from Version and/or Build ~~increase~~ changes (starting from 4.0.0)
 - One-line Coding
 - JSON Compatible
 - Data Versioning
 - View History (2.0.0 or above)
 - Fast Loading from local storage
-- Simple Binding and pass data
+- Simple Binding and passing data
 - Simple Model, easy to modify
 - Open Source for all developers
 - Support Remote JSON File (3.0.0 or above)
-- Support Firebase Real Time Database (3.0.0 or above)
+- Support Firebase Real-Time Database (3.0.0 or above)
 - Support Remote Drop Notification (3.5.0 or above)
 - Support App Icon (3.9.6 or above)
 - Support Version Number in x.y.z and/or x.y (4.0.0 or above)
 - Support visionOS & Vision Pro (4.1.0 or above)
+- Support Mesh Gradient and Linear Gradient Background (5.3.0 or above)
 
 ## Preview
 ![IMG_3472](https://user-images.githubusercontent.com/54872601/173187065-14d78119-47e7-4dcb-a3e6-c7fee4f0c67f.PNG) | ![IMG_3471](https://user-images.githubusercontent.com/54872601/173187067-fe3b5cac-54b5-4482-b73f-42e6c500546f.PNG)
@@ -95,6 +96,8 @@ labelImage  | "arrow.up.circle.fill"          | All SF Symbols                | 
 history     | true                            | true, false                   | Bool
 data        | "data" or "https://.../{}.json" | "{LOCAL_JSON_FILE}" or Remote | String
 showDrop    | false                           | false, true                   | Bool
+mesh        | false                           | false, true                   | Bool
+
 
 ##### Samples:
 ```swift
@@ -112,19 +115,24 @@ showDrop    | false                           | false, true                   | 
 @State var history: Bool = true
 @State var data: String = "data"
 @State var showDrop: Bool = false
+@State var mesh: Bool = false
 ```
 
 3. Then, paste this code inside `body` or any `some View`.
 ```swift
+// Simplified with default options in 5.2.0 or above
+SwiftNEW(show: $showNew)
+// 5.1.0 or below
 SwiftNEW(show: $showNew, align: $align, color: $color, size: $size, labelColor: $labelColor, label: $label, labelImage: $labelImage, history: $history, data: $data, showDrop: $showDrop)
 ```
-Instead of using seperate states, inline states works too. *`Show Bool` cannot be inline.
+Instead of using separate states, inline states work too. (No longer required after 5.2.0)
+*`Show Bool` cannot be inline.
 ```swift
 SwiftNEW(show: $showNew, align: .constant(.center), color: .constant(.accentColor), size: .constant("normal"), labelColor: .constant(Color(UIColor.systemBackground)), label: .constant("Show Release Note"), labelImage: .constant("arrow.up.circle.fill"), history: .constant(true), data: .constant("data"), showDrop: .constant(false))
 ```
 
 ### JSON
-#### Structure / Model
+#### Structure / Model (REF)
 * The below code is just for reference only. You don't need to copy the structure or model.
 ```swift
 public struct Vmodel: Codable, Hashable {
@@ -206,21 +214,21 @@ Copy the JSON sample to `data.json` file (If you don't have it, simply create a 
 ]
 ```
 
-i18n Sample Available in v```3.9.7```
+i18n (Native Translation) Sample Available in v```3.9.7```
 
 <img width="249" alt="CleanShot 2023-01-02 at 17 58 49@2x" src="https://user-images.githubusercontent.com/54872601/210216593-5b9aaf46-5684-48d2-994e-831e5d421f76.png">
 
 ## Developer Note
-- Please report bugs in Issues section.
+- Please report bugs in the Issues section.
 - If you want to discuss future roadmap or contribution, please find on Discussions.
 
 ## FAQ
 Q1. Why did the sheet not popup/show loading/show blank?<br />
-A1. Firstly, be sure the latest version in json is matching your app version. If you are using data.json locally, please check ```,``` is missing or any typo that casue the json no longer valid. If you are using remote data (e.g. Firebase), make sure the json structure is the same as the example.<br />
+A1. Firstly, be sure the latest version in JSON is matching your app version. If you are using data.json locally, please check ```,``` is missing or if any typo causes the JSON to no longer be valid. If you are using remote data (e.g. Firebase), make sure the JSON structure is the same as the example.<br />
 Q2. How can I contribute to the project?<br />
 A2. Simply pull a request, and someone will review your code. If everything is okay, your changes will be merged and reflected in the next minor version.<br />
-Q3. Can I use it in Educational (includ. Student's Homework, Class's demo) or NGO or Commerical Project?<br />
-A3. YES. This project is under license of MIT. Feel free to use it :)
+Q3. Can I use it in Educational (includ. Student's Homework, Class's demo) or NGO or Commerical Projects?<br />
+A3. YES. This project is under the license of MIT. Feel free to use it :)
 
 ## License
 MIT
