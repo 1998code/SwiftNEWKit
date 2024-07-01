@@ -103,6 +103,7 @@ struct ContentView: View {
                 SwiftNEW(show: $showNew, size: .constant("mini"))
             }
         }
+        .navigationTitle(preview)
     }
 }
 
