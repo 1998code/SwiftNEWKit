@@ -28,6 +28,7 @@ struct ContentView: View {
 //    @State var history: Bool = true
 //    @State var data: String = "data"
 //    @State var showDrop: Bool = false
+//    @State var mesh: Bool = false
     
     var simple: some View {
         SwiftNEW(show: $showNew)
