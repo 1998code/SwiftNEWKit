@@ -55,20 +55,17 @@ Path: `./Demo` (Xcode Project with SwiftUI)
 ### Xcode Local
 Tested on | Latest | Compatible
 --------- | ------ | ----------
-iOS       | 16     | > 14
-iPadOS    | 16     | > 14
-macOS     | 13     | > 11
+iOS       | 18     | > 14
+iPadOS    | 18     | > 14
+macOS     | 15     | > 11
 ### Xcode Cloud
 Tested on | Compatible
 --------- | ----------
 Xcode     | > 13.4 (13F17a)
 macOS     | > 12.3.1 (21E258)
 
-## Guide
-[English](https://github.com/1998code/SwiftNEWKit) | [中文](https://github.com/1998code/SwiftNEWKit/blob/main/doc/README_zh.md) | Feel free to add/update new language(s) via `pull requests`
-
 ## Get Started
-### Full Tutorial: https://bit.ly/3NOvJB8
+### Full Tutorial at Medium: https://bit.ly/3NOvJB8
 
 ### Setup
 Steps | Description | Screenshot
