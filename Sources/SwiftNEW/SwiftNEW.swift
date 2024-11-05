@@ -120,8 +120,8 @@ public struct SwiftNEW: View {
                             .init(0, 1), .init(0.5, 1), .init(1, 1)
                         ], colors: [
                             Color(.clear), Color(.clear), Color(.clear),
-                            .accentColor.opacity(0.1), .accentColor.opacity(0.1), .accentColor.opacity(0.2),
-                            .accentColor.opacity(0.5), .accentColor.opacity(0.6), .accentColor.opacity(0.7)
+                            color.opacity(0.1), color.opacity(0.1), color.opacity(0.2),
+                            color.opacity(0.5), color.opacity(0.6), color.opacity(0.7)
                         ])
                         .ignoresSafeArea(.all)
                         .overlay(
