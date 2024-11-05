@@ -1,8 +1,14 @@
 [
     {
-        "version": "5.3",
-        "subVersion": "5.3.0",
+        "version": "5.4",
+        "subVersion": "5.4.0",
         "new": [
+            {
+                "icon": "pencil.tip",
+                "title": "Matched",
+                "subtitle": "Mesh BG Color",
+                "body": "A standardized design."
+            },
             {
                 "icon": "macpro.gen3.server",
                 "title": "Serverless",
@@ -14,6 +20,18 @@
                 "title": "Contribute",
                 "subtitle": "Together",
                 "body": "Pull requests and make it better for everyone! 🎉"
+            }
+        ]
+    },
+    {
+        "version": "5.3",
+        "subVersion": "5.3.0",
+        "new": [
+            {
+                "icon": "pencil.tip",
+                "title": "Add",
+                "subtitle": "Mesh BG",
+                "body": "Better styles and design."
             }
         ]
     },

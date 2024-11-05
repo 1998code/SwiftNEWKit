@@ -1,13 +1,13 @@
 [
     {
-        "version": "5.1",
-        "subVersion": "5.1.0",
+        "version": "5.4",
+        "subVersion": "5.4.0",
         "new": [
             {
-                "icon": "hammer",
-                "title": "預設",
-                "subtitle": "選項",
-                "body": "減少重複程式碼"
+                "icon": "pencil.tip",
+                "title": "匹配",
+                "subtitle": "網格背景顏色",
+                "body": "標準化設計。"
             },
             {
                 "icon": "macpro.gen3.server",
@@ -24,6 +24,30 @@
         ]
     },
     {
+        "version": "5.3",
+        "subVersion": "5.3.0",
+        "new": [
+            {
+                "icon": "pencil.tip",
+                "title": "新增",
+                "subtitle": "網格背景",
+                "body": "更好的設計。"
+            }
+        ]
+    },
+    {
+        "version": "5.2",
+        "subVersion": "5.2.0",
+        "new": [
+            {
+                "icon": "hammer",
+                "title": "預設",
+                "subtitle": "選項",
+                "body": "減少重複程式碼。"
+            }
+        ]
+    },
+    {
         "version": "5.1",
         "subVersion": "5.1.0",
         "new": [
@@ -32,18 +56,6 @@
                 "title": "更新",
                 "subtitle": "示範內容",
                 "body": "針對 5.0 版本。"
-            },
-            {
-                "icon": "macpro.gen3.server",
-                "title": "無服務器",
-                "subtitle": "設計",
-                "body": "免費開源! ❤️‍🔥"
-            },
-            {
-                "icon": "arrow.triangle.pull",
-                "title": "貢獻",
-                "subtitle": "一起",
-                "body": "提出請求，變得更好! 🎉"
             }
         ]
     },
