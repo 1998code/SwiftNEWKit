@@ -31,7 +31,7 @@ struct ContentView: View {
 //    @State var mesh: Bool = false
     
     var simple: some View {
-        SwiftNEW(show: $showNew,mesh:.constant(true))
+        SwiftNEW(show: $showNew)
     }
     
     var mini: some View {
