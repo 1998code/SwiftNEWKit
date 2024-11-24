@@ -1,22 +1,18 @@
-# SwiftNEWKit
+# SwiftNEWKit for Apple SwiftUI
 <!--[![Swift](https://github.com/1998code/SwiftNEWKit/actions/workflows/swift.yml/badge.svg?branch=main)](https://github.com/1998code/SwiftNEWKit/actions/workflows/swift.yml)-->
-### Accelerated by Apple SwiftUI
+### An easy way for Developers to display "What's New" for the end users.
 
 ![CleanShot 2022-06-11 at 22 54 15@2x](https://user-images.githubusercontent.com/54872601/173192927-ca2a8bef-2114-44f8-8d4d-47baadb8b4a8.png)
 
-## Aims
-Provide an easy way for Apple Developers to Show "What's New" to the end users.
-
-## Features
+## Main Features with Changelog (Ascending)
 - Auto trigger/pop-up the `.sheet` from Version and/or Build ~~increase~~ changes (starting from 4.0.0)
 - One-line Coding
-- JSON Compatible
-- Data Versioning
-- View History (2.0.0 or above)
-- Fast Loading from local storage
-- Simple Binding and passing data
-- Simple Model, easy to modify
-- Open Source for all developers
+- JSON-based Structure
+- Versioning + View History (2.0.0 or above)
+- Instant Loading from Local Storage
+- Simple Binding and Passing Data
+- Simple Model, Easy to Modify and reuse
+- Allows for ALL Use Cases including Commerical / Non-profit
 - Support Remote JSON File (3.0.0 or above)
 - Support Firebase Real-Time Database (3.0.0 or above)
 - Support Remote Drop Notification (3.5.0 or above)
