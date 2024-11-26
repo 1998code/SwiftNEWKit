@@ -98,7 +98,9 @@ mesh        | false                           | false, true                   | 
 
 ##### Samples:
 ```swift
+// Required
 @State var showNew: Bool = false
+// Optional (5.2.0 or above)
 @State var align: HorizontalAlignment = .center
 @State var color: Color = .accentColor
 @State var size: String = "normal"
@@ -123,6 +125,7 @@ SwiftNEW(show: $showNew)
 SwiftNEW(show: $showNew, align: $align, color: $color, size: $size, labelColor: $labelColor, label: $label, labelImage: $labelImage, history: $history, data: $data, showDrop: $showDrop)
 ```
 Instead of using separate states, inline states work too. (No longer required after 5.2.0)
+
 *`Show Bool` cannot be inline.
 ```swift
 SwiftNEW(show: $showNew, align: .constant(.center), color: .constant(.accentColor), size: .constant("normal"), labelColor: .constant(Color(UIColor.systemBackground)), label: .constant("Show Release Note"), labelImage: .constant("arrow.up.circle.fill"), history: .constant(true), data: .constant("data"), showDrop: .constant(false))
