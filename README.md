@@ -51,9 +51,10 @@ Path: `./Demo` (Xcode Project with SwiftUI)
 ### Xcode Local
 Tested on | Latest | Compatible
 --------- | ------ | ----------
-iOS       | 18     | > 14
-iPadOS    | 18     | > 14
-macOS     | 15     | > 11
+iOS       | 18.2   | > 14
+iPadOS    | 18.2   | > 14
+macOS     | 15.2   | > 11
+visionOS  | 2      | > 1
 ### Xcode Cloud
 Tested on | Compatible
 --------- | ----------
@@ -61,7 +62,7 @@ Xcode     | > 13.4 (13F17a)
 macOS     | > 12.3.1 (21E258)
 
 ## Get Started
-### Full Tutorial at Medium: https://bit.ly/3NOvJB8
+### Full tutorial available on Medium: https://bit.ly/3NOvJB8 or below.
 
 ### Setup
 Steps | Description | Screenshot
@@ -71,7 +72,7 @@ Steps | Description | Screenshot
 3 | Select Package Dependencies | <img width="309" alt="CleanShot 2022-06-11 at 17 39 53@2x" src="https://user-images.githubusercontent.com/54872601/173182526-e5660b7f-c50c-4173-81f5-83c10c514659.png">
 4 | Click + and paste <code>https://github.com/1998code/SwiftNEWKit</code> to the searchbox | <img width="614" alt="CleanShot 2022-06-11 at 17 39 32@2x" src="https://user-images.githubusercontent.com/54872601/173182527-2a151198-7ac0-4735-8257-11580ada3d5e.png">
 5L | Create a new local file called `data.json` | You may copy this [JSON sample](https://github.com/1998code/SwiftNEWKit#sample). 
-5R | You can use remote json / firebase realtime database too. | Sample: https://testground-a937f-default-rtdb.firebaseio.com/0.json?print=pretty
+5R | You can use remote JSON / firebase realtime database too. | Sample: https://testground-a937f-default-rtdb.firebaseio.com/0.json?print=pretty
 
 ### Major Usage
 1. Import first.
@@ -148,7 +149,7 @@ public struct Model: Codable, Hashable {
 ```
 
 #### Sample
-Copy the JSON sample to `data.json` file (If you don't have it, simply create a new one.)
+Copy the JSON sample to `data.json` file (If you don't have it, create a new file.)
 
 ![68747470733a2f2f76616c696461746f722e737761676765722e696f2f76616c696461746f723f75726c3d68747470733a2f2f7261772e67697468756275736572636f6e74656e742e636f6d2f4f41492f4f70656e4150492d53706563696669636174696f6e2f6d61737465722f6578616d706c65732f76](https://user-images.githubusercontent.com/54872601/173190828-8ee763b9-4e33-4231-92ac-eb81b556c462.png)
 ```json
@@ -214,7 +215,7 @@ Copy the JSON sample to `data.json` file (If you don't have it, simply create a 
 ]
 ```
 
-i18n (Native Translation) Sample Available in v```3.9.7```
+Translation (i18n) Sample Available in v```3.9.7``` or above
 
 <img width="249" alt="CleanShot 2023-01-02 at 17 58 49@2x" src="https://user-images.githubusercontent.com/54872601/210216593-5b9aaf46-5684-48d2-994e-831e5d421f76.png">
 
