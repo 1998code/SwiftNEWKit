@@ -28,7 +28,8 @@ struct ContentView: View {
 //    @State var history: Bool = true
 //    @State var data: String = "data"
 //    @State var showDrop: Bool = false
-//    @State var mesh: Bool = false
+//    @State var mesh: Bool = true
+//    @State var specialEffect: String = "Christmas"
     
     var simple: some View {
         SwiftNEW(show: $showNew)

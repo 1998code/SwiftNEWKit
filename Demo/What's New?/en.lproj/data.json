@@ -1,13 +1,13 @@
 [
     {
-        "version": "5.4",
-        "subVersion": "5.4.0",
+        "version": "5.5",
+        "subVersion": "5.5.0",
         "new": [
             {
-                "icon": "pencil.tip",
-                "title": "Matched",
-                "subtitle": "Mesh BG Color",
-                "body": "A standardized design."
+                "icon": "snowflake",
+                "title": "Snow",
+                "subtitle": "Effect",
+                "body": "More Special Animation Coming Soon!"
             },
             {
                 "icon": "macpro.gen3.server",
@@ -20,6 +20,18 @@
                 "title": "Contribute",
                 "subtitle": "Together",
                 "body": "Pull requests and make it better for everyone! 🎉"
+            }
+        ]
+    },
+    {
+        "version": "5.4",
+        "subVersion": "5.4.0",
+        "new": [
+            {
+                "icon": "pencil.tip",
+                "title": "Matched",
+                "subtitle": "Mesh BG Color",
+                "body": "A standardized design."
             }
         ]
     },

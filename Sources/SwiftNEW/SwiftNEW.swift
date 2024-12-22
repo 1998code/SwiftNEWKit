@@ -29,6 +29,7 @@ public struct SwiftNEW: View {
     @Binding var data: String
     @Binding var showDrop: Bool
     @Binding var mesh: Bool
+    @Binding var specialEffect: String
     
     #if os(iOS) || os(visionOS)
     public init(
@@ -42,7 +43,8 @@ public struct SwiftNEW: View {
         history: Binding<Bool>? = .constant(true),
         data: Binding<String>? = .constant("data"),
         showDrop: Binding<Bool>? = .constant(false),
-        mesh: Binding<Bool>? = .constant(false)
+        mesh: Binding<Bool>? = .constant(false),
+        specialEffect: Binding<String>? = .constant("")
     ) {
         _show = show
         _align = align ?? .constant(.center)
@@ -55,6 +57,7 @@ public struct SwiftNEW: View {
         _data = data ?? .constant("data")
         _showDrop = showDrop ?? .constant(false)
         _mesh = mesh ?? .constant(false)
+        _specialEffect = specialEffect ?? .constant("")
         compareVersion()
     }
     #elseif os(macOS)
@@ -69,7 +72,8 @@ public struct SwiftNEW: View {
         history: Binding<Bool>? = .constant(true),
         data: Binding<String>? = .constant("data"),
         showDrop: Binding<Bool>? = .constant(false),
-        mesh: Binding<Bool>? = .constant(false)
+        mesh: Binding<Bool>? = .constant(false),
+        specialEffect: Binding<String>? = .constant("")
     ) {
         _show = show
         _align = align ?? .constant(.center)
@@ -82,6 +86,7 @@ public struct SwiftNEW: View {
         _data = data ?? .constant("data")
         _showDrop = showDrop ?? .constant(false)
         _mesh = mesh ?? .constant(false)
+        _specialEffect = specialEffect ?? .constant("")
         compareVersion()
     }
     #endif
@@ -132,6 +137,9 @@ public struct SwiftNEW: View {
                         LinearGradient(colors: [Color.accentColor.opacity(0.5), Color(.clear)], startPoint: .topLeading, endPoint: .bottomTrailing)
                             .ignoresSafeArea(.all)
                     }
+                }
+                if specialEffect == "Christmas" {
+                    SnowfallView()
                 }
                 sheetCurrent
                     .sheet(isPresented: $historySheet) {
@@ -464,6 +472,45 @@ struct NoiseView: View {
     }
 }
 
+struct SnowfallView: View {
+    @State private var snowflakes = [Snowflake]()
+    private let timer = Timer.publish(every: 0.05, on: .main, in: .common).autoconnect()
+
+    var body: some View {
+        GeometryReader { geometry in
+            ZStack {
+                ForEach(snowflakes) { snowflake in
+                    Circle()
+                        .fill(Color.white)
+                        .frame(width: snowflake.size, height: snowflake.size)
+                        .position(x: snowflake.x, y: snowflake.y)
+                }
+            }
+            .onAppear {
+                for _ in 0..<100 {
+                    let snowflake = Snowflake(
+                        id: UUID(),
+                        x: CGFloat.random(in: 0...geometry.size.width),
+                        y: CGFloat.random(in: -geometry.size.height...0),
+                        size: CGFloat.random(in: 2...6),
+                        speed: CGFloat.random(in: 1...3)
+                    )
+                    snowflakes.append(snowflake)
+                }
+            }
+            .onReceive(timer) { _ in
+                for index in snowflakes.indices {
+                    snowflakes[index].y += snowflakes[index].speed
+                    if snowflakes[index].y > geometry.size.height {
+                        snowflakes[index].y = -snowflakes[index].size
+                        snowflakes[index].x = CGFloat.random(in: 0...geometry.size.width)
+                    }
+                }
+            }
+        }
+    }
+}
+
 // MARK: - Model
 public struct Vmodel: Codable, Hashable {
     var version: String
@@ -475,6 +522,13 @@ public struct Model: Codable, Hashable {
     var title: String
     var subtitle: String
     var body: String
+}
+struct Snowflake: Identifiable {
+    let id: UUID
+    var x: CGFloat
+    var y: CGFloat
+    var size: CGFloat
+    var speed: CGFloat
 }
 
 // MARK: - For App Icon
