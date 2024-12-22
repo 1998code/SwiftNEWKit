@@ -30,13 +30,9 @@ Light Native | Dark Native
 ------------- | ------------
 History View (2.0.0) | App Icon (3.9.6) [Vertical / Horizontal]
 
-![CleanShot 2023-06-22 at 14 24 07@2x](https://github.com/1998code/SwiftNEWKit/assets/54872601/12a8ab01-76e5-42a1-96b4-848ef5e5f36b) |
-------------- | 
-VisionOS (4.1.0 or above) |
-
-<img width="892" alt="Screenshot 2024-07-01 at 10 18 33 PM" src="https://github.com/1998code/SwiftNEWKit/assets/54872601/a845c460-65d7-47a0-ae15-23897efd0508"> |
-------------- |
-Mesh Gradient Background (5.3.0 or above) | 
+![CleanShot 2023-06-22 at 14 24 07@2x](https://github.com/1998code/SwiftNEWKit/assets/54872601/12a8ab01-76e5-42a1-96b4-848ef5e5f36b) | <img alt="Screenshot 2024-07-01 at 10 18 33 PM" src="https://github.com/1998code/SwiftNEWKit/assets/54872601/a845c460-65d7-47a0-ae15-23897efd0508"> |
+------------- | ------------
+Support VisionOS (4.1.0 or above) | Mesh Gradient Background (5.3.0 or above)
 
 ## Sample
 Path: `./Demo` (Xcode Project with SwiftUI)
