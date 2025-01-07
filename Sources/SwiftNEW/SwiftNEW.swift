@@ -43,7 +43,7 @@ public struct SwiftNEW: View {
         history: Binding<Bool>? = .constant(true),
         data: Binding<String>? = .constant("data"),
         showDrop: Binding<Bool>? = .constant(false),
-        mesh: Binding<Bool>? = .constant(false),
+        mesh: Binding<Bool>? = .constant(true),
         specialEffect: Binding<String>? = .constant("")
     ) {
         _show = show
@@ -56,7 +56,7 @@ public struct SwiftNEW: View {
         _history = history ?? .constant(true)
         _data = data ?? .constant("data")
         _showDrop = showDrop ?? .constant(false)
-        _mesh = mesh ?? .constant(false)
+        _mesh = mesh ?? .constant(true)
         _specialEffect = specialEffect ?? .constant("")
         compareVersion()
     }
@@ -72,7 +72,7 @@ public struct SwiftNEW: View {
         history: Binding<Bool>? = .constant(true),
         data: Binding<String>? = .constant("data"),
         showDrop: Binding<Bool>? = .constant(false),
-        mesh: Binding<Bool>? = .constant(false),
+        mesh: Binding<Bool>? = .constant(true),
         specialEffect: Binding<String>? = .constant("")
     ) {
         _show = show
@@ -85,7 +85,7 @@ public struct SwiftNEW: View {
         _history = history ?? .constant(true)
         _data = data ?? .constant("data")
         _showDrop = showDrop ?? .constant(false)
-        _mesh = mesh ?? .constant(false)
+        _mesh = mesh ?? .constant(true)
         _specialEffect = specialEffect ?? .constant("")
         compareVersion()
     }
@@ -125,7 +125,12 @@ public struct SwiftNEW: View {
                 }
                 sheetCurrent
                     .sheet(isPresented: $historySheet) {
-                        sheetHistory
+                        if #available(iOS 16.4, *) {
+                            sheetHistory
+                                .presentationBackground(.thinMaterial)
+                        } else {
+                            sheetHistory
+                        }
                     }
                     #if os(xrOS)
                     .padding()
@@ -157,33 +162,50 @@ public struct SwiftNEW: View {
                         if item.version == Bundle.version || item.subVersion == Bundle.version {
                             ForEach(item.new, id: \.self) { new in
                                 HStack {
-                                    ZStack {
-                                        color
-                                        Image(systemName: new.icon)
-                                            .foregroundColor(.white)
+                                    if align == .leading || align == .center {
+                                        ZStack {
+                                            color
+                                            Image(systemName: new.icon)
+                                                .foregroundColor(.white)
+                                        }
+                                        .frame(width: 50, height:50)
+                                        .cornerRadius(15)
+                                        .padding(.trailing)
+                                    } else {
+                                        Spacer()
                                     }
-                                    .frame(width: 50, height:50)
-                                    .cornerRadius(15)
-                                    .padding(.trailing)
-                                    VStack(alignment: .leading) {
+                                    
+                                    VStack(alignment: align == .trailing ? .trailing : .leading) {
                                         Text(new.title).font(.headline).lineLimit(1)
                                         Text(new.subtitle).font(.subheadline).foregroundColor(.secondary).lineLimit(1)
                                         Text(new.body).font(.caption).foregroundColor(.secondary).lineLimit(2)
                                     }
-                                    Spacer()
+                                    
+                                    if align == .trailing {
+                                        ZStack {
+                                            color
+                                            Image(systemName: new.icon)
+                                                .foregroundColor(.white)
+                                        }
+                                        .frame(width: 50, height:50)
+                                        .cornerRadius(15)
+                                        .padding(.trailing)
+                                    } else {
+                                        Spacer()
+                                    }
                                 }.padding(.bottom)
                             }
                         }
                     }
+                    if history {
+                        showHistoryButton
+                    }
                 }.frame(width: 300)
-                .frame(maxHeight: 450)
+                // .frame(maxHeight: 450)
+                .frame(maxHeight: UIScreen.main.bounds.height * 0.5)
             }
             
             Spacer()
-            
-            if history {
-                showHistoryButton
-            }
             
             closeCurrentButton
                 .padding(.bottom)
@@ -229,7 +251,9 @@ public struct SwiftNEW: View {
     }
     #endif
     public var showHistoryButton: some View {
-        Button(action: { historySheet = true }) {
+        Button(action: {
+            historySheet = true
+        }) {
             HStack {
                 if align == .trailing {
                     Spacer()
@@ -239,15 +263,12 @@ public struct SwiftNEW: View {
                 if align == .leading {
                     Spacer()
                 }
-            }.font(.body)
-            #if os(iOS)
-            .frame(width: 300, height: 50)
-            #elseif os(macOS)
-            .frame(width: 200, height: 25)
-            #endif
+            }.font(.caption)
         }
         #if !os(xrOS)
-        .foregroundColor(color)
+        .buttonStyle(.bordered)
+        .buttonBorderShape(.capsule)
+        .tint(.secondary)
         #endif
     }
     public var closeCurrentButton: some View {
@@ -263,6 +284,7 @@ public struct SwiftNEW: View {
                     Spacer()
                 }
             }.font(.body)
+            .padding(.horizontal)
             #if os(iOS)
             .frame(width: 300, height: 50)
             #elseif os(macOS)
@@ -296,25 +318,43 @@ public struct SwiftNEW: View {
                     .padding(.bottom)
                     ForEach(item.new, id: \.self) { new in
                         HStack {
-                            ZStack {
-                                color
-                                Image(systemName: new.icon)
-                                    .foregroundColor(.white)
+                            if align == .leading || align == .center {
+                                ZStack {
+                                    color
+                                    Image(systemName: new.icon)
+                                        .foregroundColor(.white)
+                                }
+                                .frame(width: 50, height:50)
+                                .cornerRadius(15)
+                                .padding(.trailing)
+                            } else {
+                                Spacer()
                             }
-                            .frame(width: 50, height:50)
-                            .cornerRadius(15)
-                            .padding(.trailing)
-                            VStack(alignment: .leading) {
+                            
+                            VStack(alignment: align == .trailing ? .trailing : .leading) {
                                 Text(new.title).font(.headline).lineLimit(1)
                                 Text(new.subtitle).font(.subheadline).foregroundColor(.secondary).lineLimit(1)
                                 Text(new.body).font(.caption).foregroundColor(.secondary).lineLimit(2)
                             }
-                            Spacer()
+                            
+                            if align == .trailing {
+                                ZStack {
+                                    color
+                                    Image(systemName: new.icon)
+                                        .foregroundColor(.white)
+                                }
+                                .frame(width: 50, height:50)
+                                .cornerRadius(15)
+                                .padding(.leading)
+                            } else {
+                                Spacer()
+                            }
                         }.padding(.bottom)
                     }
                 }
             }.frame(width: 300)
-            .frame(maxHeight: 450)
+//            .frame(maxHeight: 450)
+            .frame(maxHeight: UIScreen.main.bounds.height * 0.6)
             
             Spacer()
             
@@ -339,6 +379,7 @@ public struct SwiftNEW: View {
                     Spacer()
                 }
             }.font(.body)
+            .padding(.horizontal)
             #if os(iOS)
             .frame(width: 300, height: 50)
             #elseif os(macOS)
