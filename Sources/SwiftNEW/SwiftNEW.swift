@@ -94,9 +94,9 @@ public struct SwiftNEW: View {
     public var body: some View {
         Button(action: {
             if showDrop {
-#if os(iOS)
+                #if os(iOS)
                 drop()
-#endif
+                #endif
             } else {
                 show = true
             }
@@ -107,36 +107,18 @@ public struct SwiftNEW: View {
             else if size == "normal" || size == "simple" {
                 Label(label, systemImage: labelImage)
                     .frame(width: 300, height: 50)
-#if os(iOS) && !os(xrOS)
+                    #if os(iOS) && !os(xrOS)
                     .foregroundColor(labelColor)
                     .background(color)
                     .cornerRadius(15)
-#endif
+                    #endif
             }
         }
         .opacity(size == "invisible" ? 0 : 100)
         .sheet(isPresented: $show) {
             ZStack {
                 if mesh {
-                    if #available(iOS 18.0, macOS 15.0, visionOS 2.0, *) {
-                        MeshGradient(width: 3, height: 3, points: [
-                            .init(0, 0), .init(0.5, 0), .init(1, 0),
-                            .init(0, 0.5), .init(0.5, 0.5), .init(1, 0.5),
-                            .init(0, 1), .init(0.5, 1), .init(1, 1)
-                        ], colors: [
-                            Color(.clear), Color(.clear), Color(.clear),
-                            color.opacity(0.1), color.opacity(0.1), color.opacity(0.2),
-                            color.opacity(0.5), color.opacity(0.6), color.opacity(0.7)
-                        ])
-                        .ignoresSafeArea(.all)
-                        .overlay(
-                            NoiseView(size: 100000)
-                        )
-                    } else {
-                        // Fallback on earlier versions
-                        LinearGradient(colors: [Color.accentColor.opacity(0.5), Color(.clear)], startPoint: .topLeading, endPoint: .bottomTrailing)
-                            .ignoresSafeArea(.all)
-                    }
+                    MeshView(color: $color)
                 }
                 if specialEffect == "Christmas" {
                     SnowfallView()
@@ -145,9 +127,9 @@ public struct SwiftNEW: View {
                     .sheet(isPresented: $historySheet) {
                         sheetHistory
                     }
-#if os(xrOS)
+                    #if os(xrOS)
                     .padding()
-#endif
+                    #endif
             }
         }
     }
@@ -214,33 +196,17 @@ public struct SwiftNEW: View {
         .frame(width: 600, height: 600)
 #endif
     }
-#if os(iOS)
-    public var appIcon: some View {
-        Bundle.main.iconFileName
-            .flatMap {
-                UIImage(named: $0)
-            }
-            .map {
-                Image(uiImage: $0)
-                    .resizable()
-                    .frame(width: 65, height: 65)
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 19, style: .continuous)
-                            .stroke(.gray, lineWidth: 1)
-                    )
-            }
-            .clipShape(RoundedRectangle(cornerRadius: 19, style: .continuous))
-    }
+    #if os(iOS)
     public var headings: some View {
         HStack {
             if align == .leading {
-                appIcon
+                AppIconView()
                     .padding(.leading, -8)
                     .padding(.trailing, 8)
             }
             VStack(alignment: align) {
                 if align == .center {
-                    appIcon
+                    AppIconView()
                 }
                 Text(String(localized: "What's New in", bundle: .module))
                     .bold().font(.largeTitle)
@@ -248,11 +214,11 @@ public struct SwiftNEW: View {
                     .bold().font(.title).foregroundColor(.secondary)
             }
             if align == .trailing {
-                appIcon
+                AppIconView()
             }
         }
     }
-#elseif os(macOS) || os(xrOS)
+    #elseif os(macOS) || os(xrOS)
     public var headings: some View {
         VStack {
             Text(String(localized: "What's New in", bundle: .module))
@@ -261,7 +227,7 @@ public struct SwiftNEW: View {
                 .bold().font(.title).foregroundColor(.secondary)
         }
     }
-#endif
+    #endif
     public var showHistoryButton: some View {
         Button(action: { historySheet = true }) {
             HStack {
@@ -280,9 +246,9 @@ public struct SwiftNEW: View {
             .frame(width: 200, height: 25)
             #endif
         }
-#if !os(xrOS)
+        #if !os(xrOS)
         .foregroundColor(color)
-#endif
+        #endif
     }
     public var closeCurrentButton: some View {
         Button(action: { show = false }) {
@@ -302,11 +268,11 @@ public struct SwiftNEW: View {
             #elseif os(macOS)
             .frame(width: 200, height: 25)
             #endif
-#if os(iOS) && !os(xrOS)
+            #if os(iOS) && !os(xrOS)
             .foregroundColor(.white)
             .background(color)
             .cornerRadius(15)
-#endif
+            #endif
         }
     }
     
@@ -451,94 +417,4 @@ public struct SwiftNEW: View {
         Drops.show(drop)
     }
     #endif
-}
-
-struct NoiseView: View {
-    let size: Int
-
-    var body: some View {
-        Canvas { context, size in
-            for _ in 0..<self.size {
-                let x = Double.random(in: 0..<Double(size.width))
-                let y = Double.random(in: 0..<Double(size.height))
-#if os(iOS)
-                context.fill(Ellipse().path(in: CGRect(x: x, y: y, width: 1, height: 1)), with: .color(Color(.systemBackground).opacity(0.1)))
-#elseif os(macOS)
-                context.fill(Ellipse().path(in: CGRect(x: x, y: y, width: 1, height: 1)), with: .color(Color(NSColor.windowBackgroundColor).opacity(0.1)))
-#endif
-            }
-        }
-        .opacity(0.5)
-    }
-}
-
-struct SnowfallView: View {
-    @State private var snowflakes = [Snowflake]()
-    private let timer = Timer.publish(every: 0.05, on: .main, in: .common).autoconnect()
-
-    var body: some View {
-        GeometryReader { geometry in
-            ZStack {
-                ForEach(snowflakes) { snowflake in
-                    Circle()
-                        .fill(Color.white)
-                        .frame(width: snowflake.size, height: snowflake.size)
-                        .position(x: snowflake.x, y: snowflake.y)
-                }
-            }
-            .onAppear {
-                for _ in 0..<100 {
-                    let snowflake = Snowflake(
-                        id: UUID(),
-                        x: CGFloat.random(in: 0...geometry.size.width),
-                        y: CGFloat.random(in: -geometry.size.height...0),
-                        size: CGFloat.random(in: 2...6),
-                        speed: CGFloat.random(in: 1...3)
-                    )
-                    snowflakes.append(snowflake)
-                }
-            }
-            .onReceive(timer) { _ in
-                for index in snowflakes.indices {
-                    snowflakes[index].y += snowflakes[index].speed
-                    if snowflakes[index].y > geometry.size.height {
-                        snowflakes[index].y = -snowflakes[index].size
-                        snowflakes[index].x = CGFloat.random(in: 0...geometry.size.width)
-                    }
-                }
-            }
-        }
-    }
-}
-
-// MARK: - Model
-public struct Vmodel: Codable, Hashable {
-    var version: String
-    var subVersion: String?
-    var new: [Model]
-}
-public struct Model: Codable, Hashable {
-    var icon: String
-    var title: String
-    var subtitle: String
-    var body: String
-}
-struct Snowflake: Identifiable {
-    let id: UUID
-    var x: CGFloat
-    var y: CGFloat
-    var size: CGFloat
-    var speed: CGFloat
-}
-
-// MARK: - For App Icon
-extension Bundle {
-    var iconFileName: String? {
-        guard let icons = infoDictionary?["CFBundleIcons"] as? [String: Any],
-              let primaryIcon = icons["CFBundlePrimaryIcon"] as? [String: Any],
-              let iconFiles = primaryIcon["CFBundleIconFiles"] as? [String],
-              let iconFileName = iconFiles.last
-        else { return nil }
-        return iconFileName
-    }
 }
