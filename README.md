@@ -1,4 +1,4 @@
-# SwiftNEWKit for Apple SwiftUI
+# SwiftNEWKit
 <!--[![Swift](https://github.com/1998code/SwiftNEWKit/actions/workflows/swift.yml/badge.svg?branch=main)](https://github.com/1998code/SwiftNEWKit/actions/workflows/swift.yml)-->
 ### An easy way for Developers to display "What's New" for the end users.
 
@@ -11,8 +11,8 @@
 - Versioning + View History (2.0.0 or above)
 - Instant Loading from Local Storage
 - Simple Binding and Passing Data
-- Simple Model, Easy to Modify and reuse
-- Allows for ALL Use Cases including Commerical / Non-profit
+- Simple Model, Easy to Modify and Reuse
+- Allows for ALL Use Cases including Commercial / Non-profit
 - Support Remote JSON File (3.0.0 or above)
 - Support Firebase Real-Time Database (3.0.0 or above)
 - Support Remote Drop Notification (3.5.0 or above)
@@ -58,7 +58,7 @@ Xcode     | > 13.4 (13F17a)
 macOS     | > 12.3.1 (21E258)
 
 ## Get Started
-### Full tutorial available on Medium: https://bit.ly/3NOvJB8 or below.
+### Tutorial available on Medium: https://bit.ly/3NOvJB8 or below.
 
 ### Setup
 Steps | Description | Screenshot
@@ -71,7 +71,7 @@ Steps | Description | Screenshot
 5R | You can use remote JSON / firebase realtime database too. | Sample: https://testground-a937f-default-rtdb.firebaseio.com/0.json?print=pretty
 
 ### Major Usage
-1. Import first.
+1. Import SwiftNEWKit.
 ```swift
 import SwiftNEW
 ```
@@ -97,6 +97,7 @@ mesh        | false                           | false, true                   | 
 ```swift
 // Required
 @State var showNew: Bool = false
+
 // Optional (5.2.0 or above)
 @State var align: HorizontalAlignment = .center
 @State var color: Color = .accentColor
@@ -118,6 +119,7 @@ mesh        | false                           | false, true                   | 
 ```swift
 // Simplified with default options in 5.2.0 or above
 SwiftNEW(show: $showNew)
+
 // 5.1.0 or below
 SwiftNEW(show: $showNew, align: $align, color: $color, size: $size, labelColor: $labelColor, label: $label, labelImage: $labelImage, history: $history, data: $data, showDrop: $showDrop)
 ```
@@ -126,6 +128,16 @@ Instead of using separate states, inline states work too. (No longer required af
 *`Show Bool` cannot be inline.
 ```swift
 SwiftNEW(show: $showNew, align: .constant(.center), color: .constant(.accentColor), size: .constant("normal"), labelColor: .constant(Color(UIColor.systemBackground)), label: .constant("Show Release Note"), labelImage: .constant("arrow.up.circle.fill"), history: .constant(true), data: .constant("data"), showDrop: .constant(false))
+```
+
+4. Your code should at least look similar to the following, including the minimum features and default styles.
+```swift
+struct ContentView: View {
+    @State var showNew: Bool = false
+    var body: some View {
+        SwiftNEW(show: $showNew)
+    }
+}
 ```
 
 ### JSON
