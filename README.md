@@ -4,22 +4,21 @@
 
 ![CleanShot 2022-06-11 at 22 54 15@2x](https://user-images.githubusercontent.com/54872601/173192927-ca2a8bef-2114-44f8-8d4d-47baadb8b4a8.png)
 
-## Main Features with Changelog (Ascending)
-- Auto trigger/pop-up the `.sheet` from Version and/or Build ~~increase~~ changes (starting from 4.0.0)
-- One-line Coding
-- JSON-based Structure
-- Versioning + View History (2.0.0 or above)
-- Instant Loading from Local Storage
-- Simple Binding and Passing Data
-- Simple Model, Easy to Modify and Reuse
-- Allows for ALL Use Cases including Commercial / Non-profit
-- Support Remote JSON File (3.0.0 or above)
-- Support Firebase Real-Time Database (3.0.0 or above)
-- Support Remote Drop Notification (3.5.0 or above)
-- Support App Icon (3.9.6 or above)
-- Support Version Number in x.y.z and/or x.y (4.0.0 or above)
-- Support visionOS & Vision Pro (4.1.0 or above)
-- Support Mesh Gradient and Linear Gradient Background (5.3.0 or above)
+## Changelog
+| New (Core) Features                                             | Version   |
+|-----------------------------------------------------------------|-----------|
+| Mesh Gradient and Linear Gradient Background                    | 5.3.0     |
+| Apple visionOS & Vision Pro                                     | 4.1.0     |
+| Auto trigger/pop-up .sheet when Version / Build changes         | 4.0.0     |
+| Version Number in x.y.z and/or x.y                              | 4.0.0     |
+| Remote Drop Notification                                        | 3.5.0     |
+| Firebase Real-Time Database                                     | 3.0.0     |
+| Remote JSON File                                                | 3.0.0     |
+| Versioning + View History                                       | 2.0.0     |
+| Allows for ALL Use Cases including Commercial / Non-profit      | -         |
+| Simple Model, Easy to Modify and Reuse                          | -         |
+| Simple Binding and Passing Data                                 | -         |
+| Instant Loading from Local Storage                              | -         |
 
 ## Preview
 ![IMG_3472](https://user-images.githubusercontent.com/54872601/173187065-14d78119-47e7-4dcb-a3e6-c7fee4f0c67f.PNG) | ![IMG_3471](https://user-images.githubusercontent.com/54872601/173187067-fe3b5cac-54b5-4482-b73f-42e6c500546f.PNG)
@@ -34,7 +33,7 @@ History View (2.0.0) | App Icon (3.9.6) [Vertical / Horizontal]
 ------------- | ------------
 Support VisionOS (4.1.0 or above) | Mesh Gradient Background (5.3.0 or above)
 
-## Sample
+## Example
 Path: `./Demo` (Xcode Project with SwiftUI)
 
 ## Version
@@ -47,7 +46,7 @@ Path: `./Demo` (Xcode Project with SwiftUI)
 ### Xcode Local
 Tested on | Latest | Compatible
 --------- | ------ | ----------
-iOS       | 18.2   | > 14
+iOS       | 18.4   | > 14
 iPadOS    | 18.2   | > 14
 macOS     | 15.2   | > 11
 visionOS  | 2      | > 1
@@ -80,17 +79,17 @@ import SwiftNEW
 ### States
 var         | Suggested                       | Options                       | Type
 ----------- | ------------------------------- | ----------------------------- | ----
-showNew     | false                           | false, true                   | Bool
+showNew *   | false                           | false, true                   | Bool
 align       | .center                         | .leading, .center, .trailing  | HorizontalAlignment
 color       | .accentColor                    | All Colors Supported          | Color
 size        | "simple"                        | "invisible", "mini", "simple" | String
-labelColor  | Color(UIColor.systemBackground) or Color(NSColor.windowBackgroundColor) | All Colors Supported          | Color
+labelColor  | UIColor.systemBackground or NSColor.windowBackgroundColor | All Colors Supported          | Color
 label       | "Show Release Note"             | All Strings                   | String
 labelImage  | "arrow.up.circle.fill"          | All SF Symbols                | String
 history     | true                            | true, false                   | Bool
 data        | "data" or "https://.../{}.json" | "{LOCAL_JSON_FILE}" or Remote | String
 showDrop    | false                           | false, true                   | Bool
-mesh        | false                           | false, true                   | Bool
+mesh        | true                            | false, true                   | Bool
 
 
 ##### Samples:
@@ -130,7 +129,7 @@ Instead of using separate states, inline states work too. (No longer required af
 SwiftNEW(show: $showNew, align: .constant(.center), color: .constant(.accentColor), size: .constant("normal"), labelColor: .constant(Color(UIColor.systemBackground)), label: .constant("Show Release Note"), labelImage: .constant("arrow.up.circle.fill"), history: .constant(true), data: .constant("data"), showDrop: .constant(false))
 ```
 
-4. Your code should at least look similar to the following, including the minimum features and default styles.
+4. Your code should look similar to the following, including the minimum features and default styles.
 ```swift
 struct ContentView: View {
     @State var showNew: Bool = false
@@ -232,12 +231,13 @@ Translation (i18n) Sample Available in v```3.9.7``` or above
 - If you want to discuss future roadmap or contribution, please find on Discussions.
 
 ## FAQ
-Q1. Why did the sheet not popup/show loading/show blank?<br />
-A1. Firstly, be sure the latest version in JSON is matching your app version. If you are using data.json locally, please check ```,``` is missing or if any typo causes the JSON to no longer be valid. If you are using remote data (e.g. Firebase), make sure the JSON structure is the same as the example.<br />
+Q1. Why didn’t the sheet pop up, show loading, or display a blank screen?<br />
+A1. First, ensure that the latest version in JSON matches your app version. If you are using a local data.json file, check for any missing commas(,) or typos that could make the JSON invalid. 
+If you are using remote data (such as Firebase), confirm that the JSON structure is the same as the provided example.<br />
 Q2. How can I contribute to the project?<br />
-A2. Simply pull a request, and someone will review your code. If everything is okay, your changes will be merged and reflected in the next minor version.<br />
-Q3. Can I use it in Educational (includ. Student's Homework, Class's demo) or NGO or Commerical Projects?<br />
-A3. YES. This project is under the license of MIT. Feel free to use it :)
+A2. Simply pull a request, and the admin will review your code. If everything is okay, your changes will be merged and reflected in the next minor version.<br />
+Q3. Can I use it in Educational (include Student's Homework, Class's demo) or NGO or Commerical Projects?<br />
+A3. YES. This project is under the license of MIT. Feel free to play it :)
 
 ## License
 MIT
