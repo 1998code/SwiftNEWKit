@@ -241,3 +241,9 @@ A3. YES. This project is under the license of MIT. Feel free to play it :)
 
 ## License
 MIT
+
+## Supported By
+<a href="https://m.do.co/c/ce873177d9ab">
+    <img src="https://opensource.nyc3.cdn.digitaloceanspaces.com/attribution/assets/SVG/DO_Logo_horizontal_blue.svg" width="201px">
+</a>
+
