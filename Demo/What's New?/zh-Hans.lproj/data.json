@@ -1,13 +1,13 @@
 [
     {
-        "version": "5.5",
-        "subVersion": "5.5.0",
+        "version": "6.0",
+        "subVersion": "6.0.0",
         "new": [
             {
-                "icon": "snowflake",
-                "title": "飘雪",
+                "icon": "wineglass",
+                "title": "玻璃",
                 "subtitle": "效果",
-                "body": "更多特别效果即将推出!"
+                "body": "即将推出!"
             },
             {
                 "icon": "macpro.gen3.server",
@@ -20,6 +20,18 @@
                 "title": "贡献",
                 "subtitle": "一起",
                 "body": "提出请求，变得更好! 🎉"
+            }
+        ]
+    },
+    {
+        "version": "5.5",
+        "subVersion": "5.5.0",
+        "new": [
+            {
+                "icon": "snowflake",
+                "title": "飘雪",
+                "subtitle": "效果",
+                "body": "更多特别效果即将推出!"
             }
         ]
     },
@@ -86,18 +98,6 @@
                 "title": "终结",
                 "subtitle": "支援",
                 "body": "iOS14, watchOS7, and macOS11。"
-            },
-            {
-                "icon": "macpro.gen3.server",
-                "title": "无服务器",
-                "subtitle": "设计",
-                "body": "免费开源! ❤️‍🔥"
-            },
-            {
-                "icon": "arrow.triangle.pull",
-                "title": "贡献",
-                "subtitle": "一起",
-                "body": "提出请求，变得更好! 🎉"
             }
         ]
     },
@@ -110,18 +110,6 @@
                 "title": "小型",
                 "subtitle": "更新",
                 "body": "一些错误修正和UI更新"
-            },
-            {
-                "icon": "macpro.gen3.server",
-                "title": "无服务器",
-                "subtitle": "设计",
-                "body": "免费开源! ❤️‍🔥"
-            },
-            {
-                "icon": "arrow.triangle.pull",
-                "title": "贡献",
-                "subtitle": "一起",
-                "body": "提出请求，变得更好! 🎉"
             }
         ]
     },
@@ -134,18 +122,6 @@
                 "title": "支持 Vision Pro",
                 "subtitle": "和 visionOS",
                 "body": "Drops Framework 由于冲突而被临时禁用。"
-            },
-            {
-                "icon": "macpro.gen3.server",
-                "title": "无服务器",
-                "subtitle": "设计",
-                "body": "免费开源! ❤️‍🔥"
-            },
-            {
-                "icon": "arrow.triangle.pull",
-                "title": "贡献",
-                "subtitle": "一起",
-                "body": "提出请求，变得更好! 🎉"
             }
         ]
     },
@@ -158,18 +134,6 @@
                 "title": "更好兼容性",
                 "subtitle": "在版本和构建中",
                 "body": "您现在可以使用 x.y.z 或 x.y。"
-            },
-            {
-                "icon": "macpro.gen3.server",
-                "title": "无服务器",
-                "subtitle": "设计",
-                "body": "免费开源! ❤️‍🔥"
-            },
-            {
-                "icon": "arrow.triangle.pull",
-                "title": "贡献",
-                "subtitle": "一起",
-                "body": "提出请求，变得更好! 🎉"
             }
         ]
     },
@@ -187,18 +151,6 @@
                 "title": "演示",
                 "subtitle": "现在好多了",
                 "body": "遵循包版本。"
-            },
-            {
-                "icon": "macpro.gen3.server",
-                "title": "无服务器",
-                "subtitle": "设计",
-                "body": "免费开源! ❤️‍🔥"
-            },
-            {
-                "icon": "arrow.triangle.pull",
-                "title": "贡献",
-                "subtitle": "一起",
-                "body": "提出请求，变得更好! 🎉"
             }
         ]
     }

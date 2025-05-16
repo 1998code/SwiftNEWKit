@@ -1,0 +1,86 @@
+name: Validate JSON Files
+
+on:
+  push:
+    paths:
+      - '**/*.json'
+  pull_request:
+    paths:
+      - '**/*.json'
+  workflow_dispatch:  # Allows manual triggering
+
+jobs:
+  validate-json:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          
+      - name: Install dependencies
+        run: npm install -g ajv-cli ajv-formats
+        
+      - name: Create JSON schema for validation
+        run: |
+          cat > schema.json << 'EOL'
+          {
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["version", "new"],
+              "properties": {
+                "version": {
+                  "type": "string",
+                  "pattern": "^\\d+\\.\\d+$|^\\d+\\.\\d+\\.\\d+$"
+                },
+                "subVersion": {
+                  "type": "string",
+                  "pattern": "^\\d+\\.\\d+\\.\\d+$"
+                },
+                "new": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "required": ["icon", "title", "subtitle", "body"],
+                    "properties": {
+                      "icon": { "type": "string" },
+                      "title": { "type": "string" },
+                      "subtitle": { "type": "string" },
+                      "body": { "type": "string" }
+                    }
+                  },
+                  "minItems": 1
+                }
+              }
+            },
+            "minItems": 1
+          }
+          EOL
+      
+      - name: Find and validate data.json files
+        run: |
+          echo "Validating JSON files..."
+          for FILE in $(find Demo -name "data.json"); do
+            echo "Checking $FILE"
+            # Check JSON syntax
+            if ! jq empty "$FILE" 2>/dev/null; then
+              echo "❌ Invalid JSON syntax in $FILE"
+              exit 1
+            fi
+            
+            # Validate against schema
+            if ! npx ajv -s schema.json -d "$FILE" --strict=false; then
+              echo "❌ $FILE does not match the required schema"
+              exit 1
+            else
+              echo "✅ $FILE is valid"
+            fi
+          done
+          
+          echo "All JSON files are valid! 🎉"
