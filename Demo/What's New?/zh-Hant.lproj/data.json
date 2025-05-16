@@ -153,5 +153,126 @@
                 "body": "遵循包版本。"
             }
         ]
+    },
+    {
+        "version": "1.5",
+        "new": [
+            {
+                "icon": "hammer",
+                "title": "Layout",
+                "subtitle": "Fixed",
+                "body": "on iOS Landscape."
+            },
+            {
+                "icon": "macpro.gen3.server",
+                "title": "Serverless",
+                "subtitle": "Design",
+                "body": "Free and open source! Created by Ming with ❤️‍🔥"
+            },
+            {
+                "icon": "arrow.triangle.pull",
+                "title": "Contribute",
+                "subtitle": "Together",
+                "body": "Pull requests and make it better for everyone!"
+            }
+        ]
+    },
+    {
+        "version": "1.4",
+        "new": [
+            {
+                "icon": "hammer",
+                "title": "Crash",
+                "subtitle": "Fixed",
+                "body": "on macOS."
+            },
+            {
+                "icon": "macpro.gen3.server",
+                "title": "Serverless",
+                "subtitle": "Design",
+                "body": "Free and open source! Created by Ming with ❤️‍🔥"
+            },
+            {
+                "icon": "arrow.triangle.pull",
+                "title": "Contribute",
+                "subtitle": "Together",
+                "body": "Pull requests and make it better for everyone!"
+            }
+        ]
+    },
+    {
+        "version": "1.3",
+        "new": [
+            {
+                "icon": "bell.badge",
+                "title": "Remote Drop",
+                "subtitle": "Supported",
+                "body": "Instead of full page sheet, you can use a small drop too!"
+            },
+            {
+                "icon": "macpro.gen3.server",
+                "title": "Serverless",
+                "subtitle": "Design",
+                "body": "Free and open source! Created by Ming with ❤️‍🔥"
+            },
+            {
+                "icon": "arrow.triangle.pull",
+                "title": "Contribute",
+                "subtitle": "Together",
+                "body": "Pull requests and make it better for everyone!"
+            }
+        ]
+    },
+    {
+        "version": "1.2",
+        "new": [
+            {
+                "icon": "square.and.arrow.down.fill",
+                "title": "Remote File",
+                "subtitle": "Supported",
+                "body": "Direct load via remote storage. Easy!"
+            },
+            {
+                "icon": "macpro.gen3.server",
+                "title": "Serverless",
+                "subtitle": "Design",
+                "body": "Free and open source! Created by Ming with ❤️‍🔥"
+            },
+            {
+                "icon": "arrow.triangle.pull",
+                "title": "Contribute",
+                "subtitle": "Together",
+                "body": "Pull requests and make it better for everyone!"
+            }
+        ]
+    },
+    {
+        "version": "1.1",
+        "new": [
+            {
+                "icon": "hammer.fill",
+                "title": "Bug fixes",
+                "subtitle": "Broken UI",
+                "body": "Available for iOS 16, iPadOS 16, macOS 13"
+            },
+            {
+                "icon": "square.and.arrow.down.fill",
+                "title": "Local File",
+                "subtitle": "Supported",
+                "body": "Direct load via local storage. Super fast!"
+            },
+            {
+                "icon": "macpro.gen3.server",
+                "title": "Serverless",
+                "subtitle": "Design",
+                "body": "Free and open source! Created by Ming with ❤️‍🔥"
+            },
+            {
+                "icon": "arrow.triangle.pull",
+                "title": "Contribute",
+                "subtitle": "Together",
+                "body": "Pull requests and make it better for everyone!"
+            }
+        ]
     }
 ]
