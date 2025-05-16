@@ -66,7 +66,8 @@ jobs:
       - name: Find and validate data.json files
         run: |
           echo "Validating JSON files..."
-          for FILE in $(find Demo -name "data.json"); do
+          # Use -print0 and read -d '' to handle filenames with spaces properly
+          find Demo -name "data.json" -print0 | while IFS= read -r -d '' FILE; do
             echo "Checking $FILE"
             # Check JSON syntax
             if ! jq empty "$FILE" 2>/dev/null; then
