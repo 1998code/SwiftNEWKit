@@ -130,3 +130,114 @@ jobs:
           fi
           
           echo "All JSON files are valid! 🎉"
+
+  check-localization-completeness:
+    runs-on: ubuntu-latest
+    needs: validate-json
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Find JSON files
+        id: find-json
+        run: |
+          # Create a directory to store extracted language files
+          mkdir -p extracted_langs
+          
+          # Find the base (en) language JSON file
+          BASE_FILE=$(find Demo -path "*/en.lproj/data.json" -print -quit)
+          if [ ! -f "$BASE_FILE" ]; then
+            echo "❌ Base language file (en.lproj/data.json) not found!"
+            exit 1
+          fi
+          
+          # Find all localized JSON files
+          find Demo -name "data.json" | grep -v "$BASE_FILE" > localized_files.txt
+          
+          echo "Base file: $BASE_FILE"
+          echo "Found $(wc -l < localized_files.txt) localized files"
+      
+      - name: Check for missing versions
+        run: |
+          BASE_FILE=$(find Demo -path "*/en.lproj/data.json" -print -quit)
+          
+          # Extract version numbers from base file
+          jq -r '.[].version' "$BASE_FILE" | sort -V > base_versions.txt
+          
+          # Create a report file
+          touch localization_report.md
+          echo "# Localization Completeness Report" >> localization_report.md
+          echo "Generated on $(date)" >> localization_report.md
+          echo "" >> localization_report.md
+          
+          # Check each localized file
+          while read -r LOC_FILE; do
+            LANG_DIR=$(dirname "$LOC_FILE")
+            LANG=$(basename "$LANG_DIR" | sed 's/\.lproj//')
+            
+            echo "## Checking $LANG" >> localization_report.md
+            
+            # Extract version numbers from localized file
+            jq -r '.[].version' "$LOC_FILE" | sort -V > "${LANG}_versions.txt"
+            
+            # Find missing versions
+            MISSING_VERSIONS=$(comm -23 base_versions.txt "${LANG}_versions.txt")
+            
+            if [ -n "$MISSING_VERSIONS" ]; then
+              echo "❌ $LANG is missing versions: $MISSING_VERSIONS"
+              echo "### Missing versions:" >> localization_report.md
+              echo '```' >> localization_report.md
+              echo "$MISSING_VERSIONS" >> localization_report.md
+              echo '```' >> localization_report.md
+              echo "" >> localization_report.md
+              EXIT_CODE=1
+            else
+              echo "✅ $LANG has all versions from base language"
+              echo "✅ All versions present" >> localization_report.md
+              echo "" >> localization_report.md
+            fi
+            
+            # Check content for each version
+            echo "### Content comparison:" >> localization_report.md
+            
+            while read -r VERSION; do
+              # Extract base data for this version
+              jq -r --arg v "$VERSION" '.[] | select(.version == $v)' "$BASE_FILE" > "base_${VERSION}.json"
+              jq -r --arg v "$VERSION" '.[] | select(.version == $v)' "$LOC_FILE" > "${LANG}_${VERSION}.json"
+              
+              if [ -s "${LANG}_${VERSION}.json" ]; then
+                # Count items in the "new" array for base and localized
+                BASE_ITEMS=$(jq -r '.new | length' "base_${VERSION}.json")
+                LOC_ITEMS=$(jq -r '.new | length' "${LANG}_${VERSION}.json")
+                
+                if [ "$BASE_ITEMS" -ne "$LOC_ITEMS" ]; then
+                  echo "❌ $LANG version $VERSION has $LOC_ITEMS items (base has $BASE_ITEMS)"
+                  echo "- Version $VERSION: $LOC_ITEMS/$BASE_ITEMS items ❌" >> localization_report.md
+                  EXIT_CODE=1
+                else
+                  echo "✅ $LANG version $VERSION has all $BASE_ITEMS items"
+                  echo "- Version $VERSION: $LOC_ITEMS/$BASE_ITEMS items ✅" >> localization_report.md
+                fi
+              fi
+            done < base_versions.txt
+            
+            echo "" >> localization_report.md
+          done < localized_files.txt
+          
+          cat localization_report.md
+          
+          # Exit with the accumulated status
+          if [ "$EXIT_CODE" -eq 1 ]; then
+            echo "❌ Localization check failed - some languages are missing versions or items"
+            exit 1
+          else
+            echo "✅ All languages have complete translations"
+          fi
+      
+      - name: Upload Localization Report
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: localization-report
+          path: localization_report.md
