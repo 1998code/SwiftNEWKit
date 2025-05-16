@@ -12,8 +12,8 @@ let package = Package(
     platforms: [
         .iOS(.v15),
         .watchOS(.v8),
-        .macOS(.v12),
-        .custom("xros", versionString: "1.0")
+        .macOS(.v14),
+        .visionOS(.v1)
     ],
     products: [
         .library(
@@ -22,14 +22,16 @@ let package = Package(
     ],
     dependencies: [
         .package(name: "SwiftVB", url: "https://github.com/1998code/SwiftVBKit.git", .upToNextMinor(from: "1.4.0")),
-        .package(name: "Drops", url: "https://github.com/omaralbeik/Drops.git", .upToNextMinor(from: "1.7.0"))
+        .package(name: "Drops", url: "https://github.com/omaralbeik/Drops.git", .upToNextMinor(from: "1.7.0")),
+        .package(name: "SwiftGlass", url: "https://github.com/1998code/SwiftGlass.git", .upToNextMinor(from: "1.8.0"))
     ],
     targets: [
         .target(
             name: "SwiftNEW",
             dependencies: [
                 "SwiftVB",
-                "Drops"
+                "Drops",
+                "SwiftGlass"
             ]
         )
     ]

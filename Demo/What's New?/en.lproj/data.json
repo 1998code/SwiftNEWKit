@@ -1,13 +1,13 @@
 [
     {
-        "version": "5.5",
-        "subVersion": "5.5.0",
+        "version": "6.0",
+        "subVersion": "6.0.0",
         "new": [
             {
-                "icon": "snowflake",
-                "title": "Snow",
+                "icon": "wineglass",
+                "title": "Glass",
                 "subtitle": "Effect",
-                "body": "More Special Animation Coming Soon!"
+                "body": "Coming Soon!"
             },
             {
                 "icon": "macpro.gen3.server",
@@ -20,6 +20,18 @@
                 "title": "Contribute",
                 "subtitle": "Together",
                 "body": "Pull requests and make it better for everyone! 🎉"
+            }
+        ]
+    },
+    {
+        "version": "5.5",
+        "subVersion": "5.5.0",
+        "new": [
+            {
+                "icon": "snowflake",
+                "title": "Snow",
+                "subtitle": "Effect",
+                "body": "More Special Animation Coming Soon!"
             }
         ]
     },

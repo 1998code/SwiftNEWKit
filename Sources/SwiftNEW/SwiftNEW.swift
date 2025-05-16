@@ -4,6 +4,7 @@
 
 import SwiftUI
 import SwiftVB
+import SwiftGlass
 
 #if os(iOS)
 import Drops
@@ -107,7 +108,7 @@ public struct SwiftNEW: View {
             else if size == "normal" || size == "simple" {
                 Label(label, systemImage: labelImage)
                     .frame(width: 300, height: 50)
-                    #if os(iOS) && !os(xrOS)
+                    #if os(iOS) && !os(visionOS)
                     .foregroundColor(labelColor)
                     .background(color)
                     .cornerRadius(15)
@@ -115,6 +116,7 @@ public struct SwiftNEW: View {
             }
         }
         .opacity(size == "invisible" ? 0 : 100)
+        .glass(shadowColor: color)
         .sheet(isPresented: $show) {
             ZStack {
                 if mesh {
@@ -132,7 +134,7 @@ public struct SwiftNEW: View {
                             sheetHistory
                         }
                     }
-                    #if os(xrOS)
+                    #if os(visionOS)
                     .padding()
                     #endif
             }
@@ -167,7 +169,7 @@ public struct SwiftNEW: View {
                                             color
                                             Image(systemName: new.icon)
                                                 .foregroundColor(.white)
-                                        }
+                                        }.glass(radius: 15, shadowColor: color)
                                         .frame(width: 50, height:50)
                                         .cornerRadius(15)
                                         .padding(.trailing)
@@ -186,7 +188,7 @@ public struct SwiftNEW: View {
                                             color
                                             Image(systemName: new.icon)
                                                 .foregroundColor(.white)
-                                        }
+                                        }.glass(radius: 15, shadowColor: color)
                                         .frame(width: 50, height:50)
                                         .cornerRadius(15)
                                         .padding(.trailing)
@@ -197,15 +199,16 @@ public struct SwiftNEW: View {
                             }
                         }
                     }
-                    if history {
-                        showHistoryButton
-                    }
                 }.frame(width: 300)
-                // .frame(maxHeight: 450)
                 .frame(maxHeight: UIScreen.main.bounds.height * 0.5)
             }
             
             Spacer()
+
+            if history {
+                showHistoryButton
+                    .padding(.bottom)
+            }
             
             closeCurrentButton
                 .padding(.bottom)
@@ -240,7 +243,7 @@ public struct SwiftNEW: View {
             }
         }
     }
-    #elseif os(macOS) || os(xrOS)
+    #elseif os(macOS) || os(visionOS)
     public var headings: some View {
         VStack {
             Text(String(localized: "What's New in", bundle: .module))
@@ -265,11 +268,12 @@ public struct SwiftNEW: View {
                 }
             }.font(.caption)
         }
-        #if !os(xrOS)
+        #if !os(visionOS)
         .buttonStyle(.bordered)
         .buttonBorderShape(.capsule)
         .tint(.secondary)
         #endif
+        .glass(color: .secondary, shadowColor: color)
     }
     public var closeCurrentButton: some View {
         Button(action: { show = false }) {
@@ -290,12 +294,12 @@ public struct SwiftNEW: View {
             #elseif os(macOS)
             .frame(width: 200, height: 25)
             #endif
-            #if os(iOS) && !os(xrOS)
+            #if os(iOS) && !os(visionOS)
             .foregroundColor(.white)
             .background(color)
             .cornerRadius(15)
             #endif
-        }
+        }.glass(shadowColor: color)
     }
     
     // MARK: - History List View
@@ -313,9 +317,11 @@ public struct SwiftNEW: View {
                     ZStack {
                         color.opacity(0.25)
                         Text(item.version).bold().font(.title2).foregroundColor(color)
-                    }.frame(width: 75, height: 30)
+                    }.glass(radius: 15, shadowColor: color)
+                    .frame(width: 75, height: 30)
                     .cornerRadius(15)
                     .padding(.bottom)
+                    
                     ForEach(item.new, id: \.self) { new in
                         HStack {
                             if align == .leading || align == .center {
@@ -323,7 +329,7 @@ public struct SwiftNEW: View {
                                     color
                                     Image(systemName: new.icon)
                                         .foregroundColor(.white)
-                                }
+                                }.glass(radius: 15, shadowColor: color)
                                 .frame(width: 50, height:50)
                                 .cornerRadius(15)
                                 .padding(.trailing)
@@ -390,7 +396,7 @@ public struct SwiftNEW: View {
             .background(color)
             .cornerRadius(15)
             #endif
-        }
+        }.glass(shadowColor: color)
     }
 
     // MARK: - Functions
