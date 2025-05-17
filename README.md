@@ -241,5 +241,5 @@ Please feel free to open a pull request and add new language(s) or fix any typos
 
 ## Supported By
 <a href="https://m.do.co/c/ce873177d9ab">
-    <img src="https://opensource.nyc3.cdn.digitaloceanspaces.com/attribution/assets/SVG/DO_Logo_horizontal_blue.svg" width="201px">
+    <img src="https://opensource.nyc3.cdn.digitaloceanspaces.com/attribution/assets/SVG/DO_Logo_horizontal_blue.svg" width="201px" alt="Digital Ocean Logo">
 </a>

@@ -240,5 +240,5 @@ MIT。 詳情請閱讀 LICENSE 文件。
 
 ## 支持
 <a href="https://m.do.co/c/ce873177d9ab">
-    <img src="https://opensource.nyc3.cdn.digitaloceanspaces.com/attribution/assets/SVG/DO_Logo_horizontal_blue.svg" width="201px">
+    <img src="https://opensource.nyc3.cdn.digitaloceanspaces.com/attribution/assets/SVG/DO_Logo_horizontal_blue.svg" width="201px" alt="Digital Ocean 標誌">
 </a>
