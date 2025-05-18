@@ -45,10 +45,11 @@ Path: `./Demo` (Xcode Project)
 ### Local
 Tested on | Latest | Compatible
 --------- | ------ | ----------
-iOS       | 18.4   | > 14
-iPadOS    | 18.2   | > 14
-macOS     | 15.2   | > 11
+iOS       | 18.5   | > 15.0
+iPadOS    | 18.5   | > 15.0
+macOS     | 15.5   | > 14.0
 visionOS  | 2      | > 1
+tvOS      | 18.5   | > 17.0
 ### Cloud
 Tested on | Compatible
 --------- | ----------
