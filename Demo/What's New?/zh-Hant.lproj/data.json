@@ -162,18 +162,6 @@
                 "title": "Layout",
                 "subtitle": "Fixed",
                 "body": "on iOS Landscape."
-            },
-            {
-                "icon": "macpro.gen3.server",
-                "title": "Serverless",
-                "subtitle": "Design",
-                "body": "Free and open source! Created by Ming with ❤️‍🔥"
-            },
-            {
-                "icon": "arrow.triangle.pull",
-                "title": "Contribute",
-                "subtitle": "Together",
-                "body": "Pull requests and make it better for everyone!"
             }
         ]
     },
