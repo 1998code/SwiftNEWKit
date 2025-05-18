@@ -235,7 +235,7 @@ MIT. Read the LICENSE file for details.
 
 This doc is also available in:
 
-English | [繁中](/README/README_tc.md) / [简中](/README/README_zh.md) / [粵語](/README/README_hc.md) | [日本語](/README/README_ja.md) | [한국어](/README/README_ko.md)
+English | [繁中](README/README_tc.md) / [简中](README/README_zh.md) / [粵語](README/README_hc.md) | [日本語](README/README_ja.md) | [한국어](README/README_ko.md)
 
 Please feel free to open a pull request and add new language(s) or fix any typos/mistakes.
 
