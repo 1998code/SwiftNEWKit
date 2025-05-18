@@ -243,8 +243,9 @@ public struct SwiftNEW: View {
                 }
                 #if !os(tvOS)
                 .frame(width: 300)
-                #endif
+                #elseif !os(macOS)
                 .frame(maxHeight: UIScreen.main.bounds.height * 0.5)
+                #endif
             }
             
             Spacer()
@@ -417,8 +418,9 @@ public struct SwiftNEW: View {
             }
             #if !os(tvOS)
             .frame(width: 300)
+            #elseif !os(macOS)
+            .frame(maxHeight: UIScreen.main.bounds.height * 0.5)
             #endif
-            .frame(maxHeight: UIScreen.main.bounds.height * 0.6)
             
             Spacer()
             
