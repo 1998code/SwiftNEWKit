@@ -8,9 +8,15 @@
 import SwiftUI
 import SwiftNEW
 
+struct ContentView : View {
+    @State var showNew: Bool = false
+    var body: some View {
+        SwiftNEW(show: $showNew)
+    }
+}
+
 #Preview("Default") {
-    @Previewable @State var showNew: Bool = false
-    SwiftNEW(show: $showNew)
+    ContentView()
 }
 
 // Mini (Toolbar / List only)
@@ -39,22 +45,3 @@ import SwiftNEW
     @Previewable @State var showNew: Bool = false
     SwiftNEW(show: $showNew, label: .constant("Notification"), labelImage: .constant("bell.badge"), data: .constant("https://testground-a937f-default-rtdb.firebaseio.com/.json?print=pretty"), showDrop: .constant(true))
 }
-
-//    All States
-//    @State var showNew: Bool = false
-//    Optional
-//    @State var align: HorizontalAlignment = .center
-//    @State var color: Color = .accentColor
-//    @State var size: String = "simple"
-//    #if os(iOS) || os(visionOS)
-//    @State var labelColor: Color = Color(UIColor.systemBackground)
-//    #elseif os(macOS)
-//    @State var labelColor: Color = Color(NSColor.windowBackgroundColor)
-//    #endif
-//    @State var label: String = "Show Release Note"
-//    @State var labelImage: String = "arrow.up.circle.fill"
-//    @State var history: Bool = true
-//    @State var data: String = "data"
-//    @State var showDrop: Bool = false
-//    @State var mesh: Bool = true
-//    @State var specialEffect: String = "Christmas"
