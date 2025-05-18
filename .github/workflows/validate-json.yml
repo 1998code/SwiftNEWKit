@@ -1,0 +1,243 @@
+name: Validate JSON Files
+
+on:
+  push:
+    paths:
+      - '**/*.json'
+  pull_request:
+    paths:
+      - '**/*.json'
+  workflow_dispatch:  # Allows manual triggering
+
+jobs:
+  validate-json:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          
+      - name: Install dependencies
+        run: npm install -g ajv-cli ajv-formats
+        
+      - name: Create JSON schema for validation
+        run: |
+          cat > schema.json << 'EOL'
+          {
+            "$schema": "http://json-schema.org/draft-07/schema#",
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["version", "new"],
+              "properties": {
+                "version": {
+                  "type": "string",
+                  "pattern": "^\\d+\\.\\d+$|^\\d+\\.\\d+\\.\\d+$"
+                },
+                "subVersion": {
+                  "type": "string",
+                  "pattern": "^\\d+\\.\\d+\\.\\d+$"
+                },
+                "new": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "required": ["icon", "title", "subtitle", "body"],
+                    "properties": {
+                      "icon": { "type": "string" },
+                      "title": { "type": "string" },
+                      "subtitle": { "type": "string" },
+                      "body": { "type": "string" }
+                    }
+                  },
+                  "minItems": 1
+                }
+              }
+            },
+            "minItems": 1
+          }
+          EOL
+      
+      - name: Scan for JSON files
+        id: scan
+        run: |
+          echo "Scanning for JSON files..."
+          # Create a temporary file to store the list of JSON files
+          touch json_files.txt
+          
+          # Find all data.json files and group them by language
+          find Demo -name "data.json" -print0 | while IFS= read -r -d '' FILE; do
+            # Extract the language from the directory path
+            LANG_DIR=$(dirname "$FILE")
+            LANG=$(basename "$LANG_DIR")
+            echo "$LANG:$FILE" >> json_files.txt
+          done
+          
+          echo "Found the following JSON files for validation:"
+          cat json_files.txt
+          
+          echo "Scan completed."
+      
+      - name: Validate JSON syntax per language
+        run: |
+          echo "Validating JSON syntax for each language..."
+          ERROR=0
+          
+          # Process each file by language
+          while IFS=':' read -r LANG_DIR FILE || [ -n "$FILE" ]; do
+            echo "Checking syntax for language: $LANG_DIR - $FILE"
+            
+            # Check JSON syntax
+            if ! jq empty "$FILE" 2>/dev/null; then
+              echo "❌ Invalid JSON syntax in $LANG_DIR ($FILE)"
+              ERROR=1
+            else
+              echo "✅ JSON syntax is valid for $LANG_DIR"
+            fi
+          done < json_files.txt
+          
+          if [ $ERROR -ne 0 ]; then
+            echo "JSON syntax validation failed"
+            exit 1
+          fi
+      
+      - name: Validate schema per language
+        run: |
+          echo "Validating JSON schema for each language..."
+          ERROR=0
+          
+          # Process each file by language
+          while IFS=':' read -r LANG_DIR FILE || [ -n "$FILE" ]; do
+            echo "Validating schema for language: $LANG_DIR - $FILE"
+            
+            # Validate against schema
+            if ! npx ajv -s schema.json -d "$FILE" --strict=false; then
+              echo "❌ $LANG_DIR ($FILE) does not match the required schema"
+              ERROR=1
+            else
+              echo "✅ Schema is valid for $LANG_DIR"
+            fi
+          done < json_files.txt
+          
+          if [ $ERROR -ne 0 ]; then
+            echo "JSON schema validation failed"
+            exit 1
+          fi
+          
+          echo "All JSON files are valid! 🎉"
+
+  check-localization-completeness:
+    runs-on: ubuntu-latest
+    needs: validate-json
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Find JSON files
+        id: find-json
+        run: |
+          # Create a directory to store extracted language files
+          mkdir -p extracted_langs
+          
+          # Find the base (en) language JSON file
+          BASE_FILE=$(find Demo -path "*/en.lproj/data.json" -print -quit)
+          if [ ! -f "$BASE_FILE" ]; then
+            echo "❌ Base language file (en.lproj/data.json) not found!"
+            exit 1
+          fi
+          
+          # Find all localized JSON files
+          find Demo -name "data.json" | grep -v "$BASE_FILE" > localized_files.txt
+          
+          echo "Base file: $BASE_FILE"
+          echo "Found $(wc -l < localized_files.txt) localized files"
+      
+      - name: Check for missing versions
+        run: |
+          BASE_FILE=$(find Demo -path "*/en.lproj/data.json" -print -quit)
+          
+          # Extract version numbers from base file
+          jq -r '.[].version' "$BASE_FILE" | sort -V > base_versions.txt
+          
+          # Create a report file
+          touch localization_report.md
+          echo "# Localization Completeness Report" >> localization_report.md
+          echo "Generated on $(date)" >> localization_report.md
+          echo "" >> localization_report.md
+          
+          # Check each localized file
+          while read -r LOC_FILE; do
+            LANG_DIR=$(dirname "$LOC_FILE")
+            LANG=$(basename "$LANG_DIR" | sed 's/\.lproj//')
+            
+            echo "## Checking $LANG" >> localization_report.md
+            
+            # Extract version numbers from localized file
+            jq -r '.[].version' "$LOC_FILE" | sort -V > "${LANG}_versions.txt"
+            
+            # Find missing versions
+            MISSING_VERSIONS=$(comm -23 base_versions.txt "${LANG}_versions.txt")
+            
+            if [ -n "$MISSING_VERSIONS" ]; then
+              echo "❌ $LANG is missing versions: $MISSING_VERSIONS"
+              echo "### Missing versions:" >> localization_report.md
+              echo '```' >> localization_report.md
+              echo "$MISSING_VERSIONS" >> localization_report.md
+              echo '```' >> localization_report.md
+              echo "" >> localization_report.md
+              EXIT_CODE=1
+            else
+              echo "✅ $LANG has all versions from base language"
+              echo "✅ All versions present" >> localization_report.md
+              echo "" >> localization_report.md
+            fi
+            
+            # Check content for each version
+            echo "### Content comparison:" >> localization_report.md
+            
+            while read -r VERSION; do
+              # Extract base data for this version
+              jq -r --arg v "$VERSION" '.[] | select(.version == $v)' "$BASE_FILE" > "base_${VERSION}.json"
+              jq -r --arg v "$VERSION" '.[] | select(.version == $v)' "$LOC_FILE" > "${LANG}_${VERSION}.json"
+              
+              if [ -s "${LANG}_${VERSION}.json" ]; then
+                # Count items in the "new" array for base and localized
+                BASE_ITEMS=$(jq -r '.new | length' "base_${VERSION}.json")
+                LOC_ITEMS=$(jq -r '.new | length' "${LANG}_${VERSION}.json")
+                
+                if [ "$BASE_ITEMS" -ne "$LOC_ITEMS" ]; then
+                  echo "❌ $LANG version $VERSION has $LOC_ITEMS items (base has $BASE_ITEMS)"
+                  echo "- Version $VERSION: $LOC_ITEMS/$BASE_ITEMS items ❌" >> localization_report.md
+                  EXIT_CODE=1
+                else
+                  echo "✅ $LANG version $VERSION has all $BASE_ITEMS items"
+                  echo "- Version $VERSION: $LOC_ITEMS/$BASE_ITEMS items ✅" >> localization_report.md
+                fi
+              fi
+            done < base_versions.txt
+            
+            echo "" >> localization_report.md
+          done < localized_files.txt
+          
+          cat localization_report.md
+          
+          # Exit with the accumulated status
+          if [ "$EXIT_CODE" -eq 1 ]; then
+            echo "❌ Localization check failed - some languages are missing versions or items"
+            exit 1
+          else
+            echo "✅ All languages have complete translations"
+          fi
+      
+      - name: Upload Localization Report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: localization-report
+          path: localization_report.md

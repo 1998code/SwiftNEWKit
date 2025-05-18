@@ -10,6 +10,15 @@
       }
     },
     {
+      "identity" : "swiftglass",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/1998code/SwiftGlass.git",
+      "state" : {
+        "revision" : "85ebac895eec35925c0821c93a83f22d796eeb8a",
+        "version" : "1.8.0"
+      }
+    },
+    {
       "identity" : "swiftvbkit",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/1998code/SwiftVBKit.git",

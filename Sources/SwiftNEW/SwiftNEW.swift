@@ -4,12 +4,13 @@
 
 import SwiftUI
 import SwiftVB
+import SwiftGlass
 
 #if os(iOS)
 import Drops
 #endif
  
-@available(iOS 15, watchOS 8.0, macOS 12.0, *)
+@available(iOS 15.0, watchOS 8.0, macOS 12.0, tvOS 17.0, *)
 public struct SwiftNEW: View {
     @AppStorage("version") var version = 1.0
     @AppStorage("build") var build: Double = 1
@@ -89,6 +90,35 @@ public struct SwiftNEW: View {
         _specialEffect = specialEffect ?? .constant("")
         compareVersion()
     }
+    #else
+    public init(
+        show: Binding<Bool>,
+        align: Binding<HorizontalAlignment>? = .constant(.center),
+        color: Binding<Color>? = .constant(Color.accentColor),
+        size: Binding<String>? = .constant("simple"),
+        labelColor: Binding<Color>? = .constant(Color.white),
+        label: Binding<String>? = .constant("Show Release Note"),
+        labelImage: Binding<String>? = .constant("arrow.up.circle.fill"),
+        history: Binding<Bool>? = .constant(true),
+        data: Binding<String>? = .constant("data"),
+        showDrop: Binding<Bool>? = .constant(false),
+        mesh: Binding<Bool>? = .constant(true),
+        specialEffect: Binding<String>? = .constant("")
+    ) {
+        _show = show
+        _align = align ?? .constant(.center)
+        _color = color ?? .constant(Color.accentColor)
+        _size = size ?? .constant("simple")
+        _labelColor = labelColor ?? .constant(Color.white)
+        _label = label ?? .constant("Show Release Note")
+        _labelImage = labelImage ?? .constant("arrow.up.circle.fill")
+        _history = history ?? .constant(true)
+        _data = data ?? .constant("data")
+        _showDrop = showDrop ?? .constant(false)
+        _mesh = mesh ?? .constant(true)
+        _specialEffect = specialEffect ?? .constant("")
+        compareVersion()
+    }
     #endif
     
     public var body: some View {
@@ -106,8 +136,12 @@ public struct SwiftNEW: View {
             }
             else if size == "normal" || size == "simple" {
                 Label(label, systemImage: labelImage)
+                    #if !os(tvOS)
                     .frame(width: 300, height: 50)
-                    #if os(iOS) && !os(xrOS)
+                    #else
+                    .frame(width: 400, height: 50)
+                    #endif
+                    #if os(iOS) && !os(visionOS)
                     .foregroundColor(labelColor)
                     .background(color)
                     .cornerRadius(15)
@@ -115,6 +149,7 @@ public struct SwiftNEW: View {
             }
         }
         .opacity(size == "invisible" ? 0 : 100)
+        .glass(shadowColor: color)
         .sheet(isPresented: $show) {
             ZStack {
                 if mesh {
@@ -125,14 +160,14 @@ public struct SwiftNEW: View {
                 }
                 sheetCurrent
                     .sheet(isPresented: $historySheet) {
-                        if #available(iOS 16.4, *) {
+                        if #available(iOS 16.4, tvOS 16.4, *) {
                             sheetHistory
                                 .presentationBackground(.thinMaterial)
                         } else {
                             sheetHistory
                         }
                     }
-                    #if os(xrOS)
+                    #if os(visionOS)
                     .padding()
                     #endif
             }
@@ -167,8 +202,12 @@ public struct SwiftNEW: View {
                                             color
                                             Image(systemName: new.icon)
                                                 .foregroundColor(.white)
-                                        }
-                                        .frame(width: 50, height:50)
+                                        }.glass(radius: 15, shadowColor: color)
+                                        #if !os(tvOS)
+                                        .frame(width: 50, height: 50)
+                                        #else
+                                        .frame(width: 100, height: 100)
+                                        #endif
                                         .cornerRadius(15)
                                         .padding(.trailing)
                                     } else {
@@ -186,8 +225,12 @@ public struct SwiftNEW: View {
                                             color
                                             Image(systemName: new.icon)
                                                 .foregroundColor(.white)
-                                        }
-                                        .frame(width: 50, height:50)
+                                        }.glass(radius: 15, shadowColor: color)
+                                        #if !os(tvOS)
+                                        .frame(width: 50, height: 50)
+                                        #else
+                                        .frame(width: 100, height: 100)
+                                        #endif
                                         .cornerRadius(15)
                                         .padding(.trailing)
                                     } else {
@@ -197,15 +240,20 @@ public struct SwiftNEW: View {
                             }
                         }
                     }
-                    if history {
-                        showHistoryButton
-                    }
-                }.frame(width: 300)
-                // .frame(maxHeight: 450)
+                }
+                #if !os(tvOS)
+                .frame(width: 300)
+                #elseif !os(macOS)
                 .frame(maxHeight: UIScreen.main.bounds.height * 0.5)
+                #endif
             }
             
             Spacer()
+
+            if history {
+                showHistoryButton
+                    .padding(.bottom)
+            }
             
             closeCurrentButton
                 .padding(.bottom)
@@ -213,10 +261,12 @@ public struct SwiftNEW: View {
         .onAppear {
             loadData()
         }
-#if os(macOS)
-        .padding(25)
+        #if os(macOS)
+        .padding()
         .frame(width: 600, height: 600)
-#endif
+        #elseif os(tvOS)
+        .frame(width: 600)
+        #endif
     }
     #if os(iOS)
     public var headings: some View {
@@ -240,7 +290,7 @@ public struct SwiftNEW: View {
             }
         }
     }
-    #elseif os(macOS) || os(xrOS)
+    #elseif os(macOS) || os(visionOS) || os(tvOS)
     public var headings: some View {
         VStack {
             Text(String(localized: "What's New in", bundle: .module))
@@ -265,11 +315,12 @@ public struct SwiftNEW: View {
                 }
             }.font(.caption)
         }
-        #if !os(xrOS)
+        #if !os(visionOS)
         .buttonStyle(.bordered)
         .buttonBorderShape(.capsule)
         .tint(.secondary)
         #endif
+        .glass(color: .secondary, shadowColor: color)
     }
     public var closeCurrentButton: some View {
         Button(action: { show = false }) {
@@ -290,12 +341,14 @@ public struct SwiftNEW: View {
             #elseif os(macOS)
             .frame(width: 200, height: 25)
             #endif
-            #if os(iOS) && !os(xrOS)
+            #if os(iOS) && !os(visionOS)
             .foregroundColor(.white)
             .background(color)
             .cornerRadius(15)
+            #elseif os(tvOS)
+            .tint(.white)
             #endif
-        }
+        }.glass(shadowColor: color)
     }
     
     // MARK: - History List View
@@ -313,9 +366,11 @@ public struct SwiftNEW: View {
                     ZStack {
                         color.opacity(0.25)
                         Text(item.version).bold().font(.title2).foregroundColor(color)
-                    }.frame(width: 75, height: 30)
+                    }.glass(radius: 15, shadowColor: color)
+                    .frame(width: 75, height: 30)
                     .cornerRadius(15)
                     .padding(.bottom)
+                    
                     ForEach(item.new, id: \.self) { new in
                         HStack {
                             if align == .leading || align == .center {
@@ -323,8 +378,12 @@ public struct SwiftNEW: View {
                                     color
                                     Image(systemName: new.icon)
                                         .foregroundColor(.white)
-                                }
-                                .frame(width: 50, height:50)
+                                }.glass(radius: 15, shadowColor: color)
+                                #if !os(tvOS)
+                                .frame(width: 50, height: 50)
+                                #else
+                                .frame(width: 100, height: 100)
+                                #endif
                                 .cornerRadius(15)
                                 .padding(.trailing)
                             } else {
@@ -343,7 +402,11 @@ public struct SwiftNEW: View {
                                     Image(systemName: new.icon)
                                         .foregroundColor(.white)
                                 }
-                                .frame(width: 50, height:50)
+                                #if !os(tvOS)
+                                .frame(width: 50, height: 50)
+                                #else
+                                .frame(width: 100, height: 100)
+                                #endif
                                 .cornerRadius(15)
                                 .padding(.leading)
                             } else {
@@ -352,9 +415,12 @@ public struct SwiftNEW: View {
                         }.padding(.bottom)
                     }
                 }
-            }.frame(width: 300)
-//            .frame(maxHeight: 450)
-            .frame(maxHeight: UIScreen.main.bounds.height * 0.6)
+            }
+            #if !os(tvOS)
+            .frame(width: 300)
+            #elseif !os(macOS)
+            .frame(maxHeight: UIScreen.main.bounds.height * 0.5)
+            #endif
             
             Spacer()
             
@@ -364,6 +430,8 @@ public struct SwiftNEW: View {
         #if os(macOS)
         .padding()
         .frame(width: 600, height: 600)
+        #elseif os(tvOS)
+        .frame(width: 600)
         #endif
     }
     public var closeHistoryButton: some View {
@@ -390,7 +458,7 @@ public struct SwiftNEW: View {
             .background(color)
             .cornerRadius(15)
             #endif
-        }
+        }.glass(shadowColor: color)
     }
 
     // MARK: - Functions

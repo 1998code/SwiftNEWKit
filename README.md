@@ -1,11 +1,11 @@
-# SwiftNEWKit
-<!--[![Swift](https://github.com/1998code/SwiftNEWKit/actions/workflows/swift.yml/badge.svg?branch=main)](https://github.com/1998code/SwiftNEWKit/actions/workflows/swift.yml)-->
-### An easy way for Developers to display "What's New" for the end users.
+<img width="150" alt="SNK" src="https://github.com/user-attachments/assets/1121ae03-cf96-455e-8119-596f6f5eb58e" />
 
-![CleanShot 2022-06-11 at 22 54 15@2x](https://user-images.githubusercontent.com/54872601/173192927-ca2a8bef-2114-44f8-8d4d-47baadb8b4a8.png)
+# SwiftNEW
 
-## Changelog
-| New (Core) Features                                             | Version   |
+![image](https://github.com/user-attachments/assets/0a5de416-f4cd-41b5-8060-f839f2e7286a)
+
+## Features
+| Description                                                     | Version   |
 |-----------------------------------------------------------------|-----------|
 | Mesh Gradient and Linear Gradient Background                    | 5.3.0     |
 | Apple visionOS & Vision Pro                                     | 4.1.0     |
@@ -15,12 +15,11 @@
 | Firebase Real-Time Database                                     | 3.0.0     |
 | Remote JSON File                                                | 3.0.0     |
 | Versioning + View History                                       | 2.0.0     |
-| Allows for ALL Use Cases including Commercial / Non-profit      | -         |
-| Simple Model, Easy to Modify and Reuse                          | -         |
-| Simple Binding and Passing Data                                 | -         |
-| Instant Loading from Local Storage                              | -         |
 
 ## Preview
+![CleanShot 2022-06-11 at 22 54 15@2x](https://user-images.githubusercontent.com/54872601/173192927-ca2a8bef-2114-44f8-8d4d-47baadb8b4a8.png)
+
+## Gallery
 ![IMG_3472](https://user-images.githubusercontent.com/54872601/173187065-14d78119-47e7-4dcb-a3e6-c7fee4f0c67f.PNG) | ![IMG_3471](https://user-images.githubusercontent.com/54872601/173187067-fe3b5cac-54b5-4482-b73f-42e6c500546f.PNG)
 ------------- | ------------
 Light Native | Dark Native
@@ -34,7 +33,7 @@ History View (2.0.0) | App Icon (3.9.6) [Vertical / Horizontal]
 Support VisionOS (4.1.0 or above) | Mesh Gradient Background (5.3.0 or above)
 
 ## Example
-Path: `./Demo` (Xcode Project with SwiftUI)
+Path: `./Demo` (Xcode Project)
 
 ## Version
 ![GitHub release (latest by date)](https://img.shields.io/github/v/release/1998code/SwiftNEWKit?color=g&label=STABLE&style=for-the-badge)
@@ -42,22 +41,19 @@ Path: `./Demo` (Xcode Project with SwiftUI)
 
 ![swiftui-128x128_2x](https://user-images.githubusercontent.com/54872601/173193069-2eb486b0-1347-4448-ac2b-235b8f2f1bb0.png)
 
-## Environment
-### Xcode Local
+## Tested Platforms and Environment
+### Local
 Tested on | Latest | Compatible
 --------- | ------ | ----------
 iOS       | 18.4   | > 14
 iPadOS    | 18.2   | > 14
 macOS     | 15.2   | > 11
 visionOS  | 2      | > 1
-### Xcode Cloud
+### Cloud
 Tested on | Compatible
 --------- | ----------
 Xcode     | > 13.4 (13F17a)
 macOS     | > 12.3.1 (21E258)
-
-## Get Started
-### Tutorial available on Medium: https://bit.ly/3NOvJB8 or below.
 
 ### Setup
 Steps | Description | Screenshot
@@ -70,7 +66,7 @@ Steps | Description | Screenshot
 5R | You can use remote JSON / firebase realtime database too. | Sample: https://testground-a937f-default-rtdb.firebaseio.com/0.json?print=pretty
 
 ### Major Usage
-1. Import SwiftNEWKit.
+1. Import Package.
 ```swift
 import SwiftNEW
 ```
@@ -222,28 +218,30 @@ Copy the JSON sample to `data.json` file (If you don't have it, create a new fil
 ]
 ```
 
-Translation (i18n) Sample Available in v```3.9.7``` or above
+## Contributing
 
-<img width="249" alt="CleanShot 2023-01-02 at 17 58 49@2x" src="https://user-images.githubusercontent.com/54872601/210216593-5b9aaf46-5684-48d2-994e-831e5d421f76.png">
+Contributions to SwiftNEW are welcome!
 
-## Developer Note
-- Please report bugs in the Issues section.
-- If you want to discuss future roadmap or contribution, please find on Discussions.
-
-## FAQ
-Q1. Why didn’t the sheet pop up, show loading, or display a blank screen?<br />
-A1. First, ensure that the latest version in JSON matches your app version. If you are using a local data.json file, check for any missing commas(,) or typos that could make the JSON invalid. 
-If you are using remote data (such as Firebase), confirm that the JSON structure is the same as the provided example.<br />
-Q2. How can I contribute to the project?<br />
-A2. Simply pull a request, and the admin will review your code. If everything is okay, your changes will be merged and reflected in the next minor version.<br />
-Q3. Can I use it in Educational (include Student's Homework, Class's demo) or NGO or Commerical Projects?<br />
-A3. YES. This project is under the license of MIT. Feel free to play it :)
+- To report bugs or request features, please open an issue on GitHub
+- When submitting a pull request, please follow the coding style of the project
 
 ## License
-MIT
+
+MIT. Read the LICENSE file for details.
+
+## Translation
+
+This doc is also available in:
+
+English | [繁中](README/README_tc.md) / [简中](README/README_zh.md) / [粵語](README/README_hc.md) | [日本語](README/README_ja.md) | [한국어](README/README_ko.md)
+
+Please feel free to open a pull request and add new language(s) or fix any typos/mistakes.
 
 ## Supported By
 <a href="https://m.do.co/c/ce873177d9ab">
-    <img src="https://opensource.nyc3.cdn.digitaloceanspaces.com/attribution/assets/SVG/DO_Logo_horizontal_blue.svg" width="201px">
+    <img src="https://opensource.nyc3.cdn.digitaloceanspaces.com/attribution/assets/SVG/DO_Logo_horizontal_blue.svg" width="201px" alt="Digital Ocean Logo">
 </a>
+<br/>
+<br/>
 
+[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/1998code/SwiftNEWKit)

@@ -1,4 +1,5 @@
 {
+  "originHash" : "d25ed17971fd47acbfa345e11d174aae77fb3ffb8daa99aecf174631bb2053b3",
   "pins" : [
     {
       "identity" : "drops",
@@ -7,6 +8,15 @@
       "state" : {
         "revision" : "a183ee6f79f21c940092a19c2cba756555422371",
         "version" : "1.7.0"
+      }
+    },
+    {
+      "identity" : "swiftglass",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/1998code/SwiftGlass.git",
+      "state" : {
+        "revision" : "85ebac895eec35925c0821c93a83f22d796eeb8a",
+        "version" : "1.8.0"
       }
     },
     {
@@ -19,5 +29,5 @@
       }
     }
   ],
-  "version" : 2
+  "version" : 3
 }
