@@ -185,18 +185,6 @@
                 "title": "Crash",
                 "subtitle": "Fixed",
                 "body": "on macOS."
-            },
-            {
-                "icon": "macpro.gen3.server",
-                "title": "Serverless",
-                "subtitle": "Design",
-                "body": "Free and open source! Created by Ming with ❤️‍🔥"
-            },
-            {
-                "icon": "arrow.triangle.pull",
-                "title": "Contribute",
-                "subtitle": "Together",
-                "body": "Pull requests and make it better for everyone!"
             }
         ]
     },
@@ -208,18 +196,6 @@
                 "title": "Remote Drop",
                 "subtitle": "Supported",
                 "body": "Instead of full page sheet, you can use a small drop too!"
-            },
-            {
-                "icon": "macpro.gen3.server",
-                "title": "Serverless",
-                "subtitle": "Design",
-                "body": "Free and open source! Created by Ming with ❤️‍🔥"
-            },
-            {
-                "icon": "arrow.triangle.pull",
-                "title": "Contribute",
-                "subtitle": "Together",
-                "body": "Pull requests and make it better for everyone!"
             }
         ]
     },
@@ -231,18 +207,6 @@
                 "title": "Remote File",
                 "subtitle": "Supported",
                 "body": "Direct load via remote storage. Easy!"
-            },
-            {
-                "icon": "macpro.gen3.server",
-                "title": "Serverless",
-                "subtitle": "Design",
-                "body": "Free and open source! Created by Ming with ❤️‍🔥"
-            },
-            {
-                "icon": "arrow.triangle.pull",
-                "title": "Contribute",
-                "subtitle": "Together",
-                "body": "Pull requests and make it better for everyone!"
             }
         ]
     },

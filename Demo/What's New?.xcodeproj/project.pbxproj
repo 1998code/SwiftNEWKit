@@ -17,6 +17,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3A1D311B2DDA0F8900A67C5E /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = ja; path = ja.lproj/data.json; sourceTree = "<group>"; };
+		3A1D311C2DDA0F9000A67C5E /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = ko; path = ko.lproj/data.json; sourceTree = "<group>"; };
 		3A2BBE7B2D18129000A7CAF9 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = "zh-Hans"; path = "zh-Hans.lproj/data.json"; sourceTree = "<group>"; };
 		3A46CBAC285444CC00BE79A3 /* What's New?.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "What's New?.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A46CBAF285444CC00BE79A3 /* What_s_New_App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = What_s_New_App.swift; sourceTree = "<group>"; };
@@ -136,6 +138,8 @@
 				Base,
 				"zh-Hant",
 				"zh-Hans",
+				ja,
+				ko,
 			);
 			mainGroup = 3A46CBA3285444CC00BE79A3;
 			packageReferences = (
@@ -182,6 +186,8 @@
 				3AE0026B2962DD540055979A /* en */,
 				3AE0026D2962DD810055979A /* zh-Hant */,
 				3A2BBE7B2D18129000A7CAF9 /* zh-Hans */,
+				3A1D311B2DDA0F8900A67C5E /* ja */,
+				3A1D311C2DDA0F9000A67C5E /* ko */,
 			);
 			name = data.json;
 			sourceTree = "<group>";

@@ -1,0 +1,230 @@
+[
+    {
+        "version": "6.0",
+        "subVersion": "6.0.0",
+        "new": [
+            {
+                "icon": "wineglass",
+                "title": "유리",
+                "subtitle": "효과",
+                "body": "곧 출시 예정!"
+            },
+            {
+                "icon": "macpro.gen3.server",
+                "title": "서버리스",
+                "subtitle": "디자인",
+                "body": "무료 오픈 소스! ❤️‍🔥"
+            },
+            {
+                "icon": "arrow.triangle.pull",
+                "title": "기여하기",
+                "subtitle": "함께",
+                "body": "풀 리퀘스트를 통해 모두를 위해 더 나아지게 만들어보세요! 🎉"
+            }
+        ]
+    },
+    {
+        "version": "5.5",
+        "subVersion": "5.5.0",
+        "new": [
+            {
+                "icon": "snowflake",
+                "title": "눈",
+                "subtitle": "효과",
+                "body": "더 많은 특별한 애니메이션이 곧 출시 예정!"
+            }
+        ]
+    },
+    {
+        "version": "5.4",
+        "subVersion": "5.4.0",
+        "new": [
+            {
+                "icon": "pencil.tip",
+                "title": "매치된",
+                "subtitle": "메쉬 배경 색상",
+                "body": "표준화된 디자인."
+            }
+        ]
+    },
+    {
+        "version": "5.3",
+        "subVersion": "5.3.0",
+        "new": [
+            {
+                "icon": "pencil.tip",
+                "title": "추가",
+                "subtitle": "메쉬 배경",
+                "body": "더 나은 스타일과 디자인."
+            }
+        ]
+    },
+    {
+        "version": "5.2",
+        "subVersion": "5.2.0",
+        "new": [
+            {
+                "icon": "hammer",
+                "title": "기본값",
+                "subtitle": "옵션",
+                "body": "더 적은 코드를 위한 새로운 옵셔널 바인딩."
+            }
+        ]
+    },
+    {
+        "version": "5.1",
+        "subVersion": "5.1.0",
+        "new": [
+            {
+                "icon": "character.book.closed",
+                "title": "업데이트",
+                "subtitle": "데모",
+                "body": "5.0 버전용."
+            }
+        ]
+    },
+    {
+        "version": "5.0",
+        "subVersion": "5.0.0",
+        "new": [
+            {
+                "icon": "character.book.closed",
+                "title": "지원",
+                "subtitle": "현지화",
+                "body": "Apple 문자열 카탈로그 기반."
+            },
+            {
+                "icon": "pip.remove",
+                "title": "지원 중단",
+                "subtitle": "지원",
+                "body": "iOS14, watchOS7, macOS11에 대한 지원 중단."
+            }
+        ]
+    },
+    {
+        "version": "4.2",
+        "subVersion": "4.2.0",
+        "new": [
+            {
+                "icon": "hammer",
+                "title": "사소한",
+                "subtitle": "업데이트",
+                "body": "사소한 버그 수정 및 UI 개선."
+            }
+        ]
+    },
+    {
+        "version": "4.1",
+        "subVersion": "4.1.0",
+        "new": [
+            {
+                "icon": "eye",
+                "title": "Vision Pro 지원",
+                "subtitle": "및 visionOS",
+                "body": "충돌로 인해 Drops 프레임워크가 일시적으로 비활성화되었습니다."
+            }
+        ]
+    },
+    {
+        "version": "4.0",
+        "subVersion": "4.0.0",
+        "new": [
+            {
+                "icon": "number",
+                "title": "향상된 호환성",
+                "subtitle": "버전 및 빌드",
+                "body": "이제 x.y.z 또는 x.y 형식을 사용할 수 있습니다."
+            }
+        ]
+    },
+    {
+        "version": "3.9",
+        "new": [
+            {
+                "icon": "app.fill",
+                "title": "앱 아이콘",
+                "subtitle": "지원됨",
+                "body": "iOS에서."
+            },
+            {
+                "icon": "app",
+                "title": "데모",
+                "subtitle": "더 좋아졌습니다",
+                "body": "패키지 버전을 따라갑니다."
+            }
+        ]
+    },
+    {
+        "version": "1.5",
+        "new": [
+            {
+                "icon": "hammer",
+                "title": "레이아웃",
+                "subtitle": "수정됨",
+                "body": "iOS 가로 모드에서."
+            }
+        ]
+    },
+    {
+        "version": "1.4",
+        "new": [
+            {
+                "icon": "hammer",
+                "title": "충돌",
+                "subtitle": "수정됨",
+                "body": "macOS에서."
+            }
+        ]
+    },
+    {
+        "version": "1.3",
+        "new": [
+            {
+                "icon": "bell.badge",
+                "title": "원격 드롭",
+                "subtitle": "지원됨",
+                "body": "전체 페이지 시트 대신 작은 드롭도 사용할 수 있습니다!"
+            }
+        ]
+    },
+    {
+        "version": "1.2",
+        "new": [
+            {
+                "icon": "square.and.arrow.down.fill",
+                "title": "원격 파일",
+                "subtitle": "지원됨",
+                "body": "원격 저장소를 통한 직접 로드. 간편합니다!"
+            }
+        ]
+    },
+    {
+        "version": "1.1",
+        "new": [
+            {
+                "icon": "hammer.fill",
+                "title": "버그 수정",
+                "subtitle": "UI 오류",
+                "body": "iOS 16, iPadOS 16, macOS 13에서 사용 가능"
+            },
+            {
+                "icon": "square.and.arrow.down.fill",
+                "title": "로컬 파일",
+                "subtitle": "지원됨",
+                "body": "로컬 저장소를 통한 직접 로드. 초고속!"
+            },
+            {
+                "icon": "macpro.gen3.server",
+                "title": "서버리스",
+                "subtitle": "디자인",
+                "body": "무료 오픈 소스! Ming이 ❤️‍🔥로 만들었습니다"
+            },
+            {
+                "icon": "arrow.triangle.pull",
+                "title": "기여하기",
+                "subtitle": "함께",
+                "body": "풀 리퀘스트를 통해 모두를 위해 더 나아지게 만들어보세요!"
+            }
+        ]
+    }
+]
