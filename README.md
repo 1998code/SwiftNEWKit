@@ -13,10 +13,6 @@
 | Firebase Real-Time Database                                     | 3.0.0     |
 | Remote JSON File                                                | 3.0.0     |
 | Versioning + View History                                       | 2.0.0     |
-| Allows for ALL Use Cases including Commercial / Non-profit      | -         |
-| Simple Model, Easy to Modify and Reuse                          | -         |
-| Simple Binding and Passing Data                                 | -         |
-| Instant Loading from Local Storage                              | -         |
 
 ## Preview
 ![CleanShot 2022-06-11 at 22 54 15@2x](https://user-images.githubusercontent.com/54872601/173192927-ca2a8bef-2114-44f8-8d4d-47baadb8b4a8.png)
