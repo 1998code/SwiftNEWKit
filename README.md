@@ -12,57 +12,249 @@
 
 ![image](https://github.com/user-attachments/assets/0a5de416-f4cd-41b5-8060-f839f2e7286a)
 
-## Features
-| Description                                                     | Version   |
-|-----------------------------------------------------------------|-----------|
-| Mesh Gradient and Linear Gradient Background                    | 5.3.0     |
-| Apple visionOS & Vision Pro                                     | 4.1.0     |
-| Auto trigger/pop-up .sheet when Version / Build changes         | 4.0.0     |
-| Version Number in x.y.z and/or x.y                              | 4.0.0     |
-| Remote Drop Notification                                        | 3.5.0     |
-| Firebase Real-Time Database                                     | 3.0.0     |
-| Remote JSON File                                                | 3.0.0     |
-| Versioning + View History                                       | 2.0.0     |
+A modern, SwiftUI-native "What's New" presentation framework for iOS, macOS, tvOS, and visionOS apps. Built with a modular architecture for easy customization and maintenance.
 
-## Preview
+## 📋 Table of Contents
+
+- [🎨 Preview & Gallery](#-preview--gallery)
+- [✨ Features](#-features)
+- [🎯 Quick Start](#-quick-start)
+- [⚙️ Configuration Parameters](#️-configuration-parameters)
+- [🔧 Data Configuration](#-data-configuration)
+- [🛠️ Platform Compatibility](#️-platform-compatibility)
+- [🔧 Troubleshooting](#-troubleshooting)
+- [📂 Project Structure](#-project-structure)
+- [Contributing](#contributing)
+
+## 🎨 Preview & Gallery
+
 ![CleanShot 2022-06-11 at 22 54 15@2x](https://user-images.githubusercontent.com/54872601/173192927-ca2a8bef-2114-44f8-8d4d-47baadb8b4a8.png)
 
-## Gallery
+### Light & Dark Mode
 ![IMG_3472](https://user-images.githubusercontent.com/54872601/173187065-14d78119-47e7-4dcb-a3e6-c7fee4f0c67f.PNG) | ![IMG_3471](https://user-images.githubusercontent.com/54872601/173187067-fe3b5cac-54b5-4482-b73f-42e6c500546f.PNG)
-------------- | ------------
+:---: | :---:
 Light Native | Dark Native
 
-![Simulator Screen Shot - iPhone 13 Pro Max](https://user-images.githubusercontent.com/54872601/178129999-ad63b0ce-d65e-4d86-9882-37a5090e92bc.png) | ![CleanShot 2022-12-11 at 12 46 30@2x](https://user-images.githubusercontent.com/54872601/206886933-bc4d0d33-e0fc-4013-9456-f19679b10f5b.png) ![CleanShot 2022-12-11 at 12 49 12@2x](https://user-images.githubusercontent.com/54872601/206887046-8ec82853-4e32-4a07-8b64-4cc984e7ec90.png)
-------------- | ------------
-History View (2.0.0) | App Icon (3.9.6) [Vertical / Horizontal]
+### Advanced Features
+![Simulator Screen Shot - iPhone 13 Pro Max](https://user-images.githubusercontent.com/54872601/178129999-ad63b0ce-d65e-4d86-9882-37a5090e92bc.png) | ![CleanShot 2022-12-11 at 12 46 30@2x](https://user-images.githubusercontent.com/54872601/206886933-bc4d0d33-e0fc-4013-9456-f19679b10f5b.png)
+:---: | :---:
+History View (2.0.0+) | App Icon Support (3.9.6+)
 
-![CleanShot 2023-06-22 at 14 24 07@2x](https://github.com/1998code/SwiftNEWKit/assets/54872601/12a8ab01-76e5-42a1-96b4-848ef5e5f36b) | <img alt="Screenshot 2024-07-01 at 10 18 33 PM" src="https://github.com/1998code/SwiftNEWKit/assets/54872601/a845c460-65d7-47a0-ae15-23897efd0508"> |
-------------- | ------------
-Support VisionOS (4.1.0 or above) | Mesh Gradient Background (5.3.0 or above)
+### Platform Support
+![CleanShot 2023-06-22 at 14 24 07@2x](https://github.com/1998code/SwiftNEWKit/assets/54872601/12a8ab01-76e5-42a1-96b4-848ef5e5f36b) | <img alt="Screenshot 2024-07-01 at 10 18 33 PM" src="https://github.com/1998code/SwiftNEWKit/assets/54872601/a845c460-65d7-47a0-ae15-23897efd0508">
+:---: | :---:
+VisionOS Support (4.1.0+) | Mesh Gradient Background (5.3.0+)
 
-## Example
-Path: `./Demo` (Xcode Project)
+## ✨ Features
 
-## Version
-![GitHub release (latest by date)](https://img.shields.io/github/v/release/1998code/SwiftNEWKit?color=g&label=STABLE&style=for-the-badge)
-![GitHub release (latest by date including pre-releases)](https://img.shields.io/github/v/release/1998code/SwiftNEWKit?color=green&include_prereleases&label=BETA&style=for-the-badge)
+| Feature | Version | Description |
+|---------|---------|-------------|
+| 🎨 **Mesh Gradient & Linear Gradient** | 5.3.0 | Beautiful gradient backgrounds |
+| 🥽 **Apple visionOS & Vision Pro** | 4.1.0 | Full visionOS support |
+| 🔄 **Auto-trigger on Version Change** | 4.0.0 | Automatically shows when app version or build changes |
+| 📊 **Flexible Version Numbers** | 4.0.0 | Supports x.y.z and x.y version formats |
+| 📱 **Remote Drop Notifications** | 3.5.0 | iOS notification-style alerts |
+| 🔥 **Firebase Real-Time Database** | 3.0.0 | Live content updates |
+| 🌐 **Remote JSON Support** | 3.0.0 | Load content from any URL |
+| 📚 **Version History** | 2.0.0 | View all previous releases |
 
-![swiftui-128x128_2x](https://user-images.githubusercontent.com/54872601/173193069-2eb486b0-1347-4448-ac2b-235b8f2f1bb0.png)
+## 🎯 Quick Start
 
-## Tested Platforms and Environment
-### Local
-Tested on | Latest | Compatible
---------- | ------ | ----------
-iOS       | 18.5   | > 15.0
-iPadOS    | 18.5   | > 15.0
-macOS     | 15.5   | > 14.0
-visionOS  | 2      | > 1
-tvOS      | 18.5   | > 17.0
-### Cloud
-Tested on | Compatible
---------- | ----------
-Xcode     | > 13.4 (13F17a)
-macOS     | > 12.3.1 (21E258)
+### 1. Installation
+
+#### Swift Package Manager
+```
+https://github.com/1998code/SwiftNEWKit
+```
+
+### 2. Basic Usage
+
+```swift
+import SwiftNEW
+
+struct ContentView: View {
+    @State private var showNew = false
+    
+    var body: some View {
+        VStack {
+            // Your app content
+            Text("My App")
+            
+            Button("Show What's New") {
+                showNew = true
+            }
+        }
+        .sheet(isPresented: $showNew) {
+            SwiftNEW(show: $showNew)
+        }
+    }
+}
+```
+
+### 3. Advanced Configuration
+
+```swift
+struct ContentView: View {
+    @State private var showNew = false
+    @State private var color: Color = .blue
+    @State private var align: HorizontalAlignment = .center
+    
+    var body: some View {
+        SwiftNEW(
+            show: $showNew,
+            align: $align,
+            color: $color,
+            size: .constant("normal"),
+            label: .constant("What's New"),
+            history: .constant(true),
+            data: .constant("data"), // or remote URL
+            mesh: .constant(true)
+        )
+    }
+}
+```
+
+## 🎨 Preview & Gallery
+
+![CleanShot 2022-06-11 at 22 54 15@2x](https://user-images.githubusercontent.com/54872601/173192927-ca2a8bef-2114-44f8-8d4d-47baadb8b4a8.png)
+
+### Light & Dark Mode
+![IMG_3472](https://user-images.githubusercontent.com/54872601/173187065-14d78119-47e7-4dcb-a3e6-c7fee4f0c67f.PNG) | ![IMG_3471](https://user-images.githubusercontent.com/54872601/173187067-fe3b5cac-54b5-4482-b73f-42e6c500546f.PNG)
+:---: | :---:
+Light Native | Dark Native
+
+### Advanced Features
+![Simulator Screen Shot - iPhone 13 Pro Max](https://user-images.githubusercontent.com/54872601/178129999-ad63b0ce-d65e-4d86-9882-37a5090e92bc.png) | ![CleanShot 2022-12-11 at 12 46 30@2x](https://user-images.githubusercontent.com/54872601/206886933-bc4d0d33-e0fc-4013-9456-f19679b10f5b.png)
+:---: | :---:
+History View (2.0.0+) | App Icon Support (3.9.6+)
+
+### Platform Support
+![CleanShot 2023-06-22 at 14 24 07@2x](https://github.com/1998code/SwiftNEWKit/assets/54872601/12a8ab01-76e5-42a1-96b4-848ef5e5f36b) | <img alt="Screenshot 2024-07-01 at 10 18 33 PM" src="https://github.com/1998code/SwiftNEWKit/assets/54872601/a845c460-65d7-47a0-ae15-23897efd0508">
+:---: | :---:
+VisionOS Support (4.1.0+) | Mesh Gradient Background (5.3.0+)
+
+## ⚙️ Configuration Parameters
+
+| Parameter | Type | Default | Options | Description |
+|-----------|------|---------|---------|-------------|
+| `show` * | `Binding<Bool>` | `false` | `true`, `false` | Controls sheet presentation |
+| `align` | `Binding<HorizontalAlignment>` | `.center` | `.leading`, `.center`, `.trailing` | Content alignment |
+| `color` | `Binding<Color>` | `.accentColor` | Any Color | Primary theme color |
+| `size` | `Binding<String>` | `"simple"` | `"invisible"`, `"mini"`, `"simple"`, `"normal"` | Button size variant |
+| `labelColor` | `Binding<Color>` | System Background | Any Color | Button text color |
+| `label` | `Binding<String>` | `"Show Release Note"` | Any String | Button display text |
+| `labelImage` | `Binding<String>` | `"arrow.up.circle.fill"` | Any SF Symbol | Button icon |
+| `history` | `Binding<Bool>` | `true` | `true`, `false` | Enable history view |
+| `data` | `Binding<String>` | `"data"` | Local filename or URL | Data source location |
+| `showDrop` | `Binding<Bool>` | `false` | `true`, `false` | iOS drop notification style |
+| `mesh` | `Binding<Bool>` | `true` | `true`, `false` | Enable gradient background |
+| `specialEffect` | `Binding<String>` | `""` | `"Christmas"`, `""` | Special animation effects |
+
+*Required parameter
+
+### Parameter Usage Examples
+
+```swift
+// Minimal configuration
+SwiftNEW(show: $showNew)
+
+// Custom styling
+SwiftNEW(
+    show: $showNew,
+    color: .constant(.blue),
+    mesh: .constant(false)
+)
+
+// Remote data source
+SwiftNEW(
+    show: $showNew,
+    data: .constant("https://api.example.com/releases.json")
+)
+
+// Complete customization
+SwiftNEW(
+    show: $showNew,
+    align: .constant(.leading),
+    color: .constant(.purple),
+    size: .constant("normal"),
+    label: .constant("See Updates"),
+    labelImage: .constant("star.fill"),
+    history: .constant(true),
+    data: .constant("releases"),
+    mesh: .constant(true),
+    specialEffect: .constant("Christmas")
+)
+```
+
+## 🔧 Data Configuration
+
+### Local JSON File
+Create a `data.json` file in your app bundle:
+
+```json
+[
+  {
+    "version": "1.2",
+    "new": [
+      {
+        "icon": "hammer.fill",
+        "title": "Bug Fixes",
+        "subtitle": "Stability Improvements",
+        "body": "Fixed crashes and improved performance across all platforms"
+      },
+      {
+        "icon": "sparkles",
+        "title": "New Features",
+        "subtitle": "Enhanced Experience",
+        "body": "Added new animations and improved user interface"
+      }
+    ]
+  }
+]
+```
+
+### Remote JSON/Firebase
+```swift
+SwiftNEW(
+    show: $showNew,
+    data: .constant("https://your-server.com/releases.json")
+)
+```
+
+### Firebase Realtime Database
+```swift
+SwiftNEW(
+    show: $showNew,
+    data: .constant("https://your-project.firebaseio.com/releases.json")
+)
+```
+
+## 🛠️ Platform Compatibility
+
+| Platform | Latest Tested | Minimum Required | Key Features |
+|----------|---------------|------------------|--------------|
+| **iOS** | 18.5 | 15.0+ | Full feature support, drop notifications |
+| **iPadOS** | 18.5 | 15.0+ | Optimized layouts, full feature support |
+| **macOS** | 15.5 | 14.0+ | Native macOS styling, full feature support |
+| **visionOS** | 2.0 | 1.0+ | Spatial computing support, immersive UI |
+| **tvOS** | 18.5 | 17.0+ | Remote-friendly navigation, adapted layouts |
+
+### Development Environment
+| Tool | Version | Notes |
+|------|---------|-------|
+| **Xcode** | 13.4+ (13F17a) | Minimum required for package resolution |
+| **macOS** | 12.3.1+ (21E258) | Host development environment |
+| **Swift** | 5.9+ / 6.1+ | Language compatibility |
+
+### Feature Availability by Platform
+| Feature | iOS | iPadOS | macOS | visionOS | tvOS |
+|---------|-----|--------|--------|----------|------|
+| Basic What's New | ✅ | ✅ | ✅ | ✅ | ✅ |
+| Mesh Gradients | ✅ | ✅ | ✅ | ✅ | ✅ |
+| Drop Notifications | ✅ | ✅ | ❌ | ❌ | ❌ |
+| History View | ✅ | ✅ | ✅ | ✅ | ✅ |
+| Remote JSON | ✅ | ✅ | ✅ | ✅ | ✅ |
+| Special Effects | ✅ | ✅ | ✅ | ✅ | ✅ |
 
 ### Setup
 Steps | Description | Screenshot
@@ -226,6 +418,72 @@ Copy the JSON sample to `data.json` file (If you don't have it, create a new fil
   }
 ]
 ```
+
+## 🔧 Troubleshooting
+
+### Common Issues
+
+#### SwiftNEW doesn't appear
+- Ensure the `show` binding is set to `true`
+- Check that your data source (JSON file or URL) is accessible
+- Verify the JSON format matches the expected structure
+
+#### Data not loading
+- For local files: Ensure `data.json` is added to your app bundle
+- For remote URLs: Check network connectivity and URL validity
+- Verify JSON structure matches the [sample format](#sample)
+
+#### Build errors after installation
+- Clean build folder (⌘+Shift+K)
+- Update to latest Xcode version
+- Ensure minimum platform requirements are met
+
+#### Performance issues
+- For large datasets, consider pagination
+- Optimize image assets in your JSON data
+- Use remote loading for better memory management
+
+### Getting Help
+
+- Check [GitHub Issues](https://github.com/1998code/SwiftNEWKit/issues) for known problems
+- Search [GitHub Discussions](https://github.com/1998code/SwiftNEWKit/discussions) for community solutions
+- Create a new issue with detailed information about your problem
+
+## 📂 Project Structure
+
+```
+Sources/SwiftNEW/
+├── SwiftNEW.swift                          # Main struct with initializers
+├── Model.swift                             # Data models (Vmodel, Model)
+├── Bundle+Ext.swift                        # Bundle extensions
+├── Localizable.xcstrings                   # Localization support
+├── 📁 Views/
+│   ├── SwiftNEW+View.swift                # Main body view implementation
+│   ├── 📁 Sheets/
+│   │   ├── CurrentVersionSheet.swift       # Current version display
+│   │   └── HistorySheet.swift             # Version history display
+│   └── 📁 Components/
+│       ├── HeaderView.swift               # Header components
+│       └── ButtonComponents.swift         # Button components
+├── 📁 Extensions/
+│   └── SwiftNEW+Functions.swift           # Utility functions
+├── 📁 Styles/
+│   ├── AppIconView.swift                  # App icon display
+│   ├── MeshView.swift                     # Gradient backgrounds
+│   └── NoiseView.swift                    # Noise effects
+└── 📁 Animations/
+    └── SnowfallView.swift                 # Special effects (Christmas)
+```
+
+### Architecture Overview
+
+SwiftNEW is built with a modular architecture that separates concerns for better maintainability:
+
+- **Core Components**: Main struct and data models
+- **View Layer**: Presentation components organized by functionality  
+- **Extensions**: Utility functions and framework extensions
+- **Styles**: Visual components and gradient effects
+- **Animations**: Special effects and interactive elements
 
 ## Contributing
 

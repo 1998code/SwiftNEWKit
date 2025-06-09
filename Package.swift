@@ -11,7 +11,6 @@ let package = Package(
     defaultLocalization: "en",
     platforms: [
         .iOS(.v15),
-        .watchOS(.v8),
         .macOS(.v14),
         .visionOS(.v1),
         .tvOS(.v17)
@@ -22,17 +21,20 @@ let package = Package(
             targets: ["SwiftNEW"]),
     ],
     dependencies: [
-        .package(name: "SwiftVB", url: "https://github.com/1998code/SwiftVBKit.git", .upToNextMinor(from: "1.4.0")),
-        .package(name: "Drops", url: "https://github.com/omaralbeik/Drops.git", .upToNextMinor(from: "1.7.0")),
-        .package(name: "SwiftGlass", url: "https://github.com/1998code/SwiftGlass.git", .upToNextMinor(from: "1.8.0"))
+        .package(url: "https://github.com/1998code/SwiftVBKit.git", .upToNextMinor(from: "1.4.0")),
+        .package(url: "https://github.com/omaralbeik/Drops.git", .upToNextMinor(from: "1.7.0")),
+        .package(url: "https://github.com/1998code/SwiftGlass.git", .upToNextMinor(from: "1.8.0"))
     ],
     targets: [
         .target(
             name: "SwiftNEW",
             dependencies: [
-                "SwiftVB",
-                "Drops",
-                "SwiftGlass"
+                .product(name: "SwiftVB", package: "SwiftVBKit"),
+                .product(name: "Drops", package: "Drops"),
+                .product(name: "SwiftGlass", package: "SwiftGlass")
+            ],
+            resources: [
+                .process("Localizable.xcstrings")
             ]
         )
     ]
