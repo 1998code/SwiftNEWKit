@@ -42,7 +42,7 @@ extension SwiftNEW {
                     #endif
             }
         }
-        .opacity(size == "invisible" ? 0 : 100)
+        .opacity(size == "invisible" ? 0 : 1)
         .glass(shadowColor: color)
         .sheet(isPresented: $show) {
             ZStack {
