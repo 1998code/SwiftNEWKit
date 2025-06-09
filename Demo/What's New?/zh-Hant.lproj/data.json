@@ -1,13 +1,13 @@
 [
     {
-        "version": "6.0",
-        "subVersion": "6.0.0",
+        "version": "6.1",
+        "subVersion": "6.1.0",
         "new": [
             {
-                "icon": "wineglass",
-                "title": "玻璃",
-                "subtitle": "效果",
-                "body": "即將推出!"
+                "icon": "hammer",
+                "title": "專案",
+                "subtitle": "重構",
+                "body": "分離檔案和資料夾以便更好地維護。"
             },
             {
                 "icon": "macpro.gen3.server",
@@ -19,7 +19,19 @@
                 "icon": "arrow.triangle.pull",
                 "title": "貢獻",
                 "subtitle": "一起",
-                "body": "提出請求，變得更好! 🎉"
+                "body": "提出請求，讓每個人都變得更好! 🎉"
+            }
+        ]
+    },
+    {
+        "version": "6.0",
+        "subVersion": "6.0.0",
+        "new": [
+            {
+                "icon": "wineglass",
+                "title": "玻璃",
+                "subtitle": "效果",
+                "body": "現已推出!"
             }
         ]
     },

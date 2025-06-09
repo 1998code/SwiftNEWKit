@@ -1,38 +1,62 @@
+<img width="150" alt="SNK" src="https://github.com/user-attachments/assets/1121ae03-cf96-455e-8119-596f6f5eb58e" />
+
 # SwiftNEW
+
+![Stable](https://img.shields.io/github/v/release/1998code/SwiftNEWKit?color=03A791&label=안정판)
+![Beta](https://img.shields.io/github/v/release/1998code/SwiftNEWKit?include_prereleases&color=3A59D1&label=베타판)
+[![Validate JSON Files](https://github.com/1998code/SwiftNEWKit/actions/workflows/validate-json.yml/badge.svg)](https://github.com/1998code/SwiftNEWKit/actions/workflows/validate-json.yml)
+![Swift Version](https://img.shields.io/badge/Swift-5.9/6.1-teal.svg)
+
+![Platforms](https://img.shields.io/badge/Platforms-iOS%2015.0+%20|%20macOS%2014.0+%20|%20tvOS%2017.0+%20|%20visionOS%201.0+-15437D.svg)
+![License](https://img.shields.io/badge/License-MIT-C8ECFE.svg)
 
 ![image](https://github.com/user-attachments/assets/0a5de416-f4cd-41b5-8060-f839f2e7286a)
 
-## 기능
-| 설명                                               | 버전      |
-|---------------------------------------------------|-----------|
-| 메쉬 그라데이션 및 선형 그라데이션 배경               | 5.3.0     |
-| Apple visionOS 및 Vision Pro 지원                  | 4.1.0     |
-| 버전/빌드 변경 시 자동으로 트리거/팝업 되는 .sheet    | 4.0.0     |
-| 버전 번호 형식 x.y.z 및/또는 x.y                    | 4.0.0     |
-| 원격 드롭 알림                                      | 3.5.0     |
-| Firebase 실시간 데이터베이스                         | 3.0.0     |
-| 원격 JSON 파일                                     | 3.0.0     |
-| 버전 관리 + 기록 보기                               | 2.0.0     |
-| 상업적/비영리적 포함 모든 사용 사례 지원              | -         |
-| 간단한 모델, 쉬운 수정 및 재사용                     | -         |
-| 간단한 바인딩 및 데이터 전달                        | -         |
-| 로컬 스토리지에서 즉시 로드                         | -         |
+iOS, macOS, tvOS, visionOS 앱을 위한 모던한 SwiftUI 네이티브 "새로운 기능" 프레젠테이션 프레임워크입니다. 쉬운 커스터마이제이션과 유지보수를 위한 모듈러 아키텍처로 구축되었습니다.
 
-## 미리보기
+## 📋 목차
+
+- [🎨 미리보기 및 갤러리](#-미리보기-및-갤러리)
+- [✨ 기능](#-기능)
+- [🎯 빠른 시작](#-빠른-시작)
+- [⚙️ 설정 매개변수](#️-설정-매개변수)
+- [🔧 데이터 설정](#-데이터-설정)
+- [🛠️ 플랫폼 호환성](#️-플랫폼-호환성)
+- [🔧 문제 해결](#-문제-해결)
+- [📂 프로젝트 구조](#-프로젝트-구조)
+- [기여](#기여)
+
+## 🎨 미리보기 및 갤러리
+
 ![CleanShot 2022-06-11 at 22 54 15@2x](https://user-images.githubusercontent.com/54872601/173192927-ca2a8bef-2114-44f8-8d4d-47baadb8b4a8.png)
 
-## 갤러리
+### 라이트 및 다크 모드
 ![IMG_3472](https://user-images.githubusercontent.com/54872601/173187065-14d78119-47e7-4dcb-a3e6-c7fee4f0c67f.PNG) | ![IMG_3471](https://user-images.githubusercontent.com/54872601/173187067-fe3b5cac-54b5-4482-b73f-42e6c500546f.PNG)
-------------- | ------------
-라이트 모드 | 다크 모드
+:---: | :---:
+라이트 네이티브 | 다크 네이티브
 
-![Simulator Screen Shot - iPhone 13 Pro Max](https://user-images.githubusercontent.com/54872601/178129999-ad63b0ce-d65e-4d86-9882-37a5090e92bc.png) | ![CleanShot 2022-12-11 at 12 46 30@2x](https://user-images.githubusercontent.com/54872601/206886933-bc4d0d33-e0fc-4013-9456-f19679b10f5b.png) ![CleanShot 2022-12-11 at 12 49 12@2x](https://user-images.githubusercontent.com/54872601/206887046-8ec82853-4e32-4a07-8b64-4cc984e7ec90.png)
-------------- | ------------
-기록 보기 (2.0.0) | 앱 아이콘 (3.9.6) [세로 / 가로]
+### 고급 기능
+![Simulator Screen Shot - iPhone 13 Pro Max](https://user-images.githubusercontent.com/54872601/178129999-ad63b0ce-d65e-4d86-9882-37a5090e92bc.png) | ![CleanShot 2022-12-11 at 12 46 30@2x](https://user-images.githubusercontent.com/54872601/206886933-bc4d0d33-e0fc-4013-9456-f19679b10f5b.png)
+:---: | :---:
+히스토리 뷰 (2.0.0+) | 앱 아이콘 지원 (3.9.6+)
 
-![CleanShot 2023-06-22 at 14 24 07@2x](https://github.com/1998code/SwiftNEWKit/assets/54872601/12a8ab01-76e5-42a1-96b4-848ef5e5f36b) | <img alt="Screenshot 2024-07-01 at 10 18 33 PM" src="https://github.com/1998code/SwiftNEWKit/assets/54872601/a845c460-65d7-47a0-ae15-23897efd0508"> |
-------------- | ------------
-VisionOS 지원 (4.1.0 이상) | 메쉬 그라데이션 배경 (5.3.0 이상)
+### 플랫폼 지원
+![CleanShot 2023-06-22 at 14 24 07@2x](https://github.com/1998code/SwiftNEWKit/assets/54872601/12a8ab01-76e5-42a1-96b4-848ef5e5f36b) | <img alt="Screenshot 2024-07-01 at 10 18 33 PM" src="https://github.com/1998code/SwiftNEWKit/assets/54872601/a845c460-65d7-47a0-ae15-23897efd0508">
+:---: | :---:
+VisionOS 지원 (4.1.0+) | 메시 그라디언트 배경 (5.3.0+)
+
+## ✨ 기능
+
+| 기능 | 버전 | 설명 |
+|------|------|------|
+| 🎨 **메시 & 리니어 그라디언트** | 5.3.0 | 아름다운 그라디언트 배경 |
+| 🥽 **Apple visionOS & Vision Pro** | 4.1.0 | 완전한 visionOS 지원 |
+| 🔄 **버전 변경 시 자동 트리거** | 4.0.0 | 앱 버전이나 빌드 변경 시 자동 표시 |
+| 📊 **유연한 버전 번호** | 4.0.0 | x.y.z 및 x.y 버전 형식 지원 |
+| 📱 **원격 드롭 알림** | 3.5.0 | iOS 알림 스타일 경고 |
+| 🔥 **Firebase 실시간 데이터베이스** | 3.0.0 | 라이브 콘텐츠 업데이트 |
+| 🌐 **원격 JSON 지원** | 3.0.0 | 모든 URL에서 콘텐츠 로드 |
+| 📚 **버전 히스토리** | 2.0.0 | 모든 이전 릴리스 보기 |
 
 ## 예제
 경로: `./Demo` (Xcode 프로젝트)
@@ -218,6 +242,43 @@ JSON 샘플을 `data.json` 파일에 복사합니다(파일이 없는 경우 새
   }
 ]
 ```
+
+## 📂 프로젝트 구조
+
+```
+Sources/SwiftNEW/
+├── SwiftNEW.swift                          # 초기화와 메인 구조체
+├── Model.swift                             # 데이터 모델 (Vmodel, Model)
+├── Bundle+Ext.swift                        # Bundle 확장
+├── Localizable.xcstrings                   # 현지화 지원
+├── 📁 Views/
+│   ├── SwiftNEW+View.swift                # 메인 body 뷰 구현
+│   ├── 📁 Sheets/
+│   │   ├── CurrentVersionSheet.swift       # 현재 버전 표시
+│   │   └── HistorySheet.swift             # 버전 히스토리 표시
+│   └── 📁 Components/
+│       ├── HeaderView.swift               # 헤더 컴포넌트
+│       └── ButtonComponents.swift         # 버튼 컴포넌트
+├── 📁 Extensions/
+│   └── SwiftNEW+Functions.swift           # 유틸리티 함수
+├── 📁 Styles/
+│   ├── AppIconView.swift                  # 앱 아이콘 표시
+│   ├── MeshView.swift                     # 그라디언트 배경
+│   └── NoiseView.swift                    # 노이즈 효과
+└── 📁 Animations/
+    └── SnowfallView.swift                 # 특수 효과 (크리스마스)
+```
+
+### 아키텍처 개요
+
+SwiftNEW는 더 나은 유지보수성을 위해 관심사를 분리하는 모듈러 아키텍처로 구축되었습니다:
+
+- **메인 구조체** (`SwiftNEW.swift`): 공개 API와 구성 옵션
+- **뷰 계층** (`Views/`): UI 컴포넌트들을 논리적으로 그룹화
+- **데이터 모델** (`Model.swift`): JSON 데이터 구조
+- **확장** (`Extensions/`): 유틸리티 함수와 헬퍼
+- **스타일링** (`Styles/`): 재사용 가능한 시각적 컴포넌트
+- **애니메이션** (`Animations/`): 특수 효과와 애니메이션
 
 ## 기여하기
 

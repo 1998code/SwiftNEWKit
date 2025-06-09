@@ -1,13 +1,13 @@
 [
     {
-        "version": "6.0",
-        "subVersion": "6.0.0",
+        "version": "6.1",
+        "subVersion": "6.1.0",
         "new": [
             {
-                "icon": "wineglass",
-                "title": "Glass",
-                "subtitle": "Effect",
-                "body": "Coming Soon!"
+                "icon": "hammer",
+                "title": "Project",
+                "subtitle": "Restructure",
+                "body": "Seperate files and folders for better maintenance."
             },
             {
                 "icon": "macpro.gen3.server",
@@ -20,6 +20,18 @@
                 "title": "Contribute",
                 "subtitle": "Together",
                 "body": "Pull requests and make it better for everyone! 🎉"
+            }
+        ]
+    },
+    {
+        "version": "6.0",
+        "subVersion": "6.0.0",
+        "new": [
+            {
+                "icon": "wineglass",
+                "title": "Glass",
+                "subtitle": "Effect",
+                "body": "Available now!"
             }
         ]
     },

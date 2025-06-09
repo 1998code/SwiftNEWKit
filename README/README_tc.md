@@ -1,38 +1,62 @@
+<img width="150" alt="SNK" src="https://github.com/user-attachments/assets/1121ae03-cf96-455e-8119-596f6f5eb58e" />
+
 # SwiftNEW
+
+![Stable](https://img.shields.io/github/v/release/1998code/SwiftNEWKit?color=03A791&label=穩定版)
+![Beta](https://img.shields.io/github/v/release/1998code/SwiftNEWKit?include_prereleases&color=3A59D1&label=測試版)
+[![Validate JSON Files](https://github.com/1998code/SwiftNEWKit/actions/workflows/validate-json.yml/badge.svg)](https://github.com/1998code/SwiftNEWKit/actions/workflows/validate-json.yml)
+![Swift Version](https://img.shields.io/badge/Swift-5.9/6.1-teal.svg)
+
+![Platforms](https://img.shields.io/badge/Platforms-iOS%2015.0+%20|%20macOS%2014.0+%20|%20tvOS%2017.0+%20|%20visionOS%201.0+-15437D.svg)
+![License](https://img.shields.io/badge/License-MIT-C8ECFE.svg)
 
 ![image](https://github.com/user-attachments/assets/0a5de416-f4cd-41b5-8060-f839f2e7286a)
 
-## 功能
-| 描述                                               | 版本      |
-|---------------------------------------------------|-----------|
-| 網格漸變和線性漸變背景                               | 5.3.0     |
-| Apple visionOS 與 Vision Pro 支援                  | 4.1.0     |
-| 版本/構建變更時自動觸發/彈出 .sheet                  | 4.0.0     |
-| 版本號格式 x.y.z 和/或 x.y                         | 4.0.0     |
-| 遠程下拉通知                                       | 3.5.0     |
-| Firebase 實時數據庫                                | 3.0.0     |
-| 遠程 JSON 文件                                     | 3.0.0     |
-| 版本控制 + 查看歷史                                 | 2.0.0     |
-| 支持所有用例（包括商業/非營利）                       | -         |
-| 簡單模型，易於修改和重用                             | -         |
-| 簡單綁定和數據傳遞                                  | -         |
-| 從本地存儲即時加載                                  | -         |
+現代化的 SwiftUI 原生「最新功能」展示框架，適用於 iOS、macOS、tvOS 和 visionOS 應用程式。採用模組化架構，便於客製化和維護。
 
-## 預覽
+## 📋 目錄
+
+- [🎨 預覽與展示](#-預覽與展示)
+- [✨ 功能特色](#-功能特色)
+- [🎯 快速開始](#-快速開始)
+- [⚙️ 配置參數](#️-配置參數)
+- [🔧 資料配置](#-資料配置)
+- [🛠️ 平台相容性](#️-平台相容性)
+- [🔧 疑難排解](#-疑難排解)
+- [📂 專案結構](#-專案結構)
+- [貢獻](#貢獻)
+
+## 🎨 預覽與展示
+
 ![CleanShot 2022-06-11 at 22 54 15@2x](https://user-images.githubusercontent.com/54872601/173192927-ca2a8bef-2114-44f8-8d4d-47baadb8b4a8.png)
 
-## 展示
+### 淺色與深色主題
 ![IMG_3472](https://user-images.githubusercontent.com/54872601/173187065-14d78119-47e7-4dcb-a3e6-c7fee4f0c67f.PNG) | ![IMG_3471](https://user-images.githubusercontent.com/54872601/173187067-fe3b5cac-54b5-4482-b73f-42e6c500546f.PNG)
-------------- | ------------
-淺色主題 | 深色主題
+:---: | :---:
+淺色原生 | 深色原生
 
-![Simulator Screen Shot - iPhone 13 Pro Max](https://user-images.githubusercontent.com/54872601/178129999-ad63b0ce-d65e-4d86-9882-37a5090e92bc.png) | ![CleanShot 2022-12-11 at 12 46 30@2x](https://user-images.githubusercontent.com/54872601/206886933-bc4d0d33-e0fc-4013-9456-f19679b10f5b.png) ![CleanShot 2022-12-11 at 12 49 12@2x](https://user-images.githubusercontent.com/54872601/206887046-8ec82853-4e32-4a07-8b64-4cc984e7ec90.png)
-------------- | ------------
-歷史視圖 (2.0.0) | 應用圖標 (3.9.6) [垂直 / 水平]
+### 進階功能
+![Simulator Screen Shot - iPhone 13 Pro Max](https://user-images.githubusercontent.com/54872601/178129999-ad63b0ce-d65e-4d86-9882-37a5090e92bc.png) | ![CleanShot 2022-12-11 at 12 46 30@2x](https://user-images.githubusercontent.com/54872601/206886933-bc4d0d33-e0fc-4013-9456-f19679b10f5b.png)
+:---: | :---:
+歷史檢視 (2.0.0+) | 應用程式圖標支援 (3.9.6+)
 
-![CleanShot 2023-06-22 at 14 24 07@2x](https://github.com/1998code/SwiftNEWKit/assets/54872601/12a8ab01-76e5-42a1-96b4-848ef5e5f36b) | <img alt="Screenshot 2024-07-01 at 10 18 33 PM" src="https://github.com/1998code/SwiftNEWKit/assets/54872601/a845c460-65d7-47a0-ae15-23897efd0508"> |
-------------- | ------------
-支援 VisionOS (4.1.0 或更高版本) | 網格漸變背景 (5.3.0 或更高版本)
+### 平台支援
+![CleanShot 2023-06-22 at 14 24 07@2x](https://github.com/1998code/SwiftNEWKit/assets/54872601/12a8ab01-76e5-42a1-96b4-848ef5e5f36b) | <img alt="Screenshot 2024-07-01 at 10 18 33 PM" src="https://github.com/1998code/SwiftNEWKit/assets/54872601/a845c460-65d7-47a0-ae15-23897efd0508">
+:---: | :---:
+VisionOS 支援 (4.1.0+) | 網格漸變背景 (5.3.0+)
+
+## ✨ 功能特色
+
+| 功能 | 版本 | 描述 |
+|------|------|------|
+| 🎨 **網格漸變與線性漸變** | 5.3.0 | 美麗的漸變背景 |
+| 🥽 **Apple visionOS 與 Vision Pro** | 4.1.0 | 完整 visionOS 支援 |
+| 🔄 **版本變更自動觸發** | 4.0.0 | 應用程式版本或組建變更時自動顯示 |
+| 📊 **彈性版本號** | 4.0.0 | 支援 x.y.z 和 x.y 版本格式 |
+| 📱 **遠端下拉通知** | 3.5.0 | iOS 通知樣式警告 |
+| 🔥 **Firebase 即時資料庫** | 3.0.0 | 即時內容更新 |
+| 🌐 **遠端 JSON 支援** | 3.0.0 | 從任何 URL 載入內容 |
+| 📚 **版本歷史** | 2.0.0 | 檢視所有先前發布版本 |
 
 ## 示例
 路徑: `./Demo` (Xcode 項目)
@@ -218,6 +242,43 @@ public struct Model: Codable, Hashable {
   }
 ]
 ```
+
+## 📂 專案結構
+
+```
+Sources/SwiftNEW/
+├── SwiftNEW.swift                          # 主要結構體與初始化
+├── Model.swift                             # 資料模型 (Vmodel, Model)
+├── Bundle+Ext.swift                        # Bundle 擴展
+├── Localizable.xcstrings                   # 本地化支援
+├── 📁 Views/
+│   ├── SwiftNEW+View.swift                # 主要 body 視圖實現
+│   ├── 📁 Sheets/
+│   │   ├── CurrentVersionSheet.swift       # 當前版本顯示
+│   │   └── HistorySheet.swift             # 版本歷史顯示
+│   └── 📁 Components/
+│       ├── HeaderView.swift               # 標題組件
+│       └── ButtonComponents.swift         # 按鈕組件
+├── 📁 Extensions/
+│   └── SwiftNEW+Functions.swift           # 實用函數
+├── 📁 Styles/
+│   ├── AppIconView.swift                  # 應用程式圖示顯示
+│   ├── MeshView.swift                     # 漸層背景
+│   └── NoiseView.swift                    # 噪點效果
+└── 📁 Animations/
+    └── SnowfallView.swift                 # 特殊效果（聖誕節）
+```
+
+### 架構概述
+
+SwiftNEW 採用模組化架構建構，分離關注點以提升可維護性：
+
+- **主要結構體** (`SwiftNEW.swift`): 公開 API 與設定選項
+- **視圖層級** (`Views/`): UI 組件的邏輯分組
+- **資料模型** (`Model.swift`): JSON 資料結構
+- **擴展** (`Extensions/`): 實用函數與輔助功能
+- **樣式** (`Styles/`): 可重用的視覺組件
+- **動畫** (`Animations/`): 特殊效果與動畫
 
 ## 貢獻
 

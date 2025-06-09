@@ -1,38 +1,62 @@
+<img width="150" alt="SNK" src="https://github.com/user-attachments/assets/1121ae03-cf96-455e-8119-596f6f5eb58e" />
+
 # SwiftNEW
+
+![Stable](https://img.shields.io/github/v/release/1998code/SwiftNEWKit?color=03A791&label=安定版)
+![Beta](https://img.shields.io/github/v/release/1998code/SwiftNEWKit?include_prereleases&color=3A59D1&label=ベータ版)
+[![Validate JSON Files](https://github.com/1998code/SwiftNEWKit/actions/workflows/validate-json.yml/badge.svg)](https://github.com/1998code/SwiftNEWKit/actions/workflows/validate-json.yml)
+![Swift Version](https://img.shields.io/badge/Swift-5.9/6.1-teal.svg)
+
+![Platforms](https://img.shields.io/badge/Platforms-iOS%2015.0+%20|%20macOS%2014.0+%20|%20tvOS%2017.0+%20|%20visionOS%201.0+-15437D.svg)
+![License](https://img.shields.io/badge/License-MIT-C8ECFE.svg)
 
 ![image](https://github.com/user-attachments/assets/0a5de416-f4cd-41b5-8060-f839f2e7286a)
 
-## 機能
-| 説明                                               | バージョン |
-|---------------------------------------------------|-----------|
-| メッシュグラデーションと線形グラデーションの背景         | 5.3.0     |
-| Apple visionOS と Vision Pro サポート               | 4.1.0     |
-| バージョン/ビルド変更時に自動的にトリガー/ポップアップする .sheet | 4.0.0     |
-| バージョン番号形式 x.y.z および/または x.y            | 4.0.0     |
-| リモートドロップ通知                                 | 3.5.0     |
-| Firebase リアルタイムデータベース                     | 3.0.0     |
-| リモート JSON ファイル                               | 3.0.0     |
-| バージョン管理 + 履歴表示                           | 2.0.0     |
-| 商業/非営利を含むすべてのユースケースをサポート        | -         |
-| シンプルなモデル、簡単に変更や再利用が可能           | -         |
-| シンプルなバインディングとデータの受け渡し            | -         |
-| ローカルストレージからの即時読み込み                 | -         |
+iOS、macOS、tvOS、visionOS アプリ用のモダンな SwiftUI ネイティブ「新機能」プレゼンテーションフレームワークです。カスタマイズとメンテナンスが簡単なモジュラーアーキテクチャで構築されています。
 
-## プレビュー
+## 📋 目次
+
+- [🎨 プレビューとギャラリー](#-プレビューとギャラリー)
+- [✨ 機能](#-機能)
+- [🎯 クイックスタート](#-クイックスタート)
+- [⚙️ 設定パラメータ](#️-設定パラメータ)
+- [🔧 データ設定](#-データ設定)
+- [🛠️ プラットフォーム互換性](#️-プラットフォーム互換性)
+- [🔧 トラブルシューティング](#-トラブルシューティング)
+- [📂 プロジェクト構造](#-プロジェクト構造)
+- [貢献](#貢献)
+
+## 🎨 プレビューとギャラリー
+
 ![CleanShot 2022-06-11 at 22 54 15@2x](https://user-images.githubusercontent.com/54872601/173192927-ca2a8bef-2114-44f8-8d4d-47baadb8b4a8.png)
 
-## ギャラリー
+### ライトモードとダークモード
 ![IMG_3472](https://user-images.githubusercontent.com/54872601/173187065-14d78119-47e7-4dcb-a3e6-c7fee4f0c67f.PNG) | ![IMG_3471](https://user-images.githubusercontent.com/54872601/173187067-fe3b5cac-54b5-4482-b73f-42e6c500546f.PNG)
-------------- | ------------
-ライトモード | ダークモード
+:---: | :---:
+ライトネイティブ | ダークネイティブ
 
-![Simulator Screen Shot - iPhone 13 Pro Max](https://user-images.githubusercontent.com/54872601/178129999-ad63b0ce-d65e-4d86-9882-37a5090e92bc.png) | ![CleanShot 2022-12-11 at 12 46 30@2x](https://user-images.githubusercontent.com/54872601/206886933-bc4d0d33-e0fc-4013-9456-f19679b10f5b.png) ![CleanShot 2022-12-11 at 12 49 12@2x](https://user-images.githubusercontent.com/54872601/206887046-8ec82853-4e32-4a07-8b64-4cc984e7ec90.png)
-------------- | ------------
-履歴ビュー (2.0.0) | アプリアイコン (3.9.6) [垂直 / 水平]
+### 高度な機能
+![Simulator Screen Shot - iPhone 13 Pro Max](https://user-images.githubusercontent.com/54872601/178129999-ad63b0ce-d65e-4d86-9882-37a5090e92bc.png) | ![CleanShot 2022-12-11 at 12 46 30@2x](https://user-images.githubusercontent.com/54872601/206886933-bc4d0d33-e0fc-4013-9456-f19679b10f5b.png)
+:---: | :---:
+履歴ビュー (2.0.0+) | アプリアイコンサポート (3.9.6+)
 
-![CleanShot 2023-06-22 at 14 24 07@2x](https://github.com/1998code/SwiftNEWKit/assets/54872601/12a8ab01-76e5-42a1-96b4-848ef5e5f36b) | <img alt="Screenshot 2024-07-01 at 10 18 33 PM" src="https://github.com/1998code/SwiftNEWKit/assets/54872601/a845c460-65d7-47a0-ae15-23897efd0508"> |
-------------- | ------------
-VisionOS サポート (4.1.0 以上) | メッシュグラデーション背景 (5.3.0 以上)
+### プラットフォームサポート
+![CleanShot 2023-06-22 at 14 24 07@2x](https://github.com/1998code/SwiftNEWKit/assets/54872601/12a8ab01-76e5-42a1-96b4-848ef5e5f36b) | <img alt="Screenshot 2024-07-01 at 10 18 33 PM" src="https://github.com/1998code/SwiftNEWKit/assets/54872601/a845c460-65d7-47a0-ae15-23897efd0508">
+:---: | :---:
+VisionOS サポート (4.1.0+) | メッシュグラデーション背景 (5.3.0+)
+
+## ✨ 機能
+
+| 機能 | バージョン | 説明 |
+|------|-----------|------|
+| 🎨 **メッシュ & リニアグラデーション** | 5.3.0 | 美しいグラデーション背景 |
+| 🥽 **Apple visionOS & Vision Pro** | 4.1.0 | 完全な visionOS サポート |
+| 🔄 **バージョン変更時自動トリガー** | 4.0.0 | アプリバージョンやビルド変更時に自動表示 |
+| 📊 **柔軟なバージョン番号** | 4.0.0 | x.y.z と x.y バージョン形式をサポート |
+| 📱 **リモートドロップ通知** | 3.5.0 | iOS 通知スタイルアラート |
+| 🔥 **Firebase リアルタイムデータベース** | 3.0.0 | ライブコンテンツ更新 |
+| 🌐 **リモート JSON サポート** | 3.0.0 | 任意の URL からコンテンツを読み込み |
+| 📚 **バージョン履歴** | 2.0.0 | 過去のリリースをすべて表示 |
 
 ## サンプル
 パス: `./Demo` (Xcode プロジェクト)
@@ -218,6 +242,43 @@ JSON サンプルを `data.json` ファイルにコピーします（ファイ�
   }
 ]
 ```
+
+## 📂 プロジェクト構造
+
+```
+Sources/SwiftNEW/
+├── SwiftNEW.swift                          # メイン構造体と初期化
+├── Model.swift                             # データモデル (Vmodel, Model)
+├── Bundle+Ext.swift                        # Bundle 拡張
+├── Localizable.xcstrings                   # ローカライゼーションサポート
+├── 📁 Views/
+│   ├── SwiftNEW+View.swift                # メインボディビューの実装
+│   ├── 📁 Sheets/
+│   │   ├── CurrentVersionSheet.swift       # 現在のバージョン表示
+│   │   └── HistorySheet.swift             # バージョン履歴表示
+│   └── 📁 Components/
+│       ├── HeaderView.swift               # ヘッダーコンポーネント
+│       └── ButtonComponents.swift         # ボタンコンポーネント
+├── 📁 Extensions/
+│   └── SwiftNEW+Functions.swift           # ユーティリティ関数
+├── 📁 Styles/
+│   ├── AppIconView.swift                  # アプリアイコン表示
+│   ├── MeshView.swift                     # グラデーション背景
+│   └── NoiseView.swift                    # ノイズエフェクト
+└── 📁 Animations/
+    └── SnowfallView.swift                 # 特殊効果（クリスマス）
+```
+
+### アーキテクチャ概要
+
+SwiftNEW は保守性を向上させるために関心事を分離したモジュラーアーキテクチャで構築されています：
+
+- **メイン構造体** (`SwiftNEW.swift`): パブリック API と設定オプション
+- **ビュー階層** (`Views/`): UI コンポーネントの論理的なグループ化
+- **データモデル** (`Model.swift`): JSON データ構造
+- **拡張** (`Extensions/`): ユーティリティ関数とヘルパー
+- **スタイリング** (`Styles/`): 再利用可能なビジュアルコンポーネント
+- **アニメーション** (`Animations/`): 特殊効果とアニメーション
 
 ## 貢献
 
