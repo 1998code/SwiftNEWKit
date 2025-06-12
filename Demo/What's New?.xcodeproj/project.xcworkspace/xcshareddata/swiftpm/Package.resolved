@@ -15,8 +15,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/1998code/SwiftGlass.git",
       "state" : {
-        "revision" : "85ebac895eec35925c0821c93a83f22d796eeb8a",
-        "version" : "1.8.0"
+        "revision" : "a012c615c36a3992fb2c9358206de2a2bd253454",
+        "version" : "1.9.9"
       }
     },
     {
