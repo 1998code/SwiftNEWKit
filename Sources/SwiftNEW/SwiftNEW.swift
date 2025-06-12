@@ -7,7 +7,6 @@
 
 import SwiftUI
 import SwiftVB
-import SwiftGlass
 
 #if os(iOS)
 import Drops
@@ -34,6 +33,7 @@ public struct SwiftNEW: View {
     @Binding var showDrop: Bool
     @Binding var mesh: Bool
     @Binding var specialEffect: String
+    @Binding var glass: Bool
     
     #if os(iOS) || os(visionOS)
     public init(
@@ -48,7 +48,8 @@ public struct SwiftNEW: View {
         data: Binding<String>? = .constant("data"),
         showDrop: Binding<Bool>? = .constant(false),
         mesh: Binding<Bool>? = .constant(true),
-        specialEffect: Binding<String>? = .constant("")
+        specialEffect: Binding<String>? = .constant(""),
+        glass: Binding<Bool>? = .constant(true)
     ) {
         _show = show
         _align = align ?? .constant(.center)
@@ -62,6 +63,7 @@ public struct SwiftNEW: View {
         _showDrop = showDrop ?? .constant(false)
         _mesh = mesh ?? .constant(true)
         _specialEffect = specialEffect ?? .constant("")
+        _glass = glass ?? .constant(true)
         compareVersion()
     }
     #elseif os(macOS)
@@ -77,7 +79,8 @@ public struct SwiftNEW: View {
         data: Binding<String>? = .constant("data"),
         showDrop: Binding<Bool>? = .constant(false),
         mesh: Binding<Bool>? = .constant(true),
-        specialEffect: Binding<String>? = .constant("")
+        specialEffect: Binding<String>? = .constant(""),
+        glass: Binding<Bool>? = .constant(true)
     ) {
         _show = show
         _align = align ?? .constant(.center)
@@ -91,6 +94,7 @@ public struct SwiftNEW: View {
         _showDrop = showDrop ?? .constant(false)
         _mesh = mesh ?? .constant(true)
         _specialEffect = specialEffect ?? .constant("")
+        _glass = glass ?? .constant(true)
         compareVersion()
     }
     #else
@@ -106,7 +110,8 @@ public struct SwiftNEW: View {
         data: Binding<String>? = .constant("data"),
         showDrop: Binding<Bool>? = .constant(false),
         mesh: Binding<Bool>? = .constant(true),
-        specialEffect: Binding<String>? = .constant("")
+        specialEffect: Binding<String>? = .constant(""),
+        glass: Binding<Bool>? = .constant(true)
     ) {
         _show = show
         _align = align ?? .constant(.center)
@@ -120,6 +125,7 @@ public struct SwiftNEW: View {
         _showDrop = showDrop ?? .constant(false)
         _mesh = mesh ?? .constant(true)
         _specialEffect = specialEffect ?? .constant("")
+        _glass = glass ?? .constant(true)
         compareVersion()
     }
     #endif

@@ -24,7 +24,7 @@ struct ContentView : View {
     @Previewable @State var showNew: Bool = false
     List {
         Section(header: Text("Compatible with Toolbar / List")) {
-            SwiftNEW(show: $showNew, size: .constant("mini"))
+            SwiftNEW(show: $showNew, size: .constant("mini"), glass: .constant(false))
         }
     }
 }

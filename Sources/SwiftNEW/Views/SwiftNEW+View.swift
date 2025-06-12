@@ -39,7 +39,7 @@ extension SwiftNEW {
                 #endif
         }
         .opacity(size == "invisible" ? 0 : 1)
-        .glass(shadowColor: color)
+        .modifier(ConditionalGlassModifier(isEnabled: glass, shadowColor: color))
         .sheet(isPresented: $show) {
             sheetContent
         }
@@ -95,6 +95,19 @@ private struct PresentationBackgroundModifier: ViewModifier {
     func body(content: Content) -> some View {
         if #available(iOS 16.4, tvOS 16.4, *) {
             content.presentationBackground(.thinMaterial)
+        } else {
+            content
+        }
+    }
+}
+
+private struct ConditionalGlassModifier: ViewModifier {
+    let isEnabled: Bool
+    let shadowColor: Color
+    
+    func body(content: Content) -> some View {
+        if isEnabled {
+            content.glass(shadowColor: shadowColor)
         } else {
             content
         }
