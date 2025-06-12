@@ -20,7 +20,7 @@ struct ContentView : View {
 }
 
 // Mini (Toolbar / List only)
-#Preview("Invisible") {
+#Preview("Mini") {
     @Previewable @State var showNew: Bool = false
     List {
         Section(header: Text("Compatible with Toolbar / List")) {
@@ -30,7 +30,7 @@ struct ContentView : View {
 }
 
 #Preview("Invisible") {
-    @Previewable @State var showNew: Bool = false
+    @Previewable @State var showNew: Bool = true
     SwiftNEW(show: $showNew, size: .constant("invisible"))
 }
 

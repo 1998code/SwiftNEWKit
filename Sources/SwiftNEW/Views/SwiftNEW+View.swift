@@ -17,54 +17,86 @@ import Drops
 extension SwiftNEW {
     public var body: some View {
         Button(action: {
+            #if os(iOS)
             if showDrop {
-                #if os(iOS)
                 drop()
-                #endif
             } else {
                 show = true
             }
+            #else
+            show = true
+            #endif
         }) {
-            if size == "mini" {
-                Label(label, systemImage: labelImage)
-            }
-            else if size == "normal" || size == "simple" {
-                Label(label, systemImage: labelImage)
-                    #if !os(tvOS)
-                    .frame(width: 300, height: 50)
-                    #else
-                    .frame(width: 400, height: 50)
-                    #endif
-                    #if os(iOS) && !os(visionOS)
-                    .foregroundColor(labelColor)
-                    .background(color)
-                    .cornerRadius(15)
-                    #endif
-            }
+            Label(label, systemImage: labelImage)
+                .frame(
+                    width: size == "mini" ? nil : (size == "invisible" ? 0 : platformWidth),
+                    height: size == "mini" ? nil : (size == "invisible" ? 0 : 50)
+                )
+                #if os(iOS) && !os(visionOS)
+                .foregroundColor(labelColor)
+                .background(size != "mini" && size != "invisible" ? color : Color.clear)
+                .cornerRadius(15)
+                #endif
         }
         .opacity(size == "invisible" ? 0 : 1)
         .glass(shadowColor: color)
         .sheet(isPresented: $show) {
-            ZStack {
-                if mesh {
-                    MeshView(color: $color)
-                }
-                if specialEffect == "Christmas" {
-                    SnowfallView()
-                }
-                sheetCurrent
-                    .sheet(isPresented: $historySheet) {
-                        if #available(iOS 16.4, tvOS 16.4, *) {
-                            sheetHistory
-                                .presentationBackground(.thinMaterial)
-                        } else {
-                            sheetHistory
-                        }
-                    }
-                    #if os(visionOS)
-                    .padding()
-                    #endif
+            sheetContent
+        }
+    }
+    
+    private var platformWidth: CGFloat {
+        #if os(tvOS)
+        400
+        #else
+        300
+        #endif
+    }
+    
+    private var sheetContent: some View {
+        ZStack {
+            if mesh {
+                MeshView(color: $color)
             }
+            if specialEffect == "Christmas" {
+                SnowfallView()
+            }
+            sheetCurrent
+                .sheet(isPresented: $historySheet) {
+                    historySheetContent
+                }
+                #if os(visionOS)
+                .padding()
+                #endif
+        }
+        .background(.ultraThinMaterial)
+        .modifier(PresentationBackgroundModifier())
+    }
+    
+    private var historySheetContent: some View {
+        ZStack {
+            if mesh {
+                MeshView(color: $color)
+            }
+            if specialEffect == "Christmas" {
+                SnowfallView()
+            }
+            sheetHistory
+                #if os(visionOS)
+                .padding()
+                #endif
+        }
+        .background(.ultraThinMaterial)
+        .modifier(PresentationBackgroundModifier())
+    }
+}
+
+private struct PresentationBackgroundModifier: ViewModifier {
+    func body(content: Content) -> some View {
+        if #available(iOS 16.4, tvOS 16.4, *) {
+            content.presentationBackground(.thinMaterial)
+        } else {
+            content
         }
     }
 }

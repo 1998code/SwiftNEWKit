@@ -41,7 +41,7 @@ public struct SwiftNEW: View {
         align: Binding<HorizontalAlignment>? = .constant(.center),
         color: Binding<Color>? = .constant(Color.accentColor),
         size: Binding<String>? = .constant("simple"),
-        labelColor: Binding<Color>? = .constant(Color(UIColor.systemBackground)),
+        labelColor: Binding<Color>? = .constant(Color.primary),
         label: Binding<String>? = .constant("Show Release Note"),
         labelImage: Binding<String>? = .constant("arrow.up.circle.fill"),
         history: Binding<Bool>? = .constant(true),
@@ -54,7 +54,7 @@ public struct SwiftNEW: View {
         _align = align ?? .constant(.center)
         _color = color ?? .constant(Color.accentColor)
         _size = size ?? .constant("simple")
-        _labelColor = labelColor ?? .constant(Color(UIColor.systemBackground))
+        _labelColor = labelColor ?? .constant(Color.primary)
         _label = label ?? .constant("Show Release Note")
         _labelImage = labelImage ?? .constant("arrow.up.circle.fill")
         _history = history ?? .constant(true)
@@ -70,7 +70,7 @@ public struct SwiftNEW: View {
         align: Binding<HorizontalAlignment>? = .constant(.center),
         color: Binding<Color>? = .constant(Color.accentColor),
         size: Binding<String>? = .constant("simple"),
-        labelColor: Binding<Color>? = .constant(Color(NSColor.windowBackgroundColor)),
+        labelColor: Binding<Color>? = .constant(Color.primary),
         label: Binding<String>? = .constant("Show Release Note"),
         labelImage: Binding<String>? = .constant("arrow.up.circle.fill"),
         history: Binding<Bool>? = .constant(true),
@@ -83,7 +83,7 @@ public struct SwiftNEW: View {
         _align = align ?? .constant(.center)
         _color = color ?? .constant(Color.accentColor)
         _size = size ?? .constant("simple")
-        _labelColor = labelColor ?? .constant(Color(NSColor.windowBackgroundColor))
+        _labelColor = labelColor ?? .constant(Color.primary)
         _label = label ?? .constant("Show Release Note")
         _labelImage = labelImage ?? .constant("arrow.up.circle.fill")
         _history = history ?? .constant(true)
@@ -99,7 +99,7 @@ public struct SwiftNEW: View {
         align: Binding<HorizontalAlignment>? = .constant(.center),
         color: Binding<Color>? = .constant(Color.accentColor),
         size: Binding<String>? = .constant("simple"),
-        labelColor: Binding<Color>? = .constant(Color.white),
+        labelColor: Binding<Color>? = .constant(Color.primary),
         label: Binding<String>? = .constant("Show Release Note"),
         labelImage: Binding<String>? = .constant("arrow.up.circle.fill"),
         history: Binding<Bool>? = .constant(true),
@@ -112,7 +112,7 @@ public struct SwiftNEW: View {
         _align = align ?? .constant(.center)
         _color = color ?? .constant(Color.accentColor)
         _size = size ?? .constant("simple")
-        _labelColor = labelColor ?? .constant(Color.white)
+        _labelColor = labelColor ?? .constant(Color.primary)
         _label = label ?? .constant("Show Release Note")
         _labelImage = labelImage ?? .constant("arrow.up.circle.fill")
         _history = history ?? .constant(true)
