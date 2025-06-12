@@ -12,19 +12,20 @@
 
 ![image](https://github.com/user-attachments/assets/0a5de416-f4cd-41b5-8060-f839f2e7286a)
 
-A modern, SwiftUI-native "What's New" presentation framework for iOS, macOS, tvOS, and visionOS apps. Built with a modular architecture for easy customization and maintenance.
+A modern, SwiftUI-native "What's New" presentation framework designed for all Apple platforms. Featuring beautiful animations, gradient backgrounds, remote data loading, and comprehensive customization options for creating engaging release notes and feature announcements.
 
 ## 📋 Table of Contents
 
-- [🎨 Preview & Gallery](#-preview--gallery)
 - [✨ Features](#-features)
 - [🎯 Quick Start](#-quick-start)
-- [⚙️ Configuration Parameters](#️-configuration-parameters)
-- [🔧 Data Configuration](#-data-configuration)
-- [🛠️ Platform Compatibility](#️-platform-compatibility)
+- [🎨 Preview & Gallery](#-preview--gallery)
+- [⚙️ Configuration](#️-configuration)
+- [🔧 Data Sources](#-data-sources)
+- [🛠️ Platform Support](#️-platform-support)
+- [📁 Installation Guide](#-installation-guide)
 - [🔧 Troubleshooting](#-troubleshooting)
 - [📂 Project Structure](#-project-structure)
-- [Contributing](#contributing)
+- [🤝 Contributing](#-contributing)
 
 ## 🎨 Preview & Gallery
 
@@ -49,66 +50,85 @@ VisionOS Support (4.1.0+) | Mesh Gradient Background (5.3.0+)
 
 | Feature | Version | Description |
 |---------|---------|-------------|
-| 🎨 **Mesh Gradient & Linear Gradient** | 5.3.0 | Beautiful gradient backgrounds |
-| 🥽 **Apple visionOS & Vision Pro** | 4.1.0 | Full visionOS support |
-| 🔄 **Auto-trigger on Version Change** | 4.0.0 | Automatically shows when app version or build changes |
-| 📊 **Flexible Version Numbers** | 4.0.0 | Supports x.y.z and x.y version formats |
-| 📱 **Remote Drop Notifications** | 3.5.0 | iOS notification-style alerts |
-| 🔥 **Firebase Real-Time Database** | 3.0.0 | Live content updates |
-| 🌐 **Remote JSON Support** | 3.0.0 | Load content from any URL |
-| 📚 **Version History** | 2.0.0 | View all previous releases |
+| 🎨 **Glass Morphism Effects** | 5.5.0+ | Modern glass blur effects with customizable transparency |
+| 🌈 **Mesh & Linear Gradients** | 5.3.0+ | Beautiful animated gradient backgrounds |
+| 🥽 **visionOS & Vision Pro** | 4.1.0+ | Native spatial computing support |
+| 🔄 **Auto-trigger on Version Change** | 4.0.0+ | Automatically shows when app version or build changes |
+| 📊 **Flexible Version Numbers** | 4.0.0+ | Supports semantic versioning (x.y.z) and simplified (x.y) formats |
+| 🎄 **Special Effects** | 3.9.0+ | Seasonal animations (Christmas snowfall) |
+| 📱 **Drop Notifications** | 3.5.0+ | iOS-style notification banners |
+| 🔥 **Firebase Real-Time Database** | 3.0.0+ | Live content updates from Firebase |
+| 🌐 **Remote JSON Support** | 3.0.0+ | Load content from any REST API endpoint |
+| 📚 **Version History** | 2.0.0+ | Browse all previous releases with navigation |
 
 ## 🎯 Quick Start
 
-### 1. Installation
+### Installation via Swift Package Manager
 
-#### Swift Package Manager
+Add SwiftNEW to your project by adding the package URL in Xcode:
+
 ```
 https://github.com/1998code/SwiftNEWKit
 ```
 
-### 2. Basic Usage
+### Basic Implementation
 
+1. **Import the framework**
 ```swift
 import SwiftNEW
+```
 
+2. **Create a simple "What's New" view**
+```swift
 struct ContentView: View {
     @State private var showNew = false
     
     var body: some View {
         VStack {
-            // Your app content
             Text("My App")
+                .font(.largeTitle)
             
-            Button("Show What's New") {
-                showNew = true
-            }
-        }
-        .sheet(isPresented: $showNew) {
             SwiftNEW(show: $showNew)
         }
     }
 }
 ```
 
-### 3. Advanced Configuration
+3. **Add your content**
+Create a `data.json` file in your app bundle with your release notes:
+
+```json
+[
+  {
+    "version": "1.0",
+    "new": [
+      {
+        "icon": "star.fill",
+        "title": "Welcome",
+        "subtitle": "Get Started",
+        "body": "Thanks for downloading our app! Here's what's new."
+      }
+    ]
+  }
+]
+```
+
+### Advanced Example with Customization
 
 ```swift
 struct ContentView: View {
     @State private var showNew = false
-    @State private var color: Color = .blue
-    @State private var align: HorizontalAlignment = .center
     
     var body: some View {
         SwiftNEW(
             show: $showNew,
-            align: $align,
-            color: $color,
+            color: .constant(.blue),
             size: .constant("normal"),
             label: .constant("What's New"),
+            labelImage: .constant("sparkles"),
             history: .constant(true),
-            data: .constant("data"), // or remote URL
-            mesh: .constant(true)
+            mesh: .constant(true),
+            glass: .constant(true)
         )
     }
 }
@@ -133,95 +153,115 @@ History View (2.0.0+) | App Icon Support (3.9.6+)
 :---: | :---:
 VisionOS Support (4.1.0+) | Mesh Gradient Background (5.3.0+)
 
-## ⚙️ Configuration Parameters
+## ⚙️ Configuration
 
-| Parameter | Type | Default | Options | Description |
-|-----------|------|---------|---------|-------------|
-| `show` * | `Binding<Bool>` | `false` | `true`, `false` | Controls sheet presentation |
-| `align` | `Binding<HorizontalAlignment>` | `.center` | `.leading`, `.center`, `.trailing` | Content alignment |
-| `color` | `Binding<Color>` | `.accentColor` | Any Color | Primary theme color |
-| `size` | `Binding<String>` | `"simple"` | `"invisible"`, `"mini"`, `"simple"`, `"normal"` | Button size variant |
-| `labelColor` | `Binding<Color>` | System Background | Any Color | Button text color |
-| `label` | `Binding<String>` | `"Show Release Note"` | Any String | Button display text |
-| `labelImage` | `Binding<String>` | `"arrow.up.circle.fill"` | Any SF Symbol | Button icon |
-| `history` | `Binding<Bool>` | `true` | `true`, `false` | Enable history view |
-| `data` | `Binding<String>` | `"data"` | Local filename or URL | Data source location |
-| `showDrop` | `Binding<Bool>` | `false` | `true`, `false` | iOS drop notification style |
-| `mesh` | `Binding<Bool>` | `true` | `true`, `false` | Enable gradient background |
-| `specialEffect` | `Binding<String>` | `""` | `"Christmas"`, `""` | Special animation effects |
+### Available Parameters
+
+| Parameter | Type | Default | Description |
+|-----------|------|---------|-------------|
+| `show` * | `Binding<Bool>` | `false` | Controls the presentation state |
+| `align` | `Binding<HorizontalAlignment>` | `.center` | Content alignment (`.leading`, `.center`, `.trailing`) |
+| `color` | `Binding<Color>` | `.accentColor` | Primary theme color |
+| `size` | `Binding<String>` | `"simple"` | Button size: `"invisible"`, `"mini"`, `"simple"`, `"normal"` |
+| `labelColor` | `Binding<Color>` | System color | Button text color |
+| `label` | `Binding<String>` | `"Show Release Note"` | Button display text |
+| `labelImage` | `Binding<String>` | `"arrow.up.circle.fill"` | SF Symbol icon name |
+| `history` | `Binding<Bool>` | `true` | Enable version history navigation |
+| `data` | `Binding<String>` | `"data"` | Local JSON filename or remote URL |
+| `showDrop` | `Binding<Bool>` | `false` | Use iOS drop notification style |
+| `mesh` | `Binding<Bool>` | `true` | Enable mesh gradient backgrounds |
+| `specialEffect` | `Binding<String>` | `""` | Special effects: `"Christmas"` or `""` |
+| `glass` | `Binding<Bool>` | `true` | Enable glass morphism effects |
 
 *Required parameter
 
-### Parameter Usage Examples
+### Configuration Examples
 
+#### Minimal Setup
 ```swift
-// Minimal configuration
 SwiftNEW(show: $showNew)
+```
 
-// Custom styling
+#### Custom Styling
+```swift
 SwiftNEW(
     show: $showNew,
-    color: .constant(.blue),
-    mesh: .constant(false)
+    color: .constant(.purple),
+    size: .constant("normal"),
+    mesh: .constant(true),
+    glass: .constant(true)
 )
+```
 
-// Remote data source
+#### Remote Data Source
+```swift
 SwiftNEW(
     show: $showNew,
     data: .constant("https://api.example.com/releases.json")
 )
+```
 
-// Complete customization
+#### Drop Notification Style (iOS only)
+```swift
 SwiftNEW(
     show: $showNew,
-    align: .constant(.leading),
-    color: .constant(.purple),
-    size: .constant("normal"),
-    label: .constant("See Updates"),
-    labelImage: .constant("star.fill"),
-    history: .constant(true),
-    data: .constant("releases"),
-    mesh: .constant(true),
-    specialEffect: .constant("Christmas")
+    label: .constant("New Update"),
+    labelImage: .constant("bell.badge"),
+    showDrop: .constant(true)
 )
 ```
 
-## 🔧 Data Configuration
+## 🔧 Data Sources
 
-### Local JSON File
-Create a `data.json` file in your app bundle:
+SwiftNEW supports multiple data sources for maximum flexibility:
+
+### Local JSON Files
+
+Create a JSON file in your app bundle (typically named `data.json`):
 
 ```json
 [
   {
-    "version": "1.2",
+    "version": "1.2.0",
     "new": [
       {
         "icon": "hammer.fill",
         "title": "Bug Fixes",
-        "subtitle": "Stability Improvements",
-        "body": "Fixed crashes and improved performance across all platforms"
+        "subtitle": "Stability Improvements", 
+        "body": "Resolved critical issues and improved overall app performance across all supported platforms."
       },
       {
         "icon": "sparkles",
         "title": "New Features",
         "subtitle": "Enhanced Experience",
-        "body": "Added new animations and improved user interface"
+        "body": "Introduced exciting new capabilities including improved animations and modern UI components."
+      },
+      {
+        "icon": "shield.checkered",
+        "title": "Security Updates",
+        "subtitle": "Enhanced Protection",
+        "body": "Strengthened security measures and updated encryption protocols for better data protection."
       }
     ]
   }
 ]
 ```
 
-### Remote JSON/Firebase
+### Remote JSON APIs
+
+Load content from any REST API endpoint:
+
 ```swift
 SwiftNEW(
     show: $showNew,
-    data: .constant("https://your-server.com/releases.json")
+    data: .constant("https://api.myapp.com/releases.json")
 )
 ```
 
 ### Firebase Realtime Database
+
+Direct integration with Firebase:
+
 ```swift
 SwiftNEW(
     show: $showNew,
@@ -229,194 +269,101 @@ SwiftNEW(
 )
 ```
 
-## 🛠️ Platform Compatibility
+### Data Structure Reference
+
+The JSON structure follows this model:
+
+```swift
+// Reference only - you don't need to implement this
+public struct Vmodel: Codable, Hashable {
+    var version: String         // Version number (e.g., "1.2.0")
+    var subVersion: String?     // Optional sub-version or build info
+    var new: [Model]           // Array of release items
+}
+
+public struct Model: Codable, Hashable {
+    var icon: String           // SF Symbol name (e.g., "star.fill")
+    var title: String          // Feature title
+    var subtitle: String       // Brief description
+    var body: String           // Detailed explanation
+}
+```
+
+### Best Practices
+
+- **Local Files**: Best for static content and faster loading
+- **Remote APIs**: Ideal for dynamic content and A/B testing
+- **Firebase**: Perfect for real-time updates and content management
+- **Version Format**: Use semantic versioning (1.2.3) for better organization
+- **Content Length**: Keep titles short, use body for detailed descriptions
+
+## 🛠️ Platform Support
+
+### Supported Platforms
 
 | Platform | Latest Tested | Minimum Required | Key Features |
 |----------|---------------|------------------|--------------|
-| **iOS** | 18.5 | 15.0+ | Full feature support, drop notifications |
-| **iPadOS** | 18.5 | 15.0+ | Optimized layouts, full feature support |
-| **macOS** | 15.5 | 14.0+ | Native macOS styling, full feature support |
-| **visionOS** | 2.0 | 1.0+ | Spatial computing support, immersive UI |
-| **tvOS** | 18.5 | 17.0+ | Remote-friendly navigation, adapted layouts |
+| **iOS** | 18.2 | 15.0+ | Full feature support, drop notifications, glass effects |
+| **iPadOS** | 18.2 | 15.0+ | Optimized layouts, multitasking support |
+| **macOS** | 15.2 | 14.0+ | Native macOS styling, menu bar integration |
+| **visionOS** | 2.1 | 1.0+ | Spatial computing, immersive presentations |
+| **tvOS** | 18.2 | 17.0+ | Remote-friendly navigation, living room UI |
 
-### Development Environment
+### Development Requirements
+
 | Tool | Version | Notes |
 |------|---------|-------|
-| **Xcode** | 13.4+ (13F17a) | Minimum required for package resolution |
-| **macOS** | 12.3.1+ (21E258) | Host development environment |
-| **Swift** | 5.9+ / 6.1+ | Language compatibility |
+| **Xcode** | 15.0+ | Required for building and development |
+| **macOS** | 14.0+ | Host development environment |
+| **Swift** | 5.9+ / 6.1+ | Language compatibility and features |
 
-### Feature Availability by Platform
+### Feature Availability Matrix
+
 | Feature | iOS | iPadOS | macOS | visionOS | tvOS |
 |---------|-----|--------|--------|----------|------|
-| Basic What's New | ✅ | ✅ | ✅ | ✅ | ✅ |
+| Basic Presentations | ✅ | ✅ | ✅ | ✅ | ✅ |
 | Mesh Gradients | ✅ | ✅ | ✅ | ✅ | ✅ |
+| Glass Effects | ✅ | ✅ | ✅ | ✅ | ❌ |
 | Drop Notifications | ✅ | ✅ | ❌ | ❌ | ❌ |
-| History View | ✅ | ✅ | ✅ | ✅ | ✅ |
+| History Navigation | ✅ | ✅ | ✅ | ✅ | ✅ |
 | Remote JSON | ✅ | ✅ | ✅ | ✅ | ✅ |
 | Special Effects | ✅ | ✅ | ✅ | ✅ | ✅ |
+| Auto-versioning | ✅ | ✅ | ✅ | ✅ | ✅ |
 
-### Setup
-Steps | Description | Screenshot
-------| ----------- | ----------
-1 | Navigate to root project | <img width="274" alt="CleanShot 2022-06-11 at 17 39 39@2x" src="https://user-images.githubusercontent.com/54872601/173182521-27481cf2-c9bf-4f87-95cc-76f5d1c05094.png">
-2 | Select Project | <img width="174" alt="CleanShot 2022-06-11 at 17 39 48@2x" src="https://user-images.githubusercontent.com/54872601/173182523-6a24c67a-8f27-4ef7-a3f4-ea63cfd8436f.png">
-3 | Select Package Dependencies | <img width="309" alt="CleanShot 2022-06-11 at 17 39 53@2x" src="https://user-images.githubusercontent.com/54872601/173182526-e5660b7f-c50c-4173-81f5-83c10c514659.png">
-4 | Click + and paste <code>https://github.com/1998code/SwiftNEWKit</code> to the searchbox | <img width="614" alt="CleanShot 2022-06-11 at 17 39 32@2x" src="https://user-images.githubusercontent.com/54872601/173182527-2a151198-7ac0-4735-8257-11580ada3d5e.png">
-5L | Create a new local file called `data.json` | You may copy this [JSON sample](https://github.com/1998code/SwiftNEWKit#sample). 
-5R | You can use remote JSON / firebase realtime database too. | Sample: https://testground-a937f-default-rtdb.firebaseio.com/0.json?print=pretty
+## 📁 Installation Guide
 
-### Major Usage
-1. Import Package.
+Follow these steps to add SwiftNEW to your Xcode project:
+
+### Step-by-Step Installation
+
+| Step | Action | Screenshot |
+|------|--------|------------|
+| 1 | Open your Xcode project and select the project file | <img width="274" alt="Project Navigator" src="https://user-images.githubusercontent.com/54872601/173182521-27481cf2-c9bf-4f87-95cc-76f5d1c05094.png"> |
+| 2 | Select your project target | <img width="174" alt="Target Selection" src="https://user-images.githubusercontent.com/54872601/173182523-6a24c67a-8f27-4ef7-a3f4-ea63cfd8436f.png"> |
+| 3 | Go to "Package Dependencies" tab | <img width="309" alt="Package Dependencies" src="https://user-images.githubusercontent.com/54872601/173182526-e5660b7f-c50c-4173-81f5-83c10c514659.png"> |
+| 4 | Click "+" and paste the repository URL | <img width="614" alt="Add Package" src="https://user-images.githubusercontent.com/54872601/173182527-2a151198-7ac0-4735-8257-11580ada3d5e.png"> |
+| 5 | Choose your data source approach | See [Data Sources](#-data-sources) section |
+
+### Package URL
+```
+https://github.com/1998code/SwiftNEWKit
+```
+
+### Post-Installation Setup
+
+1. **Import the framework** in your Swift files:
 ```swift
 import SwiftNEW
 ```
 
-2. Add States before `body` or any `some View`.
-### States
-var         | Suggested                       | Options                       | Type
------------ | ------------------------------- | ----------------------------- | ----
-showNew *   | false                           | false, true                   | Bool
-align       | .center                         | .leading, .center, .trailing  | HorizontalAlignment
-color       | .accentColor                    | All Colors Supported          | Color
-size        | "simple"                        | "invisible", "mini", "simple" | String
-labelColor  | UIColor.systemBackground or NSColor.windowBackgroundColor | All Colors Supported          | Color
-label       | "Show Release Note"             | All Strings                   | String
-labelImage  | "arrow.up.circle.fill"          | All SF Symbols                | String
-history     | true                            | true, false                   | Bool
-data        | "data" or "https://.../{}.json" | "{LOCAL_JSON_FILE}" or Remote | String
-showDrop    | false                           | false, true                   | Bool
-mesh        | true                            | false, true                   | Bool
+2. **Create your data source** (choose one):
+   - **Local**: Add `data.json` to your app bundle
+   - **Remote**: Use any JSON API endpoint  
+   - **Firebase**: Configure Firebase Realtime Database
 
-
-##### Samples:
+3. **Add to your view** with minimal configuration:
 ```swift
-// Required
-@State var showNew: Bool = false
-
-// Optional (5.2.0 or above)
-@State var align: HorizontalAlignment = .center
-@State var color: Color = .accentColor
-@State var size: String = "normal"
-#if os(iOS)
-@State var labelColor: Color = Color(UIColor.systemBackground)
-#elseif os(macOS)
-@State var labelColor: Color = Color(NSColor.windowBackgroundColor)
-#endif
-@State var label: String = "Show Release Note"
-@State var labelImage: String = "arrow.up.circle.fill"
-@State var history: Bool = true
-@State var data: String = "data"
-@State var showDrop: Bool = false
-@State var mesh: Bool = false
-```
-
-3. Then, paste this code inside `body` or any `some View`.
-```swift
-// Simplified with default options in 5.2.0 or above
-SwiftNEW(show: $showNew)
-
-// 5.1.0 or below
-SwiftNEW(show: $showNew, align: $align, color: $color, size: $size, labelColor: $labelColor, label: $label, labelImage: $labelImage, history: $history, data: $data, showDrop: $showDrop)
-```
-Instead of using separate states, inline states work too. (No longer required after 5.2.0)
-
-*`Show Bool` cannot be inline.
-```swift
-SwiftNEW(show: $showNew, align: .constant(.center), color: .constant(.accentColor), size: .constant("normal"), labelColor: .constant(Color(UIColor.systemBackground)), label: .constant("Show Release Note"), labelImage: .constant("arrow.up.circle.fill"), history: .constant(true), data: .constant("data"), showDrop: .constant(false))
-```
-
-4. Your code should look similar to the following, including the minimum features and default styles.
-```swift
-struct ContentView: View {
-    @State var showNew: Bool = false
-    var body: some View {
-        SwiftNEW(show: $showNew)
-    }
-}
-```
-
-### JSON
-#### Structure / Model (REF)
-* The below code is just for reference only. You don't need to copy the structure or model.
-```swift
-public struct Vmodel: Codable, Hashable {
-    var version: String
-    var new: [Model]
-}
-public struct Model: Codable, Hashable {
-    var icon: String
-    var title: String
-    var subtitle: String
-    var body: String
-}
-```
-
-#### Sample
-Copy the JSON sample to `data.json` file (If you don't have it, create a new file.)
-
-![68747470733a2f2f76616c696461746f722e737761676765722e696f2f76616c696461746f723f75726c3d68747470733a2f2f7261772e67697468756275736572636f6e74656e742e636f6d2f4f41492f4f70656e4150492d53706563696669636174696f6e2f6d61737465722f6578616d706c65732f76](https://user-images.githubusercontent.com/54872601/173190828-8ee763b9-4e33-4231-92ac-eb81b556c462.png)
-```json
-[
-  {
-    "version": "1.2",
-    "new": [
-      {
-        "body": "Available for iOS 16, iPadOS 16, macOS 13",
-        "icon": "hammer.fill",
-        "subtitle": "Broken UI",
-        "title": "Bug fixes"
-      },
-      {
-        "body": "Direct load via remote storage. Easy!",
-        "icon": "square.and.arrow.down.fill",
-        "subtitle": "Supported",
-        "title": "Firebase Remote"
-      },
-      {
-        "body": "Free and open source! Created by Ming with ❤️‍🔥",
-        "icon": "macpro.gen3.server",
-        "subtitle": "Design",
-        "title": "Serverless"
-      },
-      {
-        "body": "Pull requests and make it better for everyone!",
-        "icon": "arrow.triangle.pull",
-        "subtitle": "Together",
-        "title": "Contribute"
-      }
-    ]
-  },
-  {
-   "version": "1.1",
-    "new": [
-      {
-        "body": "Available for iOS 16, iPadOS 16, macOS 13",
-        "icon": "hammer.fill",
-        "subtitle": "Broken UI",
-        "title": "Bug fixes"
-      },
-      {
-        "body": "Direct load via local storage. Super fast!",
-        "icon": "square.and.arrow.down.fill",
-        "subtitle": "Supported",
-        "title": "Local File"
-      },
-      {
-        "body": "Free and open source! Created by Ming with ❤️‍🔥",
-        "icon": "macpro.gen3.server",
-        "subtitle": "Design",
-        "title": "Serverless"
-      },
-      {
-        "body": "Pull requests and make it better for everyone!",
-        "icon": "arrow.triangle.pull",
-        "subtitle": "Together",
-        "title": "Contribute"
-      }
-    ]
-  }
-]
+SwiftNEW(show: $showNewVersion)
 ```
 
 ## 🔧 Troubleshooting
@@ -485,30 +432,57 @@ SwiftNEW is built with a modular architecture that separates concerns for better
 - **Styles**: Visual components and gradient effects
 - **Animations**: Special effects and interactive elements
 
-## Contributing
+## 🤝 Contributing
 
-Contributions to SwiftNEW are welcome!
+We welcome contributions to SwiftNEW! Here's how you can help:
 
-- To report bugs or request features, please open an issue on GitHub
-- When submitting a pull request, please follow the coding style of the project
+### Ways to Contribute
 
-## License
+- 🐛 **Report Bugs**: Open an issue with detailed reproduction steps
+- 💡 **Request Features**: Suggest new features or improvements
+- 🔧 **Submit Pull Requests**: Fix bugs or implement new features
+- 📚 **Improve Documentation**: Help make our docs clearer
+- 🌍 **Add Translations**: Help us support more languages
 
-MIT. Read the LICENSE file for details.
+### Development Setup
 
-## Translation
+1. Fork the repository
+2. Clone your fork locally
+3. Open `Package.swift` in Xcode
+4. Make your changes
+5. Test thoroughly across platforms
+6. Submit a pull request
 
-This doc is also available in:
+### Coding Guidelines
+
+- Follow Swift naming conventions
+- Maintain compatibility with minimum platform versions
+- Add appropriate documentation comments
+- Test on multiple platforms when possible
+- Keep changes focused and atomic
+
+### Getting Help
+
+- 💬 [GitHub Discussions](https://github.com/1998code/SwiftNEWKit/discussions) - Questions and community support
+- 🐛 [GitHub Issues](https://github.com/1998code/SwiftNEWKit/issues) - Bug reports and feature requests
+- 📧 Contact the maintainer for complex questions
+
+## 📄 License
+
+SwiftNEW is available under the MIT License. See the [LICENSE](LICENSE) file for details.
+
+## 🌍 Translations
+
+This documentation is available in multiple languages:
 
 English | [繁中](README/README_tc.md) / [简中](README/README_zh.md) / [粵語](README/README_hc.md) | [日本語](README/README_ja.md) | [한국어](README/README_ko.md)
 
-Please feel free to open a pull request and add new language(s) or fix any typos/mistakes.
+Help us add more languages by submitting translation pull requests!
 
-## Supported By
+## 💖 Supported By
+
 <a href="https://m.do.co/c/ce873177d9ab">
-    <img src="https://opensource.nyc3.cdn.digitaloceanspaces.com/attribution/assets/SVG/DO_Logo_horizontal_blue.svg" width="201px" alt="Digital Ocean Logo">
+    <img src="https://opensource.nyc3.cdn.digitaloceanspaces.com/attribution/assets/SVG/DO_Logo_horizontal_blue.svg" width="201px" alt="Digital Ocean">
 </a>
-<br/>
-<br/>
 
 [![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/1998code/SwiftNEWKit)
