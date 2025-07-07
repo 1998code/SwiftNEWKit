@@ -484,5 +484,7 @@ Help us add more languages by submitting translation pull requests!
 <a href="https://m.do.co/c/ce873177d9ab">
     <img src="https://opensource.nyc3.cdn.digitaloceanspaces.com/attribution/assets/SVG/DO_Logo_horizontal_blue.svg" width="201px" alt="Digital Ocean">
 </a>
+<br/>
+<br/>
 
 [![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/1998code/SwiftNEWKit)
