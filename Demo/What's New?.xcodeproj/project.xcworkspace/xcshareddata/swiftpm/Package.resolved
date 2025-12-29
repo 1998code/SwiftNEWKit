@@ -1,5 +1,5 @@
 {
-  "originHash" : "d25ed17971fd47acbfa345e11d174aae77fb3ffb8daa99aecf174631bb2053b3",
+  "originHash" : "6ec0aa5c760c5bf515e8d4895c15f55340257636bbb49799c4ef66ff698b1248",
   "pins" : [
     {
       "identity" : "drops",
@@ -15,8 +15,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/1998code/SwiftGlass.git",
       "state" : {
-        "revision" : "a012c615c36a3992fb2c9358206de2a2bd253454",
-        "version" : "1.9.9"
+        "revision" : "b11729993a2f4a4f11d17ee833ec05b2140400c5",
+        "version" : "26.0.1"
       }
     },
     {
