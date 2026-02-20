@@ -16,32 +16,36 @@ import Drops
 @available(iOS 15.0, watchOS 8.0, macOS 12.0, tvOS 17.0, *)
 extension SwiftNEW {
     public var body: some View {
-        Button(action: {
-            #if os(iOS)
-            if showDrop {
-                drop()
+        Group {
+            if presentation == .embed {
+                sheetContent
             } else {
-                show = true
+                Button(action: {
+                    #if os(iOS)
+                    if showDrop {
+                        drop()
+                    } else {
+                        show = true
+                    }
+                    #else
+                    show = true
+                    #endif
+                }) {
+                    Label(String(localized: String.LocalizationValue(label), bundle: .module), systemImage: labelImage)
+                        .frame(
+                            width: size == "mini" ? nil : (size == "invisible" ? 0 : platformWidth),
+                            height: size == "mini" ? nil : (size == "invisible" ? 0 : 50)
+                        )
+                        #if os(iOS) && !os(visionOS)
+                        .foregroundColor(color.adaptedTextColor)
+                        .background(size != "mini" && size != "invisible" ? color : Color.clear)
+                        .cornerRadius(15)
+                        #endif
+                }
+                .opacity(size == "invisible" ? 0 : 1)
+                .modifier(ConditionalGlassModifier(isEnabled: glass, shadowColor: color))
+                .modifier(PresentationModifier(isPresented: $show, presentation: presentation, sheetContent: sheetContent))
             }
-            #else
-            show = true
-            #endif
-        }) {
-            Label(label, systemImage: labelImage)
-                .frame(
-                    width: size == "mini" ? nil : (size == "invisible" ? 0 : platformWidth),
-                    height: size == "mini" ? nil : (size == "invisible" ? 0 : 50)
-                )
-                #if os(iOS) && !os(visionOS)
-                .foregroundColor(labelColor)
-                .background(size != "mini" && size != "invisible" ? color : Color.clear)
-                .cornerRadius(15)
-                #endif
-        }
-        .opacity(size == "invisible" ? 0 : 1)
-        .modifier(ConditionalGlassModifier(isEnabled: glass, shadowColor: color))
-        .sheet(isPresented: $show) {
-            sheetContent
         }
     }
     
@@ -58,7 +62,7 @@ extension SwiftNEW {
             if mesh {
                 MeshView(color: $color)
             }
-            if specialEffect == "Christmas" {
+            if specialEffect == .christmas {
                 SnowfallView()
             }
             sheetCurrent
@@ -78,7 +82,7 @@ extension SwiftNEW {
             if mesh {
                 MeshView(color: $color)
             }
-            if specialEffect == "Christmas" {
+            if specialEffect == .christmas {
                 SnowfallView()
             }
             sheetHistory
@@ -111,5 +115,35 @@ private struct ConditionalGlassModifier: ViewModifier {
         } else {
             content
         }
+    }
+}
+
+private struct PresentationModifier<V: View>: ViewModifier {
+    @Binding var isPresented: Bool
+    let presentation: SwiftNEWPresentation
+    let sheetContent: V
+
+    func body(content: Content) -> some View {
+        #if os(macOS)
+        content.sheet(isPresented: $isPresented) {
+            sheetContent
+        }
+        #else
+        if presentation == .fullScreenCover {
+            if #available(iOS 14.0, tvOS 14.0, watchOS 7.0, *) {
+                content.fullScreenCover(isPresented: $isPresented) {
+                    sheetContent
+                }
+            } else {
+                content.sheet(isPresented: $isPresented) {
+                    sheetContent
+                }
+            }
+        } else {
+            content.sheet(isPresented: $isPresented) {
+                sheetContent
+            }
+        }
+        #endif
     }
 }

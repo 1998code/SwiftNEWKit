@@ -1,13 +1,25 @@
 [
     {
-        "version": "6.1",
-        "subVersion": "6.1.0",
+        "version": "6.2",
+        "subVersion": "6.2.0",
         "new": [
             {
-                "icon": "hammer",
-                "title": "專案",
-                "subtitle": "重構",
-                "body": "分離檔案和資料夾以便更好地維護。"
+                "icon": "rectangle.split.3x3",
+                "title": "呈現方式",
+                "subtitle": "選項",
+                "body": "支援表單、全螢幕覆蓋與嵌入模式。"
+            },
+            {
+                "icon": "paintpalette",
+                "title": "自適應",
+                "subtitle": "文字顏色",
+                "body": "按鈕與歷史紀錄文字顏色會自動適應背景亮度。"
+            },
+            {
+                "icon": "wand.and.stars",
+                "title": "簡化的",
+                "subtitle": "構造器",
+                "body": "直接賦值不再需要 .constant 包裝綁定。"
             },
             {
                 "icon": "macpro.gen3.server",
@@ -20,6 +32,18 @@
                 "title": "貢獻",
                 "subtitle": "一起",
                 "body": "提出請求，讓每個人都變得更好! 🎉"
+            }
+        ]
+    },
+    {
+        "version": "6.1",
+        "subVersion": "6.1.0",
+        "new": [
+            {
+                "icon": "hammer",
+                "title": "專案",
+                "subtitle": "重構",
+                "body": "分離檔案和資料夾以便更好地維護。"
             }
         ]
     },

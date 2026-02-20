@@ -1,13 +1,25 @@
 [
     {
-        "version": "6.1",
-        "subVersion": "6.1.0",
+        "version": "6.2",
+        "subVersion": "6.2.0",
         "new": [
             {
-                "icon": "hammer",
-                "title": "프로젝트",
-                "subtitle": "재구성",
-                "body": "더 나은 유지보수를 위한 파일과 폴더 분리."
+                "icon": "rectangle.split.3x3",
+                "title": "프레젠테이션",
+                "subtitle": "옵션",
+                "body": "시트, 전체 화면 및 내장 모드 지원."
+            },
+            {
+                "icon": "paintpalette",
+                "title": "적응형",
+                "subtitle": "텍스트 색상",
+                "body": "버튼과 기록 텍스트 색상이 배경 밝기에 따라 자동으로 변경됩니다."
+            },
+            {
+                "icon": "wand.and.stars",
+                "title": "간소화된",
+                "subtitle": "이니셜라이저",
+                "body": "직접 값을 지정할 때 .constant 래퍼가 더 이상 필요하지 않습니다."
             },
             {
                 "icon": "macpro.gen3.server",
@@ -20,6 +32,18 @@
                 "title": "기여하기",
                 "subtitle": "함께",
                 "body": "풀 리퀘스트를 통해 모두를 위해 더 나아지게 만들어보세요! 🎉"
+            }
+        ]
+    },
+    {
+        "version": "6.1",
+        "subVersion": "6.1.0",
+        "new": [
+            {
+                "icon": "hammer",
+                "title": "프로젝트",
+                "subtitle": "재구성",
+                "body": "더 나은 유지보수를 위한 파일과 폴더 분리."
             }
         ]
     },

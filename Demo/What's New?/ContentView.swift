@@ -24,24 +24,44 @@ struct ContentView : View {
     @Previewable @State var showNew: Bool = false
     List {
         Section(header: Text("Compatible with Toolbar / List")) {
-            SwiftNEW(show: $showNew, size: .constant("mini"), glass: .constant(false))
+            SwiftNEW(show: $showNew, size: "mini", glass: false)
         }
     }
 }
 
 #Preview("Invisible") {
     @Previewable @State var showNew: Bool = true
-    SwiftNEW(show: $showNew, size: .constant("invisible"))
+    SwiftNEW(show: $showNew, size: "invisible")
 }
 
-// Remote (>3.0.0) - Firebase Real Time Database Demo (Compatible with json format)
+// Remote (>3.0.0) - Firebase Real Time Database Demo / Any JSON URL
 #Preview("Remote") {
     @Previewable @State var showNew: Bool = false
-    SwiftNEW(show: $showNew, labelImage: .constant("icloud"), data: .constant("https://testground-a937f-default-rtdb.firebaseio.com/.json?print=pretty"))
+    let lang = Bundle.main.preferredLocalizations.first ?? "en"
+    SwiftNEW(show: $showNew, labelImage: "icloud", data: "https://testground-a937f-default-rtdb.firebaseio.com/\(lang).json?print=pretty")
 }
 
 // Drop (>3.4.0) - Recommended trigger with Remote Notification
 #Preview("Drop") {
     @Previewable @State var showNew: Bool = false
-    SwiftNEW(show: $showNew, label: .constant("Notification"), labelImage: .constant("bell.badge"), data: .constant("https://testground-a937f-default-rtdb.firebaseio.com/.json?print=pretty"), showDrop: .constant(true))
+    let lang = Bundle.main.preferredLocalizations.first ?? "en"
+    SwiftNEW(show: $showNew, label: "Notification", labelImage: "bell.badge", data: "https://testground-a937f-default-rtdb.firebaseio.com/\(lang).json?print=pretty", showDrop: true)
+}
+
+// Full Screen Cover (>6.2.0) - Presentation option
+#Preview("Full Screen Cover") {
+    @Previewable @State var showNew: Bool = false
+    SwiftNEW(show: $showNew, presentation: .fullScreenCover)
+}
+
+// Embed (>6.2.0) - Render content directly
+#Preview("Embed") {
+    @Previewable @State var showNew: Bool = true
+    SwiftNEW(show: $showNew, presentation: .embed)
+}
+
+// Special Effect - Christmas snow effect
+#Preview("Christmas Effect") {
+    @Previewable @State var showNew: Bool = false
+    SwiftNEW(show: $showNew, specialEffect: .christmas)
 }

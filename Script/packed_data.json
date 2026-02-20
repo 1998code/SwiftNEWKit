@@ -1,0 +1,1332 @@
+{
+    "zh-Hans": [
+        {
+            "version": "6.2",
+            "subVersion": "6.2.0",
+            "new": [
+                {
+                    "icon": "rectangle.split.3x3",
+                    "title": "呈现方式",
+                    "subtitle": "选项",
+                    "body": "支持表单、全屏覆盖和嵌入模式。"
+                },
+                {
+                    "icon": "paintpalette",
+                    "title": "自适应",
+                    "subtitle": "文本颜色",
+                    "body": "按钮和历史记录文本颜色会自动适应背景亮度。"
+                },
+                {
+                    "icon": "wand.and.stars",
+                    "title": "简化的",
+                    "subtitle": "构造器",
+                    "body": "直接赋值不再需要 .constant 包装绑定。"
+                },
+                {
+                    "icon": "macpro.gen3.server",
+                    "title": "无服务器",
+                    "subtitle": "设计",
+                    "body": "免费开源! ❤️‍🔥"
+                },
+                {
+                    "icon": "arrow.triangle.pull",
+                    "title": "贡献",
+                    "subtitle": "一起",
+                    "body": "提出请求，让每个人都变得更好! 🎉"
+                }
+            ]
+        },
+        {
+            "version": "6.1",
+            "subVersion": "6.1.0",
+            "new": [
+                {
+                    "icon": "hammer",
+                    "title": "项目",
+                    "subtitle": "重构",
+                    "body": "分离文件和文件夹以便更好地维护。"
+                }
+            ]
+        },
+        {
+            "version": "6.0",
+            "subVersion": "6.0.0",
+            "new": [
+                {
+                    "icon": "wineglass",
+                    "title": "玻璃",
+                    "subtitle": "效果",
+                    "body": "现已推出!"
+                }
+            ]
+        },
+        {
+            "version": "5.5",
+            "subVersion": "5.5.0",
+            "new": [
+                {
+                    "icon": "snowflake",
+                    "title": "飘雪",
+                    "subtitle": "效果",
+                    "body": "更多特别效果即将推出!"
+                }
+            ]
+        },
+        {
+            "version": "5.4",
+            "subVersion": "5.4.0",
+            "new": [
+                {
+                    "icon": "pencil.tip",
+                    "title": "匹配",
+                    "subtitle": "网格背景颜色",
+                    "body": "标准化设计。"
+                }
+            ]
+        },
+        {
+            "version": "5.3",
+            "subVersion": "5.3.0",
+            "new": [
+                {
+                    "icon": "pencil.tip",
+                    "title": "新增",
+                    "subtitle": "网格背景",
+                    "body": "更好的设计。"
+                }
+            ]
+        },
+        {
+            "version": "5.2",
+            "subVersion": "5.2.0",
+            "new": [
+                {
+                    "icon": "hammer",
+                    "title": "预设",
+                    "subtitle": "选项",
+                    "body": "减少重复程式码。"
+                }
+            ]
+        },
+        {
+            "version": "5.1",
+            "subVersion": "5.1.0",
+            "new": [
+                {
+                    "icon": "character.book.closed",
+                    "title": "更新",
+                    "subtitle": "示范内容",
+                    "body": "针对 5.0 版本。"
+                }
+            ]
+        },
+        {
+            "version": "5.0",
+            "subVersion": "5.0.0",
+            "new": [
+                {
+                    "icon": "character.book.closed",
+                    "title": "支援",
+                    "subtitle": "翻译",
+                    "body": "由 Apple String Catalog 技术提供。"
+                },
+                {
+                    "icon": "pip.remove",
+                    "title": "终结",
+                    "subtitle": "支援",
+                    "body": "iOS14, watchOS7, and macOS11。"
+                }
+            ]
+        },
+        {
+            "version": "4.2",
+            "subVersion": "4.2.0",
+            "new": [
+                {
+                    "icon": "hammer",
+                    "title": "小型",
+                    "subtitle": "更新",
+                    "body": "一些错误修正和UI更新"
+                }
+            ]
+        },
+        {
+            "version": "4.1",
+            "subVersion": "4.1.0",
+            "new": [
+                {
+                    "icon": "eye",
+                    "title": "支持 Vision Pro",
+                    "subtitle": "和 visionOS",
+                    "body": "Drops Framework 由于冲突而被临时禁用。"
+                }
+            ]
+        },
+        {
+            "version": "4.0",
+            "subVersion": "4.0.0",
+            "new": [
+                {
+                    "icon": "number",
+                    "title": "更好兼容性",
+                    "subtitle": "在版本和构建中",
+                    "body": "您现在可以使用 x.y.z 或 x.y。"
+                }
+            ]
+        },
+        {
+            "version": "3.9",
+            "new": [
+                {
+                    "icon": "app.fill",
+                    "title": "应用图标",
+                    "subtitle": "支持",
+                    "body": "在 iOS 上。"
+                },
+                {
+                    "icon": "app",
+                    "title": "演示",
+                    "subtitle": "现在好多了",
+                    "body": "遵循包版本。"
+                }
+            ]
+        },
+        {
+            "version": "1.5",
+            "new": [
+                {
+                    "icon": "hammer",
+                    "title": "Layout",
+                    "subtitle": "Fixed",
+                    "body": "on iOS Landscape."
+                }
+            ]
+        },
+        {
+            "version": "1.4",
+            "new": [
+                {
+                    "icon": "hammer",
+                    "title": "Crash",
+                    "subtitle": "Fixed",
+                    "body": "on macOS."
+                }
+            ]
+        },
+        {
+            "version": "1.3",
+            "new": [
+                {
+                    "icon": "bell.badge",
+                    "title": "Remote Drop",
+                    "subtitle": "Supported",
+                    "body": "Instead of full page sheet, you can use a small drop too!"
+                }
+            ]
+        },
+        {
+            "version": "1.2",
+            "new": [
+                {
+                    "icon": "square.and.arrow.down.fill",
+                    "title": "Remote File",
+                    "subtitle": "Supported",
+                    "body": "Direct load via remote storage. Easy!"
+                }
+            ]
+        },
+        {
+            "version": "1.1",
+            "new": [
+                {
+                    "icon": "hammer.fill",
+                    "title": "Bug fixes",
+                    "subtitle": "Broken UI",
+                    "body": "Available for iOS 16, iPadOS 16, macOS 13"
+                },
+                {
+                    "icon": "square.and.arrow.down.fill",
+                    "title": "Local File",
+                    "subtitle": "Supported",
+                    "body": "Direct load via local storage. Super fast!"
+                },
+                {
+                    "icon": "macpro.gen3.server",
+                    "title": "Serverless",
+                    "subtitle": "Design",
+                    "body": "Free and open source! Created by Ming with ❤️‍🔥"
+                },
+                {
+                    "icon": "arrow.triangle.pull",
+                    "title": "Contribute",
+                    "subtitle": "Together",
+                    "body": "Pull requests and make it better for everyone!"
+                }
+            ]
+        }
+    ],
+    "ja": [
+        {
+            "version": "6.2",
+            "subVersion": "6.2.0",
+            "new": [
+                {
+                    "icon": "rectangle.split.3x3",
+                    "title": "プレゼンテーション",
+                    "subtitle": "オプション",
+                    "body": "シート、フルスクリーンカバー、及び埋め込みモードの対応。"
+                },
+                {
+                    "icon": "paintpalette",
+                    "title": "適応型",
+                    "subtitle": "テキスト色",
+                    "body": "ボタンと履歴のテキスト色が背景の明るさに応じて自動的に切り替わります。"
+                },
+                {
+                    "icon": "wand.and.stars",
+                    "title": "簡易化された",
+                    "subtitle": "イニシャライザ",
+                    "body": "直接の値を指定する際に .constant ラッパーが不要になりました。"
+                },
+                {
+                    "icon": "macpro.gen3.server",
+                    "title": "サーバーレス",
+                    "subtitle": "デザイン",
+                    "body": "無料でオープンソース！ ❤️‍🔥"
+                },
+                {
+                    "icon": "arrow.triangle.pull",
+                    "title": "貢献",
+                    "subtitle": "一緒に",
+                    "body": "プルリクエストを送って、みんなのためにより良くしましょう！ 🎉"
+                }
+            ]
+        },
+        {
+            "version": "6.1",
+            "subVersion": "6.1.0",
+            "new": [
+                {
+                    "icon": "hammer",
+                    "title": "プロジェクト",
+                    "subtitle": "リストラクチャ",
+                    "body": "より良いメンテナンスのためのファイルとフォルダの分離。"
+                }
+            ]
+        },
+        {
+            "version": "6.0",
+            "subVersion": "6.0.0",
+            "new": [
+                {
+                    "icon": "wineglass",
+                    "title": "ガラス",
+                    "subtitle": "エフェクト",
+                    "body": "利用可能になりました！"
+                }
+            ]
+        },
+        {
+            "version": "5.5",
+            "subVersion": "5.5.0",
+            "new": [
+                {
+                    "icon": "snowflake",
+                    "title": "雪",
+                    "subtitle": "エフェクト",
+                    "body": "さらに特別なアニメーションが近日公開予定！"
+                }
+            ]
+        },
+        {
+            "version": "5.4",
+            "subVersion": "5.4.0",
+            "new": [
+                {
+                    "icon": "pencil.tip",
+                    "title": "メッシュ背景色",
+                    "subtitle": "マッチング",
+                    "body": "標準化されたデザイン。"
+                }
+            ]
+        },
+        {
+            "version": "5.3",
+            "subVersion": "5.3.0",
+            "new": [
+                {
+                    "icon": "pencil.tip",
+                    "title": "追加",
+                    "subtitle": "メッシュ背景",
+                    "body": "より良いスタイルとデザイン。"
+                }
+            ]
+        },
+        {
+            "version": "5.2",
+            "subVersion": "5.2.0",
+            "new": [
+                {
+                    "icon": "hammer",
+                    "title": "デフォルト",
+                    "subtitle": "オプション",
+                    "body": "より少ないコードのための新しいオプショナルバインディング。"
+                }
+            ]
+        },
+        {
+            "version": "5.1",
+            "subVersion": "5.1.0",
+            "new": [
+                {
+                    "icon": "character.book.closed",
+                    "title": "更新",
+                    "subtitle": "デモ",
+                    "body": "5.0バージョン用。"
+                }
+            ]
+        },
+        {
+            "version": "5.0",
+            "subVersion": "5.0.0",
+            "new": [
+                {
+                    "icon": "character.book.closed",
+                    "title": "サポート",
+                    "subtitle": "ローカライゼーション",
+                    "body": "Appleの文字列カタログを活用。"
+                },
+                {
+                    "icon": "pip.remove",
+                    "title": "サポート",
+                    "subtitle": "終了",
+                    "body": "iOS14、watchOS7、およびmacOS11のサポートを終了。"
+                }
+            ]
+        },
+        {
+            "version": "4.2",
+            "subVersion": "4.2.0",
+            "new": [
+                {
+                    "icon": "hammer",
+                    "title": "マイナー",
+                    "subtitle": "アップデート",
+                    "body": "軽微なバグ修正とUI改善。"
+                }
+            ]
+        },
+        {
+            "version": "4.1",
+            "subVersion": "4.1.0",
+            "new": [
+                {
+                    "icon": "eye",
+                    "title": "Vision Proをサポート",
+                    "subtitle": "& visionOS",
+                    "body": "Dropsフレームワークは競合のため一時的に無効化されています。"
+                }
+            ]
+        },
+        {
+            "version": "4.0",
+            "subVersion": "4.0.0",
+            "new": [
+                {
+                    "icon": "number",
+                    "title": "より良い互換性",
+                    "subtitle": "バージョンとビルド",
+                    "body": "x.y.zまたはx.yの形式が使用可能になりました。"
+                }
+            ]
+        },
+        {
+            "version": "3.9",
+            "new": [
+                {
+                    "icon": "app.fill",
+                    "title": "アプリアイコン",
+                    "subtitle": "対応",
+                    "body": "iOSで。"
+                },
+                {
+                    "icon": "app",
+                    "title": "デモ",
+                    "subtitle": "改善",
+                    "body": "パッケージのバージョンに従っています。"
+                }
+            ]
+        },
+        {
+            "version": "1.5",
+            "new": [
+                {
+                    "icon": "hammer",
+                    "title": "レイアウト",
+                    "subtitle": "修正",
+                    "body": "iOS横向き表示で。"
+                }
+            ]
+        },
+        {
+            "version": "1.4",
+            "new": [
+                {
+                    "icon": "hammer",
+                    "title": "クラッシュ",
+                    "subtitle": "修正",
+                    "body": "macOSで。"
+                }
+            ]
+        },
+        {
+            "version": "1.3",
+            "new": [
+                {
+                    "icon": "bell.badge",
+                    "title": "リモートドロップ",
+                    "subtitle": "対応",
+                    "body": "全画面シートの代わりに、小さなドロップも使用できるようになりました！"
+                }
+            ]
+        },
+        {
+            "version": "1.2",
+            "new": [
+                {
+                    "icon": "square.and.arrow.down.fill",
+                    "title": "リモートファイル",
+                    "subtitle": "対応",
+                    "body": "リモートストレージから直接ロード。簡単です！"
+                }
+            ]
+        },
+        {
+            "version": "1.1",
+            "new": [
+                {
+                    "icon": "hammer.fill",
+                    "title": "バグ修正",
+                    "subtitle": "UI不具合",
+                    "body": "iOS 16、iPadOS 16、macOS 13に対応"
+                },
+                {
+                    "icon": "square.and.arrow.down.fill",
+                    "title": "ローカルファイル",
+                    "subtitle": "対応",
+                    "body": "ローカルストレージから直接ロード。超高速！"
+                },
+                {
+                    "icon": "macpro.gen3.server",
+                    "title": "サーバーレス",
+                    "subtitle": "デザイン",
+                    "body": "無料でオープンソース！Mingが❤️‍🔥を込めて作成"
+                },
+                {
+                    "icon": "arrow.triangle.pull",
+                    "title": "貢献",
+                    "subtitle": "一緒に",
+                    "body": "プルリクエストを送って、みんなのためにより良くしましょう！"
+                }
+            ]
+        }
+    ],
+    "en": [
+        {
+            "version": "6.2",
+            "subVersion": "6.2.0",
+            "new": [
+                {
+                    "icon": "rectangle.split.3x3",
+                    "title": "Presentation",
+                    "subtitle": "Options",
+                    "body": "Support for sheet, fullScreenCover, and embed modes."
+                },
+                {
+                    "icon": "paintpalette",
+                    "title": "Adaptive",
+                    "subtitle": "Text Color",
+                    "body": "Button and history text color automatically adapts to background brightness."
+                },
+                {
+                    "icon": "wand.and.stars",
+                    "title": "Simplified",
+                    "subtitle": "Initializer",
+                    "body": "Direct values no longer require .constant wrapper binding."
+                },
+                {
+                    "icon": "macpro.gen3.server",
+                    "title": "Serverless",
+                    "subtitle": "Design",
+                    "body": "Free and open source! ❤️‍🔥"
+                },
+                {
+                    "icon": "arrow.triangle.pull",
+                    "title": "Contribute",
+                    "subtitle": "Together",
+                    "body": "Pull requests and make it better for everyone! 🎉"
+                }
+            ]
+        },
+        {
+            "version": "6.1",
+            "subVersion": "6.1.0",
+            "new": [
+                {
+                    "icon": "hammer",
+                    "title": "Project",
+                    "subtitle": "Restructure",
+                    "body": "Seperate files and folders for better maintenance."
+                }
+            ]
+        },
+        {
+            "version": "6.0",
+            "subVersion": "6.0.0",
+            "new": [
+                {
+                    "icon": "wineglass",
+                    "title": "Glass",
+                    "subtitle": "Effect",
+                    "body": "Available now!"
+                }
+            ]
+        },
+        {
+            "version": "5.5",
+            "subVersion": "5.5.0",
+            "new": [
+                {
+                    "icon": "snowflake",
+                    "title": "Snow",
+                    "subtitle": "Effect",
+                    "body": "More Special Animation Coming Soon!"
+                }
+            ]
+        },
+        {
+            "version": "5.4",
+            "subVersion": "5.4.0",
+            "new": [
+                {
+                    "icon": "pencil.tip",
+                    "title": "Matched",
+                    "subtitle": "Mesh BG Color",
+                    "body": "A standardized design."
+                }
+            ]
+        },
+        {
+            "version": "5.3",
+            "subVersion": "5.3.0",
+            "new": [
+                {
+                    "icon": "pencil.tip",
+                    "title": "Add",
+                    "subtitle": "Mesh BG",
+                    "body": "Better styles and design."
+                }
+            ]
+        },
+        {
+            "version": "5.2",
+            "subVersion": "5.2.0",
+            "new": [
+                {
+                    "icon": "hammer",
+                    "title": "Default",
+                    "subtitle": "Option",
+                    "body": "New optional binding for less code."
+                }
+            ]
+        },
+        {
+            "version": "5.1",
+            "subVersion": "5.1.0",
+            "new": [
+                {
+                    "icon": "character.book.closed",
+                    "title": "Update",
+                    "subtitle": "Demo",
+                    "body": "For 5.0 version."
+                }
+            ]
+        },
+        {
+            "version": "5.0",
+            "subVersion": "5.0.0",
+            "new": [
+                {
+                    "icon": "character.book.closed",
+                    "title": "Support",
+                    "subtitle": "Localization",
+                    "body": "Powered by Apple String Catalog."
+                },
+                {
+                    "icon": "pip.remove",
+                    "title": "Drop",
+                    "subtitle": "Support",
+                    "body": "For iOS14, watchOS7, and macOS11."
+                }
+            ]
+        },
+        {
+            "version": "4.2",
+            "subVersion": "4.2.0",
+            "new": [
+                {
+                    "icon": "hammer",
+                    "title": "Minor",
+                    "subtitle": "Update",
+                    "body": "Minor bug fixes, and UI improvement."
+                }
+            ]
+        },
+        {
+            "version": "4.1",
+            "subVersion": "4.1.0",
+            "new": [
+                {
+                    "icon": "eye",
+                    "title": "Support Vision Pro",
+                    "subtitle": "& visionOS",
+                    "body": "Drops Framework is temp-disabled due to conflict."
+                }
+            ]
+        },
+        {
+            "version": "4.0",
+            "subVersion": "4.0.0",
+            "new": [
+                {
+                    "icon": "number",
+                    "title": "Better Compatible",
+                    "subtitle": "in Version & Build",
+                    "body": "You can use x.y.z or x.y now."
+                }
+            ]
+        },
+        {
+            "version": "3.9",
+            "new": [
+                {
+                    "icon": "app.fill",
+                    "title": "App Icon",
+                    "subtitle": "Supported",
+                    "body": "on iOS."
+                },
+                {
+                    "icon": "app",
+                    "title": "Demo",
+                    "subtitle": "is Better now",
+                    "body": "Following the Package Version."
+                }
+            ]
+        },
+        {
+            "version": "1.5",
+            "new": [
+                {
+                    "icon": "hammer",
+                    "title": "Layout",
+                    "subtitle": "Fixed",
+                    "body": "on iOS Landscape."
+                }
+            ]
+        },
+        {
+            "version": "1.4",
+            "new": [
+                {
+                    "icon": "hammer",
+                    "title": "Crash",
+                    "subtitle": "Fixed",
+                    "body": "on macOS."
+                }
+            ]
+        },
+        {
+            "version": "1.3",
+            "new": [
+                {
+                    "icon": "bell.badge",
+                    "title": "Remote Drop",
+                    "subtitle": "Supported",
+                    "body": "Instead of full page sheet, you can use a small drop too!"
+                }
+            ]
+        },
+        {
+            "version": "1.2",
+            "new": [
+                {
+                    "icon": "square.and.arrow.down.fill",
+                    "title": "Remote File",
+                    "subtitle": "Supported",
+                    "body": "Direct load via remote storage. Easy!"
+                }
+            ]
+        },
+        {
+            "version": "1.1",
+            "new": [
+                {
+                    "icon": "hammer.fill",
+                    "title": "Bug fixes",
+                    "subtitle": "Broken UI",
+                    "body": "Available for iOS 16, iPadOS 16, macOS 13"
+                },
+                {
+                    "icon": "square.and.arrow.down.fill",
+                    "title": "Local File",
+                    "subtitle": "Supported",
+                    "body": "Direct load via local storage. Super fast!"
+                },
+                {
+                    "icon": "macpro.gen3.server",
+                    "title": "Serverless",
+                    "subtitle": "Design",
+                    "body": "Free and open source! Created by Ming with ❤️‍🔥"
+                },
+                {
+                    "icon": "arrow.triangle.pull",
+                    "title": "Contribute",
+                    "subtitle": "Together",
+                    "body": "Pull requests and make it better for everyone!"
+                }
+            ]
+        }
+    ],
+    "ko": [
+        {
+            "version": "6.2",
+            "subVersion": "6.2.0",
+            "new": [
+                {
+                    "icon": "rectangle.split.3x3",
+                    "title": "프레젠테이션",
+                    "subtitle": "옵션",
+                    "body": "시트, 전체 화면 및 내장 모드 지원."
+                },
+                {
+                    "icon": "paintpalette",
+                    "title": "적응형",
+                    "subtitle": "텍스트 색상",
+                    "body": "버튼과 기록 텍스트 색상이 배경 밝기에 따라 자동으로 변경됩니다."
+                },
+                {
+                    "icon": "wand.and.stars",
+                    "title": "간소화된",
+                    "subtitle": "이니셜라이저",
+                    "body": "직접 값을 지정할 때 .constant 래퍼가 더 이상 필요하지 않습니다."
+                },
+                {
+                    "icon": "macpro.gen3.server",
+                    "title": "서버리스",
+                    "subtitle": "디자인",
+                    "body": "무료 오픈 소스! ❤️‍🔥"
+                },
+                {
+                    "icon": "arrow.triangle.pull",
+                    "title": "기여하기",
+                    "subtitle": "함께",
+                    "body": "풀 리퀘스트를 통해 모두를 위해 더 나아지게 만들어보세요! 🎉"
+                }
+            ]
+        },
+        {
+            "version": "6.1",
+            "subVersion": "6.1.0",
+            "new": [
+                {
+                    "icon": "hammer",
+                    "title": "프로젝트",
+                    "subtitle": "재구성",
+                    "body": "더 나은 유지보수를 위한 파일과 폴더 분리."
+                }
+            ]
+        },
+        {
+            "version": "6.0",
+            "subVersion": "6.0.0",
+            "new": [
+                {
+                    "icon": "wineglass",
+                    "title": "유리",
+                    "subtitle": "효과",
+                    "body": "지금 사용 가능!"
+                }
+            ]
+        },
+        {
+            "version": "5.5",
+            "subVersion": "5.5.0",
+            "new": [
+                {
+                    "icon": "snowflake",
+                    "title": "눈",
+                    "subtitle": "효과",
+                    "body": "더 많은 특별한 애니메이션이 곧 출시 예정!"
+                }
+            ]
+        },
+        {
+            "version": "5.4",
+            "subVersion": "5.4.0",
+            "new": [
+                {
+                    "icon": "pencil.tip",
+                    "title": "매치된",
+                    "subtitle": "메쉬 배경 색상",
+                    "body": "표준화된 디자인."
+                }
+            ]
+        },
+        {
+            "version": "5.3",
+            "subVersion": "5.3.0",
+            "new": [
+                {
+                    "icon": "pencil.tip",
+                    "title": "추가",
+                    "subtitle": "메쉬 배경",
+                    "body": "더 나은 스타일과 디자인."
+                }
+            ]
+        },
+        {
+            "version": "5.2",
+            "subVersion": "5.2.0",
+            "new": [
+                {
+                    "icon": "hammer",
+                    "title": "기본값",
+                    "subtitle": "옵션",
+                    "body": "더 적은 코드를 위한 새로운 옵셔널 바인딩."
+                }
+            ]
+        },
+        {
+            "version": "5.1",
+            "subVersion": "5.1.0",
+            "new": [
+                {
+                    "icon": "character.book.closed",
+                    "title": "업데이트",
+                    "subtitle": "데모",
+                    "body": "5.0 버전용."
+                }
+            ]
+        },
+        {
+            "version": "5.0",
+            "subVersion": "5.0.0",
+            "new": [
+                {
+                    "icon": "character.book.closed",
+                    "title": "지원",
+                    "subtitle": "현지화",
+                    "body": "Apple 문자열 카탈로그 기반."
+                },
+                {
+                    "icon": "pip.remove",
+                    "title": "지원 중단",
+                    "subtitle": "지원",
+                    "body": "iOS14, watchOS7, macOS11에 대한 지원 중단."
+                }
+            ]
+        },
+        {
+            "version": "4.2",
+            "subVersion": "4.2.0",
+            "new": [
+                {
+                    "icon": "hammer",
+                    "title": "사소한",
+                    "subtitle": "업데이트",
+                    "body": "사소한 버그 수정 및 UI 개선."
+                }
+            ]
+        },
+        {
+            "version": "4.1",
+            "subVersion": "4.1.0",
+            "new": [
+                {
+                    "icon": "eye",
+                    "title": "Vision Pro 지원",
+                    "subtitle": "및 visionOS",
+                    "body": "충돌로 인해 Drops 프레임워크가 일시적으로 비활성화되었습니다."
+                }
+            ]
+        },
+        {
+            "version": "4.0",
+            "subVersion": "4.0.0",
+            "new": [
+                {
+                    "icon": "number",
+                    "title": "향상된 호환성",
+                    "subtitle": "버전 및 빌드",
+                    "body": "이제 x.y.z 또는 x.y 형식을 사용할 수 있습니다."
+                }
+            ]
+        },
+        {
+            "version": "3.9",
+            "new": [
+                {
+                    "icon": "app.fill",
+                    "title": "앱 아이콘",
+                    "subtitle": "지원됨",
+                    "body": "iOS에서."
+                },
+                {
+                    "icon": "app",
+                    "title": "데모",
+                    "subtitle": "더 좋아졌습니다",
+                    "body": "패키지 버전을 따라갑니다."
+                }
+            ]
+        },
+        {
+            "version": "1.5",
+            "new": [
+                {
+                    "icon": "hammer",
+                    "title": "레이아웃",
+                    "subtitle": "수정됨",
+                    "body": "iOS 가로 모드에서."
+                }
+            ]
+        },
+        {
+            "version": "1.4",
+            "new": [
+                {
+                    "icon": "hammer",
+                    "title": "충돌",
+                    "subtitle": "수정됨",
+                    "body": "macOS에서."
+                }
+            ]
+        },
+        {
+            "version": "1.3",
+            "new": [
+                {
+                    "icon": "bell.badge",
+                    "title": "원격 드롭",
+                    "subtitle": "지원됨",
+                    "body": "전체 페이지 시트 대신 작은 드롭도 사용할 수 있습니다!"
+                }
+            ]
+        },
+        {
+            "version": "1.2",
+            "new": [
+                {
+                    "icon": "square.and.arrow.down.fill",
+                    "title": "원격 파일",
+                    "subtitle": "지원됨",
+                    "body": "원격 저장소를 통한 직접 로드. 간편합니다!"
+                }
+            ]
+        },
+        {
+            "version": "1.1",
+            "new": [
+                {
+                    "icon": "hammer.fill",
+                    "title": "버그 수정",
+                    "subtitle": "UI 오류",
+                    "body": "iOS 16, iPadOS 16, macOS 13에서 사용 가능"
+                },
+                {
+                    "icon": "square.and.arrow.down.fill",
+                    "title": "로컬 파일",
+                    "subtitle": "지원됨",
+                    "body": "로컬 저장소를 통한 직접 로드. 초고속!"
+                },
+                {
+                    "icon": "macpro.gen3.server",
+                    "title": "서버리스",
+                    "subtitle": "디자인",
+                    "body": "무료 오픈 소스! Ming이 ❤️‍🔥로 만들었습니다"
+                },
+                {
+                    "icon": "arrow.triangle.pull",
+                    "title": "기여하기",
+                    "subtitle": "함께",
+                    "body": "풀 리퀘스트를 통해 모두를 위해 더 나아지게 만들어보세요!"
+                }
+            ]
+        }
+    ],
+    "zh-Hant": [
+        {
+            "version": "6.2",
+            "subVersion": "6.2.0",
+            "new": [
+                {
+                    "icon": "rectangle.split.3x3",
+                    "title": "呈現方式",
+                    "subtitle": "選項",
+                    "body": "支援表單、全螢幕覆蓋與嵌入模式。"
+                },
+                {
+                    "icon": "paintpalette",
+                    "title": "自適應",
+                    "subtitle": "文字顏色",
+                    "body": "按鈕與歷史紀錄文字顏色會自動適應背景亮度。"
+                },
+                {
+                    "icon": "wand.and.stars",
+                    "title": "簡化的",
+                    "subtitle": "構造器",
+                    "body": "直接賦值不再需要 .constant 包裝綁定。"
+                },
+                {
+                    "icon": "macpro.gen3.server",
+                    "title": "無服務器",
+                    "subtitle": "設計",
+                    "body": "免費開源! ❤️‍🔥"
+                },
+                {
+                    "icon": "arrow.triangle.pull",
+                    "title": "貢獻",
+                    "subtitle": "一起",
+                    "body": "提出請求，讓每個人都變得更好! 🎉"
+                }
+            ]
+        },
+        {
+            "version": "6.1",
+            "subVersion": "6.1.0",
+            "new": [
+                {
+                    "icon": "hammer",
+                    "title": "專案",
+                    "subtitle": "重構",
+                    "body": "分離檔案和資料夾以便更好地維護。"
+                }
+            ]
+        },
+        {
+            "version": "6.0",
+            "subVersion": "6.0.0",
+            "new": [
+                {
+                    "icon": "wineglass",
+                    "title": "玻璃",
+                    "subtitle": "效果",
+                    "body": "現已推出!"
+                }
+            ]
+        },
+        {
+            "version": "5.5",
+            "subVersion": "5.5.0",
+            "new": [
+                {
+                    "icon": "snowflake",
+                    "title": "飄雪",
+                    "subtitle": "效果",
+                    "body": "更多特別效果即將推出!"
+                }
+            ]
+        },
+        {
+            "version": "5.4",
+            "subVersion": "5.4.0",
+            "new": [
+                {
+                    "icon": "pencil.tip",
+                    "title": "匹配",
+                    "subtitle": "網格背景顏色",
+                    "body": "標準化設計。"
+                }
+            ]
+        },
+        {
+            "version": "5.3",
+            "subVersion": "5.3.0",
+            "new": [
+                {
+                    "icon": "pencil.tip",
+                    "title": "新增",
+                    "subtitle": "網格背景",
+                    "body": "更好的設計。"
+                }
+            ]
+        },
+        {
+            "version": "5.2",
+            "subVersion": "5.2.0",
+            "new": [
+                {
+                    "icon": "hammer",
+                    "title": "預設",
+                    "subtitle": "選項",
+                    "body": "減少重複程式碼。"
+                }
+            ]
+        },
+        {
+            "version": "5.1",
+            "subVersion": "5.1.0",
+            "new": [
+                {
+                    "icon": "character.book.closed",
+                    "title": "更新",
+                    "subtitle": "示範內容",
+                    "body": "針對 5.0 版本。"
+                }
+            ]
+        },
+        {
+            "version": "5.0",
+            "subVersion": "5.0.0",
+            "new": [
+                {
+                    "icon": "character.book.closed",
+                    "title": "支援",
+                    "subtitle": "翻譯",
+                    "body": "由 Apple String Catalog 技術提供。"
+                },
+                {
+                    "icon": "pip.remove",
+                    "title": "終結",
+                    "subtitle": "支援",
+                    "body": "iOS14, watchOS7, and macOS11。"
+                }
+            ]
+        },
+        {
+            "version": "4.2",
+            "subVersion": "4.2.0",
+            "new": [
+                {
+                    "icon": "hammer",
+                    "title": "小型",
+                    "subtitle": "更新",
+                    "body": "一些錯誤修正和UI更新"
+                }
+            ]
+        },
+        {
+            "version": "4.1",
+            "subVersion": "4.1.0",
+            "new": [
+                {
+                    "icon": "eye",
+                    "title": "支持 Vision Pro",
+                    "subtitle": "和 visionOS",
+                    "body": "Drops Framework 由於衝突而被臨時禁用。"
+                }
+            ]
+        },
+        {
+            "version": "4.0",
+            "subVersion": "4.0.0",
+            "new": [
+                {
+                    "icon": "number",
+                    "title": "更好兼容性",
+                    "subtitle": "在版本和構建中",
+                    "body": "您現在可以使用 x.y.z 或 x.y。"
+                }
+            ]
+        },
+        {
+            "version": "3.9",
+            "new": [
+                {
+                    "icon": "app.fill",
+                    "title": "應用圖標",
+                    "subtitle": "支持",
+                    "body": "在 iOS 上。"
+                },
+                {
+                    "icon": "app",
+                    "title": "演示",
+                    "subtitle": "現在好多了",
+                    "body": "遵循包版本。"
+                }
+            ]
+        },
+        {
+            "version": "1.5",
+            "new": [
+                {
+                    "icon": "hammer",
+                    "title": "Layout",
+                    "subtitle": "Fixed",
+                    "body": "on iOS Landscape."
+                }
+            ]
+        },
+        {
+            "version": "1.4",
+            "new": [
+                {
+                    "icon": "hammer",
+                    "title": "Crash",
+                    "subtitle": "Fixed",
+                    "body": "on macOS."
+                }
+            ]
+        },
+        {
+            "version": "1.3",
+            "new": [
+                {
+                    "icon": "bell.badge",
+                    "title": "Remote Drop",
+                    "subtitle": "Supported",
+                    "body": "Instead of full page sheet, you can use a small drop too!"
+                }
+            ]
+        },
+        {
+            "version": "1.2",
+            "new": [
+                {
+                    "icon": "square.and.arrow.down.fill",
+                    "title": "Remote File",
+                    "subtitle": "Supported",
+                    "body": "Direct load via remote storage. Easy!"
+                }
+            ]
+        },
+        {
+            "version": "1.1",
+            "new": [
+                {
+                    "icon": "hammer.fill",
+                    "title": "Bug fixes",
+                    "subtitle": "Broken UI",
+                    "body": "Available for iOS 16, iPadOS 16, macOS 13"
+                },
+                {
+                    "icon": "square.and.arrow.down.fill",
+                    "title": "Local File",
+                    "subtitle": "Supported",
+                    "body": "Direct load via local storage. Super fast!"
+                },
+                {
+                    "icon": "macpro.gen3.server",
+                    "title": "Serverless",
+                    "subtitle": "Design",
+                    "body": "Free and open source! Created by Ming with ❤️‍🔥"
+                },
+                {
+                    "icon": "arrow.triangle.pull",
+                    "title": "Contribute",
+                    "subtitle": "Together",
+                    "body": "Pull requests and make it better for everyone!"
+                }
+            ]
+        }
+    ]
+}

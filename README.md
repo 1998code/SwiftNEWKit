@@ -50,6 +50,9 @@ VisionOS Support (4.1.0+) | Mesh Gradient Background (5.3.0+)
 
 | Feature | Version | Description |
 |---------|---------|-------------|
+| 🎯 **Flexible Presentations** | 6.2.0+ | Switch between sheet, fullScreenCover, and embed modes |
+| 🌈 **Adaptive Text Color** | 6.2.0+ | Button text automatically adapts to background brightness |
+| 🛠️ **Simplified Initializer** | 6.2.0+ | Direct values no longer need `.constant()` bindings |
 | 🎨 **Glass Morphism Effects** | 5.5.0+ | Modern glass blur effects with customizable transparency |
 | 🌈 **Mesh & Linear Gradients** | 5.3.0+ | Beautiful animated gradient backgrounds |
 | 🥽 **visionOS & Vision Pro** | 4.1.0+ | Native spatial computing support |
@@ -122,13 +125,13 @@ struct ContentView: View {
     var body: some View {
         SwiftNEW(
             show: $showNew,
-            color: .constant(.blue),
-            size: .constant("normal"),
-            label: .constant("What's New"),
-            labelImage: .constant("sparkles"),
-            history: .constant(true),
-            mesh: .constant(true),
-            glass: .constant(true)
+            color: .blue,
+            size: "normal",
+            label: "What's New",
+            labelImage: "sparkles",
+            history: true,
+            mesh: true,
+            glass: true
         )
     }
 }
@@ -163,15 +166,15 @@ VisionOS Support (4.1.0+) | Mesh Gradient Background (5.3.0+)
 | `align` | `Binding<HorizontalAlignment>` | `.center` | Content alignment (`.leading`, `.center`, `.trailing`) |
 | `color` | `Binding<Color>` | `.accentColor` | Primary theme color |
 | `size` | `Binding<String>` | `"simple"` | Button size: `"invisible"`, `"mini"`, `"simple"`, `"normal"` |
-| `labelColor` | `Binding<Color>` | System color | Button text color |
 | `label` | `Binding<String>` | `"Show Release Note"` | Button display text |
 | `labelImage` | `Binding<String>` | `"arrow.up.circle.fill"` | SF Symbol icon name |
 | `history` | `Binding<Bool>` | `true` | Enable version history navigation |
 | `data` | `Binding<String>` | `"data"` | Local JSON filename or remote URL |
 | `showDrop` | `Binding<Bool>` | `false` | Use iOS drop notification style |
 | `mesh` | `Binding<Bool>` | `true` | Enable mesh gradient backgrounds |
-| `specialEffect` | `Binding<String>` | `""` | Special effects: `"Christmas"` or `""` |
+| `specialEffect` | `Binding<SwiftNEWSpecialEffect>` | `.none` | Special effects: `.christmas` or `.none` |
 | `glass` | `Binding<Bool>` | `true` | Enable glass morphism effects |
+| `presentation` | `Binding<SwiftNEWPresentation>` | `.sheet` | Presentation style: `.sheet`, `.fullScreenCover`, `.embed` |
 
 *Required parameter
 
@@ -186,10 +189,10 @@ SwiftNEW(show: $showNew)
 ```swift
 SwiftNEW(
     show: $showNew,
-    color: .constant(.purple),
-    size: .constant("normal"),
-    mesh: .constant(true),
-    glass: .constant(true)
+    color: .purple,
+    size: "normal",
+    mesh: true,
+    glass: true
 )
 ```
 
@@ -197,7 +200,7 @@ SwiftNEW(
 ```swift
 SwiftNEW(
     show: $showNew,
-    data: .constant("https://api.example.com/releases.json")
+    data: "https://api.example.com/releases.json"
 )
 ```
 
@@ -205,9 +208,9 @@ SwiftNEW(
 ```swift
 SwiftNEW(
     show: $showNew,
-    label: .constant("New Update"),
-    labelImage: .constant("bell.badge"),
-    showDrop: .constant(true)
+    label: "New Update",
+    labelImage: "bell.badge",
+    showDrop: true
 )
 ```
 
@@ -254,7 +257,7 @@ Load content from any REST API endpoint:
 ```swift
 SwiftNEW(
     show: $showNew,
-    data: .constant("https://api.myapp.com/releases.json")
+    data: "https://api.myapp.com/releases.json"
 )
 ```
 
@@ -265,7 +268,7 @@ Direct integration with Firebase:
 ```swift
 SwiftNEW(
     show: $showNew,
-    data: .constant("https://your-project.firebaseio.com/releases.json")
+    data: "https://your-project.firebaseio.com/releases.json"
 )
 ```
 

@@ -1,13 +1,25 @@
 [
     {
-        "version": "6.1",
-        "subVersion": "6.1.0",
+        "version": "6.2",
+        "subVersion": "6.2.0",
         "new": [
             {
-                "icon": "hammer",
-                "title": "Project",
-                "subtitle": "Restructure",
-                "body": "Seperate files and folders for better maintenance."
+                "icon": "rectangle.split.3x3",
+                "title": "Presentation",
+                "subtitle": "Options",
+                "body": "Support for sheet, fullScreenCover, and embed modes."
+            },
+            {
+                "icon": "paintpalette",
+                "title": "Adaptive",
+                "subtitle": "Text Color",
+                "body": "Button and history text color automatically adapts to background brightness."
+            },
+            {
+                "icon": "wand.and.stars",
+                "title": "Simplified",
+                "subtitle": "Initializer",
+                "body": "Direct values no longer require .constant wrapper binding."
             },
             {
                 "icon": "macpro.gen3.server",
@@ -20,6 +32,18 @@
                 "title": "Contribute",
                 "subtitle": "Together",
                 "body": "Pull requests and make it better for everyone! 🎉"
+            }
+        ]
+    },
+    {
+        "version": "6.1",
+        "subVersion": "6.1.0",
+        "new": [
+            {
+                "icon": "hammer",
+                "title": "Project",
+                "subtitle": "Restructure",
+                "body": "Seperate files and folders for better maintenance."
             }
         ]
     },

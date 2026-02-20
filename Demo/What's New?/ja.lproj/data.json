@@ -1,13 +1,25 @@
 [
     {
-        "version": "6.1",
-        "subVersion": "6.1.0",
+        "version": "6.2",
+        "subVersion": "6.2.0",
         "new": [
             {
-                "icon": "hammer",
-                "title": "プロジェクト",
-                "subtitle": "リストラクチャ",
-                "body": "より良いメンテナンスのためのファイルとフォルダの分離。"
+                "icon": "rectangle.split.3x3",
+                "title": "プレゼンテーション",
+                "subtitle": "オプション",
+                "body": "シート、フルスクリーンカバー、及び埋め込みモードの対応。"
+            },
+            {
+                "icon": "paintpalette",
+                "title": "適応型",
+                "subtitle": "テキスト色",
+                "body": "ボタンと履歴のテキスト色が背景の明るさに応じて自動的に切り替わります。"
+            },
+            {
+                "icon": "wand.and.stars",
+                "title": "簡易化された",
+                "subtitle": "イニシャライザ",
+                "body": "直接の値を指定する際に .constant ラッパーが不要になりました。"
             },
             {
                 "icon": "macpro.gen3.server",
@@ -20,6 +32,18 @@
                 "title": "貢献",
                 "subtitle": "一緒に",
                 "body": "プルリクエストを送って、みんなのためにより良くしましょう！ 🎉"
+            }
+        ]
+    },
+    {
+        "version": "6.1",
+        "subVersion": "6.1.0",
+        "new": [
+            {
+                "icon": "hammer",
+                "title": "プロジェクト",
+                "subtitle": "リストラクチャ",
+                "body": "より良いメンテナンスのためのファイルとフォルダの分離。"
             }
         ]
     },

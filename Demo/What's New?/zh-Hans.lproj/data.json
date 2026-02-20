@@ -1,13 +1,25 @@
 [
     {
-        "version": "6.1",
-        "subVersion": "6.1.0",
+        "version": "6.2",
+        "subVersion": "6.2.0",
         "new": [
             {
-                "icon": "hammer",
-                "title": "项目",
-                "subtitle": "重构",
-                "body": "分离文件和文件夹以便更好地维护。"
+                "icon": "rectangle.split.3x3",
+                "title": "呈现方式",
+                "subtitle": "选项",
+                "body": "支持表单、全屏覆盖和嵌入模式。"
+            },
+            {
+                "icon": "paintpalette",
+                "title": "自适应",
+                "subtitle": "文本颜色",
+                "body": "按钮和历史记录文本颜色会自动适应背景亮度。"
+            },
+            {
+                "icon": "wand.and.stars",
+                "title": "简化的",
+                "subtitle": "构造器",
+                "body": "直接赋值不再需要 .constant 包装绑定。"
             },
             {
                 "icon": "macpro.gen3.server",
@@ -20,6 +32,18 @@
                 "title": "贡献",
                 "subtitle": "一起",
                 "body": "提出请求，让每个人都变得更好! 🎉"
+            }
+        ]
+    },
+    {
+        "version": "6.1",
+        "subVersion": "6.1.0",
+        "new": [
+            {
+                "icon": "hammer",
+                "title": "项目",
+                "subtitle": "重构",
+                "body": "分离文件和文件夹以便更好地维护。"
             }
         ]
     },
