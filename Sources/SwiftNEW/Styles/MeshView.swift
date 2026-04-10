@@ -22,7 +22,7 @@ struct MeshView: View {
             ])
             .ignoresSafeArea(.all)
             .overlay(
-                NoiseView(size: 100000)
+                NoiseView(size: 5000)
             )
         } else {
             // Fallback on earlier versions

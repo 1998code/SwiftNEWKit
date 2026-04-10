@@ -70,7 +70,7 @@
         "ar" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "الإستعمالات السابقة"
+            "value" : "التحديثات السابقة"
           }
         },
         "de" : {
@@ -229,7 +229,7 @@
         "ar" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "إعرض الإستعمالات السابقة"
+            "value" : "إعرض التحديثات السابقة"
           }
         },
         "de" : {
