@@ -26,7 +26,7 @@ extension SwiftNEW {
                 }
                 Text(String(localized: "What's New in", bundle: .module))
                     .bold().font(.largeTitle)
-                Text("\(String(localized: "Version", bundle: .module)) \(showBuild ? Bundle.versionBuild : Bundle.version)")
+                Text(String(localized: "Version \(showBuild ? Bundle.versionBuild : Bundle.version)", bundle: .module))
                     .bold().font(.title).foregroundColor(.secondary)
             }
             if align == .trailing {
@@ -39,7 +39,7 @@ extension SwiftNEW {
         VStack {
             Text(String(localized: "What's New in", bundle: .module))
                 .bold().font(.largeTitle)
-            Text("\(String(localized: "Version", bundle: .module)) \(showBuild ? Bundle.versionBuild : Bundle.version)")
+            Text(String(localized: "Version \(showBuild ? Bundle.versionBuild : Bundle.version)", bundle: .module))
                 .bold().font(.title).foregroundColor(.secondary)
         }
     }

@@ -123,7 +123,7 @@
         "ar" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "...جاري التحميل"
+            "value" : "جاري التحميل..."
           }
         },
         "de" : {
@@ -329,55 +329,55 @@
         }
       }
     },
-    "Version" : {
+    "Version %@" : {
       "extractionState" : "manual",
       "localizations" : {
         "ar" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "الإصدار"
+            "value" : "الإصدار %@"
           }
         },
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Version"
+            "value" : "Version %@"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Version"
+            "value" : "Version %@"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "La Version"
+            "value" : "La Version %@"
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "La Versione"
+            "value" : "La Versione %@"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "版本"
+            "value" : "版本 %@"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "版本"
+            "value" : "版本 %@"
           }
         },
         "zh-HK" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "版本"
+            "value" : "版本 %@"
           }
         }
       }

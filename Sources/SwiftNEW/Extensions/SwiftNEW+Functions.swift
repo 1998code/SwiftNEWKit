@@ -42,20 +42,21 @@ extension SwiftNEW {
     }
     
     public func loadData() {
+        let source = data
         Task {
             do {
                 let decoded: [Vmodel]
-                if data.contains("http") {
+                if source.contains("http") {
                     // MARK: Remote Data
-                    guard let url = URL(string: data) else { return }
+                    guard let url = URL(string: source) else { return }
                     let (responseData, _) = try await URLSession.shared.data(from: url)
                     decoded = try JSONDecoder().decode([Vmodel].self, from: responseData)
                 } else {
                     // MARK: Local Data
-                    guard let url = Bundle.main.url(forResource: data, withExtension: "json") else { return }
-                    let fileData = try Data(contentsOf: url)
+                    guard let url = Bundle.main.url(forResource: source, withExtension: "json") else { return }
                     decoded = try await Task.detached {
-                        try JSONDecoder().decode([Vmodel].self, from: fileData)
+                        let fileData = try Data(contentsOf: url)
+                        return try JSONDecoder().decode([Vmodel].self, from: fileData)
                     }.value
                 }
                 await MainActor.run {
