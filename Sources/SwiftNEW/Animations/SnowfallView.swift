@@ -8,40 +8,38 @@
 import SwiftUI
 
 struct SnowfallView: View {
-    @State private var snowflakes = [Snowflake]()
-    private let timer = Timer.publish(every: 0.05, on: .main, in: .common).autoconnect()
+    private let snowflakeCount = 100
 
     var body: some View {
-        GeometryReader { geometry in
-            ZStack {
-                ForEach(snowflakes) { snowflake in
-                    Circle()
-                        .fill(Color.white)
-                        .frame(width: snowflake.size, height: snowflake.size)
-                        .position(x: snowflake.x, y: snowflake.y)
-                }
-            }
-            .onAppear {
-                for _ in 0..<100 {
-                    let snowflake = Snowflake(
-                        id: UUID(),
-                        x: CGFloat.random(in: 0...geometry.size.width),
-                        y: CGFloat.random(in: -geometry.size.height...0),
-                        size: CGFloat.random(in: 2...6),
-                        speed: CGFloat.random(in: 1...3)
+        TimelineView(.animation) { timeline in
+            Canvas { context, size in
+                let time = timeline.date.timeIntervalSinceReferenceDate
+                for i in 0..<snowflakeCount {
+                    let seed = Double(i) * 73.156
+                    let speed = 1.0 + (seed.truncatingRemainder(dividingBy: 3.0))
+                    let snowflakeSize = CGFloat(2 + (seed.truncatingRemainder(dividingBy: 5.0)))
+
+                    // Horizontal drift using sine wave
+                    let drift = sin(time * 0.5 + seed) * 30
+                    let x = ((seed * 7.3).truncatingRemainder(dividingBy: size.width)) + drift
+                    // Vertical fall with wrapping
+                    let y = ((time * speed * 30) + seed * 5).truncatingRemainder(dividingBy: Double(size.height + 20)) - 10
+                    let opacity = 0.5 + sin(seed) * 0.3
+
+                    context.opacity = opacity
+                    context.fill(
+                        Path(ellipseIn: CGRect(
+                            x: x - snowflakeSize / 2,
+                            y: y - snowflakeSize / 2,
+                            width: snowflakeSize,
+                            height: snowflakeSize
+                        )),
+                        with: .color(.white)
                     )
-                    snowflakes.append(snowflake)
-                }
-            }
-            .onReceive(timer) { _ in
-                for index in snowflakes.indices {
-                    snowflakes[index].y += snowflakes[index].speed
-                    if snowflakes[index].y > geometry.size.height {
-                        snowflakes[index].y = -snowflakes[index].size
-                        snowflakes[index].x = CGFloat.random(in: 0...geometry.size.width)
-                    }
                 }
             }
         }
+        .allowsHitTesting(false)
+        .accessibilityHidden(true)
     }
 }

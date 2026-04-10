@@ -19,10 +19,4 @@ public struct Model: Codable, Hashable, Sendable {
     var subtitle: String
     var body: String
 }
-struct Snowflake: Identifiable {
-    let id: UUID
-    var x: CGFloat
-    var y: CGFloat
-    var size: CGFloat
-    var speed: CGFloat
-}
+
