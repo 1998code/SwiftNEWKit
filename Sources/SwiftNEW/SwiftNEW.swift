@@ -47,6 +47,7 @@ public struct SwiftNEW: View {
     @Binding var specialEffect: SwiftNEWSpecialEffect
     @Binding var glass: Bool
     @Binding var presentation: SwiftNEWPresentation
+    @Binding var showBuild: Bool
     
     #if os(iOS) || os(visionOS)
     public init(
@@ -62,7 +63,8 @@ public struct SwiftNEW: View {
         mesh: Bool? = true,
         specialEffect: SwiftNEWSpecialEffect? = .none,
         glass: Bool? = true,
-        presentation: SwiftNEWPresentation? = .sheet
+        presentation: SwiftNEWPresentation? = .sheet,
+        showBuild: Bool? = true
     ) {
         _show = show
         _align = .constant(align ?? .center)
@@ -77,6 +79,7 @@ public struct SwiftNEW: View {
         _specialEffect = .constant(specialEffect ?? .none)
         _glass = .constant(glass ?? true)
         _presentation = .constant(presentation ?? .sheet)
+        _showBuild = .constant(showBuild ?? true)
         compareVersion()
     }
     
@@ -94,7 +97,8 @@ public struct SwiftNEW: View {
         mesh: Binding<Bool>? = .constant(true),
         specialEffect: Binding<SwiftNEWSpecialEffect>? = .constant(.none),
         glass: Binding<Bool>? = .constant(true),
-        presentation: Binding<SwiftNEWPresentation>? = .constant(.sheet)
+        presentation: Binding<SwiftNEWPresentation>? = .constant(.sheet),
+        showBuild: Binding<Bool>? = .constant(true)
     ) {
         _show = show
         _align = align ?? .constant(.center)
@@ -109,6 +113,7 @@ public struct SwiftNEW: View {
         _specialEffect = specialEffect ?? .constant(.none)
         _glass = glass ?? .constant(true)
         _presentation = presentation ?? .constant(.sheet)
+        _showBuild = showBuild ?? .constant(true)
         compareVersion()
     }
     #elseif os(macOS)
@@ -125,7 +130,8 @@ public struct SwiftNEW: View {
         mesh: Bool? = true,
         specialEffect: SwiftNEWSpecialEffect? = .none,
         glass: Bool? = true,
-        presentation: SwiftNEWPresentation? = .sheet
+        presentation: SwiftNEWPresentation? = .sheet,
+        showBuild: Bool? = true
     ) {
         _show = show
         _align = .constant(align ?? .center)
@@ -140,6 +146,7 @@ public struct SwiftNEW: View {
         _specialEffect = .constant(specialEffect ?? .none)
         _glass = .constant(glass ?? true)
         _presentation = .constant(presentation ?? .sheet)
+        _showBuild = .constant(showBuild ?? true)
         compareVersion()
     }
     @_disfavoredOverload
@@ -156,7 +163,8 @@ public struct SwiftNEW: View {
         mesh: Binding<Bool>? = .constant(true),
         specialEffect: Binding<SwiftNEWSpecialEffect>? = .constant(.none),
         glass: Binding<Bool>? = .constant(true),
-        presentation: Binding<SwiftNEWPresentation>? = .constant(.sheet)
+        presentation: Binding<SwiftNEWPresentation>? = .constant(.sheet),
+        showBuild: Binding<Bool>? = .constant(true)
     ) {
         _show = show
         _align = align ?? .constant(.center)
@@ -171,6 +179,7 @@ public struct SwiftNEW: View {
         _specialEffect = specialEffect ?? .constant(.none)
         _glass = glass ?? .constant(true)
         _presentation = presentation ?? .constant(.sheet)
+        _showBuild = showBuild ?? .constant(true)
         compareVersion()
     }
     #else
@@ -187,7 +196,8 @@ public struct SwiftNEW: View {
         mesh: Bool? = true,
         specialEffect: SwiftNEWSpecialEffect? = .none,
         glass: Bool? = true,
-        presentation: SwiftNEWPresentation? = .sheet
+        presentation: SwiftNEWPresentation? = .sheet,
+        showBuild: Bool? = true
     ) {
         _show = show
         _align = .constant(align ?? .center)
@@ -202,6 +212,7 @@ public struct SwiftNEW: View {
         _specialEffect = .constant(specialEffect ?? .none)
         _glass = .constant(glass ?? true)
         _presentation = .constant(presentation ?? .sheet)
+        _showBuild = .constant(showBuild ?? true)
         compareVersion()
     }
     @_disfavoredOverload
@@ -218,7 +229,8 @@ public struct SwiftNEW: View {
         mesh: Binding<Bool>? = .constant(true),
         specialEffect: Binding<SwiftNEWSpecialEffect>? = .constant(.none),
         glass: Binding<Bool>? = .constant(true),
-        presentation: Binding<SwiftNEWPresentation>? = .constant(.sheet)
+        presentation: Binding<SwiftNEWPresentation>? = .constant(.sheet),
+        showBuild: Binding<Bool>? = .constant(true)
     ) {
         _show = show
         _align = align ?? .constant(.center)
@@ -233,6 +245,7 @@ public struct SwiftNEW: View {
         _specialEffect = specialEffect ?? .constant(.none)
         _glass = glass ?? .constant(true)
         _presentation = presentation ?? .constant(.sheet)
+        _showBuild = showBuild ?? .constant(true)
         compareVersion()
     }
     #endif

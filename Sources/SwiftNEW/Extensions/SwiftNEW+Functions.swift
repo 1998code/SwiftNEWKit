@@ -42,31 +42,28 @@ extension SwiftNEW {
     }
     
     public func loadData() {
-        if data.contains("http") {
-            // MARK: Remote Data
-            let url = URL(string: data)
-            URLSession.shared.dataTask(with: url!) { data, response, error in
-                if let data = data {
-                    do {
-                        let decoder = JSONDecoder()
-                        items = try decoder.decode([Vmodel].self, from: data)
-                        self.loading = false
-                    } catch {
-                        print(error)
-                    }
+        Task {
+            do {
+                let decoded: [Vmodel]
+                if data.contains("http") {
+                    // MARK: Remote Data
+                    guard let url = URL(string: data) else { return }
+                    let (responseData, _) = try await URLSession.shared.data(from: url)
+                    decoded = try JSONDecoder().decode([Vmodel].self, from: responseData)
+                } else {
+                    // MARK: Local Data
+                    guard let url = Bundle.main.url(forResource: data, withExtension: "json") else { return }
+                    let fileData = try Data(contentsOf: url)
+                    decoded = try await Task.detached {
+                        try JSONDecoder().decode([Vmodel].self, from: fileData)
+                    }.value
                 }
-            }.resume()
-        } else {
-            // MARK: Local Data
-            if let url = Bundle.main.url(forResource: data, withExtension: "json") {
-                do {
-                    let data = try Data(contentsOf: url)
-                    let decoder = JSONDecoder()
-                    items = try decoder.decode([Vmodel].self, from: data)
+                await MainActor.run {
+                    items = decoded
                     loading = false
-                } catch {
-                    print("error: \(error)")
                 }
+            } catch {
+                print("SwiftNEW loadData error: \(error)")
             }
         }
     }
