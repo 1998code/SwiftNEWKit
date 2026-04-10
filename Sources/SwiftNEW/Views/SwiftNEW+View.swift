@@ -61,7 +61,6 @@ extension SwiftNEW {
         ZStack {
             if mesh {
                 MeshView(color: $color)
-                    .drawingGroup()
             }
             if specialEffect == .christmas {
                 SnowfallView()
@@ -82,7 +81,6 @@ extension SwiftNEW {
         ZStack {
             if mesh {
                 MeshView(color: $color)
-                    .drawingGroup()
             }
             if specialEffect == .christmas {
                 SnowfallView()

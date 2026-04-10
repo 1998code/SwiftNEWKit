@@ -23,6 +23,7 @@ struct MeshView: View {
             .ignoresSafeArea(.all)
             .overlay(
                 NoiseView(size: 5000)
+                    .drawingGroup()
             )
         } else {
             // Fallback on earlier versions

@@ -28,6 +28,7 @@ extension SwiftNEW {
                         color.opacity(0.25)
                         Text(item.version).bold().font(.title2)
                             .foregroundColor(color.adaptedTextColor)
+                            .padding(12)
                     }.glass(radius: 15, shadowColor: color)
                     .frame(width: 75, height: 30)
                     .cornerRadius(15)
