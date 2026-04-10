@@ -23,6 +23,7 @@ public enum SwiftNEWPresentation {
 public enum SwiftNEWSpecialEffect {
     case none
     case christmas
+    case particles
 }
  
 @available(iOS 15.0, watchOS 8.0, macOS 12.0, tvOS 17.0, *)

@@ -64,6 +64,8 @@ extension SwiftNEW {
             }
             if specialEffect == .christmas {
                 SnowfallView()
+            } else if specialEffect == .particles {
+                FloatingParticlesView()
             }
             sheetCurrent
                 .sheet(isPresented: $historySheet) {
@@ -84,6 +86,8 @@ extension SwiftNEW {
             }
             if specialEffect == .christmas {
                 SnowfallView()
+            } else if specialEffect == .particles {
+                FloatingParticlesView()
             }
             sheetHistory
                 #if os(visionOS)
