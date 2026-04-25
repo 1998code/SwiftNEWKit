@@ -34,29 +34,35 @@ A modern, SwiftUI-native **"What's New"** presentation framework for all Apple p
 
 **2. Add a `data.json`** to your app bundle:
 
-```json
-[
-  {
-    "version": "1.0",
-    "new": [
-      { "icon": "star.fill", "title": "Welcome", "subtitle": "Get Started", "body": "Thanks for downloading our app!" }
-    ]
-  }
-]
-```
+> [!TIP]
+> Sample release notes JSON
+>
+> ```json
+> [
+>   {
+>     "version": "1.0",
+>     "new": [
+>       { "icon": "star.fill", "title": "Welcome", "subtitle": "Get Started", "body": "Thanks for downloading our app!" }
+>     ]
+>   }
+> ]
+> ```
 
 **3. Drop it in your view:**
 
-```swift
-import SwiftNEW
-
-struct ContentView: View {
-    @State private var showNew = false
-    var body: some View {
-        SwiftNEW(show: $showNew)
-    }
-}
-```
+> [!NOTE]
+> Minimal SwiftUI integration
+>
+> ```swift
+> import SwiftNEW
+>
+> struct ContentView: View {
+>     @State private var showNew = false
+>     var body: some View {
+>         SwiftNEW(show: $showNew)
+>     }
+> }
+> ```
 
 That's it — SwiftNEW auto-triggers when the app version changes.
 
