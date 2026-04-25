@@ -9,17 +9,24 @@
 ![Platforms](https://img.shields.io/badge/Platforms-iOS%2015.0+%20|%20macOS%2014.0+%20|%20tvOS%2017.0+%20|%20visionOS%201.0+-15437D.svg)
 ![License](https://img.shields.io/badge/License-MIT-C8ECFE.svg)
 
+**English** · [繁中](README/README_tc.md) · [简中](README/README_zh.md) · [粵語](README/README_hc.md) · [日本語](README/README_ja.md) · [한국어](README/README_ko.md)
+
 A modern, SwiftUI-native **"What's New"** presentation framework for all Apple platforms — animated gradient backgrounds, glass effects, remote data loading, and full RTL/localization support out of the box.
 
 ![image](https://github.com/user-attachments/assets/0a5de416-f4cd-41b5-8060-f839f2e7286a)
+
+## 🎨 Gallery
+
+| Light | Dark |
+|:-----:|:----:|
+| ![Light](https://user-images.githubusercontent.com/54872601/173187065-14d78119-47e7-4dcb-a3e6-c7fee4f0c67f.PNG) | ![Dark](https://user-images.githubusercontent.com/54872601/173187067-fe3b5cac-54b5-4482-b73f-42e6c500546f.PNG) |
 
 ## 🚀 Quick Start
 
 **1. Add the package** in Xcode → *File → Add Package Dependencies…*
 
-```
-https://github.com/1998code/SwiftNEWKit
-```
+> [!TIP]
+> **Package URL:** [`https://github.com/1998code/SwiftNEWKit`](https://github.com/1998code/SwiftNEWKit)
 
 **2. Add a `data.json`** to your app bundle:
 
@@ -49,14 +56,6 @@ struct ContentView: View {
 
 That's it — SwiftNEW auto-triggers when the app version changes.
 
-## 📚 Documentation
-
-| Doc | Covers |
-|-----|--------|
-| [Configuration](README/CONFIGURATION.md) | All parameters, examples, data sources (local / remote / Firebase), data model |
-| [Platform Support & Installation](README/PLATFORM.md) | Supported OS versions, requirements, feature matrix, SPM setup |
-| [Contributing](README/CONTRIBUTING.md) | Project structure, dev setup, PR guidelines, troubleshooting |
-
 ## ✨ Features
 
 | Feature | Since | Description |
@@ -76,34 +75,39 @@ That's it — SwiftNEW auto-triggers when the app version changes.
 | 🌐 Remote JSON | 3.0.0 | Load from any REST endpoint |
 | 📚 Version History | 2.0.0 | Browse all previous releases |
 
-## 🎨 Gallery
+### Feature Showcase
 
-| Light | Dark |
-|:-----:|:----:|
-| ![Light](https://user-images.githubusercontent.com/54872601/173187065-14d78119-47e7-4dcb-a3e6-c7fee4f0c67f.PNG) | ![Dark](https://user-images.githubusercontent.com/54872601/173187067-fe3b5cac-54b5-4482-b73f-42e6c500546f.PNG) |
+| Mesh Gradient (5.3+) | visionOS (4.1+) |
+|:--------------------:|:---------------:|
+| <img alt="Mesh" src="https://github.com/1998code/SwiftNEWKit/assets/54872601/a845c460-65d7-47a0-ae15-23897efd0508"> | ![visionOS](https://github.com/1998code/SwiftNEWKit/assets/54872601/12a8ab01-76e5-42a1-96b4-848ef5e5f36b) |
 
-| History (2.0+) | App Icon (3.9.6+) |
-|:--------------:|:-----------------:|
-| ![History](https://user-images.githubusercontent.com/54872601/178129999-ad63b0ce-d65e-4d86-9882-37a5090e92bc.png) | ![App Icon](https://user-images.githubusercontent.com/54872601/206886933-bc4d0d33-e0fc-4013-9456-f19679b10f5b.png) |
+| App Icon (3.9.6+) | History (2.0+) |
+|:-----------------:|:--------------:|
+| ![App Icon](https://user-images.githubusercontent.com/54872601/206886933-bc4d0d33-e0fc-4013-9456-f19679b10f5b.png) | <img width="300" alt="History" src="https://user-images.githubusercontent.com/54872601/178129999-ad63b0ce-d65e-4d86-9882-37a5090e92bc.png"> |
 
-| visionOS (4.1+) | Mesh Gradient (5.3+) |
-|:---------------:|:--------------------:|
-| ![visionOS](https://github.com/1998code/SwiftNEWKit/assets/54872601/12a8ab01-76e5-42a1-96b4-848ef5e5f36b) | <img alt="Mesh" src="https://github.com/1998code/SwiftNEWKit/assets/54872601/a845c460-65d7-47a0-ae15-23897efd0508"> |
+## 📚 Learn More
 
-## 🌍 Translations
-
-English · [繁中](README/README_tc.md) · [简中](README/README_zh.md) · [粵語](README/README_hc.md) · [日本語](README/README_ja.md) · [한국어](README/README_ko.md)
-
-Help us add more languages — submit a translation PR.
+| Guide | Covers |
+|-------|--------|
+| [Configuration](README/CONFIGURATION.md) | All parameters, examples, data sources (local / remote / Firebase), data model |
+| [Platform Support & Installation](README/PLATFORM.md) | Supported OS versions, requirements, feature matrix, SPM setup |
+| [Contributing](README/CONTRIBUTING.md) | Project structure, dev setup, PR guidelines, troubleshooting |
 
 ## 📄 License
 
-MIT — see [LICENSE](LICENSE).
+SwiftNEW is released under the **MIT License** — one of the most permissive open-source licenses.
+
+| | Details |
+|---|---------|
+| ✅ **You can** | Use it in commercial apps (including paid App Store apps), modify it, redistribute it, and ship it inside closed-source software |
+| 📝 **You must** | Keep the original copyright and license notice in your project |
+| ⚠️ **No warranty** | The software is provided "as is" — the author is not liable for any issues arising from its use |
+
+See [LICENSE](LICENSE) for the full text.
 
 ## 💖 Supported By
 
-<a href="https://m.do.co/c/ce873177d9ab">
-    <img src="https://opensource.nyc3.cdn.digitaloceanspaces.com/attribution/assets/SVG/DO_Logo_horizontal_blue.svg" width="201px" alt="Digital Ocean">
-</a>
-
-[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/1998code/SwiftNEWKit)
+| Sponsor | Resource |
+|---------|----------|
+| <a href="https://m.do.co/c/ce873177d9ab"><img src="https://opensource.nyc3.cdn.digitaloceanspaces.com/attribution/assets/SVG/DO_Logo_horizontal_blue.svg" width="160px" alt="Digital Ocean"></a> | Cloud infrastructure |
+| [![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/1998code/SwiftNEWKit) | AI-powered docs Q&A |
