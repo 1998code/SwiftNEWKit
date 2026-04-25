@@ -93,7 +93,7 @@ That's it — SwiftNEW auto-triggers when the app version changes.
 
 | App Icon (3.9.6+) | History (2.0+) |
 |:-----------------:|:--------------:|
-| ![App Icon](https://user-images.githubusercontent.com/54872601/206886933-bc4d0d33-e0fc-4013-9456-f19679b10f5b.png) | <img width="300" alt="History" src="https://user-images.githubusercontent.com/54872601/178129999-ad63b0ce-d65e-4d86-9882-37a5090e92bc.png"> |
+| <img height="400" alt="App Icon" src="https://user-images.githubusercontent.com/54872601/206886933-bc4d0d33-e0fc-4013-9456-f19679b10f5b.png"> | <img height="400" alt="History" src="https://user-images.githubusercontent.com/54872601/178129999-ad63b0ce-d65e-4d86-9882-37a5090e92bc.png"> |
 
 ## 📚 Learn More
 
