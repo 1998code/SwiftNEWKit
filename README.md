@@ -25,6 +25,7 @@ A modern, SwiftUI-native **"What's New"** presentation framework for all Apple p
 
 **1. Add the package** in Xcode → *File → Add Package Dependencies…*
 
+> [!IMPORTANT]
 > **Package URL**
 >
 > ```
