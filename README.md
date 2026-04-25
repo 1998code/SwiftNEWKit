@@ -25,8 +25,11 @@ A modern, SwiftUI-native **"What's New"** presentation framework for all Apple p
 
 **1. Add the package** in Xcode → *File → Add Package Dependencies…*
 
-> [!TIP]
-> **Package URL:** [`https://github.com/1998code/SwiftNEWKit`](https://github.com/1998code/SwiftNEWKit)
+> **Package URL**
+>
+> ```
+> https://github.com/1998code/SwiftNEWKit
+> ```
 
 **2. Add a `data.json`** to your app bundle:
 
