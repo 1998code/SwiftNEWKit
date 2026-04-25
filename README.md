@@ -16,35 +16,18 @@ A modern, SwiftUI-native "What's New" presentation framework designed for all Ap
 
 ## 📋 Table of Contents
 
-- [✨ Features](#-features)
-- [🎯 Quick Start](#-quick-start)
-- [🎨 Preview & Gallery](#-preview--gallery)
-- [⚙️ Configuration](#️-configuration)
-- [🔧 Data Sources](#-data-sources)
-- [🛠️ Platform Support](#️-platform-support)
-- [📁 Installation Guide](#-installation-guide)
-- [🔧 Troubleshooting](#-troubleshooting)
-- [📂 Project Structure](#-project-structure)
-- [🤝 Contributing](#-contributing)
-
-## 🎨 Preview & Gallery
-
-![CleanShot 2022-06-11 at 22 54 15@2x](https://user-images.githubusercontent.com/54872601/173192927-ca2a8bef-2114-44f8-8d4d-47baadb8b4a8.png)
-
-### Light & Dark Mode
-![IMG_3472](https://user-images.githubusercontent.com/54872601/173187065-14d78119-47e7-4dcb-a3e6-c7fee4f0c67f.PNG) | ![IMG_3471](https://user-images.githubusercontent.com/54872601/173187067-fe3b5cac-54b5-4482-b73f-42e6c500546f.PNG)
-:---: | :---:
-Light Native | Dark Native
-
-### Advanced Features
-![Simulator Screen Shot - iPhone 13 Pro Max](https://user-images.githubusercontent.com/54872601/178129999-ad63b0ce-d65e-4d86-9882-37a5090e92bc.png) | ![CleanShot 2022-12-11 at 12 46 30@2x](https://user-images.githubusercontent.com/54872601/206886933-bc4d0d33-e0fc-4013-9456-f19679b10f5b.png)
-:---: | :---:
-History View (2.0.0+) | App Icon Support (3.9.6+)
-
-### Platform Support
-![CleanShot 2023-06-22 at 14 24 07@2x](https://github.com/1998code/SwiftNEWKit/assets/54872601/12a8ab01-76e5-42a1-96b4-848ef5e5f36b) | <img alt="Screenshot 2024-07-01 at 10 18 33 PM" src="https://github.com/1998code/SwiftNEWKit/assets/54872601/a845c460-65d7-47a0-ae15-23897efd0508">
-:---: | :---:
-VisionOS Support (4.1.0+) | Mesh Gradient Background (5.3.0+)
+| Section | What's inside |
+|---------|---------------|
+| [✨ Features](#-features) | Feature matrix with version availability |
+| [🎯 Quick Start](#-quick-start) | Installation + minimal example |
+| [🎨 Preview & Gallery](#-preview--gallery) | Screenshots across light/dark/platforms |
+| [⚙️ Configuration](#️-configuration) | All initializer parameters and examples |
+| [🔧 Data Sources](#-data-sources) | Local JSON, remote APIs, Firebase |
+| [🛠️ Platform Support](#️-platform-support) | Supported OS versions and feature matrix |
+| [📁 Installation Guide](#-installation-guide) | Step-by-step Swift Package Manager setup |
+| [🔧 Troubleshooting](#-troubleshooting) | Common issues and fixes |
+| [📂 Project Structure](#-project-structure) | Source layout overview |
+| [🤝 Contributing](#-contributing) | How to contribute, guidelines, support |
 
 ## ✨ Features
 
@@ -53,6 +36,8 @@ VisionOS Support (4.1.0+) | Mesh Gradient Background (5.3.0+)
 | 🎯 **Flexible Presentations** | 6.2.0+ | Switch between sheet, fullScreenCover, and embed modes |
 | 🌈 **Adaptive Text Color** | 6.2.0+ | Button text automatically adapts to background brightness |
 | 🛠️ **Simplified Initializer** | 6.2.0+ | Direct values no longer need `.constant()` bindings |
+| 🔢 **Optional Build Number** | 6.3.0+ | Hide the build number in the header via `showBuild` |
+| 🎨 **Floating Particles Effect** | 6.3.0+ | New `.particles` special effect powered by `TimelineView` + `Canvas` |
 | 🎨 **Glass Morphism Effects** | 5.5.0+ | Modern glass blur effects with customizable transparency |
 | 🌈 **Mesh & Linear Gradients** | 5.3.0+ | Beautiful animated gradient backgrounds |
 | 🥽 **visionOS & Vision Pro** | 4.1.0+ | Native spatial computing support |
@@ -172,9 +157,10 @@ VisionOS Support (4.1.0+) | Mesh Gradient Background (5.3.0+)
 | `data` | `Binding<String>` | `"data"` | Local JSON filename or remote URL |
 | `showDrop` | `Binding<Bool>` | `false` | Use iOS drop notification style |
 | `mesh` | `Binding<Bool>` | `true` | Enable mesh gradient backgrounds |
-| `specialEffect` | `Binding<SwiftNEWSpecialEffect>` | `.none` | Special effects: `.christmas` or `.none` |
+| `specialEffect` | `Binding<SwiftNEWSpecialEffect>` | `.none` | Special effects: `.none`, `.christmas`, `.particles` |
 | `glass` | `Binding<Bool>` | `true` | Enable glass morphism effects |
 | `presentation` | `Binding<SwiftNEWPresentation>` | `.sheet` | Presentation style: `.sheet`, `.fullScreenCover`, `.embed` |
+| `showBuild` | `Binding<Bool>` | `true` | Show build number alongside the version in the header |
 
 *Required parameter
 
@@ -422,7 +408,8 @@ Sources/SwiftNEW/
 │   ├── MeshView.swift                     # Gradient backgrounds
 │   └── NoiseView.swift                    # Noise effects
 └── 📁 Animations/
-    └── SnowfallView.swift                 # Special effects (Christmas)
+    ├── SnowfallView.swift                 # Christmas snowfall effect (Canvas + TimelineView)
+    └── FloatingParticlesView.swift        # Floating rainbow particles (.particles effect)
 ```
 
 ### Architecture Overview
