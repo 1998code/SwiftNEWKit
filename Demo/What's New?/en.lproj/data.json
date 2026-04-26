@@ -1,5 +1,71 @@
 [
     {
+        "version": "6.3",
+        "subVersion": "6.3.0",
+        "new": [
+            {
+                "icon": "sparkles",
+                "title": "Floating",
+                "subtitle": "Particles",
+                "body": "New special effect option with smooth animation."
+            },
+            {
+                "icon": "number",
+                "title": "Optional",
+                "subtitle": "Build Number",
+                "body": "Configurable build number display alongside the version."
+            },
+            {
+                "icon": "snowflake",
+                "title": "Optimized",
+                "subtitle": "Snowfall",
+                "body": "Reimplemented with Canvas and TimelineView for smoother performance."
+            },
+            {
+                "icon": "bolt",
+                "title": "Modern",
+                "subtitle": "Networking",
+                "body": "Powered by Swift Concurrency and Sendable models."
+            },
+            {
+                "icon": "lock.shield",
+                "title": "Sendable",
+                "subtitle": "Models",
+                "body": "Thread-safe data models for Swift Concurrency."
+            },
+            {
+                "icon": "speedometer",
+                "title": "Faster",
+                "subtitle": "Mesh BG",
+                "body": "MeshView uses drawingGroup for smoother rendering."
+            },
+            {
+                "icon": "tray.and.arrow.down",
+                "title": "Local Data",
+                "subtitle": "Loading",
+                "body": "Optimized loading from bundled JSON files."
+            },
+            {
+                "icon": "text.alignleft",
+                "title": "Full",
+                "subtitle": "Body Text",
+                "body": "Removed line limits so longer descriptions render fully."
+            },
+            {
+                "icon": "tag",
+                "title": "Version",
+                "subtitle": "Badges",
+                "body": "Refined dimensions and padding in the History view."
+            },
+            {
+                "icon": "doc.text",
+                "title": "Reorganized",
+                "subtitle": "Docs",
+                "body": "Split into CONFIGURATION, CONTRIBUTING, and PLATFORM guides."
+            }
+        ]
+    },
+    {
         "version": "6.2",
         "subVersion": "6.2.0",
         "new": [

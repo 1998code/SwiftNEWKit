@@ -1,5 +1,71 @@
 [
     {
+        "version": "6.3",
+        "subVersion": "6.3.0",
+        "new": [
+            {
+                "icon": "sparkles",
+                "title": "フローティング",
+                "subtitle": "パーティクル",
+                "body": "新しい特殊エフェクト。滑らかなアニメーション。"
+            },
+            {
+                "icon": "number",
+                "title": "オプションの",
+                "subtitle": "ビルド番号",
+                "body": "バージョンと並べてビルド番号を表示できます。"
+            },
+            {
+                "icon": "snowflake",
+                "title": "最適化された",
+                "subtitle": "降雪エフェクト",
+                "body": "Canvas と TimelineView で再実装し、より滑らかに。"
+            },
+            {
+                "icon": "bolt",
+                "title": "モダンな",
+                "subtitle": "ネットワーキング",
+                "body": "Swift Concurrency と Sendable モデルを採用。"
+            },
+            {
+                "icon": "lock.shield",
+                "title": "Sendable",
+                "subtitle": "モデル",
+                "body": "Swift Concurrency 対応のスレッドセーフなモデル。"
+            },
+            {
+                "icon": "speedometer",
+                "title": "高速化",
+                "subtitle": "メッシュ背景",
+                "body": "MeshView を drawingGroup で最適化し描画がより滑らかに。"
+            },
+            {
+                "icon": "tray.and.arrow.down",
+                "title": "ローカルデータ",
+                "subtitle": "読み込み",
+                "body": "バンドル JSON の読み込みを最適化。"
+            },
+            {
+                "icon": "text.alignleft",
+                "title": "完全な",
+                "subtitle": "本文",
+                "body": "行数制限を撤廃し、長い説明文も全文表示。"
+            },
+            {
+                "icon": "tag",
+                "title": "バージョン",
+                "subtitle": "バッジ",
+                "body": "履歴ビューのバージョンバッジのサイズと余白を調整。"
+            },
+            {
+                "icon": "doc.text",
+                "title": "ドキュメント",
+                "subtitle": "再構成",
+                "body": "CONFIGURATION・CONTRIBUTING・PLATFORM に分割。"
+            }
+        ]
+    },
+    {
         "version": "6.2",
         "subVersion": "6.2.0",
         "new": [

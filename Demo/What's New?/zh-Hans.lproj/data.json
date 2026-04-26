@@ -1,5 +1,71 @@
 [
     {
+        "version": "6.3",
+        "subVersion": "6.3.0",
+        "new": [
+            {
+                "icon": "sparkles",
+                "title": "浮动",
+                "subtitle": "粒子",
+                "body": "全新特效选项，带来流畅动画。"
+            },
+            {
+                "icon": "number",
+                "title": "可选",
+                "subtitle": "构建号",
+                "body": "可配置在版本号旁显示构建号。"
+            },
+            {
+                "icon": "snowflake",
+                "title": "优化",
+                "subtitle": "雪花效果",
+                "body": "使用 Canvas 与 TimelineView 重构，性能更流畅。"
+            },
+            {
+                "icon": "bolt",
+                "title": "现代化",
+                "subtitle": "网络",
+                "body": "基于 Swift Concurrency 与 Sendable 模型。"
+            },
+            {
+                "icon": "lock.shield",
+                "title": "Sendable",
+                "subtitle": "数据模型",
+                "body": "为 Swift 并发提供线程安全的模型。"
+            },
+            {
+                "icon": "speedometer",
+                "title": "更快",
+                "subtitle": "网格背景",
+                "body": "MeshView 通过 drawingGroup 优化，渲染更流畅。"
+            },
+            {
+                "icon": "tray.and.arrow.down",
+                "title": "本地数据",
+                "subtitle": "加载",
+                "body": "优化捆绑 JSON 文件的加载方式。"
+            },
+            {
+                "icon": "text.alignleft",
+                "title": "完整",
+                "subtitle": "正文",
+                "body": "移除行数限制，长文本完整呈现。"
+            },
+            {
+                "icon": "tag",
+                "title": "版本",
+                "subtitle": "徽章",
+                "body": "历史记录中的版本徽章尺寸与间距重新调整。"
+            },
+            {
+                "icon": "doc.text",
+                "title": "重组",
+                "subtitle": "文档",
+                "body": "拆分为 CONFIGURATION、CONTRIBUTING 与 PLATFORM。"
+            }
+        ]
+    },
+    {
         "version": "6.2",
         "subVersion": "6.2.0",
         "new": [

@@ -15,6 +15,36 @@ import Drops
 
 @available(iOS 15.0, watchOS 8.0, macOS 12.0, tvOS 17.0, *)
 extension SwiftNEW {
+
+    @ViewBuilder
+    func iconBadge(systemName: String) -> some View {
+        switch iconStyle {
+        case .filled:
+            ZStack {
+                color
+                Image(systemName: systemName)
+                    .font(.title2)
+                    .foregroundColor(.white)
+            }
+            .glass(radius: 15, shadowColor: color)
+            #if !os(tvOS)
+            .frame(width: 56, height: 56)
+            #else
+            .frame(width: 100, height: 100)
+            #endif
+            .cornerRadius(15)
+        case .plain:
+            Image(systemName: systemName)
+                .font(.title2)
+                .foregroundColor(color)
+                #if !os(tvOS)
+                .frame(width: 56, height: 56)
+                #else
+                .frame(width: 100, height: 100)
+                #endif
+        }
+    }
+
     public var body: some View {
         Group {
             if presentation == .embed {
@@ -37,7 +67,7 @@ extension SwiftNEW {
                             height: size == "mini" ? nil : (size == "invisible" ? 0 : 50)
                         )
                         #if os(iOS) && !os(visionOS)
-                        .foregroundColor(color.adaptedTextColor)
+                        .foregroundColor(size == "mini" || size == "invisible" ? color : color.adaptedTextColor)
                         .background(size != "mini" && size != "invisible" ? color : Color.clear)
                         .cornerRadius(15)
                         #endif

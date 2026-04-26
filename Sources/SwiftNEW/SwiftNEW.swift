@@ -25,6 +25,19 @@ public enum SwiftNEWSpecialEffect {
     case christmas
     case particles
 }
+
+// Heading subtitle style — controls the second line under "What's New in"
+public enum SwiftNEWHeadingStyle {
+    case version       // "Version 6.3" / "Version 6.3 (18)"
+    case versionOnly   // "6.3" / "6.3 (18)"
+    case appName       // "{App Name}"
+}
+
+// Icon style for each release-note row
+public enum SwiftNEWIconStyle {
+    case filled   // colored backdrop, white glyph (default)
+    case plain    // no backdrop, glyph uses theme color
+}
  
 @available(iOS 15.0, watchOS 8.0, macOS 12.0, tvOS 17.0, *)
 public struct SwiftNEW: View {
@@ -34,6 +47,8 @@ public struct SwiftNEW: View {
     @State var items: [Vmodel] = []
     @State var loading = true
     @State var historySheet: Bool = false
+    @State var showSearch: Bool = false
+    @State var searchText: String = ""
     
     @Binding var show: Bool
     @Binding var align: HorizontalAlignment
@@ -49,6 +64,8 @@ public struct SwiftNEW: View {
     @Binding var glass: Bool
     @Binding var presentation: SwiftNEWPresentation
     @Binding var showBuild: Bool
+    @Binding var headingStyle: SwiftNEWHeadingStyle
+    @Binding var iconStyle: SwiftNEWIconStyle
     
     #if os(iOS) || os(visionOS)
     public init(
@@ -65,7 +82,9 @@ public struct SwiftNEW: View {
         specialEffect: SwiftNEWSpecialEffect? = .none,
         glass: Bool? = true,
         presentation: SwiftNEWPresentation? = .sheet,
-        showBuild: Bool? = true
+        showBuild: Bool? = true,
+        headingStyle: SwiftNEWHeadingStyle? = .version,
+        iconStyle: SwiftNEWIconStyle? = .filled
     ) {
         _show = show
         _align = .constant(align ?? .center)
@@ -81,6 +100,8 @@ public struct SwiftNEW: View {
         _glass = .constant(glass ?? true)
         _presentation = .constant(presentation ?? .sheet)
         _showBuild = .constant(showBuild ?? true)
+        _headingStyle = .constant(headingStyle ?? .version)
+        _iconStyle = .constant(iconStyle ?? .filled)
         compareVersion()
     }
     
@@ -99,7 +120,9 @@ public struct SwiftNEW: View {
         specialEffect: Binding<SwiftNEWSpecialEffect>? = .constant(.none),
         glass: Binding<Bool>? = .constant(true),
         presentation: Binding<SwiftNEWPresentation>? = .constant(.sheet),
-        showBuild: Binding<Bool>? = .constant(true)
+        showBuild: Binding<Bool>? = .constant(true),
+        headingStyle: Binding<SwiftNEWHeadingStyle>? = .constant(.version),
+        iconStyle: Binding<SwiftNEWIconStyle>? = .constant(.filled)
     ) {
         _show = show
         _align = align ?? .constant(.center)
@@ -115,6 +138,8 @@ public struct SwiftNEW: View {
         _glass = glass ?? .constant(true)
         _presentation = presentation ?? .constant(.sheet)
         _showBuild = showBuild ?? .constant(true)
+        _headingStyle = headingStyle ?? .constant(.version)
+        _iconStyle = iconStyle ?? .constant(.filled)
         compareVersion()
     }
     #elseif os(macOS)
@@ -132,7 +157,9 @@ public struct SwiftNEW: View {
         specialEffect: SwiftNEWSpecialEffect? = .none,
         glass: Bool? = true,
         presentation: SwiftNEWPresentation? = .sheet,
-        showBuild: Bool? = true
+        showBuild: Bool? = true,
+        headingStyle: SwiftNEWHeadingStyle? = .version,
+        iconStyle: SwiftNEWIconStyle? = .filled
     ) {
         _show = show
         _align = .constant(align ?? .center)
@@ -148,6 +175,8 @@ public struct SwiftNEW: View {
         _glass = .constant(glass ?? true)
         _presentation = .constant(presentation ?? .sheet)
         _showBuild = .constant(showBuild ?? true)
+        _headingStyle = .constant(headingStyle ?? .version)
+        _iconStyle = .constant(iconStyle ?? .filled)
         compareVersion()
     }
     @_disfavoredOverload
@@ -165,7 +194,9 @@ public struct SwiftNEW: View {
         specialEffect: Binding<SwiftNEWSpecialEffect>? = .constant(.none),
         glass: Binding<Bool>? = .constant(true),
         presentation: Binding<SwiftNEWPresentation>? = .constant(.sheet),
-        showBuild: Binding<Bool>? = .constant(true)
+        showBuild: Binding<Bool>? = .constant(true),
+        headingStyle: Binding<SwiftNEWHeadingStyle>? = .constant(.version),
+        iconStyle: Binding<SwiftNEWIconStyle>? = .constant(.filled)
     ) {
         _show = show
         _align = align ?? .constant(.center)
@@ -181,6 +212,8 @@ public struct SwiftNEW: View {
         _glass = glass ?? .constant(true)
         _presentation = presentation ?? .constant(.sheet)
         _showBuild = showBuild ?? .constant(true)
+        _headingStyle = headingStyle ?? .constant(.version)
+        _iconStyle = iconStyle ?? .constant(.filled)
         compareVersion()
     }
     #else
@@ -198,7 +231,9 @@ public struct SwiftNEW: View {
         specialEffect: SwiftNEWSpecialEffect? = .none,
         glass: Bool? = true,
         presentation: SwiftNEWPresentation? = .sheet,
-        showBuild: Bool? = true
+        showBuild: Bool? = true,
+        headingStyle: SwiftNEWHeadingStyle? = .version,
+        iconStyle: SwiftNEWIconStyle? = .filled
     ) {
         _show = show
         _align = .constant(align ?? .center)
@@ -214,6 +249,8 @@ public struct SwiftNEW: View {
         _glass = .constant(glass ?? true)
         _presentation = .constant(presentation ?? .sheet)
         _showBuild = .constant(showBuild ?? true)
+        _headingStyle = .constant(headingStyle ?? .version)
+        _iconStyle = .constant(iconStyle ?? .filled)
         compareVersion()
     }
     @_disfavoredOverload
@@ -231,7 +268,9 @@ public struct SwiftNEW: View {
         specialEffect: Binding<SwiftNEWSpecialEffect>? = .constant(.none),
         glass: Binding<Bool>? = .constant(true),
         presentation: Binding<SwiftNEWPresentation>? = .constant(.sheet),
-        showBuild: Binding<Bool>? = .constant(true)
+        showBuild: Binding<Bool>? = .constant(true),
+        headingStyle: Binding<SwiftNEWHeadingStyle>? = .constant(.version),
+        iconStyle: Binding<SwiftNEWIconStyle>? = .constant(.filled)
     ) {
         _show = show
         _align = align ?? .constant(.center)
@@ -247,6 +286,8 @@ public struct SwiftNEW: View {
         _glass = glass ?? .constant(true)
         _presentation = presentation ?? .constant(.sheet)
         _showBuild = showBuild ?? .constant(true)
+        _headingStyle = headingStyle ?? .constant(.version)
+        _iconStyle = iconStyle ?? .constant(.filled)
         compareVersion()
     }
     #endif

@@ -20,6 +20,8 @@
 | `glass` | `Binding<Bool>` | `true` | Enable glass morphism effects |
 | `presentation` | `Binding<SwiftNEWPresentation>` | `.sheet` | Presentation style: `.sheet`, `.fullScreenCover`, `.embed` |
 | `showBuild` | `Binding<Bool>` | `true` | Show build number alongside the version in the header |
+| `headingStyle` | `Binding<SwiftNEWHeadingStyle>` | `.version` | Subtitle line style: `.version` (`Version 6.3 (18)`), `.versionOnly` (`6.3`), `.appName` (app's display name) |
+| `iconStyle` | `Binding<SwiftNEWIconStyle>` | `.filled` | Row icon style: `.filled` (colored backdrop, white glyph) or `.plain` (no backdrop, glyph in theme color) |
 
 \* Required parameter
 
@@ -50,6 +52,21 @@ SwiftNEW(
     show: $showNew,
     showBuild: false
 )
+```
+
+### Heading Style
+
+```swift
+SwiftNEW(show: $showNew)                                  // "What's New in / Version 6.3 (18)"
+SwiftNEW(show: $showNew, headingStyle: .versionOnly)      // "What's New in / 6.3"
+SwiftNEW(show: $showNew, headingStyle: .appName)          // "What's New in / {App Name}"
+```
+
+### Icon Style
+
+```swift
+SwiftNEW(show: $showNew)                              // .filled — colored backdrop, white glyph (default)
+SwiftNEW(show: $showNew, iconStyle: .plain)           // no backdrop, glyph uses theme color
 ```
 
 ### Special Effects

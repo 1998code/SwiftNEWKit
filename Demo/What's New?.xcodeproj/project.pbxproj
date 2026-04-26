@@ -12,6 +12,7 @@
 		3A46CBB2285444CC00BE79A3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A46CBB1285444CC00BE79A3 /* ContentView.swift */; };
 		3A46CBB4285444CD00BE79A3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A46CBB3285444CD00BE79A3 /* Assets.xcassets */; };
 		3A46CBB8285444CD00BE79A3 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A46CBB7285444CD00BE79A3 /* Preview Assets.xcassets */; };
+		3A46CBBE285444CC00BE79A3 /* ContentView+Previews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A46CBBF285444CC00BE79A3 /* ContentView+Previews.swift */; };
 		3AB7E09128630E380059EEFE /* SwiftNEW in Frameworks */ = {isa = PBXBuildFile; productRef = 3AB7E09028630E380059EEFE /* SwiftNEW */; };
 		3AE0026A2962DD540055979A /* data.json in Resources */ = {isa = PBXBuildFile; fileRef = 3AE0026C2962DD540055979A /* data.json */; };
 /* End PBXBuildFile section */
@@ -26,6 +27,7 @@
 		3A46CBB3285444CD00BE79A3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3A46CBB5285444CD00BE79A3 /* What_s_New_.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = What_s_New_.entitlements; sourceTree = "<group>"; };
 		3A46CBB7285444CD00BE79A3 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		3A46CBBF285444CC00BE79A3 /* ContentView+Previews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ContentView+Previews.swift"; sourceTree = "<group>"; };
 		3A46CBC4285447F600BE79A3 /* SwiftNEW */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = SwiftNEW; path = ../../../SwiftNEW; sourceTree = "<group>"; };
 		3AE0026B2962DD540055979A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = en; path = en.lproj/data.json; sourceTree = "<group>"; };
 		3AE0026D2962DD810055979A /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = "zh-Hant"; path = "zh-Hant.lproj/data.json"; sourceTree = "<group>"; };
@@ -66,6 +68,7 @@
 			children = (
 				3A46CBAF285444CC00BE79A3 /* What_s_New_App.swift */,
 				3A46CBB1285444CC00BE79A3 /* ContentView.swift */,
+				3A46CBBF285444CC00BE79A3 /* ContentView+Previews.swift */,
 				3AE0026C2962DD540055979A /* data.json */,
 				3A46CBB3285444CD00BE79A3 /* Assets.xcassets */,
 				3A46CBB5285444CD00BE79A3 /* What_s_New_.entitlements */,
@@ -173,6 +176,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3A46CBB2285444CC00BE79A3 /* ContentView.swift in Sources */,
+				3A46CBBE285444CC00BE79A3 /* ContentView+Previews.swift in Sources */,
 				3A46CBB0285444CC00BE79A3 /* What_s_New_App.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -313,12 +317,13 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "What's New?/What_s_New_.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 17;
+				CURRENT_PROJECT_VERSION = 18;
 				DEVELOPMENT_ASSET_PATHS = "\"What's New?/Preview Content\"";
 				DEVELOPMENT_TEAM = "";
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = Demo;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.developer-tools";
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
@@ -327,7 +332,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
-				MARKETING_VERSION = 6.2;
+				MARKETING_VERSION = 6.3;
 				PRODUCT_BUNDLE_IDENTIFIER = media.1998.WhatsNew;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
@@ -340,6 +345,7 @@
 				TARGETED_DEVICE_FAMILY = "1,2,3,7";
 				TVOS_DEPLOYMENT_TARGET = 17.0;
 				VISIONOS_DEPLOYMENT_TARGET = 1.0;
+				XROS_DEPLOYMENT_TARGET = 1.0;
 			};
 			name = Debug;
 		};
@@ -350,12 +356,13 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "What's New?/What_s_New_.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 17;
+				CURRENT_PROJECT_VERSION = 18;
 				DEVELOPMENT_ASSET_PATHS = "\"What's New?/Preview Content\"";
 				DEVELOPMENT_TEAM = "";
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = Demo;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.developer-tools";
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
@@ -364,7 +371,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
-				MARKETING_VERSION = 6.2;
+				MARKETING_VERSION = 6.3;
 				PRODUCT_BUNDLE_IDENTIFIER = media.1998.WhatsNew;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;

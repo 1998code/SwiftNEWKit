@@ -34,6 +34,24 @@ extension SwiftNEW {
         #endif
         .glass(color: .secondary, shadowColor: color)
     }
+
+    public var searchButton: some View {
+        Button(action: {
+            withAnimation { showSearch.toggle() }
+            if !showSearch { searchText = "" }
+        }) {
+            HStack {
+                Text(String(localized: "Search", bundle: .module))
+                Image(systemName: showSearch ? "xmark.circle" : "magnifyingglass")
+            }.font(.caption)
+        }
+        #if !os(visionOS)
+        .buttonStyle(.bordered)
+        .buttonBorderShape(.capsule)
+        .tint(.secondary)
+        #endif
+        .glass(color: .secondary, shadowColor: color)
+    }
     
     public var closeCurrentButton: some View {
         Button(action: { show = false }) {

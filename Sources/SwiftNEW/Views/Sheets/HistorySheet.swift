@@ -36,20 +36,8 @@ extension SwiftNEW {
           ForEach(item.new, id: \.self) { new in
             HStack {
               if align == .leading || align == .center {
-                ZStack {
-                  color
-                  Image(systemName: new.icon)
-                    .foregroundColor(.white)
-                }.glass(radius: 15, shadowColor: color)
-                  #if !os(tvOS)
-                    .frame(width: 50, height: 50)
-                  #else
-                    .frame(width: 100, height: 100)
-                  #endif
-                  .cornerRadius(15)
+                iconBadge(systemName: new.icon)
                   .padding(.trailing)
-              } else {
-                Spacer()
               }
 
               VStack(alignment: align == .trailing ? .trailing : .leading) {
@@ -57,22 +45,11 @@ extension SwiftNEW {
                 Text(new.subtitle).font(.subheadline).foregroundColor(.secondary).lineLimit(1)
                 Text(new.body).font(.caption).foregroundColor(.secondary)
               }
+              .frame(maxWidth: .infinity, alignment: align == .trailing ? .trailing : .leading)
 
               if align == .trailing {
-                ZStack {
-                  color
-                  Image(systemName: new.icon)
-                    .foregroundColor(.white)
-                }
-                #if !os(tvOS)
-                  .frame(width: 50, height: 50)
-                #else
-                  .frame(width: 100, height: 100)
-                #endif
-                .cornerRadius(15)
-                .padding(.leading)
-              } else {
-                Spacer()
+                iconBadge(systemName: new.icon)
+                  .padding(.leading)
               }
             }.padding(.bottom)
           }

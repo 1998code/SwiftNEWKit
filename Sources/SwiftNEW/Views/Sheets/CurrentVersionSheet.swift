@@ -30,69 +30,90 @@ extension SwiftNEW {
                 }
             }
             else {
+                if showSearch {
+                    HStack(spacing: 8) {
+                        Image(systemName: "magnifyingglass")
+                            .foregroundColor(.secondary)
+                        TextField(String(localized: "Search", bundle: .module), text: $searchText)
+                            .textFieldStyle(.plain)
+                        if !searchText.isEmpty {
+                            Button {
+                                searchText = ""
+                            } label: {
+                                Image(systemName: "xmark.circle.fill")
+                                    .foregroundColor(.secondary)
+                            }
+                            .buttonStyle(.plain)
+                        }
+                    }
+                    .padding(.horizontal, 14)
+                    .padding(.vertical, 10)
+                    .background(Capsule().fill(Color.secondary.opacity(0.15)))
+                    .frame(maxWidth: 380)
+                    .padding(.horizontal)
+                    .padding(.bottom, 8)
+                }
                 ScrollView(showsIndicators: false) {
                     ForEach(items, id: \.self) { item in
                         if item.version == Bundle.version || item.subVersion == Bundle.version {
-                            ForEach(item.new, id: \.self) { new in
+                            ForEach(item.new.filter { matchesSearch($0) }, id: \.self) { new in
                                 HStack {
                                     if align == .leading || align == .center {
-                                        ZStack {
-                                            color
-                                            Image(systemName: new.icon)
-                                                .foregroundColor(.white)
-                                        }.glass(radius: 15, shadowColor: color)
-                                        #if !os(tvOS)
-                                        .frame(width: 50, height: 50)
-                                        #else
-                                        .frame(width: 100, height: 100)
-                                        #endif
-                                        .cornerRadius(15)
-                                        .padding(.trailing)
-                                    } else {
-                                        Spacer()
+                                        iconBadge(systemName: new.icon)
+                                            .padding(.trailing)
                                     }
-                                    
-                                    VStack(alignment: align == .trailing ? .trailing : .leading) {
+
+                                    VStack(alignment: align == .trailing ? .trailing : .leading, spacing: 2) {
                                         Text(new.title).font(.headline).lineLimit(1)
                                         Text(new.subtitle).font(.subheadline).foregroundColor(.secondary).lineLimit(1)
-                                        Text(new.body).font(.caption).foregroundColor(.secondary)
+                                        Text(new.body).font(.footnote).foregroundColor(.secondary)
                                     }
-                                    
+                                    .frame(maxWidth: .infinity, alignment: align == .trailing ? .trailing : .leading)
+
                                     if align == .trailing {
-                                        ZStack {
-                                            color
-                                            Image(systemName: new.icon)
-                                                .foregroundColor(.white)
-                                        }.glass(radius: 15, shadowColor: color)
-                                        #if !os(tvOS)
-                                        .frame(width: 50, height: 50)
-                                        #else
-                                        .frame(width: 100, height: 100)
-                                        #endif
-                                        .cornerRadius(15)
-                                        .padding(.trailing)
-                                    } else {
-                                        Spacer()
+                                        iconBadge(systemName: new.icon)
+                                            .padding(.leading)
                                     }
-                                }.padding(.bottom)
+                                }
+                                .padding(.leading)
+                                .padding(.bottom)
                             }
                         }
                     }
                 }
                 #if !os(tvOS)
-                .frame(width: 300)
+                .frame(maxWidth: 380)
+                .padding(.horizontal)
+                .frame(maxHeight: .infinity)
                 #elseif !os(macOS)
                 .frame(maxHeight: UIScreen.main.bounds.height * 0.5)
                 #endif
+                .mask(
+                    LinearGradient(
+                        gradient: Gradient(stops: [
+                            .init(color: .black, location: 0.0),
+                            .init(color: .black, location: 0.9),
+                            .init(color: .clear, location: 1.0)
+                        ]),
+                        startPoint: .top,
+                        endPoint: .bottom
+                    )
+                )
             }
             
             Spacer()
 
             if history {
-                showHistoryButton
+                HStack {
+                    showHistoryButton
+                    searchButton
+                }
+                .padding(.bottom)
+            } else {
+                searchButton
                     .padding(.bottom)
             }
-            
+
             closeCurrentButton
                 .padding(.bottom)
         }
@@ -105,5 +126,12 @@ extension SwiftNEW {
         #elseif os(tvOS)
         .frame(width: 600)
         #endif
+    }
+
+    func matchesSearch(_ new: Model) -> Bool {
+        guard showSearch, !searchText.isEmpty else { return true }
+        return new.title.localizedCaseInsensitiveContains(searchText)
+            || new.subtitle.localizedCaseInsensitiveContains(searchText)
+            || new.body.localizedCaseInsensitiveContains(searchText)
     }
 }

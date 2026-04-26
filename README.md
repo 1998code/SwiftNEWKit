@@ -70,6 +70,9 @@ That's it — SwiftNEW auto-triggers when the app version changes.
 
 | Feature | Since | Description |
 |---------|:-----:|-------------|
+| 🔍 In-Sheet Search | 6.3.0 | Filter the current release notes by title / subtitle / body |
+| 🏷️ Customizable Heading | 6.3.0 | `headingStyle`: `.version`, `.versionOnly`, or `.appName` |
+| 🎯 Icon Style | 6.3.0 | `iconStyle`: `.filled` (colored backdrop) or `.plain` (glyph only) |
 | 🔢 Optional Build Number | 6.3.0 | Hide build number via `showBuild: false` |
 | 🎨 Floating Particles Effect | 6.3.0 | New `.particles` special effect (TimelineView + Canvas) |
 | 🎯 Flexible Presentations | 6.2.0 | `.sheet`, `.fullScreenCover`, `.embed` |

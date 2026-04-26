@@ -1,5 +1,71 @@
 [
     {
+        "version": "6.3",
+        "subVersion": "6.3.0",
+        "new": [
+            {
+                "icon": "sparkles",
+                "title": "플로팅",
+                "subtitle": "파티클",
+                "body": "부드러운 애니메이션의 새로운 특수 효과."
+            },
+            {
+                "icon": "number",
+                "title": "선택형",
+                "subtitle": "빌드 번호",
+                "body": "버전과 함께 빌드 번호를 표시할 수 있습니다."
+            },
+            {
+                "icon": "snowflake",
+                "title": "최적화된",
+                "subtitle": "눈 효과",
+                "body": "Canvas와 TimelineView로 재구현해 더 부드러워졌습니다."
+            },
+            {
+                "icon": "bolt",
+                "title": "현대적인",
+                "subtitle": "네트워킹",
+                "body": "Swift Concurrency 및 Sendable 모델 기반."
+            },
+            {
+                "icon": "lock.shield",
+                "title": "Sendable",
+                "subtitle": "모델",
+                "body": "Swift Concurrency를 위한 스레드 안전 모델."
+            },
+            {
+                "icon": "speedometer",
+                "title": "더 빠른",
+                "subtitle": "메시 배경",
+                "body": "drawingGroup으로 MeshView를 최적화하여 더 부드러운 렌더링."
+            },
+            {
+                "icon": "tray.and.arrow.down",
+                "title": "로컬 데이터",
+                "subtitle": "로딩",
+                "body": "번들된 JSON 파일 로딩 최적화."
+            },
+            {
+                "icon": "text.alignleft",
+                "title": "전체",
+                "subtitle": "본문",
+                "body": "줄 수 제한을 없애 긴 설명도 끝까지 표시."
+            },
+            {
+                "icon": "tag",
+                "title": "버전",
+                "subtitle": "배지",
+                "body": "히스토리 뷰의 버전 배지 크기와 여백 조정."
+            },
+            {
+                "icon": "doc.text",
+                "title": "재정리",
+                "subtitle": "문서",
+                "body": "CONFIGURATION, CONTRIBUTING, PLATFORM 으로 분리."
+            }
+        ]
+    },
+    {
         "version": "6.2",
         "subVersion": "6.2.0",
         "new": [

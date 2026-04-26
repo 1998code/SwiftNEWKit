@@ -1,5 +1,71 @@
 [
     {
+        "version": "6.3",
+        "subVersion": "6.3.0",
+        "new": [
+            {
+                "icon": "sparkles",
+                "title": "浮動",
+                "subtitle": "粒子",
+                "body": "全新特效選項，帶來流暢動畫。"
+            },
+            {
+                "icon": "number",
+                "title": "可選",
+                "subtitle": "建置號碼",
+                "body": "可設定於版本號旁顯示建置號碼。"
+            },
+            {
+                "icon": "snowflake",
+                "title": "優化",
+                "subtitle": "雪花效果",
+                "body": "以 Canvas 與 TimelineView 重構，效能更流暢。"
+            },
+            {
+                "icon": "bolt",
+                "title": "現代化",
+                "subtitle": "網路",
+                "body": "採用 Swift Concurrency 與 Sendable 模型。"
+            },
+            {
+                "icon": "lock.shield",
+                "title": "Sendable",
+                "subtitle": "資料模型",
+                "body": "為 Swift 並發提供執行緒安全的模型。"
+            },
+            {
+                "icon": "speedometer",
+                "title": "更快",
+                "subtitle": "網格背景",
+                "body": "MeshView 透過 drawingGroup 最佳化，畫面更流暢。"
+            },
+            {
+                "icon": "tray.and.arrow.down",
+                "title": "本地資料",
+                "subtitle": "載入",
+                "body": "最佳化捆綁 JSON 檔案的載入方式。"
+            },
+            {
+                "icon": "text.alignleft",
+                "title": "完整",
+                "subtitle": "內文",
+                "body": "移除行數限制，長文本完整呈現。"
+            },
+            {
+                "icon": "tag",
+                "title": "版本",
+                "subtitle": "徽章",
+                "body": "歷史紀錄中的版本徽章尺寸與間距重新調整。"
+            },
+            {
+                "icon": "doc.text",
+                "title": "重新整理",
+                "subtitle": "文件",
+                "body": "拆分為 CONFIGURATION、CONTRIBUTING 與 PLATFORM。"
+            }
+        ]
+    },
+    {
         "version": "6.2",
         "subVersion": "6.2.0",
         "new": [
