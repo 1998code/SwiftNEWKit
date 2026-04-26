@@ -62,3 +62,9 @@ import SwiftNEW
     @Previewable @State var showNew: Bool = false
     SwiftNEW(show: $showNew, specialEffect: .particles)
 }
+
+// Heading Style (>6.3.0) - Show App Name as subtitle
+#Preview("App Name Heading") {
+    @Previewable @State var showNew: Bool = true
+    SwiftNEW(show: $showNew, headingStyle: .appName)
+}
