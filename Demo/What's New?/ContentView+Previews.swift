@@ -25,18 +25,16 @@ import SwiftNEW
     SwiftNEW(show: $showNew, size: "invisible")
 }
 
-// Remote (>3.0.0) - Firebase Real Time Database Demo / Any JSON URL
+// Remote (>3.0.0) - Any JSON URL
 #Preview("Remote") {
     @Previewable @State var showNew: Bool = false
-    let lang = Bundle.main.preferredLocalizations.first ?? "en"
-    SwiftNEW(show: $showNew, labelImage: "icloud", data: "https://testground-a937f-default-rtdb.firebaseio.com/\(lang).json?print=pretty")
+    SwiftNEW(show: $showNew, labelImage: "icloud", data: "https://raw.githubusercontent.com/1998code/SwiftNEWKit/refs/heads/main/Demo/What's%20New%3F/en.lproj/data.json")
 }
 
 // Drop (>3.4.0) - Recommended trigger with Remote Notification
 #Preview("Drop") {
     @Previewable @State var showNew: Bool = false
-    let lang = Bundle.main.preferredLocalizations.first ?? "en"
-    SwiftNEW(show: $showNew, label: "Notification", labelImage: "bell.badge", data: "https://testground-a937f-default-rtdb.firebaseio.com/\(lang).json?print=pretty", showDrop: true)
+    SwiftNEW(show: $showNew, label: "Notification", labelImage: "bell.badge", data: "https://raw.githubusercontent.com/1998code/SwiftNEWKit/refs/heads/main/Demo/What's%20New%3F/en.lproj/data.json", showDrop: true)
 }
 
 // Full Screen Cover (>6.2.0) - Presentation option
