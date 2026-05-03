@@ -11,6 +11,7 @@ struct MeshView: View {
     @Binding var color: Color
     var body: some View {
         if #available(iOS 18.0, macOS 15.0, visionOS 2.0, tvOS 18.0, *) {
+            // Diagonal flow: clear at top-left → most opaque at bottom-right.
             MeshGradient(width: 3, height: 3, points: [
                 .init(0, 0), .init(0.5, 0), .init(1, 0),
                 .init(0, 0.5), .init(0.5, 0.5), .init(1, 0.5),
@@ -27,7 +28,7 @@ struct MeshView: View {
             )
         } else {
             // Fallback on earlier versions
-            LinearGradient(colors: [Color.accentColor.opacity(0.5), Color(.clear)], startPoint: .topLeading, endPoint: .bottomTrailing)
+            LinearGradient(colors: [Color(.clear), color.opacity(0.6)], startPoint: .topLeading, endPoint: .bottomTrailing)
                 .ignoresSafeArea(.all)
         }
     }

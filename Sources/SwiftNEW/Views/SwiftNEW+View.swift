@@ -24,17 +24,25 @@ extension SwiftNEW {
         #endif
     }
 
+    var colorGradient: LinearGradient {
+        LinearGradient(
+            colors: [color, color.opacity(0.6)],
+            startPoint: .topLeading,
+            endPoint: .bottomTrailing
+        )
+    }
+
     @ViewBuilder
     func iconBadge(systemName: String) -> some View {
         switch iconStyle {
         case .filled:
             ZStack {
-                color
+                colorGradient
                 Image(systemName: systemName)
                     .font(.title2)
                     .foregroundColor(.white)
             }
-            .glass(radius: 15, shadowColor: color)
+            .glass(radius: 15)
             .frame(width: iconBadgeSize, height: iconBadgeSize)
             .cornerRadius(15)
         case .plain:
@@ -90,9 +98,6 @@ extension SwiftNEW {
     @ViewBuilder
     private func sheetBackground<Content: View>(@ViewBuilder _ content: () -> Content) -> some View {
         ZStack {
-            if mesh {
-                MeshView(color: $color)
-            }
             switch specialEffect {
             case .christmas: SnowfallView()
             case .particles: FloatingParticlesView()
@@ -103,8 +108,7 @@ extension SwiftNEW {
                 .padding()
                 #endif
         }
-        .background(.ultraThinMaterial)
-        .modifier(PresentationBackgroundModifier())
+        .modifier(SheetBackdropModifier(mesh: mesh, color: $color))
     }
 
     private var sheetContent: some View {
@@ -123,12 +127,28 @@ extension SwiftNEW {
     }
 }
 
-private struct PresentationBackgroundModifier: ViewModifier {
+private struct SheetBackdropModifier: ViewModifier {
+    let mesh: Bool
+    @Binding var color: Color
+
+    @ViewBuilder
     func body(content: Content) -> some View {
         if #available(iOS 16.4, tvOS 16.4, *) {
-            content.presentationBackground(.thinMaterial)
+            // Sheet-level background fills the entire sheet edge-to-edge.
+            if mesh {
+                content.presentationBackground { MeshView(color: $color) }
+            } else {
+                content.presentationBackground(.thinMaterial)
+            }
         } else {
-            content
+            // Older OS / embed: fall back to a full-bleed background.
+            if mesh {
+                content.background {
+                    MeshView(color: $color).ignoresSafeArea()
+                }
+            } else {
+                content.background(.ultraThinMaterial, ignoresSafeAreaEdges: .all)
+            }
         }
     }
 }
@@ -139,7 +159,7 @@ private struct ConditionalGlassModifier: ViewModifier {
 
     func body(content: Content) -> some View {
         if isEnabled {
-            content.glass(color: shadowColor.opacity(0.1), shadowColor: shadowColor)
+            content.glass(color: shadowColor.opacity(0.1))
         } else {
             content
         }

@@ -33,52 +33,64 @@ extension SwiftNEW {
                 if showSearch {
                     searchField
                 }
-                ScrollView(showsIndicators: false) {
-                    ForEach(items, id: \.self) { item in
-                        if item.version == Bundle.version || item.subVersion == Bundle.version {
-                            ForEach(item.new.filter { matchesSearch($0) }, id: \.self) { new in
-                                releaseRow(new, bodyFont: .footnote, spacing: 2)
-                                    .padding(.leading)
-                                    .padding(.bottom)
+                ZStack(alignment: .bottom) {
+                    ScrollView(showsIndicators: false) {
+                        ForEach(items, id: \.self) { item in
+                            if item.version == Bundle.version || item.subVersion == Bundle.version {
+                                ForEach(item.new.filter { matchesSearch($0) }, id: \.self) { new in
+                                    releaseRow(new, bodyFont: .footnote, spacing: 2)
+                                        .padding(.leading)
+                                        .padding(.bottom)
+                                }
                             }
                         }
+                        // Bottom inset so last item can scroll past the frosted button area.
+                        Color.clear.frame(height: 200)
+                    }
+                    #if !os(tvOS)
+                    .frame(maxWidth: 380)
+                    .padding(.horizontal)
+                    #elseif !os(macOS)
+                    .frame(maxHeight: UIScreen.main.bounds.height * 0.5)
+                    #endif
+
+                    VStack(spacing: 0) {
+                        if history {
+                            HStack {
+                                showHistoryButton
+                                searchButton
+                            }
+                            .padding(.bottom)
+                        } else {
+                            searchButton
+                                .padding(.bottom)
+                        }
+
+                        closeCurrentButton
+                            .padding(.bottom)
+                    }
+                    .frame(maxWidth: .infinity)
+                    .padding(.top, 100)
+                    .background {
+                        Rectangle()
+                            .fill(.thickMaterial)
+                            .mask(
+                                LinearGradient(
+                                    gradient: Gradient(stops: [
+                                        .init(color: .clear, location: 0.0),
+                                        .init(color: .black, location: 0.35),
+                                        .init(color: .black, location: 1.0)
+                                    ]),
+                                    startPoint: .top,
+                                    endPoint: .bottom
+                                )
+                            )
+                            .ignoresSafeArea(edges: [.horizontal, .bottom])
+                            .allowsHitTesting(false)
                     }
                 }
-                #if !os(tvOS)
-                .frame(maxWidth: 380)
-                .padding(.horizontal)
-                .frame(maxHeight: .infinity)
-                #elseif !os(macOS)
-                .frame(maxHeight: UIScreen.main.bounds.height * 0.5)
-                #endif
-                .mask(
-                    LinearGradient(
-                        gradient: Gradient(stops: [
-                            .init(color: .black, location: 0.0),
-                            .init(color: .black, location: 0.9),
-                            .init(color: .clear, location: 1.0)
-                        ]),
-                        startPoint: .top,
-                        endPoint: .bottom
-                    )
-                )
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
             }
-
-            Spacer()
-
-            if history {
-                HStack {
-                    showHistoryButton
-                    searchButton
-                }
-                .padding(.bottom)
-            } else {
-                searchButton
-                    .padding(.bottom)
-            }
-
-            closeCurrentButton
-                .padding(.bottom)
         }
         .onAppear {
             loadData()

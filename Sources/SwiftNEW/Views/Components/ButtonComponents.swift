@@ -65,7 +65,7 @@ extension SwiftNEW {
         .buttonBorderShape(.capsule)
         .tint(.secondary)
         #endif
-        .glass(color: .secondary, shadowColor: color)
+        .glass(color: .secondary.opacity(0.1))
     }
 
     private func primaryActionButton(
@@ -96,6 +96,6 @@ extension SwiftNEW {
             .tint(.white)
             #endif
         }
-        .glass(color: color.opacity(0.1), shadowColor: color)
+        .glass(color: color.opacity(0.1))
     }
 }

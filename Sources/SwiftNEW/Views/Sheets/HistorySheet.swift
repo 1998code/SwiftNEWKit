@@ -19,17 +19,18 @@ extension SwiftNEW {
 
             Text(String(localized: "History", bundle: .module))
                 .bold().font(.largeTitle)
+                .padding(.top)
 
             Spacer()
 
             ScrollView(showsIndicators: false) {
                 ForEach(items, id: \.self) { item in
                     ZStack {
-                        color.opacity(0.25)
+                        colorGradient
                         Text(item.version).bold().font(.title2)
                             .foregroundColor(color.adaptedTextColor)
                     }
-                    .glass(radius: 15, shadowColor: color)
+                    .glass(radius: 15, color: color)
                     .frame(width: 120, height: 40)
                     .cornerRadius(15)
                     .padding(.bottom)

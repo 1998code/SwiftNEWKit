@@ -77,7 +77,7 @@ public struct SwiftNEW: View {
         history: Bool? = true,
         data: String? = "data",
         showDrop: Bool? = false,
-        mesh: Bool? = true,
+        mesh: Bool? = false,
         specialEffect: SwiftNEWSpecialEffect? = SwiftNEWSpecialEffect.none,
         glass: Bool? = true,
         presentation: SwiftNEWPresentation? = .sheet,
@@ -94,7 +94,7 @@ public struct SwiftNEW: View {
         _history = .constant(history ?? true)
         _data = .constant(data ?? "data")
         _showDrop = .constant(showDrop ?? false)
-        _mesh = .constant(mesh ?? true)
+        _mesh = .constant(mesh ?? false)
         _specialEffect = .constant(specialEffect ?? .none)
         _glass = .constant(glass ?? true)
         _presentation = .constant(presentation ?? .sheet)
@@ -115,7 +115,7 @@ public struct SwiftNEW: View {
         history: Binding<Bool>? = .constant(true),
         data: Binding<String>? = .constant("data"),
         showDrop: Binding<Bool>? = .constant(false),
-        mesh: Binding<Bool>? = .constant(true),
+        mesh: Binding<Bool>? = .constant(false),
         specialEffect: Binding<SwiftNEWSpecialEffect>? = .constant(.none),
         glass: Binding<Bool>? = .constant(true),
         presentation: Binding<SwiftNEWPresentation>? = .constant(.sheet),
@@ -132,7 +132,7 @@ public struct SwiftNEW: View {
         _history = history ?? .constant(true)
         _data = data ?? .constant("data")
         _showDrop = showDrop ?? .constant(false)
-        _mesh = mesh ?? .constant(true)
+        _mesh = mesh ?? .constant(false)
         _specialEffect = specialEffect ?? .constant(.none)
         _glass = glass ?? .constant(true)
         _presentation = presentation ?? .constant(.sheet)
