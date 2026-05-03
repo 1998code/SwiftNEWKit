@@ -145,7 +145,7 @@ private struct ConditionalGlassModifier: ViewModifier {
     
     func body(content: Content) -> some View {
         if isEnabled {
-            content.glass(shadowColor: shadowColor)
+            content.glass(color: shadowColor.opacity(0.1), shadowColor: shadowColor)
         } else {
             content
         }

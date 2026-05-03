@@ -79,7 +79,7 @@ extension SwiftNEW {
             #elseif os(tvOS)
             .tint(.white)
             #endif
-        }.glass(shadowColor: color)
+        }.glass(color: color.opacity(0.1), shadowColor: color)
     }
     
     public var closeHistoryButton: some View {
@@ -106,6 +106,6 @@ extension SwiftNEW {
             .background(color)
             .cornerRadius(15)
             #endif
-        }.glass(shadowColor: color)
+        }.glass(color: color.opacity(0.1), shadowColor: color)
     }
 }
