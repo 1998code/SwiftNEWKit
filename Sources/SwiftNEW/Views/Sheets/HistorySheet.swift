@@ -37,12 +37,14 @@ extension SwiftNEW {
 
                     ForEach(item.new, id: \.self) { new in
                         releaseRow(new, bodyFont: .caption)
+                            .padding(.leading)
                             .padding(.bottom)
                     }
                 }
             }
             #if !os(tvOS)
-            .frame(width: 300)
+            .frame(maxWidth: 380)
+            .padding(.horizontal)
             #elseif !os(macOS)
             .frame(maxHeight: UIScreen.main.bounds.height * 0.5)
             #endif
