@@ -11,21 +11,54 @@ import SwiftGlass
 
 @available(iOS 15.0, watchOS 8.0, macOS 12.0, tvOS 17.0, *)
 extension SwiftNEW {
-    
+
     public var showHistoryButton: some View {
-        Button(action: {
-            historySheet = true
+        capsuleSecondaryButton(action: { historySheet = true }) {
+            Text(String(localized: "Show History", bundle: .module))
+            Image(systemName: "arrow.up.bin")
+        }
+    }
+
+    public var searchButton: some View {
+        capsuleSecondaryButton(action: {
+            withAnimation { showSearch.toggle() }
+            if !showSearch { searchText = "" }
         }) {
+            Text(String(localized: "Search", bundle: .module))
+            Image(systemName: showSearch ? "xmark.circle" : "magnifyingglass")
+        }
+    }
+
+    public var closeCurrentButton: some View {
+        primaryActionButton(
+            titleKey: "Continue",
+            systemImage: "arrow.right.circle.fill",
+            macWidth: 200,
+            action: { show = false }
+        )
+    }
+
+    public var closeHistoryButton: some View {
+        primaryActionButton(
+            titleKey: "Return",
+            systemImage: "arrow.down.circle.fill",
+            macWidth: 300,
+            action: { historySheet = false }
+        )
+    }
+
+    @ViewBuilder
+    private func capsuleSecondaryButton<Label: View>(
+        action: @escaping () -> Void,
+        @ViewBuilder label: () -> Label
+    ) -> some View {
+        Button(action: action) {
             HStack {
-                if align == .trailing {
-                    Spacer()
-                }
-                Text(String(localized: "Show History", bundle: .module))
-                Image(systemName: "arrow.up.bin")
-                if align == .leading {
-                    Spacer()
-                }
-            }.font(.caption)
+                if align == .trailing { Spacer() }
+                label()
+                if align == .leading { Spacer() }
+            }
+            .font(.caption)
         }
         #if !os(visionOS)
         .buttonStyle(.bordered)
@@ -35,42 +68,25 @@ extension SwiftNEW {
         .glass(color: .secondary, shadowColor: color)
     }
 
-    public var searchButton: some View {
-        Button(action: {
-            withAnimation { showSearch.toggle() }
-            if !showSearch { searchText = "" }
-        }) {
+    private func primaryActionButton(
+        titleKey: String.LocalizationValue,
+        systemImage: String,
+        macWidth: CGFloat,
+        action: @escaping () -> Void
+    ) -> some View {
+        Button(action: action) {
             HStack {
-                Text(String(localized: "Search", bundle: .module))
-                Image(systemName: showSearch ? "xmark.circle" : "magnifyingglass")
-            }.font(.caption)
-        }
-        #if !os(visionOS)
-        .buttonStyle(.bordered)
-        .buttonBorderShape(.capsule)
-        .tint(.secondary)
-        #endif
-        .glass(color: .secondary, shadowColor: color)
-    }
-    
-    public var closeCurrentButton: some View {
-        Button(action: { show = false }) {
-            HStack{
-                if align == .trailing {
-                    Spacer()
-                }
-                Text(String(localized: "Continue", bundle: .module))
-                    .bold()
-                Image(systemName: "arrow.right.circle.fill")
-                if align == .leading {
-                    Spacer()
-                }
-            }.font(.body)
+                if align == .trailing { Spacer() }
+                Text(String(localized: titleKey, bundle: .module)).bold()
+                Image(systemName: systemImage)
+                if align == .leading { Spacer() }
+            }
+            .font(.body)
             .padding(.horizontal)
             #if os(iOS)
             .frame(width: 300, height: 50)
             #elseif os(macOS)
-            .frame(width: 200, height: 25)
+            .frame(width: macWidth, height: 25)
             #endif
             #if os(iOS) && !os(visionOS)
             .foregroundColor(.white)
@@ -79,33 +95,7 @@ extension SwiftNEW {
             #elseif os(tvOS)
             .tint(.white)
             #endif
-        }.glass(color: color.opacity(0.1), shadowColor: color)
-    }
-    
-    public var closeHistoryButton: some View {
-        Button(action: { historySheet = false }) {
-            HStack{
-                if align == .trailing {
-                    Spacer()
-                }
-                Text(String(localized: "Return", bundle: .module))
-                    .bold()
-                Image(systemName: "arrow.down.circle.fill")
-                if align == .leading {
-                    Spacer()
-                }
-            }.font(.body)
-            .padding(.horizontal)
-            #if os(iOS)
-            .frame(width: 300, height: 50)
-            #elseif os(macOS)
-            .frame(width: 300, height: 25)
-            #endif
-            #if os(iOS)
-            .foregroundColor(.white)
-            .background(color)
-            .cornerRadius(15)
-            #endif
-        }.glass(color: color.opacity(0.1), shadowColor: color)
+        }
+        .glass(color: color.opacity(0.1), shadowColor: color)
     }
 }

@@ -16,6 +16,14 @@ import Drops
 @available(iOS 15.0, watchOS 8.0, macOS 12.0, tvOS 17.0, *)
 extension SwiftNEW {
 
+    private var iconBadgeSize: CGFloat {
+        #if os(tvOS)
+        100
+        #else
+        56
+        #endif
+    }
+
     @ViewBuilder
     func iconBadge(systemName: String) -> some View {
         switch iconStyle {
@@ -27,21 +35,13 @@ extension SwiftNEW {
                     .foregroundColor(.white)
             }
             .glass(radius: 15, shadowColor: color)
-            #if !os(tvOS)
-            .frame(width: 56, height: 56)
-            #else
-            .frame(width: 100, height: 100)
-            #endif
+            .frame(width: iconBadgeSize, height: iconBadgeSize)
             .cornerRadius(15)
         case .plain:
             Image(systemName: systemName)
                 .font(.title2)
                 .foregroundColor(color)
-                #if !os(tvOS)
-                .frame(width: 56, height: 56)
-                #else
-                .frame(width: 100, height: 100)
-                #endif
+                .frame(width: iconBadgeSize, height: iconBadgeSize)
         }
     }
 
@@ -78,7 +78,7 @@ extension SwiftNEW {
             }
         }
     }
-    
+
     private var platformWidth: CGFloat {
         #if os(tvOS)
         400
@@ -86,21 +86,19 @@ extension SwiftNEW {
         300
         #endif
     }
-    
-    private var sheetContent: some View {
+
+    @ViewBuilder
+    private func sheetBackground<Content: View>(@ViewBuilder _ content: () -> Content) -> some View {
         ZStack {
             if mesh {
                 MeshView(color: $color)
             }
-            if specialEffect == .christmas {
-                SnowfallView()
-            } else if specialEffect == .particles {
-                FloatingParticlesView()
+            switch specialEffect {
+            case .christmas: SnowfallView()
+            case .particles: FloatingParticlesView()
+            case .none: EmptyView()
             }
-            sheetCurrent
-                .sheet(isPresented: $historySheet) {
-                    historySheetContent
-                }
+            content()
                 #if os(visionOS)
                 .padding()
                 #endif
@@ -108,24 +106,20 @@ extension SwiftNEW {
         .background(.ultraThinMaterial)
         .modifier(PresentationBackgroundModifier())
     }
-    
-    private var historySheetContent: some View {
-        ZStack {
-            if mesh {
-                MeshView(color: $color)
-            }
-            if specialEffect == .christmas {
-                SnowfallView()
-            } else if specialEffect == .particles {
-                FloatingParticlesView()
-            }
-            sheetHistory
-                #if os(visionOS)
-                .padding()
-                #endif
+
+    private var sheetContent: some View {
+        sheetBackground {
+            sheetCurrent
+                .sheet(isPresented: $historySheet) {
+                    historySheetContent
+                }
         }
-        .background(.ultraThinMaterial)
-        .modifier(PresentationBackgroundModifier())
+    }
+
+    private var historySheetContent: some View {
+        sheetBackground {
+            sheetHistory
+        }
     }
 }
 
@@ -142,7 +136,7 @@ private struct PresentationBackgroundModifier: ViewModifier {
 private struct ConditionalGlassModifier: ViewModifier {
     let isEnabled: Bool
     let shadowColor: Color
-    
+
     func body(content: Content) -> some View {
         if isEnabled {
             content.glass(color: shadowColor.opacity(0.1), shadowColor: shadowColor)

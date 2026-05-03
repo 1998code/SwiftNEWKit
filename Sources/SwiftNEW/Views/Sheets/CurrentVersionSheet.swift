@@ -11,17 +11,17 @@ import SwiftGlass
 
 @available(iOS 15.0, watchOS 8.0, macOS 12.0, tvOS 17.0, *)
 extension SwiftNEW {
-    
+
     // MARK: - Current Version Changes View
     public var sheetCurrent: some View {
         VStack(alignment: align) {
             Spacer()
-            
+
             headings
                 .padding(.bottom)
-            
+
             Spacer()
-            
+
             if loading {
                 VStack {
                     Text(String(localized: "Loading...", bundle: .module))
@@ -31,52 +31,15 @@ extension SwiftNEW {
             }
             else {
                 if showSearch {
-                    HStack(spacing: 8) {
-                        Image(systemName: "magnifyingglass")
-                            .foregroundColor(.secondary)
-                        TextField(String(localized: "Search", bundle: .module), text: $searchText)
-                            .textFieldStyle(.plain)
-                        if !searchText.isEmpty {
-                            Button {
-                                searchText = ""
-                            } label: {
-                                Image(systemName: "xmark.circle.fill")
-                                    .foregroundColor(.secondary)
-                            }
-                            .buttonStyle(.plain)
-                        }
-                    }
-                    .padding(.horizontal, 14)
-                    .padding(.vertical, 10)
-                    .background(Capsule().fill(Color.secondary.opacity(0.15)))
-                    .frame(maxWidth: 380)
-                    .padding(.horizontal)
-                    .padding(.bottom, 8)
+                    searchField
                 }
                 ScrollView(showsIndicators: false) {
                     ForEach(items, id: \.self) { item in
                         if item.version == Bundle.version || item.subVersion == Bundle.version {
                             ForEach(item.new.filter { matchesSearch($0) }, id: \.self) { new in
-                                HStack {
-                                    if align == .leading || align == .center {
-                                        iconBadge(systemName: new.icon)
-                                            .padding(.trailing)
-                                    }
-
-                                    VStack(alignment: align == .trailing ? .trailing : .leading, spacing: 2) {
-                                        Text(new.title).font(.headline).lineLimit(1)
-                                        Text(new.subtitle).font(.subheadline).foregroundColor(.secondary).lineLimit(1)
-                                        Text(new.body).font(.footnote).foregroundColor(.secondary)
-                                    }
-                                    .frame(maxWidth: .infinity, alignment: align == .trailing ? .trailing : .leading)
-
-                                    if align == .trailing {
-                                        iconBadge(systemName: new.icon)
-                                            .padding(.leading)
-                                    }
-                                }
-                                .padding(.leading)
-                                .padding(.bottom)
+                                releaseRow(new, bodyFont: .footnote, spacing: 2)
+                                    .padding(.leading)
+                                    .padding(.bottom)
                             }
                         }
                     }
@@ -100,7 +63,7 @@ extension SwiftNEW {
                     )
                 )
             }
-            
+
             Spacer()
 
             if history {
@@ -126,6 +89,30 @@ extension SwiftNEW {
         #elseif os(tvOS)
         .frame(width: 600)
         #endif
+    }
+
+    private var searchField: some View {
+        HStack(spacing: 8) {
+            Image(systemName: "magnifyingglass")
+                .foregroundColor(.secondary)
+            TextField(String(localized: "Search", bundle: .module), text: $searchText)
+                .textFieldStyle(.plain)
+            if !searchText.isEmpty {
+                Button {
+                    searchText = ""
+                } label: {
+                    Image(systemName: "xmark.circle.fill")
+                        .foregroundColor(.secondary)
+                }
+                .buttonStyle(.plain)
+            }
+        }
+        .padding(.horizontal, 14)
+        .padding(.vertical, 10)
+        .background(Capsule().fill(Color.secondary.opacity(0.15)))
+        .frame(maxWidth: 380)
+        .padding(.horizontal)
+        .padding(.bottom, 8)
     }
 
     func matchesSearch(_ new: Model) -> Bool {
