@@ -17,9 +17,7 @@ A modern, SwiftUI-native **"What's New"** presentation framework for all Apple p
 
 ## 🎨 Gallery
 
-| Light | Dark |
-|:-----:|:----:|
-| ![Light](https://user-images.githubusercontent.com/54872601/173187065-14d78119-47e7-4dcb-a3e6-c7fee4f0c67f.PNG) | ![Dark](https://user-images.githubusercontent.com/54872601/173187067-fe3b5cac-54b5-4482-b73f-42e6c500546f.PNG) |
+<img width="2880" height="2160" alt="Cover" src="https://github.com/user-attachments/assets/630757ec-2de6-4a74-b744-dfe537df5d19" />
 
 ## 🚀 Quick Start
 
@@ -97,6 +95,10 @@ That's it — SwiftNEW auto-triggers when the app version changes.
 | App Icon (3.9.6+) | History (2.0+) |
 |:-----------------:|:--------------:|
 | <img height="400" alt="App Icon" src="https://user-images.githubusercontent.com/54872601/206886933-bc4d0d33-e0fc-4013-9456-f19679b10f5b.png"> | <img height="400" alt="History" src="https://user-images.githubusercontent.com/54872601/178129999-ad63b0ce-d65e-4d86-9882-37a5090e92bc.png"> |
+
+| Light | Dark |
+|:-----:|:----:|
+| ![Light](https://user-images.githubusercontent.com/54872601/173187065-14d78119-47e7-4dcb-a3e6-c7fee4f0c67f.PNG) | ![Dark](https://user-images.githubusercontent.com/54872601/173187067-fe3b5cac-54b5-4482-b73f-42e6c500546f.PNG) |
 
 ## 📚 Learn More
 
