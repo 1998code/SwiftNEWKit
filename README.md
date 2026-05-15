@@ -5,6 +5,7 @@
 ![Stable](https://img.shields.io/github/v/release/1998code/SwiftNEWKit?color=03A791&label=Stable)
 ![Beta](https://img.shields.io/github/v/release/1998code/SwiftNEWKit?include_prereleases&color=3A59D1&label=Beta)
 [![Validate JSON Files](https://github.com/1998code/SwiftNEWKit/actions/workflows/validate-json.yml/badge.svg)](https://github.com/1998code/SwiftNEWKit/actions/workflows/validate-json.yml)
+[![codecov](https://codecov.io/github/1998code/SwiftNEWKit/branch/main/graph/badge.svg?token=GI0KRUHVH1)](https://codecov.io/github/1998code/SwiftNEWKit)
 ![Swift Version](https://img.shields.io/badge/Swift-5.9/6.1-teal.svg)
 ![Platforms](https://img.shields.io/badge/Platforms-iOS%2015.0+%20|%20macOS%2014.0+%20|%20tvOS%2017.0+%20|%20visionOS%201.0+-15437D.svg)
 ![License](https://img.shields.io/badge/License-MIT-C8ECFE.svg)

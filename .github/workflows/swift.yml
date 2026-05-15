@@ -26,9 +26,21 @@ jobs:
         run: swift build -v
       - name: Test with coverage
         run: swift test --enable-code-coverage -v
-      - name: Coverage path
+      - name: Export LCOV
         id: coverage
-        run: echo "path=$(swift test --show-codecov-path)" >> "$GITHUB_OUTPUT"
+        run: |
+          COVERAGE_PATH="$(swift test --show-codecov-path)"
+          CODECOV_DIR="$(dirname "$COVERAGE_PATH")"
+          BIN_PATH="$(swift build --show-bin-path)"
+          TEST_BINARY="$BIN_PATH/SwiftNEWPackageTests.xctest/Contents/MacOS/SwiftNEWPackageTests"
+
+          xcrun llvm-cov export "$TEST_BINARY" \
+            -instr-profile "$CODECOV_DIR/default.profdata" \
+            -format=lcov \
+            -ignore-filename-regex='/.build/|/Tests/' \
+            | sed "s#SF:$PWD/#SF:#" > coverage.lcov
+
+          echo "path=coverage.lcov" >> "$GITHUB_OUTPUT"
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v6
         with:
