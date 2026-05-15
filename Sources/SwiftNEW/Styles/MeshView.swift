@@ -14,9 +14,9 @@ struct MeshView: View {
         #if compiler(>=6.0)
         if #available(iOS 18.0, macOS 15.0, visionOS 2.0, tvOS 18.0, *) {
             meshGradient
-        } else { // coverage:ignore-start -- Xcode 26 coverage runner cannot execute older OS mesh fallback.
+        } else { // LCOV_EXCL_START -- Xcode 26 coverage runner cannot execute older OS mesh fallback.
             fallbackGradient
-        } // coverage:ignore-end
+        } // LCOV_EXCL_STOP
         #else
         fallbackGradient
         #endif

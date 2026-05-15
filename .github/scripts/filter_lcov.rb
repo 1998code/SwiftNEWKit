@@ -12,12 +12,12 @@ def ignored_lines_for(source_path)
   File.readlines(source_path).each_with_index do |line, index|
     line_number = index + 1
 
-    if line.include?("coverage:ignore-line")
+    if line.include?("coverage:ignore-line") || line.include?("LCOV_EXCL_LINE")
       ignored << line_number
       next
     end
 
-    if line.include?("coverage:ignore-start")
+    if line.include?("coverage:ignore-start") || line.include?("LCOV_EXCL_START")
       active = true
       ignored << line_number
       next
@@ -25,7 +25,7 @@ def ignored_lines_for(source_path)
 
     ignored << line_number if active
 
-    active = false if line.include?("coverage:ignore-end")
+    active = false if line.include?("coverage:ignore-end") || line.include?("LCOV_EXCL_STOP")
   end
 
   ignored

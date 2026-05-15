@@ -151,7 +151,7 @@ private struct SheetBackdropModifier: ViewModifier {
             } else {
                 content.presentationBackground(.thinMaterial)
             }
-        } else { // coverage:ignore-start -- Xcode 26 coverage runner cannot execute older OS sheet fallback.
+        } else { // LCOV_EXCL_START -- Xcode 26 coverage runner cannot execute older OS sheet fallback.
             // Older OS / embed: fall back to a full-bleed background.
             if mesh {
                 content.background {
@@ -160,7 +160,7 @@ private struct SheetBackdropModifier: ViewModifier {
             } else {
                 content.background(.ultraThinMaterial, ignoresSafeAreaEdges: .all)
             }
-        } // coverage:ignore-end
+        } // LCOV_EXCL_STOP
     }
 }
 
