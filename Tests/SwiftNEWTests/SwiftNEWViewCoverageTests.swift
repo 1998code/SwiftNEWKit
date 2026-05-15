@@ -257,7 +257,9 @@ import AppKit
     let sut = makeSwiftNEW(items: sampleItems(), loading: false, mesh: true)
 
     render(sut.sheetHistory)
-    render(MeshView(color: .constant(.purple)))
+    let meshView = MeshView(color: .constant(.purple))
+    render(meshView)
+    render(meshView.testingFallbackGradient)
     render(NoiseView(size: 128))
     render(SnowfallView())
     render(FloatingParticlesView())

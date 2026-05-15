@@ -43,7 +43,6 @@ struct MeshView: View {
     }
     #endif
 
-    // coverage:ignore-start -- Covered by compatibility builds; unreachable on the Xcode 26 coverage runner.
     private var fallbackGradient: some View {
         LinearGradient(
             colors: [Color(.clear), color.opacity(0.6)],
@@ -52,5 +51,10 @@ struct MeshView: View {
         )
         .ignoresSafeArea(.all)
     }
-    // coverage:ignore-end
+
+    #if DEBUG
+    var testingFallbackGradient: some View {
+        fallbackGradient
+    }
+    #endif
 }
