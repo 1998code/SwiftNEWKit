@@ -43,10 +43,7 @@ extension SwiftNEW {
                     Text(loadErrorMessage)
                         .font(.headline)
                         .multilineTextAlignment(.center)
-                    Button {
-                        loadedDataSource = nil
-                        loadData()
-                    } label: {
+                    Button(action: retryLoadData) {
                         Text(String(localized: "Try Again", bundle: .module))
                     }
                 }
@@ -171,5 +168,10 @@ extension SwiftNEW {
 
     func matchesSearch(_ new: Model) -> Bool {
         SwiftNEWSearch.matches(new, query: debouncedSearchText, isEnabled: showSearch)
+    }
+
+    func retryLoadData() {
+        loadedDataSource = nil
+        loadData()
     }
 }

@@ -14,9 +14,9 @@ struct MeshView: View {
         #if compiler(>=6.0)
         if #available(iOS 18.0, macOS 15.0, visionOS 2.0, tvOS 18.0, *) {
             meshGradient
-        } else {
+        } else { // coverage:ignore-start -- Xcode 26 coverage runner cannot execute older OS mesh fallback.
             fallbackGradient
-        }
+        } // coverage:ignore-end
         #else
         fallbackGradient
         #endif
@@ -43,6 +43,7 @@ struct MeshView: View {
     }
     #endif
 
+    // coverage:ignore-start -- Covered by compatibility builds; unreachable on the Xcode 26 coverage runner.
     private var fallbackGradient: some View {
         LinearGradient(
             colors: [Color(.clear), color.opacity(0.6)],
@@ -51,4 +52,5 @@ struct MeshView: View {
         )
         .ignoresSafeArea(.all)
     }
+    // coverage:ignore-end
 }

@@ -62,7 +62,7 @@ extension SwiftNEW {
                     decoded = try JSONDecoder().decode([Vmodel].self, from: responseData)
                 } else {
                     // MARK: Local Data
-                    guard let url = Bundle.main.url(forResource: source, withExtension: "json") else { throw CocoaError(.fileNoSuchFile) }
+                    guard let url = dataBundle.url(forResource: source, withExtension: "json") else { throw CocoaError(.fileNoSuchFile) }
                     decoded = try await Task.detached {
                         let fileData = try Data(contentsOf: url)
                         return try JSONDecoder().decode([Vmodel].self, from: fileData)

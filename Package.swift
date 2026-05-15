@@ -39,7 +39,10 @@ let package = Package(
         ),
         .testTarget(
             name: "SwiftNEWTests",
-            dependencies: ["SwiftNEW"]
+            dependencies: ["SwiftNEW"],
+            resources: [
+                .process("Resources")
+            ]
         )
     ]
 )

@@ -61,17 +61,7 @@ extension SwiftNEW {
             if presentation == .embed {
                 sheetContent
             } else {
-                Button(action: {
-                    #if os(iOS)
-                    if showDrop {
-                        drop()
-                    } else {
-                        show = true
-                    }
-                    #else
-                    show = true
-                    #endif
-                }) {
+                Button(action: presentReleaseNotes) {
                     Label(String(localized: String.LocalizationValue(label), bundle: .module), systemImage: labelImage)
                         .frame(
                             width: size == "mini" ? nil : (size == "invisible" ? 0 : platformWidth),
@@ -88,6 +78,18 @@ extension SwiftNEW {
                 .modifier(PresentationModifier(isPresented: $show, presentation: presentation, sheetContent: sheetContent))
             }
         }
+    }
+
+    func presentReleaseNotes() {
+        #if os(iOS)
+        if showDrop {
+            drop()
+        } else {
+            show = true
+        }
+        #else
+        show = true
+        #endif
     }
 
     private var platformWidth: CGFloat {
@@ -128,6 +130,12 @@ extension SwiftNEW {
             sheetHistory
         }
     }
+
+    #if DEBUG
+    var testingHistorySheetContent: some View {
+        historySheetContent
+    }
+    #endif
 }
 
 private struct SheetBackdropModifier: ViewModifier {
@@ -143,7 +151,7 @@ private struct SheetBackdropModifier: ViewModifier {
             } else {
                 content.presentationBackground(.thinMaterial)
             }
-        } else {
+        } else { // coverage:ignore-start -- Xcode 26 coverage runner cannot execute older OS sheet fallback.
             // Older OS / embed: fall back to a full-bleed background.
             if mesh {
                 content.background {
@@ -152,7 +160,7 @@ private struct SheetBackdropModifier: ViewModifier {
             } else {
                 content.background(.ultraThinMaterial, ignoresSafeAreaEdges: .all)
             }
-        }
+        } // coverage:ignore-end
     }
 }
 

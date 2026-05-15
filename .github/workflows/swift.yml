@@ -38,7 +38,9 @@ jobs:
             -instr-profile "$CODECOV_DIR/default.profdata" \
             -format=lcov \
             -ignore-filename-regex='/.build/|/Tests/' \
-            | sed "s#SF:$PWD/#SF:#" > coverage.lcov
+            | sed "s#SF:$PWD/#SF:#" > coverage.raw.lcov
+
+          ruby .github/scripts/filter_lcov.rb coverage.raw.lcov coverage.lcov
 
           echo "path=coverage.lcov" >> "$GITHUB_OUTPUT"
       - name: Upload coverage to Codecov

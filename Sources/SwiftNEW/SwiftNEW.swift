@@ -69,6 +69,7 @@ public struct SwiftNEW: View {
     @Binding var showBuild: Bool
     @Binding var headingStyle: SwiftNEWHeadingStyle
     @Binding var iconStyle: SwiftNEWIconStyle
+    var dataBundle: Bundle = .main
 
     public init(
         show: Binding<Bool>,
@@ -173,7 +174,8 @@ extension SwiftNEW {
         presentation: SwiftNEWPresentation = .sheet,
         showBuild: Bool = true,
         headingStyle: SwiftNEWHeadingStyle = .version,
-        iconStyle: SwiftNEWIconStyle = .filled
+        iconStyle: SwiftNEWIconStyle = .filled,
+        dataBundle: Bundle = .main
     ) {
         _version = AppStorage(wrappedValue: "", "swiftnew.version")
         _build = AppStorage(wrappedValue: "", "swiftnew.build")
@@ -201,6 +203,7 @@ extension SwiftNEW {
         _showBuild = .constant(showBuild)
         _headingStyle = .constant(headingStyle)
         _iconStyle = .constant(iconStyle)
+        self.dataBundle = dataBundle
     }
 }
 #endif

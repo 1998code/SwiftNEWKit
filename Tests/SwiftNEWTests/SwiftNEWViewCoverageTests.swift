@@ -5,6 +5,7 @@
 
 import SwiftUI
 import Testing
+import Foundation
 @testable import SwiftNEW
 
 #if os(macOS)
@@ -101,9 +102,40 @@ import AppKit
 }
 
 @MainActor
+@Test func bundleIconHelperReadsPrimaryIconFile() throws {
+    let folder = FileManager.default.temporaryDirectory
+        .appendingPathComponent("SwiftNEWIconBundle-\(UUID().uuidString).bundle", isDirectory: true)
+    try FileManager.default.createDirectory(at: folder, withIntermediateDirectories: true)
+
+    let plist: [String: Any] = [
+        "CFBundleIdentifier": "com.swiftnew.coverage.icon",
+        "CFBundlePackageType": "BNDL",
+        "CFBundleIcons": [
+            "CFBundlePrimaryIcon": [
+                "CFBundleIconFiles": ["Icon20", "Icon60"]
+            ]
+        ]
+    ]
+
+    let data = try PropertyListSerialization.data(fromPropertyList: plist, format: .xml, options: 0)
+    try data.write(to: folder.appendingPathComponent("Info.plist"))
+
+    guard let bundle = Bundle(url: folder) else {
+        Issue.record("Expected temporary bundle to load")
+        return
+    }
+
+    #expect(bundle.iconFileName == "Icon60")
+}
+
+@MainActor
 @Test func versionComparisonPathIsCallable() async throws {
+    UserDefaults.standard.removeObject(forKey: "swiftnew.version")
+    UserDefaults.standard.removeObject(forKey: "swiftnew.build")
+
     let sut = makeSwiftNEW()
 
+    sut.presentReleaseNotes()
     sut.compareVersion()
     try await Task.sleep(for: .milliseconds(150))
 
@@ -121,6 +153,17 @@ import AppKit
 }
 
 @MainActor
+@Test func searchToggleAndRetryPathsAreCallable() async throws {
+    let sut = makeSwiftNEW(showSearch: true, searchText: "coverage", debouncedSearchText: "coverage")
+
+    sut.toggleSearchVisibility()
+    sut.retryLoadData()
+    try await Task.sleep(for: .milliseconds(300))
+
+    #expect(sut.matchesSearch(sampleModel()))
+}
+
+@MainActor
 @Test func loadDataReportsMissingLocalFiles() async throws {
     let sut = makeSwiftNEW(data: "missing-release-notes-file")
 
@@ -128,6 +171,15 @@ import AppKit
     try await Task.sleep(for: .milliseconds(400))
 
     #expect(sut.data == "missing-release-notes-file")
+}
+
+@MainActor
+@Test func loadDataReadsLocalBundleJSON() async throws {
+    let sut = makeSwiftNEW(data: "swiftnew-test-data", dataBundle: .module)
+    sut.loadData()
+    try await Task.sleep(for: .milliseconds(500))
+
+    #expect(sut.data == "swiftnew-test-data")
 }
 
 @MainActor
@@ -145,6 +197,9 @@ import AppKit
 @Test func renderSwiftNEWEntryPoints() {
     render(makeSwiftNEW(size: "simple", glass: true, presentation: .sheet).body)
     render(makeSwiftNEW(size: "mini", glass: false, presentation: .fullScreenCover).body)
+    render(makeSwiftNEW(testingShow: true, size: "simple", presentation: .sheet).body)
+    render(makeSwiftNEW(testingShow: true, historySheet: true, size: "simple", presentation: .sheet).body)
+    render(makeSwiftNEW(items: sampleItems(), loading: false).testingHistorySheetContent)
     render(makeSwiftNEW(mesh: true, specialEffect: .particles, presentation: .embed).body)
     render(makeSwiftNEW(mesh: false, specialEffect: .christmas, presentation: .embed).body)
     render(makeSwiftNEW(size: "invisible", presentation: .sheet).body)
@@ -212,9 +267,11 @@ import AppKit
 
 @MainActor
 private func makeSwiftNEW(
+    testingShow: Bool = false,
     items: [Vmodel] = [],
     loading: Bool = true,
     loadErrorMessage: String? = nil,
+    historySheet: Bool = false,
     showSearch: Bool = false,
     searchText: String = "",
     debouncedSearchText: String = "",
@@ -229,13 +286,15 @@ private func makeSwiftNEW(
     presentation: SwiftNEWPresentation = .sheet,
     showBuild: Bool = true,
     headingStyle: SwiftNEWHeadingStyle = .version,
-    iconStyle: SwiftNEWIconStyle = .filled
+    iconStyle: SwiftNEWIconStyle = .filled,
+    dataBundle: Bundle = .main
 ) -> SwiftNEW {
     SwiftNEW(
-        testingShow: false,
+        testingShow: testingShow,
         items: items,
         loading: loading,
         loadErrorMessage: loadErrorMessage,
+        historySheet: historySheet,
         showSearch: showSearch,
         searchText: searchText,
         debouncedSearchText: debouncedSearchText,
@@ -253,7 +312,8 @@ private func makeSwiftNEW(
         presentation: presentation,
         showBuild: showBuild,
         headingStyle: headingStyle,
-        iconStyle: iconStyle
+        iconStyle: iconStyle,
+        dataBundle: dataBundle
     )
 }
 

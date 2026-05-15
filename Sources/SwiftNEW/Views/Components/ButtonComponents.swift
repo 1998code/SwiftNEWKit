@@ -23,15 +23,17 @@ extension SwiftNEW {
     }
 
     public var searchButton: some View {
-        capsuleSecondaryButton(action: {
-            withAnimation { showSearch.toggle() }
-            if !showSearch {
-                searchText = ""
-                debouncedSearchText = ""
-            }
-        }) {
+        capsuleSecondaryButton(action: toggleSearchVisibility) {
             Text(String(localized: "Search", bundle: .module))
             Image(systemName: showSearch ? "xmark.circle" : "magnifyingglass")
+        }
+    }
+
+    func toggleSearchVisibility() {
+        withAnimation { showSearch.toggle() }
+        if !showSearch {
+            searchText = ""
+            debouncedSearchText = ""
         }
     }
 
