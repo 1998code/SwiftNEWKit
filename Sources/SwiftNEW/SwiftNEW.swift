@@ -145,3 +145,62 @@ public struct SwiftNEW: View {
         compareVersion()
     }
 }
+
+#if DEBUG
+@available(iOS 15.0, watchOS 8.0, macOS 12.0, tvOS 17.0, *)
+extension SwiftNEW {
+    init(
+        testingShow: Bool = false,
+        items: [Vmodel] = [],
+        loading: Bool = true,
+        loadErrorMessage: String? = nil,
+        loadedDataSource: String? = nil,
+        historySheet: Bool = false,
+        showSearch: Bool = false,
+        searchText: String = "",
+        debouncedSearchText: String = "",
+        align: HorizontalAlignment = .center,
+        color: Color = .accentColor,
+        size: String = "simple",
+        label: String = "Show Release Note",
+        labelImage: String = "arrow.up.circle.fill",
+        history: Bool = true,
+        data: String = "data",
+        showDrop: Bool = false,
+        mesh: Bool = false,
+        specialEffect: SwiftNEWSpecialEffect = .none,
+        glass: Bool = true,
+        presentation: SwiftNEWPresentation = .sheet,
+        showBuild: Bool = true,
+        headingStyle: SwiftNEWHeadingStyle = .version,
+        iconStyle: SwiftNEWIconStyle = .filled
+    ) {
+        _version = AppStorage(wrappedValue: "", "swiftnew.version")
+        _build = AppStorage(wrappedValue: "", "swiftnew.build")
+        _items = State(initialValue: items)
+        _loading = State(initialValue: loading)
+        _loadErrorMessage = State(initialValue: loadErrorMessage)
+        _loadedDataSource = State(initialValue: loadedDataSource)
+        _historySheet = State(initialValue: historySheet)
+        _showSearch = State(initialValue: showSearch)
+        _searchText = State(initialValue: searchText)
+        _debouncedSearchText = State(initialValue: debouncedSearchText)
+        _show = .constant(testingShow)
+        _align = .constant(align)
+        _color = .constant(color)
+        _size = .constant(size)
+        _label = .constant(label)
+        _labelImage = .constant(labelImage)
+        _history = .constant(history)
+        _data = .constant(data)
+        _showDrop = .constant(showDrop)
+        _mesh = .constant(mesh)
+        _specialEffect = .constant(specialEffect)
+        _glass = .constant(glass)
+        _presentation = .constant(presentation)
+        _showBuild = .constant(showBuild)
+        _headingStyle = .constant(headingStyle)
+        _iconStyle = .constant(iconStyle)
+    }
+}
+#endif
