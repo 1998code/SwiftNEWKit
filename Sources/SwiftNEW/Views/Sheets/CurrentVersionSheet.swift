@@ -7,13 +7,26 @@
 
 import SwiftUI
 import SwiftVB
+
+#if os(iOS) || os(macOS) || os(visionOS)
 import SwiftGlass
+#endif
 
 @available(iOS 15.0, watchOS 8.0, macOS 12.0, tvOS 17.0, *)
 extension SwiftNEW {
 
     // MARK: - Current Version Changes View
     public var sheetCurrent: some View {
+        #if os(tvOS)
+        GeometryReader { geometry in
+            sheetCurrentContent(maxScrollHeight: geometry.size.height * 0.5)
+        }
+        #else
+        sheetCurrentContent(maxScrollHeight: nil)
+        #endif
+    }
+
+    private func sheetCurrentContent(maxScrollHeight: CGFloat?) -> some View {
         VStack(alignment: align) {
             Spacer()
 
@@ -22,7 +35,23 @@ extension SwiftNEW {
 
             Spacer()
 
-            if loading {
+            if let loadErrorMessage {
+                VStack(spacing: 12) {
+                    Image(systemName: "exclamationmark.triangle")
+                        .font(.title2)
+                        .foregroundColor(.secondary)
+                    Text(loadErrorMessage)
+                        .font(.headline)
+                        .multilineTextAlignment(.center)
+                    Button {
+                        loadedDataSource = nil
+                        loadData()
+                    } label: {
+                        Text(String(localized: "Try Again", bundle: .module))
+                    }
+                }
+                .padding()
+            } else if loading {
                 VStack {
                     Text(String(localized: "Loading...", bundle: .module))
                         .padding(.bottom)
@@ -35,12 +64,10 @@ extension SwiftNEW {
                 }
                 ZStack(alignment: .bottom) {
                     ScrollView(showsIndicators: false) {
-                        ForEach(items, id: \.self) { item in
+                        ForEach(items) { item in
                             if item.version == Bundle.version || item.subVersion == Bundle.version {
-                                ForEach(item.new.filter { matchesSearch($0) }, id: \.self) { new in
+                                ForEach(item.new.filter { matchesSearch($0) }) { new in
                                     releaseRow(new, bodyFont: .footnote, spacing: 2)
-                                        .padding(.leading)
-                                        .padding(.bottom)
                                 }
                             }
                         }
@@ -50,8 +77,8 @@ extension SwiftNEW {
                     #if !os(tvOS)
                     .frame(maxWidth: 380)
                     .padding(.horizontal)
-                    #elseif !os(macOS)
-                    .frame(maxHeight: UIScreen.main.bounds.height * 0.5)
+                    #elseif os(tvOS)
+                    .frame(maxHeight: maxScrollHeight)
                     #endif
 
                     VStack(spacing: 0) {
@@ -92,7 +119,7 @@ extension SwiftNEW {
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
             }
         }
-        .onAppear {
+        .task(id: data) {
             loadData()
         }
         #if os(macOS)
@@ -107,11 +134,17 @@ extension SwiftNEW {
         HStack(spacing: 8) {
             Image(systemName: "magnifyingglass")
                 .foregroundColor(.secondary)
-            TextField(String(localized: "Search", bundle: .module), text: $searchText)
+            TextField(
+                String(localized: "Search", bundle: .module),
+                text: Binding(
+                    get: { searchText },
+                    set: updateSearchText
+                )
+            )
                 .textFieldStyle(.plain)
             if !searchText.isEmpty {
                 Button {
-                    searchText = ""
+                    updateSearchText("")
                 } label: {
                     Image(systemName: "xmark.circle.fill")
                         .foregroundColor(.secondary)
@@ -127,10 +160,16 @@ extension SwiftNEW {
         .padding(.bottom, 8)
     }
 
+    func updateSearchText(_ newValue: String) {
+        searchText = newValue
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
+            if searchText == newValue {
+                debouncedSearchText = newValue
+            }
+        }
+    }
+
     func matchesSearch(_ new: Model) -> Bool {
-        guard showSearch, !searchText.isEmpty else { return true }
-        return new.title.localizedCaseInsensitiveContains(searchText)
-            || new.subtitle.localizedCaseInsensitiveContains(searchText)
-            || new.body.localizedCaseInsensitiveContains(searchText)
+        SwiftNEWSearch.matches(new, query: debouncedSearchText, isEnabled: showSearch)
     }
 }

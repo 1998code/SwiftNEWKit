@@ -9,6 +9,9 @@ on:
   pull_request:
     branches: [ "main" ]
 
+permissions:
+  contents: read
+
 jobs:
   xcode-16-3:
     runs-on: macos-15
@@ -20,8 +23,20 @@ jobs:
         run: swift --version
       - name: Build
         run: swift build -v
-      # - name: Test
-      #   run: swift test -v
+      - name: Test with coverage
+        run: swift test --enable-code-coverage -v
+      - name: Coverage path
+        id: coverage
+        run: echo "path=$(swift test --show-codecov-path)" >> "$GITHUB_OUTPUT"
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v6
+        with:
+          files: ${{ steps.coverage.outputs.path }}
+          flags: swiftpm
+          name: SwiftNEW
+          token: ${{ secrets.CODECOV_TOKEN }}
+          fail_ci_if_error: false
+          verbose: true
 
   xcode-15-4:
     runs-on: macos-14

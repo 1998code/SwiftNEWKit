@@ -91,6 +91,8 @@ SwiftNEW(
 
 SwiftNEW reads release notes from a JSON source. The same parameter (`data`) is used for both local and remote inputs — if it starts with `http`, it is fetched over the network; otherwise it is loaded as a bundled resource by name.
 
+If loading fails, SwiftNEW shows an inline error state with a retry button. Successful data loads are cached for the current view lifetime, so repeated appearances do not re-fetch the same source unnecessarily.
+
 ### Local JSON
 
 Add a JSON file (typically `data.json`) to your app bundle:
@@ -136,19 +138,32 @@ SwiftNEW(show: $showNew, data: "https://your-project.firebaseio.com/releases.jso
 ## Data Model Reference
 
 ```swift
-public struct Vmodel: Codable, Hashable, Sendable {
-    var version: String         // e.g., "1.2.0"
-    var subVersion: String?     // optional
-    var new: [Model]
+public struct Vmodel: Codable, Hashable, Identifiable, Sendable {
+    public var id: String       // derived from version + subVersion
+    public var version: String  // e.g., "1.2.0"
+    public var subVersion: String?
+    public var new: [Model]
 }
 
-public struct Model: Codable, Hashable, Sendable {
-    var icon: String            // SF Symbol name
-    var title: String
-    var subtitle: String
-    var body: String
+public struct Model: Codable, Hashable, Identifiable, Sendable {
+    public var id: String       // derived from icon + title + subtitle + body
+    public var icon: String     // SF Symbol name
+    public var title: String
+    public var subtitle: String
+    public var body: String
 }
 ```
+
+## Auto-Trigger Storage
+
+SwiftNEW remembers the last displayed app version/build in `@AppStorage` using namespaced keys:
+
+| Key | Value |
+|-----|-------|
+| `swiftnew.version` | Last displayed `CFBundleShortVersionString` |
+| `swiftnew.build` | Last displayed `CFBundleVersion` |
+
+Version/build comparison is string-safe, so non-numeric bundle values such as `1.0-beta` or `1.0b3` will not crash.
 
 ## Tips
 

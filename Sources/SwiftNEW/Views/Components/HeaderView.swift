@@ -7,7 +7,10 @@
 
 import SwiftUI
 import SwiftVB
+
+#if os(iOS) || os(macOS) || os(visionOS)
 import SwiftGlass
+#endif
 
 @available(iOS 15.0, watchOS 8.0, macOS 12.0, tvOS 17.0, *)
 extension SwiftNEW {

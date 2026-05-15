@@ -41,14 +41,17 @@ public enum SwiftNEWIconStyle {
 
 @available(iOS 15.0, watchOS 8.0, macOS 12.0, tvOS 17.0, *)
 public struct SwiftNEW: View {
-    @AppStorage("version") var version = 1.0
-    @AppStorage("build") var build: Double = 1
+    @AppStorage("swiftnew.version") var version = ""
+    @AppStorage("swiftnew.build") var build = ""
 
     @State var items: [Vmodel] = []
     @State var loading = true
+    @State var loadErrorMessage: String?
+    @State var loadedDataSource: String?
     @State var historySheet: Bool = false
     @State var showSearch: Bool = false
     @State var searchText: String = ""
+    @State var debouncedSearchText: String = ""
 
     @Binding var show: Bool
     @Binding var align: HorizontalAlignment

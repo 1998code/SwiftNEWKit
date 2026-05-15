@@ -1,8 +1,26 @@
 [
     {
         "version": "6.3",
-        "subVersion": "6.3.0",
+        "subVersion": "6.3.1",
         "new": [
+            {
+                "icon": "checkmark.shield",
+                "title": "兼容性",
+                "subtitle": "修复",
+                "body": "改进 iOS、macOS、tvOS 与 visionOS 的平台支持。"
+            },
+            {
+                "icon": "testtube.2",
+                "title": "Swift",
+                "subtitle": "Testing",
+                "body": "为核心版本说明逻辑加入原生 Swift Testing 覆盖率。"
+            },
+            {
+                "icon": "chart.bar.doc.horizontal",
+                "title": "Codecov",
+                "subtitle": "报告",
+                "body": "GitHub Actions 现在会生成并上传覆盖率报告。"
+            },
             {
                 "icon": "sparkles",
                 "title": "浮动",

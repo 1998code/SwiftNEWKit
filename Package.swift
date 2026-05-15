@@ -30,12 +30,16 @@ let package = Package(
             name: "SwiftNEW",
             dependencies: [
                 .product(name: "SwiftVB", package: "SwiftVBKit"),
-                .product(name: "Drops", package: "Drops"),
-                .product(name: "SwiftGlass", package: "SwiftGlass")
+                .product(name: "Drops", package: "Drops", condition: .when(platforms: [.iOS])),
+                .product(name: "SwiftGlass", package: "SwiftGlass", condition: .when(platforms: [.iOS, .macOS, .visionOS]))
             ],
             resources: [
                 .process("Localizable.xcstrings")
             ]
+        ),
+        .testTarget(
+            name: "SwiftNEWTests",
+            dependencies: ["SwiftNEW"]
         )
     ]
 )

@@ -1,8 +1,26 @@
 [
     {
         "version": "6.3",
-        "subVersion": "6.3.0",
+        "subVersion": "6.3.1",
         "new": [
+            {
+                "icon": "checkmark.shield",
+                "title": "互換性",
+                "subtitle": "修正",
+                "body": "iOS、macOS、tvOS、visionOS のプラットフォーム対応を改善。"
+            },
+            {
+                "icon": "testtube.2",
+                "title": "Swift",
+                "subtitle": "Testing",
+                "body": "コアのリリースノートロジックに Swift Testing のカバレッジを追加。"
+            },
+            {
+                "icon": "chart.bar.doc.horizontal",
+                "title": "Codecov",
+                "subtitle": "レポート",
+                "body": "GitHub Actions がカバレッジレポートを生成してアップロードします。"
+            },
             {
                 "icon": "sparkles",
                 "title": "フローティング",

@@ -69,6 +69,7 @@ That's it — SwiftNEW auto-triggers when the app version changes.
 | Feature | Since | Description |
 |---------|:-----:|-------------|
 | 🔍 In-Sheet Search | 6.3.0 | Filter the current release notes by title / subtitle / body |
+| 🛡️ Resilient Loading | 6.3.0 | Handles loading failures with an inline retry state instead of an endless spinner |
 | 🏷️ Customizable Heading | 6.3.0 | `headingStyle`: `.version`, `.versionOnly`, or `.appName` |
 | 🎯 Icon Style | 6.3.0 | `iconStyle`: `.filled` (colored backdrop) or `.plain` (glyph only) |
 | 🔢 Optional Build Number | 6.3.0 | Hide build number via `showBuild: false` |
@@ -85,6 +86,22 @@ That's it — SwiftNEW auto-triggers when the app version changes.
 | 🔥 Firebase Realtime DB | 3.0.0 | Live content updates |
 | 🌐 Remote JSON | 3.0.0 | Load from any REST endpoint |
 | 📚 Version History | 2.0.0 | Browse all previous releases |
+
+## 📝 Notes
+
+- SwiftNEW stores its last-seen version/build using namespaced app storage keys: `swiftnew.version` and `swiftnew.build`.
+- Version comparison is string-safe, so non-numeric values such as `1.0-beta` or `1.0b3` will not crash auto-triggering.
+
+## 🧪 Testing & Coverage
+
+SwiftNEW uses Apple's Swift Testing framework for package tests. Run coverage locally with Xcode 16 or newer:
+
+```bash
+swift test --enable-code-coverage
+swift test --show-codecov-path
+```
+
+The GitHub Actions Xcode 16.3 job also runs Swift Testing with native SwiftPM code coverage enabled and uploads the report to Codecov. Codecov upload is non-blocking while coverage reporting is being established.
 
 ### Feature Showcase
 

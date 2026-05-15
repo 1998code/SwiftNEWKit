@@ -58,7 +58,7 @@ SwiftNEW is distributed via Swift Package Manager.
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/1998code/SwiftNEWKit", from: "6.3.0")
+    .package(url: "https://github.com/1998code/SwiftNEWKit", from: "6.3.1")
 ]
 ```
 

@@ -5,15 +5,28 @@
 //  Created by Ming on 11/6/2022.
 //
 
-import SwiftGlass
 import SwiftUI
 import SwiftVB
+
+#if os(iOS) || os(macOS) || os(visionOS)
+import SwiftGlass
+#endif
 
 @available(iOS 15.0, watchOS 8.0, macOS 12.0, tvOS 17.0, *)
 extension SwiftNEW {
 
     // MARK: - History List View
     public var sheetHistory: some View {
+        #if os(tvOS)
+        GeometryReader { geometry in
+            sheetHistoryContent(maxScrollHeight: geometry.size.height * 0.5)
+        }
+        #else
+        sheetHistoryContent(maxScrollHeight: nil)
+        #endif
+    }
+
+    private func sheetHistoryContent(maxScrollHeight: CGFloat?) -> some View {
         VStack(alignment: align) {
             Spacer()
 
@@ -24,29 +37,27 @@ extension SwiftNEW {
             Spacer()
 
             ScrollView(showsIndicators: false) {
-                ForEach(items, id: \.self) { item in
+                ForEach(items) { item in
                     ZStack {
                         colorGradient
                         Text(item.version).bold().font(.title2)
                             .foregroundColor(color.adaptedTextColor)
                     }
-                    .glass(radius: 15, color: color)
+                    .swiftNEWGlass(radius: 15, color: color)
                     .frame(width: 120, height: 40)
                     .cornerRadius(15)
                     .padding(.bottom)
 
-                    ForEach(item.new, id: \.self) { new in
+                    ForEach(item.new) { new in
                         releaseRow(new, bodyFont: .caption)
-                            .padding(.leading)
-                            .padding(.bottom)
                     }
                 }
             }
             #if !os(tvOS)
             .frame(maxWidth: 380)
             .padding(.horizontal)
-            #elseif !os(macOS)
-            .frame(maxHeight: UIScreen.main.bounds.height * 0.5)
+            #elseif os(tvOS)
+            .frame(maxHeight: maxScrollHeight)
             #endif
 
             Spacer()

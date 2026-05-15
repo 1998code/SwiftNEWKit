@@ -7,7 +7,10 @@
 
 import SwiftUI
 import SwiftVB
+
+#if os(iOS) || os(macOS) || os(visionOS)
 import SwiftGlass
+#endif
 
 @available(iOS 15.0, watchOS 8.0, macOS 12.0, tvOS 17.0, *)
 extension SwiftNEW {
@@ -22,7 +25,10 @@ extension SwiftNEW {
     public var searchButton: some View {
         capsuleSecondaryButton(action: {
             withAnimation { showSearch.toggle() }
-            if !showSearch { searchText = "" }
+            if !showSearch {
+                searchText = ""
+                debouncedSearchText = ""
+            }
         }) {
             Text(String(localized: "Search", bundle: .module))
             Image(systemName: showSearch ? "xmark.circle" : "magnifyingglass")
@@ -65,7 +71,7 @@ extension SwiftNEW {
         .buttonBorderShape(.capsule)
         .tint(.secondary)
         #endif
-        .glass(color: .secondary.opacity(0.1))
+        .swiftNEWGlass(color: .secondary.opacity(0.1))
     }
 
     private func primaryActionButton(
@@ -96,6 +102,6 @@ extension SwiftNEW {
             .tint(.white)
             #endif
         }
-        .glass(color: color.opacity(0.1))
+        .swiftNEWGlass(color: color.opacity(0.1))
     }
 }

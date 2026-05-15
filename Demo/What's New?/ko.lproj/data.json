@@ -1,8 +1,26 @@
 [
     {
         "version": "6.3",
-        "subVersion": "6.3.0",
+        "subVersion": "6.3.1",
         "new": [
+            {
+                "icon": "checkmark.shield",
+                "title": "호환성",
+                "subtitle": "수정",
+                "body": "iOS, macOS, tvOS, visionOS 플랫폼 지원을 개선했습니다."
+            },
+            {
+                "icon": "testtube.2",
+                "title": "Swift",
+                "subtitle": "Testing",
+                "body": "핵심 릴리스 노트 로직에 네이티브 Swift Testing 커버리지를 추가했습니다."
+            },
+            {
+                "icon": "chart.bar.doc.horizontal",
+                "title": "Codecov",
+                "subtitle": "리포트",
+                "body": "GitHub Actions가 이제 커버리지 리포트를 생성하고 업로드합니다."
+            },
             {
                 "icon": "sparkles",
                 "title": "플로팅",

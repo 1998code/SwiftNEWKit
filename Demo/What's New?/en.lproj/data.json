@@ -1,8 +1,26 @@
 [
     {
         "version": "6.3",
-        "subVersion": "6.3.0",
+        "subVersion": "6.3.1",
         "new": [
+            {
+                "icon": "checkmark.shield",
+                "title": "Compatibility",
+                "subtitle": "Fixes",
+                "body": "Improved platform support across iOS, macOS, tvOS, and visionOS."
+            },
+            {
+                "icon": "testtube.2",
+                "title": "Swift",
+                "subtitle": "Testing",
+                "body": "Added native Swift Testing coverage for core release-note logic."
+            },
+            {
+                "icon": "chart.bar.doc.horizontal",
+                "title": "Codecov",
+                "subtitle": "Reports",
+                "body": "GitHub Actions now generates and uploads coverage reports."
+            },
             {
                 "icon": "sparkles",
                 "title": "Floating",

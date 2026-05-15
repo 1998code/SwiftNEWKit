@@ -7,7 +7,10 @@
 
 import SwiftUI
 import SwiftVB
+
+#if os(iOS) || os(macOS) || os(visionOS)
 import SwiftGlass
+#endif
 
 #if os(iOS)
 import Drops
@@ -42,7 +45,7 @@ extension SwiftNEW {
                     .font(.title2)
                     .foregroundColor(.white)
             }
-            .glass(radius: 15)
+            .swiftNEWGlass(radius: 15)
             .frame(width: iconBadgeSize, height: iconBadgeSize)
             .cornerRadius(15)
         case .plain:
@@ -159,7 +162,7 @@ private struct ConditionalGlassModifier: ViewModifier {
 
     func body(content: Content) -> some View {
         if isEnabled {
-            content.glass(color: shadowColor.opacity(0.1))
+            content.swiftNEWGlass(color: shadowColor.opacity(0.1))
         } else {
             content
         }
