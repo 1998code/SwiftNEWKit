@@ -15,15 +15,15 @@ jobs:
     
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
         with:
-          node-version: '18'
+          bun-version: latest
           
       - name: Install dependencies
-        run: npm install -g ajv-cli ajv-formats
+        run: bun add --global ajv-cli ajv-formats
         
       - name: Create JSON schema for validation
         run: |
@@ -116,7 +116,7 @@ jobs:
             echo "Validating schema for language: $LANG_DIR - $FILE"
             
             # Validate against schema
-            if ! npx ajv -s schema.json -d "$FILE" --strict=false; then
+            if ! bunx ajv -s schema.json -d "$FILE" --strict=false; then
               echo "❌ $LANG_DIR ($FILE) does not match the required schema"
               ERROR=1
             else
@@ -137,7 +137,7 @@ jobs:
     
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
       
       - name: Find JSON files
         id: find-json
