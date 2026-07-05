@@ -8,51 +8,72 @@
                     "sparkles",
                     "wand.and.stars"
                 ],
-                "title": "Animated",
-                "subtitle": "Icons",
-                "body": "2つのSF Symbols間でループ。"
+                "title": "アニメーションアイコンループ",
+                "subtitle": "ネイティブなシンボル置換",
+                "body": "SF Symbolsをネイティブな置換トランジションで順番にループします。"
             },
             {
-                "icon": "arrow.left.arrow.right",
-                "title": "Icon",
-                "subtitle": "Schema",
-                "body": "icon、toIcon、iconsに対応。"
+                "icons": [
+                    "arrow.left.arrow.right",
+                    "arrow.triangle.2.circlepath"
+                ],
+                "title": "柔軟なアイコン定義",
+                "subtitle": "icon、toIcon、icons対応",
+                "body": "icon、toIcon、またはicons配列でアイコンを定義できます。"
             },
             {
-                "icon": "square.dashed.inset.filled",
-                "title": "Default",
-                "subtitle": "Icon Style",
-                "body": "丸いガラス風アイコンバッジ。"
+                "icons": [
+                    "square.dashed.inset.filled",
+                    "square.fill"
+                ],
+                "title": "標準のガラス風バッジ",
+                "subtitle": "より柔らかなアイコン表現",
+                "body": "新しい丸いガラス風バッジで標準アイコンがより柔らかく見えます。"
             },
             {
-                "icon": "paintbrush.pointed",
-                "title": "Gradient",
-                "subtitle": "Glyphs",
-                "body": "アイコン色にグラデーション。"
+                "icons": [
+                    "paintbrush.pointed",
+                    "paintpalette.fill"
+                ],
+                "title": "グラデーションアイコン",
+                "subtitle": "テーマカラーのシンボル",
+                "body": "アイコンのグリフに左上から右下へのグラデーションを適用します。"
             },
             {
-                "icon": "circle.grid.cross",
-                "title": "Refined",
-                "subtitle": "Layout",
-                "body": "大きいアイコンと丸いボタン。"
+                "icons": [
+                    "circle.grid.cross",
+                    "square.grid.2x2.fill"
+                ],
+                "title": "整えた行レイアウト",
+                "subtitle": "大きなアイコンと丸いボタン",
+                "body": "大きなアイコンと丸いボタンで行レイアウトをより見やすくしました。"
             },
             {
-                "icon": "rectangle.bottomthird.inset.filled",
-                "title": "Bottom",
-                "subtitle": "Controls",
-                "body": "Continueを下端へ近づけました。"
+                "icons": [
+                    "rectangle.bottomthird.inset.filled",
+                    "rectangle.fill"
+                ],
+                "title": "下寄せのContinue操作",
+                "subtitle": "届きやすい下部配置",
+                "body": "Continueコントロールを下端へ近づけ、押しやすくしました。"
             },
             {
-                "icon": "water.waves",
-                "title": "Liquid",
-                "subtitle": "Mesh",
-                "body": "メッシュ背景が流動表示に対応。"
+                "icons": [
+                    "water.waves",
+                    "drop.fill"
+                ],
+                "title": "リキッドメッシュモーション",
+                "subtitle": "ゆっくり動く背景",
+                "body": "メッシュ背景がゆっくり流れるリキッド表現に対応しました。"
             },
             {
-                "icon": "textformat.size",
-                "title": "Custom",
-                "subtitle": "Heading Prefix",
-                "body": "見出しの先頭行を変更可能。"
+                "icons": [
+                    "textformat.size",
+                    "textformat.alt"
+                ],
+                "title": "カスタム見出しプレフィックス",
+                "subtitle": "変更できるタイトル行",
+                "body": "バージョン上に表示する見出しプレフィックスを変更できます。"
             }
         ]
     },

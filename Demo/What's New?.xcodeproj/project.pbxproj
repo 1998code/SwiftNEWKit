@@ -18,6 +18,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3A0E2D8B2FFAA63F00B762D0 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = es; path = es.lproj/data.json; sourceTree = "<group>"; };
+		3A0E2D8C2FFAA64800B762D0 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = fr; path = fr.lproj/data.json; sourceTree = "<group>"; };
 		3A1D311B2DDA0F8900A67C5E /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = ja; path = ja.lproj/data.json; sourceTree = "<group>"; };
 		3A1D311C2DDA0F9000A67C5E /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = ko; path = ko.lproj/data.json; sourceTree = "<group>"; };
 		3A2BBE7B2D18129000A7CAF9 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = "zh-Hans"; path = "zh-Hans.lproj/data.json"; sourceTree = "<group>"; };
@@ -143,6 +145,8 @@
 				"zh-Hans",
 				ja,
 				ko,
+				es,
+				fr,
 			);
 			mainGroup = 3A46CBA3285444CC00BE79A3;
 			packageReferences = (
@@ -192,6 +196,8 @@
 				3A2BBE7B2D18129000A7CAF9 /* zh-Hans */,
 				3A1D311B2DDA0F8900A67C5E /* ja */,
 				3A1D311C2DDA0F9000A67C5E /* ko */,
+				3A0E2D8B2FFAA63F00B762D0 /* es */,
+				3A0E2D8C2FFAA64800B762D0 /* fr */,
 			);
 			name = data.json;
 			sourceTree = "<group>";

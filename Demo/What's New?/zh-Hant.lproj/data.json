@@ -8,51 +8,72 @@
                     "sparkles",
                     "wand.and.stars"
                 ],
-                "title": "動畫",
-                "subtitle": "圖示",
-                "body": "在兩個 SF Symbol 間循環切換。"
+                "title": "動畫圖示循環",
+                "subtitle": "原生符號替換過渡",
+                "body": "使用原生替換過渡，讓 SF Symbol 按順序循環切換。"
             },
             {
-                "icon": "arrow.left.arrow.right",
-                "title": "圖示",
-                "subtitle": "資料格式",
-                "body": "支援 icon、toIcon 或 icons。"
+                "icons": [
+                    "arrow.left.arrow.right",
+                    "arrow.triangle.2.circlepath"
+                ],
+                "title": "靈活圖示格式",
+                "subtitle": "支援 icon、toIcon、icons",
+                "body": "可用 icon、toIcon，或完整 icons 陣列定義圖示。"
             },
             {
-                "icon": "square.dashed.inset.filled",
-                "title": "預設",
-                "subtitle": "圖示樣式",
-                "body": "新的圓角玻璃圖示徽章。"
+                "icons": [
+                    "square.dashed.inset.filled",
+                    "square.fill"
+                ],
+                "title": "預設玻璃徽章",
+                "subtitle": "更柔和的圖示表現",
+                "body": "新的圓角玻璃徽章，令預設圖示樣式更柔和。"
             },
             {
-                "icon": "paintbrush.pointed",
-                "title": "漸層",
-                "subtitle": "圖示",
-                "body": "圖示顏色現在使用漸層。"
+                "icons": [
+                    "paintbrush.pointed",
+                    "paintpalette.fill"
+                ],
+                "title": "漸層圖示字形",
+                "subtitle": "主題色符號效果",
+                "body": "圖示顏色現在由左上至右下使用主題漸層。"
             },
             {
-                "icon": "circle.grid.cross",
-                "title": "優化",
-                "subtitle": "版面",
-                "body": "更大圖示與更圓按鈕。"
+                "icons": [
+                    "circle.grid.cross",
+                    "square.grid.2x2.fill"
+                ],
+                "title": "優化列表版面",
+                "subtitle": "更大圖示與圓角按鈕",
+                "body": "更大圖示與更圓按鈕，令列表版面更俐落。"
             },
             {
-                "icon": "rectangle.bottomthird.inset.filled",
-                "title": "底部",
-                "subtitle": "控制",
-                "body": "Continue 更貼近底邊。"
+                "icons": [
+                    "rectangle.bottomthird.inset.filled",
+                    "rectangle.fill"
+                ],
+                "title": "下移 Continue 控制",
+                "subtitle": "更貼近底部操作區",
+                "body": "Continue 控制更貼近底邊，單手操作更順手。"
             },
             {
-                "icon": "water.waves",
-                "title": "流動",
-                "subtitle": "網格",
-                "body": "網格背景現在可流動。"
+                "icons": [
+                    "water.waves",
+                    "drop.fill"
+                ],
+                "title": "流動網格動效",
+                "subtitle": "緩慢移動的背景",
+                "body": "網格背景現在支援緩慢流動的液態動效。"
             },
             {
-                "icon": "textformat.size",
-                "title": "自訂",
-                "subtitle": "標題前綴",
-                "body": "可自訂標題第一行。"
+                "icons": [
+                    "textformat.size",
+                    "textformat.alt"
+                ],
+                "title": "自訂標題前綴",
+                "subtitle": "可調整的標題行",
+                "body": "可自訂版本上方標題行的前綴文字。"
             }
         ]
     },

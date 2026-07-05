@@ -9,51 +9,928 @@
                         "sparkles",
                         "wand.and.stars"
                     ],
-                    "title": "Animated",
-                    "subtitle": "Icons",
-                    "body": "Loop between two SF Symbols."
+                    "title": "Animated Icon Loop",
+                    "subtitle": "Native Symbol Replace",
+                    "body": "Loop through SF Symbols with native replace transitions."
                 },
                 {
-                    "icon": "arrow.left.arrow.right",
-                    "title": "Icon",
-                    "subtitle": "Schema",
-                    "body": "Use icon, toIcon, or icons."
+                    "icons": [
+                        "arrow.left.arrow.right",
+                        "arrow.triangle.2.circlepath"
+                    ],
+                    "title": "Flexible Icon Schema",
+                    "subtitle": "icon, toIcon, and icons",
+                    "body": "Define icons with icon, toIcon, or a full icons array."
                 },
                 {
-                    "icon": "square.dashed.inset.filled",
+                    "icons": [
+                        "square.dashed.inset.filled",
+                        "square.fill"
+                    ],
+                    "title": "Default Glass Badge",
+                    "subtitle": "Softer Icon Treatment",
+                    "body": "A new rounded glass badge gives icons a softer default look."
+                },
+                {
+                    "icons": [
+                        "paintbrush.pointed",
+                        "paintpalette.fill"
+                    ],
+                    "title": "Gradient Icon Glyphs",
+                    "subtitle": "Theme-Tinted Symbols",
+                    "body": "Icon glyphs now use a top-leading to bottom-trailing gradient."
+                },
+                {
+                    "icons": [
+                        "circle.grid.cross",
+                        "square.grid.2x2.fill"
+                    ],
+                    "title": "Refined Row Layout",
+                    "subtitle": "Bigger Icons, Rounder Buttons",
+                    "body": "Rows feel tighter with larger icons and rounder action buttons."
+                },
+                {
+                    "icons": [
+                        "rectangle.bottomthird.inset.filled",
+                        "rectangle.fill"
+                    ],
+                    "title": "Lower Continue Controls",
+                    "subtitle": "Closer Bottom Placement",
+                    "body": "Continue controls sit closer to the bottom for easier reach."
+                },
+                {
+                    "icons": [
+                        "water.waves",
+                        "drop.fill"
+                    ],
+                    "title": "Liquid Mesh Motion",
+                    "subtitle": "Slow Animated Backgrounds",
+                    "body": "Mesh backgrounds can now move with a slow liquid motion."
+                },
+                {
+                    "icons": [
+                        "textformat.size",
+                        "textformat.alt"
+                    ],
+                    "title": "Custom Heading Prefix",
+                    "subtitle": "Personalized Title Line",
+                    "body": "Set a custom heading prefix for the title line above the version."
+                }
+            ]
+        },
+        {
+            "version": "6.3",
+            "subVersion": "6.3.1",
+            "new": [
+                {
+                    "icon": "checkmark.shield",
+                    "title": "Compatibility",
+                    "subtitle": "Fixes",
+                    "body": "Improved platform support across iOS, macOS, tvOS, and visionOS."
+                },
+                {
+                    "icon": "testtube.2",
+                    "title": "Swift",
+                    "subtitle": "Testing",
+                    "body": "Added native Swift Testing coverage for core release-note logic."
+                },
+                {
+                    "icon": "chart.bar.doc.horizontal",
+                    "title": "Codecov",
+                    "subtitle": "Reports",
+                    "body": "GitHub Actions now generates and uploads coverage reports."
+                },
+                {
+                    "icon": "sparkles",
+                    "title": "Floating",
+                    "subtitle": "Particles",
+                    "body": "New special effect option with smooth animation."
+                },
+                {
+                    "icon": "number",
+                    "title": "Optional",
+                    "subtitle": "Build Number",
+                    "body": "Configurable build number display alongside the version."
+                },
+                {
+                    "icon": "snowflake",
+                    "title": "Optimized",
+                    "subtitle": "Snowfall",
+                    "body": "Reimplemented with Canvas and TimelineView for smoother performance."
+                },
+                {
+                    "icon": "bolt",
+                    "title": "Modern",
+                    "subtitle": "Networking",
+                    "body": "Powered by Swift Concurrency and Sendable models."
+                },
+                {
+                    "icon": "lock.shield",
+                    "title": "Sendable",
+                    "subtitle": "Models",
+                    "body": "Thread-safe data models for Swift Concurrency."
+                },
+                {
+                    "icon": "speedometer",
+                    "title": "Faster",
+                    "subtitle": "Mesh BG",
+                    "body": "MeshView uses drawingGroup for smoother rendering."
+                },
+                {
+                    "icon": "tray.and.arrow.down",
+                    "title": "Local Data",
+                    "subtitle": "Loading",
+                    "body": "Optimized loading from bundled JSON files."
+                },
+                {
+                    "icon": "text.alignleft",
+                    "title": "Full",
+                    "subtitle": "Body Text",
+                    "body": "Removed line limits so longer descriptions render fully."
+                },
+                {
+                    "icon": "tag",
+                    "title": "Version",
+                    "subtitle": "Badges",
+                    "body": "Refined dimensions and padding in the History view."
+                },
+                {
+                    "icon": "doc.text",
+                    "title": "Reorganized",
+                    "subtitle": "Docs",
+                    "body": "Split into CONFIGURATION, CONTRIBUTING, and PLATFORM guides."
+                }
+            ]
+        },
+        {
+            "version": "6.2",
+            "subVersion": "6.2.0",
+            "new": [
+                {
+                    "icon": "rectangle.split.3x3",
+                    "title": "Presentation",
+                    "subtitle": "Options",
+                    "body": "Support for sheet, fullScreenCover, and embed modes."
+                },
+                {
+                    "icon": "paintpalette",
+                    "title": "Adaptive",
+                    "subtitle": "Text Color",
+                    "body": "Button and history text color automatically adapts to background brightness."
+                },
+                {
+                    "icon": "wand.and.stars",
+                    "title": "Simplified",
+                    "subtitle": "Initializer",
+                    "body": "Direct values no longer require .constant wrapper binding."
+                },
+                {
+                    "icon": "macpro.gen3.server",
+                    "title": "Serverless",
+                    "subtitle": "Design",
+                    "body": "Free and open source! ❤️‍🔥"
+                },
+                {
+                    "icon": "arrow.triangle.pull",
+                    "title": "Contribute",
+                    "subtitle": "Together",
+                    "body": "Pull requests and make it better for everyone! 🎉"
+                }
+            ]
+        },
+        {
+            "version": "6.1",
+            "subVersion": "6.1.0",
+            "new": [
+                {
+                    "icon": "hammer",
+                    "title": "Project",
+                    "subtitle": "Restructure",
+                    "body": "Seperate files and folders for better maintenance."
+                }
+            ]
+        },
+        {
+            "version": "6.0",
+            "subVersion": "6.0.0",
+            "new": [
+                {
+                    "icon": "wineglass",
+                    "title": "Glass",
+                    "subtitle": "Effect",
+                    "body": "Available now!"
+                }
+            ]
+        },
+        {
+            "version": "5.5",
+            "subVersion": "5.5.0",
+            "new": [
+                {
+                    "icon": "snowflake",
+                    "title": "Snow",
+                    "subtitle": "Effect",
+                    "body": "More Special Animation Coming Soon!"
+                }
+            ]
+        },
+        {
+            "version": "5.4",
+            "subVersion": "5.4.0",
+            "new": [
+                {
+                    "icon": "pencil.tip",
+                    "title": "Matched",
+                    "subtitle": "Mesh BG Color",
+                    "body": "A standardized design."
+                }
+            ]
+        },
+        {
+            "version": "5.3",
+            "subVersion": "5.3.0",
+            "new": [
+                {
+                    "icon": "pencil.tip",
+                    "title": "Add",
+                    "subtitle": "Mesh BG",
+                    "body": "Better styles and design."
+                }
+            ]
+        },
+        {
+            "version": "5.2",
+            "subVersion": "5.2.0",
+            "new": [
+                {
+                    "icon": "hammer",
                     "title": "Default",
-                    "subtitle": "Icon Style",
-                    "body": "New rounded glass icon badge."
+                    "subtitle": "Option",
+                    "body": "New optional binding for less code."
+                }
+            ]
+        },
+        {
+            "version": "5.1",
+            "subVersion": "5.1.0",
+            "new": [
+                {
+                    "icon": "character.book.closed",
+                    "title": "Update",
+                    "subtitle": "Demo",
+                    "body": "For 5.0 version."
+                }
+            ]
+        },
+        {
+            "version": "5.0",
+            "subVersion": "5.0.0",
+            "new": [
+                {
+                    "icon": "character.book.closed",
+                    "title": "Support",
+                    "subtitle": "Localization",
+                    "body": "Powered by Apple String Catalog."
                 },
                 {
-                    "icon": "paintbrush.pointed",
-                    "title": "Gradient",
-                    "subtitle": "Glyphs",
-                    "body": "Icon color now uses a gradient."
+                    "icon": "pip.remove",
+                    "title": "Drop",
+                    "subtitle": "Support",
+                    "body": "For iOS14, watchOS7, and macOS11."
+                }
+            ]
+        },
+        {
+            "version": "4.2",
+            "subVersion": "4.2.0",
+            "new": [
+                {
+                    "icon": "hammer",
+                    "title": "Minor",
+                    "subtitle": "Update",
+                    "body": "Minor bug fixes, and UI improvement."
+                }
+            ]
+        },
+        {
+            "version": "4.1",
+            "subVersion": "4.1.0",
+            "new": [
+                {
+                    "icon": "eye",
+                    "title": "Support Vision Pro",
+                    "subtitle": "& visionOS",
+                    "body": "Drops Framework is temp-disabled due to conflict."
+                }
+            ]
+        },
+        {
+            "version": "4.0",
+            "subVersion": "4.0.0",
+            "new": [
+                {
+                    "icon": "number",
+                    "title": "Better Compatible",
+                    "subtitle": "in Version & Build",
+                    "body": "You can use x.y.z or x.y now."
+                }
+            ]
+        },
+        {
+            "version": "3.9",
+            "new": [
+                {
+                    "icon": "app.fill",
+                    "title": "App Icon",
+                    "subtitle": "Supported",
+                    "body": "on iOS."
                 },
                 {
-                    "icon": "circle.grid.cross",
-                    "title": "Refined",
-                    "subtitle": "Layout",
-                    "body": "Bigger icons and rounder buttons."
+                    "icon": "app",
+                    "title": "Demo",
+                    "subtitle": "is Better now",
+                    "body": "Following the Package Version."
+                }
+            ]
+        },
+        {
+            "version": "1.5",
+            "new": [
+                {
+                    "icon": "hammer",
+                    "title": "Layout",
+                    "subtitle": "Fixed",
+                    "body": "on iOS Landscape."
+                }
+            ]
+        },
+        {
+            "version": "1.4",
+            "new": [
+                {
+                    "icon": "hammer",
+                    "title": "Crash",
+                    "subtitle": "Fixed",
+                    "body": "on macOS."
+                }
+            ]
+        },
+        {
+            "version": "1.3",
+            "new": [
+                {
+                    "icon": "bell.badge",
+                    "title": "Remote Drop",
+                    "subtitle": "Supported",
+                    "body": "Instead of full page sheet, you can use a small drop too!"
+                }
+            ]
+        },
+        {
+            "version": "1.2",
+            "new": [
+                {
+                    "icon": "square.and.arrow.down.fill",
+                    "title": "Remote File",
+                    "subtitle": "Supported",
+                    "body": "Direct load via remote storage. Easy!"
+                }
+            ]
+        },
+        {
+            "version": "1.1",
+            "new": [
+                {
+                    "icon": "hammer.fill",
+                    "title": "Bug fixes",
+                    "subtitle": "Broken UI",
+                    "body": "Available for iOS 16, iPadOS 16, macOS 13"
                 },
                 {
-                    "icon": "rectangle.bottomthird.inset.filled",
-                    "title": "Bottom",
-                    "subtitle": "Controls",
-                    "body": "Continue sits closer to the edge."
+                    "icon": "square.and.arrow.down.fill",
+                    "title": "Local File",
+                    "subtitle": "Supported",
+                    "body": "Direct load via local storage. Super fast!"
                 },
                 {
-                    "icon": "water.waves",
-                    "title": "Liquid",
-                    "subtitle": "Mesh",
-                    "body": "Mesh backgrounds can now flow."
+                    "icon": "macpro.gen3.server",
+                    "title": "Serverless",
+                    "subtitle": "Design",
+                    "body": "Free and open source! Created by Ming with ❤️‍🔥"
                 },
                 {
-                    "icon": "textformat.size",
-                    "title": "Custom",
-                    "subtitle": "Heading Prefix",
-                    "body": "Customize the heading title line."
+                    "icon": "arrow.triangle.pull",
+                    "title": "Contribute",
+                    "subtitle": "Together",
+                    "body": "Pull requests and make it better for everyone!"
+                }
+            ]
+        }
+    ],
+    "es": [
+        {
+            "version": "6.4",
+            "subVersion": "6.4.0",
+            "new": [
+                {
+                    "icons": [
+                        "sparkles",
+                        "wand.and.stars"
+                    ],
+                    "title": "Bucle de iconos animados",
+                    "subtitle": "Reemplazo nativo de símbolos",
+                    "body": "Recorre SF Symbols con transiciones nativas de reemplazo."
+                },
+                {
+                    "icons": [
+                        "arrow.left.arrow.right",
+                        "arrow.triangle.2.circlepath"
+                    ],
+                    "title": "Esquema flexible de iconos",
+                    "subtitle": "icon, toIcon e icons",
+                    "body": "Define iconos con icon, toIcon o un array icons completo."
+                },
+                {
+                    "icons": [
+                        "square.dashed.inset.filled",
+                        "square.fill"
+                    ],
+                    "title": "Insignia de vidrio por defecto",
+                    "subtitle": "Tratamiento visual más suave",
+                    "body": "La nueva insignia de vidrio redondeada suaviza el aspecto por defecto."
+                },
+                {
+                    "icons": [
+                        "paintbrush.pointed",
+                        "paintpalette.fill"
+                    ],
+                    "title": "Glifos con degradado",
+                    "subtitle": "Símbolos con color del tema",
+                    "body": "Los glifos ahora usan un degradado de arriba izquierda a abajo derecha."
+                },
+                {
+                    "icons": [
+                        "circle.grid.cross",
+                        "square.grid.2x2.fill"
+                    ],
+                    "title": "Filas más refinadas",
+                    "subtitle": "Iconos grandes y botones redondos",
+                    "body": "Las filas se sienten más compactas con iconos grandes y botones redondos."
+                },
+                {
+                    "icons": [
+                        "rectangle.bottomthird.inset.filled",
+                        "rectangle.fill"
+                    ],
+                    "title": "Controles Continue más bajos",
+                    "subtitle": "Ubicación inferior más cercana",
+                    "body": "Los controles Continue quedan más cerca del borde inferior."
+                },
+                {
+                    "icons": [
+                        "water.waves",
+                        "drop.fill"
+                    ],
+                    "title": "Movimiento mesh líquido",
+                    "subtitle": "Fondos animados lentos",
+                    "body": "Los fondos mesh ahora pueden moverse con un efecto líquido lento."
+                },
+                {
+                    "icons": [
+                        "textformat.size",
+                        "textformat.alt"
+                    ],
+                    "title": "Prefijo de encabezado personalizado",
+                    "subtitle": "Línea de título adaptable",
+                    "body": "Personaliza el prefijo de la línea de título sobre la versión."
+                }
+            ]
+        },
+        {
+            "version": "6.3",
+            "subVersion": "6.3.1",
+            "new": [
+                {
+                    "icon": "checkmark.shield",
+                    "title": "Compatibility",
+                    "subtitle": "Fixes",
+                    "body": "Improved platform support across iOS, macOS, tvOS, and visionOS."
+                },
+                {
+                    "icon": "testtube.2",
+                    "title": "Swift",
+                    "subtitle": "Testing",
+                    "body": "Added native Swift Testing coverage for core release-note logic."
+                },
+                {
+                    "icon": "chart.bar.doc.horizontal",
+                    "title": "Codecov",
+                    "subtitle": "Reports",
+                    "body": "GitHub Actions now generates and uploads coverage reports."
+                },
+                {
+                    "icon": "sparkles",
+                    "title": "Floating",
+                    "subtitle": "Particles",
+                    "body": "New special effect option with smooth animation."
+                },
+                {
+                    "icon": "number",
+                    "title": "Optional",
+                    "subtitle": "Build Number",
+                    "body": "Configurable build number display alongside the version."
+                },
+                {
+                    "icon": "snowflake",
+                    "title": "Optimized",
+                    "subtitle": "Snowfall",
+                    "body": "Reimplemented with Canvas and TimelineView for smoother performance."
+                },
+                {
+                    "icon": "bolt",
+                    "title": "Modern",
+                    "subtitle": "Networking",
+                    "body": "Powered by Swift Concurrency and Sendable models."
+                },
+                {
+                    "icon": "lock.shield",
+                    "title": "Sendable",
+                    "subtitle": "Models",
+                    "body": "Thread-safe data models for Swift Concurrency."
+                },
+                {
+                    "icon": "speedometer",
+                    "title": "Faster",
+                    "subtitle": "Mesh BG",
+                    "body": "MeshView uses drawingGroup for smoother rendering."
+                },
+                {
+                    "icon": "tray.and.arrow.down",
+                    "title": "Local Data",
+                    "subtitle": "Loading",
+                    "body": "Optimized loading from bundled JSON files."
+                },
+                {
+                    "icon": "text.alignleft",
+                    "title": "Full",
+                    "subtitle": "Body Text",
+                    "body": "Removed line limits so longer descriptions render fully."
+                },
+                {
+                    "icon": "tag",
+                    "title": "Version",
+                    "subtitle": "Badges",
+                    "body": "Refined dimensions and padding in the History view."
+                },
+                {
+                    "icon": "doc.text",
+                    "title": "Reorganized",
+                    "subtitle": "Docs",
+                    "body": "Split into CONFIGURATION, CONTRIBUTING, and PLATFORM guides."
+                }
+            ]
+        },
+        {
+            "version": "6.2",
+            "subVersion": "6.2.0",
+            "new": [
+                {
+                    "icon": "rectangle.split.3x3",
+                    "title": "Presentation",
+                    "subtitle": "Options",
+                    "body": "Support for sheet, fullScreenCover, and embed modes."
+                },
+                {
+                    "icon": "paintpalette",
+                    "title": "Adaptive",
+                    "subtitle": "Text Color",
+                    "body": "Button and history text color automatically adapts to background brightness."
+                },
+                {
+                    "icon": "wand.and.stars",
+                    "title": "Simplified",
+                    "subtitle": "Initializer",
+                    "body": "Direct values no longer require .constant wrapper binding."
+                },
+                {
+                    "icon": "macpro.gen3.server",
+                    "title": "Serverless",
+                    "subtitle": "Design",
+                    "body": "Free and open source! ❤️‍🔥"
+                },
+                {
+                    "icon": "arrow.triangle.pull",
+                    "title": "Contribute",
+                    "subtitle": "Together",
+                    "body": "Pull requests and make it better for everyone! 🎉"
+                }
+            ]
+        },
+        {
+            "version": "6.1",
+            "subVersion": "6.1.0",
+            "new": [
+                {
+                    "icon": "hammer",
+                    "title": "Project",
+                    "subtitle": "Restructure",
+                    "body": "Seperate files and folders for better maintenance."
+                }
+            ]
+        },
+        {
+            "version": "6.0",
+            "subVersion": "6.0.0",
+            "new": [
+                {
+                    "icon": "wineglass",
+                    "title": "Glass",
+                    "subtitle": "Effect",
+                    "body": "Available now!"
+                }
+            ]
+        },
+        {
+            "version": "5.5",
+            "subVersion": "5.5.0",
+            "new": [
+                {
+                    "icon": "snowflake",
+                    "title": "Snow",
+                    "subtitle": "Effect",
+                    "body": "More Special Animation Coming Soon!"
+                }
+            ]
+        },
+        {
+            "version": "5.4",
+            "subVersion": "5.4.0",
+            "new": [
+                {
+                    "icon": "pencil.tip",
+                    "title": "Matched",
+                    "subtitle": "Mesh BG Color",
+                    "body": "A standardized design."
+                }
+            ]
+        },
+        {
+            "version": "5.3",
+            "subVersion": "5.3.0",
+            "new": [
+                {
+                    "icon": "pencil.tip",
+                    "title": "Add",
+                    "subtitle": "Mesh BG",
+                    "body": "Better styles and design."
+                }
+            ]
+        },
+        {
+            "version": "5.2",
+            "subVersion": "5.2.0",
+            "new": [
+                {
+                    "icon": "hammer",
+                    "title": "Default",
+                    "subtitle": "Option",
+                    "body": "New optional binding for less code."
+                }
+            ]
+        },
+        {
+            "version": "5.1",
+            "subVersion": "5.1.0",
+            "new": [
+                {
+                    "icon": "character.book.closed",
+                    "title": "Update",
+                    "subtitle": "Demo",
+                    "body": "For 5.0 version."
+                }
+            ]
+        },
+        {
+            "version": "5.0",
+            "subVersion": "5.0.0",
+            "new": [
+                {
+                    "icon": "character.book.closed",
+                    "title": "Support",
+                    "subtitle": "Localization",
+                    "body": "Powered by Apple String Catalog."
+                },
+                {
+                    "icon": "pip.remove",
+                    "title": "Drop",
+                    "subtitle": "Support",
+                    "body": "For iOS14, watchOS7, and macOS11."
+                }
+            ]
+        },
+        {
+            "version": "4.2",
+            "subVersion": "4.2.0",
+            "new": [
+                {
+                    "icon": "hammer",
+                    "title": "Minor",
+                    "subtitle": "Update",
+                    "body": "Minor bug fixes, and UI improvement."
+                }
+            ]
+        },
+        {
+            "version": "4.1",
+            "subVersion": "4.1.0",
+            "new": [
+                {
+                    "icon": "eye",
+                    "title": "Support Vision Pro",
+                    "subtitle": "& visionOS",
+                    "body": "Drops Framework is temp-disabled due to conflict."
+                }
+            ]
+        },
+        {
+            "version": "4.0",
+            "subVersion": "4.0.0",
+            "new": [
+                {
+                    "icon": "number",
+                    "title": "Better Compatible",
+                    "subtitle": "in Version & Build",
+                    "body": "You can use x.y.z or x.y now."
+                }
+            ]
+        },
+        {
+            "version": "3.9",
+            "new": [
+                {
+                    "icon": "app.fill",
+                    "title": "App Icon",
+                    "subtitle": "Supported",
+                    "body": "on iOS."
+                },
+                {
+                    "icon": "app",
+                    "title": "Demo",
+                    "subtitle": "is Better now",
+                    "body": "Following the Package Version."
+                }
+            ]
+        },
+        {
+            "version": "1.5",
+            "new": [
+                {
+                    "icon": "hammer",
+                    "title": "Layout",
+                    "subtitle": "Fixed",
+                    "body": "on iOS Landscape."
+                }
+            ]
+        },
+        {
+            "version": "1.4",
+            "new": [
+                {
+                    "icon": "hammer",
+                    "title": "Crash",
+                    "subtitle": "Fixed",
+                    "body": "on macOS."
+                }
+            ]
+        },
+        {
+            "version": "1.3",
+            "new": [
+                {
+                    "icon": "bell.badge",
+                    "title": "Remote Drop",
+                    "subtitle": "Supported",
+                    "body": "Instead of full page sheet, you can use a small drop too!"
+                }
+            ]
+        },
+        {
+            "version": "1.2",
+            "new": [
+                {
+                    "icon": "square.and.arrow.down.fill",
+                    "title": "Remote File",
+                    "subtitle": "Supported",
+                    "body": "Direct load via remote storage. Easy!"
+                }
+            ]
+        },
+        {
+            "version": "1.1",
+            "new": [
+                {
+                    "icon": "hammer.fill",
+                    "title": "Bug fixes",
+                    "subtitle": "Broken UI",
+                    "body": "Available for iOS 16, iPadOS 16, macOS 13"
+                },
+                {
+                    "icon": "square.and.arrow.down.fill",
+                    "title": "Local File",
+                    "subtitle": "Supported",
+                    "body": "Direct load via local storage. Super fast!"
+                },
+                {
+                    "icon": "macpro.gen3.server",
+                    "title": "Serverless",
+                    "subtitle": "Design",
+                    "body": "Free and open source! Created by Ming with ❤️‍🔥"
+                },
+                {
+                    "icon": "arrow.triangle.pull",
+                    "title": "Contribute",
+                    "subtitle": "Together",
+                    "body": "Pull requests and make it better for everyone!"
+                }
+            ]
+        }
+    ],
+    "fr": [
+        {
+            "version": "6.4",
+            "subVersion": "6.4.0",
+            "new": [
+                {
+                    "icons": [
+                        "sparkles",
+                        "wand.and.stars"
+                    ],
+                    "title": "Boucle d’icônes animées",
+                    "subtitle": "Remplacement natif des symboles",
+                    "body": "Faites défiler les SF Symbols avec des transitions de remplacement natives."
+                },
+                {
+                    "icons": [
+                        "arrow.left.arrow.right",
+                        "arrow.triangle.2.circlepath"
+                    ],
+                    "title": "Schéma d’icônes flexible",
+                    "subtitle": "icon, toIcon et icons",
+                    "body": "Définissez les icônes avec icon, toIcon ou un tableau icons complet."
+                },
+                {
+                    "icons": [
+                        "square.dashed.inset.filled",
+                        "square.fill"
+                    ],
+                    "title": "Badge en verre par défaut",
+                    "subtitle": "Style d’icône adouci",
+                    "body": "Le nouveau badge en verre arrondi adoucit le style par défaut."
+                },
+                {
+                    "icons": [
+                        "paintbrush.pointed",
+                        "paintpalette.fill"
+                    ],
+                    "title": "Glyphes d’icônes en dégradé",
+                    "subtitle": "Symboles teintés par le thème",
+                    "body": "Les glyphes utilisent maintenant un dégradé du haut gauche au bas droit."
+                },
+                {
+                    "icons": [
+                        "circle.grid.cross",
+                        "square.grid.2x2.fill"
+                    ],
+                    "title": "Mise en page des lignes affinée",
+                    "subtitle": "Grandes icônes, boutons arrondis",
+                    "body": "Les lignes sont plus serrées avec de grandes icônes et boutons arrondis."
+                },
+                {
+                    "icons": [
+                        "rectangle.bottomthird.inset.filled",
+                        "rectangle.fill"
+                    ],
+                    "title": "Contrôles Continue abaissés",
+                    "subtitle": "Placement inférieur rapproché",
+                    "body": "Les contrôles Continue sont plus proches du bord inférieur."
+                },
+                {
+                    "icons": [
+                        "water.waves",
+                        "drop.fill"
+                    ],
+                    "title": "Mouvement mesh liquide",
+                    "subtitle": "Fonds animés lents",
+                    "body": "Les fonds mesh peuvent désormais bouger avec un lent effet liquide."
+                },
+                {
+                    "icons": [
+                        "textformat.size",
+                        "textformat.alt"
+                    ],
+                    "title": "Préfixe d’en-tête personnalisé",
+                    "subtitle": "Ligne de titre adaptable",
+                    "body": "Personnalisez le préfixe de titre affiché au-dessus de la version."
                 }
             ]
         },
@@ -416,51 +1293,72 @@
                         "sparkles",
                         "wand.and.stars"
                     ],
-                    "title": "Animated",
-                    "subtitle": "Icons",
-                    "body": "2つのSF Symbols間でループ。"
+                    "title": "アニメーションアイコンループ",
+                    "subtitle": "ネイティブなシンボル置換",
+                    "body": "SF Symbolsをネイティブな置換トランジションで順番にループします。"
                 },
                 {
-                    "icon": "arrow.left.arrow.right",
-                    "title": "Icon",
-                    "subtitle": "Schema",
-                    "body": "icon、toIcon、iconsに対応。"
+                    "icons": [
+                        "arrow.left.arrow.right",
+                        "arrow.triangle.2.circlepath"
+                    ],
+                    "title": "柔軟なアイコン定義",
+                    "subtitle": "icon、toIcon、icons対応",
+                    "body": "icon、toIcon、またはicons配列でアイコンを定義できます。"
                 },
                 {
-                    "icon": "square.dashed.inset.filled",
-                    "title": "Default",
-                    "subtitle": "Icon Style",
-                    "body": "丸いガラス風アイコンバッジ。"
+                    "icons": [
+                        "square.dashed.inset.filled",
+                        "square.fill"
+                    ],
+                    "title": "標準のガラス風バッジ",
+                    "subtitle": "より柔らかなアイコン表現",
+                    "body": "新しい丸いガラス風バッジで標準アイコンがより柔らかく見えます。"
                 },
                 {
-                    "icon": "paintbrush.pointed",
-                    "title": "Gradient",
-                    "subtitle": "Glyphs",
-                    "body": "アイコン色にグラデーション。"
+                    "icons": [
+                        "paintbrush.pointed",
+                        "paintpalette.fill"
+                    ],
+                    "title": "グラデーションアイコン",
+                    "subtitle": "テーマカラーのシンボル",
+                    "body": "アイコンのグリフに左上から右下へのグラデーションを適用します。"
                 },
                 {
-                    "icon": "circle.grid.cross",
-                    "title": "Refined",
-                    "subtitle": "Layout",
-                    "body": "大きいアイコンと丸いボタン。"
+                    "icons": [
+                        "circle.grid.cross",
+                        "square.grid.2x2.fill"
+                    ],
+                    "title": "整えた行レイアウト",
+                    "subtitle": "大きなアイコンと丸いボタン",
+                    "body": "大きなアイコンと丸いボタンで行レイアウトをより見やすくしました。"
                 },
                 {
-                    "icon": "rectangle.bottomthird.inset.filled",
-                    "title": "Bottom",
-                    "subtitle": "Controls",
-                    "body": "Continueを下端へ近づけました。"
+                    "icons": [
+                        "rectangle.bottomthird.inset.filled",
+                        "rectangle.fill"
+                    ],
+                    "title": "下寄せのContinue操作",
+                    "subtitle": "届きやすい下部配置",
+                    "body": "Continueコントロールを下端へ近づけ、押しやすくしました。"
                 },
                 {
-                    "icon": "water.waves",
-                    "title": "Liquid",
-                    "subtitle": "Mesh",
-                    "body": "メッシュ背景が流動表示に対応。"
+                    "icons": [
+                        "water.waves",
+                        "drop.fill"
+                    ],
+                    "title": "リキッドメッシュモーション",
+                    "subtitle": "ゆっくり動く背景",
+                    "body": "メッシュ背景がゆっくり流れるリキッド表現に対応しました。"
                 },
                 {
-                    "icon": "textformat.size",
-                    "title": "Custom",
-                    "subtitle": "Heading Prefix",
-                    "body": "見出しの先頭行を変更可能。"
+                    "icons": [
+                        "textformat.size",
+                        "textformat.alt"
+                    ],
+                    "title": "カスタム見出しプレフィックス",
+                    "subtitle": "変更できるタイトル行",
+                    "body": "バージョン上に表示する見出しプレフィックスを変更できます。"
                 }
             ]
         },
@@ -823,51 +1721,72 @@
                         "sparkles",
                         "wand.and.stars"
                     ],
-                    "title": "Animated",
-                    "subtitle": "Icons",
-                    "body": "두 SF Symbols를 반복 전환합니다."
+                    "title": "애니메이션 아이콘 루프",
+                    "subtitle": "네이티브 심볼 교체",
+                    "body": "SF Symbols를 네이티브 교체 전환으로 순서대로 반복합니다."
                 },
                 {
-                    "icon": "arrow.left.arrow.right",
-                    "title": "Icon",
-                    "subtitle": "Schema",
-                    "body": "icon, toIcon, icons를 지원합니다."
+                    "icons": [
+                        "arrow.left.arrow.right",
+                        "arrow.triangle.2.circlepath"
+                    ],
+                    "title": "유연한 아이콘 스키마",
+                    "subtitle": "icon, toIcon, icons 지원",
+                    "body": "icon, toIcon 또는 전체 icons 배열로 아이콘을 정의할 수 있습니다."
                 },
                 {
-                    "icon": "square.dashed.inset.filled",
-                    "title": "Default",
-                    "subtitle": "Icon Style",
-                    "body": "둥근 글래스 아이콘 배지."
+                    "icons": [
+                        "square.dashed.inset.filled",
+                        "square.fill"
+                    ],
+                    "title": "기본 글래스 배지",
+                    "subtitle": "더 부드러운 아이콘 표현",
+                    "body": "새 둥근 글래스 배지로 기본 아이콘 스타일이 더 부드러워졌습니다."
                 },
                 {
-                    "icon": "paintbrush.pointed",
-                    "title": "Gradient",
-                    "subtitle": "Glyphs",
-                    "body": "아이콘 색상에 그라디언트 적용."
+                    "icons": [
+                        "paintbrush.pointed",
+                        "paintpalette.fill"
+                    ],
+                    "title": "그라디언트 아이콘 글리프",
+                    "subtitle": "테마 색상 심볼",
+                    "body": "아이콘 글리프에 좌상단에서 우하단으로 이어지는 그라디언트를 적용합니다."
                 },
                 {
-                    "icon": "circle.grid.cross",
-                    "title": "Refined",
-                    "subtitle": "Layout",
-                    "body": "더 큰 아이콘과 둥근 버튼."
+                    "icons": [
+                        "circle.grid.cross",
+                        "square.grid.2x2.fill"
+                    ],
+                    "title": "정돈된 행 레이아웃",
+                    "subtitle": "큰 아이콘과 둥근 버튼",
+                    "body": "더 큰 아이콘과 둥근 버튼으로 행 레이아웃을 정돈했습니다."
                 },
                 {
-                    "icon": "rectangle.bottomthird.inset.filled",
-                    "title": "Bottom",
-                    "subtitle": "Controls",
-                    "body": "Continue가 하단에 더 가까워졌습니다."
+                    "icons": [
+                        "rectangle.bottomthird.inset.filled",
+                        "rectangle.fill"
+                    ],
+                    "title": "낮아진 Continue 컨트롤",
+                    "subtitle": "더 가까운 하단 배치",
+                    "body": "Continue 컨트롤을 하단에 더 가깝게 배치해 누르기 쉽습니다."
                 },
                 {
-                    "icon": "water.waves",
-                    "title": "Liquid",
-                    "subtitle": "Mesh",
-                    "body": "메시 배경이 흐르듯 움직입니다."
+                    "icons": [
+                        "water.waves",
+                        "drop.fill"
+                    ],
+                    "title": "리퀴드 메시 모션",
+                    "subtitle": "천천히 움직이는 배경",
+                    "body": "메시 배경이 천천히 흐르는 리퀴드 모션을 지원합니다."
                 },
                 {
-                    "icon": "textformat.size",
-                    "title": "Custom",
-                    "subtitle": "Heading Prefix",
-                    "body": "헤딩 첫 줄을 변경할 수 있습니다."
+                    "icons": [
+                        "textformat.size",
+                        "textformat.alt"
+                    ],
+                    "title": "사용자 지정 헤딩 접두어",
+                    "subtitle": "바꿀 수 있는 제목 줄",
+                    "body": "버전 위에 표시되는 헤딩 접두어를 원하는 문구로 바꿀 수 있습니다."
                 }
             ]
         },
@@ -1230,51 +2149,72 @@
                         "sparkles",
                         "wand.and.stars"
                     ],
-                    "title": "动画",
-                    "subtitle": "图标",
-                    "body": "在两个 SF Symbol 间循环切换。"
+                    "title": "动画图标循环",
+                    "subtitle": "原生符号替换过渡",
+                    "body": "使用原生替换过渡，让 SF Symbol 按顺序循环切换。"
                 },
                 {
-                    "icon": "arrow.left.arrow.right",
-                    "title": "图标",
-                    "subtitle": "数据格式",
-                    "body": "支持 icon、toIcon 或 icons。"
+                    "icons": [
+                        "arrow.left.arrow.right",
+                        "arrow.triangle.2.circlepath"
+                    ],
+                    "title": "灵活图标格式",
+                    "subtitle": "支持 icon、toIcon、icons",
+                    "body": "可用 icon、toIcon，或完整 icons 数组定义图标。"
                 },
                 {
-                    "icon": "square.dashed.inset.filled",
-                    "title": "默认",
-                    "subtitle": "图标样式",
-                    "body": "新的圆角玻璃图标徽章。"
+                    "icons": [
+                        "square.dashed.inset.filled",
+                        "square.fill"
+                    ],
+                    "title": "默认玻璃徽章",
+                    "subtitle": "更柔和的图标表现",
+                    "body": "新的圆角玻璃徽章，让默认图标样式更柔和。"
                 },
                 {
-                    "icon": "paintbrush.pointed",
-                    "title": "渐变",
-                    "subtitle": "图标",
-                    "body": "图标颜色现在使用渐变。"
+                    "icons": [
+                        "paintbrush.pointed",
+                        "paintpalette.fill"
+                    ],
+                    "title": "渐变图标字形",
+                    "subtitle": "主题色符号效果",
+                    "body": "图标颜色现在从左上到右下使用主题渐变。"
                 },
                 {
-                    "icon": "circle.grid.cross",
-                    "title": "优化",
-                    "subtitle": "布局",
-                    "body": "更大图标与更圆按钮。"
+                    "icons": [
+                        "circle.grid.cross",
+                        "square.grid.2x2.fill"
+                    ],
+                    "title": "优化列表布局",
+                    "subtitle": "更大图标与圆角按钮",
+                    "body": "更大的图标与更圆的按钮，让列表布局更利落。"
                 },
                 {
-                    "icon": "rectangle.bottomthird.inset.filled",
-                    "title": "底部",
-                    "subtitle": "控制",
-                    "body": "Continue 更贴近底边。"
+                    "icons": [
+                        "rectangle.bottomthird.inset.filled",
+                        "rectangle.fill"
+                    ],
+                    "title": "下移 Continue 控制",
+                    "subtitle": "更贴近底部操作区",
+                    "body": "Continue 控制更贴近底边，单手操作更顺手。"
                 },
                 {
-                    "icon": "water.waves",
-                    "title": "流动",
-                    "subtitle": "网格",
-                    "body": "网格背景现在可流动。"
+                    "icons": [
+                        "water.waves",
+                        "drop.fill"
+                    ],
+                    "title": "流动网格动效",
+                    "subtitle": "缓慢移动的背景",
+                    "body": "网格背景现在支持缓慢流动的液态动效。"
                 },
                 {
-                    "icon": "textformat.size",
-                    "title": "自定义",
-                    "subtitle": "标题前缀",
-                    "body": "可自定义标题第一行。"
+                    "icons": [
+                        "textformat.size",
+                        "textformat.alt"
+                    ],
+                    "title": "自定义标题前缀",
+                    "subtitle": "可调整的标题行",
+                    "body": "可自定义版本上方标题行的前缀文字。"
                 }
             ]
         },
@@ -1637,51 +2577,72 @@
                         "sparkles",
                         "wand.and.stars"
                     ],
-                    "title": "動畫",
-                    "subtitle": "圖示",
-                    "body": "在兩個 SF Symbol 間循環切換。"
+                    "title": "動畫圖示循環",
+                    "subtitle": "原生符號替換過渡",
+                    "body": "使用原生替換過渡，讓 SF Symbol 按順序循環切換。"
                 },
                 {
-                    "icon": "arrow.left.arrow.right",
-                    "title": "圖示",
-                    "subtitle": "資料格式",
-                    "body": "支援 icon、toIcon 或 icons。"
+                    "icons": [
+                        "arrow.left.arrow.right",
+                        "arrow.triangle.2.circlepath"
+                    ],
+                    "title": "靈活圖示格式",
+                    "subtitle": "支援 icon、toIcon、icons",
+                    "body": "可用 icon、toIcon，或完整 icons 陣列定義圖示。"
                 },
                 {
-                    "icon": "square.dashed.inset.filled",
-                    "title": "預設",
-                    "subtitle": "圖示樣式",
-                    "body": "新的圓角玻璃圖示徽章。"
+                    "icons": [
+                        "square.dashed.inset.filled",
+                        "square.fill"
+                    ],
+                    "title": "預設玻璃徽章",
+                    "subtitle": "更柔和的圖示表現",
+                    "body": "新的圓角玻璃徽章，令預設圖示樣式更柔和。"
                 },
                 {
-                    "icon": "paintbrush.pointed",
-                    "title": "漸層",
-                    "subtitle": "圖示",
-                    "body": "圖示顏色現在使用漸層。"
+                    "icons": [
+                        "paintbrush.pointed",
+                        "paintpalette.fill"
+                    ],
+                    "title": "漸層圖示字形",
+                    "subtitle": "主題色符號效果",
+                    "body": "圖示顏色現在由左上至右下使用主題漸層。"
                 },
                 {
-                    "icon": "circle.grid.cross",
-                    "title": "優化",
-                    "subtitle": "版面",
-                    "body": "更大圖示與更圓按鈕。"
+                    "icons": [
+                        "circle.grid.cross",
+                        "square.grid.2x2.fill"
+                    ],
+                    "title": "優化列表版面",
+                    "subtitle": "更大圖示與圓角按鈕",
+                    "body": "更大圖示與更圓按鈕，令列表版面更俐落。"
                 },
                 {
-                    "icon": "rectangle.bottomthird.inset.filled",
-                    "title": "底部",
-                    "subtitle": "控制",
-                    "body": "Continue 更貼近底邊。"
+                    "icons": [
+                        "rectangle.bottomthird.inset.filled",
+                        "rectangle.fill"
+                    ],
+                    "title": "下移 Continue 控制",
+                    "subtitle": "更貼近底部操作區",
+                    "body": "Continue 控制更貼近底邊，單手操作更順手。"
                 },
                 {
-                    "icon": "water.waves",
-                    "title": "流動",
-                    "subtitle": "網格",
-                    "body": "網格背景現在可流動。"
+                    "icons": [
+                        "water.waves",
+                        "drop.fill"
+                    ],
+                    "title": "流動網格動效",
+                    "subtitle": "緩慢移動的背景",
+                    "body": "網格背景現在支援緩慢流動的液態動效。"
                 },
                 {
-                    "icon": "textformat.size",
-                    "title": "自訂",
-                    "subtitle": "標題前綴",
-                    "body": "可自訂標題第一行。"
+                    "icons": [
+                        "textformat.size",
+                        "textformat.alt"
+                    ],
+                    "title": "自訂標題前綴",
+                    "subtitle": "可調整的標題行",
+                    "body": "可自訂版本上方標題行的前綴文字。"
                 }
             ]
         },

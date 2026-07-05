@@ -28,7 +28,7 @@ extension SwiftNEW {
 
     private func sheetCurrentContent(maxScrollHeight: CGFloat?) -> some View {
         VStack(alignment: align) {
-            Spacer()
+            headerTopSpacer
 
             headings
                 .padding(.bottom)
@@ -94,7 +94,7 @@ extension SwiftNEW {
                             .padding(.bottom, 6)
                     }
                     .frame(maxWidth: .infinity)
-                    .padding(.top, 88)
+                    .padding(.top, 108)
                     .background { bottomControlBackdrop }
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -109,6 +109,15 @@ extension SwiftNEW {
         #elseif os(tvOS)
         .frame(width: 600)
         #endif
+    }
+
+    @ViewBuilder
+    private var headerTopSpacer: some View {
+        if presentation == .embed {
+            EmptyView()
+        } else {
+            Spacer()
+        }
     }
 
     private var searchField: some View {
@@ -185,8 +194,8 @@ extension SwiftNEW {
             LinearGradient(
                 gradient: Gradient(stops: [
                     .init(color: .clear, location: 0.0),
-                    .init(color: .black.opacity(0.45), location: 0.26),
-                    .init(color: .black, location: 0.52),
+                    .init(color: .black.opacity(0.45), location: 0.18),
+                    .init(color: .black, location: 0.44),
                     .init(color: .black, location: 1.0)
                 ]),
                 startPoint: .top,

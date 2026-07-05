@@ -30,19 +30,23 @@ extension SwiftNEW {
         String(localized: String.LocalizationValue(headingPrefix), bundle: .module)
     }
 
+    private var appIconTopPadding: CGFloat {
+        presentation == .embed ? 0 : 16
+    }
+
     #if os(iOS)
     public var headings: some View {
         HStack {
             if align == .leading {
                 AppIconView()
-                    .padding(.top)
+                    .padding(.top, appIconTopPadding)
                     .padding(.leading, -8)
                     .padding(.trailing, 8)
             }
             VStack(alignment: align) {
                 if align == .center {
                     AppIconView()
-                        .padding(.top)
+                        .padding(.top, appIconTopPadding)
                 }
                 Text(headingTitle)
                     .font(.largeTitle.weight(.bold))
@@ -52,7 +56,7 @@ extension SwiftNEW {
             }
             if align == .trailing {
                 AppIconView()
-                    .padding(.top)
+                    .padding(.top, appIconTopPadding)
             }
         }
     }

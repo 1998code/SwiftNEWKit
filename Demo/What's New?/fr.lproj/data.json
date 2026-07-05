@@ -8,72 +8,72 @@
                     "sparkles",
                     "wand.and.stars"
                 ],
-                "title": "Animated Icon Loop",
-                "subtitle": "Native Symbol Replace",
-                "body": "Loop through SF Symbols with native replace transitions."
+                "title": "Boucle d’icônes animées",
+                "subtitle": "Remplacement natif des symboles",
+                "body": "Faites défiler les SF Symbols avec des transitions de remplacement natives."
             },
             {
                 "icons": [
                     "arrow.left.arrow.right",
                     "arrow.triangle.2.circlepath"
                 ],
-                "title": "Flexible Icon Schema",
-                "subtitle": "icon, toIcon, and icons",
-                "body": "Define icons with icon, toIcon, or a full icons array."
+                "title": "Schéma d’icônes flexible",
+                "subtitle": "icon, toIcon et icons",
+                "body": "Définissez les icônes avec icon, toIcon ou un tableau icons complet."
             },
             {
                 "icons": [
                     "square.dashed.inset.filled",
                     "square.fill"
                 ],
-                "title": "Default Glass Badge",
-                "subtitle": "Softer Icon Treatment",
-                "body": "A new rounded glass badge gives icons a softer default look."
+                "title": "Badge en verre par défaut",
+                "subtitle": "Style d’icône adouci",
+                "body": "Le nouveau badge en verre arrondi adoucit le style par défaut."
             },
             {
                 "icons": [
                     "paintbrush.pointed",
                     "paintpalette.fill"
                 ],
-                "title": "Gradient Icon Glyphs",
-                "subtitle": "Theme-Tinted Symbols",
-                "body": "Icon glyphs now use a top-leading to bottom-trailing gradient."
+                "title": "Glyphes d’icônes en dégradé",
+                "subtitle": "Symboles teintés par le thème",
+                "body": "Les glyphes utilisent maintenant un dégradé du haut gauche au bas droit."
             },
             {
                 "icons": [
                     "circle.grid.cross",
                     "square.grid.2x2.fill"
                 ],
-                "title": "Refined Row Layout",
-                "subtitle": "Bigger Icons, Rounder Buttons",
-                "body": "Rows feel tighter with larger icons and rounder action buttons."
+                "title": "Mise en page des lignes affinée",
+                "subtitle": "Grandes icônes, boutons arrondis",
+                "body": "Les lignes sont plus serrées avec de grandes icônes et boutons arrondis."
             },
             {
                 "icons": [
                     "rectangle.bottomthird.inset.filled",
                     "rectangle.fill"
                 ],
-                "title": "Lower Continue Controls",
-                "subtitle": "Closer Bottom Placement",
-                "body": "Continue controls sit closer to the bottom for easier reach."
+                "title": "Contrôles Continue abaissés",
+                "subtitle": "Placement inférieur rapproché",
+                "body": "Les contrôles Continue sont plus proches du bord inférieur."
             },
             {
                 "icons": [
                     "water.waves",
                     "drop.fill"
                 ],
-                "title": "Liquid Mesh Motion",
-                "subtitle": "Slow Animated Backgrounds",
-                "body": "Mesh backgrounds can now move with a slow liquid motion."
+                "title": "Mouvement mesh liquide",
+                "subtitle": "Fonds animés lents",
+                "body": "Les fonds mesh peuvent désormais bouger avec un lent effet liquide."
             },
             {
                 "icons": [
                     "textformat.size",
                     "textformat.alt"
                 ],
-                "title": "Custom Heading Prefix",
-                "subtitle": "Personalized Title Line",
-                "body": "Set a custom heading prefix for the title line above the version."
+                "title": "Préfixe d’en-tête personnalisé",
+                "subtitle": "Ligne de titre adaptable",
+                "body": "Personnalisez le préfixe de titre affiché au-dessus de la version."
             }
         ]
     },

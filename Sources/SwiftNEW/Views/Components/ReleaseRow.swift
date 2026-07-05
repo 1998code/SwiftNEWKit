@@ -15,7 +15,7 @@ extension SwiftNEW {
 
         HStack(spacing: 12) {
             if align == .leading || align == .center {
-                iconBadge(systemName: new.displayedIcon, toSystemName: new.iconTransitionTarget)
+                iconBadge(systemNames: new.iconSequence)
             }
 
             VStack(alignment: contentAlignment, spacing: spacing ?? 3) {
@@ -36,7 +36,7 @@ extension SwiftNEW {
             .frame(maxWidth: .infinity, alignment: frameAlignment)
 
             if align == .trailing {
-                iconBadge(systemName: new.displayedIcon, toSystemName: new.iconTransitionTarget)
+                iconBadge(systemNames: new.iconSequence)
             }
         }
         .padding(.leading)

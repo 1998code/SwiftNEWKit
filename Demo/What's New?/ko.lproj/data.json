@@ -8,51 +8,72 @@
                     "sparkles",
                     "wand.and.stars"
                 ],
-                "title": "Animated",
-                "subtitle": "Icons",
-                "body": "두 SF Symbols를 반복 전환합니다."
+                "title": "애니메이션 아이콘 루프",
+                "subtitle": "네이티브 심볼 교체",
+                "body": "SF Symbols를 네이티브 교체 전환으로 순서대로 반복합니다."
             },
             {
-                "icon": "arrow.left.arrow.right",
-                "title": "Icon",
-                "subtitle": "Schema",
-                "body": "icon, toIcon, icons를 지원합니다."
+                "icons": [
+                    "arrow.left.arrow.right",
+                    "arrow.triangle.2.circlepath"
+                ],
+                "title": "유연한 아이콘 스키마",
+                "subtitle": "icon, toIcon, icons 지원",
+                "body": "icon, toIcon 또는 전체 icons 배열로 아이콘을 정의할 수 있습니다."
             },
             {
-                "icon": "square.dashed.inset.filled",
-                "title": "Default",
-                "subtitle": "Icon Style",
-                "body": "둥근 글래스 아이콘 배지."
+                "icons": [
+                    "square.dashed.inset.filled",
+                    "square.fill"
+                ],
+                "title": "기본 글래스 배지",
+                "subtitle": "더 부드러운 아이콘 표현",
+                "body": "새 둥근 글래스 배지로 기본 아이콘 스타일이 더 부드러워졌습니다."
             },
             {
-                "icon": "paintbrush.pointed",
-                "title": "Gradient",
-                "subtitle": "Glyphs",
-                "body": "아이콘 색상에 그라디언트 적용."
+                "icons": [
+                    "paintbrush.pointed",
+                    "paintpalette.fill"
+                ],
+                "title": "그라디언트 아이콘 글리프",
+                "subtitle": "테마 색상 심볼",
+                "body": "아이콘 글리프에 좌상단에서 우하단으로 이어지는 그라디언트를 적용합니다."
             },
             {
-                "icon": "circle.grid.cross",
-                "title": "Refined",
-                "subtitle": "Layout",
-                "body": "더 큰 아이콘과 둥근 버튼."
+                "icons": [
+                    "circle.grid.cross",
+                    "square.grid.2x2.fill"
+                ],
+                "title": "정돈된 행 레이아웃",
+                "subtitle": "큰 아이콘과 둥근 버튼",
+                "body": "더 큰 아이콘과 둥근 버튼으로 행 레이아웃을 정돈했습니다."
             },
             {
-                "icon": "rectangle.bottomthird.inset.filled",
-                "title": "Bottom",
-                "subtitle": "Controls",
-                "body": "Continue가 하단에 더 가까워졌습니다."
+                "icons": [
+                    "rectangle.bottomthird.inset.filled",
+                    "rectangle.fill"
+                ],
+                "title": "낮아진 Continue 컨트롤",
+                "subtitle": "더 가까운 하단 배치",
+                "body": "Continue 컨트롤을 하단에 더 가깝게 배치해 누르기 쉽습니다."
             },
             {
-                "icon": "water.waves",
-                "title": "Liquid",
-                "subtitle": "Mesh",
-                "body": "메시 배경이 흐르듯 움직입니다."
+                "icons": [
+                    "water.waves",
+                    "drop.fill"
+                ],
+                "title": "리퀴드 메시 모션",
+                "subtitle": "천천히 움직이는 배경",
+                "body": "메시 배경이 천천히 흐르는 리퀴드 모션을 지원합니다."
             },
             {
-                "icon": "textformat.size",
-                "title": "Custom",
-                "subtitle": "Heading Prefix",
-                "body": "헤딩 첫 줄을 변경할 수 있습니다."
+                "icons": [
+                    "textformat.size",
+                    "textformat.alt"
+                ],
+                "title": "사용자 지정 헤딩 접두어",
+                "subtitle": "바꿀 수 있는 제목 줄",
+                "body": "버전 위에 표시되는 헤딩 접두어를 원하는 문구로 바꿀 수 있습니다."
             }
         ]
     },

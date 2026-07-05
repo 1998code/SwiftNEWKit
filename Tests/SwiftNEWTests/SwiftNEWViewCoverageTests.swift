@@ -230,7 +230,7 @@ import AppKit
     for alignment in [HorizontalAlignment.leading, .center, .trailing] {
         let filled = makeSwiftNEW(items: sampleItems(), loading: false, align: alignment, iconStyle: .filled)
         render(filled.headings)
-        render(filled.iconBadge(systemName: model.displayedIcon, toSystemName: model.iconTransitionTarget))
+        render(filled.iconBadge(systemNames: model.iconSequence))
         render(filled.releaseRow(model, bodyFont: .caption))
         render(filled.showHistoryButton)
         render(filled.searchButton)
@@ -238,12 +238,12 @@ import AppKit
         render(filled.closeHistoryButton)
 
         let plain = makeSwiftNEW(align: alignment, iconStyle: .plain)
-        render(plain.iconBadge(systemName: model.displayedIcon, toSystemName: model.iconTransitionTarget))
+        render(plain.iconBadge(systemNames: model.iconSequence))
         render(plain.releaseRow(model, bodyFont: .footnote, spacing: 2))
 
         let defaultStyle = makeSwiftNEW(align: alignment, iconStyle: .default)
-        render(defaultStyle.iconBadge(systemName: model.displayedIcon, toSystemName: model.iconTransitionTarget))
-        render(defaultStyle.iconBadge(systemName: model.displayedIcon, toSystemName: model.iconTransitionTarget).preferredColorScheme(.dark))
+        render(defaultStyle.iconBadge(systemNames: model.iconSequence))
+        render(defaultStyle.iconBadge(systemNames: model.iconSequence).preferredColorScheme(.dark))
         render(defaultStyle.releaseRow(model, bodyFont: .footnote, spacing: 2))
     }
 }

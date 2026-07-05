@@ -67,10 +67,11 @@ import Foundation
     let toIconModel = try JSONDecoder().decode(Model.self, from: toIconData)
     #expect(toIconModel.displayedIcon == "checkmark.shield")
     #expect(toIconModel.iconTransitionTarget == "shield.checkered")
+    #expect(toIconModel.iconSequence == ["checkmark.shield", "shield.checkered"])
 
     let iconsData = """
     {
-        "icons": ["checkmark.shield", "shield.checkered"],
+        "icons": ["checkmark.shield", "shield.checkered", "sparkles"],
         "title": "Compatibility",
         "subtitle": "Fixes",
         "body": "Improved platform support."
@@ -81,6 +82,7 @@ import Foundation
     #expect(iconsModel.icon == "checkmark.shield")
     #expect(iconsModel.displayedIcon == "checkmark.shield")
     #expect(iconsModel.iconTransitionTarget == "shield.checkered")
+    #expect(iconsModel.iconSequence == ["checkmark.shield", "shield.checkered", "sparkles"])
 }
 
 @Test func searchMatchesTitleSubtitleAndBodyCaseInsensitively() {

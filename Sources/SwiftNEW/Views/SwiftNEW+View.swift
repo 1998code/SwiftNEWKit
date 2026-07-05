@@ -80,13 +80,17 @@ extension SwiftNEW {
 
     @ViewBuilder
     func iconBadge(systemName: String, toSystemName: String? = nil) -> some View {
+        iconBadge(systemNames: iconSequence(systemName: systemName, toSystemName: toSystemName))
+    }
+
+    @ViewBuilder
+    func iconBadge(systemNames: [String]) -> some View {
         switch iconStyle {
         case .filled:
             ZStack {
                 colorGradient
                 TransitioningSymbol(
-                    systemName: systemName,
-                    toSystemName: toSystemName,
+                    systemNames: systemNames,
                     font: iconBadgeSymbolFont,
                     foregroundStyle: Color.white
                 )
@@ -99,8 +103,7 @@ extension SwiftNEW {
                 defaultIconGlassBackdrop
                 defaultIconBackdropGradient
                 TransitioningSymbol(
-                    systemName: systemName,
-                    toSystemName: toSystemName,
+                    systemNames: systemNames,
                     font: iconBadgeSymbolFont,
                     foregroundStyle: iconGlyphGradient
                 )
@@ -110,13 +113,20 @@ extension SwiftNEW {
             .cornerRadius(iconBadgeCornerRadius)
         case .plain:
             TransitioningSymbol(
-                systemName: systemName,
-                toSystemName: toSystemName,
+                systemNames: systemNames,
                 font: iconBadgeSymbolFont,
                 foregroundStyle: iconGlyphGradient
             )
                 .frame(width: iconBadgeSize, height: iconBadgeSize)
         }
+    }
+
+    private func iconSequence(systemName: String, toSystemName: String?) -> [String] {
+        guard let toSystemName else {
+            return [systemName]
+        }
+
+        return [systemName, toSystemName]
     }
 
     public var body: some View {
@@ -203,19 +213,18 @@ extension SwiftNEW {
 
 @available(iOS 15.0, watchOS 8.0, macOS 12.0, tvOS 17.0, *)
 private struct TransitioningSymbol<ForegroundStyle: ShapeStyle>: View {
-    let systemName: String
-    let toSystemName: String?
+    let systemNames: [String]
     let font: Font
     let foregroundStyle: ForegroundStyle
 
     @State private var displayedSystemName: String
 
-    init(systemName: String, toSystemName: String?, font: Font, foregroundStyle: ForegroundStyle) {
-        self.systemName = systemName
-        self.toSystemName = toSystemName
+    init(systemNames: [String], font: Font, foregroundStyle: ForegroundStyle) {
+        let normalizedSystemNames = Self.normalized(systemNames)
+        self.systemNames = normalizedSystemNames
         self.font = font
         self.foregroundStyle = foregroundStyle
-        _displayedSystemName = State(initialValue: systemName)
+        _displayedSystemName = State(initialValue: normalizedSystemNames[0])
     }
 
     var body: some View {
@@ -226,7 +235,7 @@ private struct TransitioningSymbol<ForegroundStyle: ShapeStyle>: View {
     }
 
     private var transitionKey: String {
-        [systemName, toSystemName].compactMap { $0 }.joined(separator: "|")
+        systemNames.joined(separator: "|")
     }
 
     @ViewBuilder
@@ -249,27 +258,36 @@ private struct TransitioningSymbol<ForegroundStyle: ShapeStyle>: View {
 
     @MainActor
     private func updateDisplayedSymbol() async {
-        displayedSystemName = systemName
+        displayedSystemName = systemNames[0]
 
-        guard let toSystemName, toSystemName != systemName else {
+        guard systemNames.count > 1 else {
             return
         }
 
         guard await sleep(milliseconds: 350) else { return }
 
+        var nextIndex = 1
         while !Task.isCancelled {
             withAnimation(.easeInOut(duration: 0.8)) {
-                displayedSystemName = toSystemName
+                displayedSystemName = systemNames[nextIndex]
             }
 
-            guard await sleep(milliseconds: 1400) else { return }
-
-            withAnimation(.easeInOut(duration: 0.8)) {
-                displayedSystemName = systemName
-            }
+            nextIndex = (nextIndex + 1) % systemNames.count
 
             guard await sleep(milliseconds: 1400) else { return }
         }
+    }
+
+    private static func normalized(_ systemNames: [String]) -> [String] {
+        var normalizedSystemNames: [String] = []
+
+        for systemName in systemNames where !systemName.isEmpty {
+            if normalizedSystemNames.last != systemName {
+                normalizedSystemNames.append(systemName)
+            }
+        }
+
+        return normalizedSystemNames.isEmpty ? ["questionmark"] : normalizedSystemNames
     }
 
     private func sleep(milliseconds: UInt64) async -> Bool {

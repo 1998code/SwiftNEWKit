@@ -162,10 +162,10 @@ public struct Vmodel: Codable, Hashable, Identifiable, Sendable {
 }
 
 public struct Model: Codable, Hashable, Identifiable, Sendable {
-    public var id: String       // derived from icon/transition target + title + subtitle + body
+    public var id: String       // derived from icon sequence + title + subtitle + body
     public var icon: String     // SF Symbol name
     public var toIcon: String?  // optional target SF Symbol for replace transition
-    public var icons: [String]? // optional shorthand: [fromIcon, toIcon]
+    public var icons: [String]? // optional symbol loop: [firstIcon, secondIcon, ...]
     public var title: String
     public var subtitle: String
     public var body: String
@@ -188,14 +188,14 @@ Or with `icons`:
 
 ```json
 {
-  "icons": ["checkmark.shield", "shield.checkered"],
+  "icons": ["checkmark.shield", "shield.checkered", "sparkles"],
   "title": "Compatibility",
   "subtitle": "Fixes",
   "body": "Improved platform support."
 }
 ```
 
-When `icons` has at least two values, SwiftNEW uses `icons[0]` as the starting icon and `icons[1]` as the replacement icon. Otherwise, it falls back to `icon` and `toIcon`.
+When `icons` has multiple values, SwiftNEW loops through the full array in order. Otherwise, it falls back to `icon` and `toIcon`.
 
 ## Auto-Trigger Storage
 

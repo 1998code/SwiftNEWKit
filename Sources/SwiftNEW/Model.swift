@@ -26,8 +26,7 @@ public struct Vmodel: Codable, Hashable, Identifiable, Sendable {
 
 public struct Model: Codable, Hashable, Identifiable, Sendable {
     public var id: String {
-        [icon, iconTransitionTarget, title, subtitle, body]
-            .compactMap { $0 }
+        [iconSequence.joined(separator: ">"), title, subtitle, body]
             .joined(separator: "|")
     }
 
@@ -39,14 +38,23 @@ public struct Model: Codable, Hashable, Identifiable, Sendable {
     public var body: String
 
     public var displayedIcon: String {
-        icons?.first ?? icon
+        iconSequence.first ?? icon
     }
 
     public var iconTransitionTarget: String? {
-        if let icons, icons.count > 1 {
-            return icons[1]
+        iconSequence.dropFirst().first
+    }
+
+    public var iconSequence: [String] {
+        if let icons, !icons.isEmpty {
+            return icons
         }
-        return toIcon
+
+        if let toIcon {
+            return [icon, toIcon]
+        }
+
+        return [icon]
     }
 
     public init(icon: String, toIcon: String? = nil, icons: [String]? = nil, title: String, subtitle: String, body: String) {
