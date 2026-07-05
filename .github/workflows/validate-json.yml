@@ -47,9 +47,19 @@ jobs:
                   "type": "array",
                   "items": {
                     "type": "object",
-                    "required": ["icon", "title", "subtitle", "body"],
+                    "required": ["title", "subtitle", "body"],
+                    "anyOf": [
+                      { "required": ["icon"] },
+                      { "required": ["icons"] }
+                    ],
                     "properties": {
                       "icon": { "type": "string" },
+                      "toIcon": { "type": "string" },
+                      "icons": {
+                        "type": "array",
+                        "items": { "type": "string" },
+                        "minItems": 1
+                      },
                       "title": { "type": "string" },
                       "subtitle": { "type": "string" },
                       "body": { "type": "string" }
