@@ -14,6 +14,11 @@ import AppKit
 
 @MainActor
 @Test func swiftNEWInitializersPreserveConfiguration() {
+    let defaultDirect = SwiftNEW(show: .constant(false))
+    #expect(defaultDirect.mesh)
+    #expect(defaultDirect.meshStyle == .still)
+    #expect(defaultDirect.iconStyle == .default)
+
     let direct = SwiftNEW(
         show: .constant(false),
         align: .trailing,
@@ -25,12 +30,14 @@ import AppKit
         data: "missing",
         showDrop: true,
         mesh: true,
+        meshStyle: .liquid,
         specialEffect: .particles,
         glass: false,
         presentation: .embed,
         showBuild: false,
         headingStyle: .appName,
-        iconStyle: .plain
+        headingPrefix: "Latest in",
+        iconStyle: .default
     )
 
     #expect(direct.align == .trailing)
@@ -41,12 +48,14 @@ import AppKit
     #expect(direct.data == "missing")
     #expect(direct.showDrop)
     #expect(direct.mesh)
+    #expect(direct.meshStyle == .liquid)
     #expect(direct.specialEffect == .particles)
     #expect(direct.glass == false)
     #expect(direct.presentation == .embed)
     #expect(direct.showBuild == false)
     #expect(direct.headingStyle == .appName)
-    #expect(direct.iconStyle == .plain)
+    #expect(direct.headingPrefix == "Latest in")
+    #expect(direct.iconStyle == .default)
 
     let bound = SwiftNEW(
         show: .constant(false),
@@ -59,11 +68,13 @@ import AppKit
         data: .constant("data"),
         showDrop: .constant(false),
         mesh: .constant(false),
+        meshStyle: .constant(.still),
         specialEffect: .constant(.christmas),
         glass: .constant(true),
         presentation: .constant(.sheet),
         showBuild: .constant(true),
         headingStyle: .constant(.versionOnly),
+        headingPrefix: .constant("Updates for"),
         iconStyle: .constant(.filled)
     )
 
@@ -71,9 +82,11 @@ import AppKit
     #expect(bound.size == "invisible")
     #expect(bound.label == "Hidden")
     #expect(bound.labelImage == "eye.slash")
+    #expect(bound.meshStyle == .still)
     #expect(bound.specialEffect == .christmas)
     #expect(bound.presentation == .sheet)
     #expect(bound.headingStyle == .versionOnly)
+    #expect(bound.headingPrefix == "Updates for")
     #expect(bound.iconStyle == .filled)
 }
 
@@ -90,6 +103,9 @@ import AppKit
 
     let appName = makeSwiftNEW(headingStyle: .appName)
     #expect(appName.headingSubtitle == Bundle.appName)
+
+    let customPrefix = makeSwiftNEW(headingPrefix: "Latest in")
+    #expect(customPrefix.headingTitle == "Latest in")
 }
 
 @MainActor
@@ -137,7 +153,7 @@ import AppKit
 
     sut.presentReleaseNotes()
     sut.compareVersion()
-    try await Task.sleep(for: .milliseconds(150))
+    try await Task.sleep(nanoseconds: 150_000_000)
 
     #expect(sut.version == Bundle.version || sut.version.isEmpty)
 }
@@ -147,7 +163,7 @@ import AppKit
     let sut = makeSwiftNEW(showSearch: true)
 
     sut.updateSearchText("coverage")
-    try await Task.sleep(for: .milliseconds(350))
+    try await Task.sleep(nanoseconds: 350_000_000)
 
     #expect(sut.matchesSearch(Model(icon: "sparkles", title: "Search", subtitle: "Filter", body: "Coverage")))
 }
@@ -158,7 +174,7 @@ import AppKit
 
     sut.toggleSearchVisibility()
     sut.retryLoadData()
-    try await Task.sleep(for: .milliseconds(300))
+    try await Task.sleep(nanoseconds: 300_000_000)
 
     #expect(sut.matchesSearch(sampleModel()))
 }
@@ -168,7 +184,7 @@ import AppKit
     let sut = makeSwiftNEW(data: "missing-release-notes-file")
 
     sut.loadData()
-    try await Task.sleep(for: .milliseconds(400))
+    try await Task.sleep(nanoseconds: 400_000_000)
 
     #expect(sut.data == "missing-release-notes-file")
 }
@@ -177,7 +193,7 @@ import AppKit
 @Test func loadDataReadsLocalBundleJSON() async throws {
     let sut = makeSwiftNEW(data: "swiftnew-test-data", dataBundle: .module)
     sut.loadData()
-    try await Task.sleep(for: .milliseconds(500))
+    try await Task.sleep(nanoseconds: 500_000_000)
 
     #expect(sut.data == "swiftnew-test-data")
 }
@@ -187,7 +203,7 @@ import AppKit
     let sut = makeSwiftNEW(data: "http://%")
 
     sut.loadData()
-    try await Task.sleep(for: .milliseconds(400))
+    try await Task.sleep(nanoseconds: 400_000_000)
 
     #expect(sut.data == "http://%")
 }
@@ -201,7 +217,9 @@ import AppKit
     render(makeSwiftNEW(testingShow: true, historySheet: true, size: "simple", presentation: .sheet).body)
     render(makeSwiftNEW(items: sampleItems(), loading: false).testingHistorySheetContent)
     render(makeSwiftNEW(mesh: true, specialEffect: .particles, presentation: .embed).body)
+    render(makeSwiftNEW(mesh: true, meshStyle: .liquid, presentation: .embed).body)
     render(makeSwiftNEW(mesh: false, specialEffect: .christmas, presentation: .embed).body)
+    render(makeSwiftNEW(presentation: .embed, iconStyle: .default).body)
     render(makeSwiftNEW(size: "invisible", presentation: .sheet).body)
 }
 
@@ -212,7 +230,7 @@ import AppKit
     for alignment in [HorizontalAlignment.leading, .center, .trailing] {
         let filled = makeSwiftNEW(items: sampleItems(), loading: false, align: alignment, iconStyle: .filled)
         render(filled.headings)
-        render(filled.iconBadge(systemName: model.icon))
+        render(filled.iconBadge(systemName: model.displayedIcon, toSystemName: model.iconTransitionTarget))
         render(filled.releaseRow(model, bodyFont: .caption))
         render(filled.showHistoryButton)
         render(filled.searchButton)
@@ -220,8 +238,13 @@ import AppKit
         render(filled.closeHistoryButton)
 
         let plain = makeSwiftNEW(align: alignment, iconStyle: .plain)
-        render(plain.iconBadge(systemName: model.icon))
+        render(plain.iconBadge(systemName: model.displayedIcon, toSystemName: model.iconTransitionTarget))
         render(plain.releaseRow(model, bodyFont: .footnote, spacing: 2))
+
+        let defaultStyle = makeSwiftNEW(align: alignment, iconStyle: .default)
+        render(defaultStyle.iconBadge(systemName: model.displayedIcon, toSystemName: model.iconTransitionTarget))
+        render(defaultStyle.iconBadge(systemName: model.displayedIcon, toSystemName: model.iconTransitionTarget).preferredColorScheme(.dark))
+        render(defaultStyle.releaseRow(model, bodyFont: .footnote, spacing: 2))
     }
 }
 
@@ -259,6 +282,7 @@ import AppKit
     render(sut.sheetHistory)
     let meshView = MeshView(color: .constant(.purple))
     render(meshView)
+    render(MeshView(color: .constant(.purple), style: .liquid))
     render(meshView.testingFallbackGradient)
     render(NoiseView(size: 128))
     render(SnowfallView())
@@ -283,12 +307,14 @@ private func makeSwiftNEW(
     history: Bool = true,
     data: String = "data",
     mesh: Bool = false,
+    meshStyle: SwiftNEWMeshStyle = .still,
     specialEffect: SwiftNEWSpecialEffect = .none,
     glass: Bool = true,
     presentation: SwiftNEWPresentation = .sheet,
     showBuild: Bool = true,
     headingStyle: SwiftNEWHeadingStyle = .version,
-    iconStyle: SwiftNEWIconStyle = .filled,
+    headingPrefix: String = "What's New in",
+    iconStyle: SwiftNEWIconStyle = .default,
     dataBundle: Bundle = .main
 ) -> SwiftNEW {
     SwiftNEW(
@@ -309,11 +335,13 @@ private func makeSwiftNEW(
         data: data,
         showDrop: false,
         mesh: mesh,
+        meshStyle: meshStyle,
         specialEffect: specialEffect,
         glass: glass,
         presentation: presentation,
         showBuild: showBuild,
         headingStyle: headingStyle,
+        headingPrefix: headingPrefix,
         iconStyle: iconStyle,
         dataBundle: dataBundle
     )
@@ -332,7 +360,7 @@ private func sampleItems() -> [Vmodel] {
 }
 
 private func sampleModel() -> Model {
-    Model(icon: "sparkles", title: "Search", subtitle: "Filter", body: "Coverage")
+    Model(icon: "sparkles", toIcon: "wand.and.stars", title: "Search", subtitle: "Filter", body: "Coverage")
 }
 
 #if os(macOS)

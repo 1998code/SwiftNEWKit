@@ -28,21 +28,29 @@ public enum SwiftNEWSpecialEffect {
 
 // Heading subtitle style — controls the second line under "What's New in"
 public enum SwiftNEWHeadingStyle {
-    case version       // "Version 6.3" / "Version 6.3 (18)"
-    case versionOnly   // "6.3" / "6.3 (18)"
+    case version       // "Version 6.4" / "Version 6.4 (19)"
+    case versionOnly   // "6.4" / "6.4 (19)"
     case appName       // "{App Name}"
 }
 
 // Icon style for each release-note row
 public enum SwiftNEWIconStyle {
-    case filled   // colored backdrop, white glyph (default)
-    case plain    // no backdrop, glyph uses theme color
+    case filled     // colored backdrop, white glyph
+    case `default` // white/black-to-clear gradient backdrop, glyph uses theme color (default)
+    case plain      // no backdrop, glyph uses theme color
+}
+
+// Mesh gradient behavior
+public enum SwiftNEWMeshStyle: Equatable {
+    case still
+    case liquid
 }
 
 @available(iOS 15.0, watchOS 8.0, macOS 12.0, tvOS 17.0, *)
 public struct SwiftNEW: View {
     @AppStorage("swiftnew.version") var version = ""
     @AppStorage("swiftnew.build") var build = ""
+    @Environment(\.colorScheme) var colorScheme
 
     @State var items: [Vmodel] = []
     @State var loading = true
@@ -63,11 +71,13 @@ public struct SwiftNEW: View {
     @Binding var data: String
     @Binding var showDrop: Bool
     @Binding var mesh: Bool
+    @Binding var meshStyle: SwiftNEWMeshStyle
     @Binding var specialEffect: SwiftNEWSpecialEffect
     @Binding var glass: Bool
     @Binding var presentation: SwiftNEWPresentation
     @Binding var showBuild: Bool
     @Binding var headingStyle: SwiftNEWHeadingStyle
+    @Binding var headingPrefix: String
     @Binding var iconStyle: SwiftNEWIconStyle
     var dataBundle: Bundle = .main
 
@@ -81,13 +91,15 @@ public struct SwiftNEW: View {
         history: Bool? = true,
         data: String? = "data",
         showDrop: Bool? = false,
-        mesh: Bool? = false,
+        mesh: Bool? = true,
+        meshStyle: SwiftNEWMeshStyle? = .still,
         specialEffect: SwiftNEWSpecialEffect? = SwiftNEWSpecialEffect.none,
         glass: Bool? = true,
         presentation: SwiftNEWPresentation? = .sheet,
         showBuild: Bool? = true,
         headingStyle: SwiftNEWHeadingStyle? = .version,
-        iconStyle: SwiftNEWIconStyle? = .filled
+        headingPrefix: String? = "What's New in",
+        iconStyle: SwiftNEWIconStyle? = .default
     ) {
         _show = show
         _align = .constant(align ?? .center)
@@ -98,13 +110,15 @@ public struct SwiftNEW: View {
         _history = .constant(history ?? true)
         _data = .constant(data ?? "data")
         _showDrop = .constant(showDrop ?? false)
-        _mesh = .constant(mesh ?? false)
+        _mesh = .constant(mesh ?? true)
+        _meshStyle = .constant(meshStyle ?? .still)
         _specialEffect = .constant(specialEffect ?? .none)
         _glass = .constant(glass ?? true)
         _presentation = .constant(presentation ?? .sheet)
         _showBuild = .constant(showBuild ?? true)
         _headingStyle = .constant(headingStyle ?? .version)
-        _iconStyle = .constant(iconStyle ?? .filled)
+        _headingPrefix = .constant(headingPrefix ?? "What's New in")
+        _iconStyle = .constant(iconStyle ?? .default)
         compareVersion()
     }
 
@@ -119,13 +133,15 @@ public struct SwiftNEW: View {
         history: Binding<Bool>? = .constant(true),
         data: Binding<String>? = .constant("data"),
         showDrop: Binding<Bool>? = .constant(false),
-        mesh: Binding<Bool>? = .constant(false),
+        mesh: Binding<Bool>? = .constant(true),
+        meshStyle: Binding<SwiftNEWMeshStyle>? = .constant(.still),
         specialEffect: Binding<SwiftNEWSpecialEffect>? = .constant(.none),
         glass: Binding<Bool>? = .constant(true),
         presentation: Binding<SwiftNEWPresentation>? = .constant(.sheet),
         showBuild: Binding<Bool>? = .constant(true),
         headingStyle: Binding<SwiftNEWHeadingStyle>? = .constant(.version),
-        iconStyle: Binding<SwiftNEWIconStyle>? = .constant(.filled)
+        headingPrefix: Binding<String>? = .constant("What's New in"),
+        iconStyle: Binding<SwiftNEWIconStyle>? = .constant(.default)
     ) {
         _show = show
         _align = align ?? .constant(.center)
@@ -136,13 +152,15 @@ public struct SwiftNEW: View {
         _history = history ?? .constant(true)
         _data = data ?? .constant("data")
         _showDrop = showDrop ?? .constant(false)
-        _mesh = mesh ?? .constant(false)
+        _mesh = mesh ?? .constant(true)
+        _meshStyle = meshStyle ?? .constant(.still)
         _specialEffect = specialEffect ?? .constant(.none)
         _glass = glass ?? .constant(true)
         _presentation = presentation ?? .constant(.sheet)
         _showBuild = showBuild ?? .constant(true)
         _headingStyle = headingStyle ?? .constant(.version)
-        _iconStyle = iconStyle ?? .constant(.filled)
+        _headingPrefix = headingPrefix ?? .constant("What's New in")
+        _iconStyle = iconStyle ?? .constant(.default)
         compareVersion()
     }
 }
@@ -168,13 +186,15 @@ extension SwiftNEW {
         history: Bool = true,
         data: String = "data",
         showDrop: Bool = false,
-        mesh: Bool = false,
+        mesh: Bool = true,
+        meshStyle: SwiftNEWMeshStyle = .still,
         specialEffect: SwiftNEWSpecialEffect = .none,
         glass: Bool = true,
         presentation: SwiftNEWPresentation = .sheet,
         showBuild: Bool = true,
         headingStyle: SwiftNEWHeadingStyle = .version,
-        iconStyle: SwiftNEWIconStyle = .filled,
+        headingPrefix: String = "What's New in",
+        iconStyle: SwiftNEWIconStyle = .default,
         dataBundle: Bundle = .main
     ) {
         _version = AppStorage(wrappedValue: "", "swiftnew.version")
@@ -197,11 +217,13 @@ extension SwiftNEW {
         _data = .constant(data)
         _showDrop = .constant(showDrop)
         _mesh = .constant(mesh)
+        _meshStyle = .constant(meshStyle)
         _specialEffect = .constant(specialEffect)
         _glass = .constant(glass)
         _presentation = .constant(presentation)
         _showBuild = .constant(showBuild)
         _headingStyle = .constant(headingStyle)
+        _headingPrefix = .constant(headingPrefix)
         _iconStyle = .constant(iconStyle)
         self.dataBundle = dataBundle
     }

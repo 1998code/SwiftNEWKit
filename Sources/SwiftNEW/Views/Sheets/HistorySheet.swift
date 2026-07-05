@@ -40,13 +40,13 @@ extension SwiftNEW {
                 ForEach(items) { item in
                     ZStack {
                         colorGradient
-                        Text(item.version).bold().font(.title2)
+                        Text(item.version).bold().font(.headline)
                             .foregroundColor(color.adaptedTextColor)
                     }
-                    .swiftNEWGlass(radius: 15, color: color)
-                    .frame(width: 120, height: 40)
-                    .cornerRadius(15)
-                    .padding(.bottom)
+                    .swiftNEWGlass(radius: 12, color: color)
+                    .frame(width: 96, height: 32)
+                    .cornerRadius(12)
+                    .padding(.bottom, 10)
 
                     ForEach(item.new) { new in
                         releaseRow(new, bodyFont: .caption)

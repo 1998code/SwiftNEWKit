@@ -1,5 +1,62 @@
 [
     {
+        "version": "6.4",
+        "subVersion": "6.4.0",
+        "new": [
+            {
+                "icons": [
+                    "sparkles",
+                    "wand.and.stars"
+                ],
+                "title": "動畫",
+                "subtitle": "圖示",
+                "body": "在兩個 SF Symbol 間循環切換。"
+            },
+            {
+                "icon": "arrow.left.arrow.right",
+                "title": "圖示",
+                "subtitle": "資料格式",
+                "body": "支援 icon、toIcon 或 icons。"
+            },
+            {
+                "icon": "square.dashed.inset.filled",
+                "title": "預設",
+                "subtitle": "圖示樣式",
+                "body": "新的圓角玻璃圖示徽章。"
+            },
+            {
+                "icon": "paintbrush.pointed",
+                "title": "漸層",
+                "subtitle": "圖示",
+                "body": "圖示顏色現在使用漸層。"
+            },
+            {
+                "icon": "circle.grid.cross",
+                "title": "優化",
+                "subtitle": "版面",
+                "body": "更大圖示與更圓按鈕。"
+            },
+            {
+                "icon": "rectangle.bottomthird.inset.filled",
+                "title": "底部",
+                "subtitle": "控制",
+                "body": "Continue 更貼近底邊。"
+            },
+            {
+                "icon": "water.waves",
+                "title": "流動",
+                "subtitle": "網格",
+                "body": "網格背景現在可流動。"
+            },
+            {
+                "icon": "textformat.size",
+                "title": "自訂",
+                "subtitle": "標題前綴",
+                "body": "可自訂標題第一行。"
+            }
+        ]
+    },
+    {
         "version": "6.3",
         "subVersion": "6.3.1",
         "new": [

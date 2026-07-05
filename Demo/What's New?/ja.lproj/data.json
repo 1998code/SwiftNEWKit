@@ -1,5 +1,62 @@
 [
     {
+        "version": "6.4",
+        "subVersion": "6.4.0",
+        "new": [
+            {
+                "icons": [
+                    "sparkles",
+                    "wand.and.stars"
+                ],
+                "title": "Animated",
+                "subtitle": "Icons",
+                "body": "2つのSF Symbols間でループ。"
+            },
+            {
+                "icon": "arrow.left.arrow.right",
+                "title": "Icon",
+                "subtitle": "Schema",
+                "body": "icon、toIcon、iconsに対応。"
+            },
+            {
+                "icon": "square.dashed.inset.filled",
+                "title": "Default",
+                "subtitle": "Icon Style",
+                "body": "丸いガラス風アイコンバッジ。"
+            },
+            {
+                "icon": "paintbrush.pointed",
+                "title": "Gradient",
+                "subtitle": "Glyphs",
+                "body": "アイコン色にグラデーション。"
+            },
+            {
+                "icon": "circle.grid.cross",
+                "title": "Refined",
+                "subtitle": "Layout",
+                "body": "大きいアイコンと丸いボタン。"
+            },
+            {
+                "icon": "rectangle.bottomthird.inset.filled",
+                "title": "Bottom",
+                "subtitle": "Controls",
+                "body": "Continueを下端へ近づけました。"
+            },
+            {
+                "icon": "water.waves",
+                "title": "Liquid",
+                "subtitle": "Mesh",
+                "body": "メッシュ背景が流動表示に対応。"
+            },
+            {
+                "icon": "textformat.size",
+                "title": "Custom",
+                "subtitle": "Heading Prefix",
+                "body": "見出しの先頭行を変更可能。"
+            }
+        ]
+    },
+    {
         "version": "6.3",
         "subVersion": "6.3.1",
         "new": [

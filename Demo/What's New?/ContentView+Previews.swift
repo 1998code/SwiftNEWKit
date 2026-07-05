@@ -49,6 +49,12 @@ import SwiftNEW
     SwiftNEW(show: $showNew, presentation: .embed)
 }
 
+// Liquid Mesh (>6.4.0) - Animated mesh gradient background
+#Preview("Liquid Mesh") {
+    @Previewable @State var showNew: Bool = true
+    SwiftNEW(show: $showNew, meshStyle: .liquid, presentation: .embed)
+}
+
 // Special Effect - Christmas snow effect
 #Preview("Christmas Effect") {
     @Previewable @State var showNew: Bool = false
@@ -65,4 +71,16 @@ import SwiftNEW
 #Preview("App Name Heading") {
     @Previewable @State var showNew: Bool = true
     SwiftNEW(show: $showNew, headingStyle: .appName)
+}
+
+// Heading Prefix (>6.4.0) - Use App Name as title
+#Preview("App Name Prefix") {
+    @Previewable @State var showNew: Bool = true
+    SwiftNEW(show: $showNew, headingPrefix: previewAppName)
+}
+
+private var previewAppName: String {
+    Bundle.main.infoDictionary?["CFBundleDisplayName"] as? String
+        ?? Bundle.main.infoDictionary?["CFBundleName"] as? String
+        ?? "App"
 }

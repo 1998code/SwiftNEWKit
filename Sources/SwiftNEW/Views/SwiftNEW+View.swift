@@ -23,7 +23,23 @@ extension SwiftNEW {
         #if os(tvOS)
         100
         #else
-        56
+        64
+        #endif
+    }
+
+    private var iconBadgeSymbolFont: Font {
+        #if os(tvOS)
+        .largeTitle
+        #else
+        .title
+        #endif
+    }
+
+    private var iconBadgeCornerRadius: CGFloat {
+        #if os(tvOS)
+        28
+        #else
+        20
         #endif
     }
 
@@ -35,23 +51,70 @@ extension SwiftNEW {
         )
     }
 
+    private var defaultIconBackdropGradient: LinearGradient {
+        LinearGradient(
+            colors: [colorScheme == .dark ? .black : .white, .clear],
+            startPoint: .topLeading,
+            endPoint: .bottomTrailing
+        )
+    }
+
+    private var iconGlyphGradient: LinearGradient {
+        LinearGradient(
+            colors: [color, color.opacity(0.6)],
+            startPoint: .topLeading,
+            endPoint: .bottomTrailing
+        )
+    }
+
     @ViewBuilder
-    func iconBadge(systemName: String) -> some View {
+    private var defaultIconGlassBackdrop: some View {
+        #if os(iOS) && compiler(>=6.2)
+        if #available(iOS 26.0, *) {
+            Color.clear
+                .frame(width: iconBadgeSize, height: iconBadgeSize)
+                .glassEffect(.clear.interactive(), in: .rect(cornerRadius: iconBadgeCornerRadius))
+        }
+        #endif
+    }
+
+    @ViewBuilder
+    func iconBadge(systemName: String, toSystemName: String? = nil) -> some View {
         switch iconStyle {
         case .filled:
             ZStack {
                 colorGradient
-                Image(systemName: systemName)
-                    .font(.title2)
-                    .foregroundColor(.white)
+                TransitioningSymbol(
+                    systemName: systemName,
+                    toSystemName: toSystemName,
+                    font: iconBadgeSymbolFont,
+                    foregroundStyle: Color.white
+                )
             }
-            .swiftNEWGlass(radius: 15)
+            .swiftNEWGlass(radius: iconBadgeCornerRadius)
             .frame(width: iconBadgeSize, height: iconBadgeSize)
-            .cornerRadius(15)
+            .cornerRadius(iconBadgeCornerRadius)
+        case .default:
+            ZStack {
+                defaultIconGlassBackdrop
+                defaultIconBackdropGradient
+                TransitioningSymbol(
+                    systemName: systemName,
+                    toSystemName: toSystemName,
+                    font: iconBadgeSymbolFont,
+                    foregroundStyle: iconGlyphGradient
+                )
+            }
+            .swiftNEWGlass(radius: iconBadgeCornerRadius)
+            .frame(width: iconBadgeSize, height: iconBadgeSize)
+            .cornerRadius(iconBadgeCornerRadius)
         case .plain:
-            Image(systemName: systemName)
-                .font(.title2)
-                .foregroundColor(color)
+            TransitioningSymbol(
+                systemName: systemName,
+                toSystemName: toSystemName,
+                font: iconBadgeSymbolFont,
+                foregroundStyle: iconGlyphGradient
+            )
                 .frame(width: iconBadgeSize, height: iconBadgeSize)
         }
     }
@@ -113,7 +176,7 @@ extension SwiftNEW {
                 .padding()
                 #endif
         }
-        .modifier(SheetBackdropModifier(mesh: mesh, color: $color))
+        .modifier(SheetBackdropModifier(mesh: mesh, meshStyle: meshStyle, presentation: presentation, color: $color))
     }
 
     private var sheetContent: some View {
@@ -138,27 +201,130 @@ extension SwiftNEW {
     #endif
 }
 
+@available(iOS 15.0, watchOS 8.0, macOS 12.0, tvOS 17.0, *)
+private struct TransitioningSymbol<ForegroundStyle: ShapeStyle>: View {
+    let systemName: String
+    let toSystemName: String?
+    let font: Font
+    let foregroundStyle: ForegroundStyle
+
+    @State private var displayedSystemName: String
+
+    init(systemName: String, toSystemName: String?, font: Font, foregroundStyle: ForegroundStyle) {
+        self.systemName = systemName
+        self.toSystemName = toSystemName
+        self.font = font
+        self.foregroundStyle = foregroundStyle
+        _displayedSystemName = State(initialValue: systemName)
+    }
+
+    var body: some View {
+        symbol
+            .task(id: transitionKey) {
+                await updateDisplayedSymbol()
+            }
+    }
+
+    private var transitionKey: String {
+        [systemName, toSystemName].compactMap { $0 }.joined(separator: "|")
+    }
+
+    @ViewBuilder
+    private var symbol: some View {
+        let image = Image(systemName: displayedSystemName)
+            .font(font)
+            .foregroundStyle(foregroundStyle)
+
+        #if compiler(>=6.2)
+        if #available(iOS 26.0, watchOS 26.0, macOS 26.0, tvOS 26.0, visionOS 26.0, *) {
+            image
+                .contentTransition(.symbolEffect(.replace.magic(fallback: .downUp.byLayer), options: .repeat(.continuous)))
+        } else {
+            image
+        }
+        #else
+        image
+        #endif
+    }
+
+    @MainActor
+    private func updateDisplayedSymbol() async {
+        displayedSystemName = systemName
+
+        guard let toSystemName, toSystemName != systemName else {
+            return
+        }
+
+        guard await sleep(milliseconds: 350) else { return }
+
+        while !Task.isCancelled {
+            withAnimation(.easeInOut(duration: 0.8)) {
+                displayedSystemName = toSystemName
+            }
+
+            guard await sleep(milliseconds: 1400) else { return }
+
+            withAnimation(.easeInOut(duration: 0.8)) {
+                displayedSystemName = systemName
+            }
+
+            guard await sleep(milliseconds: 1400) else { return }
+        }
+    }
+
+    private func sleep(milliseconds: UInt64) async -> Bool {
+        do {
+            try await Task.sleep(nanoseconds: milliseconds * 1_000_000)
+            return !Task.isCancelled
+        } catch {
+            return false
+        }
+    }
+}
+
 private struct SheetBackdropModifier: ViewModifier {
     let mesh: Bool
+    let meshStyle: SwiftNEWMeshStyle
+    let presentation: SwiftNEWPresentation
     @Binding var color: Color
 
     @ViewBuilder
     func body(content: Content) -> some View {
-        if #available(iOS 16.4, tvOS 16.4, *) {
+        if presentation == .embed {
+            if mesh {
+                content
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .background {
+                        MeshView(color: $color, style: meshStyle)
+                    }
+            } else {
+                content
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .background(.ultraThinMaterial, ignoresSafeAreaEdges: .all)
+            }
+        } else if #available(iOS 16.4, tvOS 16.4, *) {
             // Sheet-level background fills the entire sheet edge-to-edge.
             if mesh {
-                content.presentationBackground { MeshView(color: $color) }
+                content
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .presentationBackground { MeshView(color: $color, style: meshStyle) }
             } else {
-                content.presentationBackground(.thinMaterial)
+                content
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .presentationBackground(.thinMaterial)
             }
         } else { // LCOV_EXCL_START -- Xcode 26 coverage runner cannot execute older OS sheet fallback.
             // Older OS / embed: fall back to a full-bleed background.
             if mesh {
-                content.background {
-                    MeshView(color: $color).ignoresSafeArea()
-                }
+                content
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .background {
+                        MeshView(color: $color, style: meshStyle)
+                    }
             } else {
-                content.background(.ultraThinMaterial, ignoresSafeAreaEdges: .all)
+                content
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .background(.ultraThinMaterial, ignoresSafeAreaEdges: .all)
             }
         } // LCOV_EXCL_STOP
     }

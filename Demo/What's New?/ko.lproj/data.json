@@ -1,5 +1,62 @@
 [
     {
+        "version": "6.4",
+        "subVersion": "6.4.0",
+        "new": [
+            {
+                "icons": [
+                    "sparkles",
+                    "wand.and.stars"
+                ],
+                "title": "Animated",
+                "subtitle": "Icons",
+                "body": "두 SF Symbols를 반복 전환합니다."
+            },
+            {
+                "icon": "arrow.left.arrow.right",
+                "title": "Icon",
+                "subtitle": "Schema",
+                "body": "icon, toIcon, icons를 지원합니다."
+            },
+            {
+                "icon": "square.dashed.inset.filled",
+                "title": "Default",
+                "subtitle": "Icon Style",
+                "body": "둥근 글래스 아이콘 배지."
+            },
+            {
+                "icon": "paintbrush.pointed",
+                "title": "Gradient",
+                "subtitle": "Glyphs",
+                "body": "아이콘 색상에 그라디언트 적용."
+            },
+            {
+                "icon": "circle.grid.cross",
+                "title": "Refined",
+                "subtitle": "Layout",
+                "body": "더 큰 아이콘과 둥근 버튼."
+            },
+            {
+                "icon": "rectangle.bottomthird.inset.filled",
+                "title": "Bottom",
+                "subtitle": "Controls",
+                "body": "Continue가 하단에 더 가까워졌습니다."
+            },
+            {
+                "icon": "water.waves",
+                "title": "Liquid",
+                "subtitle": "Mesh",
+                "body": "메시 배경이 흐르듯 움직입니다."
+            },
+            {
+                "icon": "textformat.size",
+                "title": "Custom",
+                "subtitle": "Heading Prefix",
+                "body": "헤딩 첫 줄을 변경할 수 있습니다."
+            }
+        ]
+    },
+    {
         "version": "6.3",
         "subVersion": "6.3.1",
         "new": [

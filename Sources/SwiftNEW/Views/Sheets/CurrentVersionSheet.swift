@@ -69,7 +69,7 @@ extension SwiftNEW {
                             }
                         }
                         // Bottom inset so last item can scroll past the frosted button area.
-                        Color.clear.frame(height: 200)
+                        Color.clear.frame(height: 196)
                     }
                     #if !os(tvOS)
                     .frame(maxWidth: 380)
@@ -91,27 +91,11 @@ extension SwiftNEW {
                         }
 
                         closeCurrentButton
-                            .padding(.bottom)
+                            .padding(.bottom, 6)
                     }
                     .frame(maxWidth: .infinity)
-                    .padding(.top, 100)
-                    .background {
-                        Rectangle()
-                            .fill(.thickMaterial)
-                            .mask(
-                                LinearGradient(
-                                    gradient: Gradient(stops: [
-                                        .init(color: .clear, location: 0.0),
-                                        .init(color: .black, location: 0.35),
-                                        .init(color: .black, location: 1.0)
-                                    ]),
-                                    startPoint: .top,
-                                    endPoint: .bottom
-                                )
-                            )
-                            .ignoresSafeArea(edges: [.horizontal, .bottom])
-                            .allowsHitTesting(false)
-                    }
+                    .padding(.top, 88)
+                    .background { bottomControlBackdrop }
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
             }
@@ -128,6 +112,28 @@ extension SwiftNEW {
     }
 
     private var searchField: some View {
+        searchFieldContent
+            .padding(.horizontal)
+            .frame(maxWidth: 380)
+            .padding(.horizontal)
+            .padding(.bottom, 8)
+    }
+
+    @ViewBuilder
+    private var searchFieldContent: some View {
+        #if os(iOS) && compiler(>=6.2)
+        if #available(iOS 26.0, *) {
+            searchFieldLabel
+                .glassEffect(.clear.interactive(), in: .capsule)
+        } else {
+            legacySearchFieldLabel
+        }
+        #else
+        legacySearchFieldLabel
+        #endif
+    }
+
+    private var searchFieldLabel: some View {
         HStack(spacing: 8) {
             Image(systemName: "magnifyingglass")
                 .foregroundColor(.secondary)
@@ -151,10 +157,54 @@ extension SwiftNEW {
         }
         .padding(.horizontal, 14)
         .padding(.vertical, 10)
-        .background(Capsule().fill(Color.secondary.opacity(0.15)))
-        .frame(maxWidth: 380)
-        .padding(.horizontal)
-        .padding(.bottom, 8)
+    }
+
+    private var legacySearchFieldLabel: some View {
+        searchFieldLabel
+            .swiftNEWGlass(radius: 20, color: .secondary.opacity(0.1))
+    }
+
+    private var bottomControlBackdrop: some View {
+        ZStack {
+            Rectangle()
+                .fill(.regularMaterial)
+
+            Rectangle()
+                .fill(bottomBackdropColor.opacity(0.78))
+
+            LinearGradient(
+                colors: [
+                    Color.clear,
+                    Color.primary.opacity(0.025)
+                ],
+                startPoint: .top,
+                endPoint: .bottom
+            )
+        }
+        .mask(
+            LinearGradient(
+                gradient: Gradient(stops: [
+                    .init(color: .clear, location: 0.0),
+                    .init(color: .black.opacity(0.45), location: 0.26),
+                    .init(color: .black, location: 0.52),
+                    .init(color: .black, location: 1.0)
+                ]),
+                startPoint: .top,
+                endPoint: .bottom
+            )
+        )
+        .ignoresSafeArea(edges: [.horizontal, .bottom])
+        .allowsHitTesting(false)
+    }
+
+    private var bottomBackdropColor: Color {
+        #if os(macOS)
+        Color(NSColor.windowBackgroundColor)
+        #elseif os(tvOS)
+        Color.black
+        #else
+        Color(.systemBackground)
+        #endif
     }
 
     func updateSearchText(_ newValue: String) {

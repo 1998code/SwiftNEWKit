@@ -16,12 +16,14 @@
 | `data` | `Binding<String>` | `"data"` | Local JSON filename or remote URL |
 | `showDrop` | `Binding<Bool>` | `false` | Use iOS drop notification style |
 | `mesh` | `Binding<Bool>` | `true` | Enable mesh gradient backgrounds |
+| `meshStyle` | `Binding<SwiftNEWMeshStyle>` | `.still` | Mesh behavior: `.still` or `.liquid` |
 | `specialEffect` | `Binding<SwiftNEWSpecialEffect>` | `.none` | Special effects: `.none`, `.christmas`, `.particles` |
 | `glass` | `Binding<Bool>` | `true` | Enable glass morphism effects |
 | `presentation` | `Binding<SwiftNEWPresentation>` | `.sheet` | Presentation style: `.sheet`, `.fullScreenCover`, `.embed` |
 | `showBuild` | `Binding<Bool>` | `true` | Show build number alongside the version in the header |
-| `headingStyle` | `Binding<SwiftNEWHeadingStyle>` | `.version` | Subtitle line style: `.version` (`Version 6.3 (18)`), `.versionOnly` (`6.3`), `.appName` (app's display name) |
-| `iconStyle` | `Binding<SwiftNEWIconStyle>` | `.filled` | Row icon style: `.filled` (colored backdrop, white glyph) or `.plain` (no backdrop, glyph in theme color) |
+| `headingStyle` | `Binding<SwiftNEWHeadingStyle>` | `.version` | Subtitle line style: `.version` (`Version 6.4 (19)`), `.versionOnly` (`6.4`), `.appName` (app's display name) |
+| `headingPrefix` | `Binding<String>` | `"What's New in"` | Header title line shown above the version/app name |
+| `iconStyle` | `Binding<SwiftNEWIconStyle>` | `.default` | Row icon style: `.default` (top-leading white/black-to-bottom-trailing-clear gradient, glyph in theme color), `.filled` (colored backdrop, white glyph), or `.plain` (no backdrop, glyph in theme color) |
 
 \* Required parameter
 
@@ -41,9 +43,21 @@ SwiftNEW(
     color: .purple,
     size: "normal",
     mesh: true,
+    meshStyle: .still,
     glass: true
 )
 ```
+
+### Liquid Mesh
+
+```swift
+SwiftNEW(
+    show: $showNew,
+    meshStyle: .liquid
+)
+```
+
+Liquid mesh keeps the same readable full-screen background treatment, but moves the mesh control points slowly over time.
 
 ### Hide Build Number
 
@@ -57,15 +71,17 @@ SwiftNEW(
 ### Heading Style
 
 ```swift
-SwiftNEW(show: $showNew)                                  // "What's New in / Version 6.3 (18)"
-SwiftNEW(show: $showNew, headingStyle: .versionOnly)      // "What's New in / 6.3"
+SwiftNEW(show: $showNew)                                  // "What's New in / Version 6.4 (19)"
+SwiftNEW(show: $showNew, headingStyle: .versionOnly)      // "What's New in / 6.4"
 SwiftNEW(show: $showNew, headingStyle: .appName)          // "What's New in / {App Name}"
+SwiftNEW(show: $showNew, headingPrefix: "Latest in")      // "Latest in / Version 6.4 (19)"
 ```
 
 ### Icon Style
 
 ```swift
-SwiftNEW(show: $showNew)                              // .filled — colored backdrop, white glyph (default)
+SwiftNEW(show: $showNew)                              // .default — white/black-to-clear gradient backdrop
+SwiftNEW(show: $showNew, iconStyle: .filled)          // colored backdrop, white glyph
 SwiftNEW(show: $showNew, iconStyle: .plain)           // no backdrop, glyph uses theme color
 ```
 
@@ -146,13 +162,40 @@ public struct Vmodel: Codable, Hashable, Identifiable, Sendable {
 }
 
 public struct Model: Codable, Hashable, Identifiable, Sendable {
-    public var id: String       // derived from icon + title + subtitle + body
+    public var id: String       // derived from icon/transition target + title + subtitle + body
     public var icon: String     // SF Symbol name
+    public var toIcon: String?  // optional target SF Symbol for replace transition
+    public var icons: [String]? // optional shorthand: [fromIcon, toIcon]
     public var title: String
     public var subtitle: String
     public var body: String
 }
 ```
+
+Icon transitions can be declared either with `icon` + `toIcon`:
+
+```json
+{
+  "icon": "checkmark.shield",
+  "toIcon": "shield.checkered",
+  "title": "Compatibility",
+  "subtitle": "Fixes",
+  "body": "Improved platform support."
+}
+```
+
+Or with `icons`:
+
+```json
+{
+  "icons": ["checkmark.shield", "shield.checkered"],
+  "title": "Compatibility",
+  "subtitle": "Fixes",
+  "body": "Improved platform support."
+}
+```
+
+When `icons` has at least two values, SwiftNEW uses `icons[0]` as the starting icon and `icons[1]` as the replacement icon. Otherwise, it falls back to `icon` and `toIcon`.
 
 ## Auto-Trigger Storage
 

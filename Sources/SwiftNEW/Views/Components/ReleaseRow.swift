@@ -13,22 +13,30 @@ extension SwiftNEW {
         let contentAlignment: HorizontalAlignment = align == .trailing ? .trailing : .leading
         let frameAlignment: Alignment = align == .trailing ? .trailing : .leading
 
-        HStack {
+        HStack(spacing: 12) {
             if align == .leading || align == .center {
-                iconBadge(systemName: new.icon)
-                    .padding(.trailing)
+                iconBadge(systemName: new.displayedIcon, toSystemName: new.iconTransitionTarget)
             }
 
-            VStack(alignment: contentAlignment, spacing: spacing) {
-                Text(new.title).font(.headline).lineLimit(1)
-                Text(new.subtitle).font(.subheadline).foregroundColor(.secondary).lineLimit(1)
-                Text(new.body).font(bodyFont).foregroundColor(.secondary)
+            VStack(alignment: contentAlignment, spacing: spacing ?? 3) {
+                Text(new.title)
+                    .font(.headline.weight(.semibold))
+                    .foregroundStyle(.primary)
+                    .lineLimit(1)
+                Text(new.subtitle)
+                    .font(.subheadline.weight(.medium))
+                    .foregroundStyle(.secondary)
+                    .lineLimit(1)
+                Text(new.body)
+                    .font(bodyFont)
+                    .foregroundStyle(.secondary)
+                    .lineSpacing(2)
+                    .fixedSize(horizontal: false, vertical: true)
             }
             .frame(maxWidth: .infinity, alignment: frameAlignment)
 
             if align == .trailing {
-                iconBadge(systemName: new.icon)
-                    .padding(.leading)
+                iconBadge(systemName: new.displayedIcon, toSystemName: new.iconTransitionTarget)
             }
         }
         .padding(.leading)

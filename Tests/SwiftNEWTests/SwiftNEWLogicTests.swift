@@ -4,6 +4,7 @@
 //
 
 import Testing
+import Foundation
 @testable import SwiftNEW
 
 @Test func versionStateDoesNotPresentWhenValuesMatchAfterTrimming() {
@@ -50,6 +51,36 @@ import Testing
 
     #expect(model.id == "sparkles|Search|Fast filtering|Matches release notes")
     #expect(version.id == "1.0.0|1.0")
+}
+
+@Test func modelsDecodeIconTransitions() throws {
+    let toIconData = """
+    {
+        "icon": "checkmark.shield",
+        "toIcon": "shield.checkered",
+        "title": "Compatibility",
+        "subtitle": "Fixes",
+        "body": "Improved platform support."
+    }
+    """.data(using: .utf8)!
+
+    let toIconModel = try JSONDecoder().decode(Model.self, from: toIconData)
+    #expect(toIconModel.displayedIcon == "checkmark.shield")
+    #expect(toIconModel.iconTransitionTarget == "shield.checkered")
+
+    let iconsData = """
+    {
+        "icons": ["checkmark.shield", "shield.checkered"],
+        "title": "Compatibility",
+        "subtitle": "Fixes",
+        "body": "Improved platform support."
+    }
+    """.data(using: .utf8)!
+
+    let iconsModel = try JSONDecoder().decode(Model.self, from: iconsData)
+    #expect(iconsModel.icon == "checkmark.shield")
+    #expect(iconsModel.displayedIcon == "checkmark.shield")
+    #expect(iconsModel.iconTransitionTarget == "shield.checkered")
 }
 
 @Test func searchMatchesTitleSubtitleAndBodyCaseInsensitively() {

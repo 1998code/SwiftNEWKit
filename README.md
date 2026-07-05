@@ -69,10 +69,14 @@ That's it — SwiftNEW auto-triggers when the app version changes.
 
 | Feature | Since | Description |
 |---------|:-----:|-------------|
+| 🔁 Animated Icons | 6.4.0 | `toIcon` / `icons` support with native SF Symbol replacement transitions |
+| 🎯 Default Icon Style | 6.4.0 | Rounded glass icon badges with white/black-to-clear backdrops and gradient glyphs |
+| 🌊 Liquid Mesh | 6.4.0 | `meshStyle`: `.still` or `.liquid` animated mesh backgrounds |
+| 🏷️ Heading Prefix | 6.4.0 | Customize the heading title line with `headingPrefix` |
+| 🧩 Layout Polish | 6.4.0 | Larger icons, tighter row spacing, and rounder primary buttons |
 | 🔍 In-Sheet Search | 6.3.0 | Filter the current release notes by title / subtitle / body |
 | 🛡️ Resilient Loading | 6.3.0 | Handles loading failures with an inline retry state instead of an endless spinner |
 | 🏷️ Customizable Heading | 6.3.0 | `headingStyle`: `.version`, `.versionOnly`, or `.appName` |
-| 🎯 Icon Style | 6.3.0 | `iconStyle`: `.filled` (colored backdrop) or `.plain` (glyph only) |
 | 🔢 Optional Build Number | 6.3.0 | Hide build number via `showBuild: false` |
 | 🎨 Floating Particles Effect | 6.3.0 | New `.particles` special effect (TimelineView + Canvas) |
 | 🎯 Flexible Presentations | 6.2.0 | `.sheet`, `.fullScreenCover`, `.embed` |

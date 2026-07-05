@@ -1,5 +1,62 @@
 [
     {
+        "version": "6.4",
+        "subVersion": "6.4.0",
+        "new": [
+            {
+                "icons": [
+                    "sparkles",
+                    "wand.and.stars"
+                ],
+                "title": "Animated",
+                "subtitle": "Icons",
+                "body": "Loop between two SF Symbols."
+            },
+            {
+                "icon": "arrow.left.arrow.right",
+                "title": "Icon",
+                "subtitle": "Schema",
+                "body": "Use icon, toIcon, or icons."
+            },
+            {
+                "icon": "square.dashed.inset.filled",
+                "title": "Default",
+                "subtitle": "Icon Style",
+                "body": "New rounded glass icon badge."
+            },
+            {
+                "icon": "paintbrush.pointed",
+                "title": "Gradient",
+                "subtitle": "Glyphs",
+                "body": "Icon color now uses a gradient."
+            },
+            {
+                "icon": "circle.grid.cross",
+                "title": "Refined",
+                "subtitle": "Layout",
+                "body": "Bigger icons and rounder buttons."
+            },
+            {
+                "icon": "rectangle.bottomthird.inset.filled",
+                "title": "Bottom",
+                "subtitle": "Controls",
+                "body": "Continue sits closer to the edge."
+            },
+            {
+                "icon": "water.waves",
+                "title": "Liquid",
+                "subtitle": "Mesh",
+                "body": "Mesh backgrounds can now flow."
+            },
+            {
+                "icon": "textformat.size",
+                "title": "Custom",
+                "subtitle": "Heading Prefix",
+                "body": "Customize the heading title line."
+            }
+        ]
+    },
+    {
         "version": "6.3",
         "subVersion": "6.3.1",
         "new": [

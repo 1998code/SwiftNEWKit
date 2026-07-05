@@ -1,537 +1,146 @@
 {
-    "zh-Hans": [
-        {
-            "version": "6.2",
-            "subVersion": "6.2.0",
-            "new": [
-                {
-                    "icon": "rectangle.split.3x3",
-                    "title": "呈现方式",
-                    "subtitle": "选项",
-                    "body": "支持表单、全屏覆盖和嵌入模式。"
-                },
-                {
-                    "icon": "paintpalette",
-                    "title": "自适应",
-                    "subtitle": "文本颜色",
-                    "body": "按钮和历史记录文本颜色会自动适应背景亮度。"
-                },
-                {
-                    "icon": "wand.and.stars",
-                    "title": "简化的",
-                    "subtitle": "构造器",
-                    "body": "直接赋值不再需要 .constant 包装绑定。"
-                },
-                {
-                    "icon": "macpro.gen3.server",
-                    "title": "无服务器",
-                    "subtitle": "设计",
-                    "body": "免费开源! ❤️‍🔥"
-                },
-                {
-                    "icon": "arrow.triangle.pull",
-                    "title": "贡献",
-                    "subtitle": "一起",
-                    "body": "提出请求，让每个人都变得更好! 🎉"
-                }
-            ]
-        },
-        {
-            "version": "6.1",
-            "subVersion": "6.1.0",
-            "new": [
-                {
-                    "icon": "hammer",
-                    "title": "项目",
-                    "subtitle": "重构",
-                    "body": "分离文件和文件夹以便更好地维护。"
-                }
-            ]
-        },
-        {
-            "version": "6.0",
-            "subVersion": "6.0.0",
-            "new": [
-                {
-                    "icon": "wineglass",
-                    "title": "玻璃",
-                    "subtitle": "效果",
-                    "body": "现已推出!"
-                }
-            ]
-        },
-        {
-            "version": "5.5",
-            "subVersion": "5.5.0",
-            "new": [
-                {
-                    "icon": "snowflake",
-                    "title": "飘雪",
-                    "subtitle": "效果",
-                    "body": "更多特别效果即将推出!"
-                }
-            ]
-        },
-        {
-            "version": "5.4",
-            "subVersion": "5.4.0",
-            "new": [
-                {
-                    "icon": "pencil.tip",
-                    "title": "匹配",
-                    "subtitle": "网格背景颜色",
-                    "body": "标准化设计。"
-                }
-            ]
-        },
-        {
-            "version": "5.3",
-            "subVersion": "5.3.0",
-            "new": [
-                {
-                    "icon": "pencil.tip",
-                    "title": "新增",
-                    "subtitle": "网格背景",
-                    "body": "更好的设计。"
-                }
-            ]
-        },
-        {
-            "version": "5.2",
-            "subVersion": "5.2.0",
-            "new": [
-                {
-                    "icon": "hammer",
-                    "title": "预设",
-                    "subtitle": "选项",
-                    "body": "减少重复程式码。"
-                }
-            ]
-        },
-        {
-            "version": "5.1",
-            "subVersion": "5.1.0",
-            "new": [
-                {
-                    "icon": "character.book.closed",
-                    "title": "更新",
-                    "subtitle": "示范内容",
-                    "body": "针对 5.0 版本。"
-                }
-            ]
-        },
-        {
-            "version": "5.0",
-            "subVersion": "5.0.0",
-            "new": [
-                {
-                    "icon": "character.book.closed",
-                    "title": "支援",
-                    "subtitle": "翻译",
-                    "body": "由 Apple String Catalog 技术提供。"
-                },
-                {
-                    "icon": "pip.remove",
-                    "title": "终结",
-                    "subtitle": "支援",
-                    "body": "iOS14, watchOS7, and macOS11。"
-                }
-            ]
-        },
-        {
-            "version": "4.2",
-            "subVersion": "4.2.0",
-            "new": [
-                {
-                    "icon": "hammer",
-                    "title": "小型",
-                    "subtitle": "更新",
-                    "body": "一些错误修正和UI更新"
-                }
-            ]
-        },
-        {
-            "version": "4.1",
-            "subVersion": "4.1.0",
-            "new": [
-                {
-                    "icon": "eye",
-                    "title": "支持 Vision Pro",
-                    "subtitle": "和 visionOS",
-                    "body": "Drops Framework 由于冲突而被临时禁用。"
-                }
-            ]
-        },
-        {
-            "version": "4.0",
-            "subVersion": "4.0.0",
-            "new": [
-                {
-                    "icon": "number",
-                    "title": "更好兼容性",
-                    "subtitle": "在版本和构建中",
-                    "body": "您现在可以使用 x.y.z 或 x.y。"
-                }
-            ]
-        },
-        {
-            "version": "3.9",
-            "new": [
-                {
-                    "icon": "app.fill",
-                    "title": "应用图标",
-                    "subtitle": "支持",
-                    "body": "在 iOS 上。"
-                },
-                {
-                    "icon": "app",
-                    "title": "演示",
-                    "subtitle": "现在好多了",
-                    "body": "遵循包版本。"
-                }
-            ]
-        },
-        {
-            "version": "1.5",
-            "new": [
-                {
-                    "icon": "hammer",
-                    "title": "Layout",
-                    "subtitle": "Fixed",
-                    "body": "on iOS Landscape."
-                }
-            ]
-        },
-        {
-            "version": "1.4",
-            "new": [
-                {
-                    "icon": "hammer",
-                    "title": "Crash",
-                    "subtitle": "Fixed",
-                    "body": "on macOS."
-                }
-            ]
-        },
-        {
-            "version": "1.3",
-            "new": [
-                {
-                    "icon": "bell.badge",
-                    "title": "Remote Drop",
-                    "subtitle": "Supported",
-                    "body": "Instead of full page sheet, you can use a small drop too!"
-                }
-            ]
-        },
-        {
-            "version": "1.2",
-            "new": [
-                {
-                    "icon": "square.and.arrow.down.fill",
-                    "title": "Remote File",
-                    "subtitle": "Supported",
-                    "body": "Direct load via remote storage. Easy!"
-                }
-            ]
-        },
-        {
-            "version": "1.1",
-            "new": [
-                {
-                    "icon": "hammer.fill",
-                    "title": "Bug fixes",
-                    "subtitle": "Broken UI",
-                    "body": "Available for iOS 16, iPadOS 16, macOS 13"
-                },
-                {
-                    "icon": "square.and.arrow.down.fill",
-                    "title": "Local File",
-                    "subtitle": "Supported",
-                    "body": "Direct load via local storage. Super fast!"
-                },
-                {
-                    "icon": "macpro.gen3.server",
-                    "title": "Serverless",
-                    "subtitle": "Design",
-                    "body": "Free and open source! Created by Ming with ❤️‍🔥"
-                },
-                {
-                    "icon": "arrow.triangle.pull",
-                    "title": "Contribute",
-                    "subtitle": "Together",
-                    "body": "Pull requests and make it better for everyone!"
-                }
-            ]
-        }
-    ],
-    "ja": [
-        {
-            "version": "6.2",
-            "subVersion": "6.2.0",
-            "new": [
-                {
-                    "icon": "rectangle.split.3x3",
-                    "title": "プレゼンテーション",
-                    "subtitle": "オプション",
-                    "body": "シート、フルスクリーンカバー、及び埋め込みモードの対応。"
-                },
-                {
-                    "icon": "paintpalette",
-                    "title": "適応型",
-                    "subtitle": "テキスト色",
-                    "body": "ボタンと履歴のテキスト色が背景の明るさに応じて自動的に切り替わります。"
-                },
-                {
-                    "icon": "wand.and.stars",
-                    "title": "簡易化された",
-                    "subtitle": "イニシャライザ",
-                    "body": "直接の値を指定する際に .constant ラッパーが不要になりました。"
-                },
-                {
-                    "icon": "macpro.gen3.server",
-                    "title": "サーバーレス",
-                    "subtitle": "デザイン",
-                    "body": "無料でオープンソース！ ❤️‍🔥"
-                },
-                {
-                    "icon": "arrow.triangle.pull",
-                    "title": "貢献",
-                    "subtitle": "一緒に",
-                    "body": "プルリクエストを送って、みんなのためにより良くしましょう！ 🎉"
-                }
-            ]
-        },
-        {
-            "version": "6.1",
-            "subVersion": "6.1.0",
-            "new": [
-                {
-                    "icon": "hammer",
-                    "title": "プロジェクト",
-                    "subtitle": "リストラクチャ",
-                    "body": "より良いメンテナンスのためのファイルとフォルダの分離。"
-                }
-            ]
-        },
-        {
-            "version": "6.0",
-            "subVersion": "6.0.0",
-            "new": [
-                {
-                    "icon": "wineglass",
-                    "title": "ガラス",
-                    "subtitle": "エフェクト",
-                    "body": "利用可能になりました！"
-                }
-            ]
-        },
-        {
-            "version": "5.5",
-            "subVersion": "5.5.0",
-            "new": [
-                {
-                    "icon": "snowflake",
-                    "title": "雪",
-                    "subtitle": "エフェクト",
-                    "body": "さらに特別なアニメーションが近日公開予定！"
-                }
-            ]
-        },
-        {
-            "version": "5.4",
-            "subVersion": "5.4.0",
-            "new": [
-                {
-                    "icon": "pencil.tip",
-                    "title": "メッシュ背景色",
-                    "subtitle": "マッチング",
-                    "body": "標準化されたデザイン。"
-                }
-            ]
-        },
-        {
-            "version": "5.3",
-            "subVersion": "5.3.0",
-            "new": [
-                {
-                    "icon": "pencil.tip",
-                    "title": "追加",
-                    "subtitle": "メッシュ背景",
-                    "body": "より良いスタイルとデザイン。"
-                }
-            ]
-        },
-        {
-            "version": "5.2",
-            "subVersion": "5.2.0",
-            "new": [
-                {
-                    "icon": "hammer",
-                    "title": "デフォルト",
-                    "subtitle": "オプション",
-                    "body": "より少ないコードのための新しいオプショナルバインディング。"
-                }
-            ]
-        },
-        {
-            "version": "5.1",
-            "subVersion": "5.1.0",
-            "new": [
-                {
-                    "icon": "character.book.closed",
-                    "title": "更新",
-                    "subtitle": "デモ",
-                    "body": "5.0バージョン用。"
-                }
-            ]
-        },
-        {
-            "version": "5.0",
-            "subVersion": "5.0.0",
-            "new": [
-                {
-                    "icon": "character.book.closed",
-                    "title": "サポート",
-                    "subtitle": "ローカライゼーション",
-                    "body": "Appleの文字列カタログを活用。"
-                },
-                {
-                    "icon": "pip.remove",
-                    "title": "サポート",
-                    "subtitle": "終了",
-                    "body": "iOS14、watchOS7、およびmacOS11のサポートを終了。"
-                }
-            ]
-        },
-        {
-            "version": "4.2",
-            "subVersion": "4.2.0",
-            "new": [
-                {
-                    "icon": "hammer",
-                    "title": "マイナー",
-                    "subtitle": "アップデート",
-                    "body": "軽微なバグ修正とUI改善。"
-                }
-            ]
-        },
-        {
-            "version": "4.1",
-            "subVersion": "4.1.0",
-            "new": [
-                {
-                    "icon": "eye",
-                    "title": "Vision Proをサポート",
-                    "subtitle": "& visionOS",
-                    "body": "Dropsフレームワークは競合のため一時的に無効化されています。"
-                }
-            ]
-        },
-        {
-            "version": "4.0",
-            "subVersion": "4.0.0",
-            "new": [
-                {
-                    "icon": "number",
-                    "title": "より良い互換性",
-                    "subtitle": "バージョンとビルド",
-                    "body": "x.y.zまたはx.yの形式が使用可能になりました。"
-                }
-            ]
-        },
-        {
-            "version": "3.9",
-            "new": [
-                {
-                    "icon": "app.fill",
-                    "title": "アプリアイコン",
-                    "subtitle": "対応",
-                    "body": "iOSで。"
-                },
-                {
-                    "icon": "app",
-                    "title": "デモ",
-                    "subtitle": "改善",
-                    "body": "パッケージのバージョンに従っています。"
-                }
-            ]
-        },
-        {
-            "version": "1.5",
-            "new": [
-                {
-                    "icon": "hammer",
-                    "title": "レイアウト",
-                    "subtitle": "修正",
-                    "body": "iOS横向き表示で。"
-                }
-            ]
-        },
-        {
-            "version": "1.4",
-            "new": [
-                {
-                    "icon": "hammer",
-                    "title": "クラッシュ",
-                    "subtitle": "修正",
-                    "body": "macOSで。"
-                }
-            ]
-        },
-        {
-            "version": "1.3",
-            "new": [
-                {
-                    "icon": "bell.badge",
-                    "title": "リモートドロップ",
-                    "subtitle": "対応",
-                    "body": "全画面シートの代わりに、小さなドロップも使用できるようになりました！"
-                }
-            ]
-        },
-        {
-            "version": "1.2",
-            "new": [
-                {
-                    "icon": "square.and.arrow.down.fill",
-                    "title": "リモートファイル",
-                    "subtitle": "対応",
-                    "body": "リモートストレージから直接ロード。簡単です！"
-                }
-            ]
-        },
-        {
-            "version": "1.1",
-            "new": [
-                {
-                    "icon": "hammer.fill",
-                    "title": "バグ修正",
-                    "subtitle": "UI不具合",
-                    "body": "iOS 16、iPadOS 16、macOS 13に対応"
-                },
-                {
-                    "icon": "square.and.arrow.down.fill",
-                    "title": "ローカルファイル",
-                    "subtitle": "対応",
-                    "body": "ローカルストレージから直接ロード。超高速！"
-                },
-                {
-                    "icon": "macpro.gen3.server",
-                    "title": "サーバーレス",
-                    "subtitle": "デザイン",
-                    "body": "無料でオープンソース！Mingが❤️‍🔥を込めて作成"
-                },
-                {
-                    "icon": "arrow.triangle.pull",
-                    "title": "貢献",
-                    "subtitle": "一緒に",
-                    "body": "プルリクエストを送って、みんなのためにより良くしましょう！"
-                }
-            ]
-        }
-    ],
     "en": [
+        {
+            "version": "6.4",
+            "subVersion": "6.4.0",
+            "new": [
+                {
+                    "icons": [
+                        "sparkles",
+                        "wand.and.stars"
+                    ],
+                    "title": "Animated",
+                    "subtitle": "Icons",
+                    "body": "Loop between two SF Symbols."
+                },
+                {
+                    "icon": "arrow.left.arrow.right",
+                    "title": "Icon",
+                    "subtitle": "Schema",
+                    "body": "Use icon, toIcon, or icons."
+                },
+                {
+                    "icon": "square.dashed.inset.filled",
+                    "title": "Default",
+                    "subtitle": "Icon Style",
+                    "body": "New rounded glass icon badge."
+                },
+                {
+                    "icon": "paintbrush.pointed",
+                    "title": "Gradient",
+                    "subtitle": "Glyphs",
+                    "body": "Icon color now uses a gradient."
+                },
+                {
+                    "icon": "circle.grid.cross",
+                    "title": "Refined",
+                    "subtitle": "Layout",
+                    "body": "Bigger icons and rounder buttons."
+                },
+                {
+                    "icon": "rectangle.bottomthird.inset.filled",
+                    "title": "Bottom",
+                    "subtitle": "Controls",
+                    "body": "Continue sits closer to the edge."
+                },
+                {
+                    "icon": "water.waves",
+                    "title": "Liquid",
+                    "subtitle": "Mesh",
+                    "body": "Mesh backgrounds can now flow."
+                },
+                {
+                    "icon": "textformat.size",
+                    "title": "Custom",
+                    "subtitle": "Heading Prefix",
+                    "body": "Customize the heading title line."
+                }
+            ]
+        },
+        {
+            "version": "6.3",
+            "subVersion": "6.3.1",
+            "new": [
+                {
+                    "icon": "checkmark.shield",
+                    "title": "Compatibility",
+                    "subtitle": "Fixes",
+                    "body": "Improved platform support across iOS, macOS, tvOS, and visionOS."
+                },
+                {
+                    "icon": "testtube.2",
+                    "title": "Swift",
+                    "subtitle": "Testing",
+                    "body": "Added native Swift Testing coverage for core release-note logic."
+                },
+                {
+                    "icon": "chart.bar.doc.horizontal",
+                    "title": "Codecov",
+                    "subtitle": "Reports",
+                    "body": "GitHub Actions now generates and uploads coverage reports."
+                },
+                {
+                    "icon": "sparkles",
+                    "title": "Floating",
+                    "subtitle": "Particles",
+                    "body": "New special effect option with smooth animation."
+                },
+                {
+                    "icon": "number",
+                    "title": "Optional",
+                    "subtitle": "Build Number",
+                    "body": "Configurable build number display alongside the version."
+                },
+                {
+                    "icon": "snowflake",
+                    "title": "Optimized",
+                    "subtitle": "Snowfall",
+                    "body": "Reimplemented with Canvas and TimelineView for smoother performance."
+                },
+                {
+                    "icon": "bolt",
+                    "title": "Modern",
+                    "subtitle": "Networking",
+                    "body": "Powered by Swift Concurrency and Sendable models."
+                },
+                {
+                    "icon": "lock.shield",
+                    "title": "Sendable",
+                    "subtitle": "Models",
+                    "body": "Thread-safe data models for Swift Concurrency."
+                },
+                {
+                    "icon": "speedometer",
+                    "title": "Faster",
+                    "subtitle": "Mesh BG",
+                    "body": "MeshView uses drawingGroup for smoother rendering."
+                },
+                {
+                    "icon": "tray.and.arrow.down",
+                    "title": "Local Data",
+                    "subtitle": "Loading",
+                    "body": "Optimized loading from bundled JSON files."
+                },
+                {
+                    "icon": "text.alignleft",
+                    "title": "Full",
+                    "subtitle": "Body Text",
+                    "body": "Removed line limits so longer descriptions render fully."
+                },
+                {
+                    "icon": "tag",
+                    "title": "Version",
+                    "subtitle": "Badges",
+                    "body": "Refined dimensions and padding in the History view."
+                },
+                {
+                    "icon": "doc.text",
+                    "title": "Reorganized",
+                    "subtitle": "Docs",
+                    "body": "Split into CONFIGURATION, CONTRIBUTING, and PLATFORM guides."
+                }
+            ]
+        },
         {
             "version": "6.2",
             "subVersion": "6.2.0",
@@ -797,7 +406,555 @@
             ]
         }
     ],
+    "ja": [
+        {
+            "version": "6.4",
+            "subVersion": "6.4.0",
+            "new": [
+                {
+                    "icons": [
+                        "sparkles",
+                        "wand.and.stars"
+                    ],
+                    "title": "Animated",
+                    "subtitle": "Icons",
+                    "body": "2つのSF Symbols間でループ。"
+                },
+                {
+                    "icon": "arrow.left.arrow.right",
+                    "title": "Icon",
+                    "subtitle": "Schema",
+                    "body": "icon、toIcon、iconsに対応。"
+                },
+                {
+                    "icon": "square.dashed.inset.filled",
+                    "title": "Default",
+                    "subtitle": "Icon Style",
+                    "body": "丸いガラス風アイコンバッジ。"
+                },
+                {
+                    "icon": "paintbrush.pointed",
+                    "title": "Gradient",
+                    "subtitle": "Glyphs",
+                    "body": "アイコン色にグラデーション。"
+                },
+                {
+                    "icon": "circle.grid.cross",
+                    "title": "Refined",
+                    "subtitle": "Layout",
+                    "body": "大きいアイコンと丸いボタン。"
+                },
+                {
+                    "icon": "rectangle.bottomthird.inset.filled",
+                    "title": "Bottom",
+                    "subtitle": "Controls",
+                    "body": "Continueを下端へ近づけました。"
+                },
+                {
+                    "icon": "water.waves",
+                    "title": "Liquid",
+                    "subtitle": "Mesh",
+                    "body": "メッシュ背景が流動表示に対応。"
+                },
+                {
+                    "icon": "textformat.size",
+                    "title": "Custom",
+                    "subtitle": "Heading Prefix",
+                    "body": "見出しの先頭行を変更可能。"
+                }
+            ]
+        },
+        {
+            "version": "6.3",
+            "subVersion": "6.3.1",
+            "new": [
+                {
+                    "icon": "checkmark.shield",
+                    "title": "互換性",
+                    "subtitle": "修正",
+                    "body": "iOS、macOS、tvOS、visionOS のプラットフォーム対応を改善。"
+                },
+                {
+                    "icon": "testtube.2",
+                    "title": "Swift",
+                    "subtitle": "Testing",
+                    "body": "コアのリリースノートロジックに Swift Testing のカバレッジを追加。"
+                },
+                {
+                    "icon": "chart.bar.doc.horizontal",
+                    "title": "Codecov",
+                    "subtitle": "レポート",
+                    "body": "GitHub Actions がカバレッジレポートを生成してアップロードします。"
+                },
+                {
+                    "icon": "sparkles",
+                    "title": "フローティング",
+                    "subtitle": "パーティクル",
+                    "body": "新しい特殊エフェクト。滑らかなアニメーション。"
+                },
+                {
+                    "icon": "number",
+                    "title": "オプションの",
+                    "subtitle": "ビルド番号",
+                    "body": "バージョンと並べてビルド番号を表示できます。"
+                },
+                {
+                    "icon": "snowflake",
+                    "title": "最適化された",
+                    "subtitle": "降雪エフェクト",
+                    "body": "Canvas と TimelineView で再実装し、より滑らかに。"
+                },
+                {
+                    "icon": "bolt",
+                    "title": "モダンな",
+                    "subtitle": "ネットワーキング",
+                    "body": "Swift Concurrency と Sendable モデルを採用。"
+                },
+                {
+                    "icon": "lock.shield",
+                    "title": "Sendable",
+                    "subtitle": "モデル",
+                    "body": "Swift Concurrency 対応のスレッドセーフなモデル。"
+                },
+                {
+                    "icon": "speedometer",
+                    "title": "高速化",
+                    "subtitle": "メッシュ背景",
+                    "body": "MeshView を drawingGroup で最適化し描画がより滑らかに。"
+                },
+                {
+                    "icon": "tray.and.arrow.down",
+                    "title": "ローカルデータ",
+                    "subtitle": "読み込み",
+                    "body": "バンドル JSON の読み込みを最適化。"
+                },
+                {
+                    "icon": "text.alignleft",
+                    "title": "完全な",
+                    "subtitle": "本文",
+                    "body": "行数制限を撤廃し、長い説明文も全文表示。"
+                },
+                {
+                    "icon": "tag",
+                    "title": "バージョン",
+                    "subtitle": "バッジ",
+                    "body": "履歴ビューのバージョンバッジのサイズと余白を調整。"
+                },
+                {
+                    "icon": "doc.text",
+                    "title": "ドキュメント",
+                    "subtitle": "再構成",
+                    "body": "CONFIGURATION・CONTRIBUTING・PLATFORM に分割。"
+                }
+            ]
+        },
+        {
+            "version": "6.2",
+            "subVersion": "6.2.0",
+            "new": [
+                {
+                    "icon": "rectangle.split.3x3",
+                    "title": "プレゼンテーション",
+                    "subtitle": "オプション",
+                    "body": "シート、フルスクリーンカバー、及び埋め込みモードの対応。"
+                },
+                {
+                    "icon": "paintpalette",
+                    "title": "適応型",
+                    "subtitle": "テキスト色",
+                    "body": "ボタンと履歴のテキスト色が背景の明るさに応じて自動的に切り替わります。"
+                },
+                {
+                    "icon": "wand.and.stars",
+                    "title": "簡易化された",
+                    "subtitle": "イニシャライザ",
+                    "body": "直接の値を指定する際に .constant ラッパーが不要になりました。"
+                },
+                {
+                    "icon": "macpro.gen3.server",
+                    "title": "サーバーレス",
+                    "subtitle": "デザイン",
+                    "body": "無料でオープンソース！ ❤️‍🔥"
+                },
+                {
+                    "icon": "arrow.triangle.pull",
+                    "title": "貢献",
+                    "subtitle": "一緒に",
+                    "body": "プルリクエストを送って、みんなのためにより良くしましょう！ 🎉"
+                }
+            ]
+        },
+        {
+            "version": "6.1",
+            "subVersion": "6.1.0",
+            "new": [
+                {
+                    "icon": "hammer",
+                    "title": "プロジェクト",
+                    "subtitle": "リストラクチャ",
+                    "body": "より良いメンテナンスのためのファイルとフォルダの分離。"
+                }
+            ]
+        },
+        {
+            "version": "6.0",
+            "subVersion": "6.0.0",
+            "new": [
+                {
+                    "icon": "wineglass",
+                    "title": "ガラス",
+                    "subtitle": "エフェクト",
+                    "body": "利用可能になりました！"
+                }
+            ]
+        },
+        {
+            "version": "5.5",
+            "subVersion": "5.5.0",
+            "new": [
+                {
+                    "icon": "snowflake",
+                    "title": "雪",
+                    "subtitle": "エフェクト",
+                    "body": "さらに特別なアニメーションが近日公開予定！"
+                }
+            ]
+        },
+        {
+            "version": "5.4",
+            "subVersion": "5.4.0",
+            "new": [
+                {
+                    "icon": "pencil.tip",
+                    "title": "メッシュ背景色",
+                    "subtitle": "マッチング",
+                    "body": "標準化されたデザイン。"
+                }
+            ]
+        },
+        {
+            "version": "5.3",
+            "subVersion": "5.3.0",
+            "new": [
+                {
+                    "icon": "pencil.tip",
+                    "title": "追加",
+                    "subtitle": "メッシュ背景",
+                    "body": "より良いスタイルとデザイン。"
+                }
+            ]
+        },
+        {
+            "version": "5.2",
+            "subVersion": "5.2.0",
+            "new": [
+                {
+                    "icon": "hammer",
+                    "title": "デフォルト",
+                    "subtitle": "オプション",
+                    "body": "より少ないコードのための新しいオプショナルバインディング。"
+                }
+            ]
+        },
+        {
+            "version": "5.1",
+            "subVersion": "5.1.0",
+            "new": [
+                {
+                    "icon": "character.book.closed",
+                    "title": "更新",
+                    "subtitle": "デモ",
+                    "body": "5.0バージョン用。"
+                }
+            ]
+        },
+        {
+            "version": "5.0",
+            "subVersion": "5.0.0",
+            "new": [
+                {
+                    "icon": "character.book.closed",
+                    "title": "サポート",
+                    "subtitle": "ローカライゼーション",
+                    "body": "Appleの文字列カタログを活用。"
+                },
+                {
+                    "icon": "pip.remove",
+                    "title": "サポート",
+                    "subtitle": "終了",
+                    "body": "iOS14、watchOS7、およびmacOS11のサポートを終了。"
+                }
+            ]
+        },
+        {
+            "version": "4.2",
+            "subVersion": "4.2.0",
+            "new": [
+                {
+                    "icon": "hammer",
+                    "title": "マイナー",
+                    "subtitle": "アップデート",
+                    "body": "軽微なバグ修正とUI改善。"
+                }
+            ]
+        },
+        {
+            "version": "4.1",
+            "subVersion": "4.1.0",
+            "new": [
+                {
+                    "icon": "eye",
+                    "title": "Vision Proをサポート",
+                    "subtitle": "& visionOS",
+                    "body": "Dropsフレームワークは競合のため一時的に無効化されています。"
+                }
+            ]
+        },
+        {
+            "version": "4.0",
+            "subVersion": "4.0.0",
+            "new": [
+                {
+                    "icon": "number",
+                    "title": "より良い互換性",
+                    "subtitle": "バージョンとビルド",
+                    "body": "x.y.zまたはx.yの形式が使用可能になりました。"
+                }
+            ]
+        },
+        {
+            "version": "3.9",
+            "new": [
+                {
+                    "icon": "app.fill",
+                    "title": "アプリアイコン",
+                    "subtitle": "対応",
+                    "body": "iOSで。"
+                },
+                {
+                    "icon": "app",
+                    "title": "デモ",
+                    "subtitle": "改善",
+                    "body": "パッケージのバージョンに従っています。"
+                }
+            ]
+        },
+        {
+            "version": "1.5",
+            "new": [
+                {
+                    "icon": "hammer",
+                    "title": "レイアウト",
+                    "subtitle": "修正",
+                    "body": "iOS横向き表示で。"
+                }
+            ]
+        },
+        {
+            "version": "1.4",
+            "new": [
+                {
+                    "icon": "hammer",
+                    "title": "クラッシュ",
+                    "subtitle": "修正",
+                    "body": "macOSで。"
+                }
+            ]
+        },
+        {
+            "version": "1.3",
+            "new": [
+                {
+                    "icon": "bell.badge",
+                    "title": "リモートドロップ",
+                    "subtitle": "対応",
+                    "body": "全画面シートの代わりに、小さなドロップも使用できるようになりました！"
+                }
+            ]
+        },
+        {
+            "version": "1.2",
+            "new": [
+                {
+                    "icon": "square.and.arrow.down.fill",
+                    "title": "リモートファイル",
+                    "subtitle": "対応",
+                    "body": "リモートストレージから直接ロード。簡単です！"
+                }
+            ]
+        },
+        {
+            "version": "1.1",
+            "new": [
+                {
+                    "icon": "hammer.fill",
+                    "title": "バグ修正",
+                    "subtitle": "UI不具合",
+                    "body": "iOS 16、iPadOS 16、macOS 13に対応"
+                },
+                {
+                    "icon": "square.and.arrow.down.fill",
+                    "title": "ローカルファイル",
+                    "subtitle": "対応",
+                    "body": "ローカルストレージから直接ロード。超高速！"
+                },
+                {
+                    "icon": "macpro.gen3.server",
+                    "title": "サーバーレス",
+                    "subtitle": "デザイン",
+                    "body": "無料でオープンソース！Mingが❤️‍🔥を込めて作成"
+                },
+                {
+                    "icon": "arrow.triangle.pull",
+                    "title": "貢献",
+                    "subtitle": "一緒に",
+                    "body": "プルリクエストを送って、みんなのためにより良くしましょう！"
+                }
+            ]
+        }
+    ],
     "ko": [
+        {
+            "version": "6.4",
+            "subVersion": "6.4.0",
+            "new": [
+                {
+                    "icons": [
+                        "sparkles",
+                        "wand.and.stars"
+                    ],
+                    "title": "Animated",
+                    "subtitle": "Icons",
+                    "body": "두 SF Symbols를 반복 전환합니다."
+                },
+                {
+                    "icon": "arrow.left.arrow.right",
+                    "title": "Icon",
+                    "subtitle": "Schema",
+                    "body": "icon, toIcon, icons를 지원합니다."
+                },
+                {
+                    "icon": "square.dashed.inset.filled",
+                    "title": "Default",
+                    "subtitle": "Icon Style",
+                    "body": "둥근 글래스 아이콘 배지."
+                },
+                {
+                    "icon": "paintbrush.pointed",
+                    "title": "Gradient",
+                    "subtitle": "Glyphs",
+                    "body": "아이콘 색상에 그라디언트 적용."
+                },
+                {
+                    "icon": "circle.grid.cross",
+                    "title": "Refined",
+                    "subtitle": "Layout",
+                    "body": "더 큰 아이콘과 둥근 버튼."
+                },
+                {
+                    "icon": "rectangle.bottomthird.inset.filled",
+                    "title": "Bottom",
+                    "subtitle": "Controls",
+                    "body": "Continue가 하단에 더 가까워졌습니다."
+                },
+                {
+                    "icon": "water.waves",
+                    "title": "Liquid",
+                    "subtitle": "Mesh",
+                    "body": "메시 배경이 흐르듯 움직입니다."
+                },
+                {
+                    "icon": "textformat.size",
+                    "title": "Custom",
+                    "subtitle": "Heading Prefix",
+                    "body": "헤딩 첫 줄을 변경할 수 있습니다."
+                }
+            ]
+        },
+        {
+            "version": "6.3",
+            "subVersion": "6.3.1",
+            "new": [
+                {
+                    "icon": "checkmark.shield",
+                    "title": "호환성",
+                    "subtitle": "수정",
+                    "body": "iOS, macOS, tvOS, visionOS 플랫폼 지원을 개선했습니다."
+                },
+                {
+                    "icon": "testtube.2",
+                    "title": "Swift",
+                    "subtitle": "Testing",
+                    "body": "핵심 릴리스 노트 로직에 네이티브 Swift Testing 커버리지를 추가했습니다."
+                },
+                {
+                    "icon": "chart.bar.doc.horizontal",
+                    "title": "Codecov",
+                    "subtitle": "리포트",
+                    "body": "GitHub Actions가 이제 커버리지 리포트를 생성하고 업로드합니다."
+                },
+                {
+                    "icon": "sparkles",
+                    "title": "플로팅",
+                    "subtitle": "파티클",
+                    "body": "부드러운 애니메이션의 새로운 특수 효과."
+                },
+                {
+                    "icon": "number",
+                    "title": "선택형",
+                    "subtitle": "빌드 번호",
+                    "body": "버전과 함께 빌드 번호를 표시할 수 있습니다."
+                },
+                {
+                    "icon": "snowflake",
+                    "title": "최적화된",
+                    "subtitle": "눈 효과",
+                    "body": "Canvas와 TimelineView로 재구현해 더 부드러워졌습니다."
+                },
+                {
+                    "icon": "bolt",
+                    "title": "현대적인",
+                    "subtitle": "네트워킹",
+                    "body": "Swift Concurrency 및 Sendable 모델 기반."
+                },
+                {
+                    "icon": "lock.shield",
+                    "title": "Sendable",
+                    "subtitle": "모델",
+                    "body": "Swift Concurrency를 위한 스레드 안전 모델."
+                },
+                {
+                    "icon": "speedometer",
+                    "title": "더 빠른",
+                    "subtitle": "메시 배경",
+                    "body": "drawingGroup으로 MeshView를 최적화하여 더 부드러운 렌더링."
+                },
+                {
+                    "icon": "tray.and.arrow.down",
+                    "title": "로컬 데이터",
+                    "subtitle": "로딩",
+                    "body": "번들된 JSON 파일 로딩 최적화."
+                },
+                {
+                    "icon": "text.alignleft",
+                    "title": "전체",
+                    "subtitle": "본문",
+                    "body": "줄 수 제한을 없애 긴 설명도 끝까지 표시."
+                },
+                {
+                    "icon": "tag",
+                    "title": "버전",
+                    "subtitle": "배지",
+                    "body": "히스토리 뷰의 버전 배지 크기와 여백 조정."
+                },
+                {
+                    "icon": "doc.text",
+                    "title": "재정리",
+                    "subtitle": "문서",
+                    "body": "CONFIGURATION, CONTRIBUTING, PLATFORM 으로 분리."
+                }
+            ]
+        },
         {
             "version": "6.2",
             "subVersion": "6.2.0",
@@ -1063,7 +1220,555 @@
             ]
         }
     ],
+    "zh-Hans": [
+        {
+            "version": "6.4",
+            "subVersion": "6.4.0",
+            "new": [
+                {
+                    "icons": [
+                        "sparkles",
+                        "wand.and.stars"
+                    ],
+                    "title": "动画",
+                    "subtitle": "图标",
+                    "body": "在两个 SF Symbol 间循环切换。"
+                },
+                {
+                    "icon": "arrow.left.arrow.right",
+                    "title": "图标",
+                    "subtitle": "数据格式",
+                    "body": "支持 icon、toIcon 或 icons。"
+                },
+                {
+                    "icon": "square.dashed.inset.filled",
+                    "title": "默认",
+                    "subtitle": "图标样式",
+                    "body": "新的圆角玻璃图标徽章。"
+                },
+                {
+                    "icon": "paintbrush.pointed",
+                    "title": "渐变",
+                    "subtitle": "图标",
+                    "body": "图标颜色现在使用渐变。"
+                },
+                {
+                    "icon": "circle.grid.cross",
+                    "title": "优化",
+                    "subtitle": "布局",
+                    "body": "更大图标与更圆按钮。"
+                },
+                {
+                    "icon": "rectangle.bottomthird.inset.filled",
+                    "title": "底部",
+                    "subtitle": "控制",
+                    "body": "Continue 更贴近底边。"
+                },
+                {
+                    "icon": "water.waves",
+                    "title": "流动",
+                    "subtitle": "网格",
+                    "body": "网格背景现在可流动。"
+                },
+                {
+                    "icon": "textformat.size",
+                    "title": "自定义",
+                    "subtitle": "标题前缀",
+                    "body": "可自定义标题第一行。"
+                }
+            ]
+        },
+        {
+            "version": "6.3",
+            "subVersion": "6.3.1",
+            "new": [
+                {
+                    "icon": "checkmark.shield",
+                    "title": "兼容性",
+                    "subtitle": "修复",
+                    "body": "改进 iOS、macOS、tvOS 与 visionOS 的平台支持。"
+                },
+                {
+                    "icon": "testtube.2",
+                    "title": "Swift",
+                    "subtitle": "Testing",
+                    "body": "为核心版本说明逻辑加入原生 Swift Testing 覆盖率。"
+                },
+                {
+                    "icon": "chart.bar.doc.horizontal",
+                    "title": "Codecov",
+                    "subtitle": "报告",
+                    "body": "GitHub Actions 现在会生成并上传覆盖率报告。"
+                },
+                {
+                    "icon": "sparkles",
+                    "title": "浮动",
+                    "subtitle": "粒子",
+                    "body": "全新特效选项，带来流畅动画。"
+                },
+                {
+                    "icon": "number",
+                    "title": "可选",
+                    "subtitle": "构建号",
+                    "body": "可配置在版本号旁显示构建号。"
+                },
+                {
+                    "icon": "snowflake",
+                    "title": "优化",
+                    "subtitle": "雪花效果",
+                    "body": "使用 Canvas 与 TimelineView 重构，性能更流畅。"
+                },
+                {
+                    "icon": "bolt",
+                    "title": "现代化",
+                    "subtitle": "网络",
+                    "body": "基于 Swift Concurrency 与 Sendable 模型。"
+                },
+                {
+                    "icon": "lock.shield",
+                    "title": "Sendable",
+                    "subtitle": "数据模型",
+                    "body": "为 Swift 并发提供线程安全的模型。"
+                },
+                {
+                    "icon": "speedometer",
+                    "title": "更快",
+                    "subtitle": "网格背景",
+                    "body": "MeshView 通过 drawingGroup 优化，渲染更流畅。"
+                },
+                {
+                    "icon": "tray.and.arrow.down",
+                    "title": "本地数据",
+                    "subtitle": "加载",
+                    "body": "优化捆绑 JSON 文件的加载方式。"
+                },
+                {
+                    "icon": "text.alignleft",
+                    "title": "完整",
+                    "subtitle": "正文",
+                    "body": "移除行数限制，长文本完整呈现。"
+                },
+                {
+                    "icon": "tag",
+                    "title": "版本",
+                    "subtitle": "徽章",
+                    "body": "历史记录中的版本徽章尺寸与间距重新调整。"
+                },
+                {
+                    "icon": "doc.text",
+                    "title": "重组",
+                    "subtitle": "文档",
+                    "body": "拆分为 CONFIGURATION、CONTRIBUTING 与 PLATFORM。"
+                }
+            ]
+        },
+        {
+            "version": "6.2",
+            "subVersion": "6.2.0",
+            "new": [
+                {
+                    "icon": "rectangle.split.3x3",
+                    "title": "呈现方式",
+                    "subtitle": "选项",
+                    "body": "支持表单、全屏覆盖和嵌入模式。"
+                },
+                {
+                    "icon": "paintpalette",
+                    "title": "自适应",
+                    "subtitle": "文本颜色",
+                    "body": "按钮和历史记录文本颜色会自动适应背景亮度。"
+                },
+                {
+                    "icon": "wand.and.stars",
+                    "title": "简化的",
+                    "subtitle": "构造器",
+                    "body": "直接赋值不再需要 .constant 包装绑定。"
+                },
+                {
+                    "icon": "macpro.gen3.server",
+                    "title": "无服务器",
+                    "subtitle": "设计",
+                    "body": "免费开源! ❤️‍🔥"
+                },
+                {
+                    "icon": "arrow.triangle.pull",
+                    "title": "贡献",
+                    "subtitle": "一起",
+                    "body": "提出请求，让每个人都变得更好! 🎉"
+                }
+            ]
+        },
+        {
+            "version": "6.1",
+            "subVersion": "6.1.0",
+            "new": [
+                {
+                    "icon": "hammer",
+                    "title": "项目",
+                    "subtitle": "重构",
+                    "body": "分离文件和文件夹以便更好地维护。"
+                }
+            ]
+        },
+        {
+            "version": "6.0",
+            "subVersion": "6.0.0",
+            "new": [
+                {
+                    "icon": "wineglass",
+                    "title": "玻璃",
+                    "subtitle": "效果",
+                    "body": "现已推出!"
+                }
+            ]
+        },
+        {
+            "version": "5.5",
+            "subVersion": "5.5.0",
+            "new": [
+                {
+                    "icon": "snowflake",
+                    "title": "飘雪",
+                    "subtitle": "效果",
+                    "body": "更多特别效果即将推出!"
+                }
+            ]
+        },
+        {
+            "version": "5.4",
+            "subVersion": "5.4.0",
+            "new": [
+                {
+                    "icon": "pencil.tip",
+                    "title": "匹配",
+                    "subtitle": "网格背景颜色",
+                    "body": "标准化设计。"
+                }
+            ]
+        },
+        {
+            "version": "5.3",
+            "subVersion": "5.3.0",
+            "new": [
+                {
+                    "icon": "pencil.tip",
+                    "title": "新增",
+                    "subtitle": "网格背景",
+                    "body": "更好的设计。"
+                }
+            ]
+        },
+        {
+            "version": "5.2",
+            "subVersion": "5.2.0",
+            "new": [
+                {
+                    "icon": "hammer",
+                    "title": "预设",
+                    "subtitle": "选项",
+                    "body": "减少重复程式码。"
+                }
+            ]
+        },
+        {
+            "version": "5.1",
+            "subVersion": "5.1.0",
+            "new": [
+                {
+                    "icon": "character.book.closed",
+                    "title": "更新",
+                    "subtitle": "示范内容",
+                    "body": "针对 5.0 版本。"
+                }
+            ]
+        },
+        {
+            "version": "5.0",
+            "subVersion": "5.0.0",
+            "new": [
+                {
+                    "icon": "character.book.closed",
+                    "title": "支援",
+                    "subtitle": "翻译",
+                    "body": "由 Apple String Catalog 技术提供。"
+                },
+                {
+                    "icon": "pip.remove",
+                    "title": "终结",
+                    "subtitle": "支援",
+                    "body": "iOS14, watchOS7, and macOS11。"
+                }
+            ]
+        },
+        {
+            "version": "4.2",
+            "subVersion": "4.2.0",
+            "new": [
+                {
+                    "icon": "hammer",
+                    "title": "小型",
+                    "subtitle": "更新",
+                    "body": "一些错误修正和UI更新"
+                }
+            ]
+        },
+        {
+            "version": "4.1",
+            "subVersion": "4.1.0",
+            "new": [
+                {
+                    "icon": "eye",
+                    "title": "支持 Vision Pro",
+                    "subtitle": "和 visionOS",
+                    "body": "Drops Framework 由于冲突而被临时禁用。"
+                }
+            ]
+        },
+        {
+            "version": "4.0",
+            "subVersion": "4.0.0",
+            "new": [
+                {
+                    "icon": "number",
+                    "title": "更好兼容性",
+                    "subtitle": "在版本和构建中",
+                    "body": "您现在可以使用 x.y.z 或 x.y。"
+                }
+            ]
+        },
+        {
+            "version": "3.9",
+            "new": [
+                {
+                    "icon": "app.fill",
+                    "title": "应用图标",
+                    "subtitle": "支持",
+                    "body": "在 iOS 上。"
+                },
+                {
+                    "icon": "app",
+                    "title": "演示",
+                    "subtitle": "现在好多了",
+                    "body": "遵循包版本。"
+                }
+            ]
+        },
+        {
+            "version": "1.5",
+            "new": [
+                {
+                    "icon": "hammer",
+                    "title": "Layout",
+                    "subtitle": "Fixed",
+                    "body": "on iOS Landscape."
+                }
+            ]
+        },
+        {
+            "version": "1.4",
+            "new": [
+                {
+                    "icon": "hammer",
+                    "title": "Crash",
+                    "subtitle": "Fixed",
+                    "body": "on macOS."
+                }
+            ]
+        },
+        {
+            "version": "1.3",
+            "new": [
+                {
+                    "icon": "bell.badge",
+                    "title": "Remote Drop",
+                    "subtitle": "Supported",
+                    "body": "Instead of full page sheet, you can use a small drop too!"
+                }
+            ]
+        },
+        {
+            "version": "1.2",
+            "new": [
+                {
+                    "icon": "square.and.arrow.down.fill",
+                    "title": "Remote File",
+                    "subtitle": "Supported",
+                    "body": "Direct load via remote storage. Easy!"
+                }
+            ]
+        },
+        {
+            "version": "1.1",
+            "new": [
+                {
+                    "icon": "hammer.fill",
+                    "title": "Bug fixes",
+                    "subtitle": "Broken UI",
+                    "body": "Available for iOS 16, iPadOS 16, macOS 13"
+                },
+                {
+                    "icon": "square.and.arrow.down.fill",
+                    "title": "Local File",
+                    "subtitle": "Supported",
+                    "body": "Direct load via local storage. Super fast!"
+                },
+                {
+                    "icon": "macpro.gen3.server",
+                    "title": "Serverless",
+                    "subtitle": "Design",
+                    "body": "Free and open source! Created by Ming with ❤️‍🔥"
+                },
+                {
+                    "icon": "arrow.triangle.pull",
+                    "title": "Contribute",
+                    "subtitle": "Together",
+                    "body": "Pull requests and make it better for everyone!"
+                }
+            ]
+        }
+    ],
     "zh-Hant": [
+        {
+            "version": "6.4",
+            "subVersion": "6.4.0",
+            "new": [
+                {
+                    "icons": [
+                        "sparkles",
+                        "wand.and.stars"
+                    ],
+                    "title": "動畫",
+                    "subtitle": "圖示",
+                    "body": "在兩個 SF Symbol 間循環切換。"
+                },
+                {
+                    "icon": "arrow.left.arrow.right",
+                    "title": "圖示",
+                    "subtitle": "資料格式",
+                    "body": "支援 icon、toIcon 或 icons。"
+                },
+                {
+                    "icon": "square.dashed.inset.filled",
+                    "title": "預設",
+                    "subtitle": "圖示樣式",
+                    "body": "新的圓角玻璃圖示徽章。"
+                },
+                {
+                    "icon": "paintbrush.pointed",
+                    "title": "漸層",
+                    "subtitle": "圖示",
+                    "body": "圖示顏色現在使用漸層。"
+                },
+                {
+                    "icon": "circle.grid.cross",
+                    "title": "優化",
+                    "subtitle": "版面",
+                    "body": "更大圖示與更圓按鈕。"
+                },
+                {
+                    "icon": "rectangle.bottomthird.inset.filled",
+                    "title": "底部",
+                    "subtitle": "控制",
+                    "body": "Continue 更貼近底邊。"
+                },
+                {
+                    "icon": "water.waves",
+                    "title": "流動",
+                    "subtitle": "網格",
+                    "body": "網格背景現在可流動。"
+                },
+                {
+                    "icon": "textformat.size",
+                    "title": "自訂",
+                    "subtitle": "標題前綴",
+                    "body": "可自訂標題第一行。"
+                }
+            ]
+        },
+        {
+            "version": "6.3",
+            "subVersion": "6.3.1",
+            "new": [
+                {
+                    "icon": "checkmark.shield",
+                    "title": "相容性",
+                    "subtitle": "修正",
+                    "body": "改善 iOS、macOS、tvOS 與 visionOS 的平台支援。"
+                },
+                {
+                    "icon": "testtube.2",
+                    "title": "Swift",
+                    "subtitle": "Testing",
+                    "body": "為核心版本說明邏輯加入原生 Swift Testing 覆蓋率。"
+                },
+                {
+                    "icon": "chart.bar.doc.horizontal",
+                    "title": "Codecov",
+                    "subtitle": "報告",
+                    "body": "GitHub Actions 現在會產生並上傳覆蓋率報告。"
+                },
+                {
+                    "icon": "sparkles",
+                    "title": "浮動",
+                    "subtitle": "粒子",
+                    "body": "全新特效選項，帶來流暢動畫。"
+                },
+                {
+                    "icon": "number",
+                    "title": "可選",
+                    "subtitle": "建置號碼",
+                    "body": "可設定於版本號旁顯示建置號碼。"
+                },
+                {
+                    "icon": "snowflake",
+                    "title": "優化",
+                    "subtitle": "雪花效果",
+                    "body": "以 Canvas 與 TimelineView 重構，效能更流暢。"
+                },
+                {
+                    "icon": "bolt",
+                    "title": "現代化",
+                    "subtitle": "網路",
+                    "body": "採用 Swift Concurrency 與 Sendable 模型。"
+                },
+                {
+                    "icon": "lock.shield",
+                    "title": "Sendable",
+                    "subtitle": "資料模型",
+                    "body": "為 Swift 並發提供執行緒安全的模型。"
+                },
+                {
+                    "icon": "speedometer",
+                    "title": "更快",
+                    "subtitle": "網格背景",
+                    "body": "MeshView 透過 drawingGroup 最佳化，畫面更流暢。"
+                },
+                {
+                    "icon": "tray.and.arrow.down",
+                    "title": "本地資料",
+                    "subtitle": "載入",
+                    "body": "最佳化捆綁 JSON 檔案的載入方式。"
+                },
+                {
+                    "icon": "text.alignleft",
+                    "title": "完整",
+                    "subtitle": "內文",
+                    "body": "移除行數限制，長文本完整呈現。"
+                },
+                {
+                    "icon": "tag",
+                    "title": "版本",
+                    "subtitle": "徽章",
+                    "body": "歷史紀錄中的版本徽章尺寸與間距重新調整。"
+                },
+                {
+                    "icon": "doc.text",
+                    "title": "重新整理",
+                    "subtitle": "文件",
+                    "body": "拆分為 CONFIGURATION、CONTRIBUTING 與 PLATFORM。"
+                }
+            ]
+        },
         {
             "version": "6.2",
             "subVersion": "6.2.0",

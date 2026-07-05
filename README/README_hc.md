@@ -70,9 +70,13 @@
 
 | 功能 | 起始版本 | 說明 |
 |---------|:-----:|-------------|
+| 🔁 動畫圖示 | 6.4.0 | 支援 `toIcon` / `icons`，用原生 SF Symbol 替換過渡 |
+| 🎯 預設圖示樣式 | 6.4.0 | 圓角玻璃圖示徽章、黑白至透明底色同漸層 glyph |
+| 🌊 流動網格 | 6.4.0 | `meshStyle`:`.still` 或 `.liquid` 動畫網格背景 |
+| 🏷️ 標題前綴 | 6.4.0 | 用 `headingPrefix` 自訂標題第一行 |
+| 🧩 版面打磨 | 6.4.0 | 更大圖示、更順眼列距同更圓主要按鈕 |
 | 🔍 內嵌搜尋 | 6.3.0 | 用標題 / 副標題 / 內文過濾當前版本說明 |
 | 🏷️ 自訂標題 | 6.3.0 | `headingStyle`:`.version`、`.versionOnly`、`.appName` |
-| 🎯 圖示樣式 | 6.3.0 | `iconStyle`:`.filled`(有色塊底)或 `.plain`(淨圖示) |
 | 🔢 可選 Build 編號 | 6.3.0 | 用 `showBuild: false` 隱藏 build 編號 |
 | 🎨 浮動粒子特效 | 6.3.0 | 全新 `.particles` 特效(TimelineView + Canvas) |
 | 🎯 多種呈現 | 6.2.0 | `.sheet`、`.fullScreenCover`、`.embed` |

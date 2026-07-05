@@ -26,6 +26,10 @@ extension SwiftNEW {
         }
     }
 
+    var headingTitle: String {
+        String(localized: String.LocalizationValue(headingPrefix), bundle: .module)
+    }
+
     #if os(iOS)
     public var headings: some View {
         HStack {
@@ -40,8 +44,9 @@ extension SwiftNEW {
                     AppIconView()
                         .padding(.top)
                 }
-                Text(String(localized: "What's New in", bundle: .module))
-                    .bold().font(.largeTitle)
+                Text(headingTitle)
+                    .font(.largeTitle.weight(.bold))
+                    .foregroundStyle(.primary)
                 Text(headingSubtitle)
                     .bold().font(.title).foregroundColor(.secondary)
             }
@@ -54,8 +59,9 @@ extension SwiftNEW {
     #elseif os(macOS) || os(visionOS) || os(tvOS)
     public var headings: some View {
         VStack {
-            Text(String(localized: "What's New in", bundle: .module))
-                .bold().font(.largeTitle)
+            Text(headingTitle)
+                .font(.largeTitle.weight(.bold))
+                .foregroundStyle(.primary)
             Text(headingSubtitle)
                 .bold().font(.title).foregroundColor(.secondary)
         }

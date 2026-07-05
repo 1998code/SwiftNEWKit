@@ -55,18 +55,55 @@ extension SwiftNEW {
         )
     }
 
+    private var primaryActionButtonCornerRadius: CGFloat {
+        #if os(macOS)
+        12
+        #else
+        20
+        #endif
+    }
+
     @ViewBuilder
     private func capsuleSecondaryButton<Label: View>(
         action: @escaping () -> Void,
         @ViewBuilder label: () -> Label
     ) -> some View {
-        Button(action: action) {
-            HStack {
-                if align == .trailing { Spacer() }
-                label()
-                if align == .leading { Spacer() }
+        #if os(iOS) && compiler(>=6.2)
+        if #available(iOS 26.0, *) {
+            Button(action: action) {
+                capsuleSecondaryButtonLabel(label: label)
+                    .padding(.horizontal, 14)
+                    .padding(.vertical, 8)
             }
-            .font(.caption)
+            .buttonStyle(.plain)
+            .glassEffect(.clear.interactive(), in: .capsule)
+        } else {
+            legacyCapsuleSecondaryButton(action: action, label: label)
+        }
+        #else
+        legacyCapsuleSecondaryButton(action: action, label: label)
+        #endif
+    }
+
+    @ViewBuilder
+    private func capsuleSecondaryButtonLabel<Label: View>(
+        @ViewBuilder label: () -> Label
+    ) -> some View {
+        HStack {
+            if align == .trailing { Spacer() }
+            label()
+            if align == .leading { Spacer() }
+        }
+        .font(.caption)
+    }
+
+    @ViewBuilder
+    private func legacyCapsuleSecondaryButton<Label: View>(
+        action: @escaping () -> Void,
+        @ViewBuilder label: () -> Label
+    ) -> some View {
+        Button(action: action) {
+            capsuleSecondaryButtonLabel(label: label)
         }
         #if !os(visionOS)
         .buttonStyle(.bordered)
@@ -99,11 +136,11 @@ extension SwiftNEW {
             #if os(iOS) && !os(visionOS)
             .foregroundColor(.white)
             .background(color)
-            .cornerRadius(15)
+            .cornerRadius(primaryActionButtonCornerRadius)
             #elseif os(tvOS)
             .tint(.white)
             #endif
         }
-        .swiftNEWGlass(color: color.opacity(0.1))
+        .swiftNEWGlass(radius: primaryActionButtonCornerRadius, color: color.opacity(0.1))
     }
 }
