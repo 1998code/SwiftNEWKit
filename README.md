@@ -10,7 +10,7 @@
 ![Platforms](https://img.shields.io/badge/Platforms-iOS%2015.0+%20|%20macOS%2014.0+%20|%20tvOS%2017.0+%20|%20visionOS%201.0+-15437D.svg)
 ![License](https://img.shields.io/badge/License-MIT-C8ECFE.svg)
 
-**English** · [繁中](README/README_tc.md) · [简中](README/README_zh.md) · [粵語](README/README_hc.md) · [日本語](README/README_ja.md) · [한국어](README/README_ko.md)
+**English** · [繁中](README/README_tc.md) · [简中](README/README_zh.md) · [粵語](README/README_hc.md) · [日本語](README/README_ja.md) · [한국어](README/README_ko.md) · [Français](README/README_fr.md) · [Español](README/README_es.md)
 
 A modern, SwiftUI-native **"What's New"** presentation framework for all Apple platforms — animated gradient backgrounds, glass effects, remote data loading, and full RTL/localization support out of the box.
 

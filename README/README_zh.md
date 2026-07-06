@@ -9,7 +9,7 @@
 ![Platforms](https://img.shields.io/badge/Platforms-iOS%2015.0+%20|%20macOS%2014.0+%20|%20tvOS%2017.0+%20|%20visionOS%201.0+-15437D.svg)
 ![License](https://img.shields.io/badge/License-MIT-C8ECFE.svg)
 
-[English](../README.md) · [繁中](README_tc.md) · **简中** · [粵語](README_hc.md) · [日本語](README_ja.md) · [한국어](README_ko.md)
+[English](../README.md) · [繁中](README_tc.md) · **简中** · [粵語](README_hc.md) · [日本語](README_ja.md) · [한국어](README_ko.md) · [Français](README_fr.md) · [Español](README_es.md)
 
 现代、SwiftUI 原生的 **「最新功能」** 展示框架,适用于所有 Apple 平台 — 内置动画渐变背景、玻璃效果、远程数据加载,并完整支持 RTL 与本地化。
 

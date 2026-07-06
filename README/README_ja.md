@@ -9,7 +9,7 @@
 ![Platforms](https://img.shields.io/badge/Platforms-iOS%2015.0+%20|%20macOS%2014.0+%20|%20tvOS%2017.0+%20|%20visionOS%201.0+-15437D.svg)
 ![License](https://img.shields.io/badge/License-MIT-C8ECFE.svg)
 
-[English](../README.md) · [繁中](README_tc.md) · [简中](README_zh.md) · [粵語](README_hc.md) · **日本語** · [한국어](README_ko.md)
+[English](../README.md) · [繁中](README_tc.md) · [简中](README_zh.md) · [粵語](README_hc.md) · **日本語** · [한국어](README_ko.md) · [Français](README_fr.md) · [Español](README_es.md)
 
 すべての Apple プラットフォーム向け、SwiftUI ネイティブのモダンな **「最新情報」** プレゼンテーションフレームワーク — アニメーショングラデーション背景、グラスエフェクト、リモートデータ読み込み、RTL とローカライゼーションを標準サポート。
 
