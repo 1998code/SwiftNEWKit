@@ -145,6 +145,7 @@ extension SwiftNEW {
                         .background(size != "mini" && size != "invisible" ? color : Color.clear)
                         .cornerRadius(15)
                         #endif
+                        .contentShape(RoundedRectangle(cornerRadius: 15, style: .continuous))
                 }
                 .opacity(size == "invisible" ? 0 : 1)
                 .modifier(ConditionalGlassModifier(isEnabled: glass, shadowColor: color))

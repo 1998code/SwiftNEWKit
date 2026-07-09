@@ -74,6 +74,7 @@ extension SwiftNEW {
                 capsuleSecondaryButtonLabel(label: label)
                     .padding(.horizontal, 14)
                     .padding(.vertical, 8)
+                    .contentShape(Capsule())
             }
             .buttonStyle(.plain)
             .glassEffect(.clear.interactive(), in: .capsule)
@@ -104,6 +105,7 @@ extension SwiftNEW {
     ) -> some View {
         Button(action: action) {
             capsuleSecondaryButtonLabel(label: label)
+                .contentShape(Capsule())
         }
         #if !os(visionOS)
         .buttonStyle(.bordered)
@@ -140,6 +142,7 @@ extension SwiftNEW {
             #elseif os(tvOS)
             .tint(.white)
             #endif
+            .contentShape(RoundedRectangle(cornerRadius: primaryActionButtonCornerRadius, style: .continuous))
         }
         .swiftNEWGlass(radius: primaryActionButtonCornerRadius, color: color.opacity(0.1))
     }
