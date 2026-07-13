@@ -59,45 +59,23 @@ extension SwiftNEW {
                 if showSearch {
                     searchField
                 }
+                #if os(macOS)
+                currentVersionScrollView(bottomInset: 0, maxScrollHeight: maxScrollHeight)
+
+                Spacer()
+
+                currentVersionControls
+                #else
                 ZStack(alignment: .bottom) {
-                    ScrollView(showsIndicators: false) {
-                        ForEach(items) { item in
-                            if item.version == Bundle.version || item.subVersion == Bundle.version {
-                                ForEach(item.new.filter { matchesSearch($0) }) { new in
-                                    releaseRow(new, bodyFont: .footnote, spacing: 2)
-                                }
-                            }
-                        }
-                        // Bottom inset so last item can scroll past the frosted button area.
-                        Color.clear.frame(height: 196)
-                    }
-                    #if !os(tvOS)
-                    .frame(maxWidth: 380)
-                    .padding(.horizontal)
-                    #elseif os(tvOS)
-                    .frame(maxHeight: maxScrollHeight)
-                    #endif
+                    currentVersionScrollView(bottomInset: 196, maxScrollHeight: maxScrollHeight)
 
-                    VStack(spacing: 0) {
-                        if history {
-                            HStack {
-                                showHistoryButton
-                                searchButton
-                            }
-                            .padding(.bottom)
-                        } else {
-                            searchButton
-                                .padding(.bottom)
-                        }
-
-                        closeCurrentButton
-                            .padding(.bottom, 6)
-                    }
+                    currentVersionControls
                     .frame(maxWidth: .infinity)
                     .padding(.top, 108)
                     .background { bottomControlBackdrop }
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
+                #endif
             }
         }
         .task(id: data) {
@@ -109,6 +87,47 @@ extension SwiftNEW {
         #elseif os(tvOS)
         .frame(width: 600)
         #endif
+    }
+
+    private func currentVersionScrollView(bottomInset: CGFloat, maxScrollHeight: CGFloat?) -> some View {
+        ScrollView(showsIndicators: false) {
+            ForEach(items) { item in
+                if item.version == Bundle.version || item.subVersion == Bundle.version {
+                    ForEach(item.new.filter { matchesSearch($0) }) { new in
+                        releaseRow(new, bodyFont: .footnote, spacing: 2)
+                    }
+                }
+            }
+
+            if bottomInset > 0 {
+                // Let the final row scroll above the overlaid controls.
+                Color.clear.frame(height: bottomInset)
+            }
+        }
+        #if !os(tvOS)
+        .frame(maxWidth: 380)
+        .padding(.horizontal)
+        #elseif os(tvOS)
+        .frame(maxHeight: maxScrollHeight)
+        #endif
+    }
+
+    private var currentVersionControls: some View {
+        VStack(spacing: 0) {
+            if history {
+                HStack {
+                    showHistoryButton
+                    searchButton
+                }
+                .padding(.bottom)
+            } else {
+                searchButton
+                    .padding(.bottom)
+            }
+
+            closeCurrentButton
+                .padding(.bottom, 6)
+        }
     }
 
     @ViewBuilder
