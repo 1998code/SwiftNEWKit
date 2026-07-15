@@ -1,5 +1,20 @@
 [
     {
+        "version": "6.5",
+        "subVersion": "6.5.0",
+        "new": [
+            {
+                "icons": [
+                    "arrow.down.app",
+                    "app.badge.checkmark"
+                ],
+                "title": "リモート更新画面",
+                "subtitle": "App Store 更新フロー",
+                "body": "リモート JSON に新しいバージョンが含まれている場合、SwiftNEW は更新画面を表示し、App Store のリンクを自動的に取得します。"
+            }
+        ]
+    },
+    {
         "version": "6.4",
         "subVersion": "6.4.0",
         "new": [

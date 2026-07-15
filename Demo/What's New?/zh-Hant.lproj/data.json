@@ -1,5 +1,20 @@
 [
     {
+        "version": "6.5",
+        "subVersion": "6.5.0",
+        "new": [
+            {
+                "icons": [
+                    "arrow.down.app",
+                    "app.badge.checkmark"
+                ],
+                "title": "遠端更新畫面",
+                "subtitle": "App Store 更新流程",
+                "body": "當遠端 JSON 包含較新版本時，SwiftNEW 會顯示更新畫面，並自動取得 App Store 連結。"
+            }
+        ]
+    },
+    {
         "version": "6.4",
         "subVersion": "6.4.0",
         "new": [

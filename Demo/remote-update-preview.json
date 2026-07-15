@@ -1,0 +1,14 @@
+[
+  {
+    "version": "99.0",
+    "subVersion": "99.0.1",
+    "new": [
+      {
+        "icon": "arrow.down.app.fill",
+        "title": "Remote Update",
+        "subtitle": "A newer version is available",
+        "body": "SwiftNEW switches from What's New to the Update screen when the remote version is newer than the installed app."
+      }
+    ]
+  }
+]

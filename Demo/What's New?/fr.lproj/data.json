@@ -1,5 +1,20 @@
 [
     {
+        "version": "6.5",
+        "subVersion": "6.5.0",
+        "new": [
+            {
+                "icons": [
+                    "arrow.down.app",
+                    "app.badge.checkmark"
+                ],
+                "title": "Écran de mise à jour à distance",
+                "subtitle": "Parcours de mise à jour App Store",
+                "body": "Lorsque le JSON distant contient une version plus récente, SwiftNEW affiche un écran de mise à jour et récupère automatiquement le lien App Store."
+            }
+        ]
+    },
+    {
         "version": "6.4",
         "subVersion": "6.4.0",
         "new": [

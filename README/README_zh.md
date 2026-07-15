@@ -70,6 +70,7 @@
 
 | 功能 | 起始版本 | 说明 |
 |---------|:-----:|-------------|
+| ⬆️ 远程更新界面 | 6.5.0 | 通过 `checkForUpdates` 启用；远程 JSON 有较新版本时，显示带可自定义文字 App Store 操作按钮的更新界面 |
 | 🔁 动画图标循环 | 6.4.0 | 使用原生 SF Symbol 替换过渡循环切换图标 |
 | 🧾 灵活图标格式 | 6.4.0 | 可用 `icon`、`toIcon` 或完整 `icons` 数组定义图标 |
 | 🎯 默认玻璃徽章 | 6.4.0 | 圆角玻璃图标徽章让默认列表样式更柔和 |
@@ -104,6 +105,10 @@
 | App 图标 (3.9.6+) | 历史 (2.0+) |
 |:-----------------:|:--------------:|
 | <img height="400" alt="App Icon" src="https://user-images.githubusercontent.com/54872601/206886933-bc4d0d33-e0fc-4013-9456-f19679b10f5b.png"> | <img height="400" alt="History" src="https://user-images.githubusercontent.com/54872601/178129999-ad63b0ce-d65e-4d86-9882-37a5090e92bc.png"> |
+
+## 📝 说明
+
+- 将远程 `data` URL 与 `checkForUpdates: true` 一同传入即可启用更新检查。如果远程最高的 `subVersion`（或 `version`）高于当前安装的 App 版本，SwiftNEW 会显示更新界面来取代“新功能”，并使用 App 的包标识符，通过 Apple iTunes Lookup API 自动获取 App Store 目标地址。主要操作默认显示已本地化的 **立即下载**；使用 `updateButtonTitle` 可原样显示自定义文本。设置 `allowsSkippingUpdate: false` 可让更新界面无法跳过。
 
 ## 📚 了解更多
 

@@ -39,7 +39,7 @@ extension SwiftNEW {
 
     public var closeCurrentButton: some View {
         primaryActionButton(
-            titleKey: "Continue",
+            title: String(localized: "Continue", bundle: .module),
             systemImage: "arrow.right.circle.fill",
             macWidth: 200,
             action: { show = false }
@@ -48,10 +48,48 @@ extension SwiftNEW {
 
     public var closeHistoryButton: some View {
         primaryActionButton(
-            titleKey: "Return",
+            title: String(localized: "Return", bundle: .module),
             systemImage: "arrow.down.circle.fill",
             macWidth: 300,
             action: { historySheet = false }
+        )
+    }
+
+    public var updateNowButton: some View {
+        primaryActionButton(
+            title: resolvedUpdateButtonTitle,
+            systemImage: "arrow.up.forward.app.fill",
+            macWidth: 300,
+            iOSMaxWidth: 380,
+            action: openAvailableUpdate
+        )
+    }
+
+    var resolvedUpdateButtonTitle: String {
+        let normalized = updateButtonTitle.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard !normalized.isEmpty else {
+            return String(localized: "Download Now", bundle: .module)
+        }
+        return updateButtonTitle
+    }
+
+    @ViewBuilder
+    public var dismissUpdateButton: some View {
+        if allowsSkippingUpdate {
+            capsuleSecondaryButton(action: finishUpdatePresentation) {
+                Text(String(localized: "Not Now", bundle: .module))
+                Image(systemName: "clock")
+            }
+        }
+    }
+
+    public var retryAppStoreLookupButton: some View {
+        primaryActionButton(
+            title: String(localized: "Try Again", bundle: .module),
+            systemImage: "arrow.clockwise",
+            macWidth: 300,
+            iOSMaxWidth: 380,
+            action: retryAppStoreLookup
         )
     }
 
@@ -116,27 +154,31 @@ extension SwiftNEW {
     }
 
     private func primaryActionButton(
-        titleKey: String.LocalizationValue,
+        title: String,
         systemImage: String,
         macWidth: CGFloat,
+        iOSMaxWidth: CGFloat = 300,
         action: @escaping () -> Void
     ) -> some View {
         Button(action: action) {
             HStack {
                 if align == .trailing { Spacer() }
-                Text(String(localized: titleKey, bundle: .module)).bold()
+                Text(verbatim: title).bold()
                 Image(systemName: systemImage)
                 if align == .leading { Spacer() }
             }
             .font(.body)
             .padding(.horizontal)
             #if os(iOS)
-            .frame(width: 300, height: 50)
+            .padding(.vertical, 12)
+            .frame(minHeight: 50)
+            .frame(maxWidth: .infinity)
+            .frame(maxWidth: iOSMaxWidth)
             #elseif os(macOS)
             .frame(width: macWidth, height: 25)
             #endif
             #if os(iOS) && !os(visionOS)
-            .foregroundColor(.white)
+            .foregroundColor(color.adaptedTextColor)
             .background(color)
             .cornerRadius(primaryActionButtonCornerRadius)
             #elseif os(tvOS)

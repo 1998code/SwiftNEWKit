@@ -1,5 +1,20 @@
 [
     {
+        "version": "6.5",
+        "subVersion": "6.5.0",
+        "new": [
+            {
+                "icons": [
+                    "arrow.down.app",
+                    "app.badge.checkmark"
+                ],
+                "title": "Pantalla de actualización remota",
+                "subtitle": "Flujo de actualización de App Store",
+                "body": "Cuando el JSON remoto contiene una versión más reciente, SwiftNEW muestra una pantalla de actualización y obtiene automáticamente el enlace de App Store."
+            }
+        ]
+    },
+    {
         "version": "6.4",
         "subVersion": "6.4.0",
         "new": [

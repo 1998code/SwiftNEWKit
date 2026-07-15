@@ -1,5 +1,20 @@
 [
     {
+        "version": "6.5",
+        "subVersion": "6.5.0",
+        "new": [
+            {
+                "icons": [
+                    "arrow.down.app",
+                    "app.badge.checkmark"
+                ],
+                "title": "원격 업데이트 화면",
+                "subtitle": "App Store 업데이트 흐름",
+                "body": "원격 JSON에 더 높은 버전이 있으면 SwiftNEW가 업데이트 화면을 표시하고 App Store 링크를 자동으로 가져옵니다."
+            }
+        ]
+    },
+    {
         "version": "6.4",
         "subVersion": "6.4.0",
         "new": [

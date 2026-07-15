@@ -70,6 +70,7 @@ Eso es todo — SwiftNEW se activa automáticamente cuando cambia la versión de
 
 | Funcionalidad | Desde | Descripción |
 |---------|:-----:|-------------|
+| ⬆️ Pantalla de actualización remota | 6.5.0 | Actívala con `checkForUpdates`; si el JSON remoto contiene una versión más reciente, muestra una pantalla de actualización con una acción de App Store personalizable |
 | 🔁 Bucle de iconos animado | 6.4.0 | Recorre SF Symbols con transiciones de reemplazo nativas |
 | 🧾 Esquema de iconos flexible | 6.4.0 | Define iconos con `icon`, `toIcon` o un arreglo `icons` completo |
 | 🎯 Insignia de vidrio por defecto | 6.4.0 | Insignias de icono de vidrio redondeadas dan a las filas un aspecto más suave |
@@ -105,6 +106,10 @@ Eso es todo — SwiftNEW se activa automáticamente cuando cambia la versión de
 | Icono de la app (3.9.6+) | Historial (2.0+) |
 |:-----------------:|:--------------:|
 | <img height="400" alt="App Icon" src="https://user-images.githubusercontent.com/54872601/206886933-bc4d0d33-e0fc-4013-9456-f19679b10f5b.png"> | <img height="400" alt="History" src="https://user-images.githubusercontent.com/54872601/178129999-ad63b0ce-d65e-4d86-9882-37a5090e92bc.png"> |
+
+## 📝 Notas
+
+- Al pasar `checkForUpdates: true` con una URL de `data` remota, se habilita la comprobación de actualizaciones. Si el `subVersion` (o `version`) remoto más alto es posterior a la versión instalada de la app, SwiftNEW muestra la pantalla de actualización en lugar de Novedades y obtiene el destino de App Store mediante la API iTunes Lookup de Apple usando el identificador de paquete de la app. La acción principal usa de forma predeterminada el texto localizado **Descargar ahora**; usa `updateButtonTitle` para mostrar un texto personalizado tal cual. Establece `allowsSkippingUpdate: false` para impedir que se omita la pantalla de actualización.
 
 ## 📚 Más información
 

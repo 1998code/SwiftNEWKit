@@ -30,6 +30,7 @@
 | Drop notifications | ✅ | ✅ | ❌ | ❌ | ❌ |
 | History navigation | ✅ | ✅ | ✅ | ✅ | ✅ |
 | Remote JSON | ✅ | ✅ | ✅ | ✅ | ✅ |
+| Remote update screen | ✅ | ✅ | ✅ | ✅ | ✅ |
 | Special effects | ✅ | ✅ | ✅ | ✅ | ✅ |
 | Auto-versioning | ✅ | ✅ | ✅ | ✅ | ✅ |
 

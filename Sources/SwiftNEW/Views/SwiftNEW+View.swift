@@ -12,10 +12,6 @@ import SwiftVB
 import SwiftGlass
 #endif
 
-#if os(iOS)
-import Drops
-#endif
-
 @available(iOS 15.0, watchOS 8.0, macOS 12.0, tvOS 17.0, *)
 extension SwiftNEW {
 
@@ -130,7 +126,9 @@ extension SwiftNEW {
     }
 
     public var body: some View {
-        Group {
+        let taskID = loadTaskID
+
+        return Group {
             if presentation == .embed {
                 sheetContent
             } else {
@@ -152,18 +150,19 @@ extension SwiftNEW {
                 .modifier(PresentationModifier(isPresented: $show, presentation: presentation, sheetContent: sheetContent))
             }
         }
+        .task(id: taskID) {
+            await runLoadTask(taskID)
+        }
+        .onChange(of: show) { isPresented in
+            handleShowChange(isPresented)
+        }
+        .onDisappear {
+            cancelActiveDrop()
+        }
     }
 
     func presentReleaseNotes() {
-        #if os(iOS)
-        if showDrop {
-            drop()
-        } else {
-            show = true
-        }
-        #else
-        show = true
-        #endif
+        requestPresentationAfterPreflight()
     }
 
     private var platformWidth: CGFloat {
@@ -192,11 +191,30 @@ extension SwiftNEW {
 
     private var sheetContent: some View {
         sheetBackground {
-            sheetCurrent
-                .sheet(isPresented: $historySheet) {
-                    historySheetContent
-                }
+            if shouldPrefetchRemoteUpdate, updateCheckPhase != .resolved {
+                sheetUpdateChecking
+            } else if availableUpdate != nil {
+                sheetUpdate
+            } else {
+                sheetCurrent
+                    .sheet(isPresented: $historySheet) {
+                        historySheetContent
+                    }
+            }
         }
+        .modifier(
+            SwiftNEWUpdateDismissalModifier(
+                isDisabled: shouldDisableUpdateDismissal
+            )
+        )
+    }
+
+    var shouldDisableUpdateDismissal: Bool {
+        !allowsSkippingUpdate
+            && (
+                availableUpdate != nil
+                    || (shouldPrefetchRemoteUpdate && updateCheckPhase != .resolved)
+            )
     }
 
     private var historySheetContent: some View {
@@ -206,6 +224,10 @@ extension SwiftNEW {
     }
 
     #if DEBUG
+    var testingSheetContent: some View {
+        sheetContent
+    }
+
     var testingHistorySheetContent: some View {
         historySheetContent
     }
@@ -359,6 +381,15 @@ private struct ConditionalGlassModifier: ViewModifier {
         } else {
             content
         }
+    }
+}
+
+@available(iOS 15.0, watchOS 8.0, macOS 12.0, tvOS 17.0, *)
+private struct SwiftNEWUpdateDismissalModifier: ViewModifier {
+    let isDisabled: Bool
+
+    func body(content: Content) -> some View {
+        content.interactiveDismissDisabled(isDisabled)
     }
 }
 

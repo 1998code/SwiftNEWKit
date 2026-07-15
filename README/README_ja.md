@@ -70,6 +70,7 @@
 
 | 機能 | 追加バージョン | 説明 |
 |---------|:-----:|-------------|
+| ⬆️ リモート更新画面 | 6.5.0 | `checkForUpdates` で有効化。リモート JSON に新しいバージョンがあると、ラベルをカスタマイズできる App Store ボタン付きの更新画面を表示 |
 | 🔁 アニメーションアイコンループ | 6.4.0 | ネイティブ SF Symbol 置換トランジションでアイコンを循環表示 |
 | 🧾 柔軟なアイコンスキーマ | 6.4.0 | `icon`、`toIcon`、または完全な `icons` 配列でアイコンを定義 |
 | 🎯 デフォルトガラスバッジ | 6.4.0 | 丸いガラスアイコンバッジで行の標準表示をより柔らかく |
@@ -104,6 +105,10 @@
 | App アイコン (3.9.6+) | 履歴 (2.0+) |
 |:-----------------:|:--------------:|
 | <img height="400" alt="App Icon" src="https://user-images.githubusercontent.com/54872601/206886933-bc4d0d33-e0fc-4013-9456-f19679b10f5b.png"> | <img height="400" alt="History" src="https://user-images.githubusercontent.com/54872601/178129999-ad63b0ce-d65e-4d86-9882-37a5090e92bc.png"> |
+
+## 📝 注意事項
+
+- リモートの `data` URL と `checkForUpdates: true` を指定すると、更新チェックが有効になります。リモートにある最も高い `subVersion`（なければ `version`）がインストール済みアプリのバージョンより新しい場合、SwiftNEW は「新機能」画面の代わりに更新画面を表示し、アプリのバンドル ID を使って Apple の iTunes Lookup API から App Store のリンク先を取得します。主アクションには、ローカライズされた **今すぐダウンロード** が既定で表示されます。任意の文言をそのまま表示するには `updateButtonTitle` を使用してください。更新画面をスキップ不可にするには `allowsSkippingUpdate: false` を指定します。
 
 ## 📚 詳細情報
 

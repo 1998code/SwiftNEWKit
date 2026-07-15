@@ -78,9 +78,6 @@ extension SwiftNEW {
                 #endif
             }
         }
-        .task(id: data) {
-            loadData()
-        }
         #if os(macOS)
         .padding()
         .frame(width: 600, height: 600)
@@ -250,6 +247,10 @@ extension SwiftNEW {
 
     func retryLoadData() {
         loadedDataSource = nil
-        loadData()
+        appStoreLookupRetryRequest = nil
+        loadGeneration = nil
+        loadedRequest = nil
+        loadErrorMessage = nil
+        reloadID = UUID()
     }
 }

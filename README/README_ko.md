@@ -70,6 +70,7 @@
 
 | 기능 | 도입 버전 | 설명 |
 |---------|:-----:|-------------|
+| ⬆️ 원격 업데이트 화면 | 6.5.0 | `checkForUpdates`로 활성화하며, 원격 JSON에 더 최신 버전이 있으면 문구를 사용자 지정할 수 있는 App Store 동작과 함께 업데이트 화면을 표시합니다 |
 | 🔁 애니메이션 아이콘 루프 | 6.4.0 | 네이티브 SF Symbol 교체 전환으로 아이콘을 순환 표시 |
 | 🧾 유연한 아이콘 스키마 | 6.4.0 | `icon`, `toIcon`, 전체 `icons` 배열로 아이콘 정의 |
 | 🎯 기본 유리 배지 | 6.4.0 | 둥근 유리 아이콘 배지로 기본 행 스타일을 더 부드럽게 표시 |
@@ -104,6 +105,10 @@
 | App 아이콘 (3.9.6+) | 히스토리 (2.0+) |
 |:-----------------:|:--------------:|
 | <img height="400" alt="App Icon" src="https://user-images.githubusercontent.com/54872601/206886933-bc4d0d33-e0fc-4013-9456-f19679b10f5b.png"> | <img height="400" alt="History" src="https://user-images.githubusercontent.com/54872601/178129999-ad63b0ce-d65e-4d86-9882-37a5090e92bc.png"> |
+
+## 📝 참고 사항
+
+- 원격 `data` URL과 `checkForUpdates: true`를 전달하면 업데이트 확인이 활성화됩니다. 원격의 가장 높은 `subVersion`(또는 `version`)이 설치된 앱 버전보다 최신이면 SwiftNEW는 새로운 기능 화면 대신 업데이트 화면을 표시하고 앱의 번들 식별자를 사용해 Apple iTunes Lookup API에서 App Store 대상을 확인합니다. 기본 동작은 현지화된 **지금 다운로드**를 표시하며, `updateButtonTitle`을 사용하면 사용자 지정 문구를 그대로 표시할 수 있습니다. 업데이트 화면을 건너뛸 수 없게 하려면 `allowsSkippingUpdate: false`를 설정하세요.
 
 ## 📚 자세히 알아보기
 

@@ -31,6 +31,20 @@ import SwiftNEW
     SwiftNEW(show: $showNew, labelImage: "icloud", data: "https://raw.githubusercontent.com/1998code/SwiftNEWKit/refs/heads/main/Demo/What's%20New%3F/en.lproj/data.json")
 }
 
+// Remote Update - Dedicated fixture stays higher than the demo app version
+#Preview("Remote Update") {
+    @Previewable @State var showNew: Bool = false
+    SwiftNEW(
+        show: $showNew,
+        labelImage: "arrow.down.app",
+        data: "https://raw.githubusercontent.com/1998code/SwiftNEWKit/refs/heads/main/Demo/remote-update-preview.json",
+        presentation: .fullScreenCover,
+        checkForUpdates: true,
+        allowsSkippingUpdate: false,
+        appStoreBundleIdentifier: "com.apple.TestFlight"
+    )
+}
+
 // Drop (>3.4.0) - Recommended trigger with Remote Notification
 #Preview("Drop") {
     @Previewable @State var showNew: Bool = false

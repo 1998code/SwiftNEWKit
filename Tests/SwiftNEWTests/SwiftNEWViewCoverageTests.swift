@@ -18,6 +18,11 @@ import AppKit
     #expect(defaultDirect.mesh)
     #expect(defaultDirect.meshStyle == .still)
     #expect(defaultDirect.iconStyle == .default)
+    #expect(defaultDirect.checkForUpdates == false)
+    #expect(defaultDirect.allowsSkippingUpdate)
+    #expect(defaultDirect.updateButtonTitle.isEmpty)
+    #expect(defaultDirect.resolvedUpdateButtonTitle.isEmpty == false)
+    #expect(defaultDirect.appStoreBundleIdentifier == nil)
 
     let direct = SwiftNEW(
         show: .constant(false),
@@ -37,7 +42,11 @@ import AppKit
         showBuild: false,
         headingStyle: .appName,
         headingPrefix: "Latest in",
-        iconStyle: .default
+        iconStyle: .default,
+        checkForUpdates: true,
+        allowsSkippingUpdate: false,
+        updateButtonTitle: "Install Update",
+        appStoreBundleIdentifier: "com.example.store"
     )
 
     #expect(direct.align == .trailing)
@@ -56,6 +65,10 @@ import AppKit
     #expect(direct.headingStyle == .appName)
     #expect(direct.headingPrefix == "Latest in")
     #expect(direct.iconStyle == .default)
+    #expect(direct.checkForUpdates)
+    #expect(direct.allowsSkippingUpdate == false)
+    #expect(direct.updateButtonTitle == "Install Update")
+    #expect(direct.appStoreBundleIdentifier == "com.example.store")
 
     let bound = SwiftNEW(
         show: .constant(false),
@@ -75,7 +88,11 @@ import AppKit
         showBuild: .constant(true),
         headingStyle: .constant(.versionOnly),
         headingPrefix: .constant("Updates for"),
-        iconStyle: .constant(.filled)
+        iconStyle: .constant(.filled),
+        checkForUpdates: .constant(true),
+        allowsSkippingUpdate: .constant(false),
+        updateButtonTitle: .constant("Get It"),
+        appStoreBundleIdentifier: .constant("com.example.bound")
     )
 
     #expect(bound.align == .leading)
@@ -88,6 +105,110 @@ import AppKit
     #expect(bound.headingStyle == .versionOnly)
     #expect(bound.headingPrefix == "Updates for")
     #expect(bound.iconStyle == .filled)
+    #expect(bound.checkForUpdates)
+    #expect(bound.allowsSkippingUpdate == false)
+    #expect(bound.updateButtonTitle == "Get It")
+    #expect(bound.appStoreBundleIdentifier == "com.example.bound")
+}
+
+@MainActor
+@Test func updateButtonTitleUsesLocalizedDefaultAndPreservesCustomText() {
+    let defaultTitle = SwiftNEW(show: .constant(false))
+    let nilTitle = SwiftNEW(show: .constant(false), updateButtonTitle: nil)
+    let blankTitle = SwiftNEW(show: .constant(false), updateButtonTitle: " \n ")
+    let boundBlankTitle = SwiftNEW(
+        show: .constant(false),
+        updateButtonTitle: .constant("\t")
+    )
+    let customTitle = SwiftNEW(show: .constant(false), updateButtonTitle: " Install Update ")
+
+    #expect(nilTitle.updateButtonTitle.isEmpty)
+    #expect(nilTitle.resolvedUpdateButtonTitle == defaultTitle.resolvedUpdateButtonTitle)
+    #expect(blankTitle.resolvedUpdateButtonTitle == defaultTitle.resolvedUpdateButtonTitle)
+    #expect(boundBlankTitle.resolvedUpdateButtonTitle == defaultTitle.resolvedUpdateButtonTitle)
+    #expect(customTitle.resolvedUpdateButtonTitle == " Install Update ")
+}
+
+@MainActor
+@Test func nonSkippableUpdateDisablesInteractiveDismissalOnlyDuringUpdateFlow() {
+    let checking = makeSwiftNEW(
+        data: "https://example.com/releases.json",
+        updateCheckPhase: .checking,
+        checkForUpdates: true,
+        allowsSkippingUpdate: false
+    )
+    #expect(checking.shouldDisableUpdateDismissal)
+
+    let available = makeSwiftNEW(
+        availableUpdate: sampleUpdateCandidate(),
+        updateCheckPhase: .resolved,
+        checkForUpdates: true,
+        allowsSkippingUpdate: false
+    )
+    #expect(available.shouldDisableUpdateDismissal)
+
+    let skippable = makeSwiftNEW(
+        availableUpdate: sampleUpdateCandidate(),
+        updateCheckPhase: .resolved,
+        checkForUpdates: true,
+        allowsSkippingUpdate: true
+    )
+    #expect(skippable.shouldDisableUpdateDismissal == false)
+
+    let noUpdate = makeSwiftNEW(
+        data: "https://example.com/releases.json",
+        updateCheckPhase: .resolved,
+        checkForUpdates: true,
+        allowsSkippingUpdate: false
+    )
+    #expect(noUpdate.shouldDisableUpdateDismissal == false)
+}
+
+@MainActor
+@Test func nonSkippableUpdateDismissActionIsANoOp() {
+    let forcedShow = SwiftNEWTestBoolBox(true)
+    let forced = SwiftNEW(
+        show: Binding(
+            get: { forcedShow.value },
+            set: { forcedShow.value = $0 }
+        ),
+        allowsSkippingUpdate: false
+    )
+
+    forced.finishUpdatePresentation()
+    #expect(forcedShow.value)
+
+    let skippableShow = SwiftNEWTestBoolBox(true)
+    let skippable = SwiftNEW(
+        show: Binding(
+            get: { skippableShow.value },
+            set: { skippableShow.value = $0 }
+        ),
+        allowsSkippingUpdate: true
+    )
+
+    skippable.finishUpdatePresentation()
+    #expect(skippableShow.value == false)
+}
+
+@MainActor
+@Test func remoteUpdatePrefetchRequiresRemoteDataAndOptIn() {
+    let enabled = makeSwiftNEW(
+        data: "https://example.com/releases.json",
+        checkForUpdates: true,
+        appStoreBundleIdentifier: "com.example.store"
+    )
+    #expect(enabled.shouldPrefetchRemoteUpdate)
+    #expect(enabled.loadRequest.bundleIdentifier == "com.example.store")
+
+    let disabled = makeSwiftNEW(data: "https://example.com/releases.json")
+    #expect(disabled.shouldPrefetchRemoteUpdate == false)
+
+    let local = makeSwiftNEW(
+        data: "data",
+        checkForUpdates: true
+    )
+    #expect(local.shouldPrefetchRemoteUpdate == false)
 }
 
 @MainActor
@@ -276,6 +397,24 @@ import AppKit
 }
 
 @MainActor
+@Test func renderUpdateSheetAndContentRouting() {
+    let update = makeSwiftNEW(
+        items: sampleItems(),
+        loading: false,
+        availableUpdate: sampleUpdateCandidate(),
+        updateCheckPhase: .resolved,
+        checkForUpdates: true
+    )
+
+    render(update.sheetUpdate)
+    render(update.testingSheetContent)
+    render(update.updateNowButton)
+    render(update.dismissUpdateButton)
+    render(update.retryAppStoreLookupButton)
+    render(update.sheetUpdateChecking)
+}
+
+@MainActor
 @Test func renderHistorySheetAndEffects() {
     let sut = makeSwiftNEW(items: sampleItems(), loading: false, mesh: true)
 
@@ -297,6 +436,9 @@ private func makeSwiftNEW(
     items: [Vmodel] = [],
     loading: Bool = true,
     loadErrorMessage: String? = nil,
+    availableUpdate: SwiftNEWUpdateCandidate? = nil,
+    updateCheckPhase: SwiftNEWUpdateCheckPhase = .inactive,
+    appStoreLookupErrorMessage: String? = nil,
     historySheet: Bool = false,
     showSearch: Bool = false,
     searchText: String = "",
@@ -315,6 +457,10 @@ private func makeSwiftNEW(
     headingStyle: SwiftNEWHeadingStyle = .version,
     headingPrefix: String = "What's New in",
     iconStyle: SwiftNEWIconStyle = .default,
+    checkForUpdates: Bool = false,
+    allowsSkippingUpdate: Bool = true,
+    updateButtonTitle: String = "",
+    appStoreBundleIdentifier: String? = nil,
     dataBundle: Bundle = .main
 ) -> SwiftNEW {
     SwiftNEW(
@@ -322,6 +468,9 @@ private func makeSwiftNEW(
         items: items,
         loading: loading,
         loadErrorMessage: loadErrorMessage,
+        availableUpdate: availableUpdate,
+        updateCheckPhase: updateCheckPhase,
+        appStoreLookupErrorMessage: appStoreLookupErrorMessage,
         historySheet: historySheet,
         showSearch: showSearch,
         searchText: searchText,
@@ -343,6 +492,10 @@ private func makeSwiftNEW(
         headingStyle: headingStyle,
         headingPrefix: headingPrefix,
         iconStyle: iconStyle,
+        checkForUpdates: checkForUpdates,
+        allowsSkippingUpdate: allowsSkippingUpdate,
+        updateButtonTitle: updateButtonTitle,
+        appStoreBundleIdentifier: appStoreBundleIdentifier,
         dataBundle: dataBundle
     )
 }
@@ -361,6 +514,28 @@ private func sampleItems() -> [Vmodel] {
 
 private func sampleModel() -> Model {
     Model(icon: "sparkles", toIcon: "wand.and.stars", title: "Search", subtitle: "Filter", body: "Coverage")
+}
+
+private func sampleUpdateCandidate() -> SwiftNEWUpdateCandidate {
+    let release = Vmodel(
+        version: "99.0",
+        subVersion: "99.0.1",
+        new: [sampleModel()]
+    )
+    return SwiftNEWUpdateCandidate(
+        release: release,
+        version: "99.0.1",
+        appStoreURL: URL(string: "https://apps.apple.com/app/id123")!
+    )
+}
+
+@MainActor
+private final class SwiftNEWTestBoolBox {
+    var value: Bool
+
+    init(_ value: Bool) {
+        self.value = value
+    }
 }
 
 #if os(macOS)

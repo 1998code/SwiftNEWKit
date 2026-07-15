@@ -51,11 +51,25 @@ public struct SwiftNEW: View {
     @AppStorage("swiftnew.version") var version = ""
     @AppStorage("swiftnew.build") var build = ""
     @Environment(\.colorScheme) var colorScheme
+    @Environment(\.openURL) var openURL
 
     @State var items: [Vmodel] = []
     @State var loading = true
     @State var loadErrorMessage: String?
     @State var loadedDataSource: String?
+    @State var loadedRequest: SwiftNEWLoadRequest?
+    @State var currentLoadRequest: SwiftNEWLoadRequest?
+    @State var loadGeneration: UUID?
+    @State var reloadID = UUID()
+    @State var forceLoadRequested = false
+    @State var availableUpdate: SwiftNEWUpdateCandidate?
+    @State var updateCheckPhase: SwiftNEWUpdateCheckPhase = .inactive
+    @State var pendingSeenVersion: SwiftNEWVersionSnapshot?
+    @State var hasPendingPresentation = false
+    @State var suppressedAutomaticUpdateRequests: Set<SwiftNEWLoadRequest> = []
+    @State var appStoreLookupErrorMessage: String?
+    @State var appStoreLookupRetryRequest: SwiftNEWLoadRequest?
+    @State var activeDropEpoch: UUID?
     @State var historySheet: Bool = false
     @State var showSearch: Bool = false
     @State var searchText: String = ""
@@ -79,6 +93,10 @@ public struct SwiftNEW: View {
     @Binding var headingStyle: SwiftNEWHeadingStyle
     @Binding var headingPrefix: String
     @Binding var iconStyle: SwiftNEWIconStyle
+    @Binding var checkForUpdates: Bool
+    @Binding var allowsSkippingUpdate: Bool
+    @Binding var updateButtonTitle: String
+    @Binding var appStoreBundleIdentifier: String?
     var dataBundle: Bundle = .main
 
     public init(
@@ -99,7 +117,11 @@ public struct SwiftNEW: View {
         showBuild: Bool? = true,
         headingStyle: SwiftNEWHeadingStyle? = .version,
         headingPrefix: String? = "What's New in",
-        iconStyle: SwiftNEWIconStyle? = .default
+        iconStyle: SwiftNEWIconStyle? = .default,
+        checkForUpdates: Bool? = false,
+        allowsSkippingUpdate: Bool? = true,
+        updateButtonTitle: String? = nil,
+        appStoreBundleIdentifier: String? = nil
     ) {
         _show = show
         _align = .constant(align ?? .center)
@@ -119,7 +141,10 @@ public struct SwiftNEW: View {
         _headingStyle = .constant(headingStyle ?? .version)
         _headingPrefix = .constant(headingPrefix ?? "What's New in")
         _iconStyle = .constant(iconStyle ?? .default)
-        compareVersion()
+        _checkForUpdates = .constant(checkForUpdates ?? false)
+        _allowsSkippingUpdate = .constant(allowsSkippingUpdate ?? true)
+        _updateButtonTitle = .constant(updateButtonTitle ?? "")
+        _appStoreBundleIdentifier = .constant(appStoreBundleIdentifier)
     }
 
     @_disfavoredOverload
@@ -141,7 +166,11 @@ public struct SwiftNEW: View {
         showBuild: Binding<Bool>? = .constant(true),
         headingStyle: Binding<SwiftNEWHeadingStyle>? = .constant(.version),
         headingPrefix: Binding<String>? = .constant("What's New in"),
-        iconStyle: Binding<SwiftNEWIconStyle>? = .constant(.default)
+        iconStyle: Binding<SwiftNEWIconStyle>? = .constant(.default),
+        checkForUpdates: Binding<Bool>? = .constant(false),
+        allowsSkippingUpdate: Binding<Bool>? = .constant(true),
+        updateButtonTitle: Binding<String>? = nil,
+        appStoreBundleIdentifier: Binding<String?>? = .constant(nil)
     ) {
         _show = show
         _align = align ?? .constant(.center)
@@ -161,7 +190,10 @@ public struct SwiftNEW: View {
         _headingStyle = headingStyle ?? .constant(.version)
         _headingPrefix = headingPrefix ?? .constant("What's New in")
         _iconStyle = iconStyle ?? .constant(.default)
-        compareVersion()
+        _checkForUpdates = checkForUpdates ?? .constant(false)
+        _allowsSkippingUpdate = allowsSkippingUpdate ?? .constant(true)
+        _updateButtonTitle = updateButtonTitle ?? .constant("")
+        _appStoreBundleIdentifier = appStoreBundleIdentifier ?? .constant(nil)
     }
 }
 
@@ -174,6 +206,9 @@ extension SwiftNEW {
         loading: Bool = true,
         loadErrorMessage: String? = nil,
         loadedDataSource: String? = nil,
+        availableUpdate: SwiftNEWUpdateCandidate? = nil,
+        updateCheckPhase: SwiftNEWUpdateCheckPhase = .inactive,
+        appStoreLookupErrorMessage: String? = nil,
         historySheet: Bool = false,
         showSearch: Bool = false,
         searchText: String = "",
@@ -195,14 +230,43 @@ extension SwiftNEW {
         headingStyle: SwiftNEWHeadingStyle = .version,
         headingPrefix: String = "What's New in",
         iconStyle: SwiftNEWIconStyle = .default,
+        checkForUpdates: Bool = false,
+        allowsSkippingUpdate: Bool = true,
+        updateButtonTitle: String = "",
+        appStoreBundleIdentifier: String? = nil,
         dataBundle: Bundle = .main
     ) {
+        let configuredBundleIdentifier = appStoreBundleIdentifier?
+            .trimmingCharacters(in: .whitespacesAndNewlines)
+        let initialLoadedRequest = loadedDataSource.map {
+            SwiftNEWLoadRequest(
+                source: $0,
+                checkForUpdates: checkForUpdates,
+                bundleIdentifier: configuredBundleIdentifier?.isEmpty == false
+                    ? configuredBundleIdentifier
+                    : Bundle.main.bundleIdentifier
+            )
+        }
+
         _version = AppStorage(wrappedValue: "", "swiftnew.version")
         _build = AppStorage(wrappedValue: "", "swiftnew.build")
         _items = State(initialValue: items)
         _loading = State(initialValue: loading)
         _loadErrorMessage = State(initialValue: loadErrorMessage)
         _loadedDataSource = State(initialValue: loadedDataSource)
+        _loadedRequest = State(initialValue: initialLoadedRequest)
+        _currentLoadRequest = State(initialValue: initialLoadedRequest)
+        _loadGeneration = State(initialValue: nil)
+        _reloadID = State(initialValue: UUID())
+        _forceLoadRequested = State(initialValue: false)
+        _availableUpdate = State(initialValue: availableUpdate)
+        _updateCheckPhase = State(initialValue: updateCheckPhase)
+        _pendingSeenVersion = State(initialValue: nil)
+        _hasPendingPresentation = State(initialValue: false)
+        _suppressedAutomaticUpdateRequests = State(initialValue: [])
+        _appStoreLookupErrorMessage = State(initialValue: appStoreLookupErrorMessage)
+        _appStoreLookupRetryRequest = State(initialValue: nil)
+        _activeDropEpoch = State(initialValue: nil)
         _historySheet = State(initialValue: historySheet)
         _showSearch = State(initialValue: showSearch)
         _searchText = State(initialValue: searchText)
@@ -225,6 +289,10 @@ extension SwiftNEW {
         _headingStyle = .constant(headingStyle)
         _headingPrefix = .constant(headingPrefix)
         _iconStyle = .constant(iconStyle)
+        _checkForUpdates = .constant(checkForUpdates)
+        _allowsSkippingUpdate = .constant(allowsSkippingUpdate)
+        _updateButtonTitle = .constant(updateButtonTitle)
+        _appStoreBundleIdentifier = .constant(appStoreBundleIdentifier)
         self.dataBundle = dataBundle
     }
 }

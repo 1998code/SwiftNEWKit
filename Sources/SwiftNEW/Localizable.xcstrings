@@ -1,13 +1,581 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "Checking for Updates..." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "جارٍ التحقق من وجود تحديثات..."
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nach Updates suchen..."
+          }
+        },
+       "en" : {
+         "stringUnit" : {
+           "state" : "translated",
+           "value" : "Checking for Updates..."
+         }
+       },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Buscando actualizaciones…"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Recherche de mises à jour..."
+          }
+        },
+       "it" : {
+         "stringUnit" : {
+           "state" : "translated",
+           "value" : "Ricerca aggiornamenti..."
+         }
+       },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "アップデートを確認中…"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "업데이트 확인 중…"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "正在检查更新..."
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "正在檢查更新..."
+          }
+        },
+        "zh-HK" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "正在檢查更新..."
+          }
+        }
+      }
+    },
+    "Current Version" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "الإصدار الحالي"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aktuelle Version"
+          }
+        },
+       "en" : {
+         "stringUnit" : {
+           "state" : "translated",
+           "value" : "Current Version"
+         }
+       },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Versión actual"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Version actuelle"
+          }
+        },
+       "it" : {
+         "stringUnit" : {
+           "state" : "translated",
+           "value" : "Versione attuale"
+         }
+       },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "現在のバージョン"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "현재 버전"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "当前版本"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "目前版本"
+          }
+        },
+        "zh-HK" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "目前版本"
+          }
+        }
+      }
+    },
+    "Latest Version" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "أحدث إصدار"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Neueste Version"
+          }
+        },
+       "en" : {
+         "stringUnit" : {
+           "state" : "translated",
+           "value" : "Latest Version"
+         }
+       },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Última versión"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dernière version"
+          }
+        },
+       "it" : {
+         "stringUnit" : {
+           "state" : "translated",
+           "value" : "Versione più recente"
+         }
+       },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "最新バージョン"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "최신 버전"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "最新版本"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "最新版本"
+          }
+        },
+        "zh-HK" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "最新版本"
+          }
+        }
+      }
+    },
+    "Not Now" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ليس الآن"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nicht jetzt"
+          }
+        },
+       "en" : {
+         "stringUnit" : {
+           "state" : "translated",
+           "value" : "Not Now"
+         }
+       },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ahora no"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pas maintenant"
+          }
+        },
+       "it" : {
+         "stringUnit" : {
+           "state" : "translated",
+           "value" : "Non ora"
+         }
+       },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "今はしない"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "나중에"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "暂不更新"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "稍後更新"
+          }
+        },
+        "zh-HK" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "稍後更新"
+          }
+        }
+      }
+    },
+    "Download Now" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "تنزيل الآن"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jetzt laden"
+          }
+        },
+       "en" : {
+         "stringUnit" : {
+           "state" : "translated",
+           "value" : "Download Now"
+         }
+       },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Descargar ahora"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Télécharger maintenant"
+          }
+        },
+       "it" : {
+         "stringUnit" : {
+           "state" : "translated",
+           "value" : "Scarica ora"
+         }
+       },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "今すぐダウンロード"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "지금 다운로드"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "立即下载"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "立即下載"
+          }
+        },
+        "zh-HK" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "立即下載"
+          }
+        }
+      }
+    },
+    "Update Available" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "تحديث متاح"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Update verfügbar"
+          }
+        },
+       "en" : {
+         "stringUnit" : {
+           "state" : "translated",
+           "value" : "Update Available"
+         }
+       },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Actualización disponible"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mise à jour disponible"
+          }
+        },
+       "it" : {
+         "stringUnit" : {
+           "state" : "translated",
+           "value" : "Aggiornamento disponibile"
+         }
+       },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "アップデートがあります"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "업데이트 사용 가능"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "有可用更新"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "有可用更新"
+          }
+        },
+        "zh-HK" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "有可用更新"
+          }
+        }
+      }
+    },
+    "Update Now" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "حدّث الآن"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jetzt aktualisieren"
+          }
+        },
+       "en" : {
+         "stringUnit" : {
+           "state" : "translated",
+           "value" : "Update Now"
+         }
+       },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Actualizar ahora"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mettre à jour"
+          }
+        },
+       "it" : {
+         "stringUnit" : {
+           "state" : "translated",
+           "value" : "Aggiorna ora"
+         }
+       },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "今すぐアップデート"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "지금 업데이트"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "立即更新"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "立即更新"
+          }
+        },
+        "zh-HK" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "立即更新"
+          }
+        }
+      }
+    },
+    "Unable to load App Store information." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "تعذر تحميل معلومات App Store."
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "App Store-Informationen konnten nicht geladen werden."
+          }
+        },
+       "en" : {
+         "stringUnit" : {
+           "state" : "translated",
+           "value" : "Unable to load App Store information."
+         }
+       },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No se ha podido cargar la información del App Store."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Impossible de charger les informations de l’App Store."
+          }
+        },
+       "it" : {
+         "stringUnit" : {
+           "state" : "translated",
+           "value" : "Impossibile caricare le informazioni dell’App Store."
+         }
+       },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "App Storeの情報を読み込めませんでした。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "App Store 정보를 불러올 수 없습니다."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "无法载入 App Store 信息。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "無法載入 App Store 資訊。"
+          }
+        },
+        "zh-HK" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "無法載入 App Store 資訊。"
+          }
+        }
+      }
+    },
     "Continue" : {
       "extractionState" : "manual",
       "localizations" : {
         "ar" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "إستمر"
+            "value" : "متابعة"
           }
         },
         "de" : {
@@ -16,22 +584,40 @@
             "value" : "Weiter"
           }
         },
-        "en" : {
+       "en" : {
+         "stringUnit" : {
+           "state" : "translated",
+           "value" : "Continue"
+         }
+       },
+        "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Continue"
+            "value" : "Continuar"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Continue"
+            "value" : "Continuer"
           }
         },
-        "it" : {
+       "it" : {
+         "stringUnit" : {
+           "state" : "translated",
+           "value" : "Continua"
+         }
+       },
+        "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Continua"
+            "value" : "続ける"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "계속"
           }
         },
         "zh-Hans" : {
@@ -69,10 +655,16 @@
             "value" : "Historie"
           }
         },
-        "en" : {
+       "en" : {
+         "stringUnit" : {
+           "state" : "translated",
+           "value" : "History"
+         }
+       },
+        "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "History"
+            "value" : "Historial"
           }
         },
         "fr" : {
@@ -81,10 +673,22 @@
             "value" : "Historique"
           }
         },
-        "it" : {
+       "it" : {
+         "stringUnit" : {
+           "state" : "translated",
+           "value" : "Cronologia"
+         }
+       },
+        "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Cronologia"
+            "value" : "履歴"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "버전 기록"
           }
         },
         "zh-Hans" : {
@@ -113,7 +717,7 @@
         "ar" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "جاري التحميل..."
+            "value" : "جارٍ التحميل..."
           }
         },
         "de" : {
@@ -122,10 +726,16 @@
             "value" : "Laden..."
           }
         },
-        "en" : {
+       "en" : {
+         "stringUnit" : {
+           "state" : "translated",
+           "value" : "Loading..."
+         }
+       },
+        "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Loading..."
+            "value" : "Cargando…"
           }
         },
         "fr" : {
@@ -134,28 +744,40 @@
             "value" : "Chargement..."
           }
         },
-        "it" : {
+       "it" : {
+         "stringUnit" : {
+           "state" : "translated",
+           "value" : "Caricamento..."
+         }
+       },
+        "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Caricamento..."
+            "value" : "読み込み中…"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "불러오는 중…"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "载入中......"
+            "value" : "载入中…"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "載入中......"
+            "value" : "載入中…"
           }
         },
         "zh-HK" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "載入中......"
+            "value" : "載入中…"
           }
         }
       }
@@ -175,22 +797,40 @@
             "value" : "Zurück"
           }
         },
-        "en" : {
+       "en" : {
+         "stringUnit" : {
+           "state" : "translated",
+           "value" : "Return"
+         }
+       },
+        "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Return"
+            "value" : "Volver"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Precedent"
+            "value" : "Retour"
           }
         },
-        "it" : {
+       "it" : {
+         "stringUnit" : {
+           "state" : "translated",
+           "value" : "Indietro"
+         }
+       },
+        "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "In Dietro"
+            "value" : "戻る"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "돌아가기"
           }
         },
         "zh-Hans" : {
@@ -216,10 +856,52 @@
     "Alert: Tap to see what's new." : {
       "extractionState" : "manual",
       "localizations" : {
-        "en" : {
+        "ar" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Alert: Tap to see what's new."
+            "value" : "تنبيه: اضغط للاطّلاع على الجديد."
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hinweis: Tippe, um die Neuerungen anzuzeigen."
+          }
+        },
+       "en" : {
+         "stringUnit" : {
+           "state" : "translated",
+           "value" : "Alert: Tap to see what's new."
+         }
+       },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aviso: toca para ver las novedades."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alerte : touchez pour découvrir les nouveautés."
+          }
+        },
+       "it" : {
+         "stringUnit" : {
+           "state" : "translated",
+           "value" : "Avviso: tocca per scoprire le novità."
+         }
+       },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "お知らせ：タップして新機能を確認してください。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "알림: 탭하여 새로운 기능을 확인하세요."
           }
         },
         "zh-Hans" : {
@@ -257,10 +939,16 @@
             "value" : "Suchen"
           }
         },
-        "en" : {
+       "en" : {
+         "stringUnit" : {
+           "state" : "translated",
+           "value" : "Search"
+         }
+       },
+        "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Search"
+            "value" : "Buscar"
           }
         },
         "fr" : {
@@ -269,10 +957,22 @@
             "value" : "Rechercher"
           }
         },
-        "it" : {
+       "it" : {
+         "stringUnit" : {
+           "state" : "translated",
+           "value" : "Cerca"
+         }
+       },
+        "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Cerca"
+            "value" : "検索"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "검색"
           }
         },
         "zh-Hans" : {
@@ -298,10 +998,52 @@
     "Tap" : {
       "extractionState" : "manual",
       "localizations" : {
-        "en" : {
+        "ar" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Tap"
+            "value" : "اضغط"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tippen"
+          }
+        },
+       "en" : {
+         "stringUnit" : {
+           "state" : "translated",
+           "value" : "Tap"
+         }
+       },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Toca"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Touchez"
+          }
+        },
+       "it" : {
+         "stringUnit" : {
+           "state" : "translated",
+           "value" : "Tocca"
+         }
+       },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "タップ"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "탭하여"
           }
         },
         "zh-Hans" : {
@@ -327,10 +1069,52 @@
     "To See What's New." : {
       "extractionState" : "manual",
       "localizations" : {
-        "en" : {
+        "ar" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "To See What's New."
+            "value" : "للاطّلاع على الجديد."
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Um die Neuerungen anzuzeigen."
+          }
+        },
+       "en" : {
+         "stringUnit" : {
+           "state" : "translated",
+           "value" : "To See What's New."
+         }
+       },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Para ver las novedades."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pour découvrir les nouveautés."
+          }
+        },
+       "it" : {
+         "stringUnit" : {
+           "state" : "translated",
+           "value" : "Per scoprire le novità."
+         }
+       },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "新機能を確認"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "새로운 기능을 확인하세요."
           }
         },
         "zh-Hans" : {
@@ -356,10 +1140,52 @@
     "Try Again" : {
       "extractionState" : "manual",
       "localizations" : {
-        "en" : {
+        "ar" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Try Again"
+            "value" : "حاول مرة أخرى"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Erneut versuchen"
+          }
+        },
+       "en" : {
+         "stringUnit" : {
+           "state" : "translated",
+           "value" : "Try Again"
+         }
+       },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reintentar"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Réessayer"
+          }
+        },
+       "it" : {
+         "stringUnit" : {
+           "state" : "translated",
+           "value" : "Riprova"
+         }
+       },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "再試行"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "다시 시도"
           }
         },
         "zh-Hans" : {
@@ -385,10 +1211,52 @@
     "Unable to load release notes." : {
       "extractionState" : "manual",
       "localizations" : {
-        "en" : {
+        "ar" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Unable to load release notes."
+            "value" : "تعذّر تحميل ملاحظات الإصدار."
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Versionshinweise konnten nicht geladen werden."
+          }
+        },
+       "en" : {
+         "stringUnit" : {
+           "state" : "translated",
+           "value" : "Unable to load release notes."
+         }
+       },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No se han podido cargar las notas de la versión."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Impossible de charger les notes de version."
+          }
+        },
+       "it" : {
+         "stringUnit" : {
+           "state" : "translated",
+           "value" : "Impossibile caricare le note di rilascio."
+         }
+       },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "リリースノートを読み込めませんでした。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "릴리스 노트를 불러올 수 없습니다."
           }
         },
         "zh-Hans" : {
@@ -417,7 +1285,7 @@
         "ar" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "إعرض التحديثات السابقة"
+            "value" : "عرض السجل"
           }
         },
         "de" : {
@@ -426,22 +1294,40 @@
             "value" : "Historie anzeigen"
           }
         },
-        "en" : {
+       "en" : {
+         "stringUnit" : {
+           "state" : "translated",
+           "value" : "Show History"
+         }
+       },
+        "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Show History"
+            "value" : "Mostrar historial"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Afficher L'Historique"
+            "value" : "Afficher l’historique"
           }
         },
-        "it" : {
+       "it" : {
+         "stringUnit" : {
+           "state" : "translated",
+           "value" : "Mostra cronologia"
+         }
+       },
+        "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Mostra Cronologia"
+            "value" : "履歴を表示"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "버전 기록 보기"
           }
         },
         "zh-Hans" : {
@@ -479,10 +1365,16 @@
             "value" : "Versionshinweise anzeigen"
           }
         },
-        "en" : {
+       "en" : {
+         "stringUnit" : {
+           "state" : "translated",
+           "value" : "Show Release Note"
+         }
+       },
+        "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Show Release Note"
+            "value" : "Mostrar las notas de la versión"
           }
         },
         "fr" : {
@@ -491,10 +1383,22 @@
             "value" : "Afficher les notes de version"
           }
         },
-        "it" : {
+       "it" : {
+         "stringUnit" : {
+           "state" : "translated",
+           "value" : "Mostra le note di rilascio"
+         }
+       },
+        "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Mostra le note di rilascio"
+            "value" : "リリースノートを表示"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "릴리스 노트 보기"
           }
         },
         "zh-Hans" : {
@@ -532,22 +1436,40 @@
             "value" : "Version %@"
           }
         },
-        "en" : {
+       "en" : {
+         "stringUnit" : {
+           "state" : "translated",
+           "value" : "Version %@"
+         }
+       },
+        "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Version %@"
+            "value" : "Versión %@"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "La Version %@"
+            "value" : "Version %@"
           }
         },
-        "it" : {
+       "it" : {
+         "stringUnit" : {
+           "state" : "translated",
+           "value" : "Versione %@"
+         }
+       },
+        "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "La Versione %@"
+            "value" : "バージョン %@"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "버전 %@"
           }
         },
         "zh-Hans" : {
@@ -576,7 +1498,7 @@
         "ar" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ماهو الجديد"
+            "value" : "ما الجديد في"
           }
         },
         "de" : {
@@ -585,22 +1507,40 @@
             "value" : "Was gibt's Neues"
           }
         },
-        "en" : {
+       "en" : {
+         "stringUnit" : {
+           "state" : "translated",
+           "value" : "What's New in"
+         }
+       },
+        "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "What's New in"
+            "value" : "Novedades"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "C'est Quoi Le Nouveau"
+            "value" : "Nouveautés"
           }
         },
-        "it" : {
+       "it" : {
+         "stringUnit" : {
+           "state" : "translated",
+           "value" : "Le novità"
+         }
+       },
+        "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Le novità"
+            "value" : "新機能"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "새로운 기능"
           }
         },
         "zh-Hans" : {

@@ -70,6 +70,7 @@ C'est tout — SwiftNEW se déclenche automatiquement quand la version de l'app 
 
 | Fonctionnalité | Depuis | Description |
 |---------|:-----:|-------------|
+| ⬆️ Écran de mise à jour à distance | 6.5.0 | Activez-le avec `checkForUpdates` ; si le JSON distant contient une version plus récente, SwiftNEW affiche un écran de mise à jour avec une action App Store personnalisable |
 | 🔁 Boucle d'icônes animée | 6.4.0 | Fait défiler les SF Symbols avec des transitions de remplacement natives |
 | 🧾 Schéma d'icônes flexible | 6.4.0 | Définissez les icônes avec `icon`, `toIcon` ou un tableau `icons` complet |
 | 🎯 Badge en verre par défaut | 6.4.0 | Des badges d'icônes en verre arrondis donnent aux lignes un rendu plus doux |
@@ -105,6 +106,10 @@ C'est tout — SwiftNEW se déclenche automatiquement quand la version de l'app 
 | Icône d'app (3.9.6+) | Historique (2.0+) |
 |:-----------------:|:--------------:|
 | <img height="400" alt="App Icon" src="https://user-images.githubusercontent.com/54872601/206886933-bc4d0d33-e0fc-4013-9456-f19679b10f5b.png"> | <img height="400" alt="History" src="https://user-images.githubusercontent.com/54872601/178129999-ad63b0ce-d65e-4d86-9882-37a5090e92bc.png"> |
+
+## 📝 Notes
+
+- Fournir `checkForUpdates: true` avec une URL `data` distante active la recherche de mises à jour. Si la valeur distante la plus élevée de `subVersion` (ou `version`) est plus récente que la version installée de l’app, SwiftNEW affiche l’écran de mise à jour à la place de Nouveautés et obtient la destination App Store via l’API iTunes Lookup d’Apple à partir de l’identifiant de bundle de l’app. L’action principale utilise par défaut le libellé localisé **Télécharger maintenant** ; utilisez `updateButtonTitle` pour afficher un texte personnalisé tel quel. Définissez `allowsSkippingUpdate: false` pour rendre l’écran de mise à jour impossible à ignorer.
 
 ## 📚 En savoir plus
 

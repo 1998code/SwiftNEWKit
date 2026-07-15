@@ -70,6 +70,7 @@
 
 | 功能 | 起始版本 | 說明 |
 |---------|:-----:|-------------|
+| ⬆️ 遠端更新畫面 | 6.5.0 | 用 `checkForUpdates` 啟用；遠端 JSON 有較新版本時，顯示更新畫面同可自訂文字嘅 App Store 操作按鈕 |
 | 🔁 動畫圖示循環 | 6.4.0 | 用原生 SF Symbol 替換過渡循環切換圖示 |
 | 🧾 彈性圖示格式 | 6.4.0 | 可用 `icon`、`toIcon` 或完整 `icons` 陣列定義圖示 |
 | 🎯 預設玻璃徽章 | 6.4.0 | 圓角玻璃圖示徽章令預設列樣式更柔和 |
@@ -104,6 +105,10 @@
 | App 圖示 (3.9.6+) | 歷史 (2.0+) |
 |:-----------------:|:--------------:|
 | <img height="400" alt="App Icon" src="https://user-images.githubusercontent.com/54872601/206886933-bc4d0d33-e0fc-4013-9456-f19679b10f5b.png"> | <img height="400" alt="History" src="https://user-images.githubusercontent.com/54872601/178129999-ad63b0ce-d65e-4d86-9882-37a5090e92bc.png"> |
+
+## 📝 備註
+
+- 將遠端 `data` URL 配合 `checkForUpdates: true` 傳入，就會啟用更新檢查。如果遠端最高嘅 `subVersion`（或者 `version`）高過目前安裝嘅 App 版本，SwiftNEW 會顯示更新畫面取代「最新功能」，並用 App 嘅 bundle identifier 經 Apple iTunes Lookup API 自動取得 App Store 目的地。主要操作預設顯示已本地化嘅 **立即下載**；用 `updateButtonTitle` 可以原樣顯示自訂文字。設定 `allowsSkippingUpdate: false` 就可以令更新畫面唔俾用戶略過。
 
 ## 📚 深入了解
 

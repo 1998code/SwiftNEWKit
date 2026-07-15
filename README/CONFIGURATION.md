@@ -24,6 +24,10 @@
 | `headingStyle` | `Binding<SwiftNEWHeadingStyle>` | `.version` | Subtitle line style: `.version` (`Version 6.4 (19)`), `.versionOnly` (`6.4`), `.appName` (app's display name) |
 | `headingPrefix` | `Binding<String>` | `"What's New in"` | Header title line shown above the version/app name |
 | `iconStyle` | `Binding<SwiftNEWIconStyle>` | `.default` | Row icon style: `.default` (top-leading white/black-to-bottom-trailing-clear gradient, glyph in theme color), `.filled` (colored backdrop, white glyph), or `.plain` (no backdrop, glyph in theme color) |
+| `checkForUpdates` | `Binding<Bool>` | `false` | Check remote release notes for a newer app version and resolve its App Store URL automatically |
+| `allowsSkippingUpdate` | `Binding<Bool>` | `true` | Show **Not Now** and allow user-initiated dismissal of the Update presentation |
+| `updateButtonTitle` | `String?` / `Binding<String>` | `nil` / blank → `"Download Now"` | Primary App Store action text; a `nil` direct value or blank text uses the package-localized default |
+| `appStoreBundleIdentifier` | `Binding<String?>` | `nil` | Optional App Store listing bundle ID override for extensions, companion apps, or previews |
 
 \* Required parameter
 
@@ -142,6 +146,46 @@ Pass any reachable JSON URL:
 ```swift
 SwiftNEW(show: $showNew, data: "https://api.example.com/releases.json")
 ```
+
+### Remote Update Screen
+
+Provide a remote release-notes source and opt in to update checks:
+
+```swift
+SwiftNEW(
+    show: $showNew,
+    data: "https://api.example.com/releases.json",
+    checkForUpdates: true,
+    updateButtonTitle: "Install Update"
+)
+```
+
+`updateButtonTitle` defaults to the package-localized **Download Now** label. A non-empty custom value is displayed verbatim, so localize it in your app before passing it if needed. Passing `nil` to the direct-value initializer, or passing an empty/whitespace-only string through either initializer, restores the localized default.
+
+To require the update, disable skipping:
+
+```swift
+SwiftNEW(
+    show: $showNew,
+    data: "https://api.example.com/releases.json",
+    checkForUpdates: true,
+    allowsSkippingUpdate: false
+)
+```
+
+`checkForUpdates` is opt-in and defaults to `false`. When enabled, SwiftNEW checks the remote JSON before presentation and compares every release against the installed app's `CFBundleShortVersionString`:
+
+- A non-empty `subVersion` is the precise comparison version; otherwise SwiftNEW uses `version`.
+- The JSON array does not need to be sorted. SwiftNEW selects the highest valid version.
+- Numeric components are compared numerically, so `1.10` is newer than `1.9`, while `1.2` and `1.2.0` are equal.
+- A newer version presents the Update screen automatically, even if the current What's New screen was already seen. The screen includes the newest release notes.
+- SwiftNEW requests `https://itunes.apple.com/lookup?bundleId=<resolved bundle identifier>`, matches the returned `bundleId`, and opens its HTTPS Apple `trackViewUrl` from **Download Now** (or the developer's custom `updateButtonTitle`). If the default US storefront has no result, it retries with the device's current region. Developers do not provide or trust an update URL from the release-notes JSON.
+- By default, the lookup uses `Bundle.main.bundleIdentifier`. If an extension, companion app, or preview host has a different bundle ID, pass the App Store listing ID with `appStoreBundleIdentifier`. Unpublished development bundle identifiers can still show the retry state.
+- If the App Store lookup fails or has no matching result, the Update screen remains visible with a retry action instead of opening an unverified destination. Retrying repeats only the App Store lookup and keeps the already loaded release notes.
+- `allowsSkippingUpdate` defaults to `true`. Set it to `false` to hide **Not Now** and disable user-initiated presentation dismissal while checking for or presenting an update. Developer-controlled state changes, removing the view, and quitting the app remain possible. If App Store lookup fails in this mode, the user must retry.
+- When skipping is allowed, **Not Now** closes a sheet/full-screen presentation. In `.embed`, it returns to the normal What's New content.
+- Equal, older, or malformed versions keep the normal What's New flow. Local JSON never triggers the Update screen.
+- If the remote request or decoding fails, SwiftNEW keeps the existing retryable error state and never presents a stale update.
 
 ### Firebase Realtime Database
 

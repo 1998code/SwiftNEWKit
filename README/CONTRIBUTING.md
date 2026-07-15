@@ -30,6 +30,7 @@ Test your changes against as many platforms as possible (iOS, macOS, visionOS, t
 - **Match the minimum platform versions** declared in `Package.swift` and the `@available` annotations.
 - **Test on multiple platforms** when the change touches view code or platform-conditional code (`#if os(...)`).
 - **Localization changes** — when adding/renaming a string, update all locales in `Localizable.xcstrings` (or mark them `needs_review`).
+- **Remote Update preview** — keep `Demo/remote-update-preview.json` separate from the localized release-note files. Its deliberately high version makes the `Remote Update` preview deterministic; the preview's raw GitHub URL works after the fixture is pushed to `main`.
 
 ## 📂 Project Structure
 
@@ -43,7 +44,8 @@ Sources/SwiftNEW/
 │   ├── SwiftNEW+View.swift       # body + presentation modifiers
 │   ├── Sheets/
 │   │   ├── CurrentVersionSheet.swift
-│   │   └── HistorySheet.swift
+│   │   ├── HistorySheet.swift
+│   │   └── UpdateSheet.swift
 │   └── Components/
 │       ├── HeaderView.swift
 │       └── ButtonComponents.swift
@@ -61,8 +63,8 @@ Sources/SwiftNEW/
 ### Architecture at a Glance
 
 - **Core**: `SwiftNEW` struct holds all configuration via `@Binding`s; multiple `init` overloads accept either direct values or bindings (cross-platform variants for iOS/macOS/watchOS/tvOS/visionOS).
-- **View layer**: `body` resolves to either an embedded view or a button that triggers a sheet / fullScreenCover. Sheets compose `MeshView` + optional `SnowfallView` / `FloatingParticlesView` on top of `sheetCurrent` or `sheetHistory`.
-- **Data**: `loadData()` parses local or remote JSON into `[Vmodel]` using Swift Concurrency. `compareVersion()` reads `Bundle.version` / `Bundle.build` and toggles `show` on mismatch.
+- **View layer**: `body` resolves to either an embedded view or a button that triggers a sheet / fullScreenCover. Sheets compose `MeshView` + optional `SnowfallView` / `FloatingParticlesView` on top of `sheetCurrent`, `sheetHistory`, or `sheetUpdate`.
+- **Data**: `loadData()` parses local or remote JSON into `[Vmodel]` using Swift Concurrency. `compareVersion()` reads `Bundle.version` / `Bundle.build` and toggles `show` on mismatch. When `checkForUpdates` is enabled for a remote source, the loader selects the highest newer release, resolves `trackViewUrl` through Apple's iTunes Lookup API using the configured App Store bundle identifier (or `Bundle.main.bundleIdentifier` by default), and routes to `sheetUpdate`.
 
 ## 🔧 Troubleshooting
 
