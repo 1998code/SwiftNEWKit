@@ -8,6 +8,7 @@
 [![codecov](https://codecov.io/github/1998code/SwiftNEWKit/branch/main/graph/badge.svg?token=GI0KRUHVH1)](https://codecov.io/github/1998code/SwiftNEWKit)
 ![Swift Version](https://img.shields.io/badge/Swift-5.9/6.1-teal.svg)
 ![Platforms](https://img.shields.io/badge/Platforms-iOS%2015.0+%20|%20macOS%2014.0+%20|%20tvOS%2017.0+%20|%20visionOS%201.0+-15437D.svg)
+[![OpenSSF Scorecard](https://api.scorecard.dev/projects/github.com/1998code/SwiftNEWKit/badge)](https://scorecard.dev/viewer/?uri=github.com/1998code/SwiftNEWKit)
 ![License](https://img.shields.io/badge/License-MIT-C8ECFE.svg)
 
 **English** · [繁中](README/README_tc.md) · [简中](README/README_zh.md) · [粵語](README/README_hc.md) · [日本語](README/README_ja.md) · [한국어](README/README_ko.md) · [Français](README/README_fr.md) · [Español](README/README_es.md)
