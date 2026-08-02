@@ -42,11 +42,6 @@ public struct AppIconView: View {
                     Image(resolvedAssetName, bundle: bundle)
                         .resizable()
                 )
-            } else if let compiledAppIcon {
-                styledIcon(
-                    Image(uiImage: compiledAppIcon)
-                        .resizable()
-                )
             } else if let rasterIcon {
                 styledIcon(
                     Image(uiImage: rasterIcon)
@@ -90,44 +85,6 @@ public struct AppIconView: View {
             return Self.automaticAssetName
         }
         return "\(Self.automaticAssetName)-\(alternateIconName)"
-    }
-
-    /// Xcode stores generated Light and Dark flat renditions alongside the
-    /// system-only icon stack. Named-image lookup isn't guaranteed for app-icon
-    /// assets, so this is a nil-safe attempt that requires raster backing and
-    /// otherwise falls through to the bundled PNG.
-    private var compiledAppIcon: UIImage? {
-        guard #available(iOS 26.0, *),
-              let name = bundle.appIconAssetName(
-                alternateIconName: alternateIconName,
-                prefersIPadIcons: UIDevice.current.userInterfaceIdiom == .pad
-              )
-        else {
-            return nil
-        }
-
-        let userInterfaceStyle: UIUserInterfaceStyle = colorScheme == .dark
-            ? .dark
-            : .light
-        let traits = UITraitCollection { mutableTraits in
-            mutableTraits.userInterfaceStyle = userInterfaceStyle
-            mutableTraits.displayScale = displayScale
-            mutableTraits.userInterfaceIdiom = UIDevice.current.userInterfaceIdiom
-        }
-
-        guard let image = UIImage(
-            named: name,
-            in: bundle,
-            compatibleWith: traits
-        ), let cgImage = image.cgImage else {
-            return nil
-        }
-
-        return UIImage(
-            cgImage: cgImage,
-            scale: image.scale,
-            orientation: image.imageOrientation
-        )
     }
 
     private var rasterIcon: UIImage? {
