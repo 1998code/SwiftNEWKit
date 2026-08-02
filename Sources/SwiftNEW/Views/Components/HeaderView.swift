@@ -38,14 +38,20 @@ extension SwiftNEW {
     public var headings: some View {
         HStack {
             if align == .leading {
-                AppIconView()
+                AppIconView(
+                    assetName: appIconName,
+                    alternateIconName: alternateAppIconName
+                )
                     .padding(.top, appIconTopPadding)
                     .padding(.leading, -8)
                     .padding(.trailing, 8)
             }
             VStack(alignment: align) {
                 if align == .center {
-                    AppIconView()
+                    AppIconView(
+                        assetName: appIconName,
+                        alternateIconName: alternateAppIconName
+                    )
                         .padding(.top, appIconTopPadding)
                 }
                 Text(headingTitle)
@@ -55,7 +61,10 @@ extension SwiftNEW {
                     .bold().font(.title).foregroundColor(.secondary)
             }
             if align == .trailing {
-                AppIconView()
+                AppIconView(
+                    assetName: appIconName,
+                    alternateIconName: alternateAppIconName
+                )
                     .padding(.top, appIconTopPadding)
             }
         }

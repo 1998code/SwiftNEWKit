@@ -48,16 +48,24 @@ extension SwiftNEW {
     }
 
     private var defaultIconBackdropGradient: LinearGradient {
-        LinearGradient(
-            colors: [colorScheme == .dark ? .black : .white, .clear],
+        let colors: [Color] = colorScheme == .dark
+            ? [.white.opacity(0.14), .white.opacity(0.035)]
+            : [.white, .clear]
+
+        return LinearGradient(
+            colors: colors,
             startPoint: .topLeading,
             endPoint: .bottomTrailing
         )
     }
 
     private var iconGlyphGradient: LinearGradient {
-        LinearGradient(
-            colors: [color, color.opacity(0.6)],
+        let colors: [Color] = colorScheme == .dark
+            ? [color, .white]
+            : [color, color.opacity(0.6)]
+
+        return LinearGradient(
+            colors: colors,
             startPoint: .topLeading,
             endPoint: .bottomTrailing
         )
@@ -133,19 +141,26 @@ extension SwiftNEW {
                 sheetContent
             } else {
                 Button(action: presentReleaseNotes) {
-                    Label(String(localized: String.LocalizationValue(label), bundle: .module), systemImage: labelImage)
+                    Label {
+                        Text(String(localized: String.LocalizationValue(label), bundle: .module))
+                            .bold()
+                    } icon: {
+                        Image(systemName: labelImage)
+                    }
                         .frame(
                             width: size == "mini" ? nil : (size == "invisible" ? 0 : platformWidth),
                             height: size == "mini" ? nil : (size == "invisible" ? 0 : 50)
                         )
-                        #if os(iOS) && !os(visionOS)
-                        .foregroundColor(size == "mini" || size == "invisible" ? color : color.adaptedTextColor)
-                        .background(size != "mini" && size != "invisible" ? color : Color.clear)
-                        .cornerRadius(15)
-                        #endif
+                        .modifier(
+                            ReleaseNoteButtonLabelModifier(
+                                color: color,
+                                usesCompactStyle: size == "mini" || size == "invisible"
+                            )
+                        )
                         .contentShape(RoundedRectangle(cornerRadius: 15, style: .continuous))
                 }
                 .opacity(size == "invisible" ? 0 : 1)
+                .modifier(ReleaseNoteButtonGlassModifier(tint: color))
                 .modifier(ConditionalGlassModifier(isEnabled: glass, shadowColor: color))
                 .modifier(PresentationModifier(isPresented: $show, presentation: presentation, sheetContent: sheetContent))
             }
@@ -368,6 +383,55 @@ private struct SheetBackdropModifier: ViewModifier {
                     .background(.ultraThinMaterial, ignoresSafeAreaEdges: .all)
             }
         } // LCOV_EXCL_STOP
+    }
+}
+
+private struct ReleaseNoteButtonLabelModifier: ViewModifier {
+    let color: Color
+    let usesCompactStyle: Bool
+
+    @ViewBuilder
+    func body(content: Content) -> some View {
+        #if os(iOS) && !os(visionOS) && compiler(>=6.2)
+        if #available(iOS 26.0, *) {
+            content
+                .foregroundStyle(usesCompactStyle ? color : color.adaptedTextColor)
+        } else {
+            legacyAppearance(content)
+        }
+        #elseif os(iOS) && !os(visionOS)
+        legacyAppearance(content)
+        #else
+        content
+        #endif
+    }
+
+    private func legacyAppearance(_ content: Content) -> some View {
+        content
+            .foregroundColor(usesCompactStyle ? color : color.adaptedTextColor)
+            .background(usesCompactStyle ? Color.clear : color)
+            .cornerRadius(15)
+    }
+}
+
+private struct ReleaseNoteButtonGlassModifier: ViewModifier {
+    let tint: Color
+
+    @ViewBuilder
+    func body(content: Content) -> some View {
+        #if os(iOS) && compiler(>=6.2)
+        if #available(iOS 26.0, *) {
+            content
+                .glassEffect(
+                    .regular.tint(tint).interactive(),
+                    in: .rect(cornerRadius: 15)
+                )
+        } else {
+            content
+        }
+        #else
+        content
+        #endif
     }
 }
 

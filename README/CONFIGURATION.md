@@ -23,7 +23,9 @@
 | `showBuild` | `Binding<Bool>` | `true` | Show build number alongside the version in the header |
 | `headingStyle` | `Binding<SwiftNEWHeadingStyle>` | `.version` | Subtitle line style: `.version` (`Version 6.4 (19)`), `.versionOnly` (`6.4`), `.appName` (app's display name) |
 | `headingPrefix` | `Binding<String>` | `"What's New in"` | Header title line shown above the version/app name |
-| `iconStyle` | `Binding<SwiftNEWIconStyle>` | `.default` | Row icon style: `.default` (top-leading white/black-to-bottom-trailing-clear gradient, glyph in theme color), `.filled` (colored backdrop, white glyph), or `.plain` (no backdrop, glyph in theme color) |
+| `iconStyle` | `Binding<SwiftNEWIconStyle>` | `.default` | Row icon style: `.default` (adaptive translucent gradient backdrop), `.filled` (colored backdrop, white glyph), or `.plain` (no backdrop). Default/plain glyphs use a theme gradient in Light Mode and an accent-to-white gradient in Dark Mode. |
+| `appIconName` | `String?` / `Binding<String?>` | `nil` | iOS-only name of an ordinary adaptive image asset used for the header app icon; see **App Icon and Icon Composer** below |
+| `alternateAppIconName` | `String?` / `Binding<String?>` | `nil` | iOS-only logical name of the currently selected alternate app icon; pass the same name used with `setAlternateIconName` |
 | `checkForUpdates` | `Binding<Bool>` | `false` | Check remote release notes for a newer app version and resolve its App Store URL automatically |
 | `allowsSkippingUpdate` | `Binding<Bool>` | `true` | Show **Not Now** and allow user-initiated dismissal of the Update presentation |
 | `updateButtonTitle` | `String?` / `Binding<String>` | `nil` / blank → `"Download Now"` | Primary App Store action text; a `nil` direct value or blank text uses the package-localized default |
@@ -84,10 +86,47 @@ SwiftNEW(show: $showNew, headingPrefix: "Latest in")      // "Latest in / Versio
 ### Icon Style
 
 ```swift
-SwiftNEW(show: $showNew)                              // .default — white/black-to-clear gradient backdrop
+SwiftNEW(show: $showNew)                              // .default — adaptive translucent gradient backdrop
 SwiftNEW(show: $showNew, iconStyle: .filled)          // colored backdrop, white glyph
-SwiftNEW(show: $showNew, iconStyle: .plain)           // no backdrop, glyph uses theme color
+SwiftNEW(show: $showNew, iconStyle: .plain)           // no backdrop, adaptive glyph color
 ```
+
+### App Icon and Icon Composer
+
+For asset-catalog app icons, SwiftNEW automatically loads the primary icon's bundled raster file. If the app selects an alternate icon, pass its logical name through `alternateAppIconName`; SwiftNEW then loads the matching iPhone or iPad rendition.
+
+An [Icon Composer](https://developer.apple.com/documentation/xcode/creating-your-app-icon-using-icon-composer) `.icon` file is a system-rendered composition, not a regular image resource. Apple doesn't provide a public API for rendering that composition inside an app. To display it safely in SwiftNEW on iOS 26 or later:
+
+1. Export a flattened image from the same Icon Composer artwork.
+2. Add it as an ordinary Image Set, not an App Icon Set. Name it `SwiftNEWAppIcon`.
+3. Optionally add Any and Dark appearances to that Image Set. SwiftUI selects the correct appearance automatically.
+
+With the conventional `SwiftNEWAppIcon` name, no additional code is required. A custom image-set name can be passed explicitly:
+
+```swift
+SwiftNEW(
+    show: $showNew,
+    appIconName: "ReleaseNotesAppIcon"
+)
+```
+
+For an alternate icon named `Blue`, lookup uses `SwiftNEWAppIcon-Blue`. Keep a binding in sync when the app changes its icon so an already-visible SwiftNEW header updates immediately:
+
+```swift
+@State private var alternateAppIconName: String?
+
+SwiftNEW(
+    show: $showNew,
+    alternateAppIconName: $alternateAppIconName
+)
+
+// After setAlternateIconName succeeds:
+alternateAppIconName = UIApplication.shared.alternateIconName
+```
+
+SwiftNEW deliberately doesn't access `UIApplication.shared` itself, which keeps the package safe for app-extension consumers and avoids stale, non-observable icon state.
+
+Don't pass the App Icon Set or `.icon` composition name (usually `AppIcon`) to `appIconName`; those special renditions aren't safe general-purpose `UIImage` resources on iOS 26. Home Screen Mono/Tinted selection is also unavailable to apps through public API, so provide a matching ordinary image asset explicitly when that appearance is required.
 
 ### Special Effects
 

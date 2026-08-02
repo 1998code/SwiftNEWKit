@@ -42,6 +42,7 @@ extension SwiftNEW {
             title: String(localized: "Continue", bundle: .module),
             systemImage: "arrow.right.circle.fill",
             macWidth: 200,
+            usesTintedGlass: true,
             action: { show = false }
         )
     }
@@ -51,6 +52,7 @@ extension SwiftNEW {
             title: String(localized: "Return", bundle: .module),
             systemImage: "arrow.down.circle.fill",
             macWidth: 300,
+            usesTintedGlass: true,
             action: { historySheet = false }
         )
     }
@@ -158,6 +160,7 @@ extension SwiftNEW {
         systemImage: String,
         macWidth: CGFloat,
         iOSMaxWidth: CGFloat = 300,
+        usesTintedGlass: Bool = false,
         action: @escaping () -> Void
     ) -> some View {
         Button(action: action) {
@@ -178,14 +181,73 @@ extension SwiftNEW {
             .frame(width: macWidth, height: 25)
             #endif
             #if os(iOS) && !os(visionOS)
-            .foregroundColor(color.adaptedTextColor)
-            .background(color)
-            .cornerRadius(primaryActionButtonCornerRadius)
+            .modifier(
+                PrimaryActionButtonLabelModifier(
+                    tint: color,
+                    cornerRadius: primaryActionButtonCornerRadius,
+                    usesTintedGlass: usesTintedGlass
+                )
+            )
             #elseif os(tvOS)
             .tint(.white)
             #endif
             .contentShape(RoundedRectangle(cornerRadius: primaryActionButtonCornerRadius, style: .continuous))
         }
+        .modifier(
+            PrimaryActionButtonGlassModifier(
+                tint: color,
+                cornerRadius: primaryActionButtonCornerRadius,
+                isEnabled: usesTintedGlass
+            )
+        )
         .swiftNEWGlass(radius: primaryActionButtonCornerRadius, color: color.opacity(0.1))
+    }
+}
+
+private struct PrimaryActionButtonLabelModifier: ViewModifier {
+    let tint: Color
+    let cornerRadius: CGFloat
+    let usesTintedGlass: Bool
+
+    @ViewBuilder
+    func body(content: Content) -> some View {
+        #if os(iOS) && !os(visionOS) && compiler(>=6.2)
+        if #available(iOS 26.0, *), usesTintedGlass {
+            content.foregroundStyle(tint.adaptedTextColor)
+        } else {
+            legacyAppearance(content)
+        }
+        #else
+        legacyAppearance(content)
+        #endif
+    }
+
+    private func legacyAppearance(_ content: Content) -> some View {
+        content
+            .foregroundColor(tint.adaptedTextColor)
+            .background(tint)
+            .cornerRadius(cornerRadius)
+    }
+}
+
+private struct PrimaryActionButtonGlassModifier: ViewModifier {
+    let tint: Color
+    let cornerRadius: CGFloat
+    let isEnabled: Bool
+
+    @ViewBuilder
+    func body(content: Content) -> some View {
+        #if os(iOS) && compiler(>=6.2)
+        if #available(iOS 26.0, *), isEnabled {
+            content.glassEffect(
+                .regular.tint(tint).interactive(),
+                in: .rect(cornerRadius: cornerRadius)
+            )
+        } else {
+            content
+        }
+        #else
+        content
+        #endif
     }
 }

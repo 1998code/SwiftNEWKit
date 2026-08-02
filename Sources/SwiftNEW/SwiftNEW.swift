@@ -36,8 +36,8 @@ public enum SwiftNEWHeadingStyle {
 // Icon style for each release-note row
 public enum SwiftNEWIconStyle {
     case filled     // colored backdrop, white glyph
-    case `default` // white/black-to-clear gradient backdrop, glyph uses theme color (default)
-    case plain      // no backdrop, glyph uses theme color
+    case `default` // adaptive translucent backdrop, adaptive glyph (default)
+    case plain      // no backdrop, adaptive glyph
 }
 
 // Mesh gradient behavior
@@ -93,6 +93,8 @@ public struct SwiftNEW: View {
     @Binding var headingStyle: SwiftNEWHeadingStyle
     @Binding var headingPrefix: String
     @Binding var iconStyle: SwiftNEWIconStyle
+    @Binding var appIconName: String?
+    @Binding var alternateAppIconName: String?
     @Binding var checkForUpdates: Bool
     @Binding var allowsSkippingUpdate: Bool
     @Binding var updateButtonTitle: String
@@ -118,6 +120,8 @@ public struct SwiftNEW: View {
         headingStyle: SwiftNEWHeadingStyle? = .version,
         headingPrefix: String? = "What's New in",
         iconStyle: SwiftNEWIconStyle? = .default,
+        appIconName: String? = nil,
+        alternateAppIconName: String? = nil,
         checkForUpdates: Bool? = false,
         allowsSkippingUpdate: Bool? = true,
         updateButtonTitle: String? = nil,
@@ -141,6 +145,8 @@ public struct SwiftNEW: View {
         _headingStyle = .constant(headingStyle ?? .version)
         _headingPrefix = .constant(headingPrefix ?? "What's New in")
         _iconStyle = .constant(iconStyle ?? .default)
+        _appIconName = .constant(appIconName)
+        _alternateAppIconName = .constant(alternateAppIconName)
         _checkForUpdates = .constant(checkForUpdates ?? false)
         _allowsSkippingUpdate = .constant(allowsSkippingUpdate ?? true)
         _updateButtonTitle = .constant(updateButtonTitle ?? "")
@@ -167,6 +173,8 @@ public struct SwiftNEW: View {
         headingStyle: Binding<SwiftNEWHeadingStyle>? = .constant(.version),
         headingPrefix: Binding<String>? = .constant("What's New in"),
         iconStyle: Binding<SwiftNEWIconStyle>? = .constant(.default),
+        appIconName: Binding<String?>? = .constant(nil),
+        alternateAppIconName: Binding<String?>? = .constant(nil),
         checkForUpdates: Binding<Bool>? = .constant(false),
         allowsSkippingUpdate: Binding<Bool>? = .constant(true),
         updateButtonTitle: Binding<String>? = nil,
@@ -190,6 +198,8 @@ public struct SwiftNEW: View {
         _headingStyle = headingStyle ?? .constant(.version)
         _headingPrefix = headingPrefix ?? .constant("What's New in")
         _iconStyle = iconStyle ?? .constant(.default)
+        _appIconName = appIconName ?? .constant(nil)
+        _alternateAppIconName = alternateAppIconName ?? .constant(nil)
         _checkForUpdates = checkForUpdates ?? .constant(false)
         _allowsSkippingUpdate = allowsSkippingUpdate ?? .constant(true)
         _updateButtonTitle = updateButtonTitle ?? .constant("")
@@ -230,6 +240,8 @@ extension SwiftNEW {
         headingStyle: SwiftNEWHeadingStyle = .version,
         headingPrefix: String = "What's New in",
         iconStyle: SwiftNEWIconStyle = .default,
+        appIconName: String? = nil,
+        alternateAppIconName: String? = nil,
         checkForUpdates: Bool = false,
         allowsSkippingUpdate: Bool = true,
         updateButtonTitle: String = "",
@@ -289,6 +301,8 @@ extension SwiftNEW {
         _headingStyle = .constant(headingStyle)
         _headingPrefix = .constant(headingPrefix)
         _iconStyle = .constant(iconStyle)
+        _appIconName = .constant(appIconName)
+        _alternateAppIconName = .constant(alternateAppIconName)
         _checkForUpdates = .constant(checkForUpdates)
         _allowsSkippingUpdate = .constant(allowsSkippingUpdate)
         _updateButtonTitle = .constant(updateButtonTitle)

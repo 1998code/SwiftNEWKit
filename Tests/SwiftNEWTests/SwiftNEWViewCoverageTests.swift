@@ -18,6 +18,8 @@ import AppKit
     #expect(defaultDirect.mesh)
     #expect(defaultDirect.meshStyle == .still)
     #expect(defaultDirect.iconStyle == .default)
+    #expect(defaultDirect.appIconName == nil)
+    #expect(defaultDirect.alternateAppIconName == nil)
     #expect(defaultDirect.checkForUpdates == false)
     #expect(defaultDirect.allowsSkippingUpdate)
     #expect(defaultDirect.updateButtonTitle.isEmpty)
@@ -43,6 +45,8 @@ import AppKit
         headingStyle: .appName,
         headingPrefix: "Latest in",
         iconStyle: .default,
+        appIconName: "ReleaseNotesAppIcon",
+        alternateAppIconName: "Blue",
         checkForUpdates: true,
         allowsSkippingUpdate: false,
         updateButtonTitle: "Install Update",
@@ -65,6 +69,8 @@ import AppKit
     #expect(direct.headingStyle == .appName)
     #expect(direct.headingPrefix == "Latest in")
     #expect(direct.iconStyle == .default)
+    #expect(direct.appIconName == "ReleaseNotesAppIcon")
+    #expect(direct.alternateAppIconName == "Blue")
     #expect(direct.checkForUpdates)
     #expect(direct.allowsSkippingUpdate == false)
     #expect(direct.updateButtonTitle == "Install Update")
@@ -89,6 +95,8 @@ import AppKit
         headingStyle: .constant(.versionOnly),
         headingPrefix: .constant("Updates for"),
         iconStyle: .constant(.filled),
+        appIconName: .constant("BoundAppIcon"),
+        alternateAppIconName: .constant("Green"),
         checkForUpdates: .constant(true),
         allowsSkippingUpdate: .constant(false),
         updateButtonTitle: .constant("Get It"),
@@ -105,6 +113,8 @@ import AppKit
     #expect(bound.headingStyle == .versionOnly)
     #expect(bound.headingPrefix == "Updates for")
     #expect(bound.iconStyle == .filled)
+    #expect(bound.appIconName == "BoundAppIcon")
+    #expect(bound.alternateAppIconName == "Green")
     #expect(bound.checkForUpdates)
     #expect(bound.allowsSkippingUpdate == false)
     #expect(bound.updateButtonTitle == "Get It")
@@ -236,6 +246,7 @@ import AppKit
     #expect(Bundle.versionBuild.contains("("))
     #expect(Bundle.appName == Bundle.main.infoDictionary?["CFBundleName"] as? String ?? "")
     #expect(Bundle.main.iconFileName == nil)
+    #expect(Bundle.main.appIconName == nil)
 }
 
 @MainActor
@@ -249,7 +260,20 @@ import AppKit
         "CFBundlePackageType": "BNDL",
         "CFBundleIcons": [
             "CFBundlePrimaryIcon": [
+                "CFBundleIconName": "AppIcon",
                 "CFBundleIconFiles": ["Icon20", "Icon60"]
+            ],
+            "CFBundleAlternateIcons": [
+                "Blue": [
+                    "CFBundleIconName": "BlueIcon",
+                    "CFBundleIconFiles": ["Blue20", "Blue60"]
+                ]
+            ]
+        ],
+        "CFBundleIcons~ipad": [
+            "CFBundlePrimaryIcon": [
+                "CFBundleIconName": "AppIcon",
+                "CFBundleIconFiles": ["Icon20", "Icon76"]
             ]
         ]
     ]
@@ -263,6 +287,59 @@ import AppKit
     }
 
     #expect(bundle.iconFileName == "Icon60")
+    #expect(bundle.appIconName == "AppIcon")
+    #expect(bundle.iconFileNames() == ["Icon20", "Icon60"])
+    #expect(bundle.iconFileNames(prefersIPadIcons: true) == ["Icon20", "Icon76"])
+    #expect(bundle.iconFileNames(alternateIconName: "Blue") == ["Blue20", "Blue60"])
+    #expect(bundle.iconFileNames(alternateIconName: "Blue", prefersIPadIcons: true).isEmpty)
+    #expect(bundle.iconFileNames(alternateIconName: "Missing").isEmpty)
+    #expect(bundle.declaredAppIconNames == Set(["AppIcon", "Blue", "BlueIcon"]))
+}
+
+@MainActor
+@Test func bundleIconHelperReadsLegacySingleIconFile() throws {
+    let folder = FileManager.default.temporaryDirectory
+        .appendingPathComponent("SwiftNEWLegacyIconBundle-\(UUID().uuidString).bundle", isDirectory: true)
+    try FileManager.default.createDirectory(at: folder, withIntermediateDirectories: true)
+
+    let plist: [String: Any] = [
+        "CFBundleIdentifier": "com.swiftnew.coverage.legacy-icon",
+        "CFBundlePackageType": "BNDL",
+        "CFBundleIconFile": "LegacyIcon.png"
+    ]
+
+    let data = try PropertyListSerialization.data(fromPropertyList: plist, format: .xml, options: 0)
+    try data.write(to: folder.appendingPathComponent("Info.plist"))
+
+    guard let bundle = Bundle(url: folder) else {
+        Issue.record("Expected temporary legacy icon bundle to load")
+        return
+    }
+
+    #expect(bundle.iconFileNames() == ["LegacyIcon.png"])
+    #expect(bundle.iconFileName == "LegacyIcon.png")
+}
+
+@MainActor
+@Test func bundleIconHelperGeneratesDeviceResourceCandidates() {
+    let phoneCandidates = Bundle.main.appIconResourceCandidates(
+        for: "AppIcon60x60",
+        displayScale: 3
+    )
+    #expect(phoneCandidates.first == "AppIcon60x60@3x.png")
+    #expect(phoneCandidates.contains("AppIcon60x60@2x.png"))
+
+    let padCandidates = Bundle.main.appIconResourceCandidates(
+        for: "AppIcon76x76",
+        displayScale: 2
+    )
+    #expect(padCandidates.contains("AppIcon76x76@2x~ipad.png"))
+
+    let explicitFileCandidates = Bundle.main.appIconResourceCandidates(
+        for: "LegacyIcon.png",
+        displayScale: 2
+    )
+    #expect(explicitFileCandidates.first == "LegacyIcon.png")
 }
 
 @MainActor
@@ -457,6 +534,8 @@ private func makeSwiftNEW(
     headingStyle: SwiftNEWHeadingStyle = .version,
     headingPrefix: String = "What's New in",
     iconStyle: SwiftNEWIconStyle = .default,
+    appIconName: String? = nil,
+    alternateAppIconName: String? = nil,
     checkForUpdates: Bool = false,
     allowsSkippingUpdate: Bool = true,
     updateButtonTitle: String = "",
@@ -492,6 +571,8 @@ private func makeSwiftNEW(
         headingStyle: headingStyle,
         headingPrefix: headingPrefix,
         iconStyle: iconStyle,
+        appIconName: appIconName,
+        alternateAppIconName: alternateAppIconName,
         checkForUpdates: checkForUpdates,
         allowsSkippingUpdate: allowsSkippingUpdate,
         updateButtonTitle: updateButtonTitle,

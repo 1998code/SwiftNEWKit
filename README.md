@@ -74,7 +74,7 @@ That's it — SwiftNEW auto-triggers when the app version changes.
 | 🔁 Animated Icon Loop | 6.4.0 | Loop through SF Symbols with native replace transitions |
 | 🧾 Flexible Icon Schema | 6.4.0 | Define icons with `icon`, `toIcon`, or a full `icons` array |
 | 🎯 Default Glass Badge | 6.4.0 | Rounded glass icon badges give rows a softer default look |
-| 🌈 Gradient Icon Glyphs | 6.4.0 | Icon glyphs use a top-leading to bottom-trailing theme gradient |
+| 🌈 Adaptive Icon Glyphs | 6.4.0 | Icon glyphs use the theme gradient in Light Mode and an accent-to-white gradient in Dark Mode |
 | 🧩 Refined Row Layout | 6.4.0 | Larger icons, tighter rows, and rounder action buttons |
 | ⬇️ Lower Continue Controls | 6.4.0 | Continue controls sit closer to the bottom for easier reach |
 | 🌊 Liquid Mesh Motion | 6.4.0 | `meshStyle`: `.still` or `.liquid` animated mesh backgrounds |
@@ -102,6 +102,7 @@ That's it — SwiftNEW auto-triggers when the app version changes.
 - SwiftNEW stores its last-seen version/build using namespaced app storage keys: `swiftnew.version` and `swiftnew.build`.
 - Version comparison is string-safe, so non-numeric values such as `1.0-beta` or `1.0b3` will not crash auto-triggering.
 - Passing `checkForUpdates: true` with a remote `data` URL enables update checks. If the highest remote `subVersion` (or `version`) is newer than the installed app version, SwiftNEW presents the Update screen instead of What's New and resolves the App Store destination from Apple's iTunes Lookup API using the app's bundle identifier. The primary action defaults to localized **Download Now**; use `updateButtonTitle` for custom verbatim text. Set `allowsSkippingUpdate: false` for a non-skippable update screen.
+- SwiftNEW loads raster app icons automatically. Apps using an iOS 26 Icon Composer `.icon` file should also provide an ordinary adaptive Image Set named `SwiftNEWAppIcon`, because Apple doesn't expose an in-app renderer for Icon Composer compositions. See [Configuration](README/CONFIGURATION.md#app-icon-and-icon-composer).
 
 ## 🧪 Testing & Coverage
 
