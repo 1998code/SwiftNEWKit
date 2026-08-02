@@ -8,33 +8,54 @@
                     "app",
                     "square.stack.3d.up.fill"
                 ],
-                "title": "Automatic App Icon Loading",
-                "subtitle": "Primary Raster Icon Detection",
-                "body": "SwiftNEW automatically finds and displays the best bundled app icon for the current device."
+                "title": "טעינה אוטומטית של סמל היישום",
+                "subtitle": "זיהוי סמל הרסטר הראשי",
+                "body": "SwiftNEW מאתר ומציג אוטומטית את סמל היישום המצורף המתאים ביותר למכשיר הנוכחי."
             },
             {
-                "icons": ["paintbrush", "app.dashed"],
-                "title": "Icon Composer Support",
-                "subtitle": "Light and Dark Renditions",
-                "body": "On iOS 26, SwiftNEW loads Icon Composer’s compiled Light or Dark rendition, with support for a custom image fallback."
+                "icons": [
+                    "paintbrush",
+                    "app.dashed"
+                ],
+                "title": "תמיכה ב-Icon Composer",
+                "subtitle": "גרסאות בהירות וכהות",
+                "body": "ב-iOS 26, ‏SwiftNEW טוען את הגרסה הבהירה או הכהה ש-Icon Composer הידר, עם תמיכה בתמונת גיבוי מותאמת אישית."
             },
             {
-                "icons": ["app.badge", "arrow.trianglehead.swap"],
-                "title": "Alternate App Icons",
-                "subtitle": "Live Header Updates",
-                "body": "Pass the selected alternate icon name so the header stays in sync when your app icon changes."
+                "icons": [
+                    "app.badge",
+                    "arrow.trianglehead.swap"
+                ],
+                "title": "סמלי יישום חלופיים",
+                "subtitle": "עדכון חי של הכותרת",
+                "body": "העבירו את שם הסמל החלופי שנבחר כדי שהכותרת תישאר מסונכרנת כשסמל היישום משתנה."
             },
             {
-                "icons": ["button.programmable", "sparkles"],
-                "title": "Tinted Glass Controls",
-                "subtitle": "Native iOS 26 Styling",
-                "body": "Release-note and primary action buttons now use interactive tinted glass on iOS 26."
+                "icons": [
+                    "button.programmable",
+                    "sparkles"
+                ],
+                "title": "פקדי זכוכית צבועה",
+                "subtitle": "עיצוב מקורי של iOS 26",
+                "body": "כפתורי הערות הגרסה והפעולות הראשיות משתמשים כעת בזכוכית צבועה אינטראקטיבית ב-iOS 26."
             },
             {
-                "icons": ["circle.lefthalf.filled", "paintpalette.fill"],
-                "title": "Adaptive Icon Styling",
-                "subtitle": "Improved Dark Mode Contrast",
-                "body": "Icon backdrops and glyph gradients now adapt their lighting and contrast for Dark Mode."
+                "icons": [
+                    "circle.lefthalf.filled",
+                    "paintpalette.fill"
+                ],
+                "title": "עיצוב סמלים מסתגל",
+                "subtitle": "ניגודיות משופרת במצב כהה",
+                "body": "רקעי הסמלים ומעברי הצבע של הגליפים מתאימים כעת את התאורה והניגודיות למצב כהה."
+            },
+            {
+                "icons": [
+                    "character.bubble",
+                    "globe"
+                ],
+                "title": "שפות נוספות",
+                "subtitle": "חמש התאמות חדשות",
+                "body": "הערות הגרסה זמינות כעת בגרמנית, עברית, אינדונזית, רוסית ווייטנאמית."
             }
         ]
     },
@@ -47,9 +68,9 @@
                     "arrow.down.app",
                     "app.badge.checkmark"
                 ],
-                "title": "Remote Update Screen",
-                "subtitle": "App Store Update Flow",
-                "body": "When remote JSON contains a newer version, SwiftNEW shows an Update screen and resolves the App Store link automatically."
+                "title": "מסך עדכון מרוחק",
+                "subtitle": "תהליך עדכון דרך App Store",
+                "body": "כאשר JSON מרוחק מכיל גרסה חדשה יותר, SwiftNEW מציג מסך עדכון ומאתר אוטומטית את הקישור ל-App Store."
             }
         ]
     },
@@ -62,72 +83,72 @@
                     "sparkles",
                     "wand.and.stars"
                 ],
-                "title": "Animated Icon Loop",
-                "subtitle": "Native Symbol Replace",
-                "body": "Loop through SF Symbols with native replace transitions."
+                "title": "לולאת סמלים מונפשת",
+                "subtitle": "החלפת סמלים מקורית",
+                "body": "עברו במחזוריות בין SF Symbols באמצעות מעברי החלפה מקוריים."
             },
             {
                 "icons": [
                     "arrow.left.arrow.right",
                     "arrow.triangle.2.circlepath"
                 ],
-                "title": "Flexible Icon Schema",
-                "subtitle": "icon, toIcon, and icons",
-                "body": "Define icons with icon, toIcon, or a full icons array."
+                "title": "סכמת סמלים גמישה",
+                "subtitle": "icon, toIcon ו-icons",
+                "body": "הגדירו סמלים באמצעות icon, ‏toIcon או מערך icons מלא."
             },
             {
                 "icons": [
                     "square.dashed.inset.filled",
                     "square.fill"
                 ],
-                "title": "Default Glass Badge",
-                "subtitle": "Softer Icon Treatment",
-                "body": "A new rounded glass badge gives icons a softer default look."
+                "title": "תג זכוכית כברירת מחדל",
+                "subtitle": "מראה סמלים רך יותר",
+                "body": "תג זכוכית מעוגל חדש מעניק לסמלים מראה רך יותר כברירת מחדל."
             },
             {
                 "icons": [
                     "paintbrush.pointed",
                     "paintpalette.fill"
                 ],
-                "title": "Gradient Icon Glyphs",
-                "subtitle": "Theme-Tinted Symbols",
-                "body": "Icon glyphs now use a top-leading to bottom-trailing gradient."
+                "title": "גליפים מדורגים לסמלים",
+                "subtitle": "סמלים בגוני ערכת הנושא",
+                "body": "גליפי הסמלים משתמשים כעת במעבר צבע מהפינה העליונה המובילה לפינה התחתונה הנגדית."
             },
             {
                 "icons": [
                     "circle.grid.cross",
                     "square.grid.2x2.fill"
                 ],
-                "title": "Refined Row Layout",
-                "subtitle": "Bigger Icons, Rounder Buttons",
-                "body": "Rows feel tighter with larger icons and rounder action buttons."
+                "title": "פריסת שורות מעודנת",
+                "subtitle": "סמלים גדולים יותר, כפתורים עגולים יותר",
+                "body": "השורות מרגישות הדוקות יותר עם סמלים גדולים וכפתורי פעולה מעוגלים יותר."
             },
             {
                 "icons": [
                     "rectangle.bottomthird.inset.filled",
                     "rectangle.fill"
                 ],
-                "title": "Lower Continue Controls",
-                "subtitle": "Closer Bottom Placement",
-                "body": "Continue controls sit closer to the bottom for easier reach."
+                "title": "פקדי המשך נמוכים יותר",
+                "subtitle": "קרוב יותר לתחתית",
+                "body": "פקדי ההמשך ממוקמים קרוב יותר לתחתית כדי שיהיה קל יותר להגיע אליהם."
             },
             {
                 "icons": [
                     "water.waves",
                     "drop.fill"
                 ],
-                "title": "Liquid Mesh Motion",
-                "subtitle": "Slow Animated Backgrounds",
-                "body": "Mesh backgrounds can now move with a slow liquid motion."
+                "title": "תנועת רשת נוזלית",
+                "subtitle": "רקעים מונפשים באיטיות",
+                "body": "רקעי הרשת יכולים כעת לנוע בתנועה נוזלית ואיטית."
             },
             {
                 "icons": [
                     "textformat.size",
                     "textformat.alt"
                 ],
-                "title": "Custom Heading Prefix",
-                "subtitle": "Personalized Title Line",
-                "body": "Set a custom heading prefix for the title line above the version."
+                "title": "קידומת כותרת מותאמת",
+                "subtitle": "שורת כותרת אישית",
+                "body": "הגדירו קידומת מותאמת לשורת הכותרת שמעל לגרסה."
             }
         ]
     },
@@ -137,81 +158,81 @@
         "new": [
             {
                 "icon": "checkmark.shield",
-                "title": "Compatibility",
-                "subtitle": "Fixes",
-                "body": "Improved platform support across iOS, macOS, tvOS, and visionOS."
+                "title": "תאימות",
+                "subtitle": "תיקונים",
+                "body": "שופרה התמיכה בפלטפורמות iOS, ‏macOS, ‏tvOS ו-visionOS."
             },
             {
                 "icon": "testtube.2",
                 "title": "Swift",
-                "subtitle": "Testing",
-                "body": "Added native Swift Testing coverage for core release-note logic."
+                "subtitle": "בדיקות",
+                "body": "נוסף כיסוי Swift Testing מקורי ללוגיקה המרכזית של הערות הגרסה."
             },
             {
                 "icon": "chart.bar.doc.horizontal",
                 "title": "Codecov",
-                "subtitle": "Reports",
-                "body": "GitHub Actions now generates and uploads coverage reports."
+                "subtitle": "דוחות",
+                "body": "GitHub Actions יוצר ומעלה כעת דוחות כיסוי."
             },
             {
                 "icon": "sparkles",
-                "title": "Floating",
-                "subtitle": "Particles",
-                "body": "New special effect option with smooth animation."
+                "title": "חלקיקים",
+                "subtitle": "מרחפים",
+                "body": "אפשרות חדשה לאפקט מיוחד עם הנפשה חלקה."
             },
             {
                 "icon": "number",
-                "title": "Optional",
-                "subtitle": "Build Number",
-                "body": "Configurable build number display alongside the version."
+                "title": "מספר Build",
+                "subtitle": "אופציונלי",
+                "body": "תצוגה ניתנת להגדרה של מספר ה-Build לצד הגרסה."
             },
             {
                 "icon": "snowflake",
-                "title": "Optimized",
-                "subtitle": "Snowfall",
-                "body": "Reimplemented with Canvas and TimelineView for smoother performance."
+                "title": "שלג",
+                "subtitle": "ממוטב",
+                "body": "מומש מחדש באמצעות Canvas ו-TimelineView לביצועים חלקים יותר."
             },
             {
                 "icon": "bolt",
-                "title": "Modern",
-                "subtitle": "Networking",
-                "body": "Powered by Swift Concurrency and Sendable models."
+                "title": "תקשורת",
+                "subtitle": "מודרנית",
+                "body": "מבוססת על Swift Concurrency ועל מודלים מסוג Sendable."
             },
             {
                 "icon": "lock.shield",
-                "title": "Sendable",
-                "subtitle": "Models",
-                "body": "Thread-safe data models for Swift Concurrency."
+                "title": "מודלים",
+                "subtitle": "Sendable",
+                "body": "מודלי נתונים בטוחים לריבוי תהליכונים עבור Swift Concurrency."
             },
             {
                 "icon": "speedometer",
-                "title": "Faster",
-                "subtitle": "Mesh BG",
-                "body": "MeshView uses drawingGroup for smoother rendering."
+                "title": "רקע רשת",
+                "subtitle": "מהיר יותר",
+                "body": "MeshView משתמש ב-drawingGroup לרינדור חלק יותר."
             },
             {
                 "icon": "tray.and.arrow.down",
-                "title": "Local Data",
-                "subtitle": "Loading",
-                "body": "Optimized loading from bundled JSON files."
+                "title": "נתונים מקומיים",
+                "subtitle": "טעינה",
+                "body": "הטעינה מקובצי JSON המצורפים לחבילה עברה מיטוב."
             },
             {
                 "icon": "text.alignleft",
-                "title": "Full",
-                "subtitle": "Body Text",
-                "body": "Removed line limits so longer descriptions render fully."
+                "title": "טקסט גוף",
+                "subtitle": "מלא",
+                "body": "מגבלות השורות הוסרו כדי שתיאורים ארוכים יוצגו במלואם."
             },
             {
                 "icon": "tag",
-                "title": "Version",
-                "subtitle": "Badges",
-                "body": "Refined dimensions and padding in the History view."
+                "title": "תגי",
+                "subtitle": "גרסה",
+                "body": "הממדים והריווח בתצוגת ההיסטוריה עודנו."
             },
             {
                 "icon": "doc.text",
-                "title": "Reorganized",
-                "subtitle": "Docs",
-                "body": "Split into CONFIGURATION, CONTRIBUTING, and PLATFORM guides."
+                "title": "תיעוד",
+                "subtitle": "מאורגן מחדש",
+                "body": "פוצל למדריכים CONFIGURATION, ‏CONTRIBUTING ו-PLATFORM."
             }
         ]
     },
@@ -221,33 +242,33 @@
         "new": [
             {
                 "icon": "rectangle.split.3x3",
-                "title": "Presentation",
-                "subtitle": "Options",
-                "body": "Support for sheet, fullScreenCover, and embed modes."
+                "title": "אפשרויות",
+                "subtitle": "הצגה",
+                "body": "תמיכה במצבי sheet, ‏fullScreenCover ו-embed."
             },
             {
                 "icon": "paintpalette",
-                "title": "Adaptive",
-                "subtitle": "Text Color",
-                "body": "Button and history text color automatically adapts to background brightness."
+                "title": "צבע טקסט",
+                "subtitle": "מסתגל",
+                "body": "צבע הטקסט בכפתורים ובהיסטוריה מסתגל אוטומטית לבהירות הרקע."
             },
             {
                 "icon": "wand.and.stars",
-                "title": "Simplified",
-                "subtitle": "Initializer",
-                "body": "Direct values no longer require .constant wrapper binding."
+                "title": "אתחול",
+                "subtitle": "פשוט יותר",
+                "body": "ערכים ישירים אינם דורשים עוד עטיפת binding מסוג .constant."
             },
             {
                 "icon": "macpro.gen3.server",
-                "title": "Serverless",
-                "subtitle": "Design",
-                "body": "Free and open source! ❤️‍🔥"
+                "title": "עיצוב",
+                "subtitle": "ללא שרת",
+                "body": "חינמי ובקוד פתוח! ❤️‍🔥"
             },
             {
                 "icon": "arrow.triangle.pull",
-                "title": "Contribute",
-                "subtitle": "Together",
-                "body": "Pull requests and make it better for everyone! 🎉"
+                "title": "תורמים",
+                "subtitle": "ביחד",
+                "body": "שלחו pull request ושפרו אותו עבור כולם! 🎉"
             }
         ]
     },
@@ -257,9 +278,9 @@
         "new": [
             {
                 "icon": "hammer",
-                "title": "Project",
-                "subtitle": "Restructure",
-                "body": "Seperate files and folders for better maintenance."
+                "title": "הפרויקט",
+                "subtitle": "ארגון מחדש",
+                "body": "הקבצים והתיקיות הופרדו לתחזוקה נוחה יותר."
             }
         ]
     },
@@ -269,9 +290,9 @@
         "new": [
             {
                 "icon": "wineglass",
-                "title": "Glass",
-                "subtitle": "Effect",
-                "body": "Available now!"
+                "title": "אפקט",
+                "subtitle": "זכוכית",
+                "body": "זמין עכשיו!"
             }
         ]
     },
@@ -281,9 +302,9 @@
         "new": [
             {
                 "icon": "snowflake",
-                "title": "Snow",
-                "subtitle": "Effect",
-                "body": "More Special Animation Coming Soon!"
+                "title": "אפקט",
+                "subtitle": "שלג",
+                "body": "הנפשות מיוחדות נוספות יגיעו בקרוב!"
             }
         ]
     },
@@ -293,9 +314,9 @@
         "new": [
             {
                 "icon": "pencil.tip",
-                "title": "Matched",
-                "subtitle": "Mesh BG Color",
-                "body": "A standardized design."
+                "title": "צבע רקע רשת",
+                "subtitle": "תואם",
+                "body": "עיצוב אחיד."
             }
         ]
     },
@@ -305,9 +326,9 @@
         "new": [
             {
                 "icon": "pencil.tip",
-                "title": "Add",
-                "subtitle": "Mesh BG",
-                "body": "Better styles and design."
+                "title": "נוסף",
+                "subtitle": "רקע רשת",
+                "body": "סגנונות ועיצוב טובים יותר."
             }
         ]
     },
@@ -317,9 +338,9 @@
         "new": [
             {
                 "icon": "hammer",
-                "title": "Default",
-                "subtitle": "Option",
-                "body": "New optional binding for less code."
+                "title": "אפשרות",
+                "subtitle": "ברירת מחדל",
+                "body": "binding אופציונלי חדש לפחות קוד."
             }
         ]
     },
@@ -329,9 +350,9 @@
         "new": [
             {
                 "icon": "character.book.closed",
-                "title": "Update",
-                "subtitle": "Demo",
-                "body": "For 5.0 version."
+                "title": "עדכון",
+                "subtitle": "הדגמה",
+                "body": "עבור גרסה 5.0."
             }
         ]
     },
@@ -341,15 +362,15 @@
         "new": [
             {
                 "icon": "character.book.closed",
-                "title": "Support",
-                "subtitle": "Localization",
-                "body": "Powered by Apple String Catalog."
+                "title": "תמיכה",
+                "subtitle": "בהתאמה מקומית",
+                "body": "מבוסס על Apple String Catalog."
             },
             {
                 "icon": "pip.remove",
-                "title": "Drop",
-                "subtitle": "Support",
-                "body": "For iOS14, watchOS7, and macOS11."
+                "title": "הפסקת",
+                "subtitle": "תמיכה",
+                "body": "עבור iOS 14, ‏watchOS 7 ו-macOS 11."
             }
         ]
     },
@@ -359,9 +380,9 @@
         "new": [
             {
                 "icon": "hammer",
-                "title": "Minor",
-                "subtitle": "Update",
-                "body": "Minor bug fixes, and UI improvement."
+                "title": "עדכון",
+                "subtitle": "קטן",
+                "body": "תיקוני באגים קטנים ושיפור ממשק המשתמש."
             }
         ]
     },
@@ -371,9 +392,9 @@
         "new": [
             {
                 "icon": "eye",
-                "title": "Support Vision Pro",
-                "subtitle": "& visionOS",
-                "body": "Drops Framework is temp-disabled due to conflict."
+                "title": "תמיכה ב-Vision Pro",
+                "subtitle": "וב-visionOS",
+                "body": "המסגרת Drops מושבתת זמנית עקב התנגשות."
             }
         ]
     },
@@ -383,9 +404,9 @@
         "new": [
             {
                 "icon": "number",
-                "title": "Better Compatible",
-                "subtitle": "in Version & Build",
-                "body": "You can use x.y.z or x.y now."
+                "title": "תאימות טובה יותר",
+                "subtitle": "בגרסה וב-Build",
+                "body": "כעת אפשר להשתמש ב-x.y.z או ב-x.y."
             }
         ]
     },
@@ -394,15 +415,15 @@
         "new": [
             {
                 "icon": "app.fill",
-                "title": "App Icon",
-                "subtitle": "Supported",
-                "body": "on iOS."
+                "title": "סמל היישום",
+                "subtitle": "נתמך",
+                "body": "ב-iOS."
             },
             {
                 "icon": "app",
-                "title": "Demo",
-                "subtitle": "is Better now",
-                "body": "Following the Package Version."
+                "title": "ההדגמה",
+                "subtitle": "טובה יותר עכשיו",
+                "body": "בהתאם לגרסת החבילה."
             }
         ]
     },
@@ -411,9 +432,9 @@
         "new": [
             {
                 "icon": "hammer",
-                "title": "Layout",
-                "subtitle": "Fixed",
-                "body": "on iOS Landscape."
+                "title": "הפריסה",
+                "subtitle": "תוקנה",
+                "body": "במצב לרוחב ב-iOS."
             }
         ]
     },
@@ -422,9 +443,9 @@
         "new": [
             {
                 "icon": "hammer",
-                "title": "Crash",
-                "subtitle": "Fixed",
-                "body": "on macOS."
+                "title": "קריסה",
+                "subtitle": "תוקנה",
+                "body": "ב-macOS."
             }
         ]
     },
@@ -433,9 +454,9 @@
         "new": [
             {
                 "icon": "bell.badge",
-                "title": "Remote Drop",
-                "subtitle": "Supported",
-                "body": "Instead of full page sheet, you can use a small drop too!"
+                "title": "Drop מרוחק",
+                "subtitle": "נתמך",
+                "body": "במקום sheet על מסך מלא, אפשר להשתמש גם ב-drop קטן!"
             }
         ]
     },
@@ -444,9 +465,9 @@
         "new": [
             {
                 "icon": "square.and.arrow.down.fill",
-                "title": "Remote File",
-                "subtitle": "Supported",
-                "body": "Direct load via remote storage. Easy!"
+                "title": "קובץ מרוחק",
+                "subtitle": "נתמך",
+                "body": "טעינה ישירה מאחסון מרוחק. קל!"
             }
         ]
     },
@@ -455,27 +476,27 @@
         "new": [
             {
                 "icon": "hammer.fill",
-                "title": "Bug fixes",
-                "subtitle": "Broken UI",
-                "body": "Available for iOS 16, iPadOS 16, macOS 13"
+                "title": "תיקוני באגים",
+                "subtitle": "ממשק פגום",
+                "body": "זמין עבור iOS 16, ‏iPadOS 16 ו-macOS 13."
             },
             {
                 "icon": "square.and.arrow.down.fill",
-                "title": "Local File",
-                "subtitle": "Supported",
-                "body": "Direct load via local storage. Super fast!"
+                "title": "קובץ מקומי",
+                "subtitle": "נתמך",
+                "body": "טעינה ישירה מאחסון מקומי. מהיר במיוחד!"
             },
             {
                 "icon": "macpro.gen3.server",
-                "title": "Serverless",
-                "subtitle": "Design",
-                "body": "Free and open source! Created by Ming with ❤️‍🔥"
+                "title": "עיצוב",
+                "subtitle": "ללא שרת",
+                "body": "חינמי ובקוד פתוח! נוצר על ידי Ming עם ❤️‍🔥"
             },
             {
                 "icon": "arrow.triangle.pull",
-                "title": "Contribute",
-                "subtitle": "Together",
-                "body": "Pull requests and make it better for everyone!"
+                "title": "תורמים",
+                "subtitle": "ביחד",
+                "body": "שלחו pull request ושפרו אותו עבור כולם!"
             }
         ]
     }

@@ -35,6 +35,12 @@
                 "title": "Estilo de iconos adaptativo",
                 "subtitle": "Mejor contraste en modo oscuro",
                 "body": "Los fondos y degradados de iconos adaptan su iluminación y contraste al modo oscuro."
+            },
+            {
+                "icons": ["character.bubble", "globe"],
+                "title": "Más idiomas",
+                "subtitle": "Cinco nuevas localizaciones",
+                "body": "Las notas de la versión ya están disponibles en alemán, hebreo, indonesio, ruso y vietnamita."
             }
         ]
     },

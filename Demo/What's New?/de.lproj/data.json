@@ -8,33 +8,54 @@
                     "app",
                     "square.stack.3d.up.fill"
                 ],
-                "title": "Automatic App Icon Loading",
-                "subtitle": "Primary Raster Icon Detection",
-                "body": "SwiftNEW automatically finds and displays the best bundled app icon for the current device."
+                "title": "App-Symbol automatisch laden",
+                "subtitle": "Primäres Raster-Symbol erkennen",
+                "body": "SwiftNEW findet automatisch das beste mitgelieferte App-Symbol für das aktuelle Gerät und zeigt es an."
             },
             {
-                "icons": ["paintbrush", "app.dashed"],
-                "title": "Icon Composer Support",
-                "subtitle": "Light and Dark Renditions",
-                "body": "On iOS 26, SwiftNEW loads Icon Composer’s compiled Light or Dark rendition, with support for a custom image fallback."
+                "icons": [
+                    "paintbrush",
+                    "app.dashed"
+                ],
+                "title": "Icon-Composer-Unterstützung",
+                "subtitle": "Helle und dunkle Varianten",
+                "body": "Unter iOS 26 lädt SwiftNEW die von Icon Composer kompilierte helle oder dunkle Variante und unterstützt ein benutzerdefiniertes Ersatzbild."
             },
             {
-                "icons": ["app.badge", "arrow.trianglehead.swap"],
-                "title": "Alternate App Icons",
-                "subtitle": "Live Header Updates",
-                "body": "Pass the selected alternate icon name so the header stays in sync when your app icon changes."
+                "icons": [
+                    "app.badge",
+                    "arrow.trianglehead.swap"
+                ],
+                "title": "Alternative App-Symbole",
+                "subtitle": "Live-Aktualisierung der Kopfzeile",
+                "body": "Übergeben Sie den Namen des ausgewählten alternativen Symbols, damit die Kopfzeile bei einem Symbolwechsel synchron bleibt."
             },
             {
-                "icons": ["button.programmable", "sparkles"],
-                "title": "Tinted Glass Controls",
-                "subtitle": "Native iOS 26 Styling",
-                "body": "Release-note and primary action buttons now use interactive tinted glass on iOS 26."
+                "icons": [
+                    "button.programmable",
+                    "sparkles"
+                ],
+                "title": "Getönte Glaselemente",
+                "subtitle": "Natives Design für iOS 26",
+                "body": "Schaltflächen für Versionshinweise und primäre Aktionen verwenden unter iOS 26 jetzt interaktives getöntes Glas."
             },
             {
-                "icons": ["circle.lefthalf.filled", "paintpalette.fill"],
-                "title": "Adaptive Icon Styling",
-                "subtitle": "Improved Dark Mode Contrast",
-                "body": "Icon backdrops and glyph gradients now adapt their lighting and contrast for Dark Mode."
+                "icons": [
+                    "circle.lefthalf.filled",
+                    "paintpalette.fill"
+                ],
+                "title": "Adaptives Symboldesign",
+                "subtitle": "Besserer Kontrast im Dunkelmodus",
+                "body": "Symbolhintergründe und Glyphenverläufe passen Beleuchtung und Kontrast jetzt an den Dunkelmodus an."
+            },
+            {
+                "icons": [
+                    "character.bubble",
+                    "globe"
+                ],
+                "title": "Mehr Sprachen",
+                "subtitle": "Fünf neue Lokalisierungen",
+                "body": "Versionshinweise sind jetzt auf Deutsch, Hebräisch, Indonesisch, Russisch und Vietnamesisch verfügbar."
             }
         ]
     },
@@ -47,9 +68,9 @@
                     "arrow.down.app",
                     "app.badge.checkmark"
                 ],
-                "title": "Remote Update Screen",
-                "subtitle": "App Store Update Flow",
-                "body": "When remote JSON contains a newer version, SwiftNEW shows an Update screen and resolves the App Store link automatically."
+                "title": "Bildschirm für Remote-Updates",
+                "subtitle": "App-Store-Aktualisierung",
+                "body": "Enthält das Remote-JSON eine neuere Version, zeigt SwiftNEW einen Aktualisierungsbildschirm an und ermittelt automatisch den App-Store-Link."
             }
         ]
     },
@@ -62,72 +83,72 @@
                     "sparkles",
                     "wand.and.stars"
                 ],
-                "title": "Animated Icon Loop",
-                "subtitle": "Native Symbol Replace",
-                "body": "Loop through SF Symbols with native replace transitions."
+                "title": "Animierte Symbolschleife",
+                "subtitle": "Native Symbolersetzung",
+                "body": "SF Symbols werden mit nativen Ersetzungsübergängen in einer Schleife angezeigt."
             },
             {
                 "icons": [
                     "arrow.left.arrow.right",
                     "arrow.triangle.2.circlepath"
                 ],
-                "title": "Flexible Icon Schema",
-                "subtitle": "icon, toIcon, and icons",
-                "body": "Define icons with icon, toIcon, or a full icons array."
+                "title": "Flexibles Symbolschema",
+                "subtitle": "icon, toIcon und icons",
+                "body": "Symbole lassen sich mit icon, toIcon oder einem vollständigen icons-Array definieren."
             },
             {
                 "icons": [
                     "square.dashed.inset.filled",
                     "square.fill"
                 ],
-                "title": "Default Glass Badge",
-                "subtitle": "Softer Icon Treatment",
-                "body": "A new rounded glass badge gives icons a softer default look."
+                "title": "Standardmäßiges Glasabzeichen",
+                "subtitle": "Dezentere Symboldarstellung",
+                "body": "Ein neues abgerundetes Glasabzeichen verleiht Symbolen standardmäßig ein weicheres Aussehen."
             },
             {
                 "icons": [
                     "paintbrush.pointed",
                     "paintpalette.fill"
                 ],
-                "title": "Gradient Icon Glyphs",
-                "subtitle": "Theme-Tinted Symbols",
-                "body": "Icon glyphs now use a top-leading to bottom-trailing gradient."
+                "title": "Verläufe für Symbolglyphen",
+                "subtitle": "Symbole in Themenfarben",
+                "body": "Symbolglyphen verwenden jetzt einen Verlauf von oben links nach unten rechts."
             },
             {
                 "icons": [
                     "circle.grid.cross",
                     "square.grid.2x2.fill"
                 ],
-                "title": "Refined Row Layout",
-                "subtitle": "Bigger Icons, Rounder Buttons",
-                "body": "Rows feel tighter with larger icons and rounder action buttons."
+                "title": "Verfeinertes Zeilenlayout",
+                "subtitle": "Größere Symbole, rundere Tasten",
+                "body": "Größere Symbole und rundere Aktionstasten sorgen für kompaktere Zeilen."
             },
             {
                 "icons": [
                     "rectangle.bottomthird.inset.filled",
                     "rectangle.fill"
                 ],
-                "title": "Lower Continue Controls",
-                "subtitle": "Closer Bottom Placement",
-                "body": "Continue controls sit closer to the bottom for easier reach."
+                "title": "Tiefer platzierte Fortfahren-Tasten",
+                "subtitle": "Näher am unteren Rand",
+                "body": "Die Fortfahren-Bedienelemente liegen näher am unteren Rand und sind leichter erreichbar."
             },
             {
                 "icons": [
                     "water.waves",
                     "drop.fill"
                 ],
-                "title": "Liquid Mesh Motion",
-                "subtitle": "Slow Animated Backgrounds",
-                "body": "Mesh backgrounds can now move with a slow liquid motion."
+                "title": "Fließende Mesh-Animation",
+                "subtitle": "Langsam animierte Hintergründe",
+                "body": "Mesh-Hintergründe können sich jetzt in einer langsamen, fließenden Bewegung bewegen."
             },
             {
                 "icons": [
                     "textformat.size",
                     "textformat.alt"
                 ],
-                "title": "Custom Heading Prefix",
-                "subtitle": "Personalized Title Line",
-                "body": "Set a custom heading prefix for the title line above the version."
+                "title": "Eigener Überschriftenpräfix",
+                "subtitle": "Personalisierte Titelzeile",
+                "body": "Legen Sie einen eigenen Präfix für die Titelzeile über der Version fest."
             }
         ]
     },
@@ -137,81 +158,81 @@
         "new": [
             {
                 "icon": "checkmark.shield",
-                "title": "Compatibility",
-                "subtitle": "Fixes",
-                "body": "Improved platform support across iOS, macOS, tvOS, and visionOS."
+                "title": "Kompatibilität",
+                "subtitle": "Korrekturen",
+                "body": "Verbesserte Plattformunterstützung für iOS, macOS, tvOS und visionOS."
             },
             {
                 "icon": "testtube.2",
                 "title": "Swift",
-                "subtitle": "Testing",
-                "body": "Added native Swift Testing coverage for core release-note logic."
+                "subtitle": "Tests",
+                "body": "Native Swift-Testing-Abdeckung für die Kernlogik der Versionshinweise hinzugefügt."
             },
             {
                 "icon": "chart.bar.doc.horizontal",
                 "title": "Codecov",
-                "subtitle": "Reports",
-                "body": "GitHub Actions now generates and uploads coverage reports."
+                "subtitle": "Berichte",
+                "body": "GitHub Actions erstellt und lädt jetzt Abdeckungsberichte hoch."
             },
             {
                 "icon": "sparkles",
-                "title": "Floating",
-                "subtitle": "Particles",
-                "body": "New special effect option with smooth animation."
+                "title": "Schwebende",
+                "subtitle": "Partikel",
+                "body": "Neue Spezialeffektoption mit flüssiger Animation."
             },
             {
                 "icon": "number",
-                "title": "Optional",
-                "subtitle": "Build Number",
-                "body": "Configurable build number display alongside the version."
+                "title": "Optionale",
+                "subtitle": "Build-Nummer",
+                "body": "Konfigurierbare Anzeige der Build-Nummer neben der Version."
             },
             {
                 "icon": "snowflake",
-                "title": "Optimized",
-                "subtitle": "Snowfall",
-                "body": "Reimplemented with Canvas and TimelineView for smoother performance."
+                "title": "Optimierter",
+                "subtitle": "Schneefall",
+                "body": "Mit Canvas und TimelineView für eine flüssigere Darstellung neu umgesetzt."
             },
             {
                 "icon": "bolt",
-                "title": "Modern",
-                "subtitle": "Networking",
-                "body": "Powered by Swift Concurrency and Sendable models."
+                "title": "Modernes",
+                "subtitle": "Netzwerk",
+                "body": "Basiert auf Swift Concurrency und Sendable-Modellen."
             },
             {
                 "icon": "lock.shield",
                 "title": "Sendable",
-                "subtitle": "Models",
-                "body": "Thread-safe data models for Swift Concurrency."
+                "subtitle": "Modelle",
+                "body": "Threadsichere Datenmodelle für Swift Concurrency."
             },
             {
                 "icon": "speedometer",
-                "title": "Faster",
-                "subtitle": "Mesh BG",
-                "body": "MeshView uses drawingGroup for smoother rendering."
+                "title": "Schnellerer",
+                "subtitle": "Mesh-Hintergrund",
+                "body": "MeshView verwendet drawingGroup für eine flüssigere Darstellung."
             },
             {
                 "icon": "tray.and.arrow.down",
-                "title": "Local Data",
-                "subtitle": "Loading",
-                "body": "Optimized loading from bundled JSON files."
+                "title": "Lokale Daten",
+                "subtitle": "Laden",
+                "body": "Optimiertes Laden aus gebündelten JSON-Dateien."
             },
             {
                 "icon": "text.alignleft",
-                "title": "Full",
-                "subtitle": "Body Text",
-                "body": "Removed line limits so longer descriptions render fully."
+                "title": "Vollständiger",
+                "subtitle": "Textkörper",
+                "body": "Zeilenbegrenzungen wurden entfernt, damit längere Beschreibungen vollständig angezeigt werden."
             },
             {
                 "icon": "tag",
-                "title": "Version",
-                "subtitle": "Badges",
-                "body": "Refined dimensions and padding in the History view."
+                "title": "Versions-",
+                "subtitle": "Abzeichen",
+                "body": "Abmessungen und Abstände in der Verlaufsansicht wurden verfeinert."
             },
             {
                 "icon": "doc.text",
-                "title": "Reorganized",
-                "subtitle": "Docs",
-                "body": "Split into CONFIGURATION, CONTRIBUTING, and PLATFORM guides."
+                "title": "Neu geordnete",
+                "subtitle": "Dokumentation",
+                "body": "In die Leitfäden CONFIGURATION, CONTRIBUTING und PLATFORM aufgeteilt."
             }
         ]
     },
@@ -221,33 +242,33 @@
         "new": [
             {
                 "icon": "rectangle.split.3x3",
-                "title": "Presentation",
-                "subtitle": "Options",
-                "body": "Support for sheet, fullScreenCover, and embed modes."
+                "title": "Darstellungs-",
+                "subtitle": "optionen",
+                "body": "Unterstützung für sheet-, fullScreenCover- und embed-Modi."
             },
             {
                 "icon": "paintpalette",
-                "title": "Adaptive",
-                "subtitle": "Text Color",
-                "body": "Button and history text color automatically adapts to background brightness."
+                "title": "Adaptive Farbe",
+                "subtitle": "Textfarbe",
+                "body": "Die Textfarbe von Schaltflächen und Verlauf passt sich automatisch der Helligkeit des Hintergrunds an."
             },
             {
                 "icon": "wand.and.stars",
-                "title": "Simplified",
-                "subtitle": "Initializer",
-                "body": "Direct values no longer require .constant wrapper binding."
+                "title": "Vereinfachter",
+                "subtitle": "Initialisierer",
+                "body": "Direkte Werte benötigen keine Bindung mit .constant mehr."
             },
             {
                 "icon": "macpro.gen3.server",
-                "title": "Serverless",
-                "subtitle": "Design",
-                "body": "Free and open source! ❤️‍🔥"
+                "title": "Serverloses",
+                "subtitle": "Gestaltung",
+                "body": "Kostenlos und quelloffen! ❤️‍🔥"
             },
             {
                 "icon": "arrow.triangle.pull",
-                "title": "Contribute",
-                "subtitle": "Together",
-                "body": "Pull requests and make it better for everyone! 🎉"
+                "title": "Gemeinsam",
+                "subtitle": "Mitwirken",
+                "body": "Senden Sie Pull Requests und machen Sie es für alle besser! 🎉"
             }
         ]
     },
@@ -257,9 +278,9 @@
         "new": [
             {
                 "icon": "hammer",
-                "title": "Project",
-                "subtitle": "Restructure",
-                "body": "Seperate files and folders for better maintenance."
+                "title": "Projekt",
+                "subtitle": "Umstrukturierung",
+                "body": "Dateien und Ordner wurden für eine bessere Wartbarkeit getrennt."
             }
         ]
     },
@@ -269,9 +290,9 @@
         "new": [
             {
                 "icon": "wineglass",
-                "title": "Glass",
-                "subtitle": "Effect",
-                "body": "Available now!"
+                "title": "Glas-",
+                "subtitle": "effekt",
+                "body": "Jetzt verfügbar!"
             }
         ]
     },
@@ -281,9 +302,9 @@
         "new": [
             {
                 "icon": "snowflake",
-                "title": "Snow",
-                "subtitle": "Effect",
-                "body": "More Special Animation Coming Soon!"
+                "title": "Schnee-",
+                "subtitle": "effekt",
+                "body": "Weitere Spezialanimationen folgen bald!"
             }
         ]
     },
@@ -293,9 +314,9 @@
         "new": [
             {
                 "icon": "pencil.tip",
-                "title": "Matched",
-                "subtitle": "Mesh BG Color",
-                "body": "A standardized design."
+                "title": "Abgestimmte",
+                "subtitle": "Mesh-Hintergrundfarbe",
+                "body": "Ein einheitliches Design."
             }
         ]
     },
@@ -305,9 +326,9 @@
         "new": [
             {
                 "icon": "pencil.tip",
-                "title": "Add",
-                "subtitle": "Mesh BG",
-                "body": "Better styles and design."
+                "title": "Mesh-Hintergrund",
+                "subtitle": "hinzugefügt",
+                "body": "Bessere Stile und ein besseres Design."
             }
         ]
     },
@@ -317,9 +338,9 @@
         "new": [
             {
                 "icon": "hammer",
-                "title": "Default",
-                "subtitle": "Option",
-                "body": "New optional binding for less code."
+                "title": "Standard-",
+                "subtitle": "option",
+                "body": "Neue optionale Bindung für weniger Code."
             }
         ]
     },
@@ -329,9 +350,9 @@
         "new": [
             {
                 "icon": "character.book.closed",
-                "title": "Update",
-                "subtitle": "Demo",
-                "body": "For 5.0 version."
+                "title": "Demo",
+                "subtitle": "aktualisiert",
+                "body": "Für Version 5.0."
             }
         ]
     },
@@ -341,15 +362,15 @@
         "new": [
             {
                 "icon": "character.book.closed",
-                "title": "Support",
-                "subtitle": "Localization",
-                "body": "Powered by Apple String Catalog."
+                "title": "Lokalisierung",
+                "subtitle": "unterstützt",
+                "body": "Unterstützt durch den Apple String Catalog."
             },
             {
                 "icon": "pip.remove",
-                "title": "Drop",
-                "subtitle": "Support",
-                "body": "For iOS14, watchOS7, and macOS11."
+                "title": "Unterstützung",
+                "subtitle": "eingestellt",
+                "body": "Für iOS 14, watchOS 7 und macOS 11."
             }
         ]
     },
@@ -359,9 +380,9 @@
         "new": [
             {
                 "icon": "hammer",
-                "title": "Minor",
-                "subtitle": "Update",
-                "body": "Minor bug fixes, and UI improvement."
+                "title": "Kleines",
+                "subtitle": "Aktualisierung",
+                "body": "Kleine Fehlerkorrekturen und Verbesserungen der Benutzeroberfläche."
             }
         ]
     },
@@ -371,9 +392,9 @@
         "new": [
             {
                 "icon": "eye",
-                "title": "Support Vision Pro",
-                "subtitle": "& visionOS",
-                "body": "Drops Framework is temp-disabled due to conflict."
+                "title": "Vision Pro unterstützt",
+                "subtitle": "und visionOS",
+                "body": "Das Drops-Framework ist wegen eines Konflikts vorübergehend deaktiviert."
             }
         ]
     },
@@ -383,9 +404,9 @@
         "new": [
             {
                 "icon": "number",
-                "title": "Better Compatible",
-                "subtitle": "in Version & Build",
-                "body": "You can use x.y.z or x.y now."
+                "title": "Bessere Kompatibilität",
+                "subtitle": "bei Version und Build",
+                "body": "Sie können jetzt x.y.z oder x.y verwenden."
             }
         ]
     },
@@ -394,15 +415,15 @@
         "new": [
             {
                 "icon": "app.fill",
-                "title": "App Icon",
-                "subtitle": "Supported",
-                "body": "on iOS."
+                "title": "App-Symbol",
+                "subtitle": "unterstützt",
+                "body": "Unter iOS."
             },
             {
                 "icon": "app",
-                "title": "Demo",
-                "subtitle": "is Better now",
-                "body": "Following the Package Version."
+                "title": "Demonstration",
+                "subtitle": "jetzt besser",
+                "body": "Folgt der Paketversion."
             }
         ]
     },
@@ -411,9 +432,9 @@
         "new": [
             {
                 "icon": "hammer",
-                "title": "Layout",
-                "subtitle": "Fixed",
-                "body": "on iOS Landscape."
+                "title": "Anordnung",
+                "subtitle": "korrigiert",
+                "body": "Im iOS-Querformat."
             }
         ]
     },
@@ -422,9 +443,9 @@
         "new": [
             {
                 "icon": "hammer",
-                "title": "Crash",
-                "subtitle": "Fixed",
-                "body": "on macOS."
+                "title": "Absturz",
+                "subtitle": "behoben",
+                "body": "Unter macOS."
             }
         ]
     },
@@ -433,9 +454,9 @@
         "new": [
             {
                 "icon": "bell.badge",
-                "title": "Remote Drop",
-                "subtitle": "Supported",
-                "body": "Instead of full page sheet, you can use a small drop too!"
+                "title": "Remote-Drop",
+                "subtitle": "unterstützt",
+                "body": "Statt eines ganzseitigen Sheets können Sie auch einen kleinen Drop verwenden!"
             }
         ]
     },
@@ -444,9 +465,9 @@
         "new": [
             {
                 "icon": "square.and.arrow.down.fill",
-                "title": "Remote File",
-                "subtitle": "Supported",
-                "body": "Direct load via remote storage. Easy!"
+                "title": "Remote-Datei",
+                "subtitle": "unterstützt",
+                "body": "Direktes Laden aus einem Remote-Speicher. Ganz einfach!"
             }
         ]
     },
@@ -455,27 +476,27 @@
         "new": [
             {
                 "icon": "hammer.fill",
-                "title": "Bug fixes",
-                "subtitle": "Broken UI",
-                "body": "Available for iOS 16, iPadOS 16, macOS 13"
+                "title": "Fehlerkorrekturen",
+                "subtitle": "Defekte Oberfläche",
+                "body": "Verfügbar für iOS 16, iPadOS 16 und macOS 13."
             },
             {
                 "icon": "square.and.arrow.down.fill",
-                "title": "Local File",
-                "subtitle": "Supported",
-                "body": "Direct load via local storage. Super fast!"
+                "title": "Lokale Datei",
+                "subtitle": "unterstützt",
+                "body": "Direktes Laden aus lokalem Speicher. Superschnell!"
             },
             {
                 "icon": "macpro.gen3.server",
-                "title": "Serverless",
-                "subtitle": "Design",
-                "body": "Free and open source! Created by Ming with ❤️‍🔥"
+                "title": "Serverloses",
+                "subtitle": "Gestaltung",
+                "body": "Kostenlos und quelloffen! Erstellt von Ming mit ❤️‍🔥"
             },
             {
                 "icon": "arrow.triangle.pull",
-                "title": "Contribute",
-                "subtitle": "Together",
-                "body": "Pull requests and make it better for everyone!"
+                "title": "Gemeinsam",
+                "subtitle": "Mitwirken",
+                "body": "Senden Sie Pull Requests und machen Sie es für alle besser!"
             }
         ]
     }

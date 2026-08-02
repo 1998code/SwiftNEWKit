@@ -8,33 +8,54 @@
                     "app",
                     "square.stack.3d.up.fill"
                 ],
-                "title": "Automatic App Icon Loading",
-                "subtitle": "Primary Raster Icon Detection",
-                "body": "SwiftNEW automatically finds and displays the best bundled app icon for the current device."
+                "title": "Автоматическая загрузка значка приложения",
+                "subtitle": "Определение основного растрового значка",
+                "body": "SwiftNEW автоматически находит и отображает наиболее подходящий встроенный значок приложения для текущего устройства."
             },
             {
-                "icons": ["paintbrush", "app.dashed"],
-                "title": "Icon Composer Support",
-                "subtitle": "Light and Dark Renditions",
-                "body": "On iOS 26, SwiftNEW loads Icon Composer’s compiled Light or Dark rendition, with support for a custom image fallback."
+                "icons": [
+                    "paintbrush",
+                    "app.dashed"
+                ],
+                "title": "Поддержка Icon Composer",
+                "subtitle": "Светлый и тёмный варианты",
+                "body": "В iOS 26 SwiftNEW загружает скомпилированный Icon Composer светлый или тёмный вариант и поддерживает пользовательское резервное изображение."
             },
             {
-                "icons": ["app.badge", "arrow.trianglehead.swap"],
-                "title": "Alternate App Icons",
-                "subtitle": "Live Header Updates",
-                "body": "Pass the selected alternate icon name so the header stays in sync when your app icon changes."
+                "icons": [
+                    "app.badge",
+                    "arrow.trianglehead.swap"
+                ],
+                "title": "Альтернативные значки приложения",
+                "subtitle": "Мгновенное обновление заголовка",
+                "body": "Передайте имя выбранного альтернативного значка, чтобы заголовок синхронизировался при смене значка приложения."
             },
             {
-                "icons": ["button.programmable", "sparkles"],
-                "title": "Tinted Glass Controls",
-                "subtitle": "Native iOS 26 Styling",
-                "body": "Release-note and primary action buttons now use interactive tinted glass on iOS 26."
+                "icons": [
+                    "button.programmable",
+                    "sparkles"
+                ],
+                "title": "Тонированные стеклянные элементы",
+                "subtitle": "Нативный стиль iOS 26",
+                "body": "Кнопки примечаний к выпуску и основных действий теперь используют интерактивное тонированное стекло в iOS 26."
             },
             {
-                "icons": ["circle.lefthalf.filled", "paintpalette.fill"],
-                "title": "Adaptive Icon Styling",
-                "subtitle": "Improved Dark Mode Contrast",
-                "body": "Icon backdrops and glyph gradients now adapt their lighting and contrast for Dark Mode."
+                "icons": [
+                    "circle.lefthalf.filled",
+                    "paintpalette.fill"
+                ],
+                "title": "Адаптивный стиль значков",
+                "subtitle": "Улучшенный контраст в тёмном режиме",
+                "body": "Фон значков и градиенты глифов теперь адаптируют освещение и контраст для тёмного режима."
+            },
+            {
+                "icons": [
+                    "character.bubble",
+                    "globe"
+                ],
+                "title": "Больше языков",
+                "subtitle": "Пять новых локализаций",
+                "body": "Примечания к выпуску теперь доступны на немецком, иврите, индонезийском, русском и вьетнамском языках."
             }
         ]
     },
@@ -47,9 +68,9 @@
                     "arrow.down.app",
                     "app.badge.checkmark"
                 ],
-                "title": "Remote Update Screen",
-                "subtitle": "App Store Update Flow",
-                "body": "When remote JSON contains a newer version, SwiftNEW shows an Update screen and resolves the App Store link automatically."
+                "title": "Экран удалённого обновления",
+                "subtitle": "Процесс обновления через App Store",
+                "body": "Если удалённый JSON содержит более новую версию, SwiftNEW показывает экран обновления и автоматически определяет ссылку App Store."
             }
         ]
     },
@@ -62,72 +83,72 @@
                     "sparkles",
                     "wand.and.stars"
                 ],
-                "title": "Animated Icon Loop",
-                "subtitle": "Native Symbol Replace",
-                "body": "Loop through SF Symbols with native replace transitions."
+                "title": "Циклическая анимация значков",
+                "subtitle": "Нативная замена символов",
+                "body": "Переключайте SF Symbols по кругу с нативными переходами замены."
             },
             {
                 "icons": [
                     "arrow.left.arrow.right",
                     "arrow.triangle.2.circlepath"
                 ],
-                "title": "Flexible Icon Schema",
-                "subtitle": "icon, toIcon, and icons",
-                "body": "Define icons with icon, toIcon, or a full icons array."
+                "title": "Гибкая схема значков",
+                "subtitle": "icon, toIcon и icons",
+                "body": "Задавайте значки с помощью icon, toIcon или полного массива icons."
             },
             {
                 "icons": [
                     "square.dashed.inset.filled",
                     "square.fill"
                 ],
-                "title": "Default Glass Badge",
-                "subtitle": "Softer Icon Treatment",
-                "body": "A new rounded glass badge gives icons a softer default look."
+                "title": "Стандартный стеклянный бейдж",
+                "subtitle": "Более мягкое оформление значков",
+                "body": "Новый скруглённый стеклянный бейдж придаёт значкам более мягкий вид по умолчанию."
             },
             {
                 "icons": [
                     "paintbrush.pointed",
                     "paintpalette.fill"
                 ],
-                "title": "Gradient Icon Glyphs",
-                "subtitle": "Theme-Tinted Symbols",
-                "body": "Icon glyphs now use a top-leading to bottom-trailing gradient."
+                "title": "Градиентные глифы значков",
+                "subtitle": "Символы в цветах темы",
+                "body": "Глифы значков теперь используют градиент от верхнего левого к нижнему правому углу."
             },
             {
                 "icons": [
                     "circle.grid.cross",
                     "square.grid.2x2.fill"
                 ],
-                "title": "Refined Row Layout",
-                "subtitle": "Bigger Icons, Rounder Buttons",
-                "body": "Rows feel tighter with larger icons and rounder action buttons."
+                "title": "Улучшенная компоновка строк",
+                "subtitle": "Крупнее значки, круглее кнопки",
+                "body": "Строки выглядят компактнее благодаря более крупным значкам и скруглённым кнопкам действий."
             },
             {
                 "icons": [
                     "rectangle.bottomthird.inset.filled",
                     "rectangle.fill"
                 ],
-                "title": "Lower Continue Controls",
-                "subtitle": "Closer Bottom Placement",
-                "body": "Continue controls sit closer to the bottom for easier reach."
+                "title": "Кнопки продолжения ниже",
+                "subtitle": "Ближе к нижнему краю",
+                "body": "Элементы управления «Продолжить» расположены ближе к нижнему краю для удобства доступа."
             },
             {
                 "icons": [
                     "water.waves",
                     "drop.fill"
                 ],
-                "title": "Liquid Mesh Motion",
-                "subtitle": "Slow Animated Backgrounds",
-                "body": "Mesh backgrounds can now move with a slow liquid motion."
+                "title": "Плавное движение сетки",
+                "subtitle": "Медленно анимированный фон",
+                "body": "Фон сетки теперь может медленно двигаться, создавая эффект жидкости."
             },
             {
                 "icons": [
                     "textformat.size",
                     "textformat.alt"
                 ],
-                "title": "Custom Heading Prefix",
-                "subtitle": "Personalized Title Line",
-                "body": "Set a custom heading prefix for the title line above the version."
+                "title": "Свой префикс заголовка",
+                "subtitle": "Персонализированная строка заголовка",
+                "body": "Задайте собственный префикс для строки заголовка над версией."
             }
         ]
     },
@@ -137,81 +158,81 @@
         "new": [
             {
                 "icon": "checkmark.shield",
-                "title": "Compatibility",
-                "subtitle": "Fixes",
-                "body": "Improved platform support across iOS, macOS, tvOS, and visionOS."
+                "title": "Совместимость",
+                "subtitle": "Исправления",
+                "body": "Улучшена поддержка платформ iOS, macOS, tvOS и visionOS."
             },
             {
                 "icon": "testtube.2",
                 "title": "Swift",
-                "subtitle": "Testing",
-                "body": "Added native Swift Testing coverage for core release-note logic."
+                "subtitle": "Тестирование",
+                "body": "Добавлено нативное покрытие Swift Testing для основной логики примечаний к выпуску."
             },
             {
                 "icon": "chart.bar.doc.horizontal",
                 "title": "Codecov",
-                "subtitle": "Reports",
-                "body": "GitHub Actions now generates and uploads coverage reports."
+                "subtitle": "Отчёты",
+                "body": "GitHub Actions теперь создаёт и загружает отчёты о покрытии."
             },
             {
                 "icon": "sparkles",
-                "title": "Floating",
-                "subtitle": "Particles",
-                "body": "New special effect option with smooth animation."
+                "title": "Парящие",
+                "subtitle": "Частицы",
+                "body": "Новый вариант специального эффекта с плавной анимацией."
             },
             {
                 "icon": "number",
-                "title": "Optional",
-                "subtitle": "Build Number",
-                "body": "Configurable build number display alongside the version."
+                "title": "Необязательный",
+                "subtitle": "Номер сборки",
+                "body": "Настраиваемое отображение номера сборки рядом с версией."
             },
             {
                 "icon": "snowflake",
-                "title": "Optimized",
-                "subtitle": "Snowfall",
-                "body": "Reimplemented with Canvas and TimelineView for smoother performance."
+                "title": "Оптимизированный",
+                "subtitle": "Снегопад",
+                "body": "Переработан с помощью Canvas и TimelineView для более плавной работы."
             },
             {
                 "icon": "bolt",
-                "title": "Modern",
-                "subtitle": "Networking",
-                "body": "Powered by Swift Concurrency and Sendable models."
+                "title": "Современная",
+                "subtitle": "Работа с сетью",
+                "body": "На основе Swift Concurrency и моделей Sendable."
             },
             {
                 "icon": "lock.shield",
                 "title": "Sendable",
-                "subtitle": "Models",
-                "body": "Thread-safe data models for Swift Concurrency."
+                "subtitle": "Модели",
+                "body": "Потокобезопасные модели данных для Swift Concurrency."
             },
             {
                 "icon": "speedometer",
-                "title": "Faster",
-                "subtitle": "Mesh BG",
-                "body": "MeshView uses drawingGroup for smoother rendering."
+                "title": "Более быстрый",
+                "subtitle": "Фон сетки",
+                "body": "MeshView использует drawingGroup для более плавного рендеринга."
             },
             {
                 "icon": "tray.and.arrow.down",
-                "title": "Local Data",
-                "subtitle": "Loading",
-                "body": "Optimized loading from bundled JSON files."
+                "title": "Локальные данные",
+                "subtitle": "Загрузка",
+                "body": "Оптимизирована загрузка из встроенных файлов JSON."
             },
             {
                 "icon": "text.alignleft",
-                "title": "Full",
-                "subtitle": "Body Text",
-                "body": "Removed line limits so longer descriptions render fully."
+                "title": "Полный",
+                "subtitle": "Основной текст",
+                "body": "Ограничения числа строк удалены, чтобы длинные описания отображались полностью."
             },
             {
                 "icon": "tag",
-                "title": "Version",
-                "subtitle": "Badges",
-                "body": "Refined dimensions and padding in the History view."
+                "title": "Версионные",
+                "subtitle": "Бейджи",
+                "body": "Уточнены размеры и отступы в представлении истории."
             },
             {
                 "icon": "doc.text",
-                "title": "Reorganized",
-                "subtitle": "Docs",
-                "body": "Split into CONFIGURATION, CONTRIBUTING, and PLATFORM guides."
+                "title": "Переработанная",
+                "subtitle": "Документация",
+                "body": "Разделена на руководства CONFIGURATION, CONTRIBUTING и PLATFORM."
             }
         ]
     },
@@ -221,33 +242,33 @@
         "new": [
             {
                 "icon": "rectangle.split.3x3",
-                "title": "Presentation",
-                "subtitle": "Options",
-                "body": "Support for sheet, fullScreenCover, and embed modes."
+                "title": "Варианты",
+                "subtitle": "Представления",
+                "body": "Поддержка режимов sheet, fullScreenCover и embed."
             },
             {
                 "icon": "paintpalette",
-                "title": "Adaptive",
-                "subtitle": "Text Color",
-                "body": "Button and history text color automatically adapts to background brightness."
+                "title": "Адаптивный",
+                "subtitle": "Цвет текста",
+                "body": "Цвет текста кнопок и истории автоматически подстраивается под яркость фона."
             },
             {
                 "icon": "wand.and.stars",
-                "title": "Simplified",
-                "subtitle": "Initializer",
-                "body": "Direct values no longer require .constant wrapper binding."
+                "title": "Упрощённый",
+                "subtitle": "Инициализатор",
+                "body": "Прямые значения больше не требуют обёртки привязки .constant."
             },
             {
                 "icon": "macpro.gen3.server",
-                "title": "Serverless",
-                "subtitle": "Design",
-                "body": "Free and open source! ❤️‍🔥"
+                "title": "Бессерверный",
+                "subtitle": "Дизайн",
+                "body": "Бесплатно и с открытым исходным кодом! ❤️‍🔥"
             },
             {
                 "icon": "arrow.triangle.pull",
-                "title": "Contribute",
-                "subtitle": "Together",
-                "body": "Pull requests and make it better for everyone! 🎉"
+                "title": "Вносите вклад",
+                "subtitle": "Вместе",
+                "body": "Отправляйте pull request и делайте проект лучше для всех! 🎉"
             }
         ]
     },
@@ -257,9 +278,9 @@
         "new": [
             {
                 "icon": "hammer",
-                "title": "Project",
-                "subtitle": "Restructure",
-                "body": "Seperate files and folders for better maintenance."
+                "title": "Проект",
+                "subtitle": "Реструктуризация",
+                "body": "Файлы и папки разделены для удобства сопровождения."
             }
         ]
     },
@@ -269,9 +290,9 @@
         "new": [
             {
                 "icon": "wineglass",
-                "title": "Glass",
-                "subtitle": "Effect",
-                "body": "Available now!"
+                "title": "Эффект",
+                "subtitle": "Стекла",
+                "body": "Уже доступен!"
             }
         ]
     },
@@ -281,9 +302,9 @@
         "new": [
             {
                 "icon": "snowflake",
-                "title": "Snow",
-                "subtitle": "Effect",
-                "body": "More Special Animation Coming Soon!"
+                "title": "Эффект",
+                "subtitle": "Снега",
+                "body": "Скоро появятся новые специальные анимации!"
             }
         ]
     },
@@ -293,9 +314,9 @@
         "new": [
             {
                 "icon": "pencil.tip",
-                "title": "Matched",
-                "subtitle": "Mesh BG Color",
-                "body": "A standardized design."
+                "title": "Согласованный",
+                "subtitle": "Цвет фона сетки",
+                "body": "Стандартизированный дизайн."
             }
         ]
     },
@@ -305,9 +326,9 @@
         "new": [
             {
                 "icon": "pencil.tip",
-                "title": "Add",
-                "subtitle": "Mesh BG",
-                "body": "Better styles and design."
+                "title": "Добавлен",
+                "subtitle": "Фон сетки",
+                "body": "Улучшенные стили и дизайн."
             }
         ]
     },
@@ -317,9 +338,9 @@
         "new": [
             {
                 "icon": "hammer",
-                "title": "Default",
-                "subtitle": "Option",
-                "body": "New optional binding for less code."
+                "title": "Стандартный",
+                "subtitle": "Параметр",
+                "body": "Новая необязательная привязка для сокращения кода."
             }
         ]
     },
@@ -329,9 +350,9 @@
         "new": [
             {
                 "icon": "character.book.closed",
-                "title": "Update",
-                "subtitle": "Demo",
-                "body": "For 5.0 version."
+                "title": "Обновлена",
+                "subtitle": "Демонстрация",
+                "body": "Для версии 5.0."
             }
         ]
     },
@@ -341,15 +362,15 @@
         "new": [
             {
                 "icon": "character.book.closed",
-                "title": "Support",
-                "subtitle": "Localization",
-                "body": "Powered by Apple String Catalog."
+                "title": "Поддержка",
+                "subtitle": "Локализации",
+                "body": "На основе Apple String Catalog."
             },
             {
                 "icon": "pip.remove",
-                "title": "Drop",
-                "subtitle": "Support",
-                "body": "For iOS14, watchOS7, and macOS11."
+                "title": "Поддержка",
+                "subtitle": "Прекращена",
+                "body": "Для iOS 14, watchOS 7 и macOS 11."
             }
         ]
     },
@@ -359,9 +380,9 @@
         "new": [
             {
                 "icon": "hammer",
-                "title": "Minor",
-                "subtitle": "Update",
-                "body": "Minor bug fixes, and UI improvement."
+                "title": "Небольшое",
+                "subtitle": "Обновление",
+                "body": "Небольшие исправления ошибок и улучшения интерфейса."
             }
         ]
     },
@@ -371,9 +392,9 @@
         "new": [
             {
                 "icon": "eye",
-                "title": "Support Vision Pro",
-                "subtitle": "& visionOS",
-                "body": "Drops Framework is temp-disabled due to conflict."
+                "title": "Поддержка Vision Pro",
+                "subtitle": "и visionOS",
+                "body": "Фреймворк Drops временно отключён из-за конфликта."
             }
         ]
     },
@@ -383,9 +404,9 @@
         "new": [
             {
                 "icon": "number",
-                "title": "Better Compatible",
-                "subtitle": "in Version & Build",
-                "body": "You can use x.y.z or x.y now."
+                "title": "Улучшенная совместимость",
+                "subtitle": "Версий и сборок",
+                "body": "Теперь можно использовать x.y.z или x.y."
             }
         ]
     },
@@ -394,15 +415,15 @@
         "new": [
             {
                 "icon": "app.fill",
-                "title": "App Icon",
-                "subtitle": "Supported",
-                "body": "on iOS."
+                "title": "Значок приложения",
+                "subtitle": "Поддерживается",
+                "body": "В iOS."
             },
             {
                 "icon": "app",
-                "title": "Demo",
-                "subtitle": "is Better now",
-                "body": "Following the Package Version."
+                "title": "Демонстрация",
+                "subtitle": "Стала лучше",
+                "body": "Соответствует версии пакета."
             }
         ]
     },
@@ -411,9 +432,9 @@
         "new": [
             {
                 "icon": "hammer",
-                "title": "Layout",
-                "subtitle": "Fixed",
-                "body": "on iOS Landscape."
+                "title": "Компоновка",
+                "subtitle": "Исправлена",
+                "body": "В альбомной ориентации iOS."
             }
         ]
     },
@@ -422,9 +443,9 @@
         "new": [
             {
                 "icon": "hammer",
-                "title": "Crash",
-                "subtitle": "Fixed",
-                "body": "on macOS."
+                "title": "Сбой",
+                "subtitle": "Исправлен",
+                "body": "В macOS."
             }
         ]
     },
@@ -433,9 +454,9 @@
         "new": [
             {
                 "icon": "bell.badge",
-                "title": "Remote Drop",
-                "subtitle": "Supported",
-                "body": "Instead of full page sheet, you can use a small drop too!"
+                "title": "Удалённый Drop",
+                "subtitle": "Поддерживается",
+                "body": "Вместо полноэкранного sheet можно использовать и небольшой drop!"
             }
         ]
     },
@@ -444,9 +465,9 @@
         "new": [
             {
                 "icon": "square.and.arrow.down.fill",
-                "title": "Remote File",
-                "subtitle": "Supported",
-                "body": "Direct load via remote storage. Easy!"
+                "title": "Удалённый файл",
+                "subtitle": "Поддерживается",
+                "body": "Прямая загрузка из удалённого хранилища. Легко!"
             }
         ]
     },
@@ -455,27 +476,27 @@
         "new": [
             {
                 "icon": "hammer.fill",
-                "title": "Bug fixes",
-                "subtitle": "Broken UI",
-                "body": "Available for iOS 16, iPadOS 16, macOS 13"
+                "title": "Исправления ошибок",
+                "subtitle": "Нарушенный интерфейс",
+                "body": "Доступно для iOS 16, iPadOS 16 и macOS 13."
             },
             {
                 "icon": "square.and.arrow.down.fill",
-                "title": "Local File",
-                "subtitle": "Supported",
-                "body": "Direct load via local storage. Super fast!"
+                "title": "Локальный файл",
+                "subtitle": "Поддерживается",
+                "body": "Прямая загрузка из локального хранилища. Очень быстро!"
             },
             {
                 "icon": "macpro.gen3.server",
-                "title": "Serverless",
-                "subtitle": "Design",
-                "body": "Free and open source! Created by Ming with ❤️‍🔥"
+                "title": "Бессерверный",
+                "subtitle": "Дизайн",
+                "body": "Бесплатно и с открытым исходным кодом! Создано Ming с ❤️‍🔥"
             },
             {
                 "icon": "arrow.triangle.pull",
-                "title": "Contribute",
-                "subtitle": "Together",
-                "body": "Pull requests and make it better for everyone!"
+                "title": "Вносите вклад",
+                "subtitle": "Вместе",
+                "body": "Отправляйте pull request и делайте проект лучше для всех!"
             }
         ]
     }

@@ -8,33 +8,54 @@
                     "app",
                     "square.stack.3d.up.fill"
                 ],
-                "title": "Automatic App Icon Loading",
-                "subtitle": "Primary Raster Icon Detection",
-                "body": "SwiftNEW automatically finds and displays the best bundled app icon for the current device."
+                "title": "Tự động tải biểu tượng ứng dụng",
+                "subtitle": "Phát hiện biểu tượng raster chính",
+                "body": "SwiftNEW tự động tìm và hiển thị biểu tượng ứng dụng đi kèm phù hợp nhất cho thiết bị hiện tại."
             },
             {
-                "icons": ["paintbrush", "app.dashed"],
-                "title": "Icon Composer Support",
-                "subtitle": "Light and Dark Renditions",
-                "body": "On iOS 26, SwiftNEW loads Icon Composer’s compiled Light or Dark rendition, with support for a custom image fallback."
+                "icons": [
+                    "paintbrush",
+                    "app.dashed"
+                ],
+                "title": "Hỗ trợ Icon Composer",
+                "subtitle": "Phiên bản Sáng và Tối",
+                "body": "Trên iOS 26, SwiftNEW tải phiên bản Sáng hoặc Tối do Icon Composer biên dịch và hỗ trợ ảnh dự phòng tùy chỉnh."
             },
             {
-                "icons": ["app.badge", "arrow.trianglehead.swap"],
-                "title": "Alternate App Icons",
-                "subtitle": "Live Header Updates",
-                "body": "Pass the selected alternate icon name so the header stays in sync when your app icon changes."
+                "icons": [
+                    "app.badge",
+                    "arrow.trianglehead.swap"
+                ],
+                "title": "Biểu tượng ứng dụng thay thế",
+                "subtitle": "Cập nhật tiêu đề trực tiếp",
+                "body": "Truyền tên biểu tượng thay thế đã chọn để tiêu đề luôn đồng bộ khi biểu tượng ứng dụng thay đổi."
             },
             {
-                "icons": ["button.programmable", "sparkles"],
-                "title": "Tinted Glass Controls",
-                "subtitle": "Native iOS 26 Styling",
-                "body": "Release-note and primary action buttons now use interactive tinted glass on iOS 26."
+                "icons": [
+                    "button.programmable",
+                    "sparkles"
+                ],
+                "title": "Điều khiển kính màu",
+                "subtitle": "Kiểu gốc của iOS 26",
+                "body": "Các nút ghi chú phát hành và thao tác chính hiện sử dụng kính màu tương tác trên iOS 26."
             },
             {
-                "icons": ["circle.lefthalf.filled", "paintpalette.fill"],
-                "title": "Adaptive Icon Styling",
-                "subtitle": "Improved Dark Mode Contrast",
-                "body": "Icon backdrops and glyph gradients now adapt their lighting and contrast for Dark Mode."
+                "icons": [
+                    "circle.lefthalf.filled",
+                    "paintpalette.fill"
+                ],
+                "title": "Kiểu biểu tượng thích ứng",
+                "subtitle": "Tăng độ tương phản ở Chế độ Tối",
+                "body": "Nền biểu tượng và chuyển màu ký hiệu giờ đây điều chỉnh ánh sáng và độ tương phản cho Chế độ Tối."
+            },
+            {
+                "icons": [
+                    "character.bubble",
+                    "globe"
+                ],
+                "title": "Thêm ngôn ngữ",
+                "subtitle": "Năm bản địa hóa mới",
+                "body": "Ghi chú phát hành hiện có bằng tiếng Đức, tiếng Hebrew, tiếng Indonesia, tiếng Nga và tiếng Việt."
             }
         ]
     },
@@ -47,9 +68,9 @@
                     "arrow.down.app",
                     "app.badge.checkmark"
                 ],
-                "title": "Remote Update Screen",
-                "subtitle": "App Store Update Flow",
-                "body": "When remote JSON contains a newer version, SwiftNEW shows an Update screen and resolves the App Store link automatically."
+                "title": "Màn hình cập nhật từ xa",
+                "subtitle": "Quy trình cập nhật App Store",
+                "body": "Khi JSON từ xa chứa phiên bản mới hơn, SwiftNEW hiển thị màn hình Cập nhật và tự động xác định liên kết App Store."
             }
         ]
     },
@@ -62,72 +83,72 @@
                     "sparkles",
                     "wand.and.stars"
                 ],
-                "title": "Animated Icon Loop",
-                "subtitle": "Native Symbol Replace",
-                "body": "Loop through SF Symbols with native replace transitions."
+                "title": "Vòng lặp biểu tượng động",
+                "subtitle": "Thay thế ký hiệu gốc",
+                "body": "Lặp qua các SF Symbol bằng hiệu ứng chuyển đổi thay thế gốc."
             },
             {
                 "icons": [
                     "arrow.left.arrow.right",
                     "arrow.triangle.2.circlepath"
                 ],
-                "title": "Flexible Icon Schema",
-                "subtitle": "icon, toIcon, and icons",
-                "body": "Define icons with icon, toIcon, or a full icons array."
+                "title": "Lược đồ biểu tượng linh hoạt",
+                "subtitle": "icon, toIcon và icons",
+                "body": "Định nghĩa biểu tượng bằng icon, toIcon hoặc một mảng icons đầy đủ."
             },
             {
                 "icons": [
                     "square.dashed.inset.filled",
                     "square.fill"
                 ],
-                "title": "Default Glass Badge",
-                "subtitle": "Softer Icon Treatment",
-                "body": "A new rounded glass badge gives icons a softer default look."
+                "title": "Huy hiệu kính mặc định",
+                "subtitle": "Cách hiển thị biểu tượng nhẹ nhàng hơn",
+                "body": "Huy hiệu kính bo tròn mới mang lại giao diện mặc định nhẹ nhàng hơn cho biểu tượng."
             },
             {
                 "icons": [
                     "paintbrush.pointed",
                     "paintpalette.fill"
                 ],
-                "title": "Gradient Icon Glyphs",
-                "subtitle": "Theme-Tinted Symbols",
-                "body": "Icon glyphs now use a top-leading to bottom-trailing gradient."
+                "title": "Ký hiệu biểu tượng chuyển màu",
+                "subtitle": "Ký hiệu theo màu chủ đề",
+                "body": "Ký hiệu biểu tượng giờ đây dùng chuyển màu từ góc trên trái xuống góc dưới phải."
             },
             {
                 "icons": [
                     "circle.grid.cross",
                     "square.grid.2x2.fill"
                 ],
-                "title": "Refined Row Layout",
-                "subtitle": "Bigger Icons, Rounder Buttons",
-                "body": "Rows feel tighter with larger icons and rounder action buttons."
+                "title": "Bố cục hàng tinh chỉnh",
+                "subtitle": "Biểu tượng lớn hơn, nút tròn hơn",
+                "body": "Các hàng gọn gàng hơn với biểu tượng lớn và nút thao tác tròn hơn."
             },
             {
                 "icons": [
                     "rectangle.bottomthird.inset.filled",
                     "rectangle.fill"
                 ],
-                "title": "Lower Continue Controls",
-                "subtitle": "Closer Bottom Placement",
-                "body": "Continue controls sit closer to the bottom for easier reach."
+                "title": "Điều khiển Tiếp tục thấp hơn",
+                "subtitle": "Gần cạnh dưới hơn",
+                "body": "Các điều khiển Tiếp tục nằm gần cạnh dưới hơn để dễ tiếp cận."
             },
             {
                 "icons": [
                     "water.waves",
                     "drop.fill"
                 ],
-                "title": "Liquid Mesh Motion",
-                "subtitle": "Slow Animated Backgrounds",
-                "body": "Mesh backgrounds can now move with a slow liquid motion."
+                "title": "Chuyển động lưới chất lỏng",
+                "subtitle": "Nền chuyển động chậm",
+                "body": "Nền lưới giờ đây có thể chuyển động chậm như chất lỏng."
             },
             {
                 "icons": [
                     "textformat.size",
                     "textformat.alt"
                 ],
-                "title": "Custom Heading Prefix",
-                "subtitle": "Personalized Title Line",
-                "body": "Set a custom heading prefix for the title line above the version."
+                "title": "Tiền tố tiêu đề tùy chỉnh",
+                "subtitle": "Dòng tiêu đề cá nhân hóa",
+                "body": "Đặt tiền tố tùy chỉnh cho dòng tiêu đề phía trên phiên bản."
             }
         ]
     },
@@ -137,81 +158,81 @@
         "new": [
             {
                 "icon": "checkmark.shield",
-                "title": "Compatibility",
-                "subtitle": "Fixes",
-                "body": "Improved platform support across iOS, macOS, tvOS, and visionOS."
+                "title": "Khả năng tương thích",
+                "subtitle": "Bản sửa lỗi",
+                "body": "Cải thiện hỗ trợ nền tảng trên iOS, macOS, tvOS và visionOS."
             },
             {
                 "icon": "testtube.2",
                 "title": "Swift",
-                "subtitle": "Testing",
-                "body": "Added native Swift Testing coverage for core release-note logic."
+                "subtitle": "Kiểm thử",
+                "body": "Đã thêm phạm vi Swift Testing gốc cho logic cốt lõi của ghi chú phát hành."
             },
             {
                 "icon": "chart.bar.doc.horizontal",
                 "title": "Codecov",
-                "subtitle": "Reports",
-                "body": "GitHub Actions now generates and uploads coverage reports."
+                "subtitle": "Báo cáo",
+                "body": "GitHub Actions giờ đây tạo và tải lên báo cáo độ bao phủ."
             },
             {
                 "icon": "sparkles",
-                "title": "Floating",
-                "subtitle": "Particles",
-                "body": "New special effect option with smooth animation."
+                "title": "Hạt",
+                "subtitle": "Lơ lửng",
+                "body": "Tùy chọn hiệu ứng đặc biệt mới với chuyển động mượt mà."
             },
             {
                 "icon": "number",
-                "title": "Optional",
-                "subtitle": "Build Number",
-                "body": "Configurable build number display alongside the version."
+                "title": "Số bản dựng",
+                "subtitle": "Tùy chọn",
+                "body": "Có thể cấu hình hiển thị số bản dựng bên cạnh phiên bản."
             },
             {
                 "icon": "snowflake",
-                "title": "Optimized",
-                "subtitle": "Snowfall",
-                "body": "Reimplemented with Canvas and TimelineView for smoother performance."
+                "title": "Tuyết rơi",
+                "subtitle": "Được tối ưu",
+                "body": "Được triển khai lại bằng Canvas và TimelineView để hoạt động mượt hơn."
             },
             {
                 "icon": "bolt",
-                "title": "Modern",
-                "subtitle": "Networking",
-                "body": "Powered by Swift Concurrency and Sendable models."
+                "title": "Mạng",
+                "subtitle": "Hiện đại",
+                "body": "Vận hành bằng Swift Concurrency và các mô hình Sendable."
             },
             {
                 "icon": "lock.shield",
-                "title": "Sendable",
-                "subtitle": "Models",
-                "body": "Thread-safe data models for Swift Concurrency."
+                "title": "Mô hình",
+                "subtitle": "Sendable",
+                "body": "Các mô hình dữ liệu an toàn luồng cho Swift Concurrency."
             },
             {
                 "icon": "speedometer",
-                "title": "Faster",
-                "subtitle": "Mesh BG",
-                "body": "MeshView uses drawingGroup for smoother rendering."
+                "title": "Nền lưới",
+                "subtitle": "Nhanh hơn",
+                "body": "MeshView sử dụng drawingGroup để kết xuất mượt hơn."
             },
             {
                 "icon": "tray.and.arrow.down",
-                "title": "Local Data",
-                "subtitle": "Loading",
-                "body": "Optimized loading from bundled JSON files."
+                "title": "Dữ liệu cục bộ",
+                "subtitle": "Đang tải",
+                "body": "Tối ưu việc tải từ các tệp JSON đi kèm."
             },
             {
                 "icon": "text.alignleft",
-                "title": "Full",
-                "subtitle": "Body Text",
-                "body": "Removed line limits so longer descriptions render fully."
+                "title": "Nội dung",
+                "subtitle": "Đầy đủ",
+                "body": "Đã bỏ giới hạn dòng để hiển thị đầy đủ các mô tả dài hơn."
             },
             {
                 "icon": "tag",
-                "title": "Version",
-                "subtitle": "Badges",
-                "body": "Refined dimensions and padding in the History view."
+                "title": "Huy hiệu",
+                "subtitle": "Phiên bản",
+                "body": "Tinh chỉnh kích thước và khoảng cách trong chế độ xem Lịch sử."
             },
             {
                 "icon": "doc.text",
-                "title": "Reorganized",
-                "subtitle": "Docs",
-                "body": "Split into CONFIGURATION, CONTRIBUTING, and PLATFORM guides."
+                "title": "Tài liệu",
+                "subtitle": "Được sắp xếp lại",
+                "body": "Được chia thành các hướng dẫn CONFIGURATION, CONTRIBUTING và PLATFORM."
             }
         ]
     },
@@ -221,33 +242,33 @@
         "new": [
             {
                 "icon": "rectangle.split.3x3",
-                "title": "Presentation",
-                "subtitle": "Options",
-                "body": "Support for sheet, fullScreenCover, and embed modes."
+                "title": "Tùy chọn",
+                "subtitle": "Trình bày",
+                "body": "Hỗ trợ các chế độ sheet, fullScreenCover và embed."
             },
             {
                 "icon": "paintpalette",
-                "title": "Adaptive",
-                "subtitle": "Text Color",
-                "body": "Button and history text color automatically adapts to background brightness."
+                "title": "Màu chữ",
+                "subtitle": "Thích ứng",
+                "body": "Màu chữ của nút và lịch sử tự động thích ứng với độ sáng của nền."
             },
             {
                 "icon": "wand.and.stars",
-                "title": "Simplified",
-                "subtitle": "Initializer",
-                "body": "Direct values no longer require .constant wrapper binding."
+                "title": "Trình khởi tạo",
+                "subtitle": "Đơn giản hóa",
+                "body": "Giá trị trực tiếp không còn cần binding bọc bằng .constant."
             },
             {
                 "icon": "macpro.gen3.server",
-                "title": "Serverless",
-                "subtitle": "Design",
-                "body": "Free and open source! ❤️‍🔥"
+                "title": "Thiết kế",
+                "subtitle": "Không máy chủ",
+                "body": "Miễn phí và mã nguồn mở! ❤️‍🔥"
             },
             {
                 "icon": "arrow.triangle.pull",
-                "title": "Contribute",
-                "subtitle": "Together",
-                "body": "Pull requests and make it better for everyone! 🎉"
+                "title": "Cùng nhau",
+                "subtitle": "Đóng góp",
+                "body": "Gửi pull request và giúp sản phẩm tốt hơn cho mọi người! 🎉"
             }
         ]
     },
@@ -257,9 +278,9 @@
         "new": [
             {
                 "icon": "hammer",
-                "title": "Project",
-                "subtitle": "Restructure",
-                "body": "Seperate files and folders for better maintenance."
+                "title": "Dự án",
+                "subtitle": "Tái cấu trúc",
+                "body": "Tách tệp và thư mục để dễ bảo trì hơn."
             }
         ]
     },
@@ -269,9 +290,9 @@
         "new": [
             {
                 "icon": "wineglass",
-                "title": "Glass",
-                "subtitle": "Effect",
-                "body": "Available now!"
+                "title": "Hiệu ứng",
+                "subtitle": "Kính",
+                "body": "Đã có ngay bây giờ!"
             }
         ]
     },
@@ -281,9 +302,9 @@
         "new": [
             {
                 "icon": "snowflake",
-                "title": "Snow",
-                "subtitle": "Effect",
-                "body": "More Special Animation Coming Soon!"
+                "title": "Hiệu ứng",
+                "subtitle": "Tuyết",
+                "body": "Sắp có thêm nhiều hiệu ứng đặc biệt!"
             }
         ]
     },
@@ -293,9 +314,9 @@
         "new": [
             {
                 "icon": "pencil.tip",
-                "title": "Matched",
-                "subtitle": "Mesh BG Color",
-                "body": "A standardized design."
+                "title": "Màu nền lưới",
+                "subtitle": "Đồng nhất",
+                "body": "Một thiết kế được chuẩn hóa."
             }
         ]
     },
@@ -305,9 +326,9 @@
         "new": [
             {
                 "icon": "pencil.tip",
-                "title": "Add",
-                "subtitle": "Mesh BG",
-                "body": "Better styles and design."
+                "title": "Thêm",
+                "subtitle": "Nền lưới",
+                "body": "Kiểu dáng và thiết kế tốt hơn."
             }
         ]
     },
@@ -317,9 +338,9 @@
         "new": [
             {
                 "icon": "hammer",
-                "title": "Default",
-                "subtitle": "Option",
-                "body": "New optional binding for less code."
+                "title": "Tùy chọn",
+                "subtitle": "Mặc định",
+                "body": "Binding tùy chọn mới giúp giảm lượng mã."
             }
         ]
     },
@@ -329,9 +350,9 @@
         "new": [
             {
                 "icon": "character.book.closed",
-                "title": "Update",
-                "subtitle": "Demo",
-                "body": "For 5.0 version."
+                "title": "Cập nhật",
+                "subtitle": "Bản demo",
+                "body": "Cho phiên bản 5.0."
             }
         ]
     },
@@ -341,15 +362,15 @@
         "new": [
             {
                 "icon": "character.book.closed",
-                "title": "Support",
-                "subtitle": "Localization",
-                "body": "Powered by Apple String Catalog."
+                "title": "Hỗ trợ",
+                "subtitle": "Bản địa hóa",
+                "body": "Vận hành bằng Apple String Catalog."
             },
             {
                 "icon": "pip.remove",
-                "title": "Drop",
-                "subtitle": "Support",
-                "body": "For iOS14, watchOS7, and macOS11."
+                "title": "Ngừng",
+                "subtitle": "Hỗ trợ",
+                "body": "Đối với iOS 14, watchOS 7 và macOS 11."
             }
         ]
     },
@@ -359,9 +380,9 @@
         "new": [
             {
                 "icon": "hammer",
-                "title": "Minor",
-                "subtitle": "Update",
-                "body": "Minor bug fixes, and UI improvement."
+                "title": "Bản cập nhật",
+                "subtitle": "Nhỏ",
+                "body": "Sửa lỗi nhỏ và cải thiện giao diện."
             }
         ]
     },
@@ -371,9 +392,9 @@
         "new": [
             {
                 "icon": "eye",
-                "title": "Support Vision Pro",
-                "subtitle": "& visionOS",
-                "body": "Drops Framework is temp-disabled due to conflict."
+                "title": "Hỗ trợ Vision Pro",
+                "subtitle": "và visionOS",
+                "body": "Framework Drops tạm thời bị vô hiệu hóa do xung đột."
             }
         ]
     },
@@ -383,9 +404,9 @@
         "new": [
             {
                 "icon": "number",
-                "title": "Better Compatible",
-                "subtitle": "in Version & Build",
-                "body": "You can use x.y.z or x.y now."
+                "title": "Tương thích tốt hơn",
+                "subtitle": "về Phiên bản và Bản dựng",
+                "body": "Giờ đây bạn có thể dùng x.y.z hoặc x.y."
             }
         ]
     },
@@ -394,15 +415,15 @@
         "new": [
             {
                 "icon": "app.fill",
-                "title": "App Icon",
-                "subtitle": "Supported",
-                "body": "on iOS."
+                "title": "Biểu tượng ứng dụng",
+                "subtitle": "Được hỗ trợ",
+                "body": "Trên iOS."
             },
             {
                 "icon": "app",
-                "title": "Demo",
-                "subtitle": "is Better now",
-                "body": "Following the Package Version."
+                "title": "Bản demo",
+                "subtitle": "Tốt hơn rồi",
+                "body": "Tuân theo Phiên bản Gói."
             }
         ]
     },
@@ -411,9 +432,9 @@
         "new": [
             {
                 "icon": "hammer",
-                "title": "Layout",
-                "subtitle": "Fixed",
-                "body": "on iOS Landscape."
+                "title": "Bố cục",
+                "subtitle": "Đã sửa",
+                "body": "Trên iOS ở hướng ngang."
             }
         ]
     },
@@ -422,9 +443,9 @@
         "new": [
             {
                 "icon": "hammer",
-                "title": "Crash",
-                "subtitle": "Fixed",
-                "body": "on macOS."
+                "title": "Sự cố",
+                "subtitle": "Đã sửa",
+                "body": "Trên macOS."
             }
         ]
     },
@@ -433,9 +454,9 @@
         "new": [
             {
                 "icon": "bell.badge",
-                "title": "Remote Drop",
-                "subtitle": "Supported",
-                "body": "Instead of full page sheet, you can use a small drop too!"
+                "title": "Drop từ xa",
+                "subtitle": "Được hỗ trợ",
+                "body": "Thay vì sheet toàn trang, bạn cũng có thể dùng một drop nhỏ!"
             }
         ]
     },
@@ -444,9 +465,9 @@
         "new": [
             {
                 "icon": "square.and.arrow.down.fill",
-                "title": "Remote File",
-                "subtitle": "Supported",
-                "body": "Direct load via remote storage. Easy!"
+                "title": "Tệp từ xa",
+                "subtitle": "Được hỗ trợ",
+                "body": "Tải trực tiếp qua bộ nhớ từ xa. Thật dễ dàng!"
             }
         ]
     },
@@ -455,27 +476,27 @@
         "new": [
             {
                 "icon": "hammer.fill",
-                "title": "Bug fixes",
-                "subtitle": "Broken UI",
-                "body": "Available for iOS 16, iPadOS 16, macOS 13"
+                "title": "Sửa lỗi",
+                "subtitle": "Giao diện bị hỏng",
+                "body": "Có sẵn cho iOS 16, iPadOS 16 và macOS 13."
             },
             {
                 "icon": "square.and.arrow.down.fill",
-                "title": "Local File",
-                "subtitle": "Supported",
-                "body": "Direct load via local storage. Super fast!"
+                "title": "Tệp cục bộ",
+                "subtitle": "Được hỗ trợ",
+                "body": "Tải trực tiếp qua bộ nhớ cục bộ. Siêu nhanh!"
             },
             {
                 "icon": "macpro.gen3.server",
-                "title": "Serverless",
-                "subtitle": "Design",
-                "body": "Free and open source! Created by Ming with ❤️‍🔥"
+                "title": "Thiết kế",
+                "subtitle": "Không máy chủ",
+                "body": "Miễn phí và mã nguồn mở! Được Ming tạo ra với ❤️‍🔥"
             },
             {
                 "icon": "arrow.triangle.pull",
-                "title": "Contribute",
-                "subtitle": "Together",
-                "body": "Pull requests and make it better for everyone!"
+                "title": "Cùng nhau",
+                "subtitle": "Đóng góp",
+                "body": "Gửi pull request và giúp sản phẩm tốt hơn cho mọi người!"
             }
         ]
     }

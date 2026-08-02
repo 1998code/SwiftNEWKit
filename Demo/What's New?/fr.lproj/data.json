@@ -35,6 +35,12 @@
                 "title": "Style d’icône adaptatif",
                 "subtitle": "Meilleur contraste en mode sombre",
                 "body": "Les arrière-plans et dégradés des icônes adaptent leur éclairage et leur contraste au mode sombre."
+            },
+            {
+                "icons": ["character.bubble", "globe"],
+                "title": "Plus de langues",
+                "subtitle": "Cinq nouvelles localisations",
+                "body": "Les notes de version sont désormais disponibles en allemand, hébreu, indonésien, russe et vietnamien."
             }
         ]
     },

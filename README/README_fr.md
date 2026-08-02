@@ -70,6 +70,12 @@ C'est tout — SwiftNEW se déclenche automatiquement quand la version de l'app 
 
 | Fonctionnalité | Depuis | Description |
 |---------|:-----:|-------------|
+| 🌐 Plus de langues | 6.6.0 | Les notes sont désormais localisées en allemand, hébreu, indonésien, russe et vietnamien |
+| 🌗 Style d’icône adaptatif | 6.6.0 | Les arrière-plans et dégradés améliorent automatiquement le contraste en mode sombre |
+| 🫧 Commandes en verre teinté | 6.6.0 | Les boutons utilisent le verre teinté interactif natif sous iOS 26 |
+| 🔄 Icônes alternatives | 6.6.0 | Synchronise l’icône de l’en-tête avec l’icône alternative sélectionnée |
+| 🎨 Prise en charge d’Icon Composer | 6.6.0 | Charge les rendus clair ou sombre sous iOS 26 avec une image personnalisée de repli |
+| 📱 Chargement automatique de l’icône | 6.6.0 | Trouve et affiche la meilleure icône intégrée pour l’appareil actuel |
 | ⬆️ Écran de mise à jour à distance | 6.5.0 | Activez-le avec `checkForUpdates` ; si le JSON distant contient une version plus récente, SwiftNEW affiche un écran de mise à jour avec une action App Store personnalisable |
 | 🔁 Boucle d'icônes animée | 6.4.0 | Fait défiler les SF Symbols avec des transitions de remplacement natives |
 | 🧾 Schéma d'icônes flexible | 6.4.0 | Définissez les icônes avec `icon`, `toIcon` ou un tableau `icons` complet |

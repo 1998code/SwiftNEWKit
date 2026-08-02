@@ -70,6 +70,12 @@ That's it — SwiftNEW auto-triggers when the app version changes.
 
 | Feature | Since | Description |
 |---------|:-----:|-------------|
+| 🌐 More Languages | 6.6.0 | Release notes are now localized in German, Hebrew, Indonesian, Russian, and Vietnamese |
+| 🌗 Adaptive Icon Styling | 6.6.0 | Icon backdrops and glyph gradients improve contrast automatically in Dark Mode |
+| 🫧 Tinted Glass Controls | 6.6.0 | Release-note and primary action buttons use native interactive tinted glass on iOS 26 |
+| 🔄 Alternate App Icons | 6.6.0 | Keep the header icon synchronized with the app’s selected alternate icon |
+| 🎨 Icon Composer Support | 6.6.0 | Load compiled Light or Dark renditions on iOS 26 with a custom image fallback |
+| 📱 Automatic App Icon Loading | 6.6.0 | Find and display the best bundled app icon for the current device |
 | ⬆️ Remote Update Screen | 6.5.0 | Opt in with `checkForUpdates`; a newer remote JSON version shows an update screen with a customizable App Store action |
 | 🔁 Animated Icon Loop | 6.4.0 | Loop through SF Symbols with native replace transitions |
 | 🧾 Flexible Icon Schema | 6.4.0 | Define icons with `icon`, `toIcon`, or a full `icons` array |

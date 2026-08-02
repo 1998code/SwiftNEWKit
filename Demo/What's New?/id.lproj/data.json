@@ -8,33 +8,54 @@
                     "app",
                     "square.stack.3d.up.fill"
                 ],
-                "title": "Automatic App Icon Loading",
-                "subtitle": "Primary Raster Icon Detection",
-                "body": "SwiftNEW automatically finds and displays the best bundled app icon for the current device."
+                "title": "Pemuatan Ikon Aplikasi Otomatis",
+                "subtitle": "Deteksi Ikon Raster Utama",
+                "body": "SwiftNEW secara otomatis menemukan dan menampilkan ikon aplikasi bawaan terbaik untuk perangkat saat ini."
             },
             {
-                "icons": ["paintbrush", "app.dashed"],
-                "title": "Icon Composer Support",
-                "subtitle": "Light and Dark Renditions",
-                "body": "On iOS 26, SwiftNEW loads Icon Composer’s compiled Light or Dark rendition, with support for a custom image fallback."
+                "icons": [
+                    "paintbrush",
+                    "app.dashed"
+                ],
+                "title": "Dukungan Icon Composer",
+                "subtitle": "Tampilan Terang dan Gelap",
+                "body": "Di iOS 26, SwiftNEW memuat tampilan Terang atau Gelap hasil kompilasi Icon Composer, dengan dukungan gambar pengganti khusus."
             },
             {
-                "icons": ["app.badge", "arrow.trianglehead.swap"],
-                "title": "Alternate App Icons",
-                "subtitle": "Live Header Updates",
-                "body": "Pass the selected alternate icon name so the header stays in sync when your app icon changes."
+                "icons": [
+                    "app.badge",
+                    "arrow.trianglehead.swap"
+                ],
+                "title": "Ikon Aplikasi Alternatif",
+                "subtitle": "Pembaruan Header Langsung",
+                "body": "Berikan nama ikon alternatif yang dipilih agar header tetap sinkron saat ikon aplikasi berubah."
             },
             {
-                "icons": ["button.programmable", "sparkles"],
-                "title": "Tinted Glass Controls",
-                "subtitle": "Native iOS 26 Styling",
-                "body": "Release-note and primary action buttons now use interactive tinted glass on iOS 26."
+                "icons": [
+                    "button.programmable",
+                    "sparkles"
+                ],
+                "title": "Kontrol Kaca Berwarna",
+                "subtitle": "Gaya Asli iOS 26",
+                "body": "Tombol catatan rilis dan tindakan utama kini menggunakan kaca berwarna interaktif di iOS 26."
             },
             {
-                "icons": ["circle.lefthalf.filled", "paintpalette.fill"],
-                "title": "Adaptive Icon Styling",
-                "subtitle": "Improved Dark Mode Contrast",
-                "body": "Icon backdrops and glyph gradients now adapt their lighting and contrast for Dark Mode."
+                "icons": [
+                    "circle.lefthalf.filled",
+                    "paintpalette.fill"
+                ],
+                "title": "Gaya Ikon Adaptif",
+                "subtitle": "Kontras Mode Gelap yang Lebih Baik",
+                "body": "Latar ikon dan gradasi glif kini menyesuaikan pencahayaan dan kontras untuk Mode Gelap."
+            },
+            {
+                "icons": [
+                    "character.bubble",
+                    "globe"
+                ],
+                "title": "Lebih Banyak Bahasa",
+                "subtitle": "Lima Pelokalan Baru",
+                "body": "Catatan rilis kini tersedia dalam bahasa Jerman, Ibrani, Indonesia, Rusia, dan Vietnam."
             }
         ]
     },
@@ -47,9 +68,9 @@
                     "arrow.down.app",
                     "app.badge.checkmark"
                 ],
-                "title": "Remote Update Screen",
-                "subtitle": "App Store Update Flow",
-                "body": "When remote JSON contains a newer version, SwiftNEW shows an Update screen and resolves the App Store link automatically."
+                "title": "Layar Pembaruan Jarak Jauh",
+                "subtitle": "Alur Pembaruan App Store",
+                "body": "Saat JSON jarak jauh berisi versi yang lebih baru, SwiftNEW menampilkan layar Pembaruan dan menentukan tautan App Store secara otomatis."
             }
         ]
     },
@@ -62,72 +83,72 @@
                     "sparkles",
                     "wand.and.stars"
                 ],
-                "title": "Animated Icon Loop",
-                "subtitle": "Native Symbol Replace",
-                "body": "Loop through SF Symbols with native replace transitions."
+                "title": "Perulangan Ikon Beranimasi",
+                "subtitle": "Penggantian Simbol Asli",
+                "body": "Putar SF Symbols secara berulang dengan transisi penggantian asli."
             },
             {
                 "icons": [
                     "arrow.left.arrow.right",
                     "arrow.triangle.2.circlepath"
                 ],
-                "title": "Flexible Icon Schema",
-                "subtitle": "icon, toIcon, and icons",
-                "body": "Define icons with icon, toIcon, or a full icons array."
+                "title": "Skema Ikon Fleksibel",
+                "subtitle": "icon, toIcon, dan icons",
+                "body": "Tentukan ikon dengan icon, toIcon, atau array icons lengkap."
             },
             {
                 "icons": [
                     "square.dashed.inset.filled",
                     "square.fill"
                 ],
-                "title": "Default Glass Badge",
-                "subtitle": "Softer Icon Treatment",
-                "body": "A new rounded glass badge gives icons a softer default look."
+                "title": "Lencana Kaca Bawaan",
+                "subtitle": "Tampilan Ikon yang Lebih Lembut",
+                "body": "Lencana kaca bulat baru memberikan tampilan bawaan yang lebih lembut pada ikon."
             },
             {
                 "icons": [
                     "paintbrush.pointed",
                     "paintpalette.fill"
                 ],
-                "title": "Gradient Icon Glyphs",
-                "subtitle": "Theme-Tinted Symbols",
-                "body": "Icon glyphs now use a top-leading to bottom-trailing gradient."
+                "title": "Glif Ikon Bergradasi",
+                "subtitle": "Simbol Berwarna Tema",
+                "body": "Glif ikon kini menggunakan gradasi dari kiri atas ke kanan bawah."
             },
             {
                 "icons": [
                     "circle.grid.cross",
                     "square.grid.2x2.fill"
                 ],
-                "title": "Refined Row Layout",
-                "subtitle": "Bigger Icons, Rounder Buttons",
-                "body": "Rows feel tighter with larger icons and rounder action buttons."
+                "title": "Tata Letak Baris yang Disempurnakan",
+                "subtitle": "Ikon Lebih Besar, Tombol Lebih Bulat",
+                "body": "Baris terasa lebih ringkas dengan ikon lebih besar dan tombol tindakan yang lebih bulat."
             },
             {
                 "icons": [
                     "rectangle.bottomthird.inset.filled",
                     "rectangle.fill"
                 ],
-                "title": "Lower Continue Controls",
-                "subtitle": "Closer Bottom Placement",
-                "body": "Continue controls sit closer to the bottom for easier reach."
+                "title": "Kontrol Lanjutkan Lebih Rendah",
+                "subtitle": "Lebih Dekat ke Bagian Bawah",
+                "body": "Kontrol Lanjutkan berada lebih dekat ke bagian bawah agar lebih mudah dijangkau."
             },
             {
                 "icons": [
                     "water.waves",
                     "drop.fill"
                 ],
-                "title": "Liquid Mesh Motion",
-                "subtitle": "Slow Animated Backgrounds",
-                "body": "Mesh backgrounds can now move with a slow liquid motion."
+                "title": "Gerakan Mesh Cair",
+                "subtitle": "Latar Beranimasi Lambat",
+                "body": "Latar mesh kini dapat bergerak dengan gerakan cair yang lambat."
             },
             {
                 "icons": [
                     "textformat.size",
                     "textformat.alt"
                 ],
-                "title": "Custom Heading Prefix",
-                "subtitle": "Personalized Title Line",
-                "body": "Set a custom heading prefix for the title line above the version."
+                "title": "Awalan Header Khusus",
+                "subtitle": "Baris Judul yang Dipersonalisasi",
+                "body": "Tetapkan awalan khusus untuk baris judul di atas versi."
             }
         ]
     },
@@ -137,81 +158,81 @@
         "new": [
             {
                 "icon": "checkmark.shield",
-                "title": "Compatibility",
-                "subtitle": "Fixes",
-                "body": "Improved platform support across iOS, macOS, tvOS, and visionOS."
+                "title": "Kompatibilitas",
+                "subtitle": "Perbaikan",
+                "body": "Dukungan platform yang ditingkatkan di iOS, macOS, tvOS, dan visionOS."
             },
             {
                 "icon": "testtube.2",
                 "title": "Swift",
-                "subtitle": "Testing",
-                "body": "Added native Swift Testing coverage for core release-note logic."
+                "subtitle": "Pengujian",
+                "body": "Menambahkan cakupan Swift Testing asli untuk logika inti catatan rilis."
             },
             {
                 "icon": "chart.bar.doc.horizontal",
                 "title": "Codecov",
-                "subtitle": "Reports",
-                "body": "GitHub Actions now generates and uploads coverage reports."
+                "subtitle": "Laporan",
+                "body": "GitHub Actions kini membuat dan mengunggah laporan cakupan."
             },
             {
                 "icon": "sparkles",
-                "title": "Floating",
-                "subtitle": "Particles",
-                "body": "New special effect option with smooth animation."
+                "title": "Partikel",
+                "subtitle": "Melayang",
+                "body": "Opsi efek khusus baru dengan animasi yang halus."
             },
             {
                 "icon": "number",
-                "title": "Optional",
-                "subtitle": "Build Number",
-                "body": "Configurable build number display alongside the version."
+                "title": "Nomor Build",
+                "subtitle": "Opsional",
+                "body": "Tampilan nomor build yang dapat dikonfigurasi di samping versi."
             },
             {
                 "icon": "snowflake",
-                "title": "Optimized",
-                "subtitle": "Snowfall",
-                "body": "Reimplemented with Canvas and TimelineView for smoother performance."
+                "title": "Hujan Salju",
+                "subtitle": "Dioptimalkan",
+                "body": "Dibuat ulang dengan Canvas dan TimelineView untuk performa yang lebih halus."
             },
             {
                 "icon": "bolt",
-                "title": "Modern",
-                "subtitle": "Networking",
-                "body": "Powered by Swift Concurrency and Sendable models."
+                "title": "Jaringan",
+                "subtitle": "Modern",
+                "body": "Didukung oleh Swift Concurrency dan model Sendable."
             },
             {
                 "icon": "lock.shield",
-                "title": "Sendable",
-                "subtitle": "Models",
-                "body": "Thread-safe data models for Swift Concurrency."
+                "title": "Model",
+                "subtitle": "Sendable",
+                "body": "Model data aman-thread untuk Swift Concurrency."
             },
             {
                 "icon": "speedometer",
-                "title": "Faster",
-                "subtitle": "Mesh BG",
-                "body": "MeshView uses drawingGroup for smoother rendering."
+                "title": "Latar Mesh",
+                "subtitle": "Lebih Cepat",
+                "body": "MeshView menggunakan drawingGroup untuk rendering yang lebih halus."
             },
             {
                 "icon": "tray.and.arrow.down",
-                "title": "Local Data",
-                "subtitle": "Loading",
-                "body": "Optimized loading from bundled JSON files."
+                "title": "Data Lokal",
+                "subtitle": "Pemuatan",
+                "body": "Pemuatan dari file JSON bawaan telah dioptimalkan."
             },
             {
                 "icon": "text.alignleft",
-                "title": "Full",
-                "subtitle": "Body Text",
-                "body": "Removed line limits so longer descriptions render fully."
+                "title": "Teks Isi",
+                "subtitle": "Lengkap",
+                "body": "Batas baris dihapus agar deskripsi yang lebih panjang ditampilkan sepenuhnya."
             },
             {
                 "icon": "tag",
-                "title": "Version",
-                "subtitle": "Badges",
-                "body": "Refined dimensions and padding in the History view."
+                "title": "Lencana",
+                "subtitle": "Versi",
+                "body": "Dimensi dan jarak dalam tampilan Riwayat telah disempurnakan."
             },
             {
                 "icon": "doc.text",
-                "title": "Reorganized",
-                "subtitle": "Docs",
-                "body": "Split into CONFIGURATION, CONTRIBUTING, and PLATFORM guides."
+                "title": "Dokumentasi",
+                "subtitle": "Ditata Ulang",
+                "body": "Dipisahkan menjadi panduan CONFIGURATION, CONTRIBUTING, dan PLATFORM."
             }
         ]
     },
@@ -221,33 +242,33 @@
         "new": [
             {
                 "icon": "rectangle.split.3x3",
-                "title": "Presentation",
-                "subtitle": "Options",
-                "body": "Support for sheet, fullScreenCover, and embed modes."
+                "title": "Opsi",
+                "subtitle": "Presentasi",
+                "body": "Dukungan untuk mode sheet, fullScreenCover, dan embed."
             },
             {
                 "icon": "paintpalette",
-                "title": "Adaptive",
-                "subtitle": "Text Color",
-                "body": "Button and history text color automatically adapts to background brightness."
+                "title": "Warna Teks",
+                "subtitle": "Adaptif",
+                "body": "Warna teks tombol dan riwayat otomatis menyesuaikan kecerahan latar."
             },
             {
                 "icon": "wand.and.stars",
-                "title": "Simplified",
-                "subtitle": "Initializer",
-                "body": "Direct values no longer require .constant wrapper binding."
+                "title": "Penginisialisasi",
+                "subtitle": "Disederhanakan",
+                "body": "Nilai langsung tidak lagi memerlukan binding pembungkus .constant."
             },
             {
                 "icon": "macpro.gen3.server",
-                "title": "Serverless",
-                "subtitle": "Design",
-                "body": "Free and open source! ❤️‍🔥"
+                "title": "Desain",
+                "subtitle": "Tanpa Server",
+                "body": "Gratis dan sumber terbuka! ❤️‍🔥"
             },
             {
                 "icon": "arrow.triangle.pull",
-                "title": "Contribute",
-                "subtitle": "Together",
-                "body": "Pull requests and make it better for everyone! 🎉"
+                "title": "Berkontribusi",
+                "subtitle": "Bersama",
+                "body": "Kirim pull request dan jadikan lebih baik untuk semua orang! 🎉"
             }
         ]
     },
@@ -257,9 +278,9 @@
         "new": [
             {
                 "icon": "hammer",
-                "title": "Project",
-                "subtitle": "Restructure",
-                "body": "Seperate files and folders for better maintenance."
+                "title": "Proyek",
+                "subtitle": "Restrukturisasi",
+                "body": "Pisahkan file dan folder agar lebih mudah dipelihara."
             }
         ]
     },
@@ -269,9 +290,9 @@
         "new": [
             {
                 "icon": "wineglass",
-                "title": "Glass",
-                "subtitle": "Effect",
-                "body": "Available now!"
+                "title": "Efek",
+                "subtitle": "Kaca",
+                "body": "Tersedia sekarang!"
             }
         ]
     },
@@ -281,9 +302,9 @@
         "new": [
             {
                 "icon": "snowflake",
-                "title": "Snow",
-                "subtitle": "Effect",
-                "body": "More Special Animation Coming Soon!"
+                "title": "Efek",
+                "subtitle": "Salju",
+                "body": "Animasi khusus lainnya segera hadir!"
             }
         ]
     },
@@ -293,9 +314,9 @@
         "new": [
             {
                 "icon": "pencil.tip",
-                "title": "Matched",
-                "subtitle": "Mesh BG Color",
-                "body": "A standardized design."
+                "title": "Warna Latar Mesh",
+                "subtitle": "Diselaraskan",
+                "body": "Desain yang terstandarisasi."
             }
         ]
     },
@@ -305,9 +326,9 @@
         "new": [
             {
                 "icon": "pencil.tip",
-                "title": "Add",
-                "subtitle": "Mesh BG",
-                "body": "Better styles and design."
+                "title": "Tambah",
+                "subtitle": "Latar Mesh",
+                "body": "Gaya dan desain yang lebih baik."
             }
         ]
     },
@@ -317,9 +338,9 @@
         "new": [
             {
                 "icon": "hammer",
-                "title": "Default",
-                "subtitle": "Option",
-                "body": "New optional binding for less code."
+                "title": "Opsi",
+                "subtitle": "Bawaan",
+                "body": "Binding opsional baru untuk kode yang lebih sedikit."
             }
         ]
     },
@@ -329,9 +350,9 @@
         "new": [
             {
                 "icon": "character.book.closed",
-                "title": "Update",
-                "subtitle": "Demo",
-                "body": "For 5.0 version."
+                "title": "Perbarui",
+                "subtitle": "Demonstrasi",
+                "body": "Untuk versi 5.0."
             }
         ]
     },
@@ -341,15 +362,15 @@
         "new": [
             {
                 "icon": "character.book.closed",
-                "title": "Support",
-                "subtitle": "Localization",
-                "body": "Powered by Apple String Catalog."
+                "title": "Dukungan",
+                "subtitle": "Pelokalan",
+                "body": "Didukung oleh Apple String Catalog."
             },
             {
                 "icon": "pip.remove",
-                "title": "Drop",
-                "subtitle": "Support",
-                "body": "For iOS14, watchOS7, and macOS11."
+                "title": "Hentikan",
+                "subtitle": "Dukungan",
+                "body": "Untuk iOS 14, watchOS 7, dan macOS 11."
             }
         ]
     },
@@ -359,9 +380,9 @@
         "new": [
             {
                 "icon": "hammer",
-                "title": "Minor",
-                "subtitle": "Update",
-                "body": "Minor bug fixes, and UI improvement."
+                "title": "Pembaruan",
+                "subtitle": "Kecil",
+                "body": "Perbaikan bug kecil dan peningkatan antarmuka."
             }
         ]
     },
@@ -371,9 +392,9 @@
         "new": [
             {
                 "icon": "eye",
-                "title": "Support Vision Pro",
-                "subtitle": "& visionOS",
-                "body": "Drops Framework is temp-disabled due to conflict."
+                "title": "Dukungan Vision Pro",
+                "subtitle": "dan visionOS",
+                "body": "Framework Drops dinonaktifkan sementara karena konflik."
             }
         ]
     },
@@ -383,9 +404,9 @@
         "new": [
             {
                 "icon": "number",
-                "title": "Better Compatible",
-                "subtitle": "in Version & Build",
-                "body": "You can use x.y.z or x.y now."
+                "title": "Kompatibilitas Lebih Baik",
+                "subtitle": "pada Versi dan Build",
+                "body": "Kini Anda dapat menggunakan x.y.z atau x.y."
             }
         ]
     },
@@ -394,15 +415,15 @@
         "new": [
             {
                 "icon": "app.fill",
-                "title": "App Icon",
-                "subtitle": "Supported",
-                "body": "on iOS."
+                "title": "Ikon Aplikasi",
+                "subtitle": "Didukung",
+                "body": "Di iOS."
             },
             {
                 "icon": "app",
-                "title": "Demo",
-                "subtitle": "is Better now",
-                "body": "Following the Package Version."
+                "title": "Demonstrasi",
+                "subtitle": "Kini Lebih Baik",
+                "body": "Mengikuti Versi Paket."
             }
         ]
     },
@@ -411,9 +432,9 @@
         "new": [
             {
                 "icon": "hammer",
-                "title": "Layout",
-                "subtitle": "Fixed",
-                "body": "on iOS Landscape."
+                "title": "Tata Letak",
+                "subtitle": "Diperbaiki",
+                "body": "Pada orientasi lanskap iOS."
             }
         ]
     },
@@ -422,9 +443,9 @@
         "new": [
             {
                 "icon": "hammer",
-                "title": "Crash",
-                "subtitle": "Fixed",
-                "body": "on macOS."
+                "title": "Kegagalan",
+                "subtitle": "Diperbaiki",
+                "body": "Di macOS."
             }
         ]
     },
@@ -433,9 +454,9 @@
         "new": [
             {
                 "icon": "bell.badge",
-                "title": "Remote Drop",
-                "subtitle": "Supported",
-                "body": "Instead of full page sheet, you can use a small drop too!"
+                "title": "Drop Jarak Jauh",
+                "subtitle": "Didukung",
+                "body": "Alih-alih sheet satu halaman penuh, Anda juga dapat menggunakan drop kecil!"
             }
         ]
     },
@@ -444,9 +465,9 @@
         "new": [
             {
                 "icon": "square.and.arrow.down.fill",
-                "title": "Remote File",
-                "subtitle": "Supported",
-                "body": "Direct load via remote storage. Easy!"
+                "title": "File Jarak Jauh",
+                "subtitle": "Didukung",
+                "body": "Muat langsung melalui penyimpanan jarak jauh. Mudah!"
             }
         ]
     },
@@ -455,27 +476,27 @@
         "new": [
             {
                 "icon": "hammer.fill",
-                "title": "Bug fixes",
-                "subtitle": "Broken UI",
-                "body": "Available for iOS 16, iPadOS 16, macOS 13"
+                "title": "Perbaikan Bug",
+                "subtitle": "Antarmuka Rusak",
+                "body": "Tersedia untuk iOS 16, iPadOS 16, dan macOS 13."
             },
             {
                 "icon": "square.and.arrow.down.fill",
-                "title": "Local File",
-                "subtitle": "Supported",
-                "body": "Direct load via local storage. Super fast!"
+                "title": "File Lokal",
+                "subtitle": "Didukung",
+                "body": "Muat langsung melalui penyimpanan lokal. Sangat cepat!"
             },
             {
                 "icon": "macpro.gen3.server",
-                "title": "Serverless",
-                "subtitle": "Design",
-                "body": "Free and open source! Created by Ming with ❤️‍🔥"
+                "title": "Desain",
+                "subtitle": "Tanpa Server",
+                "body": "Gratis dan sumber terbuka! Dibuat oleh Ming dengan ❤️‍🔥"
             },
             {
                 "icon": "arrow.triangle.pull",
-                "title": "Contribute",
-                "subtitle": "Together",
-                "body": "Pull requests and make it better for everyone!"
+                "title": "Berkontribusi",
+                "subtitle": "Bersama",
+                "body": "Kirim pull request dan jadikan lebih baik untuk semua orang!"
             }
         ]
     }

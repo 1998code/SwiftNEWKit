@@ -1,4 +1,507 @@
 {
+    "de": [
+        {
+            "version": "6.6",
+            "subVersion": "6.6.0",
+            "new": [
+                {
+                    "icons": [
+                        "app",
+                        "square.stack.3d.up.fill"
+                    ],
+                    "title": "App-Symbol automatisch laden",
+                    "subtitle": "Primäres Raster-Symbol erkennen",
+                    "body": "SwiftNEW findet automatisch das beste mitgelieferte App-Symbol für das aktuelle Gerät und zeigt es an."
+                },
+                {
+                    "icons": [
+                        "paintbrush",
+                        "app.dashed"
+                    ],
+                    "title": "Icon-Composer-Unterstützung",
+                    "subtitle": "Helle und dunkle Varianten",
+                    "body": "Unter iOS 26 lädt SwiftNEW die von Icon Composer kompilierte helle oder dunkle Variante und unterstützt ein benutzerdefiniertes Ersatzbild."
+                },
+                {
+                    "icons": [
+                        "app.badge",
+                        "arrow.trianglehead.swap"
+                    ],
+                    "title": "Alternative App-Symbole",
+                    "subtitle": "Live-Aktualisierung der Kopfzeile",
+                    "body": "Übergeben Sie den Namen des ausgewählten alternativen Symbols, damit die Kopfzeile bei einem Symbolwechsel synchron bleibt."
+                },
+                {
+                    "icons": [
+                        "button.programmable",
+                        "sparkles"
+                    ],
+                    "title": "Getönte Glaselemente",
+                    "subtitle": "Natives Design für iOS 26",
+                    "body": "Schaltflächen für Versionshinweise und primäre Aktionen verwenden unter iOS 26 jetzt interaktives getöntes Glas."
+                },
+                {
+                    "icons": [
+                        "circle.lefthalf.filled",
+                        "paintpalette.fill"
+                    ],
+                    "title": "Adaptives Symboldesign",
+                    "subtitle": "Besserer Kontrast im Dunkelmodus",
+                    "body": "Symbolhintergründe und Glyphenverläufe passen Beleuchtung und Kontrast jetzt an den Dunkelmodus an."
+                },
+                {
+                    "icons": [
+                        "character.bubble",
+                        "globe"
+                    ],
+                    "title": "Mehr Sprachen",
+                    "subtitle": "Fünf neue Lokalisierungen",
+                    "body": "Versionshinweise sind jetzt auf Deutsch, Hebräisch, Indonesisch, Russisch und Vietnamesisch verfügbar."
+                }
+            ]
+        },
+        {
+            "version": "6.5",
+            "subVersion": "6.5.0",
+            "new": [
+                {
+                    "icons": [
+                        "arrow.down.app",
+                        "app.badge.checkmark"
+                    ],
+                    "title": "Bildschirm für Remote-Updates",
+                    "subtitle": "App-Store-Aktualisierung",
+                    "body": "Enthält das Remote-JSON eine neuere Version, zeigt SwiftNEW einen Aktualisierungsbildschirm an und ermittelt automatisch den App-Store-Link."
+                }
+            ]
+        },
+        {
+            "version": "6.4",
+            "subVersion": "6.4.0",
+            "new": [
+                {
+                    "icons": [
+                        "sparkles",
+                        "wand.and.stars"
+                    ],
+                    "title": "Animierte Symbolschleife",
+                    "subtitle": "Native Symbolersetzung",
+                    "body": "SF Symbols werden mit nativen Ersetzungsübergängen in einer Schleife angezeigt."
+                },
+                {
+                    "icons": [
+                        "arrow.left.arrow.right",
+                        "arrow.triangle.2.circlepath"
+                    ],
+                    "title": "Flexibles Symbolschema",
+                    "subtitle": "icon, toIcon und icons",
+                    "body": "Symbole lassen sich mit icon, toIcon oder einem vollständigen icons-Array definieren."
+                },
+                {
+                    "icons": [
+                        "square.dashed.inset.filled",
+                        "square.fill"
+                    ],
+                    "title": "Standardmäßiges Glasabzeichen",
+                    "subtitle": "Dezentere Symboldarstellung",
+                    "body": "Ein neues abgerundetes Glasabzeichen verleiht Symbolen standardmäßig ein weicheres Aussehen."
+                },
+                {
+                    "icons": [
+                        "paintbrush.pointed",
+                        "paintpalette.fill"
+                    ],
+                    "title": "Verläufe für Symbolglyphen",
+                    "subtitle": "Symbole in Themenfarben",
+                    "body": "Symbolglyphen verwenden jetzt einen Verlauf von oben links nach unten rechts."
+                },
+                {
+                    "icons": [
+                        "circle.grid.cross",
+                        "square.grid.2x2.fill"
+                    ],
+                    "title": "Verfeinertes Zeilenlayout",
+                    "subtitle": "Größere Symbole, rundere Tasten",
+                    "body": "Größere Symbole und rundere Aktionstasten sorgen für kompaktere Zeilen."
+                },
+                {
+                    "icons": [
+                        "rectangle.bottomthird.inset.filled",
+                        "rectangle.fill"
+                    ],
+                    "title": "Tiefer platzierte Fortfahren-Tasten",
+                    "subtitle": "Näher am unteren Rand",
+                    "body": "Die Fortfahren-Bedienelemente liegen näher am unteren Rand und sind leichter erreichbar."
+                },
+                {
+                    "icons": [
+                        "water.waves",
+                        "drop.fill"
+                    ],
+                    "title": "Fließende Mesh-Animation",
+                    "subtitle": "Langsam animierte Hintergründe",
+                    "body": "Mesh-Hintergründe können sich jetzt in einer langsamen, fließenden Bewegung bewegen."
+                },
+                {
+                    "icons": [
+                        "textformat.size",
+                        "textformat.alt"
+                    ],
+                    "title": "Eigener Überschriftenpräfix",
+                    "subtitle": "Personalisierte Titelzeile",
+                    "body": "Legen Sie einen eigenen Präfix für die Titelzeile über der Version fest."
+                }
+            ]
+        },
+        {
+            "version": "6.3",
+            "subVersion": "6.3.1",
+            "new": [
+                {
+                    "icon": "checkmark.shield",
+                    "title": "Kompatibilität",
+                    "subtitle": "Korrekturen",
+                    "body": "Verbesserte Plattformunterstützung für iOS, macOS, tvOS und visionOS."
+                },
+                {
+                    "icon": "testtube.2",
+                    "title": "Swift",
+                    "subtitle": "Tests",
+                    "body": "Native Swift-Testing-Abdeckung für die Kernlogik der Versionshinweise hinzugefügt."
+                },
+                {
+                    "icon": "chart.bar.doc.horizontal",
+                    "title": "Codecov",
+                    "subtitle": "Berichte",
+                    "body": "GitHub Actions erstellt und lädt jetzt Abdeckungsberichte hoch."
+                },
+                {
+                    "icon": "sparkles",
+                    "title": "Schwebende",
+                    "subtitle": "Partikel",
+                    "body": "Neue Spezialeffektoption mit flüssiger Animation."
+                },
+                {
+                    "icon": "number",
+                    "title": "Optionale",
+                    "subtitle": "Build-Nummer",
+                    "body": "Konfigurierbare Anzeige der Build-Nummer neben der Version."
+                },
+                {
+                    "icon": "snowflake",
+                    "title": "Optimierter",
+                    "subtitle": "Schneefall",
+                    "body": "Mit Canvas und TimelineView für eine flüssigere Darstellung neu umgesetzt."
+                },
+                {
+                    "icon": "bolt",
+                    "title": "Modernes",
+                    "subtitle": "Netzwerk",
+                    "body": "Basiert auf Swift Concurrency und Sendable-Modellen."
+                },
+                {
+                    "icon": "lock.shield",
+                    "title": "Sendable",
+                    "subtitle": "Modelle",
+                    "body": "Threadsichere Datenmodelle für Swift Concurrency."
+                },
+                {
+                    "icon": "speedometer",
+                    "title": "Schnellerer",
+                    "subtitle": "Mesh-Hintergrund",
+                    "body": "MeshView verwendet drawingGroup für eine flüssigere Darstellung."
+                },
+                {
+                    "icon": "tray.and.arrow.down",
+                    "title": "Lokale Daten",
+                    "subtitle": "Laden",
+                    "body": "Optimiertes Laden aus gebündelten JSON-Dateien."
+                },
+                {
+                    "icon": "text.alignleft",
+                    "title": "Vollständiger",
+                    "subtitle": "Textkörper",
+                    "body": "Zeilenbegrenzungen wurden entfernt, damit längere Beschreibungen vollständig angezeigt werden."
+                },
+                {
+                    "icon": "tag",
+                    "title": "Versions-",
+                    "subtitle": "Abzeichen",
+                    "body": "Abmessungen und Abstände in der Verlaufsansicht wurden verfeinert."
+                },
+                {
+                    "icon": "doc.text",
+                    "title": "Neu geordnete",
+                    "subtitle": "Dokumentation",
+                    "body": "In die Leitfäden CONFIGURATION, CONTRIBUTING und PLATFORM aufgeteilt."
+                }
+            ]
+        },
+        {
+            "version": "6.2",
+            "subVersion": "6.2.0",
+            "new": [
+                {
+                    "icon": "rectangle.split.3x3",
+                    "title": "Darstellungs-",
+                    "subtitle": "optionen",
+                    "body": "Unterstützung für sheet-, fullScreenCover- und embed-Modi."
+                },
+                {
+                    "icon": "paintpalette",
+                    "title": "Adaptive Farbe",
+                    "subtitle": "Textfarbe",
+                    "body": "Die Textfarbe von Schaltflächen und Verlauf passt sich automatisch der Helligkeit des Hintergrunds an."
+                },
+                {
+                    "icon": "wand.and.stars",
+                    "title": "Vereinfachter",
+                    "subtitle": "Initialisierer",
+                    "body": "Direkte Werte benötigen keine Bindung mit .constant mehr."
+                },
+                {
+                    "icon": "macpro.gen3.server",
+                    "title": "Serverloses",
+                    "subtitle": "Gestaltung",
+                    "body": "Kostenlos und quelloffen! ❤️‍🔥"
+                },
+                {
+                    "icon": "arrow.triangle.pull",
+                    "title": "Gemeinsam",
+                    "subtitle": "Mitwirken",
+                    "body": "Senden Sie Pull Requests und machen Sie es für alle besser! 🎉"
+                }
+            ]
+        },
+        {
+            "version": "6.1",
+            "subVersion": "6.1.0",
+            "new": [
+                {
+                    "icon": "hammer",
+                    "title": "Projekt",
+                    "subtitle": "Umstrukturierung",
+                    "body": "Dateien und Ordner wurden für eine bessere Wartbarkeit getrennt."
+                }
+            ]
+        },
+        {
+            "version": "6.0",
+            "subVersion": "6.0.0",
+            "new": [
+                {
+                    "icon": "wineglass",
+                    "title": "Glas-",
+                    "subtitle": "effekt",
+                    "body": "Jetzt verfügbar!"
+                }
+            ]
+        },
+        {
+            "version": "5.5",
+            "subVersion": "5.5.0",
+            "new": [
+                {
+                    "icon": "snowflake",
+                    "title": "Schnee-",
+                    "subtitle": "effekt",
+                    "body": "Weitere Spezialanimationen folgen bald!"
+                }
+            ]
+        },
+        {
+            "version": "5.4",
+            "subVersion": "5.4.0",
+            "new": [
+                {
+                    "icon": "pencil.tip",
+                    "title": "Abgestimmte",
+                    "subtitle": "Mesh-Hintergrundfarbe",
+                    "body": "Ein einheitliches Design."
+                }
+            ]
+        },
+        {
+            "version": "5.3",
+            "subVersion": "5.3.0",
+            "new": [
+                {
+                    "icon": "pencil.tip",
+                    "title": "Mesh-Hintergrund",
+                    "subtitle": "hinzugefügt",
+                    "body": "Bessere Stile und ein besseres Design."
+                }
+            ]
+        },
+        {
+            "version": "5.2",
+            "subVersion": "5.2.0",
+            "new": [
+                {
+                    "icon": "hammer",
+                    "title": "Standard-",
+                    "subtitle": "option",
+                    "body": "Neue optionale Bindung für weniger Code."
+                }
+            ]
+        },
+        {
+            "version": "5.1",
+            "subVersion": "5.1.0",
+            "new": [
+                {
+                    "icon": "character.book.closed",
+                    "title": "Demo",
+                    "subtitle": "aktualisiert",
+                    "body": "Für Version 5.0."
+                }
+            ]
+        },
+        {
+            "version": "5.0",
+            "subVersion": "5.0.0",
+            "new": [
+                {
+                    "icon": "character.book.closed",
+                    "title": "Lokalisierung",
+                    "subtitle": "unterstützt",
+                    "body": "Unterstützt durch den Apple String Catalog."
+                },
+                {
+                    "icon": "pip.remove",
+                    "title": "Unterstützung",
+                    "subtitle": "eingestellt",
+                    "body": "Für iOS 14, watchOS 7 und macOS 11."
+                }
+            ]
+        },
+        {
+            "version": "4.2",
+            "subVersion": "4.2.0",
+            "new": [
+                {
+                    "icon": "hammer",
+                    "title": "Kleines",
+                    "subtitle": "Aktualisierung",
+                    "body": "Kleine Fehlerkorrekturen und Verbesserungen der Benutzeroberfläche."
+                }
+            ]
+        },
+        {
+            "version": "4.1",
+            "subVersion": "4.1.0",
+            "new": [
+                {
+                    "icon": "eye",
+                    "title": "Vision Pro unterstützt",
+                    "subtitle": "und visionOS",
+                    "body": "Das Drops-Framework ist wegen eines Konflikts vorübergehend deaktiviert."
+                }
+            ]
+        },
+        {
+            "version": "4.0",
+            "subVersion": "4.0.0",
+            "new": [
+                {
+                    "icon": "number",
+                    "title": "Bessere Kompatibilität",
+                    "subtitle": "bei Version und Build",
+                    "body": "Sie können jetzt x.y.z oder x.y verwenden."
+                }
+            ]
+        },
+        {
+            "version": "3.9",
+            "new": [
+                {
+                    "icon": "app.fill",
+                    "title": "App-Symbol",
+                    "subtitle": "unterstützt",
+                    "body": "Unter iOS."
+                },
+                {
+                    "icon": "app",
+                    "title": "Demonstration",
+                    "subtitle": "jetzt besser",
+                    "body": "Folgt der Paketversion."
+                }
+            ]
+        },
+        {
+            "version": "1.5",
+            "new": [
+                {
+                    "icon": "hammer",
+                    "title": "Anordnung",
+                    "subtitle": "korrigiert",
+                    "body": "Im iOS-Querformat."
+                }
+            ]
+        },
+        {
+            "version": "1.4",
+            "new": [
+                {
+                    "icon": "hammer",
+                    "title": "Absturz",
+                    "subtitle": "behoben",
+                    "body": "Unter macOS."
+                }
+            ]
+        },
+        {
+            "version": "1.3",
+            "new": [
+                {
+                    "icon": "bell.badge",
+                    "title": "Remote-Drop",
+                    "subtitle": "unterstützt",
+                    "body": "Statt eines ganzseitigen Sheets können Sie auch einen kleinen Drop verwenden!"
+                }
+            ]
+        },
+        {
+            "version": "1.2",
+            "new": [
+                {
+                    "icon": "square.and.arrow.down.fill",
+                    "title": "Remote-Datei",
+                    "subtitle": "unterstützt",
+                    "body": "Direktes Laden aus einem Remote-Speicher. Ganz einfach!"
+                }
+            ]
+        },
+        {
+            "version": "1.1",
+            "new": [
+                {
+                    "icon": "hammer.fill",
+                    "title": "Fehlerkorrekturen",
+                    "subtitle": "Defekte Oberfläche",
+                    "body": "Verfügbar für iOS 16, iPadOS 16 und macOS 13."
+                },
+                {
+                    "icon": "square.and.arrow.down.fill",
+                    "title": "Lokale Datei",
+                    "subtitle": "unterstützt",
+                    "body": "Direktes Laden aus lokalem Speicher. Superschnell!"
+                },
+                {
+                    "icon": "macpro.gen3.server",
+                    "title": "Serverloses",
+                    "subtitle": "Gestaltung",
+                    "body": "Kostenlos und quelloffen! Erstellt von Ming mit ❤️‍🔥"
+                },
+                {
+                    "icon": "arrow.triangle.pull",
+                    "title": "Gemeinsam",
+                    "subtitle": "Mitwirken",
+                    "body": "Senden Sie Pull Requests und machen Sie es für alle besser!"
+                }
+            ]
+        }
+    ],
     "en": [
         {
             "version": "6.6",
@@ -48,6 +551,15 @@
                     "title": "Adaptive Icon Styling",
                     "subtitle": "Improved Dark Mode Contrast",
                     "body": "Icon backdrops and glyph gradients now adapt their lighting and contrast for Dark Mode."
+                },
+                {
+                    "icons": [
+                        "character.bubble",
+                        "globe"
+                    ],
+                    "title": "More Languages",
+                    "subtitle": "Five New Localizations",
+                    "body": "Release notes are now available in German, Hebrew, Indonesian, Russian, and Vietnamese."
                 }
             ]
         },
@@ -542,6 +1054,15 @@
                     "title": "Estilo de iconos adaptativo",
                     "subtitle": "Mejor contraste en modo oscuro",
                     "body": "Los fondos y degradados de iconos adaptan su iluminación y contraste al modo oscuro."
+                },
+                {
+                    "icons": [
+                        "character.bubble",
+                        "globe"
+                    ],
+                    "title": "Más idiomas",
+                    "subtitle": "Cinco nuevas localizaciones",
+                    "body": "Las notas de la versión ya están disponibles en alemán, hebreo, indonesio, ruso y vietnamita."
                 }
             ]
         },
@@ -1036,6 +1557,15 @@
                     "title": "Style d’icône adaptatif",
                     "subtitle": "Meilleur contraste en mode sombre",
                     "body": "Les arrière-plans et dégradés des icônes adaptent leur éclairage et leur contraste au mode sombre."
+                },
+                {
+                    "icons": [
+                        "character.bubble",
+                        "globe"
+                    ],
+                    "title": "Plus de langues",
+                    "subtitle": "Cinq nouvelles localisations",
+                    "body": "Les notes de version sont désormais disponibles en allemand, hébreu, indonésien, russe et vietnamien."
                 }
             ]
         },
@@ -1481,6 +2011,1012 @@
             ]
         }
     ],
+    "he": [
+        {
+            "version": "6.6",
+            "subVersion": "6.6.0",
+            "new": [
+                {
+                    "icons": [
+                        "app",
+                        "square.stack.3d.up.fill"
+                    ],
+                    "title": "טעינה אוטומטית של סמל היישום",
+                    "subtitle": "זיהוי סמל הרסטר הראשי",
+                    "body": "SwiftNEW מאתר ומציג אוטומטית את סמל היישום המצורף המתאים ביותר למכשיר הנוכחי."
+                },
+                {
+                    "icons": [
+                        "paintbrush",
+                        "app.dashed"
+                    ],
+                    "title": "תמיכה ב-Icon Composer",
+                    "subtitle": "גרסאות בהירות וכהות",
+                    "body": "ב-iOS 26, ‏SwiftNEW טוען את הגרסה הבהירה או הכהה ש-Icon Composer הידר, עם תמיכה בתמונת גיבוי מותאמת אישית."
+                },
+                {
+                    "icons": [
+                        "app.badge",
+                        "arrow.trianglehead.swap"
+                    ],
+                    "title": "סמלי יישום חלופיים",
+                    "subtitle": "עדכון חי של הכותרת",
+                    "body": "העבירו את שם הסמל החלופי שנבחר כדי שהכותרת תישאר מסונכרנת כשסמל היישום משתנה."
+                },
+                {
+                    "icons": [
+                        "button.programmable",
+                        "sparkles"
+                    ],
+                    "title": "פקדי זכוכית צבועה",
+                    "subtitle": "עיצוב מקורי של iOS 26",
+                    "body": "כפתורי הערות הגרסה והפעולות הראשיות משתמשים כעת בזכוכית צבועה אינטראקטיבית ב-iOS 26."
+                },
+                {
+                    "icons": [
+                        "circle.lefthalf.filled",
+                        "paintpalette.fill"
+                    ],
+                    "title": "עיצוב סמלים מסתגל",
+                    "subtitle": "ניגודיות משופרת במצב כהה",
+                    "body": "רקעי הסמלים ומעברי הצבע של הגליפים מתאימים כעת את התאורה והניגודיות למצב כהה."
+                },
+                {
+                    "icons": [
+                        "character.bubble",
+                        "globe"
+                    ],
+                    "title": "שפות נוספות",
+                    "subtitle": "חמש התאמות חדשות",
+                    "body": "הערות הגרסה זמינות כעת בגרמנית, עברית, אינדונזית, רוסית ווייטנאמית."
+                }
+            ]
+        },
+        {
+            "version": "6.5",
+            "subVersion": "6.5.0",
+            "new": [
+                {
+                    "icons": [
+                        "arrow.down.app",
+                        "app.badge.checkmark"
+                    ],
+                    "title": "מסך עדכון מרוחק",
+                    "subtitle": "תהליך עדכון דרך App Store",
+                    "body": "כאשר JSON מרוחק מכיל גרסה חדשה יותר, SwiftNEW מציג מסך עדכון ומאתר אוטומטית את הקישור ל-App Store."
+                }
+            ]
+        },
+        {
+            "version": "6.4",
+            "subVersion": "6.4.0",
+            "new": [
+                {
+                    "icons": [
+                        "sparkles",
+                        "wand.and.stars"
+                    ],
+                    "title": "לולאת סמלים מונפשת",
+                    "subtitle": "החלפת סמלים מקורית",
+                    "body": "עברו במחזוריות בין SF Symbols באמצעות מעברי החלפה מקוריים."
+                },
+                {
+                    "icons": [
+                        "arrow.left.arrow.right",
+                        "arrow.triangle.2.circlepath"
+                    ],
+                    "title": "סכמת סמלים גמישה",
+                    "subtitle": "icon, toIcon ו-icons",
+                    "body": "הגדירו סמלים באמצעות icon, ‏toIcon או מערך icons מלא."
+                },
+                {
+                    "icons": [
+                        "square.dashed.inset.filled",
+                        "square.fill"
+                    ],
+                    "title": "תג זכוכית כברירת מחדל",
+                    "subtitle": "מראה סמלים רך יותר",
+                    "body": "תג זכוכית מעוגל חדש מעניק לסמלים מראה רך יותר כברירת מחדל."
+                },
+                {
+                    "icons": [
+                        "paintbrush.pointed",
+                        "paintpalette.fill"
+                    ],
+                    "title": "גליפים מדורגים לסמלים",
+                    "subtitle": "סמלים בגוני ערכת הנושא",
+                    "body": "גליפי הסמלים משתמשים כעת במעבר צבע מהפינה העליונה המובילה לפינה התחתונה הנגדית."
+                },
+                {
+                    "icons": [
+                        "circle.grid.cross",
+                        "square.grid.2x2.fill"
+                    ],
+                    "title": "פריסת שורות מעודנת",
+                    "subtitle": "סמלים גדולים יותר, כפתורים עגולים יותר",
+                    "body": "השורות מרגישות הדוקות יותר עם סמלים גדולים וכפתורי פעולה מעוגלים יותר."
+                },
+                {
+                    "icons": [
+                        "rectangle.bottomthird.inset.filled",
+                        "rectangle.fill"
+                    ],
+                    "title": "פקדי המשך נמוכים יותר",
+                    "subtitle": "קרוב יותר לתחתית",
+                    "body": "פקדי ההמשך ממוקמים קרוב יותר לתחתית כדי שיהיה קל יותר להגיע אליהם."
+                },
+                {
+                    "icons": [
+                        "water.waves",
+                        "drop.fill"
+                    ],
+                    "title": "תנועת רשת נוזלית",
+                    "subtitle": "רקעים מונפשים באיטיות",
+                    "body": "רקעי הרשת יכולים כעת לנוע בתנועה נוזלית ואיטית."
+                },
+                {
+                    "icons": [
+                        "textformat.size",
+                        "textformat.alt"
+                    ],
+                    "title": "קידומת כותרת מותאמת",
+                    "subtitle": "שורת כותרת אישית",
+                    "body": "הגדירו קידומת מותאמת לשורת הכותרת שמעל לגרסה."
+                }
+            ]
+        },
+        {
+            "version": "6.3",
+            "subVersion": "6.3.1",
+            "new": [
+                {
+                    "icon": "checkmark.shield",
+                    "title": "תאימות",
+                    "subtitle": "תיקונים",
+                    "body": "שופרה התמיכה בפלטפורמות iOS, ‏macOS, ‏tvOS ו-visionOS."
+                },
+                {
+                    "icon": "testtube.2",
+                    "title": "Swift",
+                    "subtitle": "בדיקות",
+                    "body": "נוסף כיסוי Swift Testing מקורי ללוגיקה המרכזית של הערות הגרסה."
+                },
+                {
+                    "icon": "chart.bar.doc.horizontal",
+                    "title": "Codecov",
+                    "subtitle": "דוחות",
+                    "body": "GitHub Actions יוצר ומעלה כעת דוחות כיסוי."
+                },
+                {
+                    "icon": "sparkles",
+                    "title": "חלקיקים",
+                    "subtitle": "מרחפים",
+                    "body": "אפשרות חדשה לאפקט מיוחד עם הנפשה חלקה."
+                },
+                {
+                    "icon": "number",
+                    "title": "מספר Build",
+                    "subtitle": "אופציונלי",
+                    "body": "תצוגה ניתנת להגדרה של מספר ה-Build לצד הגרסה."
+                },
+                {
+                    "icon": "snowflake",
+                    "title": "שלג",
+                    "subtitle": "ממוטב",
+                    "body": "מומש מחדש באמצעות Canvas ו-TimelineView לביצועים חלקים יותר."
+                },
+                {
+                    "icon": "bolt",
+                    "title": "תקשורת",
+                    "subtitle": "מודרנית",
+                    "body": "מבוססת על Swift Concurrency ועל מודלים מסוג Sendable."
+                },
+                {
+                    "icon": "lock.shield",
+                    "title": "מודלים",
+                    "subtitle": "Sendable",
+                    "body": "מודלי נתונים בטוחים לריבוי תהליכונים עבור Swift Concurrency."
+                },
+                {
+                    "icon": "speedometer",
+                    "title": "רקע רשת",
+                    "subtitle": "מהיר יותר",
+                    "body": "MeshView משתמש ב-drawingGroup לרינדור חלק יותר."
+                },
+                {
+                    "icon": "tray.and.arrow.down",
+                    "title": "נתונים מקומיים",
+                    "subtitle": "טעינה",
+                    "body": "הטעינה מקובצי JSON המצורפים לחבילה עברה מיטוב."
+                },
+                {
+                    "icon": "text.alignleft",
+                    "title": "טקסט גוף",
+                    "subtitle": "מלא",
+                    "body": "מגבלות השורות הוסרו כדי שתיאורים ארוכים יוצגו במלואם."
+                },
+                {
+                    "icon": "tag",
+                    "title": "תגי",
+                    "subtitle": "גרסה",
+                    "body": "הממדים והריווח בתצוגת ההיסטוריה עודנו."
+                },
+                {
+                    "icon": "doc.text",
+                    "title": "תיעוד",
+                    "subtitle": "מאורגן מחדש",
+                    "body": "פוצל למדריכים CONFIGURATION, ‏CONTRIBUTING ו-PLATFORM."
+                }
+            ]
+        },
+        {
+            "version": "6.2",
+            "subVersion": "6.2.0",
+            "new": [
+                {
+                    "icon": "rectangle.split.3x3",
+                    "title": "אפשרויות",
+                    "subtitle": "הצגה",
+                    "body": "תמיכה במצבי sheet, ‏fullScreenCover ו-embed."
+                },
+                {
+                    "icon": "paintpalette",
+                    "title": "צבע טקסט",
+                    "subtitle": "מסתגל",
+                    "body": "צבע הטקסט בכפתורים ובהיסטוריה מסתגל אוטומטית לבהירות הרקע."
+                },
+                {
+                    "icon": "wand.and.stars",
+                    "title": "אתחול",
+                    "subtitle": "פשוט יותר",
+                    "body": "ערכים ישירים אינם דורשים עוד עטיפת binding מסוג .constant."
+                },
+                {
+                    "icon": "macpro.gen3.server",
+                    "title": "עיצוב",
+                    "subtitle": "ללא שרת",
+                    "body": "חינמי ובקוד פתוח! ❤️‍🔥"
+                },
+                {
+                    "icon": "arrow.triangle.pull",
+                    "title": "תורמים",
+                    "subtitle": "ביחד",
+                    "body": "שלחו pull request ושפרו אותו עבור כולם! 🎉"
+                }
+            ]
+        },
+        {
+            "version": "6.1",
+            "subVersion": "6.1.0",
+            "new": [
+                {
+                    "icon": "hammer",
+                    "title": "הפרויקט",
+                    "subtitle": "ארגון מחדש",
+                    "body": "הקבצים והתיקיות הופרדו לתחזוקה נוחה יותר."
+                }
+            ]
+        },
+        {
+            "version": "6.0",
+            "subVersion": "6.0.0",
+            "new": [
+                {
+                    "icon": "wineglass",
+                    "title": "אפקט",
+                    "subtitle": "זכוכית",
+                    "body": "זמין עכשיו!"
+                }
+            ]
+        },
+        {
+            "version": "5.5",
+            "subVersion": "5.5.0",
+            "new": [
+                {
+                    "icon": "snowflake",
+                    "title": "אפקט",
+                    "subtitle": "שלג",
+                    "body": "הנפשות מיוחדות נוספות יגיעו בקרוב!"
+                }
+            ]
+        },
+        {
+            "version": "5.4",
+            "subVersion": "5.4.0",
+            "new": [
+                {
+                    "icon": "pencil.tip",
+                    "title": "צבע רקע רשת",
+                    "subtitle": "תואם",
+                    "body": "עיצוב אחיד."
+                }
+            ]
+        },
+        {
+            "version": "5.3",
+            "subVersion": "5.3.0",
+            "new": [
+                {
+                    "icon": "pencil.tip",
+                    "title": "נוסף",
+                    "subtitle": "רקע רשת",
+                    "body": "סגנונות ועיצוב טובים יותר."
+                }
+            ]
+        },
+        {
+            "version": "5.2",
+            "subVersion": "5.2.0",
+            "new": [
+                {
+                    "icon": "hammer",
+                    "title": "אפשרות",
+                    "subtitle": "ברירת מחדל",
+                    "body": "binding אופציונלי חדש לפחות קוד."
+                }
+            ]
+        },
+        {
+            "version": "5.1",
+            "subVersion": "5.1.0",
+            "new": [
+                {
+                    "icon": "character.book.closed",
+                    "title": "עדכון",
+                    "subtitle": "הדגמה",
+                    "body": "עבור גרסה 5.0."
+                }
+            ]
+        },
+        {
+            "version": "5.0",
+            "subVersion": "5.0.0",
+            "new": [
+                {
+                    "icon": "character.book.closed",
+                    "title": "תמיכה",
+                    "subtitle": "בהתאמה מקומית",
+                    "body": "מבוסס על Apple String Catalog."
+                },
+                {
+                    "icon": "pip.remove",
+                    "title": "הפסקת",
+                    "subtitle": "תמיכה",
+                    "body": "עבור iOS 14, ‏watchOS 7 ו-macOS 11."
+                }
+            ]
+        },
+        {
+            "version": "4.2",
+            "subVersion": "4.2.0",
+            "new": [
+                {
+                    "icon": "hammer",
+                    "title": "עדכון",
+                    "subtitle": "קטן",
+                    "body": "תיקוני באגים קטנים ושיפור ממשק המשתמש."
+                }
+            ]
+        },
+        {
+            "version": "4.1",
+            "subVersion": "4.1.0",
+            "new": [
+                {
+                    "icon": "eye",
+                    "title": "תמיכה ב-Vision Pro",
+                    "subtitle": "וב-visionOS",
+                    "body": "המסגרת Drops מושבתת זמנית עקב התנגשות."
+                }
+            ]
+        },
+        {
+            "version": "4.0",
+            "subVersion": "4.0.0",
+            "new": [
+                {
+                    "icon": "number",
+                    "title": "תאימות טובה יותר",
+                    "subtitle": "בגרסה וב-Build",
+                    "body": "כעת אפשר להשתמש ב-x.y.z או ב-x.y."
+                }
+            ]
+        },
+        {
+            "version": "3.9",
+            "new": [
+                {
+                    "icon": "app.fill",
+                    "title": "סמל היישום",
+                    "subtitle": "נתמך",
+                    "body": "ב-iOS."
+                },
+                {
+                    "icon": "app",
+                    "title": "ההדגמה",
+                    "subtitle": "טובה יותר עכשיו",
+                    "body": "בהתאם לגרסת החבילה."
+                }
+            ]
+        },
+        {
+            "version": "1.5",
+            "new": [
+                {
+                    "icon": "hammer",
+                    "title": "הפריסה",
+                    "subtitle": "תוקנה",
+                    "body": "במצב לרוחב ב-iOS."
+                }
+            ]
+        },
+        {
+            "version": "1.4",
+            "new": [
+                {
+                    "icon": "hammer",
+                    "title": "קריסה",
+                    "subtitle": "תוקנה",
+                    "body": "ב-macOS."
+                }
+            ]
+        },
+        {
+            "version": "1.3",
+            "new": [
+                {
+                    "icon": "bell.badge",
+                    "title": "Drop מרוחק",
+                    "subtitle": "נתמך",
+                    "body": "במקום sheet על מסך מלא, אפשר להשתמש גם ב-drop קטן!"
+                }
+            ]
+        },
+        {
+            "version": "1.2",
+            "new": [
+                {
+                    "icon": "square.and.arrow.down.fill",
+                    "title": "קובץ מרוחק",
+                    "subtitle": "נתמך",
+                    "body": "טעינה ישירה מאחסון מרוחק. קל!"
+                }
+            ]
+        },
+        {
+            "version": "1.1",
+            "new": [
+                {
+                    "icon": "hammer.fill",
+                    "title": "תיקוני באגים",
+                    "subtitle": "ממשק פגום",
+                    "body": "זמין עבור iOS 16, ‏iPadOS 16 ו-macOS 13."
+                },
+                {
+                    "icon": "square.and.arrow.down.fill",
+                    "title": "קובץ מקומי",
+                    "subtitle": "נתמך",
+                    "body": "טעינה ישירה מאחסון מקומי. מהיר במיוחד!"
+                },
+                {
+                    "icon": "macpro.gen3.server",
+                    "title": "עיצוב",
+                    "subtitle": "ללא שרת",
+                    "body": "חינמי ובקוד פתוח! נוצר על ידי Ming עם ❤️‍🔥"
+                },
+                {
+                    "icon": "arrow.triangle.pull",
+                    "title": "תורמים",
+                    "subtitle": "ביחד",
+                    "body": "שלחו pull request ושפרו אותו עבור כולם!"
+                }
+            ]
+        }
+    ],
+    "id": [
+        {
+            "version": "6.6",
+            "subVersion": "6.6.0",
+            "new": [
+                {
+                    "icons": [
+                        "app",
+                        "square.stack.3d.up.fill"
+                    ],
+                    "title": "Pemuatan Ikon Aplikasi Otomatis",
+                    "subtitle": "Deteksi Ikon Raster Utama",
+                    "body": "SwiftNEW secara otomatis menemukan dan menampilkan ikon aplikasi bawaan terbaik untuk perangkat saat ini."
+                },
+                {
+                    "icons": [
+                        "paintbrush",
+                        "app.dashed"
+                    ],
+                    "title": "Dukungan Icon Composer",
+                    "subtitle": "Tampilan Terang dan Gelap",
+                    "body": "Di iOS 26, SwiftNEW memuat tampilan Terang atau Gelap hasil kompilasi Icon Composer, dengan dukungan gambar pengganti khusus."
+                },
+                {
+                    "icons": [
+                        "app.badge",
+                        "arrow.trianglehead.swap"
+                    ],
+                    "title": "Ikon Aplikasi Alternatif",
+                    "subtitle": "Pembaruan Header Langsung",
+                    "body": "Berikan nama ikon alternatif yang dipilih agar header tetap sinkron saat ikon aplikasi berubah."
+                },
+                {
+                    "icons": [
+                        "button.programmable",
+                        "sparkles"
+                    ],
+                    "title": "Kontrol Kaca Berwarna",
+                    "subtitle": "Gaya Asli iOS 26",
+                    "body": "Tombol catatan rilis dan tindakan utama kini menggunakan kaca berwarna interaktif di iOS 26."
+                },
+                {
+                    "icons": [
+                        "circle.lefthalf.filled",
+                        "paintpalette.fill"
+                    ],
+                    "title": "Gaya Ikon Adaptif",
+                    "subtitle": "Kontras Mode Gelap yang Lebih Baik",
+                    "body": "Latar ikon dan gradasi glif kini menyesuaikan pencahayaan dan kontras untuk Mode Gelap."
+                },
+                {
+                    "icons": [
+                        "character.bubble",
+                        "globe"
+                    ],
+                    "title": "Lebih Banyak Bahasa",
+                    "subtitle": "Lima Pelokalan Baru",
+                    "body": "Catatan rilis kini tersedia dalam bahasa Jerman, Ibrani, Indonesia, Rusia, dan Vietnam."
+                }
+            ]
+        },
+        {
+            "version": "6.5",
+            "subVersion": "6.5.0",
+            "new": [
+                {
+                    "icons": [
+                        "arrow.down.app",
+                        "app.badge.checkmark"
+                    ],
+                    "title": "Layar Pembaruan Jarak Jauh",
+                    "subtitle": "Alur Pembaruan App Store",
+                    "body": "Saat JSON jarak jauh berisi versi yang lebih baru, SwiftNEW menampilkan layar Pembaruan dan menentukan tautan App Store secara otomatis."
+                }
+            ]
+        },
+        {
+            "version": "6.4",
+            "subVersion": "6.4.0",
+            "new": [
+                {
+                    "icons": [
+                        "sparkles",
+                        "wand.and.stars"
+                    ],
+                    "title": "Perulangan Ikon Beranimasi",
+                    "subtitle": "Penggantian Simbol Asli",
+                    "body": "Putar SF Symbols secara berulang dengan transisi penggantian asli."
+                },
+                {
+                    "icons": [
+                        "arrow.left.arrow.right",
+                        "arrow.triangle.2.circlepath"
+                    ],
+                    "title": "Skema Ikon Fleksibel",
+                    "subtitle": "icon, toIcon, dan icons",
+                    "body": "Tentukan ikon dengan icon, toIcon, atau array icons lengkap."
+                },
+                {
+                    "icons": [
+                        "square.dashed.inset.filled",
+                        "square.fill"
+                    ],
+                    "title": "Lencana Kaca Bawaan",
+                    "subtitle": "Tampilan Ikon yang Lebih Lembut",
+                    "body": "Lencana kaca bulat baru memberikan tampilan bawaan yang lebih lembut pada ikon."
+                },
+                {
+                    "icons": [
+                        "paintbrush.pointed",
+                        "paintpalette.fill"
+                    ],
+                    "title": "Glif Ikon Bergradasi",
+                    "subtitle": "Simbol Berwarna Tema",
+                    "body": "Glif ikon kini menggunakan gradasi dari kiri atas ke kanan bawah."
+                },
+                {
+                    "icons": [
+                        "circle.grid.cross",
+                        "square.grid.2x2.fill"
+                    ],
+                    "title": "Tata Letak Baris yang Disempurnakan",
+                    "subtitle": "Ikon Lebih Besar, Tombol Lebih Bulat",
+                    "body": "Baris terasa lebih ringkas dengan ikon lebih besar dan tombol tindakan yang lebih bulat."
+                },
+                {
+                    "icons": [
+                        "rectangle.bottomthird.inset.filled",
+                        "rectangle.fill"
+                    ],
+                    "title": "Kontrol Lanjutkan Lebih Rendah",
+                    "subtitle": "Lebih Dekat ke Bagian Bawah",
+                    "body": "Kontrol Lanjutkan berada lebih dekat ke bagian bawah agar lebih mudah dijangkau."
+                },
+                {
+                    "icons": [
+                        "water.waves",
+                        "drop.fill"
+                    ],
+                    "title": "Gerakan Mesh Cair",
+                    "subtitle": "Latar Beranimasi Lambat",
+                    "body": "Latar mesh kini dapat bergerak dengan gerakan cair yang lambat."
+                },
+                {
+                    "icons": [
+                        "textformat.size",
+                        "textformat.alt"
+                    ],
+                    "title": "Awalan Header Khusus",
+                    "subtitle": "Baris Judul yang Dipersonalisasi",
+                    "body": "Tetapkan awalan khusus untuk baris judul di atas versi."
+                }
+            ]
+        },
+        {
+            "version": "6.3",
+            "subVersion": "6.3.1",
+            "new": [
+                {
+                    "icon": "checkmark.shield",
+                    "title": "Kompatibilitas",
+                    "subtitle": "Perbaikan",
+                    "body": "Dukungan platform yang ditingkatkan di iOS, macOS, tvOS, dan visionOS."
+                },
+                {
+                    "icon": "testtube.2",
+                    "title": "Swift",
+                    "subtitle": "Pengujian",
+                    "body": "Menambahkan cakupan Swift Testing asli untuk logika inti catatan rilis."
+                },
+                {
+                    "icon": "chart.bar.doc.horizontal",
+                    "title": "Codecov",
+                    "subtitle": "Laporan",
+                    "body": "GitHub Actions kini membuat dan mengunggah laporan cakupan."
+                },
+                {
+                    "icon": "sparkles",
+                    "title": "Partikel",
+                    "subtitle": "Melayang",
+                    "body": "Opsi efek khusus baru dengan animasi yang halus."
+                },
+                {
+                    "icon": "number",
+                    "title": "Nomor Build",
+                    "subtitle": "Opsional",
+                    "body": "Tampilan nomor build yang dapat dikonfigurasi di samping versi."
+                },
+                {
+                    "icon": "snowflake",
+                    "title": "Hujan Salju",
+                    "subtitle": "Dioptimalkan",
+                    "body": "Dibuat ulang dengan Canvas dan TimelineView untuk performa yang lebih halus."
+                },
+                {
+                    "icon": "bolt",
+                    "title": "Jaringan",
+                    "subtitle": "Modern",
+                    "body": "Didukung oleh Swift Concurrency dan model Sendable."
+                },
+                {
+                    "icon": "lock.shield",
+                    "title": "Model",
+                    "subtitle": "Sendable",
+                    "body": "Model data aman-thread untuk Swift Concurrency."
+                },
+                {
+                    "icon": "speedometer",
+                    "title": "Latar Mesh",
+                    "subtitle": "Lebih Cepat",
+                    "body": "MeshView menggunakan drawingGroup untuk rendering yang lebih halus."
+                },
+                {
+                    "icon": "tray.and.arrow.down",
+                    "title": "Data Lokal",
+                    "subtitle": "Pemuatan",
+                    "body": "Pemuatan dari file JSON bawaan telah dioptimalkan."
+                },
+                {
+                    "icon": "text.alignleft",
+                    "title": "Teks Isi",
+                    "subtitle": "Lengkap",
+                    "body": "Batas baris dihapus agar deskripsi yang lebih panjang ditampilkan sepenuhnya."
+                },
+                {
+                    "icon": "tag",
+                    "title": "Lencana",
+                    "subtitle": "Versi",
+                    "body": "Dimensi dan jarak dalam tampilan Riwayat telah disempurnakan."
+                },
+                {
+                    "icon": "doc.text",
+                    "title": "Dokumentasi",
+                    "subtitle": "Ditata Ulang",
+                    "body": "Dipisahkan menjadi panduan CONFIGURATION, CONTRIBUTING, dan PLATFORM."
+                }
+            ]
+        },
+        {
+            "version": "6.2",
+            "subVersion": "6.2.0",
+            "new": [
+                {
+                    "icon": "rectangle.split.3x3",
+                    "title": "Opsi",
+                    "subtitle": "Presentasi",
+                    "body": "Dukungan untuk mode sheet, fullScreenCover, dan embed."
+                },
+                {
+                    "icon": "paintpalette",
+                    "title": "Warna Teks",
+                    "subtitle": "Adaptif",
+                    "body": "Warna teks tombol dan riwayat otomatis menyesuaikan kecerahan latar."
+                },
+                {
+                    "icon": "wand.and.stars",
+                    "title": "Penginisialisasi",
+                    "subtitle": "Disederhanakan",
+                    "body": "Nilai langsung tidak lagi memerlukan binding pembungkus .constant."
+                },
+                {
+                    "icon": "macpro.gen3.server",
+                    "title": "Desain",
+                    "subtitle": "Tanpa Server",
+                    "body": "Gratis dan sumber terbuka! ❤️‍🔥"
+                },
+                {
+                    "icon": "arrow.triangle.pull",
+                    "title": "Berkontribusi",
+                    "subtitle": "Bersama",
+                    "body": "Kirim pull request dan jadikan lebih baik untuk semua orang! 🎉"
+                }
+            ]
+        },
+        {
+            "version": "6.1",
+            "subVersion": "6.1.0",
+            "new": [
+                {
+                    "icon": "hammer",
+                    "title": "Proyek",
+                    "subtitle": "Restrukturisasi",
+                    "body": "Pisahkan file dan folder agar lebih mudah dipelihara."
+                }
+            ]
+        },
+        {
+            "version": "6.0",
+            "subVersion": "6.0.0",
+            "new": [
+                {
+                    "icon": "wineglass",
+                    "title": "Efek",
+                    "subtitle": "Kaca",
+                    "body": "Tersedia sekarang!"
+                }
+            ]
+        },
+        {
+            "version": "5.5",
+            "subVersion": "5.5.0",
+            "new": [
+                {
+                    "icon": "snowflake",
+                    "title": "Efek",
+                    "subtitle": "Salju",
+                    "body": "Animasi khusus lainnya segera hadir!"
+                }
+            ]
+        },
+        {
+            "version": "5.4",
+            "subVersion": "5.4.0",
+            "new": [
+                {
+                    "icon": "pencil.tip",
+                    "title": "Warna Latar Mesh",
+                    "subtitle": "Diselaraskan",
+                    "body": "Desain yang terstandarisasi."
+                }
+            ]
+        },
+        {
+            "version": "5.3",
+            "subVersion": "5.3.0",
+            "new": [
+                {
+                    "icon": "pencil.tip",
+                    "title": "Tambah",
+                    "subtitle": "Latar Mesh",
+                    "body": "Gaya dan desain yang lebih baik."
+                }
+            ]
+        },
+        {
+            "version": "5.2",
+            "subVersion": "5.2.0",
+            "new": [
+                {
+                    "icon": "hammer",
+                    "title": "Opsi",
+                    "subtitle": "Bawaan",
+                    "body": "Binding opsional baru untuk kode yang lebih sedikit."
+                }
+            ]
+        },
+        {
+            "version": "5.1",
+            "subVersion": "5.1.0",
+            "new": [
+                {
+                    "icon": "character.book.closed",
+                    "title": "Perbarui",
+                    "subtitle": "Demonstrasi",
+                    "body": "Untuk versi 5.0."
+                }
+            ]
+        },
+        {
+            "version": "5.0",
+            "subVersion": "5.0.0",
+            "new": [
+                {
+                    "icon": "character.book.closed",
+                    "title": "Dukungan",
+                    "subtitle": "Pelokalan",
+                    "body": "Didukung oleh Apple String Catalog."
+                },
+                {
+                    "icon": "pip.remove",
+                    "title": "Hentikan",
+                    "subtitle": "Dukungan",
+                    "body": "Untuk iOS 14, watchOS 7, dan macOS 11."
+                }
+            ]
+        },
+        {
+            "version": "4.2",
+            "subVersion": "4.2.0",
+            "new": [
+                {
+                    "icon": "hammer",
+                    "title": "Pembaruan",
+                    "subtitle": "Kecil",
+                    "body": "Perbaikan bug kecil dan peningkatan antarmuka."
+                }
+            ]
+        },
+        {
+            "version": "4.1",
+            "subVersion": "4.1.0",
+            "new": [
+                {
+                    "icon": "eye",
+                    "title": "Dukungan Vision Pro",
+                    "subtitle": "dan visionOS",
+                    "body": "Framework Drops dinonaktifkan sementara karena konflik."
+                }
+            ]
+        },
+        {
+            "version": "4.0",
+            "subVersion": "4.0.0",
+            "new": [
+                {
+                    "icon": "number",
+                    "title": "Kompatibilitas Lebih Baik",
+                    "subtitle": "pada Versi dan Build",
+                    "body": "Kini Anda dapat menggunakan x.y.z atau x.y."
+                }
+            ]
+        },
+        {
+            "version": "3.9",
+            "new": [
+                {
+                    "icon": "app.fill",
+                    "title": "Ikon Aplikasi",
+                    "subtitle": "Didukung",
+                    "body": "Di iOS."
+                },
+                {
+                    "icon": "app",
+                    "title": "Demonstrasi",
+                    "subtitle": "Kini Lebih Baik",
+                    "body": "Mengikuti Versi Paket."
+                }
+            ]
+        },
+        {
+            "version": "1.5",
+            "new": [
+                {
+                    "icon": "hammer",
+                    "title": "Tata Letak",
+                    "subtitle": "Diperbaiki",
+                    "body": "Pada orientasi lanskap iOS."
+                }
+            ]
+        },
+        {
+            "version": "1.4",
+            "new": [
+                {
+                    "icon": "hammer",
+                    "title": "Kegagalan",
+                    "subtitle": "Diperbaiki",
+                    "body": "Di macOS."
+                }
+            ]
+        },
+        {
+            "version": "1.3",
+            "new": [
+                {
+                    "icon": "bell.badge",
+                    "title": "Drop Jarak Jauh",
+                    "subtitle": "Didukung",
+                    "body": "Alih-alih sheet satu halaman penuh, Anda juga dapat menggunakan drop kecil!"
+                }
+            ]
+        },
+        {
+            "version": "1.2",
+            "new": [
+                {
+                    "icon": "square.and.arrow.down.fill",
+                    "title": "File Jarak Jauh",
+                    "subtitle": "Didukung",
+                    "body": "Muat langsung melalui penyimpanan jarak jauh. Mudah!"
+                }
+            ]
+        },
+        {
+            "version": "1.1",
+            "new": [
+                {
+                    "icon": "hammer.fill",
+                    "title": "Perbaikan Bug",
+                    "subtitle": "Antarmuka Rusak",
+                    "body": "Tersedia untuk iOS 16, iPadOS 16, dan macOS 13."
+                },
+                {
+                    "icon": "square.and.arrow.down.fill",
+                    "title": "File Lokal",
+                    "subtitle": "Didukung",
+                    "body": "Muat langsung melalui penyimpanan lokal. Sangat cepat!"
+                },
+                {
+                    "icon": "macpro.gen3.server",
+                    "title": "Desain",
+                    "subtitle": "Tanpa Server",
+                    "body": "Gratis dan sumber terbuka! Dibuat oleh Ming dengan ❤️‍🔥"
+                },
+                {
+                    "icon": "arrow.triangle.pull",
+                    "title": "Berkontribusi",
+                    "subtitle": "Bersama",
+                    "body": "Kirim pull request dan jadikan lebih baik untuk semua orang!"
+                }
+            ]
+        }
+    ],
     "ja": [
         {
             "version": "6.6",
@@ -1530,6 +3066,15 @@
                     "title": "アダプティブアイコンスタイル",
                     "subtitle": "ダークモードのコントラスト改善",
                     "body": "アイコン背景とグリフのグラデーションがダークモードに合わせて明るさとコントラストを調整します。"
+                },
+                {
+                    "icons": [
+                        "character.bubble",
+                        "globe"
+                    ],
+                    "title": "対応言語を追加",
+                    "subtitle": "5つの新しいローカライズ",
+                    "body": "リリースノートがドイツ語、ヘブライ語、インドネシア語、ロシア語、ベトナム語に対応しました。"
                 }
             ]
         },
@@ -2024,6 +3569,15 @@
                     "title": "적응형 아이콘 스타일",
                     "subtitle": "다크 모드 대비 개선",
                     "body": "아이콘 배경과 글리프 그라데이션이 다크 모드에 맞춰 밝기와 대비를 조정합니다."
+                },
+                {
+                    "icons": [
+                        "character.bubble",
+                        "globe"
+                    ],
+                    "title": "더 많은 언어",
+                    "subtitle": "5개 언어 현지화 추가",
+                    "body": "릴리스 노트를 독일어, 히브리어, 인도네시아어, 러시아어, 베트남어로도 제공합니다."
                 }
             ]
         },
@@ -2469,6 +4023,1012 @@
             ]
         }
     ],
+    "ru": [
+        {
+            "version": "6.6",
+            "subVersion": "6.6.0",
+            "new": [
+                {
+                    "icons": [
+                        "app",
+                        "square.stack.3d.up.fill"
+                    ],
+                    "title": "Автоматическая загрузка значка приложения",
+                    "subtitle": "Определение основного растрового значка",
+                    "body": "SwiftNEW автоматически находит и отображает наиболее подходящий встроенный значок приложения для текущего устройства."
+                },
+                {
+                    "icons": [
+                        "paintbrush",
+                        "app.dashed"
+                    ],
+                    "title": "Поддержка Icon Composer",
+                    "subtitle": "Светлый и тёмный варианты",
+                    "body": "В iOS 26 SwiftNEW загружает скомпилированный Icon Composer светлый или тёмный вариант и поддерживает пользовательское резервное изображение."
+                },
+                {
+                    "icons": [
+                        "app.badge",
+                        "arrow.trianglehead.swap"
+                    ],
+                    "title": "Альтернативные значки приложения",
+                    "subtitle": "Мгновенное обновление заголовка",
+                    "body": "Передайте имя выбранного альтернативного значка, чтобы заголовок синхронизировался при смене значка приложения."
+                },
+                {
+                    "icons": [
+                        "button.programmable",
+                        "sparkles"
+                    ],
+                    "title": "Тонированные стеклянные элементы",
+                    "subtitle": "Нативный стиль iOS 26",
+                    "body": "Кнопки примечаний к выпуску и основных действий теперь используют интерактивное тонированное стекло в iOS 26."
+                },
+                {
+                    "icons": [
+                        "circle.lefthalf.filled",
+                        "paintpalette.fill"
+                    ],
+                    "title": "Адаптивный стиль значков",
+                    "subtitle": "Улучшенный контраст в тёмном режиме",
+                    "body": "Фон значков и градиенты глифов теперь адаптируют освещение и контраст для тёмного режима."
+                },
+                {
+                    "icons": [
+                        "character.bubble",
+                        "globe"
+                    ],
+                    "title": "Больше языков",
+                    "subtitle": "Пять новых локализаций",
+                    "body": "Примечания к выпуску теперь доступны на немецком, иврите, индонезийском, русском и вьетнамском языках."
+                }
+            ]
+        },
+        {
+            "version": "6.5",
+            "subVersion": "6.5.0",
+            "new": [
+                {
+                    "icons": [
+                        "arrow.down.app",
+                        "app.badge.checkmark"
+                    ],
+                    "title": "Экран удалённого обновления",
+                    "subtitle": "Процесс обновления через App Store",
+                    "body": "Если удалённый JSON содержит более новую версию, SwiftNEW показывает экран обновления и автоматически определяет ссылку App Store."
+                }
+            ]
+        },
+        {
+            "version": "6.4",
+            "subVersion": "6.4.0",
+            "new": [
+                {
+                    "icons": [
+                        "sparkles",
+                        "wand.and.stars"
+                    ],
+                    "title": "Циклическая анимация значков",
+                    "subtitle": "Нативная замена символов",
+                    "body": "Переключайте SF Symbols по кругу с нативными переходами замены."
+                },
+                {
+                    "icons": [
+                        "arrow.left.arrow.right",
+                        "arrow.triangle.2.circlepath"
+                    ],
+                    "title": "Гибкая схема значков",
+                    "subtitle": "icon, toIcon и icons",
+                    "body": "Задавайте значки с помощью icon, toIcon или полного массива icons."
+                },
+                {
+                    "icons": [
+                        "square.dashed.inset.filled",
+                        "square.fill"
+                    ],
+                    "title": "Стандартный стеклянный бейдж",
+                    "subtitle": "Более мягкое оформление значков",
+                    "body": "Новый скруглённый стеклянный бейдж придаёт значкам более мягкий вид по умолчанию."
+                },
+                {
+                    "icons": [
+                        "paintbrush.pointed",
+                        "paintpalette.fill"
+                    ],
+                    "title": "Градиентные глифы значков",
+                    "subtitle": "Символы в цветах темы",
+                    "body": "Глифы значков теперь используют градиент от верхнего левого к нижнему правому углу."
+                },
+                {
+                    "icons": [
+                        "circle.grid.cross",
+                        "square.grid.2x2.fill"
+                    ],
+                    "title": "Улучшенная компоновка строк",
+                    "subtitle": "Крупнее значки, круглее кнопки",
+                    "body": "Строки выглядят компактнее благодаря более крупным значкам и скруглённым кнопкам действий."
+                },
+                {
+                    "icons": [
+                        "rectangle.bottomthird.inset.filled",
+                        "rectangle.fill"
+                    ],
+                    "title": "Кнопки продолжения ниже",
+                    "subtitle": "Ближе к нижнему краю",
+                    "body": "Элементы управления «Продолжить» расположены ближе к нижнему краю для удобства доступа."
+                },
+                {
+                    "icons": [
+                        "water.waves",
+                        "drop.fill"
+                    ],
+                    "title": "Плавное движение сетки",
+                    "subtitle": "Медленно анимированный фон",
+                    "body": "Фон сетки теперь может медленно двигаться, создавая эффект жидкости."
+                },
+                {
+                    "icons": [
+                        "textformat.size",
+                        "textformat.alt"
+                    ],
+                    "title": "Свой префикс заголовка",
+                    "subtitle": "Персонализированная строка заголовка",
+                    "body": "Задайте собственный префикс для строки заголовка над версией."
+                }
+            ]
+        },
+        {
+            "version": "6.3",
+            "subVersion": "6.3.1",
+            "new": [
+                {
+                    "icon": "checkmark.shield",
+                    "title": "Совместимость",
+                    "subtitle": "Исправления",
+                    "body": "Улучшена поддержка платформ iOS, macOS, tvOS и visionOS."
+                },
+                {
+                    "icon": "testtube.2",
+                    "title": "Swift",
+                    "subtitle": "Тестирование",
+                    "body": "Добавлено нативное покрытие Swift Testing для основной логики примечаний к выпуску."
+                },
+                {
+                    "icon": "chart.bar.doc.horizontal",
+                    "title": "Codecov",
+                    "subtitle": "Отчёты",
+                    "body": "GitHub Actions теперь создаёт и загружает отчёты о покрытии."
+                },
+                {
+                    "icon": "sparkles",
+                    "title": "Парящие",
+                    "subtitle": "Частицы",
+                    "body": "Новый вариант специального эффекта с плавной анимацией."
+                },
+                {
+                    "icon": "number",
+                    "title": "Необязательный",
+                    "subtitle": "Номер сборки",
+                    "body": "Настраиваемое отображение номера сборки рядом с версией."
+                },
+                {
+                    "icon": "snowflake",
+                    "title": "Оптимизированный",
+                    "subtitle": "Снегопад",
+                    "body": "Переработан с помощью Canvas и TimelineView для более плавной работы."
+                },
+                {
+                    "icon": "bolt",
+                    "title": "Современная",
+                    "subtitle": "Работа с сетью",
+                    "body": "На основе Swift Concurrency и моделей Sendable."
+                },
+                {
+                    "icon": "lock.shield",
+                    "title": "Sendable",
+                    "subtitle": "Модели",
+                    "body": "Потокобезопасные модели данных для Swift Concurrency."
+                },
+                {
+                    "icon": "speedometer",
+                    "title": "Более быстрый",
+                    "subtitle": "Фон сетки",
+                    "body": "MeshView использует drawingGroup для более плавного рендеринга."
+                },
+                {
+                    "icon": "tray.and.arrow.down",
+                    "title": "Локальные данные",
+                    "subtitle": "Загрузка",
+                    "body": "Оптимизирована загрузка из встроенных файлов JSON."
+                },
+                {
+                    "icon": "text.alignleft",
+                    "title": "Полный",
+                    "subtitle": "Основной текст",
+                    "body": "Ограничения числа строк удалены, чтобы длинные описания отображались полностью."
+                },
+                {
+                    "icon": "tag",
+                    "title": "Версионные",
+                    "subtitle": "Бейджи",
+                    "body": "Уточнены размеры и отступы в представлении истории."
+                },
+                {
+                    "icon": "doc.text",
+                    "title": "Переработанная",
+                    "subtitle": "Документация",
+                    "body": "Разделена на руководства CONFIGURATION, CONTRIBUTING и PLATFORM."
+                }
+            ]
+        },
+        {
+            "version": "6.2",
+            "subVersion": "6.2.0",
+            "new": [
+                {
+                    "icon": "rectangle.split.3x3",
+                    "title": "Варианты",
+                    "subtitle": "Представления",
+                    "body": "Поддержка режимов sheet, fullScreenCover и embed."
+                },
+                {
+                    "icon": "paintpalette",
+                    "title": "Адаптивный",
+                    "subtitle": "Цвет текста",
+                    "body": "Цвет текста кнопок и истории автоматически подстраивается под яркость фона."
+                },
+                {
+                    "icon": "wand.and.stars",
+                    "title": "Упрощённый",
+                    "subtitle": "Инициализатор",
+                    "body": "Прямые значения больше не требуют обёртки привязки .constant."
+                },
+                {
+                    "icon": "macpro.gen3.server",
+                    "title": "Бессерверный",
+                    "subtitle": "Дизайн",
+                    "body": "Бесплатно и с открытым исходным кодом! ❤️‍🔥"
+                },
+                {
+                    "icon": "arrow.triangle.pull",
+                    "title": "Вносите вклад",
+                    "subtitle": "Вместе",
+                    "body": "Отправляйте pull request и делайте проект лучше для всех! 🎉"
+                }
+            ]
+        },
+        {
+            "version": "6.1",
+            "subVersion": "6.1.0",
+            "new": [
+                {
+                    "icon": "hammer",
+                    "title": "Проект",
+                    "subtitle": "Реструктуризация",
+                    "body": "Файлы и папки разделены для удобства сопровождения."
+                }
+            ]
+        },
+        {
+            "version": "6.0",
+            "subVersion": "6.0.0",
+            "new": [
+                {
+                    "icon": "wineglass",
+                    "title": "Эффект",
+                    "subtitle": "Стекла",
+                    "body": "Уже доступен!"
+                }
+            ]
+        },
+        {
+            "version": "5.5",
+            "subVersion": "5.5.0",
+            "new": [
+                {
+                    "icon": "snowflake",
+                    "title": "Эффект",
+                    "subtitle": "Снега",
+                    "body": "Скоро появятся новые специальные анимации!"
+                }
+            ]
+        },
+        {
+            "version": "5.4",
+            "subVersion": "5.4.0",
+            "new": [
+                {
+                    "icon": "pencil.tip",
+                    "title": "Согласованный",
+                    "subtitle": "Цвет фона сетки",
+                    "body": "Стандартизированный дизайн."
+                }
+            ]
+        },
+        {
+            "version": "5.3",
+            "subVersion": "5.3.0",
+            "new": [
+                {
+                    "icon": "pencil.tip",
+                    "title": "Добавлен",
+                    "subtitle": "Фон сетки",
+                    "body": "Улучшенные стили и дизайн."
+                }
+            ]
+        },
+        {
+            "version": "5.2",
+            "subVersion": "5.2.0",
+            "new": [
+                {
+                    "icon": "hammer",
+                    "title": "Стандартный",
+                    "subtitle": "Параметр",
+                    "body": "Новая необязательная привязка для сокращения кода."
+                }
+            ]
+        },
+        {
+            "version": "5.1",
+            "subVersion": "5.1.0",
+            "new": [
+                {
+                    "icon": "character.book.closed",
+                    "title": "Обновлена",
+                    "subtitle": "Демонстрация",
+                    "body": "Для версии 5.0."
+                }
+            ]
+        },
+        {
+            "version": "5.0",
+            "subVersion": "5.0.0",
+            "new": [
+                {
+                    "icon": "character.book.closed",
+                    "title": "Поддержка",
+                    "subtitle": "Локализации",
+                    "body": "На основе Apple String Catalog."
+                },
+                {
+                    "icon": "pip.remove",
+                    "title": "Поддержка",
+                    "subtitle": "Прекращена",
+                    "body": "Для iOS 14, watchOS 7 и macOS 11."
+                }
+            ]
+        },
+        {
+            "version": "4.2",
+            "subVersion": "4.2.0",
+            "new": [
+                {
+                    "icon": "hammer",
+                    "title": "Небольшое",
+                    "subtitle": "Обновление",
+                    "body": "Небольшие исправления ошибок и улучшения интерфейса."
+                }
+            ]
+        },
+        {
+            "version": "4.1",
+            "subVersion": "4.1.0",
+            "new": [
+                {
+                    "icon": "eye",
+                    "title": "Поддержка Vision Pro",
+                    "subtitle": "и visionOS",
+                    "body": "Фреймворк Drops временно отключён из-за конфликта."
+                }
+            ]
+        },
+        {
+            "version": "4.0",
+            "subVersion": "4.0.0",
+            "new": [
+                {
+                    "icon": "number",
+                    "title": "Улучшенная совместимость",
+                    "subtitle": "Версий и сборок",
+                    "body": "Теперь можно использовать x.y.z или x.y."
+                }
+            ]
+        },
+        {
+            "version": "3.9",
+            "new": [
+                {
+                    "icon": "app.fill",
+                    "title": "Значок приложения",
+                    "subtitle": "Поддерживается",
+                    "body": "В iOS."
+                },
+                {
+                    "icon": "app",
+                    "title": "Демонстрация",
+                    "subtitle": "Стала лучше",
+                    "body": "Соответствует версии пакета."
+                }
+            ]
+        },
+        {
+            "version": "1.5",
+            "new": [
+                {
+                    "icon": "hammer",
+                    "title": "Компоновка",
+                    "subtitle": "Исправлена",
+                    "body": "В альбомной ориентации iOS."
+                }
+            ]
+        },
+        {
+            "version": "1.4",
+            "new": [
+                {
+                    "icon": "hammer",
+                    "title": "Сбой",
+                    "subtitle": "Исправлен",
+                    "body": "В macOS."
+                }
+            ]
+        },
+        {
+            "version": "1.3",
+            "new": [
+                {
+                    "icon": "bell.badge",
+                    "title": "Удалённый Drop",
+                    "subtitle": "Поддерживается",
+                    "body": "Вместо полноэкранного sheet можно использовать и небольшой drop!"
+                }
+            ]
+        },
+        {
+            "version": "1.2",
+            "new": [
+                {
+                    "icon": "square.and.arrow.down.fill",
+                    "title": "Удалённый файл",
+                    "subtitle": "Поддерживается",
+                    "body": "Прямая загрузка из удалённого хранилища. Легко!"
+                }
+            ]
+        },
+        {
+            "version": "1.1",
+            "new": [
+                {
+                    "icon": "hammer.fill",
+                    "title": "Исправления ошибок",
+                    "subtitle": "Нарушенный интерфейс",
+                    "body": "Доступно для iOS 16, iPadOS 16 и macOS 13."
+                },
+                {
+                    "icon": "square.and.arrow.down.fill",
+                    "title": "Локальный файл",
+                    "subtitle": "Поддерживается",
+                    "body": "Прямая загрузка из локального хранилища. Очень быстро!"
+                },
+                {
+                    "icon": "macpro.gen3.server",
+                    "title": "Бессерверный",
+                    "subtitle": "Дизайн",
+                    "body": "Бесплатно и с открытым исходным кодом! Создано Ming с ❤️‍🔥"
+                },
+                {
+                    "icon": "arrow.triangle.pull",
+                    "title": "Вносите вклад",
+                    "subtitle": "Вместе",
+                    "body": "Отправляйте pull request и делайте проект лучше для всех!"
+                }
+            ]
+        }
+    ],
+    "vi": [
+        {
+            "version": "6.6",
+            "subVersion": "6.6.0",
+            "new": [
+                {
+                    "icons": [
+                        "app",
+                        "square.stack.3d.up.fill"
+                    ],
+                    "title": "Tự động tải biểu tượng ứng dụng",
+                    "subtitle": "Phát hiện biểu tượng raster chính",
+                    "body": "SwiftNEW tự động tìm và hiển thị biểu tượng ứng dụng đi kèm phù hợp nhất cho thiết bị hiện tại."
+                },
+                {
+                    "icons": [
+                        "paintbrush",
+                        "app.dashed"
+                    ],
+                    "title": "Hỗ trợ Icon Composer",
+                    "subtitle": "Phiên bản Sáng và Tối",
+                    "body": "Trên iOS 26, SwiftNEW tải phiên bản Sáng hoặc Tối do Icon Composer biên dịch và hỗ trợ ảnh dự phòng tùy chỉnh."
+                },
+                {
+                    "icons": [
+                        "app.badge",
+                        "arrow.trianglehead.swap"
+                    ],
+                    "title": "Biểu tượng ứng dụng thay thế",
+                    "subtitle": "Cập nhật tiêu đề trực tiếp",
+                    "body": "Truyền tên biểu tượng thay thế đã chọn để tiêu đề luôn đồng bộ khi biểu tượng ứng dụng thay đổi."
+                },
+                {
+                    "icons": [
+                        "button.programmable",
+                        "sparkles"
+                    ],
+                    "title": "Điều khiển kính màu",
+                    "subtitle": "Kiểu gốc của iOS 26",
+                    "body": "Các nút ghi chú phát hành và thao tác chính hiện sử dụng kính màu tương tác trên iOS 26."
+                },
+                {
+                    "icons": [
+                        "circle.lefthalf.filled",
+                        "paintpalette.fill"
+                    ],
+                    "title": "Kiểu biểu tượng thích ứng",
+                    "subtitle": "Tăng độ tương phản ở Chế độ Tối",
+                    "body": "Nền biểu tượng và chuyển màu ký hiệu giờ đây điều chỉnh ánh sáng và độ tương phản cho Chế độ Tối."
+                },
+                {
+                    "icons": [
+                        "character.bubble",
+                        "globe"
+                    ],
+                    "title": "Thêm ngôn ngữ",
+                    "subtitle": "Năm bản địa hóa mới",
+                    "body": "Ghi chú phát hành hiện có bằng tiếng Đức, tiếng Hebrew, tiếng Indonesia, tiếng Nga và tiếng Việt."
+                }
+            ]
+        },
+        {
+            "version": "6.5",
+            "subVersion": "6.5.0",
+            "new": [
+                {
+                    "icons": [
+                        "arrow.down.app",
+                        "app.badge.checkmark"
+                    ],
+                    "title": "Màn hình cập nhật từ xa",
+                    "subtitle": "Quy trình cập nhật App Store",
+                    "body": "Khi JSON từ xa chứa phiên bản mới hơn, SwiftNEW hiển thị màn hình Cập nhật và tự động xác định liên kết App Store."
+                }
+            ]
+        },
+        {
+            "version": "6.4",
+            "subVersion": "6.4.0",
+            "new": [
+                {
+                    "icons": [
+                        "sparkles",
+                        "wand.and.stars"
+                    ],
+                    "title": "Vòng lặp biểu tượng động",
+                    "subtitle": "Thay thế ký hiệu gốc",
+                    "body": "Lặp qua các SF Symbol bằng hiệu ứng chuyển đổi thay thế gốc."
+                },
+                {
+                    "icons": [
+                        "arrow.left.arrow.right",
+                        "arrow.triangle.2.circlepath"
+                    ],
+                    "title": "Lược đồ biểu tượng linh hoạt",
+                    "subtitle": "icon, toIcon và icons",
+                    "body": "Định nghĩa biểu tượng bằng icon, toIcon hoặc một mảng icons đầy đủ."
+                },
+                {
+                    "icons": [
+                        "square.dashed.inset.filled",
+                        "square.fill"
+                    ],
+                    "title": "Huy hiệu kính mặc định",
+                    "subtitle": "Cách hiển thị biểu tượng nhẹ nhàng hơn",
+                    "body": "Huy hiệu kính bo tròn mới mang lại giao diện mặc định nhẹ nhàng hơn cho biểu tượng."
+                },
+                {
+                    "icons": [
+                        "paintbrush.pointed",
+                        "paintpalette.fill"
+                    ],
+                    "title": "Ký hiệu biểu tượng chuyển màu",
+                    "subtitle": "Ký hiệu theo màu chủ đề",
+                    "body": "Ký hiệu biểu tượng giờ đây dùng chuyển màu từ góc trên trái xuống góc dưới phải."
+                },
+                {
+                    "icons": [
+                        "circle.grid.cross",
+                        "square.grid.2x2.fill"
+                    ],
+                    "title": "Bố cục hàng tinh chỉnh",
+                    "subtitle": "Biểu tượng lớn hơn, nút tròn hơn",
+                    "body": "Các hàng gọn gàng hơn với biểu tượng lớn và nút thao tác tròn hơn."
+                },
+                {
+                    "icons": [
+                        "rectangle.bottomthird.inset.filled",
+                        "rectangle.fill"
+                    ],
+                    "title": "Điều khiển Tiếp tục thấp hơn",
+                    "subtitle": "Gần cạnh dưới hơn",
+                    "body": "Các điều khiển Tiếp tục nằm gần cạnh dưới hơn để dễ tiếp cận."
+                },
+                {
+                    "icons": [
+                        "water.waves",
+                        "drop.fill"
+                    ],
+                    "title": "Chuyển động lưới chất lỏng",
+                    "subtitle": "Nền chuyển động chậm",
+                    "body": "Nền lưới giờ đây có thể chuyển động chậm như chất lỏng."
+                },
+                {
+                    "icons": [
+                        "textformat.size",
+                        "textformat.alt"
+                    ],
+                    "title": "Tiền tố tiêu đề tùy chỉnh",
+                    "subtitle": "Dòng tiêu đề cá nhân hóa",
+                    "body": "Đặt tiền tố tùy chỉnh cho dòng tiêu đề phía trên phiên bản."
+                }
+            ]
+        },
+        {
+            "version": "6.3",
+            "subVersion": "6.3.1",
+            "new": [
+                {
+                    "icon": "checkmark.shield",
+                    "title": "Khả năng tương thích",
+                    "subtitle": "Bản sửa lỗi",
+                    "body": "Cải thiện hỗ trợ nền tảng trên iOS, macOS, tvOS và visionOS."
+                },
+                {
+                    "icon": "testtube.2",
+                    "title": "Swift",
+                    "subtitle": "Kiểm thử",
+                    "body": "Đã thêm phạm vi Swift Testing gốc cho logic cốt lõi của ghi chú phát hành."
+                },
+                {
+                    "icon": "chart.bar.doc.horizontal",
+                    "title": "Codecov",
+                    "subtitle": "Báo cáo",
+                    "body": "GitHub Actions giờ đây tạo và tải lên báo cáo độ bao phủ."
+                },
+                {
+                    "icon": "sparkles",
+                    "title": "Hạt",
+                    "subtitle": "Lơ lửng",
+                    "body": "Tùy chọn hiệu ứng đặc biệt mới với chuyển động mượt mà."
+                },
+                {
+                    "icon": "number",
+                    "title": "Số bản dựng",
+                    "subtitle": "Tùy chọn",
+                    "body": "Có thể cấu hình hiển thị số bản dựng bên cạnh phiên bản."
+                },
+                {
+                    "icon": "snowflake",
+                    "title": "Tuyết rơi",
+                    "subtitle": "Được tối ưu",
+                    "body": "Được triển khai lại bằng Canvas và TimelineView để hoạt động mượt hơn."
+                },
+                {
+                    "icon": "bolt",
+                    "title": "Mạng",
+                    "subtitle": "Hiện đại",
+                    "body": "Vận hành bằng Swift Concurrency và các mô hình Sendable."
+                },
+                {
+                    "icon": "lock.shield",
+                    "title": "Mô hình",
+                    "subtitle": "Sendable",
+                    "body": "Các mô hình dữ liệu an toàn luồng cho Swift Concurrency."
+                },
+                {
+                    "icon": "speedometer",
+                    "title": "Nền lưới",
+                    "subtitle": "Nhanh hơn",
+                    "body": "MeshView sử dụng drawingGroup để kết xuất mượt hơn."
+                },
+                {
+                    "icon": "tray.and.arrow.down",
+                    "title": "Dữ liệu cục bộ",
+                    "subtitle": "Đang tải",
+                    "body": "Tối ưu việc tải từ các tệp JSON đi kèm."
+                },
+                {
+                    "icon": "text.alignleft",
+                    "title": "Nội dung",
+                    "subtitle": "Đầy đủ",
+                    "body": "Đã bỏ giới hạn dòng để hiển thị đầy đủ các mô tả dài hơn."
+                },
+                {
+                    "icon": "tag",
+                    "title": "Huy hiệu",
+                    "subtitle": "Phiên bản",
+                    "body": "Tinh chỉnh kích thước và khoảng cách trong chế độ xem Lịch sử."
+                },
+                {
+                    "icon": "doc.text",
+                    "title": "Tài liệu",
+                    "subtitle": "Được sắp xếp lại",
+                    "body": "Được chia thành các hướng dẫn CONFIGURATION, CONTRIBUTING và PLATFORM."
+                }
+            ]
+        },
+        {
+            "version": "6.2",
+            "subVersion": "6.2.0",
+            "new": [
+                {
+                    "icon": "rectangle.split.3x3",
+                    "title": "Tùy chọn",
+                    "subtitle": "Trình bày",
+                    "body": "Hỗ trợ các chế độ sheet, fullScreenCover và embed."
+                },
+                {
+                    "icon": "paintpalette",
+                    "title": "Màu chữ",
+                    "subtitle": "Thích ứng",
+                    "body": "Màu chữ của nút và lịch sử tự động thích ứng với độ sáng của nền."
+                },
+                {
+                    "icon": "wand.and.stars",
+                    "title": "Trình khởi tạo",
+                    "subtitle": "Đơn giản hóa",
+                    "body": "Giá trị trực tiếp không còn cần binding bọc bằng .constant."
+                },
+                {
+                    "icon": "macpro.gen3.server",
+                    "title": "Thiết kế",
+                    "subtitle": "Không máy chủ",
+                    "body": "Miễn phí và mã nguồn mở! ❤️‍🔥"
+                },
+                {
+                    "icon": "arrow.triangle.pull",
+                    "title": "Cùng nhau",
+                    "subtitle": "Đóng góp",
+                    "body": "Gửi pull request và giúp sản phẩm tốt hơn cho mọi người! 🎉"
+                }
+            ]
+        },
+        {
+            "version": "6.1",
+            "subVersion": "6.1.0",
+            "new": [
+                {
+                    "icon": "hammer",
+                    "title": "Dự án",
+                    "subtitle": "Tái cấu trúc",
+                    "body": "Tách tệp và thư mục để dễ bảo trì hơn."
+                }
+            ]
+        },
+        {
+            "version": "6.0",
+            "subVersion": "6.0.0",
+            "new": [
+                {
+                    "icon": "wineglass",
+                    "title": "Hiệu ứng",
+                    "subtitle": "Kính",
+                    "body": "Đã có ngay bây giờ!"
+                }
+            ]
+        },
+        {
+            "version": "5.5",
+            "subVersion": "5.5.0",
+            "new": [
+                {
+                    "icon": "snowflake",
+                    "title": "Hiệu ứng",
+                    "subtitle": "Tuyết",
+                    "body": "Sắp có thêm nhiều hiệu ứng đặc biệt!"
+                }
+            ]
+        },
+        {
+            "version": "5.4",
+            "subVersion": "5.4.0",
+            "new": [
+                {
+                    "icon": "pencil.tip",
+                    "title": "Màu nền lưới",
+                    "subtitle": "Đồng nhất",
+                    "body": "Một thiết kế được chuẩn hóa."
+                }
+            ]
+        },
+        {
+            "version": "5.3",
+            "subVersion": "5.3.0",
+            "new": [
+                {
+                    "icon": "pencil.tip",
+                    "title": "Thêm",
+                    "subtitle": "Nền lưới",
+                    "body": "Kiểu dáng và thiết kế tốt hơn."
+                }
+            ]
+        },
+        {
+            "version": "5.2",
+            "subVersion": "5.2.0",
+            "new": [
+                {
+                    "icon": "hammer",
+                    "title": "Tùy chọn",
+                    "subtitle": "Mặc định",
+                    "body": "Binding tùy chọn mới giúp giảm lượng mã."
+                }
+            ]
+        },
+        {
+            "version": "5.1",
+            "subVersion": "5.1.0",
+            "new": [
+                {
+                    "icon": "character.book.closed",
+                    "title": "Cập nhật",
+                    "subtitle": "Bản demo",
+                    "body": "Cho phiên bản 5.0."
+                }
+            ]
+        },
+        {
+            "version": "5.0",
+            "subVersion": "5.0.0",
+            "new": [
+                {
+                    "icon": "character.book.closed",
+                    "title": "Hỗ trợ",
+                    "subtitle": "Bản địa hóa",
+                    "body": "Vận hành bằng Apple String Catalog."
+                },
+                {
+                    "icon": "pip.remove",
+                    "title": "Ngừng",
+                    "subtitle": "Hỗ trợ",
+                    "body": "Đối với iOS 14, watchOS 7 và macOS 11."
+                }
+            ]
+        },
+        {
+            "version": "4.2",
+            "subVersion": "4.2.0",
+            "new": [
+                {
+                    "icon": "hammer",
+                    "title": "Bản cập nhật",
+                    "subtitle": "Nhỏ",
+                    "body": "Sửa lỗi nhỏ và cải thiện giao diện."
+                }
+            ]
+        },
+        {
+            "version": "4.1",
+            "subVersion": "4.1.0",
+            "new": [
+                {
+                    "icon": "eye",
+                    "title": "Hỗ trợ Vision Pro",
+                    "subtitle": "và visionOS",
+                    "body": "Framework Drops tạm thời bị vô hiệu hóa do xung đột."
+                }
+            ]
+        },
+        {
+            "version": "4.0",
+            "subVersion": "4.0.0",
+            "new": [
+                {
+                    "icon": "number",
+                    "title": "Tương thích tốt hơn",
+                    "subtitle": "về Phiên bản và Bản dựng",
+                    "body": "Giờ đây bạn có thể dùng x.y.z hoặc x.y."
+                }
+            ]
+        },
+        {
+            "version": "3.9",
+            "new": [
+                {
+                    "icon": "app.fill",
+                    "title": "Biểu tượng ứng dụng",
+                    "subtitle": "Được hỗ trợ",
+                    "body": "Trên iOS."
+                },
+                {
+                    "icon": "app",
+                    "title": "Bản demo",
+                    "subtitle": "Tốt hơn rồi",
+                    "body": "Tuân theo Phiên bản Gói."
+                }
+            ]
+        },
+        {
+            "version": "1.5",
+            "new": [
+                {
+                    "icon": "hammer",
+                    "title": "Bố cục",
+                    "subtitle": "Đã sửa",
+                    "body": "Trên iOS ở hướng ngang."
+                }
+            ]
+        },
+        {
+            "version": "1.4",
+            "new": [
+                {
+                    "icon": "hammer",
+                    "title": "Sự cố",
+                    "subtitle": "Đã sửa",
+                    "body": "Trên macOS."
+                }
+            ]
+        },
+        {
+            "version": "1.3",
+            "new": [
+                {
+                    "icon": "bell.badge",
+                    "title": "Drop từ xa",
+                    "subtitle": "Được hỗ trợ",
+                    "body": "Thay vì sheet toàn trang, bạn cũng có thể dùng một drop nhỏ!"
+                }
+            ]
+        },
+        {
+            "version": "1.2",
+            "new": [
+                {
+                    "icon": "square.and.arrow.down.fill",
+                    "title": "Tệp từ xa",
+                    "subtitle": "Được hỗ trợ",
+                    "body": "Tải trực tiếp qua bộ nhớ từ xa. Thật dễ dàng!"
+                }
+            ]
+        },
+        {
+            "version": "1.1",
+            "new": [
+                {
+                    "icon": "hammer.fill",
+                    "title": "Sửa lỗi",
+                    "subtitle": "Giao diện bị hỏng",
+                    "body": "Có sẵn cho iOS 16, iPadOS 16 và macOS 13."
+                },
+                {
+                    "icon": "square.and.arrow.down.fill",
+                    "title": "Tệp cục bộ",
+                    "subtitle": "Được hỗ trợ",
+                    "body": "Tải trực tiếp qua bộ nhớ cục bộ. Siêu nhanh!"
+                },
+                {
+                    "icon": "macpro.gen3.server",
+                    "title": "Thiết kế",
+                    "subtitle": "Không máy chủ",
+                    "body": "Miễn phí và mã nguồn mở! Được Ming tạo ra với ❤️‍🔥"
+                },
+                {
+                    "icon": "arrow.triangle.pull",
+                    "title": "Cùng nhau",
+                    "subtitle": "Đóng góp",
+                    "body": "Gửi pull request và giúp sản phẩm tốt hơn cho mọi người!"
+                }
+            ]
+        }
+    ],
     "zh-Hans": [
         {
             "version": "6.6",
@@ -2518,6 +5078,15 @@
                     "title": "自适应图标样式",
                     "subtitle": "改善深色模式对比度",
                     "body": "图标背景和字形渐变现在会针对深色模式调整光线和对比度。"
+                },
+                {
+                    "icons": [
+                        "character.bubble",
+                        "globe"
+                    ],
+                    "title": "更多语言",
+                    "subtitle": "新增五种本地化",
+                    "body": "版本说明现已支持德语、希伯来语、印度尼西亚语、俄语和越南语。"
                 }
             ]
         },
@@ -3012,6 +5581,15 @@
                     "title": "自適應圖示樣式",
                     "subtitle": "改善深色模式對比",
                     "body": "圖示背景及字形漸層而家會按深色模式調整光暗同對比。"
+                },
+                {
+                    "icons": [
+                        "character.bubble",
+                        "globe"
+                    ],
+                    "title": "更多語言",
+                    "subtitle": "新增五種在地化",
+                    "body": "版本說明而家支援德文、希伯來文、印尼文、俄文同越南文。"
                 }
             ]
         },

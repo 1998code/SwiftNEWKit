@@ -35,6 +35,15 @@
                 "title": "Adaptive Icon Styling",
                 "subtitle": "Improved Dark Mode Contrast",
                 "body": "Icon backdrops and glyph gradients now adapt their lighting and contrast for Dark Mode."
+            },
+            {
+                "icons": [
+                    "character.bubble",
+                    "globe"
+                ],
+                "title": "More Languages",
+                "subtitle": "Five New Localizations",
+                "body": "Release notes are now available in German, Hebrew, Indonesian, Russian, and Vietnamese."
             }
         ]
     },
