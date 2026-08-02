@@ -9,8 +9,32 @@
                     "square.stack.3d.up.fill"
                 ],
                 "title": "App アイコンの自動読み込み",
-                "subtitle": "Icon Composer 対応",
-                "body": "アセットカタログと Icon Composer から App アイコンを自動的に読み込み、プラットフォームに合わせて表示します。"
+                "subtitle": "主要ラスターアイコンの検出",
+                "body": "SwiftNEW が現在のデバイスに最適な App アイコンを自動的に検出して表示します。"
+            },
+            {
+                "icons": ["paintbrush", "app.dashed"],
+                "title": "Icon Composer 対応",
+                "subtitle": "ライトとダークのレンディション",
+                "body": "iOS 26 では Icon Composer が生成したライトまたはダークのレンディションを読み込み、カスタム画像へのフォールバックにも対応します。"
+            },
+            {
+                "icons": ["app.badge", "arrow.trianglehead.swap"],
+                "title": "代替 App アイコン",
+                "subtitle": "ヘッダーをリアルタイム更新",
+                "body": "選択中の代替アイコン名を渡すことで、App アイコンの変更をヘッダーにも反映できます。"
+            },
+            {
+                "icons": ["button.programmable", "sparkles"],
+                "title": "色付きガラスコントロール",
+                "subtitle": "ネイティブ iOS 26 スタイル",
+                "body": "リリースノートと主要操作ボタンが iOS 26 のインタラクティブな色付きガラスに対応しました。"
+            },
+            {
+                "icons": ["circle.lefthalf.filled", "paintpalette.fill"],
+                "title": "アダプティブアイコンスタイル",
+                "subtitle": "ダークモードのコントラスト改善",
+                "body": "アイコン背景とグリフのグラデーションがダークモードに合わせて明るさとコントラストを調整します。"
             }
         ]
     },

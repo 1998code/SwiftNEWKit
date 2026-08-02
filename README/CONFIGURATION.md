@@ -95,7 +95,9 @@ SwiftNEW(show: $showNew, iconStyle: .plain)           // no backdrop, adaptive g
 
 For asset-catalog app icons, SwiftNEW automatically loads the primary icon's bundled raster file. If the app selects an alternate icon, pass its logical name through `alternateAppIconName`; SwiftNEW then loads the matching iPhone or iPad rendition.
 
-An [Icon Composer](https://developer.apple.com/documentation/xcode/creating-your-app-icon-using-icon-composer) `.icon` file is a system-rendered composition, not a regular image resource. Apple doesn't provide a public API for rendering that composition inside an app. To display it safely in SwiftNEW on iOS 26 or later:
+For an [Icon Composer](https://developer.apple.com/documentation/xcode/creating-your-app-icon-using-icon-composer) `.icon` file, Xcode automatically compiles flattened Light, Dark and Tintable app-icon renditions in addition to the system-only layered composition. On iOS 26 or later, SwiftNEW makes a best-effort, trait-aware UIKit lookup for the current Light or Dark flattened rendition and uses it only when UIKit returns raster backing. Apple doesn't document app-icon assets as general-purpose named images, so SwiftNEW falls back to the bundled raster icon when that lookup isn't available.
+
+For deterministic output on every supported OS and toolchain, provide an ordinary adaptive Image Set override:
 
 1. Export a flattened image from the same Icon Composer artwork.
 2. Add it as an ordinary Image Set, not an App Icon Set. Name it `SwiftNEWAppIcon`.
@@ -126,7 +128,7 @@ alternateAppIconName = UIApplication.shared.alternateIconName
 
 SwiftNEW deliberately doesn't access `UIApplication.shared` itself, which keeps the package safe for app-extension consumers and avoids stale, non-observable icon state.
 
-Don't pass the App Icon Set or `.icon` composition name (usually `AppIcon`) to `appIconName`; those special renditions aren't safe general-purpose `UIImage` resources on iOS 26. Home Screen Mono/Tinted selection is also unavailable to apps through public API, so provide a matching ordinary image asset explicitly when that appearance is required.
+Don't pass the App Icon Set or `.icon` composition name (usually `AppIcon`) to `appIconName`; SwiftNEW resolves the declared app-icon name from bundle metadata automatically. Apple doesn't expose the Home Screen Mono/Tinted selection or the user's tint color to apps, so provide a matching ordinary image asset explicitly when that appearance is required inside SwiftNEW.
 
 ### Special Effects
 

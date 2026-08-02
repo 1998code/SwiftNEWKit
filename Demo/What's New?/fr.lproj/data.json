@@ -9,8 +9,32 @@
                     "square.stack.3d.up.fill"
                 ],
                 "title": "Chargement automatique de l’icône",
-                "subtitle": "Prise en charge d’Icon Composer",
-                "body": "Charge automatiquement les icônes depuis les catalogues de ressources et Icon Composer, avec un rendu adapté à chaque plateforme."
+                "subtitle": "Détection de l’icône matricielle",
+                "body": "SwiftNEW trouve et affiche automatiquement la meilleure icône intégrée pour l’appareil actuel."
+            },
+            {
+                "icons": ["paintbrush", "app.dashed"],
+                "title": "Prise en charge d’Icon Composer",
+                "subtitle": "Rendus clair et sombre",
+                "body": "Sous iOS 26, SwiftNEW charge le rendu clair ou sombre compilé par Icon Composer, avec une image personnalisée en solution de repli."
+            },
+            {
+                "icons": ["app.badge", "arrow.trianglehead.swap"],
+                "title": "Icônes d’app alternatives",
+                "subtitle": "Mise à jour de l’en-tête",
+                "body": "Transmettez le nom de l’icône alternative sélectionnée pour synchroniser l’en-tête quand l’icône change."
+            },
+            {
+                "icons": ["button.programmable", "sparkles"],
+                "title": "Commandes en verre teinté",
+                "subtitle": "Style natif d’iOS 26",
+                "body": "Les boutons des notes et des actions principales utilisent désormais le verre teinté interactif sous iOS 26."
+            },
+            {
+                "icons": ["circle.lefthalf.filled", "paintpalette.fill"],
+                "title": "Style d’icône adaptatif",
+                "subtitle": "Meilleur contraste en mode sombre",
+                "body": "Les arrière-plans et dégradés des icônes adaptent leur éclairage et leur contraste au mode sombre."
             }
         ]
     },

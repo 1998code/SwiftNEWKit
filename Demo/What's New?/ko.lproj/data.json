@@ -9,8 +9,32 @@
                     "square.stack.3d.up.fill"
                 ],
                 "title": "앱 아이콘 자동 로딩",
-                "subtitle": "Icon Composer 지원",
-                "body": "에셋 카탈로그와 Icon Composer에서 앱 아이콘을 자동으로 불러오고 플랫폼에 맞게 표시합니다."
+                "subtitle": "기본 래스터 아이콘 감지",
+                "body": "SwiftNEW가 현재 기기에 가장 적합한 앱 아이콘을 자동으로 찾아 표시합니다."
+            },
+            {
+                "icons": ["paintbrush", "app.dashed"],
+                "title": "Icon Composer 지원",
+                "subtitle": "라이트 및 다크 렌디션",
+                "body": "iOS 26에서 Icon Composer가 컴파일한 라이트 또는 다크 렌디션을 불러오며 사용자 지정 이미지 대체도 지원합니다."
+            },
+            {
+                "icons": ["app.badge", "arrow.trianglehead.swap"],
+                "title": "대체 앱 아이콘",
+                "subtitle": "실시간 헤더 업데이트",
+                "body": "선택된 대체 아이콘 이름을 전달하면 앱 아이콘 변경 시 헤더도 동기화됩니다."
+            },
+            {
+                "icons": ["button.programmable", "sparkles"],
+                "title": "틴트 글래스 컨트롤",
+                "subtitle": "네이티브 iOS 26 스타일",
+                "body": "릴리스 노트와 기본 동작 버튼이 iOS 26에서 인터랙티브 틴트 글래스를 사용합니다."
+            },
+            {
+                "icons": ["circle.lefthalf.filled", "paintpalette.fill"],
+                "title": "적응형 아이콘 스타일",
+                "subtitle": "다크 모드 대비 개선",
+                "body": "아이콘 배경과 글리프 그라데이션이 다크 모드에 맞춰 밝기와 대비를 조정합니다."
             }
         ]
     },

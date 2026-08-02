@@ -33,6 +33,11 @@
 		3A46CBBF285444CC00BE79A3 /* ContentView+Previews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ContentView+Previews.swift"; sourceTree = "<group>"; };
 		3A46CBC4285447F600BE79A3 /* SwiftNEW */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = SwiftNEW; path = ../../../SwiftNEW; sourceTree = "<group>"; };
 		3A61B53A301F7D6B00DFD913 /* AppIcon.icon */ = {isa = PBXFileReference; lastKnownFileType = folder.iconcomposer.icon; path = AppIcon.icon; sourceTree = "<group>"; };
+		3A61B53C301F833200DFD913 /* he */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = he; path = he.lproj/data.json; sourceTree = "<group>"; };
+		3A61B53D301F833A00DFD913 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = de; path = de.lproj/data.json; sourceTree = "<group>"; };
+		3A61B53E301F834100DFD913 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = ru; path = ru.lproj/data.json; sourceTree = "<group>"; };
+		3A61B53F301F834800DFD913 /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = vi; path = vi.lproj/data.json; sourceTree = "<group>"; };
+		3A61B540301F835400DFD913 /* id */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = id; path = id.lproj/data.json; sourceTree = "<group>"; };
 		3AE0026B2962DD540055979A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = en; path = en.lproj/data.json; sourceTree = "<group>"; };
 		3AE0026D2962DD810055979A /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = "zh-Hant"; path = "zh-Hant.lproj/data.json"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -150,6 +155,11 @@
 				ko,
 				es,
 				fr,
+				he,
+				de,
+				ru,
+				vi,
+				id,
 			);
 			mainGroup = 3A46CBA3285444CC00BE79A3;
 			packageReferences = (
@@ -202,6 +212,11 @@
 				3A1D311C2DDA0F9000A67C5E /* ko */,
 				3A0E2D8B2FFAA63F00B762D0 /* es */,
 				3A0E2D8C2FFAA64800B762D0 /* fr */,
+				3A61B53C301F833200DFD913 /* he */,
+				3A61B53D301F833A00DFD913 /* de */,
+				3A61B53E301F834100DFD913 /* ru */,
+				3A61B53F301F834800DFD913 /* vi */,
+				3A61B540301F835400DFD913 /* id */,
 			);
 			name = data.json;
 			sourceTree = "<group>";

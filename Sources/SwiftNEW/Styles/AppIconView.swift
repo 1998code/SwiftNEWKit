@@ -62,8 +62,8 @@ public struct AppIconView: View {
         let requestedNames = [normalizedAssetName, automaticName].compactMap { $0 }
 
         for requestedName in requestedNames {
-            // AppIcon and Icon Composer names can resolve to private, non-raster
-            // renditions on iOS 26. Only ordinary image assets are safe here.
+            // Declared app-icon names can resolve to special, non-bitmap
+            // renditions. The dedicated path below accepts only a raster result.
             guard !bundle.declaredAppIconNames.contains(requestedName) else {
                 continue
             }
@@ -92,10 +92,10 @@ public struct AppIconView: View {
         return "\(Self.automaticAssetName)-\(alternateIconName)"
     }
 
-    /// Icon Composer stores generated Light and Dark flat renditions alongside
-    /// its system-only icon stack. UIKit can expose the flat rendition through
-    /// named asset lookup on iOS 26. Copy its CGImage before handing it to
-    /// SwiftUI so a special icon-stack-backed image is never rendered here.
+    /// Xcode stores generated Light and Dark flat renditions alongside the
+    /// system-only icon stack. Named-image lookup isn't guaranteed for app-icon
+    /// assets, so this is a nil-safe attempt that requires raster backing and
+    /// otherwise falls through to the bundled PNG.
     private var compiledAppIcon: UIImage? {
         guard #available(iOS 26.0, *),
               let name = bundle.appIconAssetName(
@@ -109,11 +109,11 @@ public struct AppIconView: View {
         let userInterfaceStyle: UIUserInterfaceStyle = colorScheme == .dark
             ? .dark
             : .light
-        let traits = UITraitCollection(traitsFrom: [
-            UITraitCollection(userInterfaceStyle: userInterfaceStyle),
-            UITraitCollection(displayScale: displayScale),
-            UITraitCollection(userInterfaceIdiom: UIDevice.current.userInterfaceIdiom)
-        ])
+        let traits = UITraitCollection { mutableTraits in
+            mutableTraits.userInterfaceStyle = userInterfaceStyle
+            mutableTraits.displayScale = displayScale
+            mutableTraits.userInterfaceIdiom = UIDevice.current.userInterfaceIdiom
+        }
 
         guard let image = UIImage(
             named: name,
@@ -161,8 +161,7 @@ public struct AppIconView: View {
         }
 
         // Legacy asset-catalog icons normally have a concrete bitmap backing.
-        // Reject special/vector renditions so SwiftUI never receives an image
-        // that cannot supply an image reference on iOS 26.
+        // Special/vector renditions are handled only by the dedicated path.
         guard !bundle.declaredAppIconNames.contains(fileName),
               let image = UIImage(named: fileName, in: bundle, compatibleWith: nil),
               image.cgImage != nil || image.ciImage != nil

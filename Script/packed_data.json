@@ -10,8 +10,44 @@
                         "square.stack.3d.up.fill"
                     ],
                     "title": "Automatic App Icon Loading",
-                    "subtitle": "Icon Composer Support",
-                    "body": "Load app icons automatically from asset catalogs and Icon Composer, with platform-aware rendering."
+                    "subtitle": "Primary Raster Icon Detection",
+                    "body": "SwiftNEW automatically finds and displays the best bundled app icon for the current device."
+                },
+                {
+                    "icons": [
+                        "paintbrush",
+                        "app.dashed"
+                    ],
+                    "title": "Icon Composer Support",
+                    "subtitle": "Light and Dark Renditions",
+                    "body": "On iOS 26, SwiftNEW loads Icon Composer’s compiled Light or Dark rendition, with support for a custom image fallback."
+                },
+                {
+                    "icons": [
+                        "app.badge",
+                        "arrow.trianglehead.swap"
+                    ],
+                    "title": "Alternate App Icons",
+                    "subtitle": "Live Header Updates",
+                    "body": "Pass the selected alternate icon name so the header stays in sync when your app icon changes."
+                },
+                {
+                    "icons": [
+                        "button.programmable",
+                        "sparkles"
+                    ],
+                    "title": "Tinted Glass Controls",
+                    "subtitle": "Native iOS 26 Styling",
+                    "body": "Release-note and primary action buttons now use interactive tinted glass on iOS 26."
+                },
+                {
+                    "icons": [
+                        "circle.lefthalf.filled",
+                        "paintpalette.fill"
+                    ],
+                    "title": "Adaptive Icon Styling",
+                    "subtitle": "Improved Dark Mode Contrast",
+                    "body": "Icon backdrops and glyph gradients now adapt their lighting and contrast for Dark Mode."
                 }
             ]
         },
@@ -467,9 +503,45 @@
                         "app",
                         "square.stack.3d.up.fill"
                     ],
-                    "title": "Carga automática del icono de la app",
-                    "subtitle": "Compatibilidad con Icon Composer",
-                    "body": "Carga automáticamente los iconos desde catálogos de recursos e Icon Composer, con una presentación adaptada a cada plataforma."
+                    "title": "Carga automática del icono",
+                    "subtitle": "Detección del icono rasterizado",
+                    "body": "SwiftNEW encuentra y muestra automáticamente el mejor icono incluido para el dispositivo actual."
+                },
+                {
+                    "icons": [
+                        "paintbrush",
+                        "app.dashed"
+                    ],
+                    "title": "Compatibilidad con Icon Composer",
+                    "subtitle": "Versiones clara y oscura",
+                    "body": "En iOS 26, SwiftNEW carga la versión clara u oscura compilada por Icon Composer y admite una imagen personalizada como alternativa."
+                },
+                {
+                    "icons": [
+                        "app.badge",
+                        "arrow.trianglehead.swap"
+                    ],
+                    "title": "Iconos alternativos",
+                    "subtitle": "Actualización del encabezado",
+                    "body": "Indica el icono alternativo seleccionado para mantener el encabezado sincronizado cuando cambie el icono de la app."
+                },
+                {
+                    "icons": [
+                        "button.programmable",
+                        "sparkles"
+                    ],
+                    "title": "Controles de vidrio tintado",
+                    "subtitle": "Estilo nativo de iOS 26",
+                    "body": "Los botones de notas y acciones principales ahora usan vidrio tintado interactivo en iOS 26."
+                },
+                {
+                    "icons": [
+                        "circle.lefthalf.filled",
+                        "paintpalette.fill"
+                    ],
+                    "title": "Estilo de iconos adaptativo",
+                    "subtitle": "Mejor contraste en modo oscuro",
+                    "body": "Los fondos y degradados de iconos adaptan su iluminación y contraste al modo oscuro."
                 }
             ]
         },
@@ -926,8 +998,44 @@
                         "square.stack.3d.up.fill"
                     ],
                     "title": "Chargement automatique de l’icône",
-                    "subtitle": "Prise en charge d’Icon Composer",
-                    "body": "Charge automatiquement les icônes depuis les catalogues de ressources et Icon Composer, avec un rendu adapté à chaque plateforme."
+                    "subtitle": "Détection de l’icône matricielle",
+                    "body": "SwiftNEW trouve et affiche automatiquement la meilleure icône intégrée pour l’appareil actuel."
+                },
+                {
+                    "icons": [
+                        "paintbrush",
+                        "app.dashed"
+                    ],
+                    "title": "Prise en charge d’Icon Composer",
+                    "subtitle": "Rendus clair et sombre",
+                    "body": "Sous iOS 26, SwiftNEW charge le rendu clair ou sombre compilé par Icon Composer, avec une image personnalisée en solution de repli."
+                },
+                {
+                    "icons": [
+                        "app.badge",
+                        "arrow.trianglehead.swap"
+                    ],
+                    "title": "Icônes d’app alternatives",
+                    "subtitle": "Mise à jour de l’en-tête",
+                    "body": "Transmettez le nom de l’icône alternative sélectionnée pour synchroniser l’en-tête quand l’icône change."
+                },
+                {
+                    "icons": [
+                        "button.programmable",
+                        "sparkles"
+                    ],
+                    "title": "Commandes en verre teinté",
+                    "subtitle": "Style natif d’iOS 26",
+                    "body": "Les boutons des notes et des actions principales utilisent désormais le verre teinté interactif sous iOS 26."
+                },
+                {
+                    "icons": [
+                        "circle.lefthalf.filled",
+                        "paintpalette.fill"
+                    ],
+                    "title": "Style d’icône adaptatif",
+                    "subtitle": "Meilleur contraste en mode sombre",
+                    "body": "Les arrière-plans et dégradés des icônes adaptent leur éclairage et leur contraste au mode sombre."
                 }
             ]
         },
@@ -1384,8 +1492,44 @@
                         "square.stack.3d.up.fill"
                     ],
                     "title": "App アイコンの自動読み込み",
-                    "subtitle": "Icon Composer 対応",
-                    "body": "アセットカタログと Icon Composer から App アイコンを自動的に読み込み、プラットフォームに合わせて表示します。"
+                    "subtitle": "主要ラスターアイコンの検出",
+                    "body": "SwiftNEW が現在のデバイスに最適な App アイコンを自動的に検出して表示します。"
+                },
+                {
+                    "icons": [
+                        "paintbrush",
+                        "app.dashed"
+                    ],
+                    "title": "Icon Composer 対応",
+                    "subtitle": "ライトとダークのレンディション",
+                    "body": "iOS 26 では Icon Composer が生成したライトまたはダークのレンディションを読み込み、カスタム画像へのフォールバックにも対応します。"
+                },
+                {
+                    "icons": [
+                        "app.badge",
+                        "arrow.trianglehead.swap"
+                    ],
+                    "title": "代替 App アイコン",
+                    "subtitle": "ヘッダーをリアルタイム更新",
+                    "body": "選択中の代替アイコン名を渡すことで、App アイコンの変更をヘッダーにも反映できます。"
+                },
+                {
+                    "icons": [
+                        "button.programmable",
+                        "sparkles"
+                    ],
+                    "title": "色付きガラスコントロール",
+                    "subtitle": "ネイティブ iOS 26 スタイル",
+                    "body": "リリースノートと主要操作ボタンが iOS 26 のインタラクティブな色付きガラスに対応しました。"
+                },
+                {
+                    "icons": [
+                        "circle.lefthalf.filled",
+                        "paintpalette.fill"
+                    ],
+                    "title": "アダプティブアイコンスタイル",
+                    "subtitle": "ダークモードのコントラスト改善",
+                    "body": "アイコン背景とグリフのグラデーションがダークモードに合わせて明るさとコントラストを調整します。"
                 }
             ]
         },
@@ -1842,8 +1986,44 @@
                         "square.stack.3d.up.fill"
                     ],
                     "title": "앱 아이콘 자동 로딩",
-                    "subtitle": "Icon Composer 지원",
-                    "body": "에셋 카탈로그와 Icon Composer에서 앱 아이콘을 자동으로 불러오고 플랫폼에 맞게 표시합니다."
+                    "subtitle": "기본 래스터 아이콘 감지",
+                    "body": "SwiftNEW가 현재 기기에 가장 적합한 앱 아이콘을 자동으로 찾아 표시합니다."
+                },
+                {
+                    "icons": [
+                        "paintbrush",
+                        "app.dashed"
+                    ],
+                    "title": "Icon Composer 지원",
+                    "subtitle": "라이트 및 다크 렌디션",
+                    "body": "iOS 26에서 Icon Composer가 컴파일한 라이트 또는 다크 렌디션을 불러오며 사용자 지정 이미지 대체도 지원합니다."
+                },
+                {
+                    "icons": [
+                        "app.badge",
+                        "arrow.trianglehead.swap"
+                    ],
+                    "title": "대체 앱 아이콘",
+                    "subtitle": "실시간 헤더 업데이트",
+                    "body": "선택된 대체 아이콘 이름을 전달하면 앱 아이콘 변경 시 헤더도 동기화됩니다."
+                },
+                {
+                    "icons": [
+                        "button.programmable",
+                        "sparkles"
+                    ],
+                    "title": "틴트 글래스 컨트롤",
+                    "subtitle": "네이티브 iOS 26 스타일",
+                    "body": "릴리스 노트와 기본 동작 버튼이 iOS 26에서 인터랙티브 틴트 글래스를 사용합니다."
+                },
+                {
+                    "icons": [
+                        "circle.lefthalf.filled",
+                        "paintpalette.fill"
+                    ],
+                    "title": "적응형 아이콘 스타일",
+                    "subtitle": "다크 모드 대비 개선",
+                    "body": "아이콘 배경과 글리프 그라데이션이 다크 모드에 맞춰 밝기와 대비를 조정합니다."
                 }
             ]
         },
@@ -2300,8 +2480,44 @@
                         "square.stack.3d.up.fill"
                     ],
                     "title": "自动载入 App 图标",
-                    "subtitle": "支持 Icon Composer",
-                    "body": "自动从 asset catalog 和 Icon Composer 载入 App 图标，并根据平台调整显示方式。"
+                    "subtitle": "检测主要位图图标",
+                    "body": "SwiftNEW 会自动查找并显示最适合当前设备的 App 图标。"
+                },
+                {
+                    "icons": [
+                        "paintbrush",
+                        "app.dashed"
+                    ],
+                    "title": "支持 Icon Composer",
+                    "subtitle": "浅色及深色版本",
+                    "body": "在 iOS 26，SwiftNEW 会载入 Icon Composer 编译后的浅色或深色版本，并支持自定义图像 fallback。"
+                },
+                {
+                    "icons": [
+                        "app.badge",
+                        "arrow.trianglehead.swap"
+                    ],
+                    "title": "替代 App 图标",
+                    "subtitle": "实时更新标题图标",
+                    "body": "传入已选择的替代图标名称，App 图标改变时标题也会保持同步。"
+                },
+                {
+                    "icons": [
+                        "button.programmable",
+                        "sparkles"
+                    ],
+                    "title": "着色玻璃控件",
+                    "subtitle": "原生 iOS 26 样式",
+                    "body": "版本说明和主要操作按钮现在会在 iOS 26 使用交互式着色玻璃效果。"
+                },
+                {
+                    "icons": [
+                        "circle.lefthalf.filled",
+                        "paintpalette.fill"
+                    ],
+                    "title": "自适应图标样式",
+                    "subtitle": "改善深色模式对比度",
+                    "body": "图标背景和字形渐变现在会针对深色模式调整光线和对比度。"
                 }
             ]
         },
@@ -2758,8 +2974,44 @@
                         "square.stack.3d.up.fill"
                     ],
                     "title": "自動載入 App 圖示",
-                    "subtitle": "支援 Icon Composer",
-                    "body": "自動從 asset catalog 及 Icon Composer 載入 App 圖示，並按平台調整顯示方式。"
+                    "subtitle": "偵測主要點陣圖示",
+                    "body": "SwiftNEW 會自動尋找並顯示最適合目前裝置嘅 App 圖示。"
+                },
+                {
+                    "icons": [
+                        "paintbrush",
+                        "app.dashed"
+                    ],
+                    "title": "支援 Icon Composer",
+                    "subtitle": "淺色及深色版本",
+                    "body": "喺 iOS 26，SwiftNEW 會載入 Icon Composer 編譯後嘅淺色或深色版本，亦支援自訂圖像 fallback。"
+                },
+                {
+                    "icons": [
+                        "app.badge",
+                        "arrow.trianglehead.swap"
+                    ],
+                    "title": "替代 App 圖示",
+                    "subtitle": "即時更新標題圖示",
+                    "body": "傳入已選擇嘅替代圖示名稱，App 圖示改變時標題亦會保持同步。"
+                },
+                {
+                    "icons": [
+                        "button.programmable",
+                        "sparkles"
+                    ],
+                    "title": "著色玻璃控制項",
+                    "subtitle": "原生 iOS 26 樣式",
+                    "body": "版本說明及主要操作按鈕而家會喺 iOS 26 使用互動式著色玻璃效果。"
+                },
+                {
+                    "icons": [
+                        "circle.lefthalf.filled",
+                        "paintpalette.fill"
+                    ],
+                    "title": "自適應圖示樣式",
+                    "subtitle": "改善深色模式對比",
+                    "body": "圖示背景及字形漸層而家會按深色模式調整光暗同對比。"
                 }
             ]
         },

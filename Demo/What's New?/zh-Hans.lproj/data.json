@@ -9,8 +9,32 @@
                     "square.stack.3d.up.fill"
                 ],
                 "title": "自动载入 App 图标",
-                "subtitle": "支持 Icon Composer",
-                "body": "自动从 asset catalog 和 Icon Composer 载入 App 图标，并根据平台调整显示方式。"
+                "subtitle": "检测主要位图图标",
+                "body": "SwiftNEW 会自动查找并显示最适合当前设备的 App 图标。"
+            },
+            {
+                "icons": ["paintbrush", "app.dashed"],
+                "title": "支持 Icon Composer",
+                "subtitle": "浅色及深色版本",
+                "body": "在 iOS 26，SwiftNEW 会载入 Icon Composer 编译后的浅色或深色版本，并支持自定义图像 fallback。"
+            },
+            {
+                "icons": ["app.badge", "arrow.trianglehead.swap"],
+                "title": "替代 App 图标",
+                "subtitle": "实时更新标题图标",
+                "body": "传入已选择的替代图标名称，App 图标改变时标题也会保持同步。"
+            },
+            {
+                "icons": ["button.programmable", "sparkles"],
+                "title": "着色玻璃控件",
+                "subtitle": "原生 iOS 26 样式",
+                "body": "版本说明和主要操作按钮现在会在 iOS 26 使用交互式着色玻璃效果。"
+            },
+            {
+                "icons": ["circle.lefthalf.filled", "paintpalette.fill"],
+                "title": "自适应图标样式",
+                "subtitle": "改善深色模式对比度",
+                "body": "图标背景和字形渐变现在会针对深色模式调整光线和对比度。"
             }
         ]
     },
