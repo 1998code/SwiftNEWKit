@@ -1,5 +1,20 @@
 [
     {
+        "version": "6.6",
+        "subVersion": "6.6.0",
+        "new": [
+            {
+                "icons": [
+                    "app",
+                    "square.stack.3d.up.fill"
+                ],
+                "title": "自动载入 App 图标",
+                "subtitle": "支持 Icon Composer",
+                "body": "自动从 asset catalog 和 Icon Composer 载入 App 图标，并根据平台调整显示方式。"
+            }
+        ]
+    },
+    {
         "version": "6.5",
         "subVersion": "6.5.0",
         "new": [

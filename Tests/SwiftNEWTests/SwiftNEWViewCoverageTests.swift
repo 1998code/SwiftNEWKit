@@ -288,6 +288,11 @@ import AppKit
 
     #expect(bundle.iconFileName == "Icon60")
     #expect(bundle.appIconName == "AppIcon")
+    #expect(bundle.appIconAssetName() == "AppIcon")
+    #expect(bundle.appIconAssetName(prefersIPadIcons: true) == "AppIcon")
+    #expect(bundle.appIconAssetName(alternateIconName: "Blue") == "BlueIcon")
+    #expect(bundle.appIconAssetName(alternateIconName: "Blue", prefersIPadIcons: true) == nil)
+    #expect(bundle.appIconAssetName(alternateIconName: "Missing") == nil)
     #expect(bundle.iconFileNames() == ["Icon20", "Icon60"])
     #expect(bundle.iconFileNames(prefersIPadIcons: true) == ["Icon20", "Icon76"])
     #expect(bundle.iconFileNames(alternateIconName: "Blue") == ["Blue20", "Blue60"])

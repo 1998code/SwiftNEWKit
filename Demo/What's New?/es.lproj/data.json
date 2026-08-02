@@ -1,5 +1,20 @@
 [
     {
+        "version": "6.6",
+        "subVersion": "6.6.0",
+        "new": [
+            {
+                "icons": [
+                    "app",
+                    "square.stack.3d.up.fill"
+                ],
+                "title": "Carga automática del icono de la app",
+                "subtitle": "Compatibilidad con Icon Composer",
+                "body": "Carga automáticamente los iconos desde catálogos de recursos e Icon Composer, con una presentación adaptada a cada plataforma."
+            }
+        ]
+    },
+    {
         "version": "6.5",
         "subVersion": "6.5.0",
         "new": [

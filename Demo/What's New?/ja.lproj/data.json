@@ -1,5 +1,20 @@
 [
     {
+        "version": "6.6",
+        "subVersion": "6.6.0",
+        "new": [
+            {
+                "icons": [
+                    "app",
+                    "square.stack.3d.up.fill"
+                ],
+                "title": "App アイコンの自動読み込み",
+                "subtitle": "Icon Composer 対応",
+                "body": "アセットカタログと Icon Composer から App アイコンを自動的に読み込み、プラットフォームに合わせて表示します。"
+            }
+        ]
+    },
+    {
         "version": "6.5",
         "subVersion": "6.5.0",
         "new": [

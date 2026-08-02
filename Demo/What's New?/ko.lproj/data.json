@@ -1,5 +1,20 @@
 [
     {
+        "version": "6.6",
+        "subVersion": "6.6.0",
+        "new": [
+            {
+                "icons": [
+                    "app",
+                    "square.stack.3d.up.fill"
+                ],
+                "title": "앱 아이콘 자동 로딩",
+                "subtitle": "Icon Composer 지원",
+                "body": "에셋 카탈로그와 Icon Composer에서 앱 아이콘을 자동으로 불러오고 플랫폼에 맞게 표시합니다."
+            }
+        ]
+    },
+    {
         "version": "6.5",
         "subVersion": "6.5.0",
         "new": [

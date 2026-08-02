@@ -14,11 +14,7 @@ extension Bundle {
     }
 
     var appIconName: String? {
-        iconDictionaries
-            .compactMap { $0["CFBundlePrimaryIcon"] as? [String: Any] }
-            .compactMap { $0["CFBundleIconName"] as? String }
-            .first
-            ?? (infoDictionary?["CFBundleIconName"] as? String)
+        appIconAssetName()
     }
 
     var declaredAppIconNames: Set<String> {
@@ -86,6 +82,32 @@ extension Bundle {
 
         var seen = Set<String>()
         return fileNames.filter { seen.insert($0).inserted }
+    }
+
+    func appIconAssetName(
+        alternateIconName: String? = nil,
+        prefersIPadIcons: Bool = false
+    ) -> String? {
+        for icons in preferredIconDictionaries(prefersIPadIcons: prefersIPadIcons) {
+            let icon: [String: Any]?
+            if let alternateIconName {
+                let alternateIcons = icons["CFBundleAlternateIcons"] as? [String: Any]
+                icon = alternateIcons?[alternateIconName] as? [String: Any]
+            } else {
+                icon = icons["CFBundlePrimaryIcon"] as? [String: Any]
+            }
+
+            if let name = icon?["CFBundleIconName"] as? String,
+               !name.isEmpty {
+                return name
+            }
+        }
+
+        guard alternateIconName == nil else {
+            return nil
+        }
+
+        return infoDictionary?["CFBundleIconName"] as? String
     }
 
     func appIconResourceCandidates(

@@ -12,6 +12,7 @@ import UIKit
 public struct AppIconView: View {
     private static let automaticAssetName = "SwiftNEWAppIcon"
 
+    @Environment(\.colorScheme) private var colorScheme
     @Environment(\.displayScale) private var displayScale
 
     private let assetName: String?
@@ -20,9 +21,10 @@ public struct AppIconView: View {
 
     /// Creates an app-icon view.
     ///
-    /// For an Icon Composer app, pass the name of a separate image set exported
-    /// from the same artwork. The `.icon` composition itself is not a regular
-    /// image resource that UIKit or SwiftUI can safely render in-app.
+    /// On iOS 26 or later, SwiftNEW first attempts to use the flattened Light or
+    /// Dark rendition that Xcode compiles from an Icon Composer app icon. Pass
+    /// an ordinary adaptive image-set name when a deterministic override is
+    /// required.
     public init(
         assetName: String? = nil,
         alternateIconName: String? = nil,
@@ -38,6 +40,11 @@ public struct AppIconView: View {
             if let resolvedAssetName {
                 styledIcon(
                     Image(resolvedAssetName, bundle: bundle)
+                        .resizable()
+                )
+            } else if let compiledAppIcon {
+                styledIcon(
+                    Image(uiImage: compiledAppIcon)
                         .resizable()
                 )
             } else if let rasterIcon {
@@ -83,6 +90,44 @@ public struct AppIconView: View {
             return Self.automaticAssetName
         }
         return "\(Self.automaticAssetName)-\(alternateIconName)"
+    }
+
+    /// Icon Composer stores generated Light and Dark flat renditions alongside
+    /// its system-only icon stack. UIKit can expose the flat rendition through
+    /// named asset lookup on iOS 26. Copy its CGImage before handing it to
+    /// SwiftUI so a special icon-stack-backed image is never rendered here.
+    private var compiledAppIcon: UIImage? {
+        guard #available(iOS 26.0, *),
+              let name = bundle.appIconAssetName(
+                alternateIconName: alternateIconName,
+                prefersIPadIcons: UIDevice.current.userInterfaceIdiom == .pad
+              )
+        else {
+            return nil
+        }
+
+        let userInterfaceStyle: UIUserInterfaceStyle = colorScheme == .dark
+            ? .dark
+            : .light
+        let traits = UITraitCollection(traitsFrom: [
+            UITraitCollection(userInterfaceStyle: userInterfaceStyle),
+            UITraitCollection(displayScale: displayScale),
+            UITraitCollection(userInterfaceIdiom: UIDevice.current.userInterfaceIdiom)
+        ])
+
+        guard let image = UIImage(
+            named: name,
+            in: bundle,
+            compatibleWith: traits
+        ), let cgImage = image.cgImage else {
+            return nil
+        }
+
+        return UIImage(
+            cgImage: cgImage,
+            scale: image.scale,
+            orientation: image.imageOrientation
+        )
     }
 
     private var rasterIcon: UIImage? {
