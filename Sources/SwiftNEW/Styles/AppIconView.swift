@@ -13,6 +13,11 @@ public struct AppIconView: View {
     private static let automaticAssetName = "SwiftNEWAppIcon"
     private static let iconSize: CGFloat = 65
 
+    private struct RasterIcon {
+        let image: UIImage
+        let resourceURL: URL
+    }
+
     @Environment(\.colorScheme) private var colorScheme
     @Environment(\.displayScale) private var displayScale
 
@@ -87,7 +92,7 @@ public struct AppIconView: View {
         return "\(Self.automaticAssetName)-\(alternateIconName)"
     }
 
-    private var automaticRasterIcon: UIImage? {
+    private var automaticRasterIcon: RasterIcon? {
         // App-icon catalog and Icon Composer entries are private UIKit
         // renditions, not general-purpose images. On some host apps,
         // UIImage(named:) returns a placeholder for one of these entries and
@@ -97,7 +102,7 @@ public struct AppIconView: View {
         rasterIcon
     }
 
-    private var rasterIcon: UIImage? {
+    private var rasterIcon: RasterIcon? {
         bundle.iconFileNames(
             alternateIconName: alternateIconName,
             prefersIPadIcons: UIDevice.current.userInterfaceIdiom == .pad
@@ -106,19 +111,28 @@ public struct AppIconView: View {
             .max { pixelArea(of: $0) < pixelArea(of: $1) }
     }
 
-    private func pixelArea(of image: UIImage) -> CGFloat {
-        image.size.width * image.scale * image.size.height * image.scale
+    private func pixelArea(of rasterIcon: RasterIcon) -> CGFloat {
+        let image = rasterIcon.image
+        return image.size.width * image.scale * image.size.height * image.scale
     }
 
-    private func displayedRasterIcon(_ image: UIImage) -> UIImage {
+    private func displayedRasterIcon(_ rasterIcon: RasterIcon) -> UIImage {
+        let image = rasterIcon.image
         guard colorScheme == .dark else {
             return image
         }
 
-        let bundleIdentity = bundle.bundleIdentifier ?? bundle.bundleURL.path
-        let iconIdentity = alternateIconName ?? "primary"
+        let iconIdentity = alternateIconName.map { "alternate:\($0)" } ?? "primary"
+        let sourceWidth = image.cgImage?.width ?? Int(image.size.width * image.scale)
+        let sourceHeight = image.cgImage?.height ?? Int(image.size.height * image.scale)
         let scale = Int(displayScale.rounded())
-        let cacheKey = "\(bundleIdentity)|\(iconIdentity)|\(scale)x"
+        let cacheKey = [
+            bundle.bundleURL.standardizedFileURL.path,
+            iconIdentity,
+            rasterIcon.resourceURL.standardizedFileURL.path,
+            "\(sourceWidth)x\(sourceHeight)",
+            "\(scale)x"
+        ].joined(separator: "|")
         return AppIconDarkModeAdapter.shared.adaptedImage(
             image,
             targetSize: CGSize(
@@ -130,7 +144,7 @@ public struct AppIconView: View {
         )
     }
 
-    private func loadRasterIcon(named fileName: String) -> UIImage? {
+    private func loadRasterIcon(named fileName: String) -> RasterIcon? {
         for resourceName in bundle.appIconResourceCandidates(
             for: fileName,
             displayScale: displayScale
@@ -143,20 +157,13 @@ public struct AppIconView: View {
                 forResource: name,
                 withExtension: fileExtension.isEmpty ? nil : fileExtension
             ), let image = UIImage(contentsOfFile: url.path) {
-                return image
+                return RasterIcon(image: image, resourceURL: url)
             }
         }
 
         // App-icon stacks and other special renditions aren't general-purpose
         // images. The loose raster path above remains the safe fallback.
-        guard !bundle.declaredAppIconNames.contains(fileName),
-              let image = UIImage(named: fileName, in: bundle, compatibleWith: nil),
-              image.cgImage != nil || image.ciImage != nil
-        else {
-            return nil
-        }
-
-        return image
+        return nil
     }
 
     private func styledIcon<Content: View>(_ content: Content) -> some View {

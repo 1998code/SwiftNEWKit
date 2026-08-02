@@ -74,7 +74,7 @@ Eso es todo — SwiftNEW se activa automáticamente cuando cambia la versión de
 | 🌗 Estilo de iconos adaptativo | 6.6.0 | Los fondos y degradados mejoran automáticamente el contraste en modo oscuro |
 | 🫧 Controles de vidrio tintado | 6.6.0 | Los botones usan vidrio tintado interactivo nativo en iOS 26 |
 | 🔄 Iconos alternativos | 6.6.0 | Mantiene el icono del encabezado sincronizado con el icono alternativo seleccionado |
-| 🎨 Compatibilidad con Icon Composer | 6.6.0 | Carga las versiones clara u oscura en iOS 26 con una imagen alternativa personalizada |
+| 🎨 Modo oscuro inteligente del icono | 6.6.0 | Genera una variante oscura de grandes áreas blancas o neutras y conserva los colores de acento |
 | 📱 Carga automática del icono | 6.6.0 | Encuentra y muestra el mejor icono incluido para el dispositivo actual |
 | ⬆️ Pantalla de actualización remota | 6.5.0 | Actívala con `checkForUpdates`; si el JSON remoto contiene una versión más reciente, muestra una pantalla de actualización con una acción de App Store personalizable |
 | 🔁 Bucle de iconos animado | 6.4.0 | Recorre SF Symbols con transiciones de reemplazo nativas |
