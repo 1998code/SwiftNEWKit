@@ -17,9 +17,9 @@
                     "paintbrush",
                     "app.dashed"
                 ],
-                "title": "Hỗ trợ Icon Composer",
-                "subtitle": "Phiên bản Sáng và Tối",
-                "body": "Trên iOS 26, SwiftNEW tải phiên bản Sáng hoặc Tối do Icon Composer biên dịch và hỗ trợ ảnh dự phòng tùy chỉnh."
+                "title": "Chế độ tối thông minh cho biểu tượng",
+                "subtitle": "Tự động điều chỉnh tông màu trung tính",
+                "body": "Trong Chế độ tối, SwiftNEW tự động chuyển các vùng trắng và xám sáng lớn của biểu tượng ứng dụng thành gần đen, đồng thời giữ nguyên màu nhấn và độ trong suốt."
             },
             {
                 "icons": [

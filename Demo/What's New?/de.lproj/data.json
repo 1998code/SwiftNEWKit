@@ -17,9 +17,9 @@
                     "paintbrush",
                     "app.dashed"
                 ],
-                "title": "Icon-Composer-Unterstützung",
-                "subtitle": "Helle und dunkle Varianten",
-                "body": "Unter iOS 26 lädt SwiftNEW die von Icon Composer kompilierte helle oder dunkle Variante und unterstützt ein benutzerdefiniertes Ersatzbild."
+                "title": "Intelligenter Dunkelmodus für App-Symbole",
+                "subtitle": "Automatische Anpassung neutraler Töne",
+                "body": "Im Dunkelmodus wandelt SwiftNEW große weiße und hellgraue Bereiche des App-Symbols automatisch in nahezu Schwarz um und bewahrt Akzentfarben sowie Transparenz."
             },
             {
                 "icons": [

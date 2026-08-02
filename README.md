@@ -74,7 +74,7 @@ That's it — SwiftNEW auto-triggers when the app version changes.
 | 🌗 Adaptive Icon Styling | 6.6.0 | Icon backdrops and glyph gradients improve contrast automatically in Dark Mode |
 | 🫧 Tinted Glass Controls | 6.6.0 | Release-note and primary action buttons use native interactive tinted glass on iOS 26 |
 | 🔄 Alternate App Icons | 6.6.0 | Keep the header icon synchronized with the app’s selected alternate icon |
-| 🎨 Icon Composer Support | 6.6.0 | Load compiled Light or Dark renditions on iOS 26 with a custom image fallback |
+| 🎨 Smart App Icon Dark Mode | 6.6.0 | Generate a dark fallback from broad white or neutral artwork while preserving accent colors |
 | 📱 Automatic App Icon Loading | 6.6.0 | Find and display the best bundled app icon for the current device |
 | ⬆️ Remote Update Screen | 6.5.0 | Opt in with `checkForUpdates`; a newer remote JSON version shows an update screen with a customizable App Store action |
 | 🔁 Animated Icon Loop | 6.4.0 | Loop through SF Symbols with native replace transitions |
@@ -108,7 +108,7 @@ That's it — SwiftNEW auto-triggers when the app version changes.
 - SwiftNEW stores its last-seen version/build using namespaced app storage keys: `swiftnew.version` and `swiftnew.build`.
 - Version comparison is string-safe, so non-numeric values such as `1.0-beta` or `1.0b3` will not crash auto-triggering.
 - Passing `checkForUpdates: true` with a remote `data` URL enables update checks. If the highest remote `subVersion` (or `version`) is newer than the installed app version, SwiftNEW presents the Update screen instead of What's New and resolves the App Store destination from Apple's iTunes Lookup API using the app's bundle identifier. The primary action defaults to localized **Download Now**; use `updateButtonTitle` for custom verbatim text. Set `allowsSkippingUpdate: false` for a non-skippable update screen.
-- On iOS 26 or later, SwiftNEW attempts to load the flattened Light or Dark app-icon rendition that Xcode compiles from an Icon Composer `.icon` file. An ordinary adaptive Image Set named `SwiftNEWAppIcon` remains the deterministic override and fallback. See [Configuration](README/CONFIGURATION.md#app-icon-and-icon-composer).
+- SwiftNEW loads the bundled app-icon raster automatically. In Dark Mode, its fallback smoothly maps bright neutral pixels toward black while preserving saturated artwork and transparency, including apps that use an Icon Composer `.icon` file. An ordinary Any/Dark Image Set named `SwiftNEWAppIcon` remains the art-directed override. See [Configuration](README/CONFIGURATION.md#app-icon-and-icon-composer).
 
 ## 🧪 Testing & Coverage
 

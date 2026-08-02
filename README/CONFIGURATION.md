@@ -93,15 +93,9 @@ SwiftNEW(show: $showNew, iconStyle: .plain)           // no backdrop, adaptive g
 
 ### App Icon and Icon Composer
 
-For asset-catalog app icons, SwiftNEW automatically loads the primary icon's bundled raster file. If the app selects an alternate icon, pass its logical name through `alternateAppIconName`; SwiftNEW then loads the matching iPhone or iPad rendition.
+SwiftNEW automatically loads the primary icon's bundled raster file. In Dark Mode, it applies a selective neutral-tone conversion: bright white and light-gray pixels move smoothly toward black, while saturated colors and transparency remain unchanged. This also gives [Icon Composer](https://developer.apple.com/documentation/xcode/creating-your-app-icon-using-icon-composer) apps a zero-configuration Dark Mode fallback without manually exporting each appearance.
 
-For an [Icon Composer](https://developer.apple.com/documentation/xcode/creating-your-app-icon-using-icon-composer) `.icon` file, Xcode automatically compiles flattened Light, Dark and Tintable app-icon renditions in addition to the system-only layered composition. On iOS 26 or later, SwiftNEW makes a best-effort, trait-aware UIKit lookup for the current Light or Dark flattened rendition and uses it only when UIKit returns raster backing. Apple doesn't document app-icon assets as general-purpose named images, so SwiftNEW falls back to the bundled raster icon when that lookup isn't available.
-
-For deterministic output on every supported OS and toolchain, provide an ordinary adaptive Image Set override:
-
-1. Export a flattened image from the same Icon Composer artwork.
-2. Add it as an ordinary Image Set, not an App Icon Set. Name it `SwiftNEWAppIcon`.
-3. Optionally add Any and Dark appearances to that Image Set. SwiftUI selects the correct appearance automatically.
+The conversion works from a flattened raster, so it can't reproduce Icon Composer's private layered lighting or the user's Home Screen tint exactly. If a design needs fully art-directed output, add an ordinary Image Set named `SwiftNEWAppIcon` with Any and Dark appearances. SwiftUI then uses that asset before the automatic fallback.
 
 With the conventional `SwiftNEWAppIcon` name, no additional code is required. A custom image-set name can be passed explicitly:
 
@@ -128,7 +122,7 @@ alternateAppIconName = UIApplication.shared.alternateIconName
 
 SwiftNEW deliberately doesn't access `UIApplication.shared` itself, which keeps the package safe for app-extension consumers and avoids stale, non-observable icon state.
 
-Don't pass the App Icon Set or `.icon` composition name (usually `AppIcon`) to `appIconName`; SwiftNEW resolves the declared app-icon name from bundle metadata automatically. Apple doesn't expose the Home Screen Mono/Tinted selection or the user's tint color to apps, so provide a matching ordinary image asset explicitly when that appearance is required inside SwiftNEW.
+Don't pass the App Icon Set or `.icon` composition name (usually `AppIcon`) to `appIconName`; SwiftNEW resolves the declared app-icon name from bundle metadata automatically. Apple doesn't expose the Home Screen Mono/Tinted selection or the user's tint color to apps, so use an ordinary adaptive image asset when that exact appearance is required inside SwiftNEW.
 
 ### Special Effects
 

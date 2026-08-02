@@ -14,9 +14,9 @@
             },
             {
                 "icons": ["paintbrush", "app.dashed"],
-                "title": "支援 Icon Composer",
-                "subtitle": "淺色及深色版本",
-                "body": "喺 iOS 26，SwiftNEW 會載入 Icon Composer 編譯後嘅淺色或深色版本，亦支援自訂圖像 fallback。"
+                "title": "智能 App 圖示深色模式",
+                "subtitle": "自動調整中性色調",
+                "body": "喺深色模式下，SwiftNEW 會自動將 App 圖示中大面積嘅白色同淺灰色轉成接近黑色，同時保留強調色同透明度。"
             },
             {
                 "icons": ["app.badge", "arrow.trianglehead.swap"],

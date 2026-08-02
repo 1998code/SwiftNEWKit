@@ -18,9 +18,9 @@
                         "paintbrush",
                         "app.dashed"
                     ],
-                    "title": "Icon-Composer-Unterstützung",
-                    "subtitle": "Helle und dunkle Varianten",
-                    "body": "Unter iOS 26 lädt SwiftNEW die von Icon Composer kompilierte helle oder dunkle Variante und unterstützt ein benutzerdefiniertes Ersatzbild."
+                    "title": "Intelligenter Dunkelmodus für App-Symbole",
+                    "subtitle": "Automatische Anpassung neutraler Töne",
+                    "body": "Im Dunkelmodus wandelt SwiftNEW große weiße und hellgraue Bereiche des App-Symbols automatisch in nahezu Schwarz um und bewahrt Akzentfarben sowie Transparenz."
                 },
                 {
                     "icons": [
@@ -521,9 +521,9 @@
                         "paintbrush",
                         "app.dashed"
                     ],
-                    "title": "Icon Composer Support",
-                    "subtitle": "Light and Dark Renditions",
-                    "body": "On iOS 26, SwiftNEW loads Icon Composer’s compiled Light or Dark rendition, with support for a custom image fallback."
+                    "title": "Smart App Icon Dark Mode",
+                    "subtitle": "Automatic Neutral-Tone Adaptation",
+                    "body": "In Dark Mode, SwiftNEW automatically turns broad white and light-gray app icon artwork near-black while preserving accent colors and transparency."
                 },
                 {
                     "icons": [
@@ -1024,9 +1024,9 @@
                         "paintbrush",
                         "app.dashed"
                     ],
-                    "title": "Compatibilidad con Icon Composer",
-                    "subtitle": "Versiones clara y oscura",
-                    "body": "En iOS 26, SwiftNEW carga la versión clara u oscura compilada por Icon Composer y admite una imagen personalizada como alternativa."
+                    "title": "Modo oscuro inteligente del icono",
+                    "subtitle": "Adaptación automática de tonos neutros",
+                    "body": "En modo oscuro, SwiftNEW convierte automáticamente en casi negro las áreas blancas y gris claro amplias del icono, conservando los colores de acento y la transparencia."
                 },
                 {
                     "icons": [
@@ -1527,9 +1527,9 @@
                         "paintbrush",
                         "app.dashed"
                     ],
-                    "title": "Prise en charge d’Icon Composer",
-                    "subtitle": "Rendus clair et sombre",
-                    "body": "Sous iOS 26, SwiftNEW charge le rendu clair ou sombre compilé par Icon Composer, avec une image personnalisée en solution de repli."
+                    "title": "Mode sombre intelligent de l’icône",
+                    "subtitle": "Adaptation automatique des tons neutres",
+                    "body": "En mode sombre, SwiftNEW assombrit automatiquement les grandes zones blanches ou gris clair de l’icône jusqu’au presque noir, tout en préservant les couleurs d’accentuation et la transparence."
                 },
                 {
                     "icons": [
@@ -2030,9 +2030,9 @@
                         "paintbrush",
                         "app.dashed"
                     ],
-                    "title": "תמיכה ב-Icon Composer",
-                    "subtitle": "גרסאות בהירות וכהות",
-                    "body": "ב-iOS 26, ‏SwiftNEW טוען את הגרסה הבהירה או הכהה ש-Icon Composer הידר, עם תמיכה בתמונת גיבוי מותאמת אישית."
+                    "title": "מצב כהה חכם לסמל היישום",
+                    "subtitle": "התאמה אוטומטית של גוונים ניטרליים",
+                    "body": "במצב כהה, SwiftNEW הופך אוטומטית אזורים לבנים ואפורים בהירים נרחבים בסמל היישום לכמעט שחורים, תוך שמירה על צבעי הדגשה ושקיפות."
                 },
                 {
                     "icons": [
@@ -2533,9 +2533,9 @@
                         "paintbrush",
                         "app.dashed"
                     ],
-                    "title": "Dukungan Icon Composer",
-                    "subtitle": "Tampilan Terang dan Gelap",
-                    "body": "Di iOS 26, SwiftNEW memuat tampilan Terang atau Gelap hasil kompilasi Icon Composer, dengan dukungan gambar pengganti khusus."
+                    "title": "Mode Gelap Ikon Aplikasi Cerdas",
+                    "subtitle": "Adaptasi Warna Netral Otomatis",
+                    "body": "Dalam Mode Gelap, SwiftNEW otomatis mengubah area putih dan abu-abu terang yang luas pada ikon aplikasi menjadi hampir hitam sambil mempertahankan warna aksen dan transparansi."
                 },
                 {
                     "icons": [
@@ -3036,9 +3036,9 @@
                         "paintbrush",
                         "app.dashed"
                     ],
-                    "title": "Icon Composer 対応",
-                    "subtitle": "ライトとダークのレンディション",
-                    "body": "iOS 26 では Icon Composer が生成したライトまたはダークのレンディションを読み込み、カスタム画像へのフォールバックにも対応します。"
+                    "title": "App アイコンのスマートダークモード",
+                    "subtitle": "ニュートラルカラーを自動調整",
+                    "body": "ダークモードでは、App アイコンの広い白色や明るいグレーの部分を自動的にほぼ黒へ変換し、アクセントカラーと透明度を保ちます。"
                 },
                 {
                     "icons": [
@@ -3539,9 +3539,9 @@
                         "paintbrush",
                         "app.dashed"
                     ],
-                    "title": "Icon Composer 지원",
-                    "subtitle": "라이트 및 다크 렌디션",
-                    "body": "iOS 26에서 Icon Composer가 컴파일한 라이트 또는 다크 렌디션을 불러오며 사용자 지정 이미지 대체도 지원합니다."
+                    "title": "스마트 앱 아이콘 다크 모드",
+                    "subtitle": "중성 색조 자동 조정",
+                    "body": "다크 모드에서 SwiftNEW는 앱 아이콘의 넓은 흰색 및 밝은 회색 영역을 거의 검은색으로 자동 변환하면서 강조 색상과 투명도를 유지합니다."
                 },
                 {
                     "icons": [
@@ -4042,9 +4042,9 @@
                         "paintbrush",
                         "app.dashed"
                     ],
-                    "title": "Поддержка Icon Composer",
-                    "subtitle": "Светлый и тёмный варианты",
-                    "body": "В iOS 26 SwiftNEW загружает скомпилированный Icon Composer светлый или тёмный вариант и поддерживает пользовательское резервное изображение."
+                    "title": "Умный тёмный режим значка",
+                    "subtitle": "Автоматическая адаптация нейтральных тонов",
+                    "body": "В тёмном режиме SwiftNEW автоматически преобразует крупные белые и светло-серые области значка почти в чёрные, сохраняя акцентные цвета и прозрачность."
                 },
                 {
                     "icons": [
@@ -4545,9 +4545,9 @@
                         "paintbrush",
                         "app.dashed"
                     ],
-                    "title": "Hỗ trợ Icon Composer",
-                    "subtitle": "Phiên bản Sáng và Tối",
-                    "body": "Trên iOS 26, SwiftNEW tải phiên bản Sáng hoặc Tối do Icon Composer biên dịch và hỗ trợ ảnh dự phòng tùy chỉnh."
+                    "title": "Chế độ tối thông minh cho biểu tượng",
+                    "subtitle": "Tự động điều chỉnh tông màu trung tính",
+                    "body": "Trong Chế độ tối, SwiftNEW tự động chuyển các vùng trắng và xám sáng lớn của biểu tượng ứng dụng thành gần đen, đồng thời giữ nguyên màu nhấn và độ trong suốt."
                 },
                 {
                     "icons": [
@@ -5048,9 +5048,9 @@
                         "paintbrush",
                         "app.dashed"
                     ],
-                    "title": "支持 Icon Composer",
-                    "subtitle": "浅色及深色版本",
-                    "body": "在 iOS 26，SwiftNEW 会载入 Icon Composer 编译后的浅色或深色版本，并支持自定义图像 fallback。"
+                    "title": "智能 App 图标深色模式",
+                    "subtitle": "自动调整中性色调",
+                    "body": "在深色模式下，SwiftNEW 会自动将 App 图标中大面积的白色和浅灰色转为接近黑色，同时保留强调色和透明度。"
                 },
                 {
                     "icons": [
@@ -5551,9 +5551,9 @@
                         "paintbrush",
                         "app.dashed"
                     ],
-                    "title": "支援 Icon Composer",
-                    "subtitle": "淺色及深色版本",
-                    "body": "喺 iOS 26，SwiftNEW 會載入 Icon Composer 編譯後嘅淺色或深色版本，亦支援自訂圖像 fallback。"
+                    "title": "智能 App 圖示深色模式",
+                    "subtitle": "自動調整中性色調",
+                    "body": "喺深色模式下，SwiftNEW 會自動將 App 圖示中大面積嘅白色同淺灰色轉成接近黑色，同時保留強調色同透明度。"
                 },
                 {
                     "icons": [

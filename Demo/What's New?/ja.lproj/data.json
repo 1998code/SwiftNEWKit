@@ -14,9 +14,9 @@
             },
             {
                 "icons": ["paintbrush", "app.dashed"],
-                "title": "Icon Composer 対応",
-                "subtitle": "ライトとダークのレンディション",
-                "body": "iOS 26 では Icon Composer が生成したライトまたはダークのレンディションを読み込み、カスタム画像へのフォールバックにも対応します。"
+                "title": "App アイコンのスマートダークモード",
+                "subtitle": "ニュートラルカラーを自動調整",
+                "body": "ダークモードでは、App アイコンの広い白色や明るいグレーの部分を自動的にほぼ黒へ変換し、アクセントカラーと透明度を保ちます。"
             },
             {
                 "icons": ["app.badge", "arrow.trianglehead.swap"],

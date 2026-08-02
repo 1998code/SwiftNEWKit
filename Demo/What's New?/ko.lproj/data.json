@@ -14,9 +14,9 @@
             },
             {
                 "icons": ["paintbrush", "app.dashed"],
-                "title": "Icon Composer 지원",
-                "subtitle": "라이트 및 다크 렌디션",
-                "body": "iOS 26에서 Icon Composer가 컴파일한 라이트 또는 다크 렌디션을 불러오며 사용자 지정 이미지 대체도 지원합니다."
+                "title": "스마트 앱 아이콘 다크 모드",
+                "subtitle": "중성 색조 자동 조정",
+                "body": "다크 모드에서 SwiftNEW는 앱 아이콘의 넓은 흰색 및 밝은 회색 영역을 거의 검은색으로 자동 변환하면서 강조 색상과 투명도를 유지합니다."
             },
             {
                 "icons": ["app.badge", "arrow.trianglehead.swap"],

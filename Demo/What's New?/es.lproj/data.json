@@ -14,9 +14,9 @@
             },
             {
                 "icons": ["paintbrush", "app.dashed"],
-                "title": "Compatibilidad con Icon Composer",
-                "subtitle": "Versiones clara y oscura",
-                "body": "En iOS 26, SwiftNEW carga la versión clara u oscura compilada por Icon Composer y admite una imagen personalizada como alternativa."
+                "title": "Modo oscuro inteligente del icono",
+                "subtitle": "Adaptación automática de tonos neutros",
+                "body": "En modo oscuro, SwiftNEW convierte automáticamente en casi negro las áreas blancas y gris claro amplias del icono, conservando los colores de acento y la transparencia."
             },
             {
                 "icons": ["app.badge", "arrow.trianglehead.swap"],

@@ -14,9 +14,9 @@
             },
             {
                 "icons": ["paintbrush", "app.dashed"],
-                "title": "Icon Composer Support",
-                "subtitle": "Light and Dark Renditions",
-                "body": "On iOS 26, SwiftNEW loads Icon Composer’s compiled Light or Dark rendition, with support for a custom image fallback."
+                "title": "Smart App Icon Dark Mode",
+                "subtitle": "Automatic Neutral-Tone Adaptation",
+                "body": "In Dark Mode, SwiftNEW automatically turns broad white and light-gray app icon artwork near-black while preserving accent colors and transparency."
             },
             {
                 "icons": ["app.badge", "arrow.trianglehead.swap"],

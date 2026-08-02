@@ -17,9 +17,9 @@
                     "paintbrush",
                     "app.dashed"
                 ],
-                "title": "Dukungan Icon Composer",
-                "subtitle": "Tampilan Terang dan Gelap",
-                "body": "Di iOS 26, SwiftNEW memuat tampilan Terang atau Gelap hasil kompilasi Icon Composer, dengan dukungan gambar pengganti khusus."
+                "title": "Mode Gelap Ikon Aplikasi Cerdas",
+                "subtitle": "Adaptasi Warna Netral Otomatis",
+                "body": "Dalam Mode Gelap, SwiftNEW otomatis mengubah area putih dan abu-abu terang yang luas pada ikon aplikasi menjadi hampir hitam sambil mempertahankan warna aksen dan transparansi."
             },
             {
                 "icons": [
