@@ -88,6 +88,9 @@ extension SwiftNEW {
 
     private func currentVersionScrollView(bottomInset: CGFloat, maxScrollHeight: CGFloat?) -> some View {
         ScrollView(showsIndicators: false) {
+            // Breathing room so the first row doesn't sit in the top fade.
+            Color.clear.frame(height: 10)
+
             ForEach(items) { item in
                 if item.version == Bundle.version || item.subVersion == Bundle.version {
                     ForEach(item.new.filter { matchesSearch($0) }) { new in
@@ -101,6 +104,8 @@ extension SwiftNEW {
                 Color.clear.frame(height: bottomInset)
             }
         }
+        // The overlaid controls already fade the bottom when they are shown.
+        .softScrollEdges(bottom: bottomInset > 0 ? 0 : 18)
         #if !os(tvOS)
         .frame(maxWidth: 380)
         .padding(.horizontal)

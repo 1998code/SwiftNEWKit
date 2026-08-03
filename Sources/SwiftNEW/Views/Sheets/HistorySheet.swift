@@ -37,6 +37,9 @@ extension SwiftNEW {
             Spacer()
 
             ScrollView(showsIndicators: false) {
+                // Breathing room so the first row doesn't sit in the top fade.
+                Color.clear.frame(height: 10)
+
                 ForEach(items) { item in
                     ZStack {
                         colorGradient
@@ -53,6 +56,7 @@ extension SwiftNEW {
                     }
                 }
             }
+            .softScrollEdges()
             #if !os(tvOS)
             .frame(maxWidth: 380)
             .padding(.horizontal)

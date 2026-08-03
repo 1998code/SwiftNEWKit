@@ -113,6 +113,7 @@ extension SwiftNEW {
                 .padding(.bottom, 24)
                 .frame(maxWidth: .infinity)
             }
+            .softScrollEdges()
             #if os(tvOS)
             .frame(maxHeight: maxScrollHeight)
             #endif
