@@ -160,8 +160,14 @@ extension SwiftNEW {
                         .contentShape(RoundedRectangle(cornerRadius: 15, style: .continuous))
                 }
                 .opacity(size == "invisible" ? 0 : 1)
-                .modifier(ReleaseNoteButtonGlassModifier(tint: color))
-                .modifier(ConditionalGlassModifier(isEnabled: glass, shadowColor: color))
+                // The glass chrome is applied *after* the opacity above, so an
+                // `opacity(0)` can never hide it — an "invisible" trigger would
+                // still leave a translucent glass blob floating at the host's
+                // origin (visible on macOS, where the glass routes through
+                // SwiftGlass's frosted Material). "invisible" means draw nothing,
+                // so skip both glass layers in that case.
+                .modifier(ReleaseNoteButtonGlassModifier(tint: color, isEnabled: size != "invisible"))
+                .modifier(ConditionalGlassModifier(isEnabled: glass && size != "invisible", shadowColor: color))
                 .modifier(PresentationModifier(isPresented: $show, presentation: presentation, sheetContent: sheetContent))
             }
         }
@@ -416,11 +422,12 @@ private struct ReleaseNoteButtonLabelModifier: ViewModifier {
 
 private struct ReleaseNoteButtonGlassModifier: ViewModifier {
     let tint: Color
+    var isEnabled: Bool = true
 
     @ViewBuilder
     func body(content: Content) -> some View {
         #if os(iOS) && compiler(>=6.2)
-        if #available(iOS 26.0, *) {
+        if isEnabled, #available(iOS 26.0, *) {
             content
                 .glassEffect(
                     .regular.tint(tint).interactive(),
