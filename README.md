@@ -7,7 +7,7 @@
 [![Validate JSON Files](https://github.com/1998code/SwiftNEWKit/actions/workflows/validate-json.yml/badge.svg)](https://github.com/1998code/SwiftNEWKit/actions/workflows/validate-json.yml)
 [![codecov](https://codecov.io/github/1998code/SwiftNEWKit/branch/main/graph/badge.svg?token=GI0KRUHVH1)](https://codecov.io/github/1998code/SwiftNEWKit)
 ![Swift Version](https://img.shields.io/badge/Swift-5.9/6.1-teal.svg)
-![Platforms](https://img.shields.io/badge/Platforms-iOS%2015.0+%20|%20macOS%2014.0+%20|%20tvOS%2017.0+%20|%20visionOS%201.0+-15437D.svg)
+![Platforms](https://img.shields.io/badge/Platforms-iOS%2015.0+%20|%20watchOS%208.0+%20|%20macOS%2014.0+%20|%20tvOS%2017.0+%20|%20visionOS%201.0+-15437D.svg)
 [![OpenSSF Scorecard](https://api.scorecard.dev/projects/github.com/1998code/SwiftNEWKit/badge)](https://scorecard.dev/viewer/?uri=github.com/1998code/SwiftNEWKit)
 ![License](https://img.shields.io/badge/License-MIT-C8ECFE.svg)
 
@@ -66,10 +66,14 @@ A modern, SwiftUI-native **"What's New"** presentation framework for all Apple p
 
 That's it — SwiftNEW auto-triggers when the app version changes.
 
+Approved CarPlay host apps may use `SwiftNEWCarPlayTemplateFactory` for update content that directly supports their approved in-car category. General product changelogs are not automatically CarPlay-eligible; see the [CarPlay integration guide](README/CARPLAY.md) for lifecycle, content, and entitlement requirements.
+
 ## ✨ Features
 
 | Feature | Since | Description |
 |---------|:-----:|-------------|
+| 🎛️ Configurable Button Radius | 27.0 | Set `buttonCornerRadius` directly or with a binding while keeping primary action buttons visually consistent |
+| 🔎 History Search | 27.0 | Search historical release notes by title / subtitle / body without leaving the History screen |
 | 🌐 More Languages | 6.6.0 | Release notes are now localized in German, Hebrew, Indonesian, Russian, and Vietnamese |
 | 🌗 Adaptive Icon Styling | 6.6.0 | Icon backdrops and glyph gradients improve contrast automatically in Dark Mode |
 | 🫧 Tinted Glass Controls | 6.6.0 | Release-note and primary action buttons use native interactive tinted glass on iOS 26 |
@@ -119,7 +123,7 @@ swift test --enable-code-coverage
 swift test --show-codecov-path
 ```
 
-The GitHub Actions Xcode 16.3 job also runs Swift Testing with native SwiftPM code coverage enabled and uploads the report to Codecov. Codecov upload is non-blocking while coverage reporting is being established.
+The GitHub Actions Xcode 26 job also runs Swift Testing with native SwiftPM code coverage enabled and uploads the report to Codecov. Codecov upload is non-blocking while coverage reporting is being established.
 
 ### Feature Showcase
 
@@ -141,6 +145,7 @@ The GitHub Actions Xcode 16.3 job also runs Swift Testing with native SwiftPM co
 |-------|--------|
 | [Configuration](README/CONFIGURATION.md) | All parameters, examples, data sources (local / remote / Firebase), data model |
 | [Platform Support & Installation](README/PLATFORM.md) | Supported OS versions, requirements, feature matrix, SPM setup |
+| [CarPlay Integration](README/CARPLAY.md) | Template factory, scene lifecycle, data loading, entitlement requirements |
 | [Contributing](README/CONTRIBUTING.md) | Project structure, dev setup, PR guidelines, troubleshooting |
 
 ## 📄 License

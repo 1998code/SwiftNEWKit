@@ -69,6 +69,32 @@ extension SwiftNEW {
             }
         }
     }
+    #elseif os(watchOS)
+    public var headings: some View {
+        VStack(alignment: align, spacing: 2) {
+            Text(headingTitle)
+                .font(.headline.weight(.bold))
+                .foregroundStyle(.primary)
+                .multilineTextAlignment(watchHeadingTextAlignment)
+            Text(headingSubtitle)
+                .font(.footnote.weight(.semibold))
+                .foregroundColor(.secondary)
+                .multilineTextAlignment(watchHeadingTextAlignment)
+        }
+        .frame(maxWidth: .infinity, alignment: watchHeadingFrameAlignment)
+    }
+
+    private var watchHeadingFrameAlignment: Alignment {
+        if align == .leading { return .leading }
+        if align == .trailing { return .trailing }
+        return .center
+    }
+
+    private var watchHeadingTextAlignment: TextAlignment {
+        if align == .leading { return .leading }
+        if align == .trailing { return .trailing }
+        return .center
+    }
     #elseif os(macOS) || os(visionOS) || os(tvOS)
     public var headings: some View {
         VStack {

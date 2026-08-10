@@ -8,6 +8,106 @@
 import SwiftUI
 import SwiftNEW
 
+enum DemoReleaseNotesSource {
+    static let remoteUpdateURL = "https://raw.githubusercontent.com/1998code/SwiftNEWKit/refs/heads/main/Demo/remote-update-preview.json"
+
+    static var remoteURL: String {
+        let localization = Bundle.main.preferredLocalizations.first
+            ?? Bundle.main.developmentLocalization
+            ?? "en"
+
+        return "https://raw.githubusercontent.com/1998code/SwiftNEWKit/refs/heads/main/Demo/What's%20New%3F/\(localization).lproj/data.json"
+    }
+}
+
+#if os(watchOS)
+private enum WatchDataMode: Hashable {
+    case local
+    case remote
+    case update
+}
+
+private enum WatchVisualMode: Hashable {
+    case still
+    case liquid
+    case particles
+}
+
+struct ContentView: View {
+    @State private var showReleaseNotes = false
+    @State private var dataMode: WatchDataMode = .local
+    @State private var visualMode: WatchVisualMode = .still
+
+    var body: some View {
+        NavigationStack {
+            ZStack {
+                SwiftNEWBackdrop(
+                    meshStyle: selectedMeshStyle,
+                    specialEffect: selectedSpecialEffect
+                )
+
+                ScrollView {
+                    VStack(spacing: 10) {
+                        Picker("Data", selection: $dataMode) {
+                            Text("Local").tag(WatchDataMode.local)
+                            Text("Remote").tag(WatchDataMode.remote)
+                            Text("Update").tag(WatchDataMode.update)
+                        }
+                        .pickerStyle(.navigationLink)
+
+                        Picker("Visual", selection: $visualMode) {
+                            Text("Still").tag(WatchVisualMode.still)
+                            Text("Liquid").tag(WatchVisualMode.liquid)
+                            Text("Particles").tag(WatchVisualMode.particles)
+                        }
+                        .pickerStyle(.navigationLink)
+
+                        SwiftNEW(
+                            show: $showReleaseNotes,
+                            label: "Release Note",
+                            labelImage: "arrow.up.circle.fill",
+                            search: false,
+                            data: selectedDataSource,
+                            meshStyle: selectedMeshStyle,
+                            specialEffect: selectedSpecialEffect,
+                            buttonCornerRadius: 100,
+                            showDescription: false,
+                            checkForUpdates: checksForRemoteUpdate,
+                            appStoreBundleIdentifier: checksForRemoteUpdate ? "com.apple.TestFlight" : nil
+                        )
+                        .padding(.top, 4)
+                    }
+                    .padding(.vertical, 8)
+                }
+            }
+        }
+    }
+
+    private var selectedDataSource: String {
+        switch dataMode {
+        case .local:
+            return "data"
+        case .remote:
+            return DemoReleaseNotesSource.remoteURL
+        case .update:
+            return DemoReleaseNotesSource.remoteUpdateURL
+        }
+    }
+
+    private var checksForRemoteUpdate: Bool {
+        dataMode == .update
+    }
+
+    private var selectedMeshStyle: SwiftNEWMeshStyle {
+        visualMode == .liquid ? .liquid : .still
+    }
+
+    private var selectedSpecialEffect: SwiftNEWSpecialEffect {
+        visualMode == .particles ? .particles : .none
+    }
+}
+
+#else
 struct ContentView: View {
     @State private var showDefault = false
     @State private var showMini = false
@@ -73,7 +173,7 @@ struct ContentView: View {
                         show: $showRemote,
                         label: "Show Remote Notes",
                         labelImage: "icloud",
-                        data: remoteDataURL
+                        data: DemoReleaseNotesSource.remoteURL
                     )
                 }
                 .tabItem {
@@ -82,8 +182,6 @@ struct ContentView: View {
             }
         }
     }
-
-    private let remoteDataURL = "https://raw.githubusercontent.com/1998code/SwiftNEWKit/refs/heads/main/Demo/What's%20New%3F/en.lproj/data.json"
 
     private var tabBackground: some View {
         ZStack {
@@ -117,9 +215,9 @@ struct ContentView: View {
 
             LinearGradient(
                 colors: [
-                    Color(.systemBackground).opacity(0.62),
-                    Color(.systemBackground).opacity(0.46),
-                    Color(.systemBackground).opacity(0.6)
+                    tabReadabilityColor.opacity(0.62),
+                    tabReadabilityColor.opacity(0.46),
+                    tabReadabilityColor.opacity(0.6)
                 ],
                 startPoint: .top,
                 endPoint: .bottom
@@ -127,6 +225,16 @@ struct ContentView: View {
         }
         .ignoresSafeArea()
         .allowsHitTesting(false)
+    }
+
+    private var tabReadabilityColor: Color {
+        #if os(macOS)
+        Color(NSColor.windowBackgroundColor)
+        #elseif os(tvOS)
+        Color.black
+        #else
+        Color(.systemBackground)
+        #endif
     }
 
     private var miniToolbarExample: some View {
@@ -175,3 +283,4 @@ struct ContentView: View {
         }
     }
 }
+#endif

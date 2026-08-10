@@ -6,7 +6,7 @@
 ![Beta](https://img.shields.io/github/v/release/1998code/SwiftNEWKit?include_prereleases&color=3A59D1&label=Beta)
 [![Validate JSON Files](https://github.com/1998code/SwiftNEWKit/actions/workflows/validate-json.yml/badge.svg)](https://github.com/1998code/SwiftNEWKit/actions/workflows/validate-json.yml)
 ![Swift Version](https://img.shields.io/badge/Swift-5.9/6.1-teal.svg)
-![Platforms](https://img.shields.io/badge/Platforms-iOS%2015.0+%20|%20macOS%2014.0+%20|%20tvOS%2017.0+%20|%20visionOS%201.0+-15437D.svg)
+![Platforms](https://img.shields.io/badge/Platforms-iOS%2015.0+%20|%20watchOS%208.0+%20|%20macOS%2014.0+%20|%20tvOS%2017.0+%20|%20visionOS%201.0+-15437D.svg)
 ![License](https://img.shields.io/badge/License-MIT-C8ECFE.svg)
 
 [English](../README.md) · [繁中](README_tc.md) · [简中](README_zh.md) · [粵語](README_hc.md) · [日本語](README_ja.md) · [한국어](README_ko.md) · [Français](README_fr.md) · **Español**
@@ -70,6 +70,8 @@ Eso es todo — SwiftNEW se activa automáticamente cuando cambia la versión de
 
 | Funcionalidad | Desde | Descripción |
 |---------|:-----:|-------------|
+| 🎛️ Esquinas de botones configurables | 27.0 | Establece `buttonCornerRadius` directamente o con un binding para mantener la coherencia visual de los botones de acción principales |
+| 🔎 Búsqueda en el historial | 27.0 | Busca las notas de versiones anteriores por título / subtítulo / cuerpo sin salir de la pantalla Historial |
 | 🌐 Más idiomas | 6.6.0 | Las notas ya están localizadas en alemán, hebreo, indonesio, ruso y vietnamita |
 | 🌗 Estilo de iconos adaptativo | 6.6.0 | Los fondos y degradados mejoran automáticamente el contraste en modo oscuro |
 | 🫧 Controles de vidrio tintado | 6.6.0 | Los botones usan vidrio tintado interactivo nativo en iOS 26 |

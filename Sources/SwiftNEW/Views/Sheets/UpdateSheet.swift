@@ -241,11 +241,13 @@ extension SwiftNEW {
                     .font(.subheadline.weight(.medium))
                     .foregroundStyle(.secondary)
                     .fixedSize(horizontal: false, vertical: true)
-                Text(release.body)
-                    .font(.subheadline)
-                    .foregroundStyle(.secondary)
-                    .lineSpacing(2)
-                    .fixedSize(horizontal: false, vertical: true)
+                if showDescription {
+                    Text(release.body)
+                        .font(.subheadline)
+                        .foregroundStyle(.secondary)
+                        .lineSpacing(2)
+                        .fixedSize(horizontal: false, vertical: true)
+                }
             }
             .frame(maxWidth: .infinity, alignment: contentFrameAlignment)
 
@@ -385,12 +387,40 @@ private struct SwiftNEWUpdateCardGlassModifier: ViewModifier {
 
     @ViewBuilder
     private func fallback(_ content: Content) -> some View {
+        #if os(watchOS)
+        if #available(watchOS 10.0, *) {
+            materialFallback(content)
+        } else {
+            solidFallback(content)
+        }
+        #else
+        materialFallback(content)
+        #endif
+    }
+
+    @ViewBuilder
+    @available(watchOS 10.0, *)
+    private func materialFallback(_ content: Content) -> some View {
         switch fallbackMaterial {
         case .thin:
             fallbackCard(content, material: .thinMaterial)
         case .ultraThin:
             fallbackCard(content, material: .ultraThinMaterial)
         }
+    }
+
+    private func solidFallback(_ content: Content) -> some View {
+        let opacity = fallbackMaterial == .thin ? 0.16 : 0.1
+
+        return content
+            .background(
+                Color.secondary.opacity(opacity),
+                in: RoundedRectangle(cornerRadius: cornerRadius, style: .continuous)
+            )
+            .overlay {
+                RoundedRectangle(cornerRadius: cornerRadius, style: .continuous)
+                    .stroke(Color.primary.opacity(0.08), lineWidth: 1)
+            }
     }
 
     private func fallbackCard(
@@ -409,7 +439,7 @@ private struct SwiftNEWUpdateCardGlassModifier: ViewModifier {
     }
 }
 
-private enum SwiftNEWUpdateCardFallbackMaterial {
+private enum SwiftNEWUpdateCardFallbackMaterial: Equatable {
     case thin
     case ultraThin
 }

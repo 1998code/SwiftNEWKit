@@ -6,7 +6,7 @@
 ![Beta](https://img.shields.io/github/v/release/1998code/SwiftNEWKit?include_prereleases&color=3A59D1&label=Beta)
 [![Validate JSON Files](https://github.com/1998code/SwiftNEWKit/actions/workflows/validate-json.yml/badge.svg)](https://github.com/1998code/SwiftNEWKit/actions/workflows/validate-json.yml)
 ![Swift Version](https://img.shields.io/badge/Swift-5.9/6.1-teal.svg)
-![Platforms](https://img.shields.io/badge/Platforms-iOS%2015.0+%20|%20macOS%2014.0+%20|%20tvOS%2017.0+%20|%20visionOS%201.0+-15437D.svg)
+![Platforms](https://img.shields.io/badge/Platforms-iOS%2015.0+%20|%20watchOS%208.0+%20|%20macOS%2014.0+%20|%20tvOS%2017.0+%20|%20visionOS%201.0+-15437D.svg)
 ![License](https://img.shields.io/badge/License-MIT-C8ECFE.svg)
 
 [English](../README.md) · [繁中](README_tc.md) · [简中](README_zh.md) · [粵語](README_hc.md) · **日本語** · [한국어](README_ko.md) · [Français](README_fr.md) · [Español](README_es.md)
@@ -70,6 +70,8 @@
 
 | 機能 | 追加バージョン | 説明 |
 |---------|:-----:|-------------|
+| 🎛️ 設定可能なボタンの角丸 | 27.0 | `buttonCornerRadius` を直接指定するか Binding で制御し、主要アクションボタンの見た目を統一 |
+| 🔎 履歴検索 | 27.0 | 履歴画面を離れずに、タイトル / サブタイトル / 本文から過去のリリースノートを検索 |
 | 🌐 対応言語を追加 | 6.6.0 | リリースノートがドイツ語、ヘブライ語、インドネシア語、ロシア語、ベトナム語に対応 |
 | 🌗 アダプティブアイコンスタイル | 6.6.0 | ダークモードでアイコン背景とグラデーションのコントラストを自動改善 |
 | 🫧 色付きガラスコントロール | 6.6.0 | iOS 26 でボタンにネイティブのインタラクティブな色付きガラスを使用 |

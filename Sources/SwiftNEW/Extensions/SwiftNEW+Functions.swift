@@ -23,7 +23,7 @@ extension SwiftNEW {
             checkForUpdates: checkForUpdates,
             bundleIdentifier: configuredBundleIdentifier?.isEmpty == false
                 ? configuredBundleIdentifier
-                : Bundle.main.bundleIdentifier
+                : Bundle.main.appStoreListingBundleIdentifier
         )
     }
 
@@ -235,22 +235,10 @@ extension SwiftNEW {
     }
 
     private func fetchReleaseNotes(for request: SwiftNEWLoadRequest) async throws -> [Vmodel] {
-        if SwiftNEWRemoteSource.looksRemote(request.source) {
-            guard let url = SwiftNEWRemoteSource.url(from: request.source) else {
-                throw URLError(.badURL)
-            }
-            let (responseData, response) = try await URLSession.shared.data(from: url)
-            try validateHTTPResponse(response)
-            return try JSONDecoder().decode([Vmodel].self, from: responseData)
-        }
-
-        guard let url = dataBundle.url(forResource: request.source, withExtension: "json") else {
-            throw CocoaError(.fileNoSuchFile)
-        }
-        return try await Task.detached {
-            let fileData = try Data(contentsOf: url)
-            return try JSONDecoder().decode([Vmodel].self, from: fileData)
-        }.value
+        try await SwiftNEWReleaseNotesLoader.load(
+            from: request.source,
+            bundle: dataBundle
+        )
     }
 
     private func fetchAppStoreURL(bundleIdentifier: String?) async throws -> URL {
@@ -407,7 +395,11 @@ extension SwiftNEW {
     }
 
     func handleShowChange(_ isPresented: Bool) {
-        guard !isPresented, shouldPrefetchRemoteUpdate else { return }
+        guard !isPresented else { return }
+        historySheet = false
+        resetSearch()
+
+        guard shouldPrefetchRemoteUpdate else { return }
 
         if updateCheckPhase != .resolved || availableUpdate != nil {
             hasPendingPresentation = false

@@ -6,7 +6,7 @@
 ![Beta](https://img.shields.io/github/v/release/1998code/SwiftNEWKit?include_prereleases&color=3A59D1&label=测试版)
 [![Validate JSON Files](https://github.com/1998code/SwiftNEWKit/actions/workflows/validate-json.yml/badge.svg)](https://github.com/1998code/SwiftNEWKit/actions/workflows/validate-json.yml)
 ![Swift Version](https://img.shields.io/badge/Swift-5.9/6.1-teal.svg)
-![Platforms](https://img.shields.io/badge/Platforms-iOS%2015.0+%20|%20macOS%2014.0+%20|%20tvOS%2017.0+%20|%20visionOS%201.0+-15437D.svg)
+![Platforms](https://img.shields.io/badge/Platforms-iOS%2015.0+%20|%20watchOS%208.0+%20|%20macOS%2014.0+%20|%20tvOS%2017.0+%20|%20visionOS%201.0+-15437D.svg)
 ![License](https://img.shields.io/badge/License-MIT-C8ECFE.svg)
 
 [English](../README.md) · [繁中](README_tc.md) · **简中** · [粵語](README_hc.md) · [日本語](README_ja.md) · [한국어](README_ko.md) · [Français](README_fr.md) · [Español](README_es.md)
@@ -70,6 +70,8 @@
 
 | 功能 | 起始版本 | 说明 |
 |---------|:-----:|-------------|
+| 🎛️ 可配置按钮圆角 | 27.0 | 直接设置 `buttonCornerRadius` 或通过 binding 控制，同时让主要操作按钮保持一致外观 |
+| 🔎 历史搜索 | 27.0 | 无需离开“历史”界面，即可按标题 / 副标题 / 正文搜索历史版本说明 |
 | 🌐 更多语言 | 6.6.0 | 版本说明现已支持德语、希伯来语、印度尼西亚语、俄语和越南语 |
 | 🌗 自适应图标样式 | 6.6.0 | 图标背景和字形渐变会在深色模式自动改善对比度 |
 | 🫧 着色玻璃控件 | 6.6.0 | 版本说明和主要操作按钮在 iOS 26 使用原生交互式着色玻璃 |

@@ -25,6 +25,16 @@ import AppKit
     #expect(defaultDirect.updateButtonTitle.isEmpty)
     #expect(defaultDirect.resolvedUpdateButtonTitle.isEmpty == false)
     #expect(defaultDirect.appStoreBundleIdentifier == nil)
+    #expect(defaultDirect.buttonCornerRadius == SwiftNEW.defaultButtonCornerRadius)
+    #expect(defaultDirect.showDescription == SwiftNEW.defaultShowDescription)
+    #expect(defaultDirect.search == SwiftNEW.defaultSearchEnabled)
+    #if os(watchOS)
+    #expect(defaultDirect.showDescription == false)
+    #expect(defaultDirect.search == false)
+    #else
+    #expect(defaultDirect.showDescription)
+    #expect(defaultDirect.search)
+    #endif
 
     let direct = SwiftNEW(
         show: .constant(false),
@@ -34,14 +44,17 @@ import AppKit
         label: "Open",
         labelImage: "sparkles",
         history: false,
+        search: false,
         data: "missing",
         showDrop: true,
         mesh: true,
         meshStyle: .liquid,
         specialEffect: .particles,
         glass: false,
+        buttonCornerRadius: 28,
         presentation: .embed,
         showBuild: false,
+        showDescription: false,
         headingStyle: .appName,
         headingPrefix: "Latest in",
         iconStyle: .default,
@@ -58,14 +71,18 @@ import AppKit
     #expect(direct.label == "Open")
     #expect(direct.labelImage == "sparkles")
     #expect(direct.history == false)
+    #expect(direct.search == false)
     #expect(direct.data == "missing")
     #expect(direct.showDrop)
     #expect(direct.mesh)
     #expect(direct.meshStyle == .liquid)
     #expect(direct.specialEffect == .particles)
     #expect(direct.glass == false)
+    #expect(direct.buttonCornerRadius == 28)
+    #expect(direct.resolvedButtonCornerRadius == 28)
     #expect(direct.presentation == .embed)
     #expect(direct.showBuild == false)
+    #expect(direct.showDescription == false)
     #expect(direct.headingStyle == .appName)
     #expect(direct.headingPrefix == "Latest in")
     #expect(direct.iconStyle == .default)
@@ -84,14 +101,17 @@ import AppKit
         label: .constant("Hidden"),
         labelImage: .constant("eye.slash"),
         history: .constant(true),
+        search: .constant(true),
         data: .constant("data"),
         showDrop: .constant(false),
         mesh: .constant(false),
         meshStyle: .constant(.still),
         specialEffect: .constant(.christmas),
         glass: .constant(true),
+        buttonCornerRadius: .constant(32),
         presentation: .constant(.sheet),
         showBuild: .constant(true),
+        showDescription: .constant(true),
         headingStyle: .constant(.versionOnly),
         headingPrefix: .constant("Updates for"),
         iconStyle: .constant(.filled),
@@ -107,9 +127,12 @@ import AppKit
     #expect(bound.size == "invisible")
     #expect(bound.label == "Hidden")
     #expect(bound.labelImage == "eye.slash")
+    #expect(bound.search)
     #expect(bound.meshStyle == .still)
     #expect(bound.specialEffect == .christmas)
+    #expect(bound.buttonCornerRadius == 32)
     #expect(bound.presentation == .sheet)
+    #expect(bound.showDescription)
     #expect(bound.headingStyle == .versionOnly)
     #expect(bound.headingPrefix == "Updates for")
     #expect(bound.iconStyle == .filled)
@@ -119,6 +142,9 @@ import AppKit
     #expect(bound.allowsSkippingUpdate == false)
     #expect(bound.updateButtonTitle == "Get It")
     #expect(bound.appStoreBundleIdentifier == "com.example.bound")
+
+    let negativeRadius = SwiftNEW(show: .constant(false), buttonCornerRadius: -4)
+    #expect(negativeRadius.resolvedButtonCornerRadius == 0)
 }
 
 @MainActor
@@ -245,6 +271,7 @@ import AppKit
     #expect(Color.black.adaptedTextColor == .white)
     #expect(Bundle.versionBuild.contains("("))
     #expect(Bundle.appName == Bundle.main.infoDictionary?["CFBundleName"] as? String ?? "")
+    #expect(Bundle.main.appStoreListingBundleIdentifier == Bundle.main.bundleIdentifier)
     #expect(Bundle.main.iconFileName == nil)
     #expect(Bundle.main.appIconName == nil)
 }
@@ -363,7 +390,7 @@ import AppKit
 
 @MainActor
 @Test func searchTextUpdatePathIsCallable() async throws {
-    let sut = makeSwiftNEW(showSearch: true)
+    let sut = makeSwiftNEW(showSearch: true, search: true)
 
     sut.updateSearchText("coverage")
     try await Task.sleep(nanoseconds: 350_000_000)
@@ -373,13 +400,61 @@ import AppKit
 
 @MainActor
 @Test func searchToggleAndRetryPathsAreCallable() async throws {
-    let sut = makeSwiftNEW(showSearch: true, searchText: "coverage", debouncedSearchText: "coverage")
+    let sut = makeSwiftNEW(
+        showSearch: true,
+        searchText: "coverage",
+        debouncedSearchText: "coverage",
+        search: true
+    )
 
     sut.toggleSearchVisibility()
     sut.retryLoadData()
     try await Task.sleep(nanoseconds: 300_000_000)
 
     #expect(sut.matchesSearch(sampleModel()))
+    #expect(sut.showSearch == false)
+    #expect(sut.searchText.isEmpty)
+    #expect(sut.debouncedSearchText.isEmpty)
+}
+
+@MainActor
+@Test func disabledSearchIgnoresAndClearsResidualQuery() {
+    let sut = makeSwiftNEW(
+        showSearch: true,
+        searchText: "hidden query",
+        debouncedSearchText: "hidden query",
+        search: false
+    )
+
+    #expect(sut.matchesSearch(sampleModel()))
+
+    sut.toggleSearchVisibility()
+
+    #expect(sut.showSearch == false)
+    #expect(sut.searchText.isEmpty)
+    #expect(sut.debouncedSearchText.isEmpty)
+}
+
+@MainActor
+@Test func historySearchFiltersChangesAndOuterDismissalResetsSearch() {
+    let sut = makeSwiftNEW(
+        items: sampleItems(),
+        historySheet: true,
+        showSearch: true,
+        searchText: "previous",
+        debouncedSearchText: "previous",
+        search: true
+    )
+
+    #expect(sut.matchingHistoryChanges(in: sampleItems()[0]).isEmpty)
+    #expect(sut.matchingHistoryChanges(in: sampleItems()[1]).count == 1)
+
+    sut.handleShowChange(false)
+
+    #expect(sut.historySheet == false)
+    #expect(sut.showSearch == false)
+    #expect(sut.searchText.isEmpty)
+    #expect(sut.debouncedSearchText.isEmpty)
 }
 
 @MainActor
@@ -415,6 +490,7 @@ import AppKit
 @MainActor
 @Test func renderSwiftNEWEntryPoints() {
     render(makeSwiftNEW(size: "simple", glass: true, presentation: .sheet).body)
+    render(makeSwiftNEW(items: sampleItems(), loading: false, showDescription: false).sheetCurrent)
     render(makeSwiftNEW(size: "mini", glass: false, presentation: .fullScreenCover).body)
     render(makeSwiftNEW(testingShow: true, size: "simple", presentation: .sheet).body)
     render(makeSwiftNEW(testingShow: true, historySheet: true, size: "simple", presentation: .sheet).body)
@@ -465,7 +541,8 @@ import AppKit
         showSearch: true,
         searchText: "coverage",
         debouncedSearchText: "coverage",
-        history: true
+        history: true,
+        search: true
     )
     render(populated.sheetCurrent)
 
@@ -473,7 +550,8 @@ import AppKit
         items: sampleItems(),
         loading: false,
         showSearch: false,
-        history: false
+        history: false,
+        search: false
     )
     render(noHistory.sheetCurrent)
 }
@@ -494,11 +572,29 @@ import AppKit
     render(update.dismissUpdateButton)
     render(update.retryAppStoreLookupButton)
     render(update.sheetUpdateChecking)
+
+    let compactUpdate = makeSwiftNEW(
+        items: sampleItems(),
+        loading: false,
+        availableUpdate: sampleUpdateCandidate(),
+        updateCheckPhase: .resolved,
+        showDescription: false,
+        checkForUpdates: true
+    )
+    render(compactUpdate.sheetUpdate)
 }
 
 @MainActor
 @Test func renderHistorySheetAndEffects() {
-    let sut = makeSwiftNEW(items: sampleItems(), loading: false, mesh: true)
+    let sut = makeSwiftNEW(
+        items: sampleItems(),
+        loading: false,
+        showSearch: true,
+        searchText: "previous",
+        debouncedSearchText: "previous",
+        search: true,
+        mesh: true
+    )
 
     render(sut.sheetHistory)
     let meshView = MeshView(color: .constant(.purple))
@@ -529,13 +625,16 @@ private func makeSwiftNEW(
     color: Color = .accentColor,
     size: String = "simple",
     history: Bool = true,
+    search: Bool? = nil,
     data: String = "data",
     mesh: Bool = false,
     meshStyle: SwiftNEWMeshStyle = .still,
     specialEffect: SwiftNEWSpecialEffect = .none,
     glass: Bool = true,
+    buttonCornerRadius: CGFloat? = nil,
     presentation: SwiftNEWPresentation = .sheet,
     showBuild: Bool = true,
+    showDescription: Bool? = nil,
     headingStyle: SwiftNEWHeadingStyle = .version,
     headingPrefix: String = "What's New in",
     iconStyle: SwiftNEWIconStyle = .default,
@@ -565,14 +664,17 @@ private func makeSwiftNEW(
         label: "Show Release Note",
         labelImage: "arrow.up.circle.fill",
         history: history,
+        search: search,
         data: data,
         showDrop: false,
         mesh: mesh,
         meshStyle: meshStyle,
         specialEffect: specialEffect,
         glass: glass,
+        buttonCornerRadius: buttonCornerRadius,
         presentation: presentation,
         showBuild: showBuild,
+        showDescription: showDescription,
         headingStyle: headingStyle,
         headingPrefix: headingPrefix,
         iconStyle: iconStyle,

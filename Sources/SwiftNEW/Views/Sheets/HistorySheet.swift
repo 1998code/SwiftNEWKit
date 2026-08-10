@@ -17,7 +17,9 @@ extension SwiftNEW {
 
     // MARK: - History List View
     public var sheetHistory: some View {
-        #if os(tvOS)
+        #if os(watchOS)
+        watchHistoryContent
+        #elseif os(tvOS)
         GeometryReader { geometry in
             sheetHistoryContent(maxScrollHeight: geometry.size.height * 0.5)
         }
@@ -25,6 +27,34 @@ extension SwiftNEW {
         sheetHistoryContent(maxScrollHeight: nil)
         #endif
     }
+
+    #if os(watchOS)
+    private var watchHistoryContent: some View {
+        ScrollView(showsIndicators: false) {
+            VStack(alignment: align, spacing: 12) {
+                Text(String(localized: "History", bundle: .module))
+                    .font(.headline.weight(.bold))
+                    .frame(maxWidth: .infinity)
+
+                if search {
+                    searchButton
+                }
+
+                if search && showSearch {
+                    searchField
+                }
+
+                ForEach(items) { item in
+                    historySection(for: item)
+                }
+
+                closeHistoryButton
+                    .padding(.top, 4)
+            }
+            .padding(.vertical, 8)
+        }
+    }
+    #endif
 
     private func sheetHistoryContent(maxScrollHeight: CGFloat?) -> some View {
         VStack(alignment: align) {
@@ -36,24 +66,16 @@ extension SwiftNEW {
 
             Spacer()
 
+            if search && showSearch {
+                searchField
+            }
+
             ScrollView(showsIndicators: false) {
                 // Breathing room so the first row doesn't sit in the top fade.
                 Color.clear.frame(height: 10)
 
                 ForEach(items) { item in
-                    ZStack {
-                        colorGradient
-                        Text(item.version).bold().font(.headline)
-                            .foregroundColor(color.adaptedTextColor)
-                    }
-                    .swiftNEWGlass(radius: 12, color: color)
-                    .frame(width: 96, height: 32)
-                    .cornerRadius(12)
-                    .padding(.bottom, 10)
-
-                    ForEach(item.new) { new in
-                        releaseRow(new, bodyFont: .caption)
-                    }
+                    historySection(for: item)
                 }
             }
             .softScrollEdges()
@@ -66,8 +88,7 @@ extension SwiftNEW {
 
             Spacer()
 
-            closeHistoryButton
-                .padding(.bottom)
+            historyControls
         }
         #if os(macOS)
         .padding()
@@ -75,5 +96,42 @@ extension SwiftNEW {
         #elseif os(tvOS)
         .frame(width: 600)
         #endif
+    }
+
+    @ViewBuilder
+    private func historySection(for item: Vmodel) -> some View {
+        let matchingChanges = matchingHistoryChanges(in: item)
+
+        if !matchingChanges.isEmpty {
+            ZStack {
+                colorGradient
+                Text(item.version).bold().font(.headline)
+                    .foregroundColor(color.adaptedTextColor)
+            }
+            .swiftNEWGlass(radius: 12, color: color)
+            .frame(width: 96, height: 32)
+            .cornerRadius(12)
+            .padding(.bottom, 10)
+
+            ForEach(matchingChanges) { new in
+                releaseRow(new, bodyFont: .caption)
+            }
+        }
+    }
+
+    func matchingHistoryChanges(in item: Vmodel) -> [Model] {
+        item.new.filter { matchesSearch($0) }
+    }
+
+    private var historyControls: some View {
+        VStack(spacing: 0) {
+            if search {
+                searchButton
+                    .padding(.bottom)
+            }
+
+            closeHistoryButton
+                .padding(.bottom)
+        }
     }
 }

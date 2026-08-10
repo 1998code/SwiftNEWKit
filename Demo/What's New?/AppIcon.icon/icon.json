@@ -9,7 +9,19 @@
         },
         {
           "image-name" : "Rectangle 5.png",
-          "name" : "Rectangle 5"
+          "name" : "Rectangle 5",
+          "position-specializations" : [
+            {
+              "idiom" : "watchOS",
+              "value" : {
+                "scale" : 0.85,
+                "translation-in-points" : [
+                  0,
+                  0
+                ]
+              }
+            }
+          ]
         }
       ],
       "shadow" : {

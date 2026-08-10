@@ -6,7 +6,7 @@
 ![Beta](https://img.shields.io/github/v/release/1998code/SwiftNEWKit?include_prereleases&color=3A59D1&label=Beta)
 [![Validate JSON Files](https://github.com/1998code/SwiftNEWKit/actions/workflows/validate-json.yml/badge.svg)](https://github.com/1998code/SwiftNEWKit/actions/workflows/validate-json.yml)
 ![Swift Version](https://img.shields.io/badge/Swift-5.9/6.1-teal.svg)
-![Platforms](https://img.shields.io/badge/Platforms-iOS%2015.0+%20|%20macOS%2014.0+%20|%20tvOS%2017.0+%20|%20visionOS%201.0+-15437D.svg)
+![Platforms](https://img.shields.io/badge/Platforms-iOS%2015.0+%20|%20watchOS%208.0+%20|%20macOS%2014.0+%20|%20tvOS%2017.0+%20|%20visionOS%201.0+-15437D.svg)
 ![License](https://img.shields.io/badge/License-MIT-C8ECFE.svg)
 
 [English](../README.md) · [繁中](README_tc.md) · [简中](README_zh.md) · [粵語](README_hc.md) · [日本語](README_ja.md) · **한국어** · [Français](README_fr.md) · [Español](README_es.md)
@@ -70,6 +70,8 @@
 
 | 기능 | 도입 버전 | 설명 |
 |---------|:-----:|-------------|
+| 🎛️ 버튼 모서리 반경 사용자 지정 | 27.0 | `buttonCornerRadius`를 직접 지정하거나 바인딩으로 전달해 주요 동작 버튼의 시각적 일관성 유지 |
+| 🔎 히스토리 검색 | 27.0 | 히스토리 화면을 벗어나지 않고 제목 / 부제 / 본문으로 이전 릴리스 노트 검색 |
 | 🌐 더 많은 언어 | 6.6.0 | 릴리스 노트를 독일어, 히브리어, 인도네시아어, 러시아어, 베트남어로 제공 |
 | 🌗 적응형 아이콘 스타일 | 6.6.0 | 다크 모드에서 아이콘 배경과 그라데이션 대비를 자동 개선 |
 | 🫧 틴트 글래스 컨트롤 | 6.6.0 | iOS 26에서 버튼에 네이티브 인터랙티브 틴트 글래스를 사용 |

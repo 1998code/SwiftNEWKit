@@ -17,24 +17,41 @@ extension SwiftNEW {
 
     public var showHistoryButton: some View {
         capsuleSecondaryButton(action: { historySheet = true }) {
+            #if os(watchOS)
+            Text(String(localized: "History", bundle: .module))
+            #else
             Text(String(localized: "Show History", bundle: .module))
+            #endif
             Image(systemName: "arrow.up.bin")
         }
     }
 
+    @ViewBuilder
     public var searchButton: some View {
-        capsuleSecondaryButton(action: toggleSearchVisibility) {
-            Text(String(localized: "Search", bundle: .module))
-            Image(systemName: showSearch ? "xmark.circle" : "magnifyingglass")
+        if search {
+            capsuleSecondaryButton(action: toggleSearchVisibility) {
+                Text(String(localized: "Search", bundle: .module))
+                Image(systemName: showSearch ? "xmark.circle" : "magnifyingglass")
+            }
         }
     }
 
     func toggleSearchVisibility() {
+        guard search else {
+            resetSearch()
+            return
+        }
+
         withAnimation { showSearch.toggle() }
         if !showSearch {
-            searchText = ""
-            debouncedSearchText = ""
+            resetSearch()
         }
+    }
+
+    func resetSearch() {
+        showSearch = false
+        searchText = ""
+        debouncedSearchText = ""
     }
 
     public var closeCurrentButton: some View {
@@ -95,12 +112,8 @@ extension SwiftNEW {
         )
     }
 
-    private var primaryActionButtonCornerRadius: CGFloat {
-        #if os(macOS)
-        12
-        #else
-        20
-        #endif
+    var resolvedButtonCornerRadius: CGFloat {
+        max(0, buttonCornerRadius)
     }
 
     @ViewBuilder
@@ -108,7 +121,19 @@ extension SwiftNEW {
         action: @escaping () -> Void,
         @ViewBuilder label: () -> Label
     ) -> some View {
-        #if os(iOS) && compiler(>=6.2)
+        #if os(watchOS)
+        Button(action: action) {
+            capsuleSecondaryButtonLabel(label: label)
+                .padding(.horizontal, 8)
+                .padding(.vertical, 5)
+                .background {
+                    Capsule()
+                        .fill(Color.secondary.opacity(0.16))
+                }
+                .contentShape(Capsule())
+        }
+        .buttonStyle(.plain)
+        #elseif os(iOS) && compiler(>=6.2)
         if #available(iOS 26.0, *) {
             Button(action: action) {
                 capsuleSecondaryButtonLabel(label: label)
@@ -130,12 +155,19 @@ extension SwiftNEW {
     private func capsuleSecondaryButtonLabel<Label: View>(
         @ViewBuilder label: () -> Label
     ) -> some View {
+        #if os(watchOS)
+        HStack(spacing: 4) {
+            label()
+        }
+        .font(.caption2.weight(.semibold))
+        #else
         HStack {
             if align == .trailing { Spacer() }
             label()
             if align == .leading { Spacer() }
         }
         .font(.caption)
+        #endif
     }
 
     @ViewBuilder
@@ -172,7 +204,10 @@ extension SwiftNEW {
             }
             .font(.body)
             .padding(.horizontal)
-            #if os(iOS)
+            #if os(watchOS)
+            .padding(.vertical, 8)
+            .frame(maxWidth: .infinity)
+            #elseif os(iOS)
             .padding(.vertical, 12)
             .frame(minHeight: 50)
             .frame(maxWidth: .infinity)
@@ -184,23 +219,29 @@ extension SwiftNEW {
             .modifier(
                 PrimaryActionButtonLabelModifier(
                     tint: color,
-                    cornerRadius: primaryActionButtonCornerRadius,
+                    cornerRadius: resolvedButtonCornerRadius,
                     usesTintedGlass: usesTintedGlass
                 )
             )
             #elseif os(tvOS)
             .tint(.white)
             #endif
-            .contentShape(RoundedRectangle(cornerRadius: primaryActionButtonCornerRadius, style: .continuous))
+            .contentShape(RoundedRectangle(cornerRadius: resolvedButtonCornerRadius, style: .continuous))
         }
         .modifier(
             PrimaryActionButtonGlassModifier(
                 tint: color,
-                cornerRadius: primaryActionButtonCornerRadius,
+                cornerRadius: resolvedButtonCornerRadius,
                 isEnabled: usesTintedGlass
             )
         )
-        .swiftNEWGlass(radius: primaryActionButtonCornerRadius, color: color.opacity(0.1))
+        .modifier(PrimaryActionButtonPlatformStyleModifier(tint: color))
+        .modifier(
+            PrimaryActionButtonFallbackGlassModifier(
+                tint: color,
+                cornerRadius: resolvedButtonCornerRadius
+            )
+        )
     }
 }
 
@@ -248,6 +289,35 @@ private struct PrimaryActionButtonGlassModifier: ViewModifier {
         }
         #else
         content
+        #endif
+    }
+}
+
+private struct PrimaryActionButtonPlatformStyleModifier: ViewModifier {
+    let tint: Color
+
+    @ViewBuilder
+    func body(content: Content) -> some View {
+        #if os(watchOS)
+        content
+            .buttonStyle(.plain)
+            .tint(tint)
+        #else
+        content
+        #endif
+    }
+}
+
+private struct PrimaryActionButtonFallbackGlassModifier: ViewModifier {
+    let tint: Color
+    let cornerRadius: CGFloat
+
+    @ViewBuilder
+    func body(content: Content) -> some View {
+        #if os(watchOS)
+        content
+        #else
+        content.swiftNEWGlass(radius: cornerRadius, color: tint.opacity(0.1))
         #endif
     }
 }

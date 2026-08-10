@@ -6,7 +6,7 @@
 ![Beta](https://img.shields.io/github/v/release/1998code/SwiftNEWKit?include_prereleases&color=3A59D1&label=測試版)
 [![Validate JSON Files](https://github.com/1998code/SwiftNEWKit/actions/workflows/validate-json.yml/badge.svg)](https://github.com/1998code/SwiftNEWKit/actions/workflows/validate-json.yml)
 ![Swift Version](https://img.shields.io/badge/Swift-5.9/6.1-teal.svg)
-![Platforms](https://img.shields.io/badge/Platforms-iOS%2015.0+%20|%20macOS%2014.0+%20|%20tvOS%2017.0+%20|%20visionOS%201.0+-15437D.svg)
+![Platforms](https://img.shields.io/badge/Platforms-iOS%2015.0+%20|%20watchOS%208.0+%20|%20macOS%2014.0+%20|%20tvOS%2017.0+%20|%20visionOS%201.0+-15437D.svg)
 ![License](https://img.shields.io/badge/License-MIT-C8ECFE.svg)
 
 [English](../README.md) · [繁中](README_tc.md) · [简中](README_zh.md) · **粵語** · [日本語](README_ja.md) · [한국어](README_ko.md) · [Français](README_fr.md) · [Español](README_es.md)
@@ -66,10 +66,14 @@
 
 搞掂 — App 版本一變,SwiftNEW 就會自動彈出。
 
+已經獲 Apple 批准嘅 CarPlay host app，只可以喺更新內容直接符合獲批車載類別時用 `SwiftNEWCarPlayTemplateFactory`；一般產品 changelog 唔會自動符合資格。Scene lifecycle、內容同 entitlement 限制請睇 [CarPlay 整合指南](CARPLAY.md)。
+
 ## ✨ 功能
 
 | 功能 | 起始版本 | 說明 |
 |---------|:-----:|-------------|
+| 🎛️ 可設定按鈕圓角 | 27.0 | 直接設定 `buttonCornerRadius` 或用 binding 控制，同時令主要操作按鈕嘅外觀保持一致 |
+| 🔎 歷史搜尋 | 27.0 | 唔使離開「歷史」畫面，就可以按標題 / 副標題 / 內文搜尋過往版本說明 |
 | 🌐 更多語言 | 6.6.0 | 版本說明而家支援德文、希伯來文、印尼文、俄文同越南文 |
 | 🌗 自適應圖示樣式 | 6.6.0 | 圖示背景同字形漸層會喺深色模式自動改善對比 |
 | 🫧 著色玻璃控制項 | 6.6.0 | 版本說明同主要操作按鈕喺 iOS 26 使用原生互動式著色玻璃 |
@@ -122,6 +126,7 @@
 |-------|--------|
 | [Configuration](CONFIGURATION.md) | 全部參數、例子、資料來源(本地 / 遠端 / Firebase)、資料模型 |
 | [Platform Support & Installation](PLATFORM.md) | 支援嘅 OS 版本、要求、功能對照表、SPM 設定 |
+| [CarPlay Integration](CARPLAY.md) | Template factory、scene lifecycle、資料載入、entitlement 要求 |
 | [Contributing](CONTRIBUTING.md) | 專案結構、開發環境、PR 規範、疑難排解 |
 
 ## 📄 授權

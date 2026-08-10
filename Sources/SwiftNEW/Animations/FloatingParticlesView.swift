@@ -6,7 +6,11 @@
 import SwiftUI
 
 struct FloatingParticlesView: View {
+    #if os(watchOS)
+    private let particleCount = 12
+    #else
     private let particleCount = 30
+    #endif
     private static let particleColors: [Color] = [
         .red, .orange, .yellow, .green, .mint, .teal, .cyan, .blue, .indigo, .purple, .pink
     ]

@@ -22,6 +22,12 @@ open Package.swift   # in Xcode
 
 Test your changes against as many platforms as possible (iOS, macOS, visionOS, tvOS, watchOS).
 
+The CI watchOS compile gate uses a generic device destination and does not launch a simulator:
+
+```bash
+xcodebuild -scheme SwiftNEW -destination 'generic/platform=watchOS' build CODE_SIGNING_ALLOWED=NO
+```
+
 ## PR Guidelines
 
 - **Keep PRs focused.** One feature or bug fix per PR. Avoid bundling unrelated refactors, formatting changes, or dependency updates.
@@ -64,7 +70,7 @@ Sources/SwiftNEW/
 
 - **Core**: `SwiftNEW` struct holds all configuration via `@Binding`s; multiple `init` overloads accept either direct values or bindings (cross-platform variants for iOS/macOS/watchOS/tvOS/visionOS).
 - **View layer**: `body` resolves to either an embedded view or a button that triggers a sheet / fullScreenCover. Sheets compose `MeshView` + optional `SnowfallView` / `FloatingParticlesView` on top of `sheetCurrent`, `sheetHistory`, or `sheetUpdate`.
-- **Data**: `loadData()` parses local or remote JSON into `[Vmodel]` using Swift Concurrency. `compareVersion()` reads `Bundle.version` / `Bundle.build` and toggles `show` on mismatch. When `checkForUpdates` is enabled for a remote source, the loader selects the highest newer release, resolves `trackViewUrl` through Apple's iTunes Lookup API using the configured App Store bundle identifier (or `Bundle.main.bundleIdentifier` by default), and routes to `sheetUpdate`.
+- **Data**: `loadData()` parses local or remote JSON into `[Vmodel]` using Swift Concurrency. `compareVersion()` reads `Bundle.version` / `Bundle.build` and toggles `show` on mismatch. When `checkForUpdates` is enabled for a remote source, the loader selects the highest newer release, resolves `trackViewUrl` through Apple's iTunes Lookup API using the configured App Store bundle identifier (`WKCompanionAppBundleIdentifier` on watchOS when present, otherwise `Bundle.main.bundleIdentifier`), and routes to `sheetUpdate`.
 
 ## 🔧 Troubleshooting
 

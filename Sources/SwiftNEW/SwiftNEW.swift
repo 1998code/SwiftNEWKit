@@ -82,14 +82,17 @@ public struct SwiftNEW: View {
     @Binding var label: String
     @Binding var labelImage: String
     @Binding var history: Bool
+    @Binding var search: Bool
     @Binding var data: String
     @Binding var showDrop: Bool
     @Binding var mesh: Bool
     @Binding var meshStyle: SwiftNEWMeshStyle
     @Binding var specialEffect: SwiftNEWSpecialEffect
     @Binding var glass: Bool
+    @Binding var buttonCornerRadius: CGFloat
     @Binding var presentation: SwiftNEWPresentation
     @Binding var showBuild: Bool
+    @Binding var showDescription: Bool
     @Binding var headingStyle: SwiftNEWHeadingStyle
     @Binding var headingPrefix: String
     @Binding var iconStyle: SwiftNEWIconStyle
@@ -101,6 +104,32 @@ public struct SwiftNEW: View {
     @Binding var appStoreBundleIdentifier: String?
     var dataBundle: Bundle = .main
 
+    static var defaultButtonCornerRadius: CGFloat {
+        #if os(watchOS)
+        12
+        #elseif os(macOS)
+        12
+        #else
+        20
+        #endif
+    }
+
+    static var defaultShowDescription: Bool {
+        #if os(watchOS)
+        false
+        #else
+        true
+        #endif
+    }
+
+    static var defaultSearchEnabled: Bool {
+        #if os(watchOS)
+        false
+        #else
+        true
+        #endif
+    }
+
     public init(
         show: Binding<Bool>,
         align: HorizontalAlignment? = .center,
@@ -109,14 +138,17 @@ public struct SwiftNEW: View {
         label: String? = "Show Release Note",
         labelImage: String? = "arrow.up.circle.fill",
         history: Bool? = true,
+        search: Bool? = nil,
         data: String? = "data",
         showDrop: Bool? = false,
         mesh: Bool? = true,
         meshStyle: SwiftNEWMeshStyle? = .still,
         specialEffect: SwiftNEWSpecialEffect? = SwiftNEWSpecialEffect.none,
         glass: Bool? = true,
+        buttonCornerRadius: CGFloat? = nil,
         presentation: SwiftNEWPresentation? = .sheet,
         showBuild: Bool? = true,
+        showDescription: Bool? = nil,
         headingStyle: SwiftNEWHeadingStyle? = .version,
         headingPrefix: String? = "What's New in",
         iconStyle: SwiftNEWIconStyle? = .default,
@@ -134,14 +166,17 @@ public struct SwiftNEW: View {
         _label = .constant(label ?? "Show Release Note")
         _labelImage = .constant(labelImage ?? "arrow.up.circle.fill")
         _history = .constant(history ?? true)
+        _search = .constant(search ?? Self.defaultSearchEnabled)
         _data = .constant(data ?? "data")
         _showDrop = .constant(showDrop ?? false)
         _mesh = .constant(mesh ?? true)
         _meshStyle = .constant(meshStyle ?? .still)
         _specialEffect = .constant(specialEffect ?? .none)
         _glass = .constant(glass ?? true)
+        _buttonCornerRadius = .constant(buttonCornerRadius ?? Self.defaultButtonCornerRadius)
         _presentation = .constant(presentation ?? .sheet)
         _showBuild = .constant(showBuild ?? true)
+        _showDescription = .constant(showDescription ?? Self.defaultShowDescription)
         _headingStyle = .constant(headingStyle ?? .version)
         _headingPrefix = .constant(headingPrefix ?? "What's New in")
         _iconStyle = .constant(iconStyle ?? .default)
@@ -162,14 +197,17 @@ public struct SwiftNEW: View {
         label: Binding<String>? = .constant("Show Release Note"),
         labelImage: Binding<String>? = .constant("arrow.up.circle.fill"),
         history: Binding<Bool>? = .constant(true),
+        search: Binding<Bool>? = nil,
         data: Binding<String>? = .constant("data"),
         showDrop: Binding<Bool>? = .constant(false),
         mesh: Binding<Bool>? = .constant(true),
         meshStyle: Binding<SwiftNEWMeshStyle>? = .constant(.still),
         specialEffect: Binding<SwiftNEWSpecialEffect>? = .constant(.none),
         glass: Binding<Bool>? = .constant(true),
+        buttonCornerRadius: Binding<CGFloat>? = nil,
         presentation: Binding<SwiftNEWPresentation>? = .constant(.sheet),
         showBuild: Binding<Bool>? = .constant(true),
+        showDescription: Binding<Bool>? = nil,
         headingStyle: Binding<SwiftNEWHeadingStyle>? = .constant(.version),
         headingPrefix: Binding<String>? = .constant("What's New in"),
         iconStyle: Binding<SwiftNEWIconStyle>? = .constant(.default),
@@ -187,14 +225,17 @@ public struct SwiftNEW: View {
         _label = label ?? .constant("Show Release Note")
         _labelImage = labelImage ?? .constant("arrow.up.circle.fill")
         _history = history ?? .constant(true)
+        _search = search ?? .constant(Self.defaultSearchEnabled)
         _data = data ?? .constant("data")
         _showDrop = showDrop ?? .constant(false)
         _mesh = mesh ?? .constant(true)
         _meshStyle = meshStyle ?? .constant(.still)
         _specialEffect = specialEffect ?? .constant(.none)
         _glass = glass ?? .constant(true)
+        _buttonCornerRadius = buttonCornerRadius ?? .constant(Self.defaultButtonCornerRadius)
         _presentation = presentation ?? .constant(.sheet)
         _showBuild = showBuild ?? .constant(true)
+        _showDescription = showDescription ?? .constant(Self.defaultShowDescription)
         _headingStyle = headingStyle ?? .constant(.version)
         _headingPrefix = headingPrefix ?? .constant("What's New in")
         _iconStyle = iconStyle ?? .constant(.default)
@@ -229,14 +270,17 @@ extension SwiftNEW {
         label: String = "Show Release Note",
         labelImage: String = "arrow.up.circle.fill",
         history: Bool = true,
+        search: Bool? = nil,
         data: String = "data",
         showDrop: Bool = false,
         mesh: Bool = true,
         meshStyle: SwiftNEWMeshStyle = .still,
         specialEffect: SwiftNEWSpecialEffect = .none,
         glass: Bool = true,
+        buttonCornerRadius: CGFloat? = nil,
         presentation: SwiftNEWPresentation = .sheet,
         showBuild: Bool = true,
+        showDescription: Bool? = nil,
         headingStyle: SwiftNEWHeadingStyle = .version,
         headingPrefix: String = "What's New in",
         iconStyle: SwiftNEWIconStyle = .default,
@@ -256,7 +300,7 @@ extension SwiftNEW {
                 checkForUpdates: checkForUpdates,
                 bundleIdentifier: configuredBundleIdentifier?.isEmpty == false
                     ? configuredBundleIdentifier
-                    : Bundle.main.bundleIdentifier
+                    : Bundle.main.appStoreListingBundleIdentifier
             )
         }
 
@@ -290,14 +334,17 @@ extension SwiftNEW {
         _label = .constant(label)
         _labelImage = .constant(labelImage)
         _history = .constant(history)
+        _search = .constant(search ?? Self.defaultSearchEnabled)
         _data = .constant(data)
         _showDrop = .constant(showDrop)
         _mesh = .constant(mesh)
         _meshStyle = .constant(meshStyle)
         _specialEffect = .constant(specialEffect)
         _glass = .constant(glass)
+        _buttonCornerRadius = .constant(buttonCornerRadius ?? Self.defaultButtonCornerRadius)
         _presentation = .constant(presentation)
         _showBuild = .constant(showBuild)
+        _showDescription = .constant(showDescription ?? Self.defaultShowDescription)
         _headingStyle = .constant(headingStyle)
         _headingPrefix = .constant(headingPrefix)
         _iconStyle = .constant(iconStyle)

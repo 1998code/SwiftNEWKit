@@ -8,6 +8,7 @@
 |----------|---------------|------------------|
 | iOS | 18.2 | 15.0+ |
 | iPadOS | 18.2 | 15.0+ |
+| watchOS | — | 8.0+ |
 | macOS | 15.2 | 14.0+ |
 | visionOS | 2.1 | 1.0+ |
 | tvOS | 18.2 | 17.0+ |
@@ -22,17 +23,27 @@
 
 ## Feature Availability
 
-| Feature | iOS | iPadOS | macOS | visionOS | tvOS |
-|---------|:---:|:------:|:-----:|:--------:|:----:|
-| Basic presentation | ✅ | ✅ | ✅ | ✅ | ✅ |
-| Mesh gradients | ✅ | ✅ | ✅ | ✅ | ✅ |
-| Glass effects | ✅ | ✅ | ✅ | ✅ | ❌ |
-| Drop notifications | ✅ | ✅ | ❌ | ❌ | ❌ |
-| History navigation | ✅ | ✅ | ✅ | ✅ | ✅ |
-| Remote JSON | ✅ | ✅ | ✅ | ✅ | ✅ |
-| Remote update screen | ✅ | ✅ | ✅ | ✅ | ✅ |
-| Special effects | ✅ | ✅ | ✅ | ✅ | ✅ |
-| Auto-versioning | ✅ | ✅ | ✅ | ✅ | ✅ |
+| Feature | iOS | iPadOS | watchOS | macOS | visionOS | tvOS |
+|---------|:---:|:------:|:-------:|:-----:|:--------:|:----:|
+| Basic presentation | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| Mesh gradients | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| Glass effects | ✅ | ✅ | Fallback | ✅ | ✅ | ❌ |
+| Drop notifications | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ |
+| History navigation | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| Remote JSON | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| Remote update screen | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| Special effects | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| Auto-versioning | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+
+watchOS uses compact current-version, history, and update layouts automatically. Release-note descriptions and Search controls are hidden by default to save vertical space, while titles, subtitles, and icons remain visible; pass `showDescription: true` or `search: true` to opt in. watchOS 8–9 use solid fallbacks for the Material backgrounds used by SwiftNEW, watchOS 10 adds those Material backgrounds, and watchOS 11 adds native `MeshGradient`; older versions retain the layered gradient fallback. Animation particle counts and liquid-mesh refresh rates are reduced on Apple Watch.
+
+For a companion Watch app, SwiftNEW uses `WKCompanionAppBundleIdentifier` automatically when it is present. Pass `appStoreBundleIdentifier` only when the App Store listing identifier still needs an explicit override. Local `data.json` files must be included in the Watch target itself.
+
+## CarPlay Integration
+
+On iOS 15 and later, an approved CarPlay host app can use `SwiftNEWCarPlayTemplateFactory` to present update content that directly supports its approved in-car category as a native `CPListTemplate`. A general product changelog is not automatically eligible. CarPlay is an iOS integration rather than a separate SwiftPM platform, so no additional package platform or dependency is required.
+
+The host app must supply its approved CarPlay entitlement, provisioning profile, scene manifest, and `CPTemplateApplicationSceneDelegate`. SwiftNEW does not add these app-level capabilities and the Demo target intentionally does not claim an unrelated CarPlay category. See [CARPLAY.md](CARPLAY.md) for the complete setup.
 
 ## 📦 Installation Guide
 

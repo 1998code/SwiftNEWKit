@@ -39,7 +39,7 @@ struct NoiseView: View {
     private var noiseColor: Color {
         #if os(macOS)
         Color(NSColor.windowBackgroundColor).opacity(0.1)
-        #elseif os(tvOS)
+        #elseif os(tvOS) || os(watchOS)
         Color.black.opacity(0.1)
         #else
         Color(.systemBackground).opacity(0.1)

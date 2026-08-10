@@ -24,6 +24,8 @@ jobs:
         run: swift --version
       - name: Build
         run: swift build -v
+      - name: Build watchOS library
+        run: xcodebuild -scheme SwiftNEW -destination 'generic/platform=watchOS' build CODE_SIGNING_ALLOWED=NO
       - name: Test with coverage
         run: swift test --enable-code-coverage -v
       - name: Export LCOV
@@ -89,5 +91,7 @@ jobs:
         run: swift --version
       - name: Build
         run: swift build -v
+      - name: Build watchOS library
+        run: xcodebuild -scheme SwiftNEW -destination 'generic/platform=watchOS' build CODE_SIGNING_ALLOWED=NO
       # - name: Test
       #   run: swift test -v

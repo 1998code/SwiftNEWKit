@@ -8,7 +8,11 @@
 import SwiftUI
 
 struct SnowfallView: View {
+    #if os(watchOS)
+    private let snowflakeCount = 36
+    #else
     private let snowflakeCount = 100
+    #endif
     private let snowflakes: [Snowflake]
 
     init() {

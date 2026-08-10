@@ -13,14 +13,17 @@
 | `label` | `Binding<String>` | `"Show Release Note"` | Button display text |
 | `labelImage` | `Binding<String>` | `"arrow.up.circle.fill"` | SF Symbol icon name |
 | `history` | `Binding<Bool>` | `true` | Enable version history navigation |
+| `search` | `Bool` / `Binding<Bool>` | watchOS: `false`; other platforms: `true` | Enable Search controls and release-note filtering in Current and History views |
 | `data` | `Binding<String>` | `"data"` | Local JSON filename or remote URL |
 | `showDrop` | `Binding<Bool>` | `false` | Use iOS drop notification style |
 | `mesh` | `Binding<Bool>` | `true` | Enable mesh gradient backgrounds |
 | `meshStyle` | `Binding<SwiftNEWMeshStyle>` | `.still` | Mesh behavior: `.still` or `.liquid` |
 | `specialEffect` | `Binding<SwiftNEWSpecialEffect>` | `.none` | Special effects: `.none`, `.christmas`, `.particles` |
 | `glass` | `Binding<Bool>` | `true` | Enable glass morphism effects |
+| `buttonCornerRadius` | `CGFloat` / `Binding<CGFloat>` | iOS/tvOS/visionOS: `20`, watchOS/macOS: `12` | Corner radius for the release-note trigger and primary action buttons; negative values render as `0` |
 | `presentation` | `Binding<SwiftNEWPresentation>` | `.sheet` | Presentation style: `.sheet`, `.fullScreenCover`, `.embed` |
 | `showBuild` | `Binding<Bool>` | `true` | Show build number alongside the version in the header |
+| `showDescription` | `Bool` / `Binding<Bool>` | watchOS: `false`; other platforms: `true` | Show each release note's body description; title, subtitle, and icon remain visible when disabled |
 | `headingStyle` | `Binding<SwiftNEWHeadingStyle>` | `.version` | Subtitle line style: `.version` (`Version 6.4 (19)`), `.versionOnly` (`6.4`), `.appName` (app's display name) |
 | `headingPrefix` | `Binding<String>` | `"What's New in"` | Header title line shown above the version/app name |
 | `iconStyle` | `Binding<SwiftNEWIconStyle>` | `.default` | Row icon style: `.default` (adaptive translucent gradient backdrop), `.filled` (colored backdrop, white glyph), or `.plain` (no backdrop). Default/plain glyphs use a theme gradient in Light Mode and an accent-to-white gradient in Dark Mode. |
@@ -29,7 +32,7 @@
 | `checkForUpdates` | `Binding<Bool>` | `false` | Check remote release notes for a newer app version and resolve its App Store URL automatically |
 | `allowsSkippingUpdate` | `Binding<Bool>` | `true` | Show **Not Now** and allow user-initiated dismissal of the Update presentation |
 | `updateButtonTitle` | `String?` / `Binding<String>` | `nil` / blank → `"Download Now"` | Primary App Store action text; a `nil` direct value or blank text uses the package-localized default |
-| `appStoreBundleIdentifier` | `Binding<String?>` | `nil` | Optional App Store listing bundle ID override for extensions, companion apps, or previews |
+| `appStoreBundleIdentifier` | `String?` / `Binding<String?>` | `nil` | Optional App Store listing bundle ID override for extensions, companion apps, or previews |
 
 \* Required parameter
 
@@ -50,9 +53,12 @@ SwiftNEW(
     size: "normal",
     mesh: true,
     meshStyle: .still,
-    glass: true
+    glass: true,
+    buttonCornerRadius: 24
 )
 ```
+
+`buttonCornerRadius` keeps the Show Release Note, Continue, Return, Download Now, and Try Again buttons visually consistent. Capsule controls such as Search, Show History, and Not Now keep their capsule shape.
 
 ### Liquid Mesh
 
@@ -73,6 +79,28 @@ SwiftNEW(
     showBuild: false
 )
 ```
+
+### Description Visibility
+
+```swift
+SwiftNEW(
+    show: $showNew,
+    showDescription: false
+)
+```
+
+Descriptions are hidden by default on watchOS to save vertical space. Pass `showDescription: true` to show the complete body text on Apple Watch.
+
+### Search Availability
+
+```swift
+SwiftNEW(
+    show: $showNew,
+    search: true
+)
+```
+
+Search controls are hidden by default on watchOS to preserve screen space. Other platforms keep Search enabled by default.
 
 ### Heading Style
 
@@ -215,7 +243,7 @@ SwiftNEW(
 - Numeric components are compared numerically, so `1.10` is newer than `1.9`, while `1.2` and `1.2.0` are equal.
 - A newer version presents the Update screen automatically, even if the current What's New screen was already seen. The screen includes the newest release notes.
 - SwiftNEW requests `https://itunes.apple.com/lookup?bundleId=<resolved bundle identifier>`, matches the returned `bundleId`, and opens its HTTPS Apple `trackViewUrl` from **Download Now** (or the developer's custom `updateButtonTitle`). If the default US storefront has no result, it retries with the device's current region. Developers do not provide or trust an update URL from the release-notes JSON.
-- By default, the lookup uses `Bundle.main.bundleIdentifier`. If an extension, companion app, or preview host has a different bundle ID, pass the App Store listing ID with `appStoreBundleIdentifier`. Unpublished development bundle identifiers can still show the retry state.
+- By default, the lookup uses `Bundle.main.bundleIdentifier`; on watchOS it first uses `WKCompanionAppBundleIdentifier` when the host declares one, so a companion Watch app resolves the iPhone App Store listing automatically. If an extension or preview host still has a different bundle ID, pass the listing ID with `appStoreBundleIdentifier`. Unpublished development bundle identifiers can still show the retry state.
 - If the App Store lookup fails or has no matching result, the Update screen remains visible with a retry action instead of opening an unverified destination. Retrying repeats only the App Store lookup and keeps the already loaded release notes.
 - `allowsSkippingUpdate` defaults to `true`. Set it to `false` to hide **Not Now** and disable user-initiated presentation dismissal while checking for or presenting an update. Developer-controlled state changes, removing the view, and quitting the app remain possible. If App Store lookup fails in this mode, the user must retry.
 - When skipping is allowed, **Not Now** closes a sheet/full-screen presentation. In `.embed`, it returns to the normal What's New content.

@@ -6,6 +6,11 @@
 import SwiftUI
 import SwiftNEW
 
+#if os(watchOS)
+#Preview("Watch") {
+    ContentView()
+}
+#else
 #Preview("Default") {
     ContentView()
 }
@@ -28,7 +33,7 @@ import SwiftNEW
 // Remote (>3.0.0) - Any JSON URL
 #Preview("Remote") {
     @Previewable @State var showNew: Bool = false
-    SwiftNEW(show: $showNew, labelImage: "icloud", data: "https://raw.githubusercontent.com/1998code/SwiftNEWKit/refs/heads/main/Demo/What's%20New%3F/en.lproj/data.json")
+    SwiftNEW(show: $showNew, labelImage: "icloud", data: DemoReleaseNotesSource.remoteURL)
 }
 
 // Remote Update - Dedicated fixture stays higher than the demo app version
@@ -48,7 +53,7 @@ import SwiftNEW
 // Drop (>3.4.0) - Recommended trigger with Remote Notification
 #Preview("Drop") {
     @Previewable @State var showNew: Bool = false
-    SwiftNEW(show: $showNew, label: "Notification", labelImage: "bell.badge", data: "https://raw.githubusercontent.com/1998code/SwiftNEWKit/refs/heads/main/Demo/What's%20New%3F/en.lproj/data.json", showDrop: true)
+    SwiftNEW(show: $showNew, label: "Notification", labelImage: "bell.badge", data: DemoReleaseNotesSource.remoteURL, showDrop: true)
 }
 
 // Full Screen Cover (>6.2.0) - Presentation option
@@ -98,3 +103,4 @@ private var previewAppName: String {
         ?? Bundle.main.infoDictionary?["CFBundleName"] as? String
         ?? "App"
 }
+#endif

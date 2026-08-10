@@ -18,6 +18,8 @@ extension SwiftNEW {
     private var iconBadgeSize: CGFloat {
         #if os(tvOS)
         100
+        #elseif os(watchOS)
+        40
         #else
         64
         #endif
@@ -26,6 +28,8 @@ extension SwiftNEW {
     private var iconBadgeSymbolFont: Font {
         #if os(tvOS)
         .largeTitle
+        #elseif os(watchOS)
+        .body
         #else
         .title
         #endif
@@ -34,6 +38,8 @@ extension SwiftNEW {
     private var iconBadgeCornerRadius: CGFloat {
         #if os(tvOS)
         28
+        #elseif os(watchOS)
+        12
         #else
         20
         #endif
@@ -135,6 +141,7 @@ extension SwiftNEW {
 
     public var body: some View {
         let taskID = loadTaskID
+        let buttonCornerRadius = resolvedButtonCornerRadius
 
         return Group {
             if presentation == .embed {
@@ -149,25 +156,49 @@ extension SwiftNEW {
                     }
                         .frame(
                             width: size == "mini" ? nil : (size == "invisible" ? 0 : platformWidth),
-                            height: size == "mini" ? nil : (size == "invisible" ? 0 : 50)
+                            height: size == "mini" ? nil : (size == "invisible" ? 0 : platformButtonHeight)
                         )
+                        #if os(watchOS)
+                        .padding(.horizontal, size == "mini" || size == "invisible" ? 0 : 12)
+                        .padding(.vertical, size == "mini" || size == "invisible" ? 0 : 8)
+                        #endif
                         .modifier(
                             ReleaseNoteButtonLabelModifier(
                                 color: color,
+                                cornerRadius: buttonCornerRadius,
                                 usesCompactStyle: size == "mini" || size == "invisible"
                             )
                         )
-                        .contentShape(RoundedRectangle(cornerRadius: 15, style: .continuous))
+                        .contentShape(
+                            RoundedRectangle(cornerRadius: buttonCornerRadius, style: .continuous)
+                        )
                 }
                 .opacity(size == "invisible" ? 0 : 1)
+                .modifier(
+                    ReleaseNoteButtonPlatformStyleModifier(
+                        tint: color
+                    )
+                )
                 // The glass chrome is applied *after* the opacity above, so an
                 // `opacity(0)` can never hide it — an "invisible" trigger would
                 // still leave a translucent glass blob floating at the host's
                 // origin (visible on macOS, where the glass routes through
                 // SwiftGlass's frosted Material). "invisible" means draw nothing,
                 // so skip both glass layers in that case.
-                .modifier(ReleaseNoteButtonGlassModifier(tint: color, isEnabled: size != "invisible"))
-                .modifier(ConditionalGlassModifier(isEnabled: glass && size != "invisible", shadowColor: color))
+                .modifier(
+                    ReleaseNoteButtonGlassModifier(
+                        tint: color,
+                        cornerRadius: buttonCornerRadius,
+                        isEnabled: size != "invisible"
+                    )
+                )
+                .modifier(
+                    ConditionalGlassModifier(
+                        isEnabled: glass && size != "invisible",
+                        shadowColor: color,
+                        cornerRadius: buttonCornerRadius
+                    )
+                )
                 .modifier(PresentationModifier(isPresented: $show, presentation: presentation, sheetContent: sheetContent))
             }
         }
@@ -176,6 +207,11 @@ extension SwiftNEW {
         }
         .onChange(of: show) { isPresented in
             handleShowChange(isPresented)
+        }
+        .onChange(of: search) { isEnabled in
+            if !isEnabled {
+                resetSearch()
+            }
         }
         .onDisappear {
             cancelActiveDrop()
@@ -186,11 +222,21 @@ extension SwiftNEW {
         requestPresentationAfterPreflight()
     }
 
-    private var platformWidth: CGFloat {
+    private var platformWidth: CGFloat? {
         #if os(tvOS)
         400
+        #elseif os(watchOS)
+        nil
         #else
         300
+        #endif
+    }
+
+    private var platformButtonHeight: CGFloat? {
+        #if os(watchOS)
+        nil
+        #else
+        50
         #endif
     }
 
@@ -218,9 +264,13 @@ extension SwiftNEW {
                 sheetUpdate
             } else {
                 sheetCurrent
-                    .sheet(isPresented: $historySheet) {
-                        historySheetContent
-                    }
+                    .modifier(
+                        PresentationModifier(
+                            isPresented: $historySheet,
+                            presentation: presentation,
+                            sheetContent: historySheetContent
+                        )
+                    )
             }
         }
         .modifier(
@@ -362,9 +412,9 @@ private struct SheetBackdropModifier: ViewModifier {
             } else {
                 content
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
-                    .background(.ultraThinMaterial, ignoresSafeAreaEdges: .all)
+                    .modifier(SheetMaterialBackgroundModifier())
             }
-        } else if #available(iOS 16.4, tvOS 16.4, *) {
+        } else if #available(iOS 16.4, watchOS 10.0, macOS 13.3, tvOS 16.4, visionOS 1.0, *) {
             // Sheet-level background fills the entire sheet edge-to-edge.
             if mesh {
                 content
@@ -386,14 +436,30 @@ private struct SheetBackdropModifier: ViewModifier {
             } else {
                 content
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
-                    .background(.ultraThinMaterial, ignoresSafeAreaEdges: .all)
+                    .modifier(SheetMaterialBackgroundModifier())
             }
         } // LCOV_EXCL_STOP
     }
 }
 
+private struct SheetMaterialBackgroundModifier: ViewModifier {
+    @ViewBuilder
+    func body(content: Content) -> some View {
+        #if os(watchOS)
+        if #available(watchOS 10.0, *) {
+            content.background(.ultraThinMaterial, ignoresSafeAreaEdges: .all)
+        } else {
+            content.background(Color.black, ignoresSafeAreaEdges: .all)
+        }
+        #else
+        content.background(.ultraThinMaterial, ignoresSafeAreaEdges: .all)
+        #endif
+    }
+}
+
 private struct ReleaseNoteButtonLabelModifier: ViewModifier {
     let color: Color
+    let cornerRadius: CGFloat
     let usesCompactStyle: Bool
 
     @ViewBuilder
@@ -407,6 +473,8 @@ private struct ReleaseNoteButtonLabelModifier: ViewModifier {
         }
         #elseif os(iOS) && !os(visionOS)
         legacyAppearance(content)
+        #elseif os(watchOS)
+        legacyAppearance(content)
         #else
         content
         #endif
@@ -416,12 +484,13 @@ private struct ReleaseNoteButtonLabelModifier: ViewModifier {
         content
             .foregroundColor(usesCompactStyle ? color : color.adaptedTextColor)
             .background(usesCompactStyle ? Color.clear : color)
-            .cornerRadius(15)
+            .cornerRadius(cornerRadius)
     }
 }
 
 private struct ReleaseNoteButtonGlassModifier: ViewModifier {
     let tint: Color
+    let cornerRadius: CGFloat
     var isEnabled: Bool = true
 
     @ViewBuilder
@@ -431,7 +500,7 @@ private struct ReleaseNoteButtonGlassModifier: ViewModifier {
             content
                 .glassEffect(
                     .regular.tint(tint).interactive(),
-                    in: .rect(cornerRadius: 15)
+                    in: .rect(cornerRadius: cornerRadius)
                 )
         } else {
             content
@@ -445,13 +514,34 @@ private struct ReleaseNoteButtonGlassModifier: ViewModifier {
 private struct ConditionalGlassModifier: ViewModifier {
     let isEnabled: Bool
     let shadowColor: Color
+    let cornerRadius: CGFloat
 
+    @ViewBuilder
     func body(content: Content) -> some View {
+        #if os(watchOS)
+        content
+        #else
         if isEnabled {
-            content.swiftNEWGlass(color: shadowColor.opacity(0.1))
+            content.swiftNEWGlass(radius: cornerRadius, color: shadowColor.opacity(0.1))
         } else {
             content
         }
+        #endif
+    }
+}
+
+private struct ReleaseNoteButtonPlatformStyleModifier: ViewModifier {
+    let tint: Color
+
+    @ViewBuilder
+    func body(content: Content) -> some View {
+        #if os(watchOS)
+        content
+            .buttonStyle(.plain)
+            .tint(tint)
+        #else
+        content
+        #endif
     }
 }
 

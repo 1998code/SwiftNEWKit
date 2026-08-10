@@ -9,6 +9,21 @@ import SwiftUI
 
 // MARK: - For App Icon
 extension Bundle {
+    var appStoreListingBundleIdentifier: String? {
+        #if os(watchOS)
+        if let companionIdentifier = object(
+            forInfoDictionaryKey: "WKCompanionAppBundleIdentifier"
+        ) as? String {
+            let normalized = companionIdentifier.trimmingCharacters(in: .whitespacesAndNewlines)
+            if !normalized.isEmpty {
+                return normalized
+            }
+        }
+        #endif
+
+        return bundleIdentifier
+    }
+
     var iconFileName: String? {
         iconFileNames().last
     }

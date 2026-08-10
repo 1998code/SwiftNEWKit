@@ -17,7 +17,9 @@ extension SwiftNEW {
 
     // MARK: - Current Version Changes View
     public var sheetCurrent: some View {
-        #if os(tvOS)
+        #if os(watchOS)
+        watchCurrentContent
+        #elseif os(tvOS)
         GeometryReader { geometry in
             sheetCurrentContent(maxScrollHeight: geometry.size.height * 0.5)
         }
@@ -25,6 +27,65 @@ extension SwiftNEW {
         sheetCurrentContent(maxScrollHeight: nil)
         #endif
     }
+
+    #if os(watchOS)
+    private var watchCurrentContent: some View {
+        ScrollView(showsIndicators: false) {
+            VStack(alignment: align, spacing: 12) {
+                headings
+                    .padding(.bottom, 4)
+
+                watchCurrentStateContent
+            }
+            .padding(.vertical, 8)
+        }
+    }
+
+    @ViewBuilder
+    private var watchCurrentStateContent: some View {
+        if let loadErrorMessage {
+            VStack(spacing: 8) {
+                Image(systemName: "exclamationmark.triangle")
+                    .font(.headline)
+                    .foregroundColor(.secondary)
+                Text(loadErrorMessage)
+                    .font(.footnote)
+                    .multilineTextAlignment(.center)
+                Button(action: retryLoadData) {
+                    Text(String(localized: "Try Again", bundle: .module))
+                }
+            }
+        } else if loading {
+            VStack(spacing: 8) {
+                ProgressView()
+                Text(String(localized: "Loading...", bundle: .module))
+                    .font(.footnote)
+                    .foregroundStyle(.secondary)
+            }
+        } else {
+            if search {
+                searchButton
+            }
+
+            if search && showSearch {
+                searchField
+            }
+
+            ForEach(items) { item in
+                if item.version == Bundle.version || item.subVersion == Bundle.version {
+                    ForEach(item.new.filter { matchesSearch($0) }) { new in
+                        releaseRow(new, bodyFont: .footnote, spacing: 2)
+                    }
+                }
+            }
+
+            if history {
+                showHistoryButton
+                    .padding(.top, 4)
+            }
+        }
+    }
+    #endif
 
     private func sheetCurrentContent(maxScrollHeight: CGFloat?) -> some View {
         VStack(alignment: align) {
@@ -56,7 +117,7 @@ extension SwiftNEW {
                 }
             }
             else {
-                if showSearch {
+                if search && showSearch {
                     searchField
                 }
                 #if os(macOS)
@@ -116,15 +177,16 @@ extension SwiftNEW {
 
     private var currentVersionControls: some View {
         VStack(spacing: 0) {
-            if history {
+            if history || search {
                 HStack {
-                    showHistoryButton
-                    searchButton
+                    if history {
+                        showHistoryButton
+                    }
+                    if search {
+                        searchButton
+                    }
                 }
                 .padding(.bottom)
-            } else {
-                searchButton
-                    .padding(.bottom)
             }
 
             closeCurrentButton
@@ -141,12 +203,17 @@ extension SwiftNEW {
         }
     }
 
-    private var searchField: some View {
+    var searchField: some View {
+        #if os(watchOS)
+        searchFieldContent
+            .padding(.bottom, 4)
+        #else
         searchFieldContent
             .padding(.horizontal)
             .frame(maxWidth: 380)
             .padding(.horizontal)
             .padding(.bottom, 8)
+        #endif
     }
 
     @ViewBuilder
@@ -185,8 +252,13 @@ extension SwiftNEW {
                 .buttonStyle(.plain)
             }
         }
+        #if os(watchOS)
+        .padding(.horizontal, 8)
+        .padding(.vertical, 6)
+        #else
         .padding(.horizontal, 14)
         .padding(.vertical, 10)
+        #endif
     }
 
     private var legacySearchFieldLabel: some View {
@@ -196,8 +268,7 @@ extension SwiftNEW {
 
     private var bottomControlBackdrop: some View {
         ZStack {
-            Rectangle()
-                .fill(.regularMaterial)
+            bottomControlMaterialLayer
 
             Rectangle()
                 .fill(bottomBackdropColor.opacity(0.78))
@@ -230,10 +301,26 @@ extension SwiftNEW {
     private var bottomBackdropColor: Color {
         #if os(macOS)
         Color(NSColor.windowBackgroundColor)
-        #elseif os(tvOS)
+        #elseif os(tvOS) || os(watchOS)
         Color.black
         #else
         Color(.systemBackground)
+        #endif
+    }
+
+    @ViewBuilder
+    private var bottomControlMaterialLayer: some View {
+        #if os(watchOS)
+        if #available(watchOS 10.0, *) {
+            Rectangle()
+                .fill(.regularMaterial)
+        } else {
+            Rectangle()
+                .fill(Color.black)
+        }
+        #else
+        Rectangle()
+            .fill(.regularMaterial)
         #endif
     }
 
@@ -247,7 +334,11 @@ extension SwiftNEW {
     }
 
     func matchesSearch(_ new: Model) -> Bool {
-        SwiftNEWSearch.matches(new, query: debouncedSearchText, isEnabled: showSearch)
+        SwiftNEWSearch.matches(
+            new,
+            query: debouncedSearchText,
+            isEnabled: search && showSearch
+        )
     }
 
     func retryLoadData() {
