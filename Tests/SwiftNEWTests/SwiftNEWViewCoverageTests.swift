@@ -168,8 +168,8 @@ import AppKit
 @MainActor
 @Test func nonSkippableUpdateDisablesInteractiveDismissalOnlyDuringUpdateFlow() {
     let checking = makeSwiftNEW(
-        data: "https://example.com/releases.json",
         updateCheckPhase: .checking,
+        data: "https://example.com/releases.json",
         checkForUpdates: true,
         allowsSkippingUpdate: false
     )
@@ -192,8 +192,8 @@ import AppKit
     #expect(skippable.shouldDisableUpdateDismissal == false)
 
     let noUpdate = makeSwiftNEW(
-        data: "https://example.com/releases.json",
         updateCheckPhase: .resolved,
+        data: "https://example.com/releases.json",
         checkForUpdates: true,
         allowsSkippingUpdate: false
     )
