@@ -70,8 +70,14 @@ C'est tout — SwiftNEW se déclenche automatiquement quand la version de l'app 
 
 | Fonctionnalité | Depuis | Description |
 |---------|:-----:|-------------|
-| 🎛️ Arrondi des boutons configurable | 27.0 | Définissez `buttonCornerRadius` directement ou via un binding tout en conservant une apparence cohérente pour les boutons d’action principaux |
-| 🔎 Recherche dans l’historique | 27.0 | Recherchez les notes de version précédentes par titre / sous-titre / corps sans quitter l’écran Historique |
+| ⌚ Prise en charge native de watchOS | 27.0 | SwiftNEW prend en charge watchOS 8 avec des vues compactes, des replis visuels adaptatifs et la recherche automatique de l’app compagnon dans l’App Store |
+| 🚘 Prise en charge des modèles CarPlay | 27.0 | Les apps hôtes CarPlay approuvées par Apple peuvent afficher du contenu admissible dans des modèles natifs de liste et de détail avec le même JSON local ou distant |
+| 📥 Chargeur de versions autonome | 27.0 | `SwiftNEWReleaseNotesLoader` décode le JSON local ou distant sans créer de vue SwiftUI, pour les interfaces natives et les workflows personnalisés |
+| 🎛️ Arrondi des boutons configurable | 27.0 | Définissez `buttonCornerRadius` directement ou via un binding pour harmoniser le déclencheur et les boutons d’action principaux |
+| 🔎 Contrôles de recherche dans l’historique | 27.0 | Activez la recherche pour chaque instance et filtrez les notes actuelles ou précédentes par titre / sous-titre / corps |
+| 📝 Descriptions facultatives | 27.0 | Utilisez `showDescription` directement ou via un binding pour masquer le corps tout en conservant l’icône, le titre et le sous-titre |
+| 🌊 Arrière-plan SwiftNEW réutilisable | 27.0 | Utilisez `SwiftNEWBackdrop` pour réutiliser des maillages statiques ou liquides et des effets derrière du contenu SwiftUI personnalisé |
+| 🫥 Correction du déclencheur invisible | 27.0 | Les déclencheurs avec `size: "invisible"` ne laissent plus d’effet de verre translucide à l’écran |
 | 🌐 Plus de langues | 6.6.0 | Les notes sont désormais localisées en allemand, hébreu, indonésien, russe et vietnamien |
 | 🌗 Style d’icône adaptatif | 6.6.0 | Les arrière-plans et dégradés améliorent automatiquement le contraste en mode sombre |
 | 🫧 Commandes en verre teinté | 6.6.0 | Les boutons utilisent le verre teinté interactif natif sous iOS 26 |

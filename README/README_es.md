@@ -70,8 +70,14 @@ Eso es todo — SwiftNEW se activa automáticamente cuando cambia la versión de
 
 | Funcionalidad | Desde | Descripción |
 |---------|:-----:|-------------|
-| 🎛️ Esquinas de botones configurables | 27.0 | Establece `buttonCornerRadius` directamente o con un binding para mantener la coherencia visual de los botones de acción principales |
-| 🔎 Búsqueda en el historial | 27.0 | Busca las notas de versiones anteriores por título / subtítulo / cuerpo sin salir de la pantalla Historial |
+| ⌚ Compatibilidad nativa con watchOS | 27.0 | SwiftNEW admite watchOS 8 con vistas compactas, alternativas visuales adaptativas y la búsqueda automática de la app complementaria en App Store |
+| 🚘 Compatibilidad con plantillas de CarPlay | 27.0 | Las apps host de CarPlay aprobadas por Apple pueden mostrar contenido apto en plantillas nativas de lista y detalle con el mismo JSON local o remoto |
+| 📥 Cargador de versiones independiente | 27.0 | `SwiftNEWReleaseNotesLoader` decodifica JSON local o remoto sin crear una vista de SwiftUI para interfaces nativas y flujos personalizados |
+| 🎛️ Radio de esquina configurable para botones | 27.0 | Establece `buttonCornerRadius` directamente o con un binding para mantener la coherencia visual del activador y de los botones de acción principales |
+| 🔎 Controles de búsqueda en el historial | 27.0 | Activa la búsqueda en cada instancia y filtra notas actuales o anteriores por título / subtítulo / cuerpo |
+| 📝 Descripciones opcionales | 27.0 | Usa `showDescription` directamente o con un binding para ocultar el cuerpo sin perder el icono, el título ni el subtítulo |
+| 🌊 Fondo de SwiftNEW reutilizable | 27.0 | Usa `SwiftNEWBackdrop` para reutilizar mallas estáticas o líquidas y efectos detrás de contenido SwiftUI personalizado |
+| 🫥 Corrección del activador invisible | 27.0 | Los activadores con `size: "invisible"` ya no dejan cristal translúcido en pantalla |
 | 🌐 Más idiomas | 6.6.0 | Las notas ya están localizadas en alemán, hebreo, indonesio, ruso y vietnamita |
 | 🌗 Estilo de iconos adaptativo | 6.6.0 | Los fondos y degradados mejoran automáticamente el contraste en modo oscuro |
 | 🫧 Controles de vidrio tintado | 6.6.0 | Los botones usan vidrio tintado interactivo nativo en iOS 26 |
