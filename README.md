@@ -21,6 +21,8 @@ A modern, SwiftUI-native **"What's New"** presentation framework for all Apple p
 
 <img width="2880" height="2160" alt="Cover" src="https://github.com/user-attachments/assets/630757ec-2de6-4a74-b744-dfe537df5d19" />
 
+<img width="100%" alt="Watch" src="https://github.com/user-attachments/assets/078a22ba-96d8-489c-a6a4-6d6d9011dd28" />
+
 ## 🚀 Quick Start
 
 **1. Add the package** in Xcode → *File → Add Package Dependencies…*
