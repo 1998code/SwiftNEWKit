@@ -1,5 +1,83 @@
 [
     {
+        "version": "27.0",
+        "subVersion": "27.0.0",
+        "new": [
+            {
+                "icons": [
+                    "applewatch",
+                    "checkmark.circle"
+                ],
+                "title": "原生 watchOS 支援",
+                "subtitle": "精簡 Apple Watch 體驗",
+                "body": "SwiftNEW 而家支援 watchOS 8，提供精簡嘅目前版本、歷史同更新畫面、自適應視覺後備效果，同埋自動查詢配套 App 嘅 App Store 資料。"
+            },
+            {
+                "icons": [
+                    "car.fill",
+                    "list.bullet.rectangle"
+                ],
+                "title": "CarPlay Template 支援",
+                "subtitle": "已獲批准嘅 host app 整合",
+                "body": "已獲批准嘅 CarPlay host app 可以喺由同一套本地或遠端 JSON 驅動嘅原生列表同詳細資料 template 入面，顯示符合獲批車載用途嘅更新內容。"
+            },
+            {
+                "icons": [
+                    "doc.text",
+                    "tray.and.arrow.down"
+                ],
+                "title": "獨立版本說明載入器",
+                "subtitle": "本地或遠端 JSON",
+                "body": "SwiftNEWReleaseNotesLoader 唔使建立 SwiftUI view 都可以解碼版本說明資料，適合原生介面同自訂 workflow。"
+            },
+            {
+                "icons": [
+                    "rectangle.roundedtop",
+                    "slider.horizontal.3"
+                ],
+                "title": "可設定按鈕圓角",
+                "subtitle": "直接設定或 Binding",
+                "body": "直接設定 buttonCornerRadius 或用 binding 控制，令版本說明觸發按鈕同主要操作按鈕嘅外觀保持一致。"
+            },
+            {
+                "icons": [
+                    "clock.arrow.circlepath",
+                    "magnifyingglass"
+                ],
+                "title": "歷史搜尋控制",
+                "subtitle": "目前同過往版本",
+                "body": "可以喺每個 SwiftNEW 實例啟用 Search，並按標題、副標題或內文篩選目前或歷史版本說明。"
+            },
+            {
+                "icons": [
+                    "text.alignleft",
+                    "eye"
+                ],
+                "title": "可選說明文字",
+                "subtitle": "精簡版本說明列",
+                "body": "直接設定 showDescription 或用 binding 控制，隱藏內文之餘仍然保留圖示、標題同副標題。"
+            },
+            {
+                "icons": [
+                    "paintpalette",
+                    "sparkles.rectangle.stack"
+                ],
+                "title": "可重用 SwiftNEW 背景",
+                "subtitle": "網格同特效隨處使用",
+                "body": "用 SwiftNEWBackdrop 喺自訂 SwiftUI 內容後面加入同款靜態或流動網格背景同裝飾特效。"
+            },
+            {
+                "icons": [
+                    "eye.slash",
+                    "rectangle.on.rectangle.slash"
+                ],
+                "title": "隱形觸發按鈕修正",
+                "subtitle": "唔再殘留玻璃效果",
+                "body": "將 size 設定成 \"invisible\" 嘅版本說明觸發按鈕，唔會再喺畫面留下半透明玻璃效果。"
+            }
+        ]
+    },
+    {
         "version": "6.6",
         "subVersion": "6.6.0",
         "new": [

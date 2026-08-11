@@ -1,5 +1,83 @@
 [
     {
+        "version": "27.0",
+        "subVersion": "27.0.0",
+        "new": [
+            {
+                "icons": [
+                    "applewatch",
+                    "checkmark.circle"
+                ],
+                "title": "原生 watchOS 支持",
+                "subtitle": "紧凑的 Apple Watch 体验",
+                "body": "SwiftNEW 现已支持 watchOS 8，提供紧凑的当前版本、历史记录和更新界面、自适应视觉回退效果，以及自动查询配套 App 的 App Store 信息。"
+            },
+            {
+                "icons": [
+                    "car.fill",
+                    "list.bullet.rectangle"
+                ],
+                "title": "CarPlay 模板支持",
+                "subtitle": "已获批准的宿主 App 集成",
+                "body": "已获批准的 CarPlay 宿主 App 可在由同一套本地或远程 JSON 驱动的原生列表和详情模板中，呈现符合获批车载用途的更新内容。"
+            },
+            {
+                "icons": [
+                    "doc.text",
+                    "tray.and.arrow.down"
+                ],
+                "title": "独立版本说明加载器",
+                "subtitle": "本地或远程 JSON",
+                "body": "SwiftNEWReleaseNotesLoader 无需创建 SwiftUI 视图即可解码版本说明数据，适用于原生界面和自定义工作流。"
+            },
+            {
+                "icons": [
+                    "rectangle.roundedtop",
+                    "slider.horizontal.3"
+                ],
+                "title": "可配置按钮圆角",
+                "subtitle": "直接值或 Binding",
+                "body": "直接设置 buttonCornerRadius 或通过 binding 控制，让版本说明触发按钮与主要操作按钮保持一致外观。"
+            },
+            {
+                "icons": [
+                    "clock.arrow.circlepath",
+                    "magnifyingglass"
+                ],
+                "title": "历史搜索控制",
+                "subtitle": "当前与过往版本",
+                "body": "可为每个 SwiftNEW 实例启用 Search，并按标题、副标题或正文筛选当前或历史版本说明。"
+            },
+            {
+                "icons": [
+                    "text.alignleft",
+                    "eye"
+                ],
+                "title": "可选说明文本",
+                "subtitle": "紧凑的版本说明行",
+                "body": "直接设置 showDescription 或通过 binding 控制，在隐藏正文的同时保留图标、标题和副标题。"
+            },
+            {
+                "icons": [
+                    "paintpalette",
+                    "sparkles.rectangle.stack"
+                ],
+                "title": "可复用的 SwiftNEW 背景",
+                "subtitle": "随处使用网格与特效",
+                "body": "使用 SwiftNEWBackdrop，在自定义 SwiftUI 内容后加入相同的静态或流动网格背景和装饰特效。"
+            },
+            {
+                "icons": [
+                    "eye.slash",
+                    "rectangle.on.rectangle.slash"
+                ],
+                "title": "隐形触发按钮修复",
+                "subtitle": "不再残留玻璃效果",
+                "body": "将 size 配置为 \"invisible\" 的版本说明触发按钮不再在屏幕上留下半透明玻璃效果。"
+            }
+        ]
+    },
+    {
         "version": "6.6",
         "subVersion": "6.6.0",
         "new": [

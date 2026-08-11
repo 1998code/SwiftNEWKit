@@ -1,5 +1,83 @@
 [
     {
+        "version": "27.0",
+        "subVersion": "27.0.0",
+        "new": [
+            {
+                "icons": [
+                    "applewatch",
+                    "checkmark.circle"
+                ],
+                "title": "תמיכה מובנית ב-watchOS",
+                "subtitle": "חוויה קומפקטית ב-Apple Watch",
+                "body": "SwiftNEW תומך כעת ב-watchOS 8 עם תצוגות קומפקטיות לגרסה הנוכחית, להיסטוריה ולעדכונים, חלופות חזותיות מסתגלות ואיתור אוטומטי של רישום ה-App Store של היישום הנלווה."
+            },
+            {
+                "icons": [
+                    "car.fill",
+                    "list.bullet.rectangle"
+                ],
+                "title": "תמיכה בתבניות CarPlay",
+                "subtitle": "שילוב ביישומי מארח מאושרים",
+                "body": "יישומי מארח של CarPlay שאושרו על ידי Apple יכולים להציג תוכן עדכון מתאים בתבניות מערכת לרשימה ולפרטים, המבוססות על אותם נתוני JSON מקומיים או מרוחקים."
+            },
+            {
+                "icons": [
+                    "doc.text",
+                    "tray.and.arrow.down"
+                ],
+                "title": "טוען גרסאות עצמאי",
+                "subtitle": "JSON מקומי או מרוחק",
+                "body": "SwiftNEWReleaseNotesLoader מפענח נתוני הערות גרסה בלי ליצור תצוגת SwiftUI, לשימוש בממשקים מקוריים ובתהליכי עבודה מותאמים אישית."
+            },
+            {
+                "icons": [
+                    "rectangle.roundedtop",
+                    "slider.horizontal.3"
+                ],
+                "title": "רדיוס פינות כפתור ניתן להתאמה",
+                "subtitle": "ערכים ישירים או Binding",
+                "body": "הגדירו את buttonCornerRadius ישירות או באמצעות Binding כדי לשמור על מראה אחיד של כפתור פתיחת הערות הגרסה וכפתורי הפעולה הראשיים."
+            },
+            {
+                "icons": [
+                    "clock.arrow.circlepath",
+                    "magnifyingglass"
+                ],
+                "title": "פקדי חיפוש בהיסטוריה",
+                "subtitle": "גרסאות נוכחיות וקודמות",
+                "body": "הפעילו את החיפוש בכל מופע וסננו הערות גרסה נוכחיות או קודמות לפי כותרת, כותרת משנה או תוכן."
+            },
+            {
+                "icons": [
+                    "text.alignleft",
+                    "eye"
+                ],
+                "title": "תיאורים אופציונליים",
+                "subtitle": "שורות גרסה קומפקטיות",
+                "body": "השתמשו ב-showDescription ישירות או באמצעות Binding כדי להסתיר את גוף הטקסט תוך השארת הסמל, הכותרת וכותרת המשנה של כל פריט גלויים."
+            },
+            {
+                "icons": [
+                    "paintpalette",
+                    "sparkles.rectangle.stack"
+                ],
+                "title": "רקע SwiftNEW לשימוש חוזר",
+                "subtitle": "רשת ואפקטים בכל מקום",
+                "body": "השתמשו ב-SwiftNEWBackdrop כדי להוסיף את אותה רשת סטטית או נוזלית ואפקטים דקורטיביים מאחורי תוכן SwiftUI מותאם אישית."
+            },
+            {
+                "icons": [
+                    "eye.slash",
+                    "rectangle.on.rectangle.slash"
+                ],
+                "title": "תיקון לכפתור ההפעלה הבלתי נראה",
+                "subtitle": "ללא שאריות של אפקט זכוכית",
+                "body": "כפתורי פתיחת הערות הגרסה שמוגדרים עם size \"invisible\" אינם משאירים עוד אפקט זכוכית שקוף למחצה על המסך."
+            }
+        ]
+    },
+    {
         "version": "6.6",
         "subVersion": "6.6.0",
         "new": [

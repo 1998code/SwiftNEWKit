@@ -1,5 +1,83 @@
 [
     {
+        "version": "27.0",
+        "subVersion": "27.0.0",
+        "new": [
+            {
+                "icons": [
+                    "applewatch",
+                    "checkmark.circle"
+                ],
+                "title": "네이티브 watchOS 지원",
+                "subtitle": "간결한 Apple Watch 경험",
+                "body": "SwiftNEW가 이제 watchOS 8을 지원하며, 현재 버전·버전 기록·업데이트 화면을 간결하게 제공하고 환경에 맞는 시각적 폴백과 컴패니언 앱의 App Store 자동 조회를 지원합니다."
+            },
+            {
+                "icons": [
+                    "car.fill",
+                    "list.bullet.rectangle"
+                ],
+                "title": "CarPlay 템플릿 지원",
+                "subtitle": "승인된 호스트 앱 통합",
+                "body": "Apple의 승인을 받은 CarPlay 호스트 앱은 동일한 로컬 또는 원격 JSON을 바탕으로 승인된 용도에 적합한 업데이트 콘텐츠를 네이티브 목록 및 상세 템플릿에 표시할 수 있습니다."
+            },
+            {
+                "icons": [
+                    "doc.text",
+                    "tray.and.arrow.down"
+                ],
+                "title": "독립형 릴리스 로더",
+                "subtitle": "로컬 또는 원격 JSON",
+                "body": "SwiftNEWReleaseNotesLoader는 SwiftUI 뷰를 만들지 않고 릴리스 노트 데이터를 디코딩하여 네이티브 화면과 사용자 지정 워크플로에서 바로 사용할 수 있게 합니다."
+            },
+            {
+                "icons": [
+                    "rectangle.roundedtop",
+                    "slider.horizontal.3"
+                ],
+                "title": "버튼 모서리 반경 사용자 지정",
+                "subtitle": "직접 지정 또는 바인딩",
+                "body": "buttonCornerRadius를 직접 지정하거나 바인딩으로 전달해 릴리스 노트 버튼과 주요 동작 버튼의 시각적 일관성을 유지할 수 있습니다."
+            },
+            {
+                "icons": [
+                    "clock.arrow.circlepath",
+                    "magnifyingglass"
+                ],
+                "title": "버전 기록 검색 제어",
+                "subtitle": "현재 및 이전 릴리스",
+                "body": "인스턴스별로 검색을 활성화하고 제목, 부제 또는 본문을 기준으로 현재 및 이전 릴리스 노트를 필터링할 수 있습니다."
+            },
+            {
+                "icons": [
+                    "text.alignleft",
+                    "eye"
+                ],
+                "title": "선택적 설명 표시",
+                "subtitle": "간결한 릴리스 행",
+                "body": "showDescription을 직접 지정하거나 바인딩으로 전달해 각 아이콘, 제목, 부제를 표시한 채 본문을 숨길 수 있습니다."
+            },
+            {
+                "icons": [
+                    "paintpalette",
+                    "sparkles.rectangle.stack"
+                ],
+                "title": "재사용 가능한 SwiftNEW 배경",
+                "subtitle": "어디서나 사용하는 메시와 효과",
+                "body": "SwiftNEWBackdrop을 사용해 동일한 정적 또는 리퀴드 메시와 장식 효과를 사용자 지정 SwiftUI 콘텐츠 뒤에 추가할 수 있습니다."
+            },
+            {
+                "icons": [
+                    "eye.slash",
+                    "rectangle.on.rectangle.slash"
+                ],
+                "title": "보이지 않는 트리거 수정",
+                "subtitle": "잔여 글래스 효과 제거",
+                "body": "size가 \"invisible\"로 설정된 릴리스 노트 트리거가 더 이상 화면에 반투명 글래스 효과를 남기지 않습니다."
+            }
+        ]
+    },
+    {
         "version": "6.6",
         "subVersion": "6.6.0",
         "new": [

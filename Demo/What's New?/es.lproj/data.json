@@ -1,5 +1,83 @@
 [
     {
+        "version": "27.0",
+        "subVersion": "27.0.0",
+        "new": [
+            {
+                "icons": [
+                    "applewatch",
+                    "checkmark.circle"
+                ],
+                "title": "Compatibilidad nativa con watchOS",
+                "subtitle": "Experiencia compacta en Apple Watch",
+                "body": "SwiftNEW ahora es compatible con watchOS 8 mediante vistas compactas de la versión actual, el historial y las actualizaciones, alternativas visuales adaptativas y la resolución automática de la ficha de App Store de la app complementaria."
+            },
+            {
+                "icons": [
+                    "car.fill",
+                    "list.bullet.rectangle"
+                ],
+                "title": "Compatibilidad con plantillas de CarPlay",
+                "subtitle": "Integración en apps host aprobadas",
+                "body": "Las apps host de CarPlay aprobadas por Apple pueden presentar contenido de actualización apto en plantillas nativas de lista y detalle basadas en los mismos datos JSON locales o remotos."
+            },
+            {
+                "icons": [
+                    "doc.text",
+                    "tray.and.arrow.down"
+                ],
+                "title": "Cargador de versiones independiente",
+                "subtitle": "JSON local o remoto",
+                "body": "SwiftNEWReleaseNotesLoader decodifica los datos de las notas de la versión sin crear una vista de SwiftUI y permite usarlos en interfaces nativas y flujos de trabajo personalizados."
+            },
+            {
+                "icons": [
+                    "rectangle.roundedtop",
+                    "slider.horizontal.3"
+                ],
+                "title": "Radio de esquina configurable para botones",
+                "subtitle": "Valores directos o bindings",
+                "body": "Establece buttonCornerRadius directamente o con un binding para mantener la coherencia visual del botón de notas de la versión y de los botones de acción principales."
+            },
+            {
+                "icons": [
+                    "clock.arrow.circlepath",
+                    "magnifyingglass"
+                ],
+                "title": "Controles de búsqueda en el historial",
+                "subtitle": "Versiones actuales y anteriores",
+                "body": "Activa la búsqueda en cada instancia y filtra las notas de la versión actuales o anteriores por título, subtítulo o cuerpo."
+            },
+            {
+                "icons": [
+                    "text.alignleft",
+                    "eye"
+                ],
+                "title": "Descripciones opcionales",
+                "subtitle": "Filas de versión compactas",
+                "body": "Usa showDescription directamente o con un binding para ocultar el cuerpo y mantener visibles el icono, el título y el subtítulo de cada elemento."
+            },
+            {
+                "icons": [
+                    "paintpalette",
+                    "sparkles.rectangle.stack"
+                ],
+                "title": "Fondo de SwiftNEW reutilizable",
+                "subtitle": "Malla y efectos en cualquier lugar",
+                "body": "Usa SwiftNEWBackdrop para añadir la misma malla estática o líquida y efectos decorativos detrás de contenido SwiftUI personalizado."
+            },
+            {
+                "icons": [
+                    "eye.slash",
+                    "rectangle.on.rectangle.slash"
+                ],
+                "title": "Corrección del activador invisible",
+                "subtitle": "Sin cristal residual",
+                "body": "Los activadores de notas de la versión configurados con size \"invisible\" ya no dejan elementos translúcidos de cristal en pantalla."
+            }
+        ]
+    },
+    {
         "version": "6.6",
         "subVersion": "6.6.0",
         "new": [

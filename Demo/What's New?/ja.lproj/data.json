@@ -1,5 +1,83 @@
 [
     {
+        "version": "27.0",
+        "subVersion": "27.0.0",
+        "new": [
+            {
+                "icons": [
+                    "applewatch",
+                    "checkmark.circle"
+                ],
+                "title": "watchOS ネイティブ対応",
+                "subtitle": "コンパクトな Apple Watch 体験",
+                "body": "SwiftNEW が watchOS 8 に対応し、現在のバージョン、履歴、アップデートの各画面をコンパクトに表示できるほか、環境に応じた表示フォールバックとコンパニオン App の App Store 情報の自動検索を利用できます。"
+            },
+            {
+                "icons": [
+                    "car.fill",
+                    "list.bullet.rectangle"
+                ],
+                "title": "CarPlay テンプレート対応",
+                "subtitle": "承認済みホスト App との統合",
+                "body": "Apple の承認を受けた CarPlay ホスト App は、同じローカルまたはリモート JSON を基にしたネイティブのリスト／詳細テンプレートで、対象となる更新内容を表示できます。"
+            },
+            {
+                "icons": [
+                    "doc.text",
+                    "tray.and.arrow.down"
+                ],
+                "title": "単独で使えるリリースローダー",
+                "subtitle": "ローカルまたはリモート JSON",
+                "body": "SwiftNEWReleaseNotesLoader は SwiftUI ビューを作成せずにリリースノートデータをデコードし、ネイティブ画面やカスタムワークフローで利用できます。"
+            },
+            {
+                "icons": [
+                    "rectangle.roundedtop",
+                    "slider.horizontal.3"
+                ],
+                "title": "設定可能なボタンの角丸",
+                "subtitle": "直接指定または Binding",
+                "body": "buttonCornerRadius を直接指定するか Binding で制御し、リリースノートボタンと主要アクションボタンの見た目を統一できます。"
+            },
+            {
+                "icons": [
+                    "clock.arrow.circlepath",
+                    "magnifyingglass"
+                ],
+                "title": "履歴検索コントロール",
+                "subtitle": "現在および過去のリリース",
+                "body": "インスタンスごとに検索を有効にし、現在または過去のリリースノートをタイトル、サブタイトル、本文で絞り込めます。"
+            },
+            {
+                "icons": [
+                    "text.alignleft",
+                    "eye"
+                ],
+                "title": "説明文の任意表示",
+                "subtitle": "コンパクトなリリース行",
+                "body": "showDescription を直接指定するか Binding で制御し、各アイコン、タイトル、サブタイトルを表示したまま本文を非表示にできます。"
+            },
+            {
+                "icons": [
+                    "paintpalette",
+                    "sparkles.rectangle.stack"
+                ],
+                "title": "再利用可能な SwiftNEW 背景",
+                "subtitle": "どこでも使えるメッシュとエフェクト",
+                "body": "SwiftNEWBackdrop を使うと、同じ静止またはリキッドメッシュと装飾エフェクトをカスタム SwiftUI コンテンツの背面に追加できます。"
+            },
+            {
+                "icons": [
+                    "eye.slash",
+                    "rectangle.on.rectangle.slash"
+                ],
+                "title": "非表示トリガーの修正",
+                "subtitle": "ガラス表示の残留を解消",
+                "body": "size を \"invisible\" に設定したリリースノートトリガーで、半透明のガラス装飾が画面に残らなくなりました。"
+            }
+        ]
+    },
+    {
         "version": "6.6",
         "subVersion": "6.6.0",
         "new": [

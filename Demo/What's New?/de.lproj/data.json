@@ -1,5 +1,83 @@
 [
     {
+        "version": "27.0",
+        "subVersion": "27.0.0",
+        "new": [
+            {
+                "icons": [
+                    "applewatch",
+                    "checkmark.circle"
+                ],
+                "title": "Native watchOS-Unterstützung",
+                "subtitle": "Kompaktes Erlebnis auf der Apple Watch",
+                "body": "SwiftNEW unterstützt jetzt watchOS 8 mit kompakten Ansichten für die aktuelle Version, den Verlauf und Updates, adaptiven visuellen Fallbacks sowie automatischer Ermittlung des App Store-Eintrags der Begleit-App."
+            },
+            {
+                "icons": [
+                    "car.fill",
+                    "list.bullet.rectangle"
+                ],
+                "title": "Unterstützung für CarPlay-Templates",
+                "subtitle": "Integration in genehmigte Host-Apps",
+                "body": "Von Apple genehmigte CarPlay-Host-Apps können geeignete Update-Inhalte in nativen Listen- und Detail-Templates darstellen, die dasselbe lokale oder entfernte JSON verwenden."
+            },
+            {
+                "icons": [
+                    "doc.text",
+                    "tray.and.arrow.down"
+                ],
+                "title": "Eigenständiger Release-Loader",
+                "subtitle": "Lokales oder entferntes JSON",
+                "body": "SwiftNEWReleaseNotesLoader decodiert Versionshinweise, ohne eine SwiftUI-Ansicht zu erstellen, und steht für native Oberflächen und eigene Workflows bereit."
+            },
+            {
+                "icons": [
+                    "rectangle.roundedtop",
+                    "slider.horizontal.3"
+                ],
+                "title": "Konfigurierbarer Schaltflächenradius",
+                "subtitle": "Direktwerte oder Bindings",
+                "body": "Legen Sie buttonCornerRadius direkt oder über ein Binding fest, damit der Auslöser für Versionshinweise und die primären Aktionsschaltflächen einheitlich aussehen."
+            },
+            {
+                "icons": [
+                    "clock.arrow.circlepath",
+                    "magnifyingglass"
+                ],
+                "title": "Suchsteuerung für den Verlauf",
+                "subtitle": "Aktuelle und frühere Versionen",
+                "body": "Aktivieren Sie die Suche pro Instanz und filtern Sie aktuelle oder frühere Versionshinweise nach Titel, Untertitel oder Text."
+            },
+            {
+                "icons": [
+                    "text.alignleft",
+                    "eye"
+                ],
+                "title": "Optionale Beschreibungen",
+                "subtitle": "Kompakte Versionszeilen",
+                "body": "Verwenden Sie showDescription direkt oder über ein Binding, um den Beschreibungstext auszublenden, während Symbol, Titel und Untertitel jedes Eintrags sichtbar bleiben."
+            },
+            {
+                "icons": [
+                    "paintpalette",
+                    "sparkles.rectangle.stack"
+                ],
+                "title": "Wiederverwendbarer SwiftNEW-Backdrop",
+                "subtitle": "Mesh und Effekte überall",
+                "body": "Verwenden Sie SwiftNEWBackdrop, um dasselbe statische oder fließende Mesh und dekorative Effekte hinter eigenen SwiftUI-Inhalten einzusetzen."
+            },
+            {
+                "icons": [
+                    "eye.slash",
+                    "rectangle.on.rectangle.slash"
+                ],
+                "title": "Korrektur für unsichtbare Auslöser",
+                "subtitle": "Keine verbleibende Glasdarstellung",
+                "body": "Auslöser für Versionshinweise mit size \"invisible\" hinterlassen keine durchscheinende Glasdarstellung mehr auf dem Bildschirm."
+            }
+        ]
+    },
+    {
         "version": "6.6",
         "subVersion": "6.6.0",
         "new": [

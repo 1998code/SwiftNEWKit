@@ -1,6 +1,84 @@
 {
     "de": [
         {
+            "version": "27.0",
+            "subVersion": "27.0.0",
+            "new": [
+                {
+                    "icons": [
+                        "applewatch",
+                        "checkmark.circle"
+                    ],
+                    "title": "Native watchOS-Unterstützung",
+                    "subtitle": "Kompaktes Erlebnis auf der Apple Watch",
+                    "body": "SwiftNEW unterstützt jetzt watchOS 8 mit kompakten Ansichten für die aktuelle Version, den Verlauf und Updates, adaptiven visuellen Fallbacks sowie automatischer Ermittlung des App Store-Eintrags der Begleit-App."
+                },
+                {
+                    "icons": [
+                        "car.fill",
+                        "list.bullet.rectangle"
+                    ],
+                    "title": "Unterstützung für CarPlay-Templates",
+                    "subtitle": "Integration in genehmigte Host-Apps",
+                    "body": "Von Apple genehmigte CarPlay-Host-Apps können geeignete Update-Inhalte in nativen Listen- und Detail-Templates darstellen, die dasselbe lokale oder entfernte JSON verwenden."
+                },
+                {
+                    "icons": [
+                        "doc.text",
+                        "tray.and.arrow.down"
+                    ],
+                    "title": "Eigenständiger Release-Loader",
+                    "subtitle": "Lokales oder entferntes JSON",
+                    "body": "SwiftNEWReleaseNotesLoader decodiert Versionshinweise, ohne eine SwiftUI-Ansicht zu erstellen, und steht für native Oberflächen und eigene Workflows bereit."
+                },
+                {
+                    "icons": [
+                        "rectangle.roundedtop",
+                        "slider.horizontal.3"
+                    ],
+                    "title": "Konfigurierbarer Schaltflächenradius",
+                    "subtitle": "Direktwerte oder Bindings",
+                    "body": "Legen Sie buttonCornerRadius direkt oder über ein Binding fest, damit der Auslöser für Versionshinweise und die primären Aktionsschaltflächen einheitlich aussehen."
+                },
+                {
+                    "icons": [
+                        "clock.arrow.circlepath",
+                        "magnifyingglass"
+                    ],
+                    "title": "Suchsteuerung für den Verlauf",
+                    "subtitle": "Aktuelle und frühere Versionen",
+                    "body": "Aktivieren Sie die Suche pro Instanz und filtern Sie aktuelle oder frühere Versionshinweise nach Titel, Untertitel oder Text."
+                },
+                {
+                    "icons": [
+                        "text.alignleft",
+                        "eye"
+                    ],
+                    "title": "Optionale Beschreibungen",
+                    "subtitle": "Kompakte Versionszeilen",
+                    "body": "Verwenden Sie showDescription direkt oder über ein Binding, um den Beschreibungstext auszublenden, während Symbol, Titel und Untertitel jedes Eintrags sichtbar bleiben."
+                },
+                {
+                    "icons": [
+                        "paintpalette",
+                        "sparkles.rectangle.stack"
+                    ],
+                    "title": "Wiederverwendbarer SwiftNEW-Backdrop",
+                    "subtitle": "Mesh und Effekte überall",
+                    "body": "Verwenden Sie SwiftNEWBackdrop, um dasselbe statische oder fließende Mesh und dekorative Effekte hinter eigenen SwiftUI-Inhalten einzusetzen."
+                },
+                {
+                    "icons": [
+                        "eye.slash",
+                        "rectangle.on.rectangle.slash"
+                    ],
+                    "title": "Korrektur für unsichtbare Auslöser",
+                    "subtitle": "Keine verbleibende Glasdarstellung",
+                    "body": "Auslöser für Versionshinweise mit size \"invisible\" hinterlassen keine durchscheinende Glasdarstellung mehr auf dem Bildschirm."
+                }
+            ]
+        },
+        {
             "version": "6.6",
             "subVersion": "6.6.0",
             "new": [
@@ -503,6 +581,84 @@
         }
     ],
     "en": [
+        {
+            "version": "27.0",
+            "subVersion": "27.0.0",
+            "new": [
+                {
+                    "icons": [
+                        "applewatch",
+                        "checkmark.circle"
+                    ],
+                    "title": "Native watchOS Support",
+                    "subtitle": "Compact Apple Watch Experience",
+                    "body": "SwiftNEW now supports watchOS 8 with compact current, history, and update views, adaptive visual fallbacks, and automatic companion App Store lookup."
+                },
+                {
+                    "icons": [
+                        "car.fill",
+                        "list.bullet.rectangle"
+                    ],
+                    "title": "CarPlay Template Support",
+                    "subtitle": "Approved Host App Integration",
+                    "body": "Approved CarPlay host apps can present eligible update content in native list and detail templates backed by the same local or remote JSON."
+                },
+                {
+                    "icons": [
+                        "doc.text",
+                        "tray.and.arrow.down"
+                    ],
+                    "title": "Standalone Release Loader",
+                    "subtitle": "Local or Remote JSON",
+                    "body": "SwiftNEWReleaseNotesLoader decodes release-note data without creating a SwiftUI view, ready for native surfaces and custom workflows."
+                },
+                {
+                    "icons": [
+                        "rectangle.roundedtop",
+                        "slider.horizontal.3"
+                    ],
+                    "title": "Configurable Button Radius",
+                    "subtitle": "Direct Values or Bindings",
+                    "body": "Set buttonCornerRadius directly or with a binding to keep the release-note trigger and primary action buttons visually consistent."
+                },
+                {
+                    "icons": [
+                        "clock.arrow.circlepath",
+                        "magnifyingglass"
+                    ],
+                    "title": "History Search Controls",
+                    "subtitle": "Current and Previous Releases",
+                    "body": "Enable Search per instance and filter current or historical release notes by title, subtitle, or body."
+                },
+                {
+                    "icons": [
+                        "text.alignleft",
+                        "eye"
+                    ],
+                    "title": "Optional Descriptions",
+                    "subtitle": "Compact Release Rows",
+                    "body": "Use showDescription directly or with a binding to hide body text while keeping each icon, title, and subtitle visible."
+                },
+                {
+                    "icons": [
+                        "paintpalette",
+                        "sparkles.rectangle.stack"
+                    ],
+                    "title": "Reusable SwiftNEW Backdrop",
+                    "subtitle": "Mesh and Effects Anywhere",
+                    "body": "Use SwiftNEWBackdrop to add the same still or liquid mesh and decorative effects behind custom SwiftUI content."
+                },
+                {
+                    "icons": [
+                        "eye.slash",
+                        "rectangle.on.rectangle.slash"
+                    ],
+                    "title": "Invisible Trigger Fix",
+                    "subtitle": "No Residual Glass",
+                    "body": "Release-note triggers configured with size \"invisible\" no longer leave translucent glass chrome on screen."
+                }
+            ]
+        },
         {
             "version": "6.6",
             "subVersion": "6.6.0",
@@ -1007,6 +1163,84 @@
     ],
     "es": [
         {
+            "version": "27.0",
+            "subVersion": "27.0.0",
+            "new": [
+                {
+                    "icons": [
+                        "applewatch",
+                        "checkmark.circle"
+                    ],
+                    "title": "Compatibilidad nativa con watchOS",
+                    "subtitle": "Experiencia compacta en Apple Watch",
+                    "body": "SwiftNEW ahora es compatible con watchOS 8 mediante vistas compactas de la versión actual, el historial y las actualizaciones, alternativas visuales adaptativas y la resolución automática de la ficha de App Store de la app complementaria."
+                },
+                {
+                    "icons": [
+                        "car.fill",
+                        "list.bullet.rectangle"
+                    ],
+                    "title": "Compatibilidad con plantillas de CarPlay",
+                    "subtitle": "Integración en apps host aprobadas",
+                    "body": "Las apps host de CarPlay aprobadas por Apple pueden presentar contenido de actualización apto en plantillas nativas de lista y detalle basadas en los mismos datos JSON locales o remotos."
+                },
+                {
+                    "icons": [
+                        "doc.text",
+                        "tray.and.arrow.down"
+                    ],
+                    "title": "Cargador de versiones independiente",
+                    "subtitle": "JSON local o remoto",
+                    "body": "SwiftNEWReleaseNotesLoader decodifica los datos de las notas de la versión sin crear una vista de SwiftUI y permite usarlos en interfaces nativas y flujos de trabajo personalizados."
+                },
+                {
+                    "icons": [
+                        "rectangle.roundedtop",
+                        "slider.horizontal.3"
+                    ],
+                    "title": "Radio de esquina configurable para botones",
+                    "subtitle": "Valores directos o bindings",
+                    "body": "Establece buttonCornerRadius directamente o con un binding para mantener la coherencia visual del botón de notas de la versión y de los botones de acción principales."
+                },
+                {
+                    "icons": [
+                        "clock.arrow.circlepath",
+                        "magnifyingglass"
+                    ],
+                    "title": "Controles de búsqueda en el historial",
+                    "subtitle": "Versiones actuales y anteriores",
+                    "body": "Activa la búsqueda en cada instancia y filtra las notas de la versión actuales o anteriores por título, subtítulo o cuerpo."
+                },
+                {
+                    "icons": [
+                        "text.alignleft",
+                        "eye"
+                    ],
+                    "title": "Descripciones opcionales",
+                    "subtitle": "Filas de versión compactas",
+                    "body": "Usa showDescription directamente o con un binding para ocultar el cuerpo y mantener visibles el icono, el título y el subtítulo de cada elemento."
+                },
+                {
+                    "icons": [
+                        "paintpalette",
+                        "sparkles.rectangle.stack"
+                    ],
+                    "title": "Fondo de SwiftNEW reutilizable",
+                    "subtitle": "Malla y efectos en cualquier lugar",
+                    "body": "Usa SwiftNEWBackdrop para añadir la misma malla estática o líquida y efectos decorativos detrás de contenido SwiftUI personalizado."
+                },
+                {
+                    "icons": [
+                        "eye.slash",
+                        "rectangle.on.rectangle.slash"
+                    ],
+                    "title": "Corrección del activador invisible",
+                    "subtitle": "Sin cristal residual",
+                    "body": "Los activadores de notas de la versión configurados con size \"invisible\" ya no dejan elementos translúcidos de cristal en pantalla."
+                }
+            ]
+        },
+        {
             "version": "6.6",
             "subVersion": "6.6.0",
             "new": [
@@ -1509,6 +1743,84 @@
         }
     ],
     "fr": [
+        {
+            "version": "27.0",
+            "subVersion": "27.0.0",
+            "new": [
+                {
+                    "icons": [
+                        "applewatch",
+                        "checkmark.circle"
+                    ],
+                    "title": "Prise en charge native de watchOS",
+                    "subtitle": "Expérience compacte sur Apple Watch",
+                    "body": "SwiftNEW prend désormais en charge watchOS 8 avec des vues compactes pour la version actuelle, l’historique et les mises à jour, des solutions visuelles de repli adaptatives et la recherche automatique de la fiche App Store de l’app compagnon."
+                },
+                {
+                    "icons": [
+                        "car.fill",
+                        "list.bullet.rectangle"
+                    ],
+                    "title": "Prise en charge des modèles CarPlay",
+                    "subtitle": "Intégration aux apps hôtes approuvées",
+                    "body": "Les apps hôtes CarPlay approuvées par Apple peuvent présenter du contenu de mise à jour admissible dans des modèles natifs de liste et de détail reposant sur le même JSON local ou distant."
+                },
+                {
+                    "icons": [
+                        "doc.text",
+                        "tray.and.arrow.down"
+                    ],
+                    "title": "Chargeur de versions autonome",
+                    "subtitle": "JSON local ou distant",
+                    "body": "SwiftNEWReleaseNotesLoader décode les données des notes de version sans créer de vue SwiftUI, pour les interfaces natives et les workflows personnalisés."
+                },
+                {
+                    "icons": [
+                        "rectangle.roundedtop",
+                        "slider.horizontal.3"
+                    ],
+                    "title": "Arrondi des boutons configurable",
+                    "subtitle": "Valeurs directes ou bindings",
+                    "body": "Définissez buttonCornerRadius directement ou via un binding pour conserver une apparence cohérente entre le bouton des notes de version et les boutons d’action principaux."
+                },
+                {
+                    "icons": [
+                        "clock.arrow.circlepath",
+                        "magnifyingglass"
+                    ],
+                    "title": "Contrôles de recherche dans l’historique",
+                    "subtitle": "Versions actuelle et précédentes",
+                    "body": "Activez la recherche pour chaque instance et filtrez les notes de version actuelles ou précédentes par titre, sous-titre ou corps."
+                },
+                {
+                    "icons": [
+                        "text.alignleft",
+                        "eye"
+                    ],
+                    "title": "Descriptions facultatives",
+                    "subtitle": "Lignes de version compactes",
+                    "body": "Utilisez showDescription directement ou via un binding pour masquer le corps du texte tout en conservant visibles l’icône, le titre et le sous-titre de chaque élément."
+                },
+                {
+                    "icons": [
+                        "paintpalette",
+                        "sparkles.rectangle.stack"
+                    ],
+                    "title": "Arrière-plan SwiftNEW réutilisable",
+                    "subtitle": "Maillage et effets partout",
+                    "body": "Utilisez SwiftNEWBackdrop pour ajouter le même maillage statique ou liquide et des effets décoratifs derrière du contenu SwiftUI personnalisé."
+                },
+                {
+                    "icons": [
+                        "eye.slash",
+                        "rectangle.on.rectangle.slash"
+                    ],
+                    "title": "Correction du déclencheur invisible",
+                    "subtitle": "Aucun verre résiduel",
+                    "body": "Les déclencheurs de notes de version configurés avec size \"invisible\" ne laissent plus d’effet de verre translucide à l’écran."
+                }
+            ]
+        },
         {
             "version": "6.6",
             "subVersion": "6.6.0",
@@ -2013,6 +2325,84 @@
     ],
     "he": [
         {
+            "version": "27.0",
+            "subVersion": "27.0.0",
+            "new": [
+                {
+                    "icons": [
+                        "applewatch",
+                        "checkmark.circle"
+                    ],
+                    "title": "תמיכה מובנית ב-watchOS",
+                    "subtitle": "חוויה קומפקטית ב-Apple Watch",
+                    "body": "SwiftNEW תומך כעת ב-watchOS 8 עם תצוגות קומפקטיות לגרסה הנוכחית, להיסטוריה ולעדכונים, חלופות חזותיות מסתגלות ואיתור אוטומטי של רישום ה-App Store של היישום הנלווה."
+                },
+                {
+                    "icons": [
+                        "car.fill",
+                        "list.bullet.rectangle"
+                    ],
+                    "title": "תמיכה בתבניות CarPlay",
+                    "subtitle": "שילוב ביישומי מארח מאושרים",
+                    "body": "יישומי מארח של CarPlay שאושרו על ידי Apple יכולים להציג תוכן עדכון מתאים בתבניות מערכת לרשימה ולפרטים, המבוססות על אותם נתוני JSON מקומיים או מרוחקים."
+                },
+                {
+                    "icons": [
+                        "doc.text",
+                        "tray.and.arrow.down"
+                    ],
+                    "title": "טוען גרסאות עצמאי",
+                    "subtitle": "JSON מקומי או מרוחק",
+                    "body": "SwiftNEWReleaseNotesLoader מפענח נתוני הערות גרסה בלי ליצור תצוגת SwiftUI, לשימוש בממשקים מקוריים ובתהליכי עבודה מותאמים אישית."
+                },
+                {
+                    "icons": [
+                        "rectangle.roundedtop",
+                        "slider.horizontal.3"
+                    ],
+                    "title": "רדיוס פינות כפתור ניתן להתאמה",
+                    "subtitle": "ערכים ישירים או Binding",
+                    "body": "הגדירו את buttonCornerRadius ישירות או באמצעות Binding כדי לשמור על מראה אחיד של כפתור פתיחת הערות הגרסה וכפתורי הפעולה הראשיים."
+                },
+                {
+                    "icons": [
+                        "clock.arrow.circlepath",
+                        "magnifyingglass"
+                    ],
+                    "title": "פקדי חיפוש בהיסטוריה",
+                    "subtitle": "גרסאות נוכחיות וקודמות",
+                    "body": "הפעילו את החיפוש בכל מופע וסננו הערות גרסה נוכחיות או קודמות לפי כותרת, כותרת משנה או תוכן."
+                },
+                {
+                    "icons": [
+                        "text.alignleft",
+                        "eye"
+                    ],
+                    "title": "תיאורים אופציונליים",
+                    "subtitle": "שורות גרסה קומפקטיות",
+                    "body": "השתמשו ב-showDescription ישירות או באמצעות Binding כדי להסתיר את גוף הטקסט תוך השארת הסמל, הכותרת וכותרת המשנה של כל פריט גלויים."
+                },
+                {
+                    "icons": [
+                        "paintpalette",
+                        "sparkles.rectangle.stack"
+                    ],
+                    "title": "רקע SwiftNEW לשימוש חוזר",
+                    "subtitle": "רשת ואפקטים בכל מקום",
+                    "body": "השתמשו ב-SwiftNEWBackdrop כדי להוסיף את אותה רשת סטטית או נוזלית ואפקטים דקורטיביים מאחורי תוכן SwiftUI מותאם אישית."
+                },
+                {
+                    "icons": [
+                        "eye.slash",
+                        "rectangle.on.rectangle.slash"
+                    ],
+                    "title": "תיקון לכפתור ההפעלה הבלתי נראה",
+                    "subtitle": "ללא שאריות של אפקט זכוכית",
+                    "body": "כפתורי פתיחת הערות הגרסה שמוגדרים עם size \"invisible\" אינם משאירים עוד אפקט זכוכית שקוף למחצה על המסך."
+                }
+            ]
+        },
+        {
             "version": "6.6",
             "subVersion": "6.6.0",
             "new": [
@@ -2515,6 +2905,84 @@
         }
     ],
     "id": [
+        {
+            "version": "27.0",
+            "subVersion": "27.0.0",
+            "new": [
+                {
+                    "icons": [
+                        "applewatch",
+                        "checkmark.circle"
+                    ],
+                    "title": "Dukungan Native untuk watchOS",
+                    "subtitle": "Pengalaman Ringkas di Apple Watch",
+                    "body": "SwiftNEW kini mendukung watchOS 8 dengan tampilan versi saat ini, riwayat, dan pembaruan yang ringkas, fallback visual adaptif, serta pencarian App Store otomatis untuk aplikasi pendamping."
+                },
+                {
+                    "icons": [
+                        "car.fill",
+                        "list.bullet.rectangle"
+                    ],
+                    "title": "Dukungan Template CarPlay",
+                    "subtitle": "Integrasi Aplikasi Host yang Disetujui",
+                    "body": "Aplikasi host CarPlay yang telah disetujui dapat menyajikan konten pembaruan yang memenuhi syarat dalam template daftar dan detail native yang menggunakan JSON lokal atau remote yang sama."
+                },
+                {
+                    "icons": [
+                        "doc.text",
+                        "tray.and.arrow.down"
+                    ],
+                    "title": "Loader Rilis Mandiri",
+                    "subtitle": "JSON Lokal atau Remote",
+                    "body": "SwiftNEWReleaseNotesLoader mendekode data catatan rilis tanpa membuat tampilan SwiftUI, siap digunakan pada antarmuka native dan alur kerja khusus."
+                },
+                {
+                    "icons": [
+                        "rectangle.roundedtop",
+                        "slider.horizontal.3"
+                    ],
+                    "title": "Radius Sudut Tombol yang Dapat Diatur",
+                    "subtitle": "Nilai Langsung atau Binding",
+                    "body": "Atur buttonCornerRadius secara langsung atau dengan binding agar tombol catatan rilis dan tombol tindakan utama tetap konsisten secara visual."
+                },
+                {
+                    "icons": [
+                        "clock.arrow.circlepath",
+                        "magnifyingglass"
+                    ],
+                    "title": "Kontrol Pencarian Riwayat",
+                    "subtitle": "Rilis Saat Ini dan Sebelumnya",
+                    "body": "Aktifkan Search pada setiap instance dan filter catatan rilis saat ini atau sebelumnya berdasarkan judul, subjudul, atau isi."
+                },
+                {
+                    "icons": [
+                        "text.alignleft",
+                        "eye"
+                    ],
+                    "title": "Deskripsi Opsional",
+                    "subtitle": "Baris Rilis Ringkas",
+                    "body": "Gunakan showDescription secara langsung atau dengan binding untuk menyembunyikan isi sambil menjaga setiap ikon, judul, dan subjudul tetap terlihat."
+                },
+                {
+                    "icons": [
+                        "paintpalette",
+                        "sparkles.rectangle.stack"
+                    ],
+                    "title": "Latar SwiftNEW yang Dapat Digunakan Kembali",
+                    "subtitle": "Mesh dan Efek di Mana Saja",
+                    "body": "Gunakan SwiftNEWBackdrop untuk menambahkan mesh diam atau cair yang sama beserta efek dekoratif di belakang konten SwiftUI khusus."
+                },
+                {
+                    "icons": [
+                        "eye.slash",
+                        "rectangle.on.rectangle.slash"
+                    ],
+                    "title": "Perbaikan Pemicu Tak Terlihat",
+                    "subtitle": "Tanpa Sisa Lapisan Kaca",
+                    "body": "Pemicu catatan rilis yang dikonfigurasi dengan size \"invisible\" tidak lagi meninggalkan lapisan kaca tembus cahaya di layar."
+                }
+            ]
+        },
         {
             "version": "6.6",
             "subVersion": "6.6.0",
@@ -3019,6 +3487,84 @@
     ],
     "ja": [
         {
+            "version": "27.0",
+            "subVersion": "27.0.0",
+            "new": [
+                {
+                    "icons": [
+                        "applewatch",
+                        "checkmark.circle"
+                    ],
+                    "title": "watchOS ネイティブ対応",
+                    "subtitle": "コンパクトな Apple Watch 体験",
+                    "body": "SwiftNEW が watchOS 8 に対応し、現在のバージョン、履歴、アップデートの各画面をコンパクトに表示できるほか、環境に応じた表示フォールバックとコンパニオン App の App Store 情報の自動検索を利用できます。"
+                },
+                {
+                    "icons": [
+                        "car.fill",
+                        "list.bullet.rectangle"
+                    ],
+                    "title": "CarPlay テンプレート対応",
+                    "subtitle": "承認済みホスト App との統合",
+                    "body": "Apple の承認を受けた CarPlay ホスト App は、同じローカルまたはリモート JSON を基にしたネイティブのリスト／詳細テンプレートで、対象となる更新内容を表示できます。"
+                },
+                {
+                    "icons": [
+                        "doc.text",
+                        "tray.and.arrow.down"
+                    ],
+                    "title": "単独で使えるリリースローダー",
+                    "subtitle": "ローカルまたはリモート JSON",
+                    "body": "SwiftNEWReleaseNotesLoader は SwiftUI ビューを作成せずにリリースノートデータをデコードし、ネイティブ画面やカスタムワークフローで利用できます。"
+                },
+                {
+                    "icons": [
+                        "rectangle.roundedtop",
+                        "slider.horizontal.3"
+                    ],
+                    "title": "設定可能なボタンの角丸",
+                    "subtitle": "直接指定または Binding",
+                    "body": "buttonCornerRadius を直接指定するか Binding で制御し、リリースノートボタンと主要アクションボタンの見た目を統一できます。"
+                },
+                {
+                    "icons": [
+                        "clock.arrow.circlepath",
+                        "magnifyingglass"
+                    ],
+                    "title": "履歴検索コントロール",
+                    "subtitle": "現在および過去のリリース",
+                    "body": "インスタンスごとに検索を有効にし、現在または過去のリリースノートをタイトル、サブタイトル、本文で絞り込めます。"
+                },
+                {
+                    "icons": [
+                        "text.alignleft",
+                        "eye"
+                    ],
+                    "title": "説明文の任意表示",
+                    "subtitle": "コンパクトなリリース行",
+                    "body": "showDescription を直接指定するか Binding で制御し、各アイコン、タイトル、サブタイトルを表示したまま本文を非表示にできます。"
+                },
+                {
+                    "icons": [
+                        "paintpalette",
+                        "sparkles.rectangle.stack"
+                    ],
+                    "title": "再利用可能な SwiftNEW 背景",
+                    "subtitle": "どこでも使えるメッシュとエフェクト",
+                    "body": "SwiftNEWBackdrop を使うと、同じ静止またはリキッドメッシュと装飾エフェクトをカスタム SwiftUI コンテンツの背面に追加できます。"
+                },
+                {
+                    "icons": [
+                        "eye.slash",
+                        "rectangle.on.rectangle.slash"
+                    ],
+                    "title": "非表示トリガーの修正",
+                    "subtitle": "ガラス表示の残留を解消",
+                    "body": "size を \"invisible\" に設定したリリースノートトリガーで、半透明のガラス装飾が画面に残らなくなりました。"
+                }
+            ]
+        },
+        {
             "version": "6.6",
             "subVersion": "6.6.0",
             "new": [
@@ -3521,6 +4067,84 @@
         }
     ],
     "ko": [
+        {
+            "version": "27.0",
+            "subVersion": "27.0.0",
+            "new": [
+                {
+                    "icons": [
+                        "applewatch",
+                        "checkmark.circle"
+                    ],
+                    "title": "네이티브 watchOS 지원",
+                    "subtitle": "간결한 Apple Watch 경험",
+                    "body": "SwiftNEW가 이제 watchOS 8을 지원하며, 현재 버전·버전 기록·업데이트 화면을 간결하게 제공하고 환경에 맞는 시각적 폴백과 컴패니언 앱의 App Store 자동 조회를 지원합니다."
+                },
+                {
+                    "icons": [
+                        "car.fill",
+                        "list.bullet.rectangle"
+                    ],
+                    "title": "CarPlay 템플릿 지원",
+                    "subtitle": "승인된 호스트 앱 통합",
+                    "body": "Apple의 승인을 받은 CarPlay 호스트 앱은 동일한 로컬 또는 원격 JSON을 바탕으로 승인된 용도에 적합한 업데이트 콘텐츠를 네이티브 목록 및 상세 템플릿에 표시할 수 있습니다."
+                },
+                {
+                    "icons": [
+                        "doc.text",
+                        "tray.and.arrow.down"
+                    ],
+                    "title": "독립형 릴리스 로더",
+                    "subtitle": "로컬 또는 원격 JSON",
+                    "body": "SwiftNEWReleaseNotesLoader는 SwiftUI 뷰를 만들지 않고 릴리스 노트 데이터를 디코딩하여 네이티브 화면과 사용자 지정 워크플로에서 바로 사용할 수 있게 합니다."
+                },
+                {
+                    "icons": [
+                        "rectangle.roundedtop",
+                        "slider.horizontal.3"
+                    ],
+                    "title": "버튼 모서리 반경 사용자 지정",
+                    "subtitle": "직접 지정 또는 바인딩",
+                    "body": "buttonCornerRadius를 직접 지정하거나 바인딩으로 전달해 릴리스 노트 버튼과 주요 동작 버튼의 시각적 일관성을 유지할 수 있습니다."
+                },
+                {
+                    "icons": [
+                        "clock.arrow.circlepath",
+                        "magnifyingglass"
+                    ],
+                    "title": "버전 기록 검색 제어",
+                    "subtitle": "현재 및 이전 릴리스",
+                    "body": "인스턴스별로 검색을 활성화하고 제목, 부제 또는 본문을 기준으로 현재 및 이전 릴리스 노트를 필터링할 수 있습니다."
+                },
+                {
+                    "icons": [
+                        "text.alignleft",
+                        "eye"
+                    ],
+                    "title": "선택적 설명 표시",
+                    "subtitle": "간결한 릴리스 행",
+                    "body": "showDescription을 직접 지정하거나 바인딩으로 전달해 각 아이콘, 제목, 부제를 표시한 채 본문을 숨길 수 있습니다."
+                },
+                {
+                    "icons": [
+                        "paintpalette",
+                        "sparkles.rectangle.stack"
+                    ],
+                    "title": "재사용 가능한 SwiftNEW 배경",
+                    "subtitle": "어디서나 사용하는 메시와 효과",
+                    "body": "SwiftNEWBackdrop을 사용해 동일한 정적 또는 리퀴드 메시와 장식 효과를 사용자 지정 SwiftUI 콘텐츠 뒤에 추가할 수 있습니다."
+                },
+                {
+                    "icons": [
+                        "eye.slash",
+                        "rectangle.on.rectangle.slash"
+                    ],
+                    "title": "보이지 않는 트리거 수정",
+                    "subtitle": "잔여 글래스 효과 제거",
+                    "body": "size가 \"invisible\"로 설정된 릴리스 노트 트리거가 더 이상 화면에 반투명 글래스 효과를 남기지 않습니다."
+                }
+            ]
+        },
         {
             "version": "6.6",
             "subVersion": "6.6.0",
@@ -4025,6 +4649,84 @@
     ],
     "ru": [
         {
+            "version": "27.0",
+            "subVersion": "27.0.0",
+            "new": [
+                {
+                    "icons": [
+                        "applewatch",
+                        "checkmark.circle"
+                    ],
+                    "title": "Нативная поддержка watchOS",
+                    "subtitle": "Компактный интерфейс Apple Watch",
+                    "body": "SwiftNEW теперь поддерживает watchOS 8: компактные экраны текущей версии, истории и обновления, адаптивные визуальные решения и автоматический поиск приложения-компаньона в App Store."
+                },
+                {
+                    "icons": [
+                        "car.fill",
+                        "list.bullet.rectangle"
+                    ],
+                    "title": "Поддержка шаблонов CarPlay",
+                    "subtitle": "Интеграция с одобренным хост-приложением",
+                    "body": "Одобренные Apple хост-приложения CarPlay могут показывать допустимый в рамках одобренного сценария контент обновлений в нативных шаблонах списка и подробного представления на основе того же локального или удалённого JSON."
+                },
+                {
+                    "icons": [
+                        "doc.text",
+                        "tray.and.arrow.down"
+                    ],
+                    "title": "Автономный загрузчик выпусков",
+                    "subtitle": "Локальный или удалённый JSON",
+                    "body": "SwiftNEWReleaseNotesLoader декодирует данные примечаний к выпуску без создания представления SwiftUI и позволяет использовать их в нативных интерфейсах и собственных рабочих процессах."
+                },
+                {
+                    "icons": [
+                        "rectangle.roundedtop",
+                        "slider.horizontal.3"
+                    ],
+                    "title": "Настраиваемое скругление кнопок",
+                    "subtitle": "Значение или привязка",
+                    "body": "Задавайте buttonCornerRadius напрямую или через привязку, чтобы кнопка показа примечаний к выпуску и основные кнопки действий выглядели единообразно."
+                },
+                {
+                    "icons": [
+                        "clock.arrow.circlepath",
+                        "magnifyingglass"
+                    ],
+                    "title": "Управление поиском в истории",
+                    "subtitle": "Текущий и предыдущие выпуски",
+                    "body": "Включайте поиск для каждого экземпляра и фильтруйте примечания к текущему или предыдущим выпускам по заголовку, подзаголовку или тексту."
+                },
+                {
+                    "icons": [
+                        "text.alignleft",
+                        "eye"
+                    ],
+                    "title": "Необязательные описания",
+                    "subtitle": "Компактные строки выпусков",
+                    "body": "Задавайте showDescription напрямую или через привязку, чтобы скрывать текст описания, оставляя видимыми значок, заголовок и подзаголовок каждой записи."
+                },
+                {
+                    "icons": [
+                        "paintpalette",
+                        "sparkles.rectangle.stack"
+                    ],
+                    "title": "Повторно используемый фон SwiftNEW",
+                    "subtitle": "Сетка и эффекты где угодно",
+                    "body": "Используйте SwiftNEWBackdrop, чтобы добавить ту же статичную сетку или сетку с плавным движением и декоративные эффекты позади пользовательского содержимого SwiftUI."
+                },
+                {
+                    "icons": [
+                        "eye.slash",
+                        "rectangle.on.rectangle.slash"
+                    ],
+                    "title": "Исправление невидимого триггера",
+                    "subtitle": "Без остаточного эффекта стекла",
+                    "body": "Триггеры примечаний к выпуску, у которых size задан как \"invisible\", больше не оставляют на экране полупрозрачный стеклянный слой."
+                }
+            ]
+        },
+        {
             "version": "6.6",
             "subVersion": "6.6.0",
             "new": [
@@ -4527,6 +5229,84 @@
         }
     ],
     "vi": [
+        {
+            "version": "27.0",
+            "subVersion": "27.0.0",
+            "new": [
+                {
+                    "icons": [
+                        "applewatch",
+                        "checkmark.circle"
+                    ],
+                    "title": "Hỗ trợ watchOS chính thức",
+                    "subtitle": "Trải nghiệm Apple Watch nhỏ gọn",
+                    "body": "SwiftNEW nay hỗ trợ watchOS 8 với giao diện phiên bản hiện tại, lịch sử và cập nhật nhỏ gọn, các kiểu hiển thị dự phòng thích ứng và khả năng tự động tra cứu ứng dụng đồng hành trên App Store."
+                },
+                {
+                    "icons": [
+                        "car.fill",
+                        "list.bullet.rectangle"
+                    ],
+                    "title": "Hỗ trợ mẫu CarPlay",
+                    "subtitle": "Tích hợp cho ứng dụng chủ đã được phê duyệt",
+                    "body": "Các ứng dụng chủ CarPlay đã được phê duyệt có thể trình bày nội dung cập nhật phù hợp với mục đích trên xe đã được phê duyệt trong các mẫu danh sách và chi tiết nguyên bản dùng chung dữ liệu JSON cục bộ hoặc từ xa."
+                },
+                {
+                    "icons": [
+                        "doc.text",
+                        "tray.and.arrow.down"
+                    ],
+                    "title": "Trình tải ghi chú phát hành độc lập",
+                    "subtitle": "JSON cục bộ hoặc từ xa",
+                    "body": "SwiftNEWReleaseNotesLoader giải mã dữ liệu ghi chú phát hành mà không cần tạo giao diện SwiftUI, sẵn sàng cho các giao diện hệ thống và quy trình tùy chỉnh."
+                },
+                {
+                    "icons": [
+                        "rectangle.roundedtop",
+                        "slider.horizontal.3"
+                    ],
+                    "title": "Bán kính góc nút tùy chỉnh",
+                    "subtitle": "Giá trị trực tiếp hoặc Binding",
+                    "body": "Đặt buttonCornerRadius trực tiếp hoặc qua binding để giữ giao diện nhất quán giữa nút mở ghi chú phát hành và các nút hành động chính."
+                },
+                {
+                    "icons": [
+                        "clock.arrow.circlepath",
+                        "magnifyingglass"
+                    ],
+                    "title": "Điều khiển tìm kiếm trong lịch sử",
+                    "subtitle": "Bản phát hành hiện tại và trước đây",
+                    "body": "Bật Search riêng cho từng giao diện SwiftNEW và lọc ghi chú phát hành hiện tại hoặc trong lịch sử theo tiêu đề, phụ đề hay nội dung."
+                },
+                {
+                    "icons": [
+                        "text.alignleft",
+                        "eye"
+                    ],
+                    "title": "Mô tả tùy chọn",
+                    "subtitle": "Hàng ghi chú phát hành nhỏ gọn",
+                    "body": "Dùng showDescription trực tiếp hoặc qua binding để ẩn nội dung chi tiết mà vẫn hiển thị biểu tượng, tiêu đề và phụ đề."
+                },
+                {
+                    "icons": [
+                        "paintpalette",
+                        "sparkles.rectangle.stack"
+                    ],
+                    "title": "Nền SwiftNEW có thể tái sử dụng",
+                    "subtitle": "Lưới và hiệu ứng ở mọi nơi",
+                    "body": "Dùng SwiftNEWBackdrop để thêm cùng kiểu lưới tĩnh hoặc lưới chuyển động dạng lỏng và các hiệu ứng trang trí phía sau nội dung SwiftUI tùy chỉnh."
+                },
+                {
+                    "icons": [
+                        "eye.slash",
+                        "rectangle.on.rectangle.slash"
+                    ],
+                    "title": "Sửa lỗi nút kích hoạt vô hình",
+                    "subtitle": "Không còn hiệu ứng kính sót lại",
+                    "body": "Các nút mở ghi chú phát hành có size được đặt thành \"invisible\" không còn để lại hiệu ứng kính mờ trên màn hình."
+                }
+            ]
+        },
         {
             "version": "6.6",
             "subVersion": "6.6.0",
@@ -5031,6 +5811,84 @@
     ],
     "zh-Hans": [
         {
+            "version": "27.0",
+            "subVersion": "27.0.0",
+            "new": [
+                {
+                    "icons": [
+                        "applewatch",
+                        "checkmark.circle"
+                    ],
+                    "title": "原生 watchOS 支持",
+                    "subtitle": "紧凑的 Apple Watch 体验",
+                    "body": "SwiftNEW 现已支持 watchOS 8，提供紧凑的当前版本、历史记录和更新界面、自适应视觉回退效果，以及自动查询配套 App 的 App Store 信息。"
+                },
+                {
+                    "icons": [
+                        "car.fill",
+                        "list.bullet.rectangle"
+                    ],
+                    "title": "CarPlay 模板支持",
+                    "subtitle": "已获批准的宿主 App 集成",
+                    "body": "已获批准的 CarPlay 宿主 App 可在由同一套本地或远程 JSON 驱动的原生列表和详情模板中，呈现符合获批车载用途的更新内容。"
+                },
+                {
+                    "icons": [
+                        "doc.text",
+                        "tray.and.arrow.down"
+                    ],
+                    "title": "独立版本说明加载器",
+                    "subtitle": "本地或远程 JSON",
+                    "body": "SwiftNEWReleaseNotesLoader 无需创建 SwiftUI 视图即可解码版本说明数据，适用于原生界面和自定义工作流。"
+                },
+                {
+                    "icons": [
+                        "rectangle.roundedtop",
+                        "slider.horizontal.3"
+                    ],
+                    "title": "可配置按钮圆角",
+                    "subtitle": "直接值或 Binding",
+                    "body": "直接设置 buttonCornerRadius 或通过 binding 控制，让版本说明触发按钮与主要操作按钮保持一致外观。"
+                },
+                {
+                    "icons": [
+                        "clock.arrow.circlepath",
+                        "magnifyingglass"
+                    ],
+                    "title": "历史搜索控制",
+                    "subtitle": "当前与过往版本",
+                    "body": "可为每个 SwiftNEW 实例启用 Search，并按标题、副标题或正文筛选当前或历史版本说明。"
+                },
+                {
+                    "icons": [
+                        "text.alignleft",
+                        "eye"
+                    ],
+                    "title": "可选说明文本",
+                    "subtitle": "紧凑的版本说明行",
+                    "body": "直接设置 showDescription 或通过 binding 控制，在隐藏正文的同时保留图标、标题和副标题。"
+                },
+                {
+                    "icons": [
+                        "paintpalette",
+                        "sparkles.rectangle.stack"
+                    ],
+                    "title": "可复用的 SwiftNEW 背景",
+                    "subtitle": "随处使用网格与特效",
+                    "body": "使用 SwiftNEWBackdrop，在自定义 SwiftUI 内容后加入相同的静态或流动网格背景和装饰特效。"
+                },
+                {
+                    "icons": [
+                        "eye.slash",
+                        "rectangle.on.rectangle.slash"
+                    ],
+                    "title": "隐形触发按钮修复",
+                    "subtitle": "不再残留玻璃效果",
+                    "body": "将 size 配置为 \"invisible\" 的版本说明触发按钮不再在屏幕上留下半透明玻璃效果。"
+                }
+            ]
+        },
+        {
             "version": "6.6",
             "subVersion": "6.6.0",
             "new": [
@@ -5533,6 +6391,84 @@
         }
     ],
     "zh-Hant": [
+        {
+            "version": "27.0",
+            "subVersion": "27.0.0",
+            "new": [
+                {
+                    "icons": [
+                        "applewatch",
+                        "checkmark.circle"
+                    ],
+                    "title": "原生 watchOS 支援",
+                    "subtitle": "精簡 Apple Watch 體驗",
+                    "body": "SwiftNEW 而家支援 watchOS 8，提供精簡嘅目前版本、歷史同更新畫面、自適應視覺後備效果，同埋自動查詢配套 App 嘅 App Store 資料。"
+                },
+                {
+                    "icons": [
+                        "car.fill",
+                        "list.bullet.rectangle"
+                    ],
+                    "title": "CarPlay Template 支援",
+                    "subtitle": "已獲批准嘅 host app 整合",
+                    "body": "已獲批准嘅 CarPlay host app 可以喺由同一套本地或遠端 JSON 驅動嘅原生列表同詳細資料 template 入面，顯示符合獲批車載用途嘅更新內容。"
+                },
+                {
+                    "icons": [
+                        "doc.text",
+                        "tray.and.arrow.down"
+                    ],
+                    "title": "獨立版本說明載入器",
+                    "subtitle": "本地或遠端 JSON",
+                    "body": "SwiftNEWReleaseNotesLoader 唔使建立 SwiftUI view 都可以解碼版本說明資料，適合原生介面同自訂 workflow。"
+                },
+                {
+                    "icons": [
+                        "rectangle.roundedtop",
+                        "slider.horizontal.3"
+                    ],
+                    "title": "可設定按鈕圓角",
+                    "subtitle": "直接設定或 Binding",
+                    "body": "直接設定 buttonCornerRadius 或用 binding 控制，令版本說明觸發按鈕同主要操作按鈕嘅外觀保持一致。"
+                },
+                {
+                    "icons": [
+                        "clock.arrow.circlepath",
+                        "magnifyingglass"
+                    ],
+                    "title": "歷史搜尋控制",
+                    "subtitle": "目前同過往版本",
+                    "body": "可以喺每個 SwiftNEW 實例啟用 Search，並按標題、副標題或內文篩選目前或歷史版本說明。"
+                },
+                {
+                    "icons": [
+                        "text.alignleft",
+                        "eye"
+                    ],
+                    "title": "可選說明文字",
+                    "subtitle": "精簡版本說明列",
+                    "body": "直接設定 showDescription 或用 binding 控制，隱藏內文之餘仍然保留圖示、標題同副標題。"
+                },
+                {
+                    "icons": [
+                        "paintpalette",
+                        "sparkles.rectangle.stack"
+                    ],
+                    "title": "可重用 SwiftNEW 背景",
+                    "subtitle": "網格同特效隨處使用",
+                    "body": "用 SwiftNEWBackdrop 喺自訂 SwiftUI 內容後面加入同款靜態或流動網格背景同裝飾特效。"
+                },
+                {
+                    "icons": [
+                        "eye.slash",
+                        "rectangle.on.rectangle.slash"
+                    ],
+                    "title": "隱形觸發按鈕修正",
+                    "subtitle": "唔再殘留玻璃效果",
+                    "body": "將 size 設定成 \"invisible\" 嘅版本說明觸發按鈕，唔會再喺畫面留下半透明玻璃效果。"
+                }
+            ]
+        },
         {
             "version": "6.6",
             "subVersion": "6.6.0",

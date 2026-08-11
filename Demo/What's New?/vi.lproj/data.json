@@ -1,5 +1,83 @@
 [
     {
+        "version": "27.0",
+        "subVersion": "27.0.0",
+        "new": [
+            {
+                "icons": [
+                    "applewatch",
+                    "checkmark.circle"
+                ],
+                "title": "Hỗ trợ watchOS chính thức",
+                "subtitle": "Trải nghiệm Apple Watch nhỏ gọn",
+                "body": "SwiftNEW nay hỗ trợ watchOS 8 với giao diện phiên bản hiện tại, lịch sử và cập nhật nhỏ gọn, các kiểu hiển thị dự phòng thích ứng và khả năng tự động tra cứu ứng dụng đồng hành trên App Store."
+            },
+            {
+                "icons": [
+                    "car.fill",
+                    "list.bullet.rectangle"
+                ],
+                "title": "Hỗ trợ mẫu CarPlay",
+                "subtitle": "Tích hợp cho ứng dụng chủ đã được phê duyệt",
+                "body": "Các ứng dụng chủ CarPlay đã được phê duyệt có thể trình bày nội dung cập nhật phù hợp với mục đích trên xe đã được phê duyệt trong các mẫu danh sách và chi tiết nguyên bản dùng chung dữ liệu JSON cục bộ hoặc từ xa."
+            },
+            {
+                "icons": [
+                    "doc.text",
+                    "tray.and.arrow.down"
+                ],
+                "title": "Trình tải ghi chú phát hành độc lập",
+                "subtitle": "JSON cục bộ hoặc từ xa",
+                "body": "SwiftNEWReleaseNotesLoader giải mã dữ liệu ghi chú phát hành mà không cần tạo giao diện SwiftUI, sẵn sàng cho các giao diện hệ thống và quy trình tùy chỉnh."
+            },
+            {
+                "icons": [
+                    "rectangle.roundedtop",
+                    "slider.horizontal.3"
+                ],
+                "title": "Bán kính góc nút tùy chỉnh",
+                "subtitle": "Giá trị trực tiếp hoặc Binding",
+                "body": "Đặt buttonCornerRadius trực tiếp hoặc qua binding để giữ giao diện nhất quán giữa nút mở ghi chú phát hành và các nút hành động chính."
+            },
+            {
+                "icons": [
+                    "clock.arrow.circlepath",
+                    "magnifyingglass"
+                ],
+                "title": "Điều khiển tìm kiếm trong lịch sử",
+                "subtitle": "Bản phát hành hiện tại và trước đây",
+                "body": "Bật Search riêng cho từng giao diện SwiftNEW và lọc ghi chú phát hành hiện tại hoặc trong lịch sử theo tiêu đề, phụ đề hay nội dung."
+            },
+            {
+                "icons": [
+                    "text.alignleft",
+                    "eye"
+                ],
+                "title": "Mô tả tùy chọn",
+                "subtitle": "Hàng ghi chú phát hành nhỏ gọn",
+                "body": "Dùng showDescription trực tiếp hoặc qua binding để ẩn nội dung chi tiết mà vẫn hiển thị biểu tượng, tiêu đề và phụ đề."
+            },
+            {
+                "icons": [
+                    "paintpalette",
+                    "sparkles.rectangle.stack"
+                ],
+                "title": "Nền SwiftNEW có thể tái sử dụng",
+                "subtitle": "Lưới và hiệu ứng ở mọi nơi",
+                "body": "Dùng SwiftNEWBackdrop để thêm cùng kiểu lưới tĩnh hoặc lưới chuyển động dạng lỏng và các hiệu ứng trang trí phía sau nội dung SwiftUI tùy chỉnh."
+            },
+            {
+                "icons": [
+                    "eye.slash",
+                    "rectangle.on.rectangle.slash"
+                ],
+                "title": "Sửa lỗi nút kích hoạt vô hình",
+                "subtitle": "Không còn hiệu ứng kính sót lại",
+                "body": "Các nút mở ghi chú phát hành có size được đặt thành \"invisible\" không còn để lại hiệu ứng kính mờ trên màn hình."
+            }
+        ]
+    },
+    {
         "version": "6.6",
         "subVersion": "6.6.0",
         "new": [

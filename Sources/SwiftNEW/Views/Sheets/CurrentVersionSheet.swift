@@ -63,23 +63,22 @@ extension SwiftNEW {
                     .foregroundStyle(.secondary)
             }
         } else {
-            if search {
+            if canSearchCurrentVersion {
                 searchButton
             }
 
-            if search && showSearch {
+            if canSearchCurrentVersion && showSearch {
                 searchField
             }
 
-            ForEach(items) { item in
-                if item.version == Bundle.version || item.subVersion == Bundle.version {
-                    ForEach(item.new.filter { matchesSearch($0) }) { new in
-                        releaseRow(new, bodyFont: .footnote, spacing: 2)
-                    }
-                }
+            if visibleCurrentVersionChanges.isEmpty {
+                currentVersionEmptyState
+                    .padding(.vertical, 4)
+            } else {
+                currentVersionRows
             }
 
-            if history {
+            if canShowHistory {
                 showHistoryButton
                     .padding(.top, 4)
             }
@@ -117,18 +116,18 @@ extension SwiftNEW {
                 }
             }
             else {
-                if search && showSearch {
+                if canSearchCurrentVersion && showSearch {
                     searchField
                 }
                 #if os(macOS)
-                currentVersionScrollView(bottomInset: 0, maxScrollHeight: maxScrollHeight)
+                currentVersionContent(bottomInset: 0, maxScrollHeight: maxScrollHeight)
 
                 Spacer()
 
                 currentVersionControls
                 #else
                 ZStack(alignment: .bottom) {
-                    currentVersionScrollView(bottomInset: 196, maxScrollHeight: maxScrollHeight)
+                    currentVersionContent(bottomInset: 196, maxScrollHeight: maxScrollHeight)
 
                     currentVersionControls
                     .frame(maxWidth: .infinity)
@@ -147,18 +146,33 @@ extension SwiftNEW {
         #endif
     }
 
+    @ViewBuilder
+    private func currentVersionContent(bottomInset: CGFloat, maxScrollHeight: CGFloat?) -> some View {
+        if visibleCurrentVersionChanges.isEmpty {
+            GeometryReader { geometry in
+                ScrollView(showsIndicators: false) {
+                    currentVersionEmptyState
+                        .padding(.bottom, bottomInset)
+                        .frame(maxWidth: .infinity, alignment: currentVersionEmptyStateFrameAlignment)
+                        .frame(minHeight: geometry.size.height)
+                }
+            }
+            #if !os(tvOS)
+            .padding(.horizontal, 32)
+            #else
+            .frame(maxHeight: maxScrollHeight)
+            #endif
+        } else {
+            currentVersionScrollView(bottomInset: bottomInset, maxScrollHeight: maxScrollHeight)
+        }
+    }
+
     private func currentVersionScrollView(bottomInset: CGFloat, maxScrollHeight: CGFloat?) -> some View {
         ScrollView(showsIndicators: false) {
             // Breathing room so the first row doesn't sit in the top fade.
             Color.clear.frame(height: 10)
 
-            ForEach(items) { item in
-                if item.version == Bundle.version || item.subVersion == Bundle.version {
-                    ForEach(item.new.filter { matchesSearch($0) }) { new in
-                        releaseRow(new, bodyFont: .footnote, spacing: 2)
-                    }
-                }
-            }
+            currentVersionRows
 
             if bottomInset > 0 {
                 // Let the final row scroll above the overlaid controls.
@@ -177,12 +191,12 @@ extension SwiftNEW {
 
     private var currentVersionControls: some View {
         VStack(spacing: 0) {
-            if history || search {
+            if canShowHistory || canSearchCurrentVersion {
                 HStack {
-                    if history {
+                    if canShowHistory {
                         showHistoryButton
                     }
-                    if search {
+                    if canSearchCurrentVersion {
                         searchButton
                     }
                 }
@@ -192,6 +206,118 @@ extension SwiftNEW {
             closeCurrentButton
                 .padding(.bottom, 6)
         }
+    }
+
+    private var currentVersionEmptyState: some View {
+        VStack(alignment: align, spacing: 18) {
+            iconBadge(systemName: isShowingNoSearchResults ? "magnifyingglass" : "doc.text")
+                .accessibilityHidden(true)
+
+            VStack(alignment: align, spacing: 6) {
+                Text(currentVersionEmptyStateTitle)
+                    .font(currentVersionEmptyStateTitleFont)
+                    .foregroundStyle(.primary)
+                    .multilineTextAlignment(currentVersionEmptyStateTextAlignment)
+                    .fixedSize(horizontal: false, vertical: true)
+
+                Text(currentVersionEmptyStateMessage)
+                    .font(currentVersionEmptyStateMessageFont)
+                    .foregroundStyle(.secondary)
+                    .multilineTextAlignment(currentVersionEmptyStateTextAlignment)
+                    .fixedSize(horizontal: false, vertical: true)
+            }
+            .frame(maxWidth: .infinity, alignment: currentVersionEmptyStateFrameAlignment)
+            .accessibilityElement(children: .combine)
+        }
+        .frame(maxWidth: 320, alignment: currentVersionEmptyStateFrameAlignment)
+    }
+
+    private var currentVersionEmptyStateTitle: String {
+        if isShowingNoSearchResults {
+            return String(localized: "No Results", bundle: .module)
+        }
+        return String(localized: "No Release Notes Yet", bundle: .module)
+    }
+
+    private var currentVersionEmptyStateMessage: String {
+        if isShowingNoSearchResults {
+            return String(localized: "Try another search term.", bundle: .module)
+        }
+        return String(
+            localized: "Release notes for this version will appear here when available.",
+            bundle: .module
+        )
+    }
+
+    private var currentVersionEmptyStateTitleFont: Font {
+        #if os(watchOS)
+        .headline.weight(.semibold)
+        #else
+        .title3.weight(.semibold)
+        #endif
+    }
+
+    private var currentVersionEmptyStateMessageFont: Font {
+        #if os(watchOS)
+        .footnote
+        #else
+        .subheadline
+        #endif
+    }
+
+    private var currentVersionEmptyStateFrameAlignment: Alignment {
+        if align == .leading { return .leading }
+        if align == .trailing { return .trailing }
+        return .center
+    }
+
+    private var currentVersionEmptyStateTextAlignment: TextAlignment {
+        if align == .leading { return .leading }
+        if align == .trailing { return .trailing }
+        return .center
+    }
+
+    @ViewBuilder
+    private var currentVersionRows: some View {
+        ForEach(items) { item in
+            ForEach(visibleCurrentVersionChanges(in: item)) { new in
+                releaseRow(new, bodyFont: .footnote, spacing: 2)
+            }
+        }
+    }
+
+    var currentVersionChanges: [Model] {
+        items.flatMap { item -> [Model] in
+            guard item.version == Bundle.version || item.subVersion == Bundle.version else {
+                return []
+            }
+            return item.new
+        }
+    }
+
+    var visibleCurrentVersionChanges: [Model] {
+        items.flatMap { visibleCurrentVersionChanges(in: $0) }
+    }
+
+    func visibleCurrentVersionChanges(in item: Vmodel) -> [Model] {
+        guard item.version == Bundle.version || item.subVersion == Bundle.version else {
+            return []
+        }
+        return item.new.filter { matchesSearch($0) }
+    }
+
+    var canSearchCurrentVersion: Bool {
+        search && !currentVersionChanges.isEmpty
+    }
+
+    var canShowHistory: Bool {
+        history && items.contains { !$0.new.isEmpty }
+    }
+
+    var isShowingNoSearchResults: Bool {
+        canSearchCurrentVersion
+            && showSearch
+            && !debouncedSearchText.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
     }
 
     @ViewBuilder

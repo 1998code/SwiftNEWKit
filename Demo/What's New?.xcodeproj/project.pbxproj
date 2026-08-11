@@ -72,6 +72,9 @@
 		3A41E5F4302A7FD8008FF169 /* Watch Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Watch Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A41E600302A7FD9008FF169 /* Watch Watch AppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Watch Watch AppTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A41E60A302A7FD9008FF169 /* Watch Watch AppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Watch Watch AppUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3A41E664302AC48F008FF169 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = ar; path = ar.lproj/data.json; sourceTree = "<group>"; };
+		3A41E665302AC499008FF169 /* da */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = da; path = da.lproj/data.json; sourceTree = "<group>"; };
+		3A41E666302AC4A1008FF169 /* th */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = th; path = th.lproj/data.json; sourceTree = "<group>"; };
 		3A46CBAC285444CC00BE79A3 /* What's New?.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "What's New?.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A46CBAF285444CC00BE79A3 /* What_s_New_App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = What_s_New_App.swift; sourceTree = "<group>"; };
 		3A46CBB1285444CC00BE79A3 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -328,6 +331,9 @@
 				ru,
 				vi,
 				id,
+				ar,
+				da,
+				th,
 			);
 			mainGroup = 3A46CBA3285444CC00BE79A3;
 			packageReferences = (
@@ -454,6 +460,9 @@
 				3A61B53E301F834100DFD913 /* ru */,
 				3A61B53F301F834800DFD913 /* vi */,
 				3A61B540301F835400DFD913 /* id */,
+				3A41E664302AC48F008FF169 /* ar */,
+				3A41E665302AC499008FF169 /* da */,
+				3A41E666302AC4A1008FF169 /* th */,
 			);
 			name = data.json;
 			sourceTree = "<group>";

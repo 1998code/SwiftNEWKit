@@ -458,6 +458,76 @@ import AppKit
 }
 
 @MainActor
+@Test func currentVersionEmptyStateDistinguishesMissingNotesFromNoSearchResults() {
+    let noNotes = makeSwiftNEW(items: [], loading: false, history: true, search: true)
+
+    #expect(noNotes.currentVersionChanges.isEmpty)
+    #expect(noNotes.visibleCurrentVersionChanges.isEmpty)
+    #expect(noNotes.canSearchCurrentVersion == false)
+    #expect(noNotes.canShowHistory == false)
+    #expect(noNotes.isShowingNoSearchResults == false)
+
+    let historyOnly = makeSwiftNEW(
+        items: [sampleItems()[1]],
+        loading: false,
+        history: true,
+        search: true
+    )
+
+    #expect(historyOnly.currentVersionChanges.isEmpty)
+    #expect(historyOnly.canSearchCurrentVersion == false)
+    #expect(historyOnly.canShowHistory)
+    #expect(historyOnly.isShowingNoSearchResults == false)
+
+    let emptyCurrentRelease = makeSwiftNEW(
+        items: [
+            Vmodel(version: Bundle.version, new: []),
+            sampleItems()[1]
+        ],
+        loading: false,
+        history: true,
+        search: true
+    )
+
+    #expect(emptyCurrentRelease.currentVersionChanges.isEmpty)
+    #expect(emptyCurrentRelease.canSearchCurrentVersion == false)
+    #expect(emptyCurrentRelease.canShowHistory)
+    #expect(emptyCurrentRelease.isShowingNoSearchResults == false)
+
+    let controlsDisabled = makeSwiftNEW(
+        items: sampleItems(),
+        loading: false,
+        history: false,
+        search: false
+    )
+
+    #expect(controlsDisabled.canSearchCurrentVersion == false)
+    #expect(controlsDisabled.canShowHistory == false)
+
+    let populated = makeSwiftNEW(items: sampleItems(), loading: false, history: true, search: true)
+
+    #expect(populated.currentVersionChanges.count == 2)
+    #expect(populated.visibleCurrentVersionChanges.count == 2)
+    #expect(populated.canSearchCurrentVersion)
+    #expect(populated.canShowHistory)
+
+    let noSearchResults = makeSwiftNEW(
+        items: sampleItems(),
+        loading: false,
+        showSearch: true,
+        searchText: "not-present",
+        debouncedSearchText: "not-present",
+        history: true,
+        search: true
+    )
+
+    #expect(noSearchResults.currentVersionChanges.count == 2)
+    #expect(noSearchResults.visibleCurrentVersionChanges.isEmpty)
+    #expect(noSearchResults.canSearchCurrentVersion)
+    #expect(noSearchResults.isShowingNoSearchResults)
+}
+
+@MainActor
 @Test func loadDataReportsMissingLocalFiles() async throws {
     let sut = makeSwiftNEW(data: "missing-release-notes-file")
 
@@ -554,6 +624,28 @@ import AppKit
         search: false
     )
     render(noHistory.sheetCurrent)
+
+    let empty = makeSwiftNEW(items: [], loading: false, history: true, search: true)
+    render(empty.sheetCurrent)
+
+    let emptyCurrentWithHistory = makeSwiftNEW(
+        items: [sampleItems()[1]],
+        loading: false,
+        history: true,
+        search: true
+    )
+    render(emptyCurrentWithHistory.sheetCurrent)
+
+    let noSearchResults = makeSwiftNEW(
+        items: sampleItems(),
+        loading: false,
+        showSearch: true,
+        searchText: "not-present",
+        debouncedSearchText: "not-present",
+        history: true,
+        search: true
+    )
+    render(noSearchResults.sheetCurrent)
 }
 
 @MainActor

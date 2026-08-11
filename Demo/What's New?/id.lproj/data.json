@@ -1,5 +1,83 @@
 [
     {
+        "version": "27.0",
+        "subVersion": "27.0.0",
+        "new": [
+            {
+                "icons": [
+                    "applewatch",
+                    "checkmark.circle"
+                ],
+                "title": "Dukungan Native untuk watchOS",
+                "subtitle": "Pengalaman Ringkas di Apple Watch",
+                "body": "SwiftNEW kini mendukung watchOS 8 dengan tampilan versi saat ini, riwayat, dan pembaruan yang ringkas, fallback visual adaptif, serta pencarian App Store otomatis untuk aplikasi pendamping."
+            },
+            {
+                "icons": [
+                    "car.fill",
+                    "list.bullet.rectangle"
+                ],
+                "title": "Dukungan Template CarPlay",
+                "subtitle": "Integrasi Aplikasi Host yang Disetujui",
+                "body": "Aplikasi host CarPlay yang telah disetujui dapat menyajikan konten pembaruan yang memenuhi syarat dalam template daftar dan detail native yang menggunakan JSON lokal atau remote yang sama."
+            },
+            {
+                "icons": [
+                    "doc.text",
+                    "tray.and.arrow.down"
+                ],
+                "title": "Loader Rilis Mandiri",
+                "subtitle": "JSON Lokal atau Remote",
+                "body": "SwiftNEWReleaseNotesLoader mendekode data catatan rilis tanpa membuat tampilan SwiftUI, siap digunakan pada antarmuka native dan alur kerja khusus."
+            },
+            {
+                "icons": [
+                    "rectangle.roundedtop",
+                    "slider.horizontal.3"
+                ],
+                "title": "Radius Sudut Tombol yang Dapat Diatur",
+                "subtitle": "Nilai Langsung atau Binding",
+                "body": "Atur buttonCornerRadius secara langsung atau dengan binding agar tombol catatan rilis dan tombol tindakan utama tetap konsisten secara visual."
+            },
+            {
+                "icons": [
+                    "clock.arrow.circlepath",
+                    "magnifyingglass"
+                ],
+                "title": "Kontrol Pencarian Riwayat",
+                "subtitle": "Rilis Saat Ini dan Sebelumnya",
+                "body": "Aktifkan Search pada setiap instance dan filter catatan rilis saat ini atau sebelumnya berdasarkan judul, subjudul, atau isi."
+            },
+            {
+                "icons": [
+                    "text.alignleft",
+                    "eye"
+                ],
+                "title": "Deskripsi Opsional",
+                "subtitle": "Baris Rilis Ringkas",
+                "body": "Gunakan showDescription secara langsung atau dengan binding untuk menyembunyikan isi sambil menjaga setiap ikon, judul, dan subjudul tetap terlihat."
+            },
+            {
+                "icons": [
+                    "paintpalette",
+                    "sparkles.rectangle.stack"
+                ],
+                "title": "Latar SwiftNEW yang Dapat Digunakan Kembali",
+                "subtitle": "Mesh dan Efek di Mana Saja",
+                "body": "Gunakan SwiftNEWBackdrop untuk menambahkan mesh diam atau cair yang sama beserta efek dekoratif di belakang konten SwiftUI khusus."
+            },
+            {
+                "icons": [
+                    "eye.slash",
+                    "rectangle.on.rectangle.slash"
+                ],
+                "title": "Perbaikan Pemicu Tak Terlihat",
+                "subtitle": "Tanpa Sisa Lapisan Kaca",
+                "body": "Pemicu catatan rilis yang dikonfigurasi dengan size \"invisible\" tidak lagi meninggalkan lapisan kaca tembus cahaya di layar."
+            }
+        ]
+    },
+    {
         "version": "6.6",
         "subVersion": "6.6.0",
         "new": [
