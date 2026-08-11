@@ -22,6 +22,7 @@
 		3A61B53B301F7D6B00DFD913 /* AppIcon.icon in Resources */ = {isa = PBXBuildFile; fileRef = 3A61B53A301F7D6B00DFD913 /* AppIcon.icon */; };
 		3AB7E09128630E380059EEFE /* SwiftNEW in Frameworks */ = {isa = PBXBuildFile; productRef = 3AB7E09028630E380059EEFE /* SwiftNEW */; };
 		3AE0026A2962DD540055979A /* data.json in Resources */ = {isa = PBXBuildFile; fileRef = 3AE0026C2962DD540055979A /* data.json */; };
+		CA7700013C00000000000001 /* CarPlayDemo.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7700023C00000000000002 /* CarPlayDemo.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,6 +88,8 @@
 		3A61B540301F835400DFD913 /* id */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = id; path = id.lproj/data.json; sourceTree = "<group>"; };
 		3AE0026B2962DD540055979A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = en; path = en.lproj/data.json; sourceTree = "<group>"; };
 		3AE0026D2962DD810055979A /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = "zh-Hant"; path = "zh-Hant.lproj/data.json"; sourceTree = "<group>"; };
+		CA7700023C00000000000002 /* CarPlayDemo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarPlayDemo.swift; sourceTree = "<group>"; };
+		CA7700033C00000000000003 /* What_s_New_CarPlay.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = What_s_New_CarPlay.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -157,11 +160,13 @@
 			isa = PBXGroup;
 			children = (
 				3A46CBAF285444CC00BE79A3 /* What_s_New_App.swift */,
+				CA7700023C00000000000002 /* CarPlayDemo.swift */,
 				3A46CBB1285444CC00BE79A3 /* ContentView.swift */,
 				3A46CBBF285444CC00BE79A3 /* ContentView+Previews.swift */,
 				3AE0026C2962DD540055979A /* data.json */,
 				3A46CBB3285444CD00BE79A3 /* Assets.xcassets */,
 				3A61B53A301F7D6B00DFD913 /* AppIcon.icon */,
+				CA7700033C00000000000003 /* What_s_New_CarPlay.entitlements */,
 				3A46CBB5285444CD00BE79A3 /* What_s_New_.entitlements */,
 				3A46CBB6285444CD00BE79A3 /* Preview Content */,
 			);
@@ -405,6 +410,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CA7700013C00000000000001 /* CarPlayDemo.swift in Sources */,
 				3A46CBB2285444CC00BE79A3 /* ContentView.swift in Sources */,
 				3A46CBBE285444CC00BE79A3 /* ContentView+Previews.swift in Sources */,
 				3A46CBB0285444CC00BE79A3 /* What_s_New_App.swift in Sources */,
@@ -464,7 +470,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 22;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 9PAHLTG8AD;
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
@@ -503,7 +509,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 22;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 9PAHLTG8AD;
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
@@ -764,6 +770,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "What's New?/What_s_New_.entitlements";
+				"CODE_SIGN_ENTITLEMENTS[sdk=iphoneos*]" = "What's New?/What_s_New_CarPlay.entitlements";
+				"CODE_SIGN_ENTITLEMENTS[sdk=iphonesimulator*]" = "What's New?/What_s_New_CarPlay.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 22;
 				DEVELOPMENT_ASSET_PATHS = "\"What's New?/Preview Content\"";
@@ -804,6 +812,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "What's New?/What_s_New_.entitlements";
+				"CODE_SIGN_ENTITLEMENTS[sdk=iphoneos*]" = "What's New?/What_s_New_CarPlay.entitlements";
+				"CODE_SIGN_ENTITLEMENTS[sdk=iphonesimulator*]" = "What's New?/What_s_New_CarPlay.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 22;
 				DEVELOPMENT_ASSET_PATHS = "\"What's New?/Preview Content\"";

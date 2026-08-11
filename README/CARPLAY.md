@@ -13,6 +13,38 @@ SwiftNEW provides an iOS-only `CPListTemplate` adapter for approved CarPlay host
 > [!IMPORTANT]
 > CarPlay is a managed capability. Apple must approve the host app for an eligible CarPlay category before this integration can run on a device or ship on the App Store, and the content shown must still belong to that approved category and be useful while driving. A general product changelog or developer-tools app is not eligible merely because its host already has a CarPlay entitlement. Confirm the intended content with Apple and do not add an unrelated audio, navigation, or other entitlement to work around this requirement. See [Requesting CarPlay Entitlements](https://developer.apple.com/documentation/carplay/requesting-carplay-entitlements).
 
+## Test SwiftNEW with the Demo host
+
+The Xcode Demo is a consumer of the local SwiftNEW package and includes an
+iOS-only CarPlay integration harness in `CarPlayDemo.swift`. The harness
+registers a CarPlay scene programmatically, loads the Demo's localized
+`data.json`, and exercises `SwiftNEWCarPlayTemplateFactory` loading, history,
+and detail flow, with failure and disconnect handling included.
+It models a non-navigation template host; a navigation app should exercise the
+package inside its own `templateApplicationScene(_:didConnect:to:)` lifecycle
+so it can preserve the app's real `CPWindow` setup.
+
+The Demo's iOS-only `What_s_New_CarPlay.entitlements` is intentionally empty
+until Apple approves a CarPlay category for the test host. After approval, add
+the exact entitlement Apple grants and use an App ID and provisioning profile
+containing that same managed capability.
+
+With Xcode 27:
+
+1. Connect a physical iPhone by USB and run the **What's New?** Demo on it.
+2. Choose **Xcode > Open Developer Tool > Device Hub**.
+3. Select the connected iPhone and choose **CarPlay Simulator** from its device
+   actions or diagnostics menu.
+4. Open **Demo** from the CarPlay Home screen.
+
+The Demo deliberately passes `currentVersion: "6.6"` so its bundled fixture
+has an exact current release, and enables history so older sections are also
+visible. Change those two arguments in `CarPlayDemo.swift` to exercise empty or
+current-only states. Apple doesn't provide a category-neutral package
+entitlement; adding a key before it appears in the signing profile causes
+signing to fail, while omitting it means the Demo doesn't appear on the CarPlay
+Home screen.
+
 ## 1. Configure the host app
 
 After Apple approves the host app:
@@ -20,7 +52,7 @@ After Apple approves the host app:
 1. Enable the approved CarPlay capability for the app's App ID.
 2. Let Xcode refresh the managed-capability profile when using automatic signing, or regenerate and download it when using manual signing.
 3. Add only the entitlement Apple granted to the iOS app target.
-4. Add a CarPlay scene configuration to the iOS app's `Info.plist` scene manifest.
+4. Register a CarPlay scene in the iOS app's scene manifest or app delegate.
 
 For projects that generate their `Info.plist`, add these values in the target's **Info** settings. For a source plist, merge the CarPlay role into the existing `UIApplicationSceneManifest > UISceneConfigurations` dictionary; do not replace existing phone, Dashboard, or Instrument Cluster scene entries. The CarPlay scene configuration is:
 
@@ -47,6 +79,12 @@ For projects that generate their `Info.plist`, add these values in the target's 
 ```
 
 Keep this configuration and the approved entitlement scoped to the iOS target. A Swift package cannot add either one on behalf of its host app.
+
+As an alternative to the manifest, a SwiftUI host can use
+`UIApplicationDelegateAdaptor` and return a configuration whose scene class is
+`CPTemplateApplicationScene` and delegate class is its CarPlay scene delegate
+from `application(_:configurationForConnecting:options:)`. The Demo uses this
+programmatic approach; don't register the same CarPlay scene both ways.
 
 ## 2. Add a CarPlay scene delegate
 

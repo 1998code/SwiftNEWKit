@@ -43,7 +43,7 @@ For a companion Watch app, SwiftNEW uses `WKCompanionAppBundleIdentifier` automa
 
 On iOS 15 and later, an approved CarPlay host app can use `SwiftNEWCarPlayTemplateFactory` to present update content that directly supports its approved in-car category as a native `CPListTemplate`. A general product changelog is not automatically eligible. CarPlay is an iOS integration rather than a separate SwiftPM platform, so no additional package platform or dependency is required.
 
-The host app must supply its approved CarPlay entitlement, provisioning profile, scene manifest, and `CPTemplateApplicationSceneDelegate`. SwiftNEW does not add these app-level capabilities and the Demo target intentionally does not claim an unrelated CarPlay category. See [CARPLAY.md](CARPLAY.md) for the complete setup.
+The host app must supply its approved CarPlay entitlement and provisioning profile, plus a scene manifest or programmatic scene registration and a `CPTemplateApplicationSceneDelegate`. SwiftNEW does not add these app-level capabilities. The Demo contains an integration harness for exercising the local package, but its CarPlay entitlement remains empty until Apple approves a category for the test host. Package consumers must configure the category Apple approved for their own host app. See [CARPLAY.md](CARPLAY.md) for the complete setup and Demo test flow.
 
 ## 📦 Installation Guide
 

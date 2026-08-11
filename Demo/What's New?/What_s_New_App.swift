@@ -9,6 +9,11 @@ import SwiftUI
 
 @main
 struct What_s_New_App: App {
+#if os(iOS) && canImport(CarPlay) && !targetEnvironment(macCatalyst)
+    @UIApplicationDelegateAdaptor(CarPlayDemoAppDelegate.self)
+    private var appDelegate
+#endif
+
     var body: some Scene {
         WindowGroup {
             ContentView()
