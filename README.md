@@ -66,7 +66,45 @@ A modern, SwiftUI-native **"What's New"** presentation framework for all Apple p
 
 That's it — SwiftNEW auto-triggers when the app version changes.
 
-Approved CarPlay host apps may use `SwiftNEWCarPlayTemplateFactory` for update content that directly supports their approved in-car category. General product changelogs are not automatically CarPlay-eligible; see the [CarPlay integration guide](README/CARPLAY.md) for lifecycle, content, and entitlement requirements.
+### 🚘 Use SwiftNEW in a CarPlay app
+
+If your host app already has an Apple-approved CarPlay entitlement and a
+`CPTemplateApplicationSceneDelegate`, install a loading template synchronously
+in `templateApplicationScene(_:didConnect:)`, then replace it with SwiftNEW's
+template asynchronously on the main actor:
+
+```swift
+import CarPlay
+import SwiftNEW
+
+let loadingTemplate = SwiftNEWCarPlayTemplateFactory.makeLoadingTemplate(
+    title: "What's New"
+)
+
+interfaceController.setRootTemplate(
+    loadingTemplate,
+    animated: false
+) { succeeded, _ in
+    guard succeeded else { return }
+
+    Task { @MainActor in
+        try? await SwiftNEWCarPlayTemplateFactory.setRootTemplate(
+            on: interfaceController,
+            from: "data",
+            bundle: .main,
+            includesHistory: true
+        )
+    }
+}
+```
+
+Include `data.json` in the iOS host target just as you do for the SwiftUI view.
+The host app remains responsible for retaining the interface controller,
+cancelling work when CarPlay disconnects, registering its scene, and supplying
+the exact entitlement and provisioning profile Apple approved. General product
+changelogs aren't automatically CarPlay-eligible. See the full
+[CarPlay integration guide](README/CARPLAY.md) for a complete lifecycle-safe
+implementation, remote data, decoded models, and testing instructions.
 
 ## ✨ Features
 
