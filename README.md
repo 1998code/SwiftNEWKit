@@ -117,7 +117,6 @@ implementation, remote data, decoded models, and testing instructions.
 | 🔎 History Search Controls | 27.0 | Enable Search per instance and filter current or historical release notes by title / subtitle / body |
 | 📝 Optional Descriptions | 27.0 | Use `showDescription` directly or with a binding to hide body text while preserving each icon, title, and subtitle |
 | 🌊 Reusable SwiftNEW Backdrop | 27.0 | Reuse still or liquid mesh backgrounds and decorative effects with `SwiftNEWBackdrop` |
-| 🫥 Invisible Trigger Fix | 27.0 | Keep triggers configured with `size: "invisible"` fully hidden without residual glass chrome |
 | 🌐 More Languages | 6.6.0 | Release notes are now localized in German, Hebrew, Indonesian, Russian, and Vietnamese |
 | 🌗 Adaptive Icon Styling | 6.6.0 | Icon backdrops and glyph gradients improve contrast automatically in Dark Mode |
 | 🫧 Tinted Glass Controls | 6.6.0 | Release-note and primary action buttons use native interactive tinted glass on iOS 26 |

@@ -77,7 +77,6 @@ Eso es todo — SwiftNEW se activa automáticamente cuando cambia la versión de
 | 🔎 Controles de búsqueda en el historial | 27.0 | Activa la búsqueda en cada instancia y filtra notas actuales o anteriores por título / subtítulo / cuerpo |
 | 📝 Descripciones opcionales | 27.0 | Usa `showDescription` directamente o con un binding para ocultar el cuerpo sin perder el icono, el título ni el subtítulo |
 | 🌊 Fondo de SwiftNEW reutilizable | 27.0 | Usa `SwiftNEWBackdrop` para reutilizar mallas estáticas o líquidas y efectos detrás de contenido SwiftUI personalizado |
-| 🫥 Corrección del activador invisible | 27.0 | Los activadores con `size: "invisible"` ya no dejan cristal translúcido en pantalla |
 | 🌐 Más idiomas | 6.6.0 | Las notas ya están localizadas en alemán, hebreo, indonesio, ruso y vietnamita |
 | 🌗 Estilo de iconos adaptativo | 6.6.0 | Los fondos y degradados mejoran automáticamente el contraste en modo oscuro |
 | 🫧 Controles de vidrio tintado | 6.6.0 | Los botones usan vidrio tintado interactivo nativo en iOS 26 |

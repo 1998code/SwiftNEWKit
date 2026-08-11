@@ -77,7 +77,6 @@ C'est tout — SwiftNEW se déclenche automatiquement quand la version de l'app 
 | 🔎 Contrôles de recherche dans l’historique | 27.0 | Activez la recherche pour chaque instance et filtrez les notes actuelles ou précédentes par titre / sous-titre / corps |
 | 📝 Descriptions facultatives | 27.0 | Utilisez `showDescription` directement ou via un binding pour masquer le corps tout en conservant l’icône, le titre et le sous-titre |
 | 🌊 Arrière-plan SwiftNEW réutilisable | 27.0 | Utilisez `SwiftNEWBackdrop` pour réutiliser des maillages statiques ou liquides et des effets derrière du contenu SwiftUI personnalisé |
-| 🫥 Correction du déclencheur invisible | 27.0 | Les déclencheurs avec `size: "invisible"` ne laissent plus d’effet de verre translucide à l’écran |
 | 🌐 Plus de langues | 6.6.0 | Les notes sont désormais localisées en allemand, hébreu, indonésien, russe et vietnamien |
 | 🌗 Style d’icône adaptatif | 6.6.0 | Les arrière-plans et dégradés améliorent automatiquement le contraste en mode sombre |
 | 🫧 Commandes en verre teinté | 6.6.0 | Les boutons utilisent le verre teinté interactif natif sous iOS 26 |
