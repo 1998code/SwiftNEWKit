@@ -68,6 +68,8 @@ A modern, SwiftUI-native **"What's New"** presentation framework for all Apple p
 
 That's it — SwiftNEW auto-triggers when the app version changes.
 
+<img width="1061" height="459" alt="Screenshot 2026-08-12 at 11 25 38 PM" src="https://github.com/user-attachments/assets/d48b1e6f-98fa-494f-ae69-ca7121c66b66" />
+
 ### 🚘 Use SwiftNEW in a CarPlay app
 
 If your host app already has an Apple-approved CarPlay entitlement and a
