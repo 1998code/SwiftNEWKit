@@ -115,7 +115,7 @@ import UIKit
         }
     )
     #expect(template.trailingNavigationBarButtons.first?.buttonStyle == .rounded)
-    #expect(template.trailingNavigationBarButtons.last?.buttonStyle == .none)
+    #expect(template.trailingNavigationBarButtons.last?.buttonStyle == CPBarButtonStyle.none)
 
     let currentSections = template.sections
     let historySections = SwiftNEWCarPlayTemplateFactory.makeSections(
@@ -181,7 +181,7 @@ import UIKit
 
     #expect(template.sections.isEmpty)
     #expect(template.trailingNavigationBarButtons.count == 1)
-    #expect(template.trailingNavigationBarButtons.first?.buttonStyle == .none)
+    #expect(template.trailingNavigationBarButtons.first?.buttonStyle == CPBarButtonStyle.none)
 }
 
 @MainActor
