@@ -53,27 +53,11 @@ public struct SwiftNEW: View {
     @Environment(\.colorScheme) var colorScheme
     @Environment(\.openURL) var openURL
 
-    @State var items: [Vmodel] = []
-    @State var loading = true
-    @State var loadErrorMessage: String?
-    @State var loadedDataSource: String?
-    @State var loadedRequest: SwiftNEWLoadRequest?
-    @State var currentLoadRequest: SwiftNEWLoadRequest?
-    @State var loadGeneration: UUID?
-    @State var reloadID = UUID()
-    @State var forceLoadRequested = false
-    @State var availableUpdate: SwiftNEWUpdateCandidate?
-    @State var updateCheckPhase: SwiftNEWUpdateCheckPhase = .inactive
-    @State var pendingSeenVersion: SwiftNEWVersionSnapshot?
-    @State var hasPendingPresentation = false
-    @State var suppressedAutomaticUpdateRequests: Set<SwiftNEWLoadRequest> = []
-    @State var appStoreLookupErrorMessage: String?
-    @State var appStoreLookupRetryRequest: SwiftNEWLoadRequest?
-    @State var activeDropEpoch: UUID?
-    @State var historySheet: Bool = false
-    @State var showSearch: Bool = false
-    @State var searchText: String = ""
-    @State var debouncedSearchText: String = ""
+    @StateObject private var loadStateMachineStorage: SwiftNEWLoadStateMachine
+    #if DEBUG
+    private let testingLoadStateMachineStorage: SwiftNEWLoadStateMachine?
+    private let testingColorSchemeOverride: ColorScheme?
+    #endif
 
     @Binding var show: Bool
     @Binding var align: HorizontalAlignment
@@ -103,6 +87,137 @@ public struct SwiftNEW: View {
     @Binding var updateButtonTitle: String
     @Binding var appStoreBundleIdentifier: String?
     var dataBundle: Bundle = .main
+
+    var loadStateMachine: SwiftNEWLoadStateMachine {
+        #if DEBUG
+        if let testingLoadStateMachineStorage {
+            return testingLoadStateMachineStorage
+        }
+        #endif
+        return loadStateMachineStorage
+    }
+
+    var resolvedColorScheme: ColorScheme {
+        #if DEBUG
+        if let testingColorSchemeOverride {
+            return testingColorSchemeOverride
+        }
+        #endif
+        return colorScheme
+    }
+
+    var items: [Vmodel] {
+        get { loadStateMachine.items }
+        nonmutating set { loadStateMachine.items = newValue }
+    }
+
+    var loading: Bool {
+        get { loadStateMachine.loading }
+        nonmutating set { loadStateMachine.loading = newValue }
+    }
+
+    var loadErrorMessage: String? {
+        get { loadStateMachine.loadErrorMessage }
+        nonmutating set { loadStateMachine.loadErrorMessage = newValue }
+    }
+
+    var loadedDataSource: String? {
+        get { loadStateMachine.loadedDataSource }
+        nonmutating set { loadStateMachine.loadedDataSource = newValue }
+    }
+
+    var loadedRequest: SwiftNEWLoadRequest? {
+        get { loadStateMachine.loadedRequest }
+        nonmutating set { loadStateMachine.loadedRequest = newValue }
+    }
+
+    var loadGeneration: UUID? {
+        get { loadStateMachine.loadGeneration }
+        nonmutating set { loadStateMachine.loadGeneration = newValue }
+    }
+
+    var reloadID: UUID {
+        get { loadStateMachine.reloadID }
+        nonmutating set { loadStateMachine.reloadID = newValue }
+    }
+
+    var forceLoadRequested: Bool {
+        get { loadStateMachine.forceLoadRequested }
+        nonmutating set { loadStateMachine.forceLoadRequested = newValue }
+    }
+
+    var availableUpdate: SwiftNEWUpdateCandidate? {
+        get { loadStateMachine.availableUpdate }
+        nonmutating set { loadStateMachine.availableUpdate = newValue }
+    }
+
+    var updateCheckPhase: SwiftNEWUpdateCheckPhase {
+        get { loadStateMachine.updateCheckPhase }
+        nonmutating set { loadStateMachine.updateCheckPhase = newValue }
+    }
+
+    var pendingSeenVersion: SwiftNEWVersionSnapshot? {
+        get { loadStateMachine.pendingSeenVersion }
+        nonmutating set { loadStateMachine.pendingSeenVersion = newValue }
+    }
+
+    var hasPendingPresentation: Bool {
+        get { loadStateMachine.hasPendingPresentation }
+        nonmutating set { loadStateMachine.hasPendingPresentation = newValue }
+    }
+
+    var suppressedAutomaticUpdateRequests: Set<SwiftNEWLoadRequest> {
+        get { loadStateMachine.suppressedAutomaticUpdateRequests }
+        nonmutating set { loadStateMachine.suppressedAutomaticUpdateRequests = newValue }
+    }
+
+    var appStoreLookupErrorMessage: String? {
+        get { loadStateMachine.appStoreLookupErrorMessage }
+        nonmutating set { loadStateMachine.appStoreLookupErrorMessage = newValue }
+    }
+
+    var appStoreLookupRetryRequest: SwiftNEWLoadRequest? {
+        get { loadStateMachine.appStoreLookupRetryRequest }
+        nonmutating set { loadStateMachine.appStoreLookupRetryRequest = newValue }
+    }
+
+    var historySheet: Bool {
+        get { loadStateMachine.historySheet }
+        nonmutating set { loadStateMachine.historySheet = newValue }
+    }
+
+    var historySheetBinding: Binding<Bool> {
+        Binding(
+            get: { historySheet },
+            set: { historySheet = $0 }
+        )
+    }
+
+    var showSearch: Bool {
+        get { loadStateMachine.showSearch }
+        nonmutating set { loadStateMachine.showSearch = newValue }
+    }
+
+    var searchText: String {
+        get { loadStateMachine.searchText }
+        nonmutating set { loadStateMachine.searchText = newValue }
+    }
+
+    var debouncedSearchText: String {
+        get { loadStateMachine.debouncedSearchText }
+        nonmutating set { loadStateMachine.debouncedSearchText = newValue }
+    }
+
+    #if os(iOS)
+    var activeDropEpoch: UUID? {
+        get { loadStateMachine.activeDropEpoch }
+        nonmutating set { loadStateMachine.activeDropEpoch = newValue }
+    }
+    #endif
+
+    var loadDependencies: SwiftNEWLoadDependencies {
+        loadStateMachine.dependencies
+    }
 
     static var defaultButtonCornerRadius: CGFloat {
         #if os(watchOS)
@@ -159,6 +274,12 @@ public struct SwiftNEW: View {
         updateButtonTitle: String? = nil,
         appStoreBundleIdentifier: String? = nil
     ) {
+        let loadStateMachine = SwiftNEWLoadStateMachine()
+        _loadStateMachineStorage = StateObject(wrappedValue: loadStateMachine)
+        #if DEBUG
+        testingLoadStateMachineStorage = nil
+        testingColorSchemeOverride = nil
+        #endif
         _show = show
         _align = .constant(align ?? .center)
         _color = .constant(color ?? Color.accentColor)
@@ -218,6 +339,12 @@ public struct SwiftNEW: View {
         updateButtonTitle: Binding<String>? = nil,
         appStoreBundleIdentifier: Binding<String?>? = .constant(nil)
     ) {
+        let loadStateMachine = SwiftNEWLoadStateMachine()
+        _loadStateMachineStorage = StateObject(wrappedValue: loadStateMachine)
+        #if DEBUG
+        testingLoadStateMachineStorage = nil
+        testingColorSchemeOverride = nil
+        #endif
         _show = show
         _align = align ?? .constant(.center)
         _color = color ?? .constant(Color.accentColor)
@@ -260,6 +387,9 @@ extension SwiftNEW {
         availableUpdate: SwiftNEWUpdateCandidate? = nil,
         updateCheckPhase: SwiftNEWUpdateCheckPhase = .inactive,
         appStoreLookupErrorMessage: String? = nil,
+        pendingSeenVersion: SwiftNEWVersionSnapshot? = nil,
+        hasPendingPresentation: Bool = false,
+        suppressedAutomaticUpdateRequests: Set<SwiftNEWLoadRequest> = [],
         historySheet: Bool = false,
         showSearch: Bool = false,
         searchText: String = "",
@@ -290,44 +420,55 @@ extension SwiftNEW {
         allowsSkippingUpdate: Bool = true,
         updateButtonTitle: String = "",
         appStoreBundleIdentifier: String? = nil,
-        dataBundle: Bundle = .main
+        dataBundle: Bundle = .main,
+        showBinding: Binding<Bool>? = nil,
+        dataBinding: Binding<String>? = nil,
+        testingColorScheme: ColorScheme = .light,
+        loadDependencies: SwiftNEWLoadDependencies = .live
     ) {
         let configuredBundleIdentifier = appStoreBundleIdentifier?
             .trimmingCharacters(in: .whitespacesAndNewlines)
-        let initialLoadedRequest = loadedDataSource.map {
-            SwiftNEWLoadRequest(
-                source: $0,
-                checkForUpdates: checkForUpdates,
-                bundleIdentifier: configuredBundleIdentifier?.isEmpty == false
+        let initialLoadedRequest = loadedDataSource.map { loadedSource in
+            let needsAppStoreBundleIdentifier = checkForUpdates
+                && SwiftNEWRemoteSource.url(from: loadedSource) != nil
+            let resolvedBundleIdentifier = needsAppStoreBundleIdentifier
+                ? (configuredBundleIdentifier?.isEmpty == false
                     ? configuredBundleIdentifier
-                    : Bundle.main.appStoreListingBundleIdentifier
+                    : loadDependencies.appStoreBundleIdentifier())
+                : nil
+
+            return SwiftNEWLoadRequest(
+                source: loadedSource,
+                checkForUpdates: checkForUpdates,
+                bundleIdentifier: resolvedBundleIdentifier
             )
         }
 
         _version = AppStorage(wrappedValue: "", "swiftnew.version")
         _build = AppStorage(wrappedValue: "", "swiftnew.build")
-        _items = State(initialValue: items)
-        _loading = State(initialValue: loading)
-        _loadErrorMessage = State(initialValue: loadErrorMessage)
-        _loadedDataSource = State(initialValue: loadedDataSource)
-        _loadedRequest = State(initialValue: initialLoadedRequest)
-        _currentLoadRequest = State(initialValue: initialLoadedRequest)
-        _loadGeneration = State(initialValue: nil)
-        _reloadID = State(initialValue: UUID())
-        _forceLoadRequested = State(initialValue: false)
-        _availableUpdate = State(initialValue: availableUpdate)
-        _updateCheckPhase = State(initialValue: updateCheckPhase)
-        _pendingSeenVersion = State(initialValue: nil)
-        _hasPendingPresentation = State(initialValue: false)
-        _suppressedAutomaticUpdateRequests = State(initialValue: [])
-        _appStoreLookupErrorMessage = State(initialValue: appStoreLookupErrorMessage)
-        _appStoreLookupRetryRequest = State(initialValue: nil)
-        _activeDropEpoch = State(initialValue: nil)
-        _historySheet = State(initialValue: historySheet)
-        _showSearch = State(initialValue: showSearch)
-        _searchText = State(initialValue: searchText)
-        _debouncedSearchText = State(initialValue: debouncedSearchText)
-        _show = .constant(testingShow)
+        let loadStateMachine = SwiftNEWLoadStateMachine(
+            items: items,
+            loading: loading,
+            loadErrorMessage: loadErrorMessage,
+            loadedDataSource: loadedDataSource,
+            loadedRequest: initialLoadedRequest,
+            currentLoadRequest: initialLoadedRequest,
+            availableUpdate: availableUpdate,
+            updateCheckPhase: updateCheckPhase,
+            pendingSeenVersion: pendingSeenVersion,
+            hasPendingPresentation: hasPendingPresentation,
+            suppressedAutomaticUpdateRequests: suppressedAutomaticUpdateRequests,
+            appStoreLookupErrorMessage: appStoreLookupErrorMessage,
+            historySheet: historySheet,
+            showSearch: showSearch,
+            searchText: searchText,
+            debouncedSearchText: debouncedSearchText,
+            dependencies: loadDependencies
+        )
+        _loadStateMachineStorage = StateObject(wrappedValue: loadStateMachine)
+        testingLoadStateMachineStorage = loadStateMachine
+        testingColorSchemeOverride = testingColorScheme
+        _show = showBinding ?? .constant(testingShow)
         _align = .constant(align)
         _color = .constant(color)
         _size = .constant(size)
@@ -335,7 +476,7 @@ extension SwiftNEW {
         _labelImage = .constant(labelImage)
         _history = .constant(history)
         _search = .constant(search ?? Self.defaultSearchEnabled)
-        _data = .constant(data)
+        _data = dataBinding ?? .constant(data)
         _showDrop = .constant(showDrop)
         _mesh = .constant(mesh)
         _meshStyle = .constant(meshStyle)

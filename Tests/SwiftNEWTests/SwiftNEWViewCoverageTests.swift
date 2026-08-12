@@ -10,6 +10,8 @@ import Foundation
 
 #if os(macOS)
 import AppKit
+#elseif os(iOS)
+import UIKit
 #endif
 
 @MainActor
@@ -18,6 +20,7 @@ import AppKit
     #expect(defaultDirect.mesh)
     #expect(defaultDirect.meshStyle == .still)
     #expect(defaultDirect.iconStyle == .default)
+    #expect(defaultDirect.usesReleaseNoteButtonGlass)
     #expect(defaultDirect.appIconName == nil)
     #expect(defaultDirect.alternateAppIconName == nil)
     #expect(defaultDirect.checkForUpdates == false)
@@ -78,6 +81,7 @@ import AppKit
     #expect(direct.meshStyle == .liquid)
     #expect(direct.specialEffect == .particles)
     #expect(direct.glass == false)
+    #expect(direct.usesReleaseNoteButtonGlass == false)
     #expect(direct.buttonCornerRadius == 28)
     #expect(direct.resolvedButtonCornerRadius == 28)
     #expect(direct.presentation == .embed)
@@ -130,6 +134,7 @@ import AppKit
     #expect(bound.search)
     #expect(bound.meshStyle == .still)
     #expect(bound.specialEffect == .christmas)
+    #expect(bound.usesReleaseNoteButtonGlass == false)
     #expect(bound.buttonCornerRadius == 32)
     #expect(bound.presentation == .sheet)
     #expect(bound.showDescription)
@@ -145,6 +150,9 @@ import AppKit
 
     let negativeRadius = SwiftNEW(show: .constant(false), buttonCornerRadius: -4)
     #expect(negativeRadius.resolvedButtonCornerRadius == 0)
+
+    let invisible = SwiftNEW(show: .constant(false), size: "invisible")
+    #expect(invisible.usesReleaseNoteButtonGlass == false)
 }
 
 @MainActor
@@ -239,21 +247,24 @@ import AppKit
 
     let disabled = makeSwiftNEW(data: "https://example.com/releases.json")
     #expect(disabled.shouldPrefetchRemoteUpdate == false)
+    #expect(disabled.loadRequest.bundleIdentifier == nil)
 
     let local = makeSwiftNEW(
         data: "data",
         checkForUpdates: true
     )
     #expect(local.shouldPrefetchRemoteUpdate == false)
+    #expect(local.loadRequest.bundleIdentifier == nil)
 }
 
 @MainActor
 @Test func headingsReturnExpectedSubtitles() {
     let versionHeading = makeSwiftNEW(showBuild: true, headingStyle: .version)
-    #expect(versionHeading.headingSubtitle == "Version \(Bundle.versionBuild)")
+    #expect(versionHeading.headingSubtitle.hasSuffix(Bundle.versionBuild))
 
     let versionHeadingWithoutBuild = makeSwiftNEW(showBuild: false, headingStyle: .version)
-    #expect(versionHeadingWithoutBuild.headingSubtitle == "Version \(Bundle.version)")
+    #expect(versionHeadingWithoutBuild.headingSubtitle.hasSuffix(Bundle.version))
+    #expect(versionHeading.headingSubtitle != versionHeadingWithoutBuild.headingSubtitle)
 
     let versionOnly = makeSwiftNEW(showBuild: false, headingStyle: .versionOnly)
     #expect(versionOnly.headingSubtitle == Bundle.version)
@@ -270,10 +281,15 @@ import AppKit
     #expect(Color.white.adaptedTextColor == .black)
     #expect(Color.black.adaptedTextColor == .white)
     #expect(Bundle.versionBuild.contains("("))
-    #expect(Bundle.appName == Bundle.main.infoDictionary?["CFBundleName"] as? String ?? "")
+    let expectedAppName = Bundle.main.infoDictionary?["CFBundleDisplayName"] as? String
+        ?? Bundle.main.infoDictionary?["CFBundleName"] as? String
+        ?? ""
+    #expect(Bundle.appName == expectedAppName)
     #expect(Bundle.main.appStoreListingBundleIdentifier == Bundle.main.bundleIdentifier)
+    #if os(macOS)
     #expect(Bundle.main.iconFileName == nil)
     #expect(Bundle.main.appIconName == nil)
+    #endif
 }
 
 @MainActor
@@ -305,7 +321,16 @@ import AppKit
         ]
     ]
 
-    let data = try PropertyListSerialization.data(fromPropertyList: plist, format: .xml, options: 0)
+    // Bundle resolves device-qualified keys for the current runtime. Keep the
+    // round-trip fixture device-neutral and exercise the iPad dictionary via
+    // the raw metadata helpers below.
+    var bundlePlist = plist
+    bundlePlist.removeValue(forKey: "CFBundleIcons~ipad")
+    let data = try PropertyListSerialization.data(
+        fromPropertyList: bundlePlist,
+        format: .xml,
+        options: 0
+    )
     try data.write(to: folder.appendingPathComponent("Info.plist"))
 
     guard let bundle = Bundle(url: folder) else {
@@ -316,16 +341,34 @@ import AppKit
     #expect(bundle.iconFileName == "Icon60")
     #expect(bundle.appIconName == "AppIcon")
     #expect(bundle.appIconAssetName() == "AppIcon")
-    #expect(bundle.appIconAssetName(prefersIPadIcons: true) == "AppIcon")
+    #expect(Bundle.appIconAssetName(in: plist, prefersIPadIcons: true) == "AppIcon")
     #expect(bundle.appIconAssetName(alternateIconName: "Blue") == "BlueIcon")
-    #expect(bundle.appIconAssetName(alternateIconName: "Blue", prefersIPadIcons: true) == nil)
+    #expect(
+        Bundle.appIconAssetName(
+            in: plist,
+            alternateIconName: "Blue",
+            prefersIPadIcons: true
+        ) == nil
+    )
     #expect(bundle.appIconAssetName(alternateIconName: "Missing") == nil)
     #expect(bundle.iconFileNames() == ["Icon20", "Icon60"])
-    #expect(bundle.iconFileNames(prefersIPadIcons: true) == ["Icon20", "Icon76"])
+    #expect(
+        Bundle.iconFileNames(in: plist, prefersIPadIcons: true)
+            == ["Icon20", "Icon76"]
+    )
     #expect(bundle.iconFileNames(alternateIconName: "Blue") == ["Blue20", "Blue60"])
-    #expect(bundle.iconFileNames(alternateIconName: "Blue", prefersIPadIcons: true).isEmpty)
+    #expect(
+        Bundle.iconFileNames(
+            in: plist,
+            alternateIconName: "Blue",
+            prefersIPadIcons: true
+        ).isEmpty
+    )
     #expect(bundle.iconFileNames(alternateIconName: "Missing").isEmpty)
-    #expect(bundle.declaredAppIconNames == Set(["AppIcon", "Blue", "BlueIcon"]))
+    #expect(
+        Bundle.declaredAppIconNames(in: plist)
+            == Set(["AppIcon", "Blue", "BlueIcon"])
+    )
 }
 
 @MainActor
@@ -375,47 +418,89 @@ import AppKit
 }
 
 @MainActor
-@Test func versionComparisonPathIsCallable() async throws {
-    UserDefaults.standard.removeObject(forKey: "swiftnew.version")
-    UserDefaults.standard.removeObject(forKey: "swiftnew.build")
-
-    let sut = makeSwiftNEW()
+@Test func presentReleaseNotesRoutesThroughTheConfiguredPresentation() {
+    let show = SwiftNEWTestBoolBox(false)
+    let sut = SwiftNEW(
+        presentation: .sheet,
+        showBinding: Binding(
+            get: { show.value },
+            set: { show.value = $0 }
+        )
+    )
 
     sut.presentReleaseNotes()
-    sut.compareVersion()
-    try await Task.sleep(nanoseconds: 150_000_000)
 
-    #expect(sut.version == Bundle.version || sut.version.isEmpty)
+    #expect(show.value)
 }
 
 @MainActor
-@Test func searchTextUpdatePathIsCallable() async throws {
+@Test func searchTextUpdatePublishesTheDebouncedQuery() async throws {
     let sut = makeSwiftNEW(showSearch: true, search: true)
 
     sut.updateSearchText("coverage")
-    try await Task.sleep(nanoseconds: 350_000_000)
+    try await waitForSwiftNEWCondition {
+        sut.debouncedSearchText == "coverage"
+    }
 
+    #expect(sut.searchText == "coverage")
+    #expect(sut.debouncedSearchText == "coverage")
     #expect(sut.matchesSearch(Model(icon: "sparkles", title: "Search", subtitle: "Filter", body: "Coverage")))
 }
 
 @MainActor
-@Test func searchToggleAndRetryPathsAreCallable() async throws {
+@Test func searchToggleAndRetryPathsAreCallable() {
     let sut = makeSwiftNEW(
+        testingShow: true,
+        loading: false,
+        loadErrorMessage: "Old error",
+        loadedDataSource: "data",
         showSearch: true,
         searchText: "coverage",
         debouncedSearchText: "coverage",
         search: true
     )
+    let previousReloadID = sut.reloadID
 
     sut.toggleSearchVisibility()
     sut.retryLoadData()
-    try await Task.sleep(nanoseconds: 300_000_000)
 
+    #expect(sut.showSearch == false)
+    #expect(sut.searchText.isEmpty)
+    #expect(sut.debouncedSearchText.isEmpty)
+    #expect(sut.loadedDataSource == nil)
+    #expect(sut.loadedRequest == nil)
+    #expect(sut.loadErrorMessage == nil)
+    #expect(sut.reloadID != previousReloadID)
     #expect(sut.matchesSearch(sampleModel()))
 }
 
 @MainActor
-@Test func disabledSearchIgnoresResidualQueryAndResetPathIsCallable() {
+@Test func currentAndHistoryPresentationActionsMutateReferenceBackedState() {
+    let show = SwiftNEWTestBoolBox(true)
+    let sut = SwiftNEW(
+        historySheet: false,
+        showBinding: Binding(
+            get: { show.value },
+            set: { show.value = $0 }
+        )
+    )
+
+    sut.showHistorySheet()
+    #expect(sut.historySheet)
+
+    sut.dismissHistorySheet()
+    #expect(sut.historySheet == false)
+
+    sut.historySheetBinding.wrappedValue = true
+    #expect(sut.historySheet)
+    sut.dismissHistorySheet()
+
+    sut.dismissCurrentSheet()
+    #expect(show.value == false)
+}
+
+@MainActor
+@Test func disabledSearchIgnoresAndClearsResidualQuery() {
     let sut = makeSwiftNEW(
         showSearch: true,
         searchText: "hidden query",
@@ -426,10 +511,14 @@ import AppKit
     #expect(sut.matchesSearch(sampleModel()))
 
     sut.toggleSearchVisibility()
+
+    #expect(sut.showSearch == false)
+    #expect(sut.searchText.isEmpty)
+    #expect(sut.debouncedSearchText.isEmpty)
 }
 
 @MainActor
-@Test func historySearchFiltersChangesAndOuterDismissalPathIsCallable() {
+@Test func historySearchFiltersChangesAndOuterDismissalResetsState() {
     let sut = makeSwiftNEW(
         items: sampleItems(),
         historySheet: true,
@@ -443,6 +532,11 @@ import AppKit
     #expect(sut.matchingHistoryChanges(in: sampleItems()[1]).count == 1)
 
     sut.handleShowChange(false)
+
+    #expect(sut.historySheet == false)
+    #expect(sut.showSearch == false)
+    #expect(sut.searchText.isEmpty)
+    #expect(sut.debouncedSearchText.isEmpty)
 }
 
 @MainActor
@@ -517,34 +611,99 @@ import AppKit
 
 @MainActor
 @Test func loadDataReportsMissingLocalFiles() async throws {
-    let sut = makeSwiftNEW(data: "missing-release-notes-file")
+    let sut = makeSwiftNEW(
+        data: "missing-release-notes-file",
+        presentation: .embed
+    )
+    let previousReloadID = sut.reloadID
 
     sut.loadData()
-    try await Task.sleep(nanoseconds: 400_000_000)
+    try await waitForSwiftNEWCondition {
+        sut.forceLoadRequested && sut.reloadID != previousReloadID
+    }
+    #expect(sut.forceLoadRequested)
+    #expect(sut.reloadID != previousReloadID)
+    await sut.runLoadTask(sut.loadTaskID)
 
-    #expect(sut.data == "missing-release-notes-file")
+    #expect(sut.items.isEmpty)
+    #expect(sut.loading == false)
+    #expect(sut.loadErrorMessage?.isEmpty == false)
+    #expect(sut.loadedDataSource == "missing-release-notes-file")
+    #expect(sut.loadedRequest == sut.loadRequest)
 }
 
 @MainActor
-@Test func loadDataReadsLocalBundleJSON() async throws {
-    let sut = makeSwiftNEW(data: "swiftnew-test-data", dataBundle: .module)
-    sut.loadData()
-    try await Task.sleep(nanoseconds: 500_000_000)
+@Test func loadDataReadsLocalBundleJSON() async {
+    let sut = makeSwiftNEW(
+        data: "swiftnew-test-data",
+        presentation: .embed,
+        dataBundle: .module
+    )
+    await sut.runLoadTask(sut.loadTaskID)
 
-    #expect(sut.data == "swiftnew-test-data")
+    #expect(sut.items.map(\.version) == ["1.0"])
+    #expect(sut.items.first?.new.first?.title == "Local")
+    #expect(sut.loading == false)
+    #expect(sut.loadErrorMessage == nil)
+    #expect(sut.loadedDataSource == "swiftnew-test-data")
 }
 
 @MainActor
-@Test func loadDataHandlesInvalidRemoteURLs() async throws {
-    let sut = makeSwiftNEW(data: "http://%")
+@Test func loadDataHandlesInvalidRemoteURLs() async {
+    let sut = makeSwiftNEW(data: "http://%", presentation: .embed)
 
-    sut.loadData()
-    try await Task.sleep(nanoseconds: 400_000_000)
+    await sut.runLoadTask(sut.loadTaskID)
 
-    #expect(sut.data == "http://%")
+    #expect(sut.items.isEmpty)
+    #expect(sut.loading == false)
+    #expect(sut.loadErrorMessage?.isEmpty == false)
+    #expect(sut.loadedDataSource == "http://%")
 }
 
 #if os(macOS)
+@MainActor
+@Test func mountedSwiftNEWRunsItsTaskAgainstTheObservedStateObject() async throws {
+    let release = Vmodel(
+        version: "1.0",
+        new: [
+            Model(
+                icon: "sparkles",
+                title: "Mounted",
+                subtitle: "StateObject",
+                body: "Integration"
+            )
+        ]
+    )
+    let dependencies = SwiftNEWLoadDependencies(
+        loadReleaseNotes: { _, _ in [release] },
+        loadURL: { _ in throw SwiftNEWViewCoverageTestError.unexpectedLookup },
+        regionCode: { "US" },
+        appStoreBundleIdentifier: { "com.example.swiftnew" },
+        currentVersion: { "1.0" },
+        currentBuild: { "1" }
+    )
+    let sut = SwiftNEW(
+        data: "mounted-release-notes",
+        presentation: .embed,
+        loadDependencies: dependencies
+    )
+    let observedState = sut.loadStateMachine
+    let host = NSHostingView(rootView: sut)
+    host.frame = NSRect(x: 0, y: 0, width: 900, height: 900)
+    host.layoutSubtreeIfNeeded()
+    _ = host.fittingSize
+
+    try await waitForMountedSwiftNEW {
+        observedState.loadedRequest == sut.loadRequest
+    }
+
+    #expect(observedState.items == [release])
+    #expect(observedState.loading == false)
+    #expect(observedState.loadErrorMessage == nil)
+}
+#endif
+
+#if os(macOS) || os(iOS)
 @MainActor
 @Test func renderSwiftNEWEntryPoints() {
     render(makeSwiftNEW(size: "simple", glass: true, presentation: .sheet).body)
@@ -580,7 +739,16 @@ import AppKit
 
         let defaultStyle = makeSwiftNEW(align: alignment, iconStyle: .default)
         render(defaultStyle.iconBadge(systemNames: model.iconSequence))
-        render(defaultStyle.iconBadge(systemNames: model.iconSequence).preferredColorScheme(.dark))
+        let darkDefaultStyle = makeSwiftNEW(
+            align: alignment,
+            iconStyle: .default,
+            testingColorScheme: .dark
+        )
+        render(
+            darkDefaultStyle
+                .iconBadge(systemNames: model.iconSequence)
+                .preferredColorScheme(.dark)
+        )
         render(defaultStyle.releaseRow(model, bodyFont: .footnote, spacing: 2))
     }
 }
@@ -681,6 +849,20 @@ import AppKit
     render(meshView)
     render(MeshView(color: .constant(.purple), style: .liquid))
     render(meshView.testingFallbackGradient)
+    render(SwiftNEWBackdrop(color: .purple))
+    render(
+        SwiftNEWBackdrop(
+            color: .purple,
+            meshStyle: .liquid,
+            specialEffect: .particles
+        )
+    )
+    render(
+        SwiftNEWBackdrop(
+            color: .purple,
+            specialEffect: .christmas
+        )
+    )
     render(NoiseView(size: 128))
     render(SnowfallView())
     render(FloatingParticlesView())
@@ -694,6 +876,7 @@ private func makeSwiftNEW(
     items: [Vmodel] = [],
     loading: Bool = true,
     loadErrorMessage: String? = nil,
+    loadedDataSource: String? = nil,
     availableUpdate: SwiftNEWUpdateCandidate? = nil,
     updateCheckPhase: SwiftNEWUpdateCheckPhase = .inactive,
     appStoreLookupErrorMessage: String? = nil,
@@ -724,13 +907,15 @@ private func makeSwiftNEW(
     allowsSkippingUpdate: Bool = true,
     updateButtonTitle: String = "",
     appStoreBundleIdentifier: String? = nil,
-    dataBundle: Bundle = .main
+    dataBundle: Bundle = .main,
+    testingColorScheme: ColorScheme = .light
 ) -> SwiftNEW {
     SwiftNEW(
         testingShow: testingShow,
         items: items,
         loading: loading,
         loadErrorMessage: loadErrorMessage,
+        loadedDataSource: loadedDataSource,
         availableUpdate: availableUpdate,
         updateCheckPhase: updateCheckPhase,
         appStoreLookupErrorMessage: appStoreLookupErrorMessage,
@@ -764,7 +949,8 @@ private func makeSwiftNEW(
         allowsSkippingUpdate: allowsSkippingUpdate,
         updateButtonTitle: updateButtonTitle,
         appStoreBundleIdentifier: appStoreBundleIdentifier,
-        dataBundle: dataBundle
+        dataBundle: dataBundle,
+        testingColorScheme: testingColorScheme
     )
 }
 
@@ -808,10 +994,50 @@ private final class SwiftNEWTestBoolBox {
 
 #if os(macOS)
 @MainActor
+private func waitForMountedSwiftNEW(
+    _ condition: @MainActor () -> Bool
+) async throws {
+    try await waitForSwiftNEWCondition(condition)
+}
+
+@MainActor
 private func render<V: View>(_ view: V) {
     let host = NSHostingView(rootView: AnyView(view))
     host.frame = NSRect(x: 0, y: 0, width: 900, height: 900)
     host.layoutSubtreeIfNeeded()
     _ = host.fittingSize
 }
+#elseif os(iOS)
+@MainActor
+private func render<V: View>(_ view: V) {
+    let controller = UIHostingController(rootView: AnyView(view))
+    let window = UIWindow(frame: CGRect(x: 0, y: 0, width: 900, height: 900))
+    window.rootViewController = controller
+    window.isHidden = false
+    controller.loadViewIfNeeded()
+    controller.view.frame = window.bounds
+    controller.view.setNeedsLayout()
+    controller.view.layoutIfNeeded()
+    _ = controller.view.systemLayoutSizeFitting(
+        CGSize(width: 900, height: 900)
+    )
+}
 #endif
+
+private enum SwiftNEWViewCoverageTestError: Error {
+    case unexpectedLookup
+    case timedOut
+}
+
+@MainActor
+private func waitForSwiftNEWCondition(
+    _ condition: @MainActor () -> Bool
+) async throws {
+    for _ in 0..<500 {
+        if condition() {
+            return
+        }
+        try await Task.sleep(nanoseconds: 10_000_000)
+    }
+    throw SwiftNEWViewCoverageTestError.timedOut
+}

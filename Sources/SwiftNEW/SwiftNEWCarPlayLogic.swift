@@ -11,7 +11,7 @@ enum SwiftNEWCarPlayReleaseSelector {
         currentVersion: String,
         includesHistory: Bool
     ) -> [Vmodel] {
-        let currentVersion = normalized(currentVersion)
+        guard let currentVersion = normalized(currentVersion) else { return [] }
         let currentIndex = releases.firstIndex {
             normalized($0.version) == currentVersion
                 || normalized($0.subVersion) == currentVersion
@@ -21,8 +21,7 @@ enum SwiftNEWCarPlayReleaseSelector {
             return currentIndex.map { [releases[$0]] } ?? []
         }
 
-        guard let currentVersion,
-              let parsedCurrentVersion = SwiftNEWParsedVersion(currentVersion)
+        guard let parsedCurrentVersion = SwiftNEWParsedVersion(currentVersion)
         else {
             return currentIndex.map { [releases[$0]] } ?? []
         }

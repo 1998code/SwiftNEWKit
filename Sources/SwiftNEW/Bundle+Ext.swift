@@ -33,13 +33,17 @@ extension Bundle {
     }
 
     var declaredAppIconNames: Set<String> {
+        Self.declaredAppIconNames(in: infoDictionary ?? [:])
+    }
+
+    static func declaredAppIconNames(in infoDictionary: [String: Any]) -> Set<String> {
         var names = Set<String>()
 
-        if let appIconName {
+        if let appIconName = appIconAssetName(in: infoDictionary) {
             names.insert(appIconName)
         }
 
-        for icons in iconDictionaries {
+        for icons in iconDictionaries(in: infoDictionary) {
             if let primaryIcon = icons["CFBundlePrimaryIcon"] as? [String: Any],
                let name = primaryIcon["CFBundleIconName"] as? String {
                 names.insert(name)
@@ -65,9 +69,24 @@ extension Bundle {
         alternateIconName: String? = nil,
         prefersIPadIcons: Bool = false
     ) -> [String] {
+        Self.iconFileNames(
+            in: infoDictionary ?? [:],
+            alternateIconName: alternateIconName,
+            prefersIPadIcons: prefersIPadIcons
+        )
+    }
+
+    static func iconFileNames(
+        in infoDictionary: [String: Any],
+        alternateIconName: String? = nil,
+        prefersIPadIcons: Bool = false
+    ) -> [String] {
         var fileNames: [String] = []
 
-        for icons in preferredIconDictionaries(prefersIPadIcons: prefersIPadIcons) {
+        for icons in preferredIconDictionaries(
+            in: infoDictionary,
+            prefersIPadIcons: prefersIPadIcons
+        ) {
             let icon: [String: Any]?
             if let alternateIconName {
                 let alternateIcons = icons["CFBundleAlternateIcons"] as? [String: Any]
@@ -84,13 +103,13 @@ extension Bundle {
 
         if fileNames.isEmpty,
            alternateIconName == nil,
-           let legacyFiles = infoDictionary?["CFBundleIconFiles"] as? [String] {
+           let legacyFiles = infoDictionary["CFBundleIconFiles"] as? [String] {
             fileNames.append(contentsOf: legacyFiles)
         }
 
         if fileNames.isEmpty,
            alternateIconName == nil,
-           let legacyFile = infoDictionary?["CFBundleIconFile"] as? String,
+           let legacyFile = infoDictionary["CFBundleIconFile"] as? String,
            !legacyFile.isEmpty {
             fileNames.append(legacyFile)
         }
@@ -103,7 +122,22 @@ extension Bundle {
         alternateIconName: String? = nil,
         prefersIPadIcons: Bool = false
     ) -> String? {
-        for icons in preferredIconDictionaries(prefersIPadIcons: prefersIPadIcons) {
+        Self.appIconAssetName(
+            in: infoDictionary ?? [:],
+            alternateIconName: alternateIconName,
+            prefersIPadIcons: prefersIPadIcons
+        )
+    }
+
+    static func appIconAssetName(
+        in infoDictionary: [String: Any],
+        alternateIconName: String? = nil,
+        prefersIPadIcons: Bool = false
+    ) -> String? {
+        for icons in preferredIconDictionaries(
+            in: infoDictionary,
+            prefersIPadIcons: prefersIPadIcons
+        ) {
             let icon: [String: Any]?
             if let alternateIconName {
                 let alternateIcons = icons["CFBundleAlternateIcons"] as? [String: Any]
@@ -122,7 +156,7 @@ extension Bundle {
             return nil
         }
 
-        return infoDictionary?["CFBundleIconName"] as? String
+        return infoDictionary["CFBundleIconName"] as? String
     }
 
     func appIconResourceCandidates(
@@ -153,40 +187,53 @@ extension Bundle {
         return candidates.filter { seen.insert($0).inserted }
     }
 
-    private func preferredIconDictionaries(prefersIPadIcons: Bool) -> [[String: Any]] {
+    private static func preferredIconDictionaries(
+        in infoDictionary: [String: Any],
+        prefersIPadIcons: Bool
+    ) -> [[String: Any]] {
         if prefersIPadIcons,
-           let icons = infoDictionary?["CFBundleIcons~ipad"] as? [String: Any] {
+           let icons = infoDictionary["CFBundleIcons~ipad"] as? [String: Any] {
             return [icons]
         }
 
-        if let icons = infoDictionary?["CFBundleIcons"] as? [String: Any] {
+        if let icons = infoDictionary["CFBundleIcons"] as? [String: Any] {
             return [icons]
         }
 
         // Some legacy iPad-only bundles contain only the suffixed dictionary.
-        if let icons = infoDictionary?["CFBundleIcons~ipad"] as? [String: Any] {
+        if let icons = infoDictionary["CFBundleIcons~ipad"] as? [String: Any] {
             return [icons]
         }
 
         return []
     }
 
-    private var iconDictionaries: [[String: Any]] {
+    private static func iconDictionaries(
+        in infoDictionary: [String: Any]
+    ) -> [[String: Any]] {
         ["CFBundleIcons", "CFBundleIcons~ipad"].compactMap {
-            infoDictionary?[$0] as? [String: Any]
+            infoDictionary[$0] as? [String: Any]
         }
     }
 
     // MARK: - Version Information
     static var versionBuild: String {
-        let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "1.0"
-        let build = Bundle.main.infoDictionary?["CFBundleVersion"] as? String ?? "1"
+        versionBuild(in: .main)
+    }
+
+    static func versionBuild(in bundle: Bundle) -> String {
+        let version = bundle.infoDictionary?["CFBundleShortVersionString"] as? String ?? "1.0"
+        let build = bundle.infoDictionary?["CFBundleVersion"] as? String ?? "1"
         return "\(version) (\(build))"
     }
 
     static var appName: String {
-        Bundle.main.infoDictionary?["CFBundleDisplayName"] as? String
-            ?? Bundle.main.infoDictionary?["CFBundleName"] as? String
+        appName(in: .main)
+    }
+
+    static func appName(in bundle: Bundle) -> String {
+        bundle.infoDictionary?["CFBundleDisplayName"] as? String
+            ?? bundle.infoDictionary?["CFBundleName"] as? String
             ?? ""
     }
 }

@@ -28,6 +28,45 @@ The CI watchOS compile gate uses a generic device destination and does not launc
 xcodebuild -scheme SwiftNEW -destination 'generic/platform=watchOS' build CODE_SIGNING_ALLOWED=NO
 ```
 
+## Running the Demo
+
+The `Demo/What's New?.xcodeproj` host app consumes the local package. Its code
+signing is driven by `Demo/Signing.xcconfig`, and no development team is
+committed to the repo:
+
+- **Simulator** — just build and run; no team or extra setup needed. This
+  includes the CarPlay demo, because simulator builds are not checked against
+  a provisioning profile.
+- **Physical device** — create `Demo/Signing.local.xcconfig` (gitignored) next
+  to `Demo/Signing.xcconfig` with your own team:
+
+  ```
+  DEVELOPMENT_TEAM = YOUR_TEAM_ID
+  ```
+
+  Device builds carry no CarPlay entitlement by default. This is deliberate:
+  CarPlay is a managed capability, and automatic signing fails for any team
+  Apple hasn't approved — the app wouldn't even install. With the default,
+  any paid or free team can auto-sign and run the Demo on an iPhone (the
+  CarPlay part only appears in simulator builds). If Apple has granted your
+  team a CarPlay capability, opt in by adding to the same file:
+
+  ```
+  CODE_SIGN_ENTITLEMENTS[sdk=iphoneos*] = What's New?/What_s_New_CarPlay.entitlements
+  DEMO_BUNDLE_ID = your.approved.bundle.id
+  ```
+
+  CarPlay is granted **per App ID**, so `DEMO_BUNDLE_ID` must be the bundle
+  identifier Apple approved for your team — the watch app and test bundles
+  re-derive their identifiers from it automatically. The tracked entitlements
+  file uses `com.apple.developer.carplay-driving-task`; if Apple granted you a
+  different CarPlay category, point `CODE_SIGN_ENTITLEMENTS[sdk=iphoneos*]` at
+  your own (gitignored) entitlements file instead.
+
+Set the team via `Signing.local.xcconfig`, **not** Xcode's Signing &
+Capabilities tab — the tab writes your team ID into the tracked
+`project.pbxproj`. Don't commit pbxproj signing changes in PRs.
+
 ## PR Guidelines
 
 - **Keep PRs focused.** One feature or bug fix per PR. Avoid bundling unrelated refactors, formatting changes, or dependency updates.

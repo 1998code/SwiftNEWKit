@@ -27,32 +27,101 @@ jobs:
       - name: Build watchOS library
         run: xcodebuild -scheme SwiftNEW -destination 'generic/platform=watchOS' build CODE_SIGNING_ALLOWED=NO
       - name: Test with coverage
-        run: swift test --enable-code-coverage -v
+        run: swift test --no-parallel --enable-code-coverage -v
       - name: Export LCOV
         id: coverage
         run: |
           COVERAGE_PATH="$(swift test --show-codecov-path)"
           CODECOV_DIR="$(dirname "$COVERAGE_PATH")"
           BIN_PATH="$(swift build --show-bin-path)"
-          TEST_BINARY="$BIN_PATH/SwiftNEWPackageTests.xctest/Contents/MacOS/SwiftNEWPackageTests"
+          XCTEST_BUNDLE="$(find "$BIN_PATH" -maxdepth 1 -type d -name '*.xctest' -print -quit)"
+          test -n "$XCTEST_BUNDLE"
+          TEST_BINARY="$XCTEST_BUNDLE/Contents/MacOS/$(basename "$XCTEST_BUNDLE" .xctest)"
+          test -x "$TEST_BINARY"
+          RAW_COVERAGE_PATH="$RUNNER_TEMP/SwiftNEW.coverage.raw.lcov"
 
           xcrun llvm-cov export "$TEST_BINARY" \
             -instr-profile "$CODECOV_DIR/default.profdata" \
             -format=lcov \
             -ignore-filename-regex='/.build/|/Tests/' \
-            | sed "s#SF:$PWD/#SF:#" > coverage.raw.lcov
+            | sed "s#SF:$PWD/#SF:#" > "$RAW_COVERAGE_PATH"
 
-          ruby .github/scripts/filter_lcov.rb coverage.raw.lcov coverage.lcov
+          ruby .github/scripts/filter_lcov.rb "$RAW_COVERAGE_PATH" coverage.lcov
+
+          test -s coverage.lcov
+          grep -q '^SF:' coverage.lcov
+          grep -q '^DA:' coverage.lcov
 
           echo "path=coverage.lcov" >> "$GITHUB_OUTPUT"
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v6
         with:
           files: ${{ steps.coverage.outputs.path }}
+          disable_search: true
           flags: swiftpm
           name: SwiftNEW
           token: ${{ secrets.CODECOV_TOKEN }}
-          fail_ci_if_error: false
+          fail_ci_if_error: true
+          verbose: true
+
+  ios-coverage:
+    runs-on: macos-26
+    env:
+      DEVELOPER_DIR: /Applications/Xcode_26.4.1.app/Contents/Developer
+    steps:
+      - uses: actions/checkout@v5
+      - name: Select iOS Simulator
+        id: simulator
+        run: |
+          SIMULATOR_UDID="$(
+            xcrun simctl list devices available --json \
+              | ruby -rjson -e '
+                  devices = JSON.parse(STDIN.read).fetch("devices").values.flatten
+                  simulator = devices.find do |device|
+                    device.fetch("isAvailable", false) && device.fetch("name", "").start_with?("iPhone")
+                  end
+                  abort "No available iPhone simulator found" unless simulator
+                  puts simulator.fetch("udid")
+                '
+          )"
+          test -n "$SIMULATOR_UDID"
+          echo "udid=$SIMULATOR_UDID" >> "$GITHUB_OUTPUT"
+      - name: Test iOS with coverage
+        run: |
+          xcodebuild \
+            -scheme SwiftNEW \
+            -destination 'platform=iOS Simulator,id=${{ steps.simulator.outputs.udid }}' \
+            -derivedDataPath "$RUNNER_TEMP/SwiftNEW-iOS-DerivedData" \
+            -enableCodeCoverage YES \
+            -parallel-testing-enabled NO \
+            -resultBundlePath "$RUNNER_TEMP/SwiftNEW-iOS.xcresult" \
+            test \
+            CODE_SIGNING_ALLOWED=NO
+      - name: Export iOS LCOV
+        id: coverage
+        run: |
+          RAW_COVERAGE_PATH="$RUNNER_TEMP/SwiftNEW-iOS.coverage.raw.lcov"
+
+          ruby .github/scripts/xccov_to_lcov.rb \
+            "$RUNNER_TEMP/SwiftNEW-iOS.xcresult" \
+            "$PWD" \
+            "$RAW_COVERAGE_PATH"
+          ruby .github/scripts/filter_lcov.rb "$RAW_COVERAGE_PATH" coverage-ios.lcov
+
+          test -s coverage-ios.lcov
+          grep -q '^SF:' coverage-ios.lcov
+          grep -q '^DA:' coverage-ios.lcov
+
+          echo "path=coverage-ios.lcov" >> "$GITHUB_OUTPUT"
+      - name: Upload iOS coverage to Codecov
+        uses: codecov/codecov-action@v6
+        with:
+          files: ${{ steps.coverage.outputs.path }}
+          disable_search: true
+          flags: ios
+          name: SwiftNEW-iOS
+          token: ${{ secrets.CODECOV_TOKEN }}
+          fail_ci_if_error: true
           verbose: true
 
   xcode-16-3:
@@ -66,7 +135,7 @@ jobs:
       - name: Build
         run: swift build -v
       - name: Test
-        run: swift test -v
+        run: swift test --no-parallel -v
 
   xcode-15-4:
     runs-on: macos-14
@@ -80,7 +149,7 @@ jobs:
         run: swift build -v
       # - name: Test
       #   run: swift test -v
-        
+
   xcode-15-0:
     runs-on: macos-14
     env:

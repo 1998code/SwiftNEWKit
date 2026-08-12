@@ -1,0 +1,34 @@
+// Shared signing configuration for the demo app.
+// The development team is intentionally NOT committed to this open-source repo.
+//
+// To build the demo with code signing, create Demo/Signing.local.xcconfig
+// (gitignored) next to this file with your own team:
+//
+//   DEVELOPMENT_TEAM = YOUR_TEAM_ID
+//
+// Without it, the demo still builds for simulators (no team required).
+
+// Bundle identifier
+// CarPlay is granted per App ID. To run the CarPlay demo on a physical
+// iPhone, override DEMO_BUNDLE_ID in Signing.local.xcconfig with the App ID
+// Apple approved for YOUR team. The watch app and test bundles derive their
+// identifiers from this value automatically.
+DEMO_BUNDLE_ID = media.1998.WhatsNew
+PRODUCT_BUNDLE_IDENTIFIER = $(DEMO_BUNDLE_ID)
+
+// Entitlements
+// - macOS uses the sandboxed entitlements.
+// - iOS Simulator uses the CarPlay entitlements: simulator builds are not
+//   checked against a provisioning profile, so the CarPlay demo works for
+//   everyone in the CarPlay Simulator without Apple's CarPlay capability.
+// - iOS device builds default to NO entitlements file, so any team can run
+//   the demo on a physical iPhone. If Apple has granted your team the
+//   CarPlay capability, opt in via Signing.local.xcconfig:
+//
+//   CODE_SIGN_ENTITLEMENTS[sdk=iphoneos*] = What's New?/What_s_New_CarPlay.entitlements
+CODE_SIGN_ENTITLEMENTS = What's New?/What_s_New_.entitlements
+CODE_SIGN_ENTITLEMENTS[sdk=iphonesimulator*] = What's New?/What_s_New_CarPlay.entitlements
+CODE_SIGN_ENTITLEMENTS[sdk=iphoneos*] =
+
+// Local overrides load last so they win over the defaults above.
+#include? "Signing.local.xcconfig"

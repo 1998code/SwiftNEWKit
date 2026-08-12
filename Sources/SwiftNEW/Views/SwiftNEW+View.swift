@@ -53,8 +53,12 @@ extension SwiftNEW {
         )
     }
 
+    var usesReleaseNoteButtonGlass: Bool {
+        glass && size != "invisible"
+    }
+
     private var defaultIconBackdropGradient: LinearGradient {
-        let colors: [Color] = colorScheme == .dark
+        let colors: [Color] = resolvedColorScheme == .dark
             ? [.white.opacity(0.14), .white.opacity(0.035)]
             : [.white, .clear]
 
@@ -66,7 +70,7 @@ extension SwiftNEW {
     }
 
     private var iconGlyphGradient: LinearGradient {
-        let colors: [Color] = colorScheme == .dark
+        let colors: [Color] = resolvedColorScheme == .dark
             ? [color, .white]
             : [color, color.opacity(0.6)]
 
@@ -166,7 +170,8 @@ extension SwiftNEW {
                             ReleaseNoteButtonLabelModifier(
                                 color: color,
                                 cornerRadius: buttonCornerRadius,
-                                usesCompactStyle: size == "mini" || size == "invisible"
+                                usesCompactStyle: size == "mini" || size == "invisible",
+                                usesNativeGlass: usesReleaseNoteButtonGlass
                             )
                         )
                         .contentShape(
@@ -189,12 +194,12 @@ extension SwiftNEW {
                     ReleaseNoteButtonGlassModifier(
                         tint: color,
                         cornerRadius: buttonCornerRadius,
-                        isEnabled: size != "invisible"
+                        isEnabled: usesReleaseNoteButtonGlass
                     )
                 )
                 .modifier(
                     ConditionalGlassModifier(
-                        isEnabled: glass && size != "invisible",
+                        isEnabled: usesReleaseNoteButtonGlass,
                         shadowColor: color,
                         cornerRadius: buttonCornerRadius
                     )
@@ -266,7 +271,7 @@ extension SwiftNEW {
                 sheetCurrent
                     .modifier(
                         PresentationModifier(
-                            isPresented: $historySheet,
+                            isPresented: historySheetBinding,
                             presentation: presentation,
                             sheetContent: historySheetContent
                         )
@@ -461,11 +466,12 @@ private struct ReleaseNoteButtonLabelModifier: ViewModifier {
     let color: Color
     let cornerRadius: CGFloat
     let usesCompactStyle: Bool
+    let usesNativeGlass: Bool
 
     @ViewBuilder
     func body(content: Content) -> some View {
         #if os(iOS) && !os(visionOS) && compiler(>=6.2)
-        if #available(iOS 26.0, *) {
+        if #available(iOS 26.0, *), usesNativeGlass {
             content
                 .foregroundStyle(usesCompactStyle ? color : color.adaptedTextColor)
         } else {
@@ -491,7 +497,7 @@ private struct ReleaseNoteButtonLabelModifier: ViewModifier {
 private struct ReleaseNoteButtonGlassModifier: ViewModifier {
     let tint: Color
     let cornerRadius: CGFloat
-    var isEnabled: Bool = true
+    let isEnabled: Bool
 
     @ViewBuilder
     func body(content: Content) -> some View {

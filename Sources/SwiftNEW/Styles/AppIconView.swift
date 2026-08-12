@@ -102,12 +102,40 @@ public struct AppIconView: View {
         rasterIcon
     }
 
+    #if DEBUG
+    var testingResolvedAssetName: String? {
+        resolvedAssetName
+    }
+
+    func testingRasterIconResourceURL(
+        displayScale: CGFloat,
+        prefersIPadIcons: Bool = false
+    ) -> URL? {
+        rasterIcon(
+            displayScale: displayScale,
+            prefersIPadIcons: prefersIPadIcons
+        )?.resourceURL
+    }
+    #endif
+
     private var rasterIcon: RasterIcon? {
-        bundle.iconFileNames(
-            alternateIconName: alternateIconName,
+        rasterIcon(
+            displayScale: displayScale,
             prefersIPadIcons: UIDevice.current.userInterfaceIdiom == .pad
         )
-            .compactMap { loadRasterIcon(named: $0) }
+    }
+
+    private func rasterIcon(
+        displayScale: CGFloat,
+        prefersIPadIcons: Bool
+    ) -> RasterIcon? {
+        bundle.iconFileNames(
+            alternateIconName: alternateIconName,
+            prefersIPadIcons: prefersIPadIcons
+        )
+            .compactMap {
+                loadRasterIcon(named: $0, displayScale: displayScale)
+            }
             .max { pixelArea(of: $0) < pixelArea(of: $1) }
     }
 
@@ -144,7 +172,10 @@ public struct AppIconView: View {
         )
     }
 
-    private func loadRasterIcon(named fileName: String) -> RasterIcon? {
+    private func loadRasterIcon(
+        named fileName: String,
+        displayScale: CGFloat
+    ) -> RasterIcon? {
         for resourceName in bundle.appIconResourceCandidates(
             for: fileName,
             displayScale: displayScale

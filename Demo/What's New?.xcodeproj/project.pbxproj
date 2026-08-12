@@ -83,6 +83,7 @@
 		3A46CBB7285444CD00BE79A3 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		3A46CBBF285444CC00BE79A3 /* ContentView+Previews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ContentView+Previews.swift"; sourceTree = "<group>"; };
 		3A46CBC4285447F600BE79A3 /* SwiftNEW */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = SwiftNEW; path = ../../../SwiftNEW; sourceTree = "<group>"; };
+		3A999E5F2855A00100BE79A3 /* Signing.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Signing.xcconfig; sourceTree = "<project>"; };
 		3A61B53A301F7D6B00DFD913 /* AppIcon.icon */ = {isa = PBXFileReference; lastKnownFileType = folder.iconcomposer.icon; path = AppIcon.icon; sourceTree = "<group>"; };
 		3A61B53C301F833200DFD913 /* he */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = he; path = he.lproj/data.json; sourceTree = "<group>"; };
 		3A61B53D301F833A00DFD913 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = de; path = de.lproj/data.json; sourceTree = "<group>"; };
@@ -93,6 +94,7 @@
 		3AE0026D2962DD810055979A /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = "zh-Hant"; path = "zh-Hant.lproj/data.json"; sourceTree = "<group>"; };
 		CA7700023C00000000000002 /* CarPlayDemo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarPlayDemo.swift; sourceTree = "<group>"; };
 		CA7700033C00000000000003 /* What_s_New_CarPlay.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = What_s_New_CarPlay.entitlements; sourceTree = "<group>"; };
+		CA7700043C00000000000004 /* CarPlayScene-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CarPlayScene-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -169,9 +171,11 @@
 				3AE0026C2962DD540055979A /* data.json */,
 				3A46CBB3285444CD00BE79A3 /* Assets.xcassets */,
 				3A61B53A301F7D6B00DFD913 /* AppIcon.icon */,
+				CA7700043C00000000000004 /* CarPlayScene-Info.plist */,
 				CA7700033C00000000000003 /* What_s_New_CarPlay.entitlements */,
 				3A46CBB5285444CD00BE79A3 /* What_s_New_.entitlements */,
 				3A46CBB6285444CD00BE79A3 /* Preview Content */,
+				3A999E5F2855A00100BE79A3 /* Signing.xcconfig */,
 			);
 			path = "What's New?";
 			sourceTree = "<group>";
@@ -472,6 +476,7 @@
 /* Begin XCBuildConfiguration section */
 		3A41E614302A7FD9008FF169 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3A999E5F2855A00100BE79A3 /* Signing.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -479,21 +484,20 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 22;
-				DEVELOPMENT_TEAM = 9PAHLTG8AD;
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = Watch;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = media.1998.WhatsNew;
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = "$(DEMO_BUNDLE_ID)";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MARKETING_VERSION = 27.0;
-				PRODUCT_BUNDLE_IDENTIFIER = media.1998.WhatsNew.watchkitapp;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(DEMO_BUNDLE_ID).watchkitapp";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -511,6 +515,7 @@
 		};
 		3A41E615302A7FD9008FF169 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3A999E5F2855A00100BE79A3 /* Signing.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -518,21 +523,20 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 22;
-				DEVELOPMENT_TEAM = 9PAHLTG8AD;
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = Watch;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = media.1998.WhatsNew;
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = "$(DEMO_BUNDLE_ID)";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MARKETING_VERSION = 27.0;
-				PRODUCT_BUNDLE_IDENTIFIER = media.1998.WhatsNew.watchkitapp;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(DEMO_BUNDLE_ID).watchkitapp";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -550,19 +554,19 @@
 		};
 		3A41E616302A7FD9008FF169 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3A999E5F2855A00100BE79A3 /* Signing.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 9PAHLTG8AD;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = YES;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "media.1998.WhatsNew.Watch-Watch-AppTests";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(DEMO_BUNDLE_ID).Watch-Watch-AppTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				STRING_CATALOG_GENERATE_SYMBOLS = NO;
@@ -579,19 +583,19 @@
 		};
 		3A41E617302A7FD9008FF169 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3A999E5F2855A00100BE79A3 /* Signing.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 9PAHLTG8AD;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = YES;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "media.1998.WhatsNew.Watch-Watch-AppTests";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(DEMO_BUNDLE_ID).Watch-Watch-AppTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				STRING_CATALOG_GENERATE_SYMBOLS = NO;
@@ -608,18 +612,18 @@
 		};
 		3A41E618302A7FD9008FF169 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3A999E5F2855A00100BE79A3 /* Signing.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 9PAHLTG8AD;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = YES;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "media.1998.WhatsNew.Watch-Watch-AppUITests";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(DEMO_BUNDLE_ID).Watch-Watch-AppUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				STRING_CATALOG_GENERATE_SYMBOLS = NO;
@@ -636,18 +640,18 @@
 		};
 		3A41E619302A7FD9008FF169 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3A999E5F2855A00100BE79A3 /* Signing.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 9PAHLTG8AD;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = YES;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "media.1998.WhatsNew.Watch-Watch-AppUITests";
+				PRODUCT_BUNDLE_IDENTIFIER = "$(DEMO_BUNDLE_ID).Watch-Watch-AppUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				STRING_CATALOG_GENERATE_SYMBOLS = NO;
@@ -775,19 +779,18 @@
 		};
 		3A46CBBC285444CD00BE79A3 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3A999E5F2855A00100BE79A3 /* Signing.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = "What's New?/What_s_New_.entitlements";
-				"CODE_SIGN_ENTITLEMENTS[sdk=iphoneos*]" = "What's New?/What_s_New_CarPlay.entitlements";
-				"CODE_SIGN_ENTITLEMENTS[sdk=iphonesimulator*]" = "What's New?/What_s_New_CarPlay.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 22;
 				DEVELOPMENT_ASSET_PATHS = "\"What's New?/Preview Content\"";
-				DEVELOPMENT_TEAM = 9PAHLTG8AD;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				"INFOPLIST_FILE[sdk=iphoneos*]" = "What's New?/CarPlayScene-Info.plist";
+				"INFOPLIST_FILE[sdk=iphonesimulator*]" = "What's New?/CarPlayScene-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = Demo;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.developer-tools";
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
@@ -799,7 +802,6 @@
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MARKETING_VERSION = 27.0;
-				PRODUCT_BUNDLE_IDENTIFIER = media.1998.WhatsNew;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "appletvos appletvsimulator iphoneos iphonesimulator macosx xros xrsimulator";
@@ -817,19 +819,18 @@
 		};
 		3A46CBBD285444CD00BE79A3 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3A999E5F2855A00100BE79A3 /* Signing.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = "What's New?/What_s_New_.entitlements";
-				"CODE_SIGN_ENTITLEMENTS[sdk=iphoneos*]" = "What's New?/What_s_New_CarPlay.entitlements";
-				"CODE_SIGN_ENTITLEMENTS[sdk=iphonesimulator*]" = "What's New?/What_s_New_CarPlay.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 22;
 				DEVELOPMENT_ASSET_PATHS = "\"What's New?/Preview Content\"";
-				DEVELOPMENT_TEAM = 9PAHLTG8AD;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				"INFOPLIST_FILE[sdk=iphoneos*]" = "What's New?/CarPlayScene-Info.plist";
+				"INFOPLIST_FILE[sdk=iphonesimulator*]" = "What's New?/CarPlayScene-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = Demo;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.developer-tools";
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
@@ -841,7 +842,6 @@
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MARKETING_VERSION = 27.0;
-				PRODUCT_BUNDLE_IDENTIFIER = media.1998.WhatsNew;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "appletvos appletvsimulator iphoneos iphonesimulator macosx xros xrsimulator";

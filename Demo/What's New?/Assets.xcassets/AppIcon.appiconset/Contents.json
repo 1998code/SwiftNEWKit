@@ -1,6 +1,18 @@
 {
   "images" : [
     {
+      "filename" : "CarPlay@2x.png",
+      "idiom" : "car",
+      "scale" : "2x",
+      "size" : "60x60"
+    },
+    {
+      "filename" : "CarPlay@3x.png",
+      "idiom" : "car",
+      "scale" : "3x",
+      "size" : "60x60"
+    },
+    {
       "filename" : "ios-marketing.png",
       "idiom" : "universal",
       "platform" : "ios",

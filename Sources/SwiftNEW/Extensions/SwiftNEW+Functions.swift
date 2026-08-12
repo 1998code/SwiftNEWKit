@@ -17,13 +17,18 @@ extension SwiftNEW {
     var loadRequest: SwiftNEWLoadRequest {
         let configuredBundleIdentifier = appStoreBundleIdentifier?
             .trimmingCharacters(in: .whitespacesAndNewlines)
+        let needsAppStoreBundleIdentifier = checkForUpdates
+            && SwiftNEWRemoteSource.url(from: data) != nil
+        let resolvedBundleIdentifier = needsAppStoreBundleIdentifier
+            ? (configuredBundleIdentifier?.isEmpty == false
+                ? configuredBundleIdentifier
+                : loadDependencies.appStoreBundleIdentifier())
+            : nil
 
         return SwiftNEWLoadRequest(
             source: data,
             checkForUpdates: checkForUpdates,
-            bundleIdentifier: configuredBundleIdentifier?.isEmpty == false
-                ? configuredBundleIdentifier
-                : Bundle.main.appStoreListingBundleIdentifier
+            bundleIdentifier: resolvedBundleIdentifier
         )
     }
 
@@ -54,11 +59,11 @@ extension SwiftNEW {
         return SwiftNEWPendingPresentation.sheet
         #endif
     }
-    
+
     // MARK: - Functions
     public func compareVersion() {
-        let currentVersion = Bundle.version
-        let currentBuild = Bundle.build
+        let currentVersion = loadDependencies.currentVersion()
+        let currentBuild = loadDependencies.currentBuild()
 
         if SwiftNEWVersionState.shouldPresent(
             currentVersion: currentVersion,
@@ -95,12 +100,9 @@ extension SwiftNEW {
     }
 
     public func loadData() {
+        let loadStateMachine = loadStateMachine
         Task { @MainActor in
-            forceLoadRequested = true
-            appStoreLookupRetryRequest = nil
-            loadGeneration = nil
-            loadedRequest = nil
-            reloadID = UUID()
+            loadStateMachine.requestReload()
         }
     }
 
@@ -109,16 +111,8 @@ extension SwiftNEW {
         guard !Task.isCancelled, taskID == loadTaskID else { return }
         let request = taskID.request
 
-        if currentLoadRequest != request {
+        if loadStateMachine.resetIfRequestChanged(to: request) {
             cancelActiveDrop()
-            currentLoadRequest = request
-            loadedRequest = nil
-            loadedDataSource = nil
-            items = []
-            availableUpdate = nil
-            loadErrorMessage = nil
-            appStoreLookupErrorMessage = nil
-            appStoreLookupRetryRequest = nil
         }
 
         guard !Task.isCancelled, taskID == loadTaskID else { return }
@@ -143,10 +137,9 @@ extension SwiftNEW {
 
         guard loadedRequest != request else { return }
 
-        let generation = UUID()
-        loadGeneration = generation
         if appStoreLookupRetryRequest == request,
            let updateCandidate = availableUpdate {
+            let generation = loadStateMachine.beginAppStoreRetry()
             await retryAppStoreLookup(
                 for: updateCandidate,
                 request: request,
@@ -155,6 +148,11 @@ extension SwiftNEW {
             )
         } else {
             appStoreLookupRetryRequest = nil
+            let isUpdatePreflight = request.checkForUpdates
+                && SwiftNEWRemoteSource.url(from: request.source) != nil
+            let generation = loadStateMachine.beginLoad(
+                isUpdatePreflight: isUpdatePreflight
+            )
             await loadData(for: request, taskID: taskID, generation: generation)
         }
     }
@@ -169,19 +167,13 @@ extension SwiftNEW {
         let isUpdatePreflight = request.checkForUpdates
             && SwiftNEWRemoteSource.url(from: request.source) != nil
 
-        loading = true
-        loadErrorMessage = nil
-        appStoreLookupErrorMessage = nil
-        availableUpdate = nil
-        updateCheckPhase = isUpdatePreflight ? .checking : .inactive
-
         do {
             let decoded = try await fetchReleaseNotes(for: request)
             guard isCurrentLoad(request: request, taskID: taskID, generation: generation) else { return }
 
             var updateCandidate = SwiftNEWUpdateResolver.candidate(
                 in: decoded,
-                currentVersion: Bundle.version,
+                currentVersion: loadDependencies.currentVersion(),
                 source: request.source,
                 checkForUpdates: request.checkForUpdates
             )
@@ -203,16 +195,13 @@ extension SwiftNEW {
             }
 
             guard isCurrentLoad(request: request, taskID: taskID, generation: generation) else { return }
-            items = decoded
-            availableUpdate = updateCandidate
-            appStoreLookupErrorMessage = lookupErrorMessage
-            loading = false
-            loadedDataSource = request.source
-            loadedRequest = request
-            loadGeneration = nil
-            forceLoadRequested = false
-            appStoreLookupRetryRequest = nil
-            updateCheckPhase = isUpdatePreflight ? .resolved : .inactive
+            loadStateMachine.finishLoad(
+                items: decoded,
+                updateCandidate: updateCandidate,
+                lookupErrorMessage: lookupErrorMessage,
+                request: request,
+                isUpdatePreflight: isUpdatePreflight
+            )
             resolvePresentation(updateCandidate: updateCandidate, request: request)
         } catch {
             guard !Task.isCancelled,
@@ -220,25 +209,17 @@ extension SwiftNEW {
             else { return }
 
             print("SwiftNEW loadData error: \(error)")
-            loading = false
-            availableUpdate = nil
-            appStoreLookupErrorMessage = nil
-            loadedDataSource = request.source
-            loadedRequest = request
-            loadGeneration = nil
-            forceLoadRequested = false
-            appStoreLookupRetryRequest = nil
-            updateCheckPhase = isUpdatePreflight ? .resolved : .inactive
-            loadErrorMessage = String(localized: "Unable to load release notes.", bundle: .module)
+            loadStateMachine.failLoad(
+                request: request,
+                isUpdatePreflight: isUpdatePreflight,
+                message: String(localized: "Unable to load release notes.", bundle: .module)
+            )
             resolvePresentation(updateCandidate: nil, request: request)
         }
     }
 
     private func fetchReleaseNotes(for request: SwiftNEWLoadRequest) async throws -> [Vmodel] {
-        try await SwiftNEWReleaseNotesLoader.load(
-            from: request.source,
-            bundle: dataBundle
-        )
+        try await loadDependencies.loadReleaseNotes(request.source, dataBundle)
     }
 
     private func fetchAppStoreURL(bundleIdentifier: String?) async throws -> URL {
@@ -285,32 +266,31 @@ extension SwiftNEW {
             return
         }
 
-        updateCheckPhase = .checking
-        appStoreLookupErrorMessage = nil
-
+        var appStoreURL: URL?
+        var lookupErrorMessage: String?
         do {
-            let appStoreURL = try await fetchAppStoreURL(
+            appStoreURL = try await fetchAppStoreURL(
                 bundleIdentifier: request.bundleIdentifier
             )
             guard isCurrentLoad(request: request, taskID: taskID, generation: generation) else {
                 return
             }
-            availableUpdate = candidate.resolvingAppStoreURL(appStoreURL)
         } catch {
             guard !Task.isCancelled,
                   isCurrentLoad(request: request, taskID: taskID, generation: generation)
             else { return }
-            availableUpdate = candidate
-            appStoreLookupErrorMessage = String(
+            lookupErrorMessage = String(
                 localized: "Unable to load App Store information.",
                 bundle: .module
             )
         }
 
-        loadedRequest = request
-        appStoreLookupRetryRequest = nil
-        loadGeneration = nil
-        updateCheckPhase = .resolved
+        loadStateMachine.finishAppStoreRetry(
+            candidate: candidate,
+            appStoreURL: appStoreURL,
+            errorMessage: lookupErrorMessage,
+            request: request
+        )
         resolvePresentation(updateCandidate: availableUpdate, request: request)
     }
 
@@ -323,16 +303,13 @@ extension SwiftNEW {
             countryCode: countryCode
         ) else { throw SwiftNEWAppStoreLookupError.invalidRequest }
 
-        let (data, response) = try await URLSession.shared.data(from: lookupURL)
+        let (data, response) = try await loadDependencies.loadURL(lookupURL)
         try validateHTTPResponse(response)
         return data
     }
 
     private var currentRegionCode: String? {
-        if #available(iOS 16.0, watchOS 9.0, macOS 13.0, tvOS 16.0, *) {
-            return Locale.current.region?.identifier
-        }
-        return Locale.current.regionCode
+        loadDependencies.regionCode()
     }
 
     private func validateHTTPResponse(_ response: URLResponse) throws {
@@ -427,6 +404,12 @@ extension SwiftNEW {
     }
 
     func openAvailableUpdate() {
+        openAvailableUpdate(using: { url in
+            openURL(url)
+        })
+    }
+
+    func openAvailableUpdate(using openURL: (URL) -> Void) {
         guard let appStoreURL = availableUpdate?.appStoreURL
         else { return }
 
@@ -436,11 +419,7 @@ extension SwiftNEW {
     func retryAppStoreLookup() {
         guard availableUpdate != nil else { return }
         suppressedAutomaticUpdateRequests.remove(loadRequest)
-        appStoreLookupRetryRequest = loadRequest
-        loadGeneration = nil
-        loadedRequest = nil
-        appStoreLookupErrorMessage = nil
-        reloadID = UUID()
+        loadStateMachine.requestReload(retryingAppStoreFor: loadRequest)
     }
 
     func finishUpdatePresentation() {
@@ -473,8 +452,8 @@ extension SwiftNEW {
         pendingSeenVersion = nil
         commitSeenVersion(
             SwiftNEWVersionSnapshot(
-                version: Bundle.version,
-                build: Bundle.build
+                version: loadDependencies.currentVersion(),
+                build: loadDependencies.currentBuild()
             )
         )
     }
@@ -491,7 +470,7 @@ extension SwiftNEW {
         Drops.hideCurrent()
         #endif
     }
-    
+
     #if os(iOS)
     public func drop() {
         let epoch = UUID()

@@ -11,6 +11,8 @@ import Foundation
 /// such as a CarPlay template, from the same local or remote JSON source used
 /// by ``SwiftNEW``.
 public enum SwiftNEWReleaseNotesLoader {
+    typealias RemoteDataLoader = (URL) async throws -> (Data, URLResponse)
+
     /// Loads and decodes release notes from a bundled JSON resource or an HTTP(S) URL.
     ///
     /// - Parameters:
@@ -21,12 +23,28 @@ public enum SwiftNEWReleaseNotesLoader {
         from source: String = "data",
         bundle: Bundle = .main
     ) async throws -> [Vmodel] {
+        try await load(
+            from: source,
+            bundle: bundle,
+            remoteDataLoader: { url in
+                try await URLSession.shared.data(from: url)
+            }
+        )
+    }
+
+    /// Internal injection point used to exercise remote loading without making
+    /// tests depend on the network or shared URL loading state.
+    static func load(
+        from source: String,
+        bundle: Bundle,
+        remoteDataLoader: RemoteDataLoader
+    ) async throws -> [Vmodel] {
         if SwiftNEWRemoteSource.looksRemote(source) {
             guard let url = SwiftNEWRemoteSource.url(from: source) else {
                 throw URLError(.badURL)
             }
 
-            let (data, response) = try await URLSession.shared.data(from: url)
+            let (data, response) = try await remoteDataLoader(url)
             try validateHTTPResponse(response)
             return try JSONDecoder().decode([Vmodel].self, from: data)
         }

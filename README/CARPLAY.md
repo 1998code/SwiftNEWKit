@@ -6,7 +6,15 @@ SwiftNEW provides an iOS-only `CPListTemplate` adapter for approved CarPlay host
 
 - the current release is shown by default when the JSON contains an exact installed-version match;
 - each change opens a second list with its full description;
-- `includesHistory: true` adds older release sections;
+- `includesHistory: true` adds a **History** button when older content exists;
+  it switches the root list between the current and older releases;
+- loading and loaded templates can expose a trailing **Continue** button
+  supplied by the host app;
+- Continue replaces the release-note root with the host app's native CarPlay
+  content template;
+- SF Symbol row icons are pre-rasterized as display-ready system-blue light/dark
+  bitmaps at the CarPlay display scale, so the remote renderer can't turn them
+  into black template glyphs;
 - runtime section and item limits are respected automatically;
 - opening the CarPlay template does not change SwiftNEW's seen-version state.
 
@@ -17,17 +25,45 @@ SwiftNEW provides an iOS-only `CPListTemplate` adapter for approved CarPlay host
 
 The Xcode Demo is a consumer of the local SwiftNEW package and includes an
 iOS-only CarPlay integration harness in `CarPlayDemo.swift`. The harness
-registers a CarPlay scene programmatically, loads the Demo's localized
+registers `CarPlayDemoSceneDelegate` through its iOS-only
+`CarPlayScene-Info.plist`, loads the Demo's localized
 `data.json`, and exercises `SwiftNEWCarPlayTemplateFactory` loading, history,
-and detail flow, with failure and disconnect handling included.
+detail, Continue-to-content, and repeat What's New flows, with failure and
+disconnect handling included. Continue opens the Demo's native
+**SwiftNEW for CarPlay** template, whose **What's New** row loads the release
+notes again.
 It models a non-navigation template host; a navigation app should exercise the
 package inside its own `templateApplicationScene(_:didConnect:to:)` lifecycle
 so it can preserve the app's real `CPWindow` setup.
 
-The Demo's iOS-only `What_s_New_CarPlay.entitlements` is intentionally empty
-until Apple approves a CarPlay category for the test host. After approval, add
-the exact entitlement Apple grants and use an App ID and provisioning profile
-containing that same managed capability.
+The Demo's iOS-only `What_s_New_CarPlay.entitlements` contains Apple's approved
+`com.apple.developer.carplay-driving-task` capability. How it is applied is
+controlled by `Demo/Signing.xcconfig` (see
+[Running the Demo](CONTRIBUTING.md#running-the-demo)):
+
+- **iOS Simulator builds always embed the CarPlay entitlements.** Simulator
+  builds are not checked against a provisioning profile, so anyone can run the
+  CarPlay demo in a simulator — no Apple CarPlay grant needed. Run the Demo in
+  an iOS Simulator and attach the CarPlay display from the Simulator app's
+  **I/O** menu.
+- **Device builds carry no CarPlay entitlement by default.** Including it
+  would make automatic signing fail for every team Apple hasn't approved for
+  CarPlay — the Demo wouldn't install on an iPhone at all. With the default,
+  the Demo auto-signs and runs on any iPhone with any team (without the
+  CarPlay scene). The physical-iPhone flow below requires a team that Apple
+  has approved for a CarPlay capability; opt in via
+  `Demo/Signing.local.xcconfig` with an App ID and provisioning profile
+  containing that same managed capability:
+
+  ```
+  CODE_SIGN_ENTITLEMENTS[sdk=iphoneos*] = What's New?/What_s_New_CarPlay.entitlements
+  DEMO_BUNDLE_ID = your.approved.bundle.id
+  ```
+
+  CarPlay is approved per App ID, so `DEMO_BUNDLE_ID` must be an identifier
+  Apple approved for your team, and the entitlement key must match your
+  granted category (the Demo's file declares `carplay-driving-task`; use your
+  own gitignored entitlements file if your category differs).
 
 With Xcode 27:
 
@@ -36,14 +72,19 @@ With Xcode 27:
 3. Select the connected iPhone and choose **CarPlay Simulator** from its device
    actions or diagnostics menu.
 4. Open **Demo** from the CarPlay Home screen.
+5. Select **History**, open an older release-note detail, return, then select
+   **Return** to show Version 6.6 again.
+6. Select **Continue** to enter the Demo's native **SwiftNEW for CarPlay**
+   template.
+7. Select its **What's New** row and confirm the loading template and release
+   notes appear again.
 
 The Demo deliberately passes `currentVersion: "6.6"` so its bundled fixture
-has an exact current release, and enables history so older sections are also
-visible. Change those two arguments in `CarPlayDemo.swift` to exercise empty or
-current-only states. Apple doesn't provide a category-neutral package
-entitlement; adding a key before it appears in the signing profile causes
-signing to fail, while omitting it means the Demo doesn't appear on the CarPlay
-Home screen.
+has an exact current release, and enables the History/Return toggle for older
+sections. Change those two arguments in `CarPlayDemo.swift` to exercise empty
+or current-only states. Apple doesn't provide a category-neutral package
+entitlement; if the signing profile doesn't contain the Demo's entitlement,
+signing fails or the Demo doesn't appear on the CarPlay Home screen.
 
 ## 1. Configure the host app
 
@@ -83,14 +124,25 @@ Keep this configuration and the approved entitlement scoped to the iOS target. A
 As an alternative to the manifest, a SwiftUI host can use
 `UIApplicationDelegateAdaptor` and return a configuration whose scene class is
 `CPTemplateApplicationScene` and delegate class is its CarPlay scene delegate
-from `application(_:configurationForConnecting:options:)`. The Demo uses this
-programmatic approach; don't register the same CarPlay scene both ways.
+from `application(_:configurationForConnecting:options:)`. The Demo uses the
+manifest approach; don't register the same CarPlay scene both ways.
 
 ## 2. Add a CarPlay scene delegate
 
 The example below is for a non-navigation template app. Navigation apps receive `templateApplicationScene(_:didConnect:to:)` with a `CPWindow` and must preserve their navigation window setup; follow Apple's [navigation callback requirements](https://developer.apple.com/documentation/carplay/cptemplateapplicationscenedelegate/templateapplicationscene%28_%3Adidconnect%3Ato%3A%29) instead of copying this lifecycle unchanged.
 
-CarPlay requires the root template request before the connect callback returns. Submit SwiftNEW's loading-template request before returning, then load and replace it asynchronously. Retain the interface controller for the connected scene and cancel in-flight loading when CarPlay disconnects:
+CarPlay requires the root template request before the connect callback returns.
+Submit SwiftNEW's loading-template request before returning, then load and
+replace it asynchronously. Give both templates the same Continue callback so
+the driver can enter the app while loading or after reading the notes. The
+callback cancels in-flight work and replaces the release-note root with the
+host's native `CPTemplate`; a phone SwiftUI `ContentView` cannot be placed on a
+CarPlay display. A non-cancellation loading failure should also return to that
+content rather than strand the driver on an error template. Retain the
+interface controller for the connected scene and cancel loading when CarPlay
+disconnects. The button title defaults to SwiftNEW's localized **Continue**;
+pass `continueButtonTitle:` to customize it, with an empty or whitespace-only
+value falling back to that default:
 
 ```swift
 #if os(iOS) && canImport(CarPlay) && !targetEnvironment(macCatalyst)
@@ -102,43 +154,79 @@ import UIKit
 final class CarPlaySceneDelegate: UIResponder, CPTemplateApplicationSceneDelegate {
     private var interfaceController: CPInterfaceController?
     private var loadingTask: Task<Void, Never>?
+    private var isPresentingReleaseNotes = false
 
     func templateApplicationScene(
         _ templateApplicationScene: CPTemplateApplicationScene,
         didConnect interfaceController: CPInterfaceController
     ) {
         self.interfaceController = interfaceController
-        let loadingTemplate = SwiftNEWCarPlayTemplateFactory.makeLoadingTemplate()
+        isPresentingReleaseNotes = true
+
+        let continueToContent: SwiftNEWCarPlayTemplateFactory.ContinueAction = {
+            [weak self] controller in
+            self?.showContent(on: controller)
+        }
+        let loadingTemplate = SwiftNEWCarPlayTemplateFactory.makeLoadingTemplate(
+            interfaceController: interfaceController,
+            onContinue: continueToContent
+        )
         interfaceController.setRootTemplate(
             loadingTemplate,
             animated: false
         ) { [weak self] succeeded, _ in
-            guard succeeded,
-                  self?.interfaceController === interfaceController
-            else { return }
+            guard self?.interfaceController === interfaceController else { return }
+            guard succeeded else {
+                self?.showContent(on: interfaceController)
+                return
+            }
+            guard self?.isPresentingReleaseNotes == true else { return }
 
             self?.loadingTask = Task { @MainActor [weak self] in
                 do {
-                    try await SwiftNEWCarPlayTemplateFactory.setRootTemplate(
+                    _ = try await SwiftNEWCarPlayTemplateFactory.setRootTemplate(
                         on: interfaceController,
                         from: "data",
                         bundle: .main,
-                        includesHistory: false
+                        includesHistory: true,
+                        onContinue: continueToContent
                     )
+                    guard self?.interfaceController === interfaceController else { return }
+                    if self?.isPresentingReleaseNotes == false {
+                        // Continue may have won while CarPlay was replacing the root.
+                        self?.showContent(on: interfaceController)
+                    }
                 } catch is CancellationError {
-                    // The CarPlay scene disconnected while data was loading.
+                    // Continue or a CarPlay disconnect cancelled loading.
+                    guard self?.interfaceController === interfaceController,
+                          self?.isPresentingReleaseNotes == false
+                    else { return }
+                    self?.showContent(on: interfaceController)
                 } catch {
                     guard self?.interfaceController === interfaceController else { return }
-
-                    let fallback = CPListTemplate(title: "What's New", sections: [])
-                    fallback.emptyViewTitleVariants = ["Unable to load release notes."]
-                    _ = try? await interfaceController.setRootTemplate(
-                        fallback,
-                        animated: false
-                    )
+                    self?.showContent(on: interfaceController)
                 }
             }
         }
+    }
+
+    private func showContent(on interfaceController: CPInterfaceController) {
+        guard self.interfaceController === interfaceController else { return }
+        isPresentingReleaseNotes = false
+        loadingTask?.cancel()
+        loadingTask = nil
+
+        interfaceController.setRootTemplate(
+            makeContentTemplate(),
+            animated: true
+        ) { _, _ in }
+    }
+
+    private func makeContentTemplate() -> CPTemplate {
+        // Return the host app's real, category-approved CarPlay root here.
+        let template = CPListTemplate(title: "Home", sections: [])
+        template.emptyViewTitleVariants = ["Your app's CarPlay content"]
+        return template
     }
 
     func templateApplicationScene(
@@ -146,6 +234,7 @@ final class CarPlaySceneDelegate: UIResponder, CPTemplateApplicationSceneDelegat
         didDisconnectInterfaceController interfaceController: CPInterfaceController
     ) {
         guard self.interfaceController === interfaceController else { return }
+        isPresentingReleaseNotes = false
         loadingTask?.cancel()
         loadingTask = nil
         self.interfaceController = nil
@@ -160,7 +249,8 @@ Add a local `data.json` file to the iOS app target's bundle, just as you would f
 // Inside the scene delegate's MainActor loading task:
 try await SwiftNEWCarPlayTemplateFactory.setRootTemplate(
     on: interfaceController,
-    from: "https://api.example.com/releases.json"
+    from: "https://api.example.com/releases.json",
+    onContinue: continueToContent
 )
 ```
 
@@ -178,7 +268,8 @@ let template = SwiftNEWCarPlayTemplateFactory.makeTemplate(
     interfaceController: interfaceController,
     title: "Product Updates",
     includesHistory: true,
-    currentVersion: "2.4.0"
+    currentVersion: "2.4.0",
+    onContinue: continueToContent
 )
 
 let succeeded = try await interfaceController.setRootTemplate(
@@ -194,7 +285,24 @@ Alternatively, `SwiftNEWReleaseNotesLoader.load(from:bundle:)` loads the shared 
 
 ## Scope and safety
 
-The adapter deliberately uses `CPListTemplate` rather than rendering SwiftUI or using `CPInformationTemplate`. The latter is restricted to entitlement-specific categories and use cases, while a list template is available across eligible template-app categories. The root and detail flow stays within two levels and leaves fonts, sizing, interaction limits, and truncation to CarPlay.
+The adapter deliberately uses `CPListTemplate` rather than rendering SwiftUI
+or using `CPInformationTemplate`. The latter is restricted to
+entitlement-specific categories and use cases, while a list template is
+available across eligible template-app categories. Continue is a trailing
+`CPBarButton`, so it doesn't consume the runtime list-item allowance. Its host
+callback replaces the What's New root with the app's native `CPTemplate`; it
+does not and cannot reveal the phone's SwiftUI `ContentView` on the vehicle
+display.
+
+Keeping What's New as the root and each selected detail as the second level
+also keeps this adapter within the strict two-level hierarchy available to
+quick-ordering apps. Don't put a host root underneath What's New and then push a
+detail, because that creates a third level. Navigation apps have category-
+specific root and `CPWindow` requirements and must integrate the adapter into
+their permitted hierarchy instead of replacing their required map root. Fonts,
+sizing, interaction limits, and truncation remain under CarPlay's control.
+History uses `CPListTemplate.updateSections(_:)` on that same root rather than
+pushing another template, so a historical detail remains the second level.
 
 Keep the content short and useful while driving. SwiftNEW does not automatically present release notes, open App Store update links, show search, or run visual effects on the vehicle display.
 

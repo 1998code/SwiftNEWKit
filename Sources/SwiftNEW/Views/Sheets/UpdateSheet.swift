@@ -337,6 +337,74 @@ extension SwiftNEW {
         if align == .trailing { return .trailing }
         return .center
     }
+
+    #if DEBUG
+    /// Exercises the watch-specific composition from host-platform tests. The
+    /// view itself only contains portable SwiftUI primitives; production
+    /// routing remains controlled by the platform checks in `sheetUpdate`.
+    func testingWatchUpdateContent(_ candidate: SwiftNEWUpdateCandidate) -> some View {
+        watchUpdateContent(candidate)
+    }
+
+    /// Makes the alignment behavior of the watch-only summary row testable on
+    /// the macOS coverage runner without changing its production visibility.
+    func testingUpdateVersionSummaryRow(
+        title: String = "Version",
+        version: String = "1.0"
+    ) -> some View {
+        versionSummaryRow(title: title, version: version)
+    }
+
+    /// Renders every legacy card treatment. These paths are selected by OS
+    /// availability in production, so the current-OS coverage runner otherwise
+    /// cannot execute them.
+    var testingUpdateCardFallbacks: some View {
+        VStack {
+            SwiftNEWUpdateCardGlassModifier(
+                cornerRadius: 16,
+                fallbackMaterial: .thin
+            )
+            .fallback(Text("Thin material"))
+
+            SwiftNEWUpdateCardGlassModifier(
+                cornerRadius: 18,
+                fallbackMaterial: .ultraThin
+            )
+            .fallback(Text("Ultra-thin material"))
+
+            SwiftNEWUpdateCardGlassModifier(
+                cornerRadius: 12,
+                fallbackMaterial: .thin
+            )
+            .solidFallback(Text("Solid thin fallback"))
+
+            SwiftNEWUpdateCardGlassModifier(
+                cornerRadius: 12,
+                fallbackMaterial: .ultraThin
+            )
+            .solidFallback(Text("Solid ultra-thin fallback"))
+        }
+    }
+    #endif
+}
+
+@available(iOS 15.0, watchOS 8.0, macOS 12.0, tvOS 17.0, *)
+enum SwiftNEWUpdateEntranceMotion: Equatable {
+    case reduced
+    case animated(delay: Double)
+
+    init(reduceMotion: Bool, delay: Double) {
+        self = reduceMotion ? .reduced : .animated(delay: delay)
+    }
+
+    var animation: Animation {
+        switch self {
+        case .reduced:
+            return .easeOut(duration: 0.2)
+        case let .animated(delay):
+            return .spring(response: 0.5, dampingFraction: 0.86).delay(delay)
+        }
+    }
 }
 
 @available(iOS 15.0, watchOS 8.0, macOS 12.0, tvOS 17.0, *)
@@ -352,9 +420,10 @@ private struct SwiftNEWUpdateEntranceModifier: ViewModifier {
             .offset(y: reduceMotion || isVisible ? 0 : 14)
             .scaleEffect(reduceMotion || isVisible ? 1 : 0.98)
             .onAppear {
-                let animation: Animation = reduceMotion
-                    ? .easeOut(duration: 0.2)
-                    : .spring(response: 0.5, dampingFraction: 0.86).delay(delay)
+                let animation = SwiftNEWUpdateEntranceMotion(
+                    reduceMotion: reduceMotion,
+                    delay: delay
+                ).animation
 
                 withAnimation(animation) {
                     isVisible = true
@@ -378,7 +447,7 @@ private struct SwiftNEWUpdateCardGlassModifier: ViewModifier {
             content
                 .glassEffect(.regular, in: .rect(cornerRadius: cornerRadius))
         } else {
-            fallback(content)
+            fallback(content) // LCOV_EXCL_LINE: selected only by the runner OS.
         }
         #else
         fallback(content)
@@ -386,7 +455,7 @@ private struct SwiftNEWUpdateCardGlassModifier: ViewModifier {
     }
 
     @ViewBuilder
-    private func fallback(_ content: Content) -> some View {
+    fileprivate func fallback<Content: View>(_ content: Content) -> some View {
         #if os(watchOS)
         if #available(watchOS 10.0, *) {
             materialFallback(content)
@@ -400,7 +469,7 @@ private struct SwiftNEWUpdateCardGlassModifier: ViewModifier {
 
     @ViewBuilder
     @available(watchOS 10.0, *)
-    private func materialFallback(_ content: Content) -> some View {
+    fileprivate func materialFallback<Content: View>(_ content: Content) -> some View {
         switch fallbackMaterial {
         case .thin:
             fallbackCard(content, material: .thinMaterial)
@@ -409,7 +478,7 @@ private struct SwiftNEWUpdateCardGlassModifier: ViewModifier {
         }
     }
 
-    private func solidFallback(_ content: Content) -> some View {
+    fileprivate func solidFallback<Content: View>(_ content: Content) -> some View {
         let opacity = fallbackMaterial == .thin ? 0.16 : 0.1
 
         return content
@@ -423,7 +492,7 @@ private struct SwiftNEWUpdateCardGlassModifier: ViewModifier {
             }
     }
 
-    private func fallbackCard(
+    private func fallbackCard<Content: View>(
         _ content: Content,
         material: Material
     ) -> some View {

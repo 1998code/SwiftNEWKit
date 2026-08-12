@@ -8,3 +8,6 @@ DerivedData/
 .swiftpm/xcode/package.xcworkspace/contents.xcworkspacedata
 .netrc
 /to-do.md
+
+# Local code-signing (contains personal Apple Team ID)
+Demo/Signing.local.xcconfig

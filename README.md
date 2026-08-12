@@ -73,14 +73,25 @@ That's it — SwiftNEW auto-triggers when the app version changes.
 If your host app already has an Apple-approved CarPlay entitlement and a
 `CPTemplateApplicationSceneDelegate`, install a loading template synchronously
 in `templateApplicationScene(_:didConnect:)`, then replace it with SwiftNEW's
-template asynchronously on the main actor:
+template asynchronously on the main actor. Supply the same continuation to
+both templates so the driver can enter the host app while loading or after
+reading the release notes:
 
 ```swift
 import CarPlay
 import SwiftNEW
 
+let continueToContent: SwiftNEWCarPlayTemplateFactory.ContinueAction = {
+    [weak self] controller in
+    // This scene-delegate method cancels loading and replaces the root with
+    // the host app's native CPTemplate.
+    self?.showCarPlayContent(on: controller)
+}
+
 let loadingTemplate = SwiftNEWCarPlayTemplateFactory.makeLoadingTemplate(
-    title: "What's New"
+    title: "What's New",
+    interfaceController: interfaceController,
+    onContinue: continueToContent
 )
 
 interfaceController.setRootTemplate(
@@ -89,18 +100,38 @@ interfaceController.setRootTemplate(
 ) { succeeded, _ in
     guard succeeded else { return }
 
-    Task { @MainActor in
-        try? await SwiftNEWCarPlayTemplateFactory.setRootTemplate(
-            on: interfaceController,
-            from: "data",
-            bundle: .main,
-            includesHistory: true
-        )
+    loadingTask = Task { @MainActor in
+        do {
+            try await SwiftNEWCarPlayTemplateFactory.setRootTemplate(
+                on: interfaceController,
+                from: "data",
+                bundle: .main,
+                includesHistory: true,
+                onContinue: continueToContent
+            )
+        } catch is CancellationError {
+            // Continue or a CarPlay disconnect cancelled loading.
+        } catch {
+            // Don't strand the driver on a failed What's New screen.
+            continueToContent(interfaceController)
+        }
     }
 }
 ```
 
 Include `data.json` in the iOS host target just as you do for the SwiftUI view.
+`Continue` is a trailing CarPlay navigation-bar button; it does not open the
+phone's SwiftUI `ContentView`. The callback must replace the root with the
+host's own native `CPTemplate` and cancel any in-flight loading task. Pass
+`continueButtonTitle:` when the app needs a custom title; `nil` or whitespace
+uses SwiftNEW's localized **Continue** label.
+With `includesHistory: true`, the loaded template also shows **History** when
+older content exists. It switches the same root list to older releases and
+changes to **Return** for the trip back to the current release, so opening a
+detail still uses only one additional hierarchy level.
+SwiftNEW pre-rasterizes row SF Symbols as system-blue light/dark bitmaps at the
+CarPlay display scale, so the remote renderer can't turn them into black
+template glyphs.
 The host app remains responsible for retaining the interface controller,
 cancelling work when CarPlay disconnects, registering its scene, and supplying
 the exact entitlement and provisioning profile Apple approved. General product
@@ -191,7 +222,7 @@ The GitHub Actions Xcode 26 job also runs Swift Testing with native SwiftPM code
 | [Configuration](README/CONFIGURATION.md) | All parameters, examples, data sources (local / remote / Firebase), data model |
 | [Platform Support & Installation](README/PLATFORM.md) | Supported OS versions, requirements, feature matrix, SPM setup |
 | [CarPlay Integration](README/CARPLAY.md) | Template factory, scene lifecycle, data loading, entitlement requirements |
-| [Contributing](README/CONTRIBUTING.md) | Project structure, dev setup, PR guidelines, troubleshooting |
+| [Contributing](README/CONTRIBUTING.md) | Project structure, dev setup, running the Demo (code signing, CarPlay), PR guidelines, troubleshooting |
 
 ## 📄 License
 

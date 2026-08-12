@@ -57,12 +57,60 @@ import Foundation
     #expect(SwiftNEWParsedVersion("1.0.0+45") == SwiftNEWParsedVersion("1.0.0+99"))
 }
 
+@Test func parsedVersionsFollowTheFullSemVerPrereleaseOrderingExample() {
+    let orderedVersions = [
+        "1.0.0-alpha",
+        "1.0.0-alpha.1",
+        "1.0.0-alpha.beta",
+        "1.0.0-beta",
+        "1.0.0-beta.2",
+        "1.0.0-beta.11",
+        "1.0.0-rc.1",
+        "1.0.0"
+    ].compactMap(SwiftNEWParsedVersion.init)
+
+    #expect(orderedVersions.count == 8)
+    for (earlier, later) in zip(orderedVersions, orderedVersions.dropFirst()) {
+        #expect(earlier < later)
+    }
+
+    let textIdentifier = SwiftNEWParsedVersion("1.0.0-alpha.beta")!
+    let numericIdentifier = SwiftNEWParsedVersion("1.0.0-alpha.1")!
+    #expect((textIdentifier < numericIdentifier) == false)
+    #expect(SwiftNEWParsedVersion("1.0.0-alpha") == SwiftNEWParsedVersion("1.0.0-alpha"))
+}
+
+@Test func parsedVersionsAcceptValidPrefixesAndMetadata() {
+    #expect(SwiftNEWParsedVersion("V2.0.0") == SwiftNEWParsedVersion("2"))
+    #expect(
+        SwiftNEWParsedVersion("1.2.3-rc-1+build.45-linux")
+            == SwiftNEWParsedVersion("1.2.3-rc-1+other")
+    )
+    #expect(SwiftNEWParsedVersion("1.0.0-alpha.0")! < SwiftNEWParsedVersion("1-alpha.1")!)
+}
+
 @Test func parsedVersionsRejectMalformedValues() {
-    #expect(SwiftNEWParsedVersion("") == nil)
-    #expect(SwiftNEWParsedVersion("1..2") == nil)
-    #expect(SwiftNEWParsedVersion("1.x") == nil)
-    #expect(SwiftNEWParsedVersion("1.0b3") == nil)
-    #expect(SwiftNEWParsedVersion("version 2") == nil)
+    let malformedVersions = [
+        "",
+        "v",
+        "v.1",
+        "+build",
+        "1.0+",
+        "1.0+build..45",
+        "1.0+build_45",
+        "1..2",
+        "1.x",
+        "1.0b3",
+        "1.0-",
+        "1.0-alpha..1",
+        "1.0-alpha_beta",
+        "version 2",
+        "١.٢.٣"
+    ]
+
+    for version in malformedVersions {
+        #expect(SwiftNEWParsedVersion(version) == nil)
+    }
 }
 
 @Test func releaseSelectorFindsLatestNewerVersionWithoutAssumingJSONOrder() {
@@ -125,9 +173,28 @@ import Foundation
 
 @Test func remoteSourceRequiresHTTPURLWithAHost() {
     #expect(SwiftNEWRemoteSource.looksRemote(" HTTPS://example.com/releases.json "))
+    #expect(SwiftNEWRemoteSource.looksRemote("http://example.com/releases.json"))
     #expect(SwiftNEWRemoteSource.looksRemote("release-http-data") == false)
-    #expect(SwiftNEWRemoteSource.url(from: "https://example.com/releases.json") != nil)
+    let uppercaseSchemeURL = SwiftNEWRemoteSource.url(
+        from: " HTTPS://example.com/releases.json "
+    )
+    #expect(uppercaseSchemeURL?.host == "example.com")
     #expect(SwiftNEWRemoteSource.url(from: "https://") == nil)
+    #expect(SwiftNEWRemoteSource.url(from: "ftp://example.com/releases.json") == nil)
+}
+
+@Test func updateCandidateResolutionAndVersionSnapshotNormalizeTheirInputs() throws {
+    let release = makeRelease(version: "2.0", title: "Update")
+    let candidate = SwiftNEWUpdateCandidate(release: release, version: "2.0")
+    let appStoreURL = try #require(URL(string: "https://apps.apple.com/app/id123"))
+
+    #expect(candidate.appStoreURL == nil)
+    #expect(candidate.resolvingAppStoreURL(appStoreURL).appStoreURL == appStoreURL)
+    #expect(candidate.resolvingAppStoreURL(appStoreURL).release == release)
+    #expect(
+        SwiftNEWVersionSnapshot(version: " 2.0\n", build: " 45 ")
+            == SwiftNEWVersionSnapshot(version: "2.0", build: "45")
+    )
 }
 
 @Test func updateResolverOnlyReturnsCandidatesForOptedInRemoteSources() {
@@ -168,6 +235,8 @@ import Foundation
 }
 
 @Test func appStoreLookupBuildsBundleIdentifierRequestAndDecodesTrackURL() throws {
+    #expect(SwiftNEWAppStoreLookup.requestURL(bundleIdentifier: " \n ") == nil)
+
     let requestURL = try #require(
         SwiftNEWAppStoreLookup.requestURL(bundleIdentifier: "io.startway.nfc")
     )
@@ -212,6 +281,47 @@ import Foundation
     )
     #expect(appStoreURL?.host == "apps.apple.com")
     #expect(appStoreURL?.path.hasSuffix("/id6748850927") == true)
+}
+
+@Test func appStoreLookupAcceptsOnlyAppleHTTPSHosts() throws {
+    let responseData = """
+    {
+      "results": [
+        { "trackViewUrl": "https://apps.apple.com/app/id0" },
+        { "bundleId": "com.example.app" },
+        {
+          "bundleId": "com.example.app",
+          "trackViewUrl": "not a valid URL"
+        },
+        {
+          "bundleId": "com.example.app",
+          "trackViewUrl": "https://itunes.apple.com/app/id1"
+        }
+      ]
+    }
+    """.data(using: .utf8)!
+
+    let appStoreURL = try SwiftNEWAppStoreLookup.appStoreURL(
+        from: responseData,
+        bundleIdentifier: "com.example.app"
+    )
+    #expect(appStoreURL?.host == "itunes.apple.com")
+
+    let regionalResponseData = """
+    {
+      "results": [
+        {
+          "bundleId": "com.example.app",
+          "trackViewUrl": "https://search.itunes.apple.com/app/id2"
+        }
+      ]
+    }
+    """.data(using: .utf8)!
+    let regionalURL = try SwiftNEWAppStoreLookup.appStoreURL(
+        from: regionalResponseData,
+        bundleIdentifier: "com.example.app"
+    )
+    #expect(regionalURL?.host == "search.itunes.apple.com")
 }
 
 @Test func appStoreLookupRejectsMissingAppsAndNonAppleDestinations() throws {
@@ -315,6 +425,27 @@ import Foundation
     #expect(iconsModel.displayedIcon == "checkmark.shield")
     #expect(iconsModel.iconTransitionTarget == "shield.checkered")
     #expect(iconsModel.iconSequence == ["checkmark.shield", "shield.checkered", "sparkles"])
+}
+
+@Test func modelDecodingRequiresAnIconOrANonemptyIconSequence() throws {
+    let missingIconData = """
+    {
+        "icons": [],
+        "title": "Missing icon",
+        "subtitle": "Invalid",
+        "body": "An icon is required."
+    }
+    """.data(using: .utf8)!
+
+    do {
+        _ = try JSONDecoder().decode(Model.self, from: missingIconData)
+        Issue.record("Expected a missing icon decoding error")
+    } catch DecodingError.keyNotFound(let key, let context) {
+        #expect(key.stringValue == "icon")
+        #expect(context.debugDescription.contains("icon"))
+    } catch {
+        Issue.record("Expected DecodingError.keyNotFound, received \(error)")
+    }
 }
 
 @Test func searchMatchesTitleSubtitleAndBodyCaseInsensitively() {

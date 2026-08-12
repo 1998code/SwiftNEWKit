@@ -16,7 +16,7 @@ import SwiftGlass
 extension SwiftNEW {
 
     public var showHistoryButton: some View {
-        capsuleSecondaryButton(action: { historySheet = true }) {
+        capsuleSecondaryButton(action: showHistorySheet) {
             #if os(watchOS)
             Text(String(localized: "History", bundle: .module))
             #else
@@ -54,13 +54,25 @@ extension SwiftNEW {
         debouncedSearchText = ""
     }
 
+    func showHistorySheet() {
+        historySheet = true
+    }
+
+    func dismissCurrentSheet() {
+        show = false
+    }
+
+    func dismissHistorySheet() {
+        historySheet = false
+    }
+
     public var closeCurrentButton: some View {
         primaryActionButton(
             title: String(localized: "Continue", bundle: .module),
             systemImage: "arrow.right.circle.fill",
             macWidth: 200,
             usesTintedGlass: true,
-            action: { show = false }
+            action: dismissCurrentSheet
         )
     }
 
@@ -70,7 +82,7 @@ extension SwiftNEW {
             systemImage: "arrow.down.circle.fill",
             macWidth: 300,
             usesTintedGlass: true,
-            action: { historySheet = false }
+            action: dismissHistorySheet
         )
     }
 
