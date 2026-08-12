@@ -83,7 +83,7 @@
 		3A46CBB7285444CD00BE79A3 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		3A46CBBF285444CC00BE79A3 /* ContentView+Previews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ContentView+Previews.swift"; sourceTree = "<group>"; };
 		3A46CBC4285447F600BE79A3 /* SwiftNEW */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = SwiftNEW; path = ../../../SwiftNEW; sourceTree = "<group>"; };
-		3A999E5F2855A00100BE79A3 /* Signing.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Signing.xcconfig; sourceTree = "<project>"; };
+		3A999E5F2855A00100BE79A3 /* Signing.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = Signing.xcconfig; path = Signing.xcconfig; sourceTree = SOURCE_ROOT; };
 		3A61B53A301F7D6B00DFD913 /* AppIcon.icon */ = {isa = PBXFileReference; lastKnownFileType = folder.iconcomposer.icon; path = AppIcon.icon; sourceTree = "<group>"; };
 		3A61B53C301F833200DFD913 /* he */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = he; path = he.lproj/data.json; sourceTree = "<group>"; };
 		3A61B53D301F833A00DFD913 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = de; path = de.lproj/data.json; sourceTree = "<group>"; };
@@ -802,6 +802,7 @@
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MARKETING_VERSION = 27.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(DEMO_BUNDLE_ID)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "appletvos appletvsimulator iphoneos iphonesimulator macosx xros xrsimulator";
@@ -842,6 +843,7 @@
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MARKETING_VERSION = 27.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(DEMO_BUNDLE_ID)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "appletvos appletvsimulator iphoneos iphonesimulator macosx xros xrsimulator";
