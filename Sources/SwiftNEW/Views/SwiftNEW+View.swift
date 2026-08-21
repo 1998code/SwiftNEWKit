@@ -269,15 +269,15 @@ extension SwiftNEW {
                 sheetUpdate
             } else {
                 sheetCurrent
-                    .modifier(
-                        PresentationModifier(
-                            isPresented: historySheetBinding,
-                            presentation: presentation,
-                            sheetContent: historySheetContent
-                        )
-                    )
             }
         }
+        .modifier(
+            HistoryPresentationModifier(
+                stateMachine: loadStateMachine,
+                presentation: presentation,
+                historyContent: historySheetContent
+            )
+        )
         .modifier(
             SwiftNEWUpdateDismissalModifier(
                 isDisabled: shouldDisableUpdateDismissal
@@ -557,6 +557,34 @@ private struct SwiftNEWUpdateDismissalModifier: ViewModifier {
 
     func body(content: Content) -> some View {
         content.interactiveDismissDisabled(isDisabled)
+    }
+}
+
+/// Hosts the history presentation from inside the presented release-note
+/// content. Two structural rules keep it from flickering when the note is
+/// shown as a `fullScreenCover`:
+///
+/// - The `isPresented` binding must project from the observed state machine.
+///   A hand-rolled `Binding` built in the outer view's body captures a fresh
+///   closure pair on every render *outside* the cover, and the history
+///   presentation driven across that boundary opened and shut again.
+/// - The modifier must sit at the root of the presented subtree, not inside
+///   the update/current branch: a branch flip (an update resolving while the
+///   note is up) would otherwise tear down the view hosting the history
+///   presentation and dismiss it mid-flight.
+private struct HistoryPresentationModifier<History: View>: ViewModifier {
+    @ObservedObject var stateMachine: SwiftNEWLoadStateMachine
+    let presentation: SwiftNEWPresentation
+    let historyContent: History
+
+    func body(content: Content) -> some View {
+        content.modifier(
+            PresentationModifier(
+                isPresented: $stateMachine.historySheet,
+                presentation: presentation,
+                sheetContent: historyContent
+            )
+        )
     }
 }
 

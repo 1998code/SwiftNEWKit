@@ -1,5 +1,20 @@
 [
     {
+        "version": "27.2",
+        "subVersion": "27.2.0",
+        "new": [
+            {
+                "icons": [
+                    "clock.arrow.circlepath",
+                    "checkmark.seal"
+                ],
+                "title": "Corrección del historial",
+                "subtitle": "Estable en pantalla completa",
+                "body": "«Mostrar historial» ahora se abre de forma fiable cuando las notas de la versión se presentan a pantalla completa, en lugar de parpadear y cerrarse."
+            }
+        ]
+    },
+    {
         "version": "27.0",
         "subVersion": "27.0.0",
         "new": [
@@ -91,31 +106,46 @@
                 "body": "SwiftNEW encuentra y muestra automáticamente el mejor icono incluido para el dispositivo actual."
             },
             {
-                "icons": ["paintbrush", "app.dashed"],
+                "icons": [
+                    "paintbrush",
+                    "app.dashed"
+                ],
                 "title": "Modo oscuro inteligente del icono",
                 "subtitle": "Adaptación automática de tonos neutros",
                 "body": "En modo oscuro, SwiftNEW convierte automáticamente en casi negro las áreas blancas y gris claro amplias del icono, conservando los colores de acento y la transparencia."
             },
             {
-                "icons": ["app.badge", "arrow.trianglehead.swap"],
+                "icons": [
+                    "app.badge",
+                    "arrow.trianglehead.swap"
+                ],
                 "title": "Iconos alternativos",
                 "subtitle": "Actualización del encabezado",
                 "body": "Indica el icono alternativo seleccionado para mantener el encabezado sincronizado cuando cambie el icono de la app."
             },
             {
-                "icons": ["button.programmable", "sparkles"],
+                "icons": [
+                    "button.programmable",
+                    "sparkles"
+                ],
                 "title": "Controles de vidrio tintado",
                 "subtitle": "Estilo nativo de iOS 26",
                 "body": "Los botones de notas y acciones principales ahora usan vidrio tintado interactivo en iOS 26."
             },
             {
-                "icons": ["circle.lefthalf.filled", "paintpalette.fill"],
+                "icons": [
+                    "circle.lefthalf.filled",
+                    "paintpalette.fill"
+                ],
                 "title": "Estilo de iconos adaptativo",
                 "subtitle": "Mejor contraste en modo oscuro",
                 "body": "Los fondos y degradados de iconos adaptan su iluminación y contraste al modo oscuro."
             },
             {
-                "icons": ["character.bubble", "globe"],
+                "icons": [
+                    "character.bubble",
+                    "globe"
+                ],
                 "title": "Más idiomas",
                 "subtitle": "Cinco nuevas localizaciones",
                 "body": "Las notas de la versión ya están disponibles en alemán, hebreo, indonesio, ruso y vietnamita."

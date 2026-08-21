@@ -1,5 +1,20 @@
 [
     {
+        "version": "27.2",
+        "subVersion": "27.2.0",
+        "new": [
+            {
+                "icons": [
+                    "clock.arrow.circlepath",
+                    "checkmark.seal"
+                ],
+                "title": "历史记录显示修复",
+                "subtitle": "全屏下更稳定",
+                "body": "当版本说明以全屏方式呈现时,“显示历史记录”现在能稳定打开,不再闪现后随即关闭。"
+            }
+        ]
+    },
+    {
         "version": "27.0",
         "subVersion": "27.0.0",
         "new": [
@@ -91,31 +106,46 @@
                 "body": "SwiftNEW 会自动查找并显示最适合当前设备的 App 图标。"
             },
             {
-                "icons": ["paintbrush", "app.dashed"],
+                "icons": [
+                    "paintbrush",
+                    "app.dashed"
+                ],
                 "title": "智能 App 图标深色模式",
                 "subtitle": "自动调整中性色调",
                 "body": "在深色模式下，SwiftNEW 会自动将 App 图标中大面积的白色和浅灰色转为接近黑色，同时保留强调色和透明度。"
             },
             {
-                "icons": ["app.badge", "arrow.trianglehead.swap"],
+                "icons": [
+                    "app.badge",
+                    "arrow.trianglehead.swap"
+                ],
                 "title": "替代 App 图标",
                 "subtitle": "实时更新标题图标",
                 "body": "传入已选择的替代图标名称，App 图标改变时标题也会保持同步。"
             },
             {
-                "icons": ["button.programmable", "sparkles"],
+                "icons": [
+                    "button.programmable",
+                    "sparkles"
+                ],
                 "title": "着色玻璃控件",
                 "subtitle": "原生 iOS 26 样式",
                 "body": "版本说明和主要操作按钮现在会在 iOS 26 使用交互式着色玻璃效果。"
             },
             {
-                "icons": ["circle.lefthalf.filled", "paintpalette.fill"],
+                "icons": [
+                    "circle.lefthalf.filled",
+                    "paintpalette.fill"
+                ],
                 "title": "自适应图标样式",
                 "subtitle": "改善深色模式对比度",
                 "body": "图标背景和字形渐变现在会针对深色模式调整光线和对比度。"
             },
             {
-                "icons": ["character.bubble", "globe"],
+                "icons": [
+                    "character.bubble",
+                    "globe"
+                ],
                 "title": "更多语言",
                 "subtitle": "新增五种本地化",
                 "body": "版本说明现已支持德语、希伯来语、印度尼西亚语、俄语和越南语。"

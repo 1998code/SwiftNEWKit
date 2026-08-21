@@ -1,5 +1,20 @@
 [
     {
+        "version": "27.2",
+        "subVersion": "27.2.0",
+        "new": [
+            {
+                "icons": [
+                    "clock.arrow.circlepath",
+                    "checkmark.seal"
+                ],
+                "title": "Verlauf-Anzeige korrigiert",
+                "subtitle": "Stabil im Vollbild",
+                "body": "„Verlauf anzeigen“ öffnet sich jetzt zuverlässig, wenn die Versionshinweise als Vollbild präsentiert werden, statt kurz aufzublinken und sich wieder zu schließen."
+            }
+        ]
+    },
+    {
         "version": "27.0",
         "subVersion": "27.0.0",
         "new": [

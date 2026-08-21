@@ -1,5 +1,20 @@
 [
     {
+        "version": "27.2",
+        "subVersion": "27.2.0",
+        "new": [
+            {
+                "icons": [
+                    "clock.arrow.circlepath",
+                    "checkmark.seal"
+                ],
+                "title": "歷史紀錄顯示修正",
+                "subtitle": "全螢幕下更穩定",
+                "body": "版本說明用全螢幕方式顯示嘅時候,「顯示歷史紀錄」而家可以穩定打開,唔會再閃一閃就自動關咗。"
+            }
+        ]
+    },
+    {
         "version": "27.0",
         "subVersion": "27.0.0",
         "new": [
@@ -91,31 +106,46 @@
                 "body": "SwiftNEW 會自動尋找並顯示最適合目前裝置嘅 App 圖示。"
             },
             {
-                "icons": ["paintbrush", "app.dashed"],
+                "icons": [
+                    "paintbrush",
+                    "app.dashed"
+                ],
                 "title": "智能 App 圖示深色模式",
                 "subtitle": "自動調整中性色調",
                 "body": "喺深色模式下，SwiftNEW 會自動將 App 圖示中大面積嘅白色同淺灰色轉成接近黑色，同時保留強調色同透明度。"
             },
             {
-                "icons": ["app.badge", "arrow.trianglehead.swap"],
+                "icons": [
+                    "app.badge",
+                    "arrow.trianglehead.swap"
+                ],
                 "title": "替代 App 圖示",
                 "subtitle": "即時更新標題圖示",
                 "body": "傳入已選擇嘅替代圖示名稱，App 圖示改變時標題亦會保持同步。"
             },
             {
-                "icons": ["button.programmable", "sparkles"],
+                "icons": [
+                    "button.programmable",
+                    "sparkles"
+                ],
                 "title": "著色玻璃控制項",
                 "subtitle": "原生 iOS 26 樣式",
                 "body": "版本說明及主要操作按鈕而家會喺 iOS 26 使用互動式著色玻璃效果。"
             },
             {
-                "icons": ["circle.lefthalf.filled", "paintpalette.fill"],
+                "icons": [
+                    "circle.lefthalf.filled",
+                    "paintpalette.fill"
+                ],
                 "title": "自適應圖示樣式",
                 "subtitle": "改善深色模式對比",
                 "body": "圖示背景及字形漸層而家會按深色模式調整光暗同對比。"
             },
             {
-                "icons": ["character.bubble", "globe"],
+                "icons": [
+                    "character.bubble",
+                    "globe"
+                ],
                 "title": "更多語言",
                 "subtitle": "新增五種在地化",
                 "body": "版本說明而家支援德文、希伯來文、印尼文、俄文同越南文。"

@@ -1,5 +1,20 @@
 [
     {
+        "version": "27.2",
+        "subVersion": "27.2.0",
+        "new": [
+            {
+                "icons": [
+                    "clock.arrow.circlepath",
+                    "checkmark.seal"
+                ],
+                "title": "히스토리 표시 수정",
+                "subtitle": "전체 화면에서도 안정적",
+                "body": "릴리스 노트를 전체 화면으로 표시할 때 히스토리가 깜박이며 닫히지 않고 안정적으로 열립니다."
+            }
+        ]
+    },
+    {
         "version": "27.0",
         "subVersion": "27.0.0",
         "new": [
@@ -91,31 +106,46 @@
                 "body": "SwiftNEW가 현재 기기에 가장 적합한 앱 아이콘을 자동으로 찾아 표시합니다."
             },
             {
-                "icons": ["paintbrush", "app.dashed"],
+                "icons": [
+                    "paintbrush",
+                    "app.dashed"
+                ],
                 "title": "스마트 앱 아이콘 다크 모드",
                 "subtitle": "중성 색조 자동 조정",
                 "body": "다크 모드에서 SwiftNEW는 앱 아이콘의 넓은 흰색 및 밝은 회색 영역을 거의 검은색으로 자동 변환하면서 강조 색상과 투명도를 유지합니다."
             },
             {
-                "icons": ["app.badge", "arrow.trianglehead.swap"],
+                "icons": [
+                    "app.badge",
+                    "arrow.trianglehead.swap"
+                ],
                 "title": "대체 앱 아이콘",
                 "subtitle": "실시간 헤더 업데이트",
                 "body": "선택된 대체 아이콘 이름을 전달하면 앱 아이콘 변경 시 헤더도 동기화됩니다."
             },
             {
-                "icons": ["button.programmable", "sparkles"],
+                "icons": [
+                    "button.programmable",
+                    "sparkles"
+                ],
                 "title": "틴트 글래스 컨트롤",
                 "subtitle": "네이티브 iOS 26 스타일",
                 "body": "릴리스 노트와 기본 동작 버튼이 iOS 26에서 인터랙티브 틴트 글래스를 사용합니다."
             },
             {
-                "icons": ["circle.lefthalf.filled", "paintpalette.fill"],
+                "icons": [
+                    "circle.lefthalf.filled",
+                    "paintpalette.fill"
+                ],
                 "title": "적응형 아이콘 스타일",
                 "subtitle": "다크 모드 대비 개선",
                 "body": "아이콘 배경과 글리프 그라데이션이 다크 모드에 맞춰 밝기와 대비를 조정합니다."
             },
             {
-                "icons": ["character.bubble", "globe"],
+                "icons": [
+                    "character.bubble",
+                    "globe"
+                ],
                 "title": "더 많은 언어",
                 "subtitle": "5개 언어 현지화 추가",
                 "body": "릴리스 노트를 독일어, 히브리어, 인도네시아어, 러시아어, 베트남어로도 제공합니다."

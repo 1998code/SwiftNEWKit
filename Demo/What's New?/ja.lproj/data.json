@@ -1,5 +1,20 @@
 [
     {
+        "version": "27.2",
+        "subVersion": "27.2.0",
+        "new": [
+            {
+                "icons": [
+                    "clock.arrow.circlepath",
+                    "checkmark.seal"
+                ],
+                "title": "履歴表示の修正",
+                "subtitle": "フルスクリーンでも安定",
+                "body": "リリースノートをフルスクリーンで表示している場合でも、履歴が一瞬で閉じてしまうことなく安定して開くようになりました。"
+            }
+        ]
+    },
+    {
         "version": "27.0",
         "subVersion": "27.0.0",
         "new": [
@@ -91,31 +106,46 @@
                 "body": "SwiftNEW が現在のデバイスに最適な App アイコンを自動的に検出して表示します。"
             },
             {
-                "icons": ["paintbrush", "app.dashed"],
+                "icons": [
+                    "paintbrush",
+                    "app.dashed"
+                ],
                 "title": "App アイコンのスマートダークモード",
                 "subtitle": "ニュートラルカラーを自動調整",
                 "body": "ダークモードでは、App アイコンの広い白色や明るいグレーの部分を自動的にほぼ黒へ変換し、アクセントカラーと透明度を保ちます。"
             },
             {
-                "icons": ["app.badge", "arrow.trianglehead.swap"],
+                "icons": [
+                    "app.badge",
+                    "arrow.trianglehead.swap"
+                ],
                 "title": "代替 App アイコン",
                 "subtitle": "ヘッダーをリアルタイム更新",
                 "body": "選択中の代替アイコン名を渡すことで、App アイコンの変更をヘッダーにも反映できます。"
             },
             {
-                "icons": ["button.programmable", "sparkles"],
+                "icons": [
+                    "button.programmable",
+                    "sparkles"
+                ],
                 "title": "色付きガラスコントロール",
                 "subtitle": "ネイティブ iOS 26 スタイル",
                 "body": "リリースノートと主要操作ボタンが iOS 26 のインタラクティブな色付きガラスに対応しました。"
             },
             {
-                "icons": ["circle.lefthalf.filled", "paintpalette.fill"],
+                "icons": [
+                    "circle.lefthalf.filled",
+                    "paintpalette.fill"
+                ],
                 "title": "アダプティブアイコンスタイル",
                 "subtitle": "ダークモードのコントラスト改善",
                 "body": "アイコン背景とグリフのグラデーションがダークモードに合わせて明るさとコントラストを調整します。"
             },
             {
-                "icons": ["character.bubble", "globe"],
+                "icons": [
+                    "character.bubble",
+                    "globe"
+                ],
                 "title": "対応言語を追加",
                 "subtitle": "5つの新しいローカライズ",
                 "body": "リリースノートがドイツ語、ヘブライ語、インドネシア語、ロシア語、ベトナム語に対応しました。"

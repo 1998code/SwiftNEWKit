@@ -1,5 +1,20 @@
 [
     {
+        "version": "27.2",
+        "subVersion": "27.2.0",
+        "new": [
+            {
+                "icons": [
+                    "clock.arrow.circlepath",
+                    "checkmark.seal"
+                ],
+                "title": "Correction de l’historique",
+                "subtitle": "Stable en plein écran",
+                "body": "« Afficher l’historique » s’ouvre désormais de manière fiable lorsque les notes de version sont présentées en plein écran, au lieu de clignoter puis de se refermer."
+            }
+        ]
+    },
+    {
         "version": "27.0",
         "subVersion": "27.0.0",
         "new": [
@@ -91,31 +106,46 @@
                 "body": "SwiftNEW trouve et affiche automatiquement la meilleure icône intégrée pour l’appareil actuel."
             },
             {
-                "icons": ["paintbrush", "app.dashed"],
+                "icons": [
+                    "paintbrush",
+                    "app.dashed"
+                ],
                 "title": "Mode sombre intelligent de l’icône",
                 "subtitle": "Adaptation automatique des tons neutres",
                 "body": "En mode sombre, SwiftNEW assombrit automatiquement les grandes zones blanches ou gris clair de l’icône jusqu’au presque noir, tout en préservant les couleurs d’accentuation et la transparence."
             },
             {
-                "icons": ["app.badge", "arrow.trianglehead.swap"],
+                "icons": [
+                    "app.badge",
+                    "arrow.trianglehead.swap"
+                ],
                 "title": "Icônes d’app alternatives",
                 "subtitle": "Mise à jour de l’en-tête",
                 "body": "Transmettez le nom de l’icône alternative sélectionnée pour synchroniser l’en-tête quand l’icône change."
             },
             {
-                "icons": ["button.programmable", "sparkles"],
+                "icons": [
+                    "button.programmable",
+                    "sparkles"
+                ],
                 "title": "Commandes en verre teinté",
                 "subtitle": "Style natif d’iOS 26",
                 "body": "Les boutons des notes et des actions principales utilisent désormais le verre teinté interactif sous iOS 26."
             },
             {
-                "icons": ["circle.lefthalf.filled", "paintpalette.fill"],
+                "icons": [
+                    "circle.lefthalf.filled",
+                    "paintpalette.fill"
+                ],
                 "title": "Style d’icône adaptatif",
                 "subtitle": "Meilleur contraste en mode sombre",
                 "body": "Les arrière-plans et dégradés des icônes adaptent leur éclairage et leur contraste au mode sombre."
             },
             {
-                "icons": ["character.bubble", "globe"],
+                "icons": [
+                    "character.bubble",
+                    "globe"
+                ],
                 "title": "Plus de langues",
                 "subtitle": "Cinq nouvelles localisations",
                 "body": "Les notes de version sont désormais disponibles en allemand, hébreu, indonésien, russe et vietnamien."

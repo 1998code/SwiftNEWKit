@@ -1,5 +1,20 @@
 [
     {
+        "version": "27.2",
+        "subVersion": "27.2.0",
+        "new": [
+            {
+                "icons": [
+                    "clock.arrow.circlepath",
+                    "checkmark.seal"
+                ],
+                "title": "History Presentation Fix",
+                "subtitle": "Stable in Full Screen",
+                "body": "Show History now opens reliably when the release note is presented as a full-screen cover, instead of flickering open and shut."
+            }
+        ]
+    },
+    {
         "version": "27.0",
         "subVersion": "27.0.0",
         "new": [
@@ -91,25 +106,37 @@
                 "body": "SwiftNEW automatically finds and displays the best bundled app icon for the current device."
             },
             {
-                "icons": ["paintbrush", "app.dashed"],
+                "icons": [
+                    "paintbrush",
+                    "app.dashed"
+                ],
                 "title": "Smart App Icon Dark Mode",
                 "subtitle": "Automatic Neutral-Tone Adaptation",
                 "body": "In Dark Mode, SwiftNEW automatically turns broad white and light-gray app icon artwork near-black while preserving accent colors and transparency."
             },
             {
-                "icons": ["app.badge", "arrow.trianglehead.swap"],
+                "icons": [
+                    "app.badge",
+                    "arrow.trianglehead.swap"
+                ],
                 "title": "Alternate App Icons",
                 "subtitle": "Live Header Updates",
                 "body": "Pass the selected alternate icon name so the header stays in sync when your app icon changes."
             },
             {
-                "icons": ["button.programmable", "sparkles"],
+                "icons": [
+                    "button.programmable",
+                    "sparkles"
+                ],
                 "title": "Tinted Glass Controls",
                 "subtitle": "Native iOS 26 Styling",
                 "body": "Release-note and primary action buttons now use interactive tinted glass on iOS 26."
             },
             {
-                "icons": ["circle.lefthalf.filled", "paintpalette.fill"],
+                "icons": [
+                    "circle.lefthalf.filled",
+                    "paintpalette.fill"
+                ],
                 "title": "Adaptive Icon Styling",
                 "subtitle": "Improved Dark Mode Contrast",
                 "body": "Icon backdrops and glyph gradients now adapt their lighting and contrast for Dark Mode."
