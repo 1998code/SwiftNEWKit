@@ -145,7 +145,7 @@ implementation, remote data, decoded models, and testing instructions.
 
 | Feature | Since | Description |
 |---------|:-----:|-------------|
-| 🖋️ Custom Button Text Color | 27.3 | Set `buttonTextColor` directly or with a binding to override the automatic black-or-white text on the release-note trigger and primary action buttons |
+| 🖋️ Custom Button Text Color | 27.3.0 | Set `buttonTextColor` directly or with a binding to override the automatic black-or-white text on the release-note trigger and primary action buttons |
 | ⌚ Native watchOS Support | 27.0 | Run compact current, history, and update views on watchOS 8+, with adaptive visual fallbacks and companion App Store lookup |
 | 🚘 CarPlay Template Support | 27.0 | Present eligible updates from approved CarPlay host apps in native list and detail templates using the same local or remote JSON |
 | 📥 Standalone Release Loader | 27.0 | Decode local or remote release data with `SwiftNEWReleaseNotesLoader` without creating a SwiftUI view |
