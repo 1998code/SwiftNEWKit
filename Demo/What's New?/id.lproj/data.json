@@ -1,5 +1,20 @@
 [
     {
+        "version": "27.3",
+        "subVersion": "27.3.0",
+        "new": [
+            {
+                "icons": [
+                    "textformat",
+                    "paintpalette"
+                ],
+                "title": "Warna teks tombol kustom",
+                "subtitle": "Sesuai merek Anda",
+                "body": "Atur buttonTextColor secara langsung atau dengan binding untuk memilih warna teks tombol catatan rilis dan tombol tindakan utama. Jika tidak diatur, kontras hitam atau putih otomatis tetap dipertahankan."
+            }
+        ]
+    },
+    {
         "version": "27.2",
         "subVersion": "27.2.0",
         "new": [

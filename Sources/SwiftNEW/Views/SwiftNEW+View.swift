@@ -169,6 +169,7 @@ extension SwiftNEW {
                         .modifier(
                             ReleaseNoteButtonLabelModifier(
                                 color: color,
+                                textColor: resolvedButtonTextColor,
                                 cornerRadius: buttonCornerRadius,
                                 usesCompactStyle: size == "mini" || size == "invisible",
                                 usesNativeGlass: usesReleaseNoteButtonGlass
@@ -464,6 +465,7 @@ private struct SheetMaterialBackgroundModifier: ViewModifier {
 
 private struct ReleaseNoteButtonLabelModifier: ViewModifier {
     let color: Color
+    let textColor: Color
     let cornerRadius: CGFloat
     let usesCompactStyle: Bool
     let usesNativeGlass: Bool
@@ -473,7 +475,7 @@ private struct ReleaseNoteButtonLabelModifier: ViewModifier {
         #if os(iOS) && !os(visionOS) && compiler(>=6.2)
         if #available(iOS 26.0, *), usesNativeGlass {
             content
-                .foregroundStyle(usesCompactStyle ? color : color.adaptedTextColor)
+                .foregroundStyle(usesCompactStyle ? color : textColor)
         } else {
             legacyAppearance(content)
         }
@@ -488,7 +490,7 @@ private struct ReleaseNoteButtonLabelModifier: ViewModifier {
 
     private func legacyAppearance(_ content: Content) -> some View {
         content
-            .foregroundColor(usesCompactStyle ? color : color.adaptedTextColor)
+            .foregroundColor(usesCompactStyle ? color : textColor)
             .background(usesCompactStyle ? Color.clear : color)
             .cornerRadius(cornerRadius)
     }

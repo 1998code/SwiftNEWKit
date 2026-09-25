@@ -29,6 +29,7 @@ import UIKit
     #expect(defaultDirect.resolvedUpdateButtonTitle.isEmpty == false)
     #expect(defaultDirect.appStoreBundleIdentifier == nil)
     #expect(defaultDirect.buttonCornerRadius == SwiftNEW.defaultButtonCornerRadius)
+    #expect(defaultDirect.buttonTextColor == nil)
     #expect(defaultDirect.showDescription == SwiftNEW.defaultShowDescription)
     #expect(defaultDirect.search == SwiftNEW.defaultSearchEnabled)
     #if os(watchOS)
@@ -55,6 +56,7 @@ import UIKit
         specialEffect: .particles,
         glass: false,
         buttonCornerRadius: 28,
+        buttonTextColor: .yellow,
         presentation: .embed,
         showBuild: false,
         showDescription: false,
@@ -84,6 +86,8 @@ import UIKit
     #expect(direct.usesReleaseNoteButtonGlass == false)
     #expect(direct.buttonCornerRadius == 28)
     #expect(direct.resolvedButtonCornerRadius == 28)
+    #expect(direct.buttonTextColor == .yellow)
+    #expect(direct.resolvedButtonTextColor == .yellow)
     #expect(direct.presentation == .embed)
     #expect(direct.showBuild == false)
     #expect(direct.showDescription == false)
@@ -113,6 +117,7 @@ import UIKit
         specialEffect: .constant(.christmas),
         glass: .constant(true),
         buttonCornerRadius: .constant(32),
+        buttonTextColor: .constant(.orange),
         presentation: .constant(.sheet),
         showBuild: .constant(true),
         showDescription: .constant(true),
@@ -136,6 +141,7 @@ import UIKit
     #expect(bound.specialEffect == .christmas)
     #expect(bound.usesReleaseNoteButtonGlass == false)
     #expect(bound.buttonCornerRadius == 32)
+    #expect(bound.resolvedButtonTextColor == .orange)
     #expect(bound.presentation == .sheet)
     #expect(bound.showDescription)
     #expect(bound.headingStyle == .versionOnly)
@@ -153,6 +159,24 @@ import UIKit
 
     let invisible = SwiftNEW(show: .constant(false), size: "invisible")
     #expect(invisible.usesReleaseNoteButtonGlass == false)
+}
+
+@MainActor
+@Test func buttonTextColorFallsBackToContrastColor() {
+    let lightTint = SwiftNEW(show: .constant(false), color: .white)
+    let darkTint = SwiftNEW(show: .constant(false), color: .black)
+    let custom = SwiftNEW(show: .constant(false), color: .black, buttonTextColor: .pink)
+    let boundNil = SwiftNEW(
+        show: .constant(false),
+        color: .constant(.white),
+        buttonTextColor: .constant(nil)
+    )
+
+    #expect(lightTint.resolvedButtonTextColor == .black)
+    #expect(darkTint.resolvedButtonTextColor == .white)
+    #expect(custom.resolvedButtonTextColor == .pink)
+    #expect(boundNil.resolvedButtonTextColor == .black)
+    #expect(makeSwiftNEW(color: .black, buttonTextColor: .green).resolvedButtonTextColor == .green)
 }
 
 @MainActor
@@ -895,6 +919,7 @@ private func makeSwiftNEW(
     specialEffect: SwiftNEWSpecialEffect = .none,
     glass: Bool = true,
     buttonCornerRadius: CGFloat? = nil,
+    buttonTextColor: Color? = nil,
     presentation: SwiftNEWPresentation = .sheet,
     showBuild: Bool = true,
     showDescription: Bool? = nil,
@@ -937,6 +962,7 @@ private func makeSwiftNEW(
         specialEffect: specialEffect,
         glass: glass,
         buttonCornerRadius: buttonCornerRadius,
+        buttonTextColor: buttonTextColor,
         presentation: presentation,
         showBuild: showBuild,
         showDescription: showDescription,

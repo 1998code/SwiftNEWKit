@@ -1,5 +1,20 @@
 [
     {
+        "version": "27.3",
+        "subVersion": "27.3.0",
+        "new": [
+            {
+                "icons": [
+                    "textformat",
+                    "paintpalette"
+                ],
+                "title": "自定义按钮文字颜色",
+                "subtitle": "贴合你的品牌",
+                "body": "直接设置 buttonTextColor 或通过 binding 控制，自定义版本说明触发按钮与主要操作按钮的文字颜色。未设置时，会自动保持黑色或白色的对比。"
+            }
+        ]
+    },
+    {
         "version": "27.2",
         "subVersion": "27.2.0",
         "new": [

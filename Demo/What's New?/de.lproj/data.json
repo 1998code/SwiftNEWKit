@@ -1,5 +1,20 @@
 [
     {
+        "version": "27.3",
+        "subVersion": "27.3.0",
+        "new": [
+            {
+                "icons": [
+                    "textformat",
+                    "paintpalette"
+                ],
+                "title": "Anpassbare Textfarbe für Schaltflächen",
+                "subtitle": "Passend zu Ihrer Marke",
+                "body": "Legen Sie buttonTextColor direkt oder über ein Binding fest, um die Textfarbe des Auslösers für Versionshinweise und der primären Aktionsschaltflächen zu bestimmen. Ohne Angabe bleibt der automatische Schwarz-Weiß-Kontrast erhalten."
+            }
+        ]
+    },
+    {
         "version": "27.2",
         "subVersion": "27.2.0",
         "new": [

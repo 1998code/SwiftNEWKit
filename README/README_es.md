@@ -70,6 +70,7 @@ Eso es todo — SwiftNEW se activa automáticamente cuando cambia la versión de
 
 | Funcionalidad | Desde | Descripción |
 |---------|:-----:|-------------|
+| 🖋️ Color de texto de botones personalizable | 27.3 | Establece `buttonTextColor` directamente o con un binding para sustituir el texto automático en blanco o negro del activador y de los botones de acción principales |
 | ⌚ Compatibilidad nativa con watchOS | 27.0 | SwiftNEW admite watchOS 8 con vistas compactas, alternativas visuales adaptativas y la búsqueda automática de la app complementaria en App Store |
 | 🚘 Compatibilidad con plantillas de CarPlay | 27.0 | Las apps host de CarPlay aprobadas por Apple pueden mostrar contenido apto en plantillas nativas de lista y detalle con el mismo JSON local o remoto |
 | 📥 Cargador de versiones independiente | 27.0 | `SwiftNEWReleaseNotesLoader` decodifica JSON local o remoto sin crear una vista de SwiftUI para interfaces nativas y flujos personalizados |

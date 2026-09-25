@@ -1,5 +1,20 @@
 [
     {
+        "version": "27.3",
+        "subVersion": "27.3.0",
+        "new": [
+            {
+                "icons": [
+                    "textformat",
+                    "paintpalette"
+                ],
+                "title": "Custom Button Text Color",
+                "subtitle": "Match Your Brand",
+                "body": "Set buttonTextColor directly or with a binding to choose the text color of the release-note trigger and primary action buttons. Leave it unset to keep the automatic black or white contrast."
+            }
+        ]
+    },
+    {
         "version": "27.2",
         "subVersion": "27.2.0",
         "new": [

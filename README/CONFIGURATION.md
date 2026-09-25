@@ -21,6 +21,7 @@
 | `specialEffect` | `Binding<SwiftNEWSpecialEffect>` | `.none` | Special effects: `.none`, `.christmas`, `.particles` |
 | `glass` | `Binding<Bool>` | `true` | Enable glass morphism effects |
 | `buttonCornerRadius` | `CGFloat` / `Binding<CGFloat>` | iOS/tvOS/visionOS: `20`, watchOS/macOS: `12` | Corner radius for the release-note trigger and primary action buttons; negative values render as `0` |
+| `buttonTextColor` | `Color?` / `Binding<Color?>` | `nil` | Text color for the release-note trigger and primary action buttons; `nil` picks black or white automatically for contrast with `color` |
 | `presentation` | `Binding<SwiftNEWPresentation>` | `.sheet` | Presentation style: `.sheet`, `.fullScreenCover`, `.embed` |
 | `showBuild` | `Binding<Bool>` | `true` | Show build number alongside the version in the header |
 | `showDescription` | `Bool` / `Binding<Bool>` | watchOS: `false`; other platforms: `true` | Show each release note's body description; title, subtitle, and icon remain visible when disabled |
@@ -54,11 +55,14 @@ SwiftNEW(
     mesh: true,
     meshStyle: .still,
     glass: true,
-    buttonCornerRadius: 24
+    buttonCornerRadius: 24,
+    buttonTextColor: .white
 )
 ```
 
 `buttonCornerRadius` keeps the Show Release Note, Continue, Return, Download Now, and Try Again buttons visually consistent. Capsule controls such as Search, Show History, and Not Now keep their capsule shape.
+
+`buttonTextColor` sets the text color of those same buttons. Leave it `nil` to keep the automatic black-or-white contrast with `color`.
 
 ### Liquid Mesh
 

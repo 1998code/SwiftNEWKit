@@ -128,6 +128,11 @@ extension SwiftNEW {
         max(0, buttonCornerRadius)
     }
 
+    /// Text color for filled buttons: the caller's `buttonTextColor`, or black/white picked for contrast with `color`.
+    var resolvedButtonTextColor: Color {
+        buttonTextColor ?? color.adaptedTextColor
+    }
+
     @ViewBuilder
     private func capsuleSecondaryButton<Label: View>(
         action: @escaping () -> Void,
@@ -231,12 +236,16 @@ extension SwiftNEW {
             .modifier(
                 PrimaryActionButtonLabelModifier(
                     tint: color,
+                    textColor: resolvedButtonTextColor,
                     cornerRadius: resolvedButtonCornerRadius,
                     usesTintedGlass: usesTintedGlass
                 )
             )
             #elseif os(tvOS)
             .tint(.white)
+            .foregroundColor(buttonTextColor)
+            #else
+            .foregroundColor(buttonTextColor)
             #endif
             .contentShape(RoundedRectangle(cornerRadius: resolvedButtonCornerRadius, style: .continuous))
         }
@@ -259,6 +268,7 @@ extension SwiftNEW {
 
 private struct PrimaryActionButtonLabelModifier: ViewModifier {
     let tint: Color
+    let textColor: Color
     let cornerRadius: CGFloat
     let usesTintedGlass: Bool
 
@@ -266,7 +276,7 @@ private struct PrimaryActionButtonLabelModifier: ViewModifier {
     func body(content: Content) -> some View {
         #if os(iOS) && !os(visionOS) && compiler(>=6.2)
         if #available(iOS 26.0, *), usesTintedGlass {
-            content.foregroundStyle(tint.adaptedTextColor)
+            content.foregroundStyle(textColor)
         } else {
             legacyAppearance(content)
         }
@@ -277,7 +287,7 @@ private struct PrimaryActionButtonLabelModifier: ViewModifier {
 
     private func legacyAppearance(_ content: Content) -> some View {
         content
-            .foregroundColor(tint.adaptedTextColor)
+            .foregroundColor(textColor)
             .background(tint)
             .cornerRadius(cornerRadius)
     }

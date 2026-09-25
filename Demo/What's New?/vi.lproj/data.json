@@ -1,5 +1,20 @@
 [
     {
+        "version": "27.3",
+        "subVersion": "27.3.0",
+        "new": [
+            {
+                "icons": [
+                    "textformat",
+                    "paintpalette"
+                ],
+                "title": "Tùy chỉnh màu chữ của nút",
+                "subtitle": "Phù hợp thương hiệu",
+                "body": "Đặt buttonTextColor trực tiếp hoặc qua binding để chọn màu chữ cho nút mở ghi chú phát hành và các nút hành động chính. Nếu không đặt, độ tương phản đen hoặc trắng tự động vẫn được giữ nguyên."
+            }
+        ]
+    },
+    {
         "version": "27.2",
         "subVersion": "27.2.0",
         "new": [

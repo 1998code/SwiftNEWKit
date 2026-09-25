@@ -72,6 +72,7 @@
 
 | 功能 | 起始版本 | 說明 |
 |---------|:-----:|-------------|
+| 🖋️ 自訂按鈕文字顏色 | 27.3 | 直接設定 `buttonTextColor` 或透過 binding 控制，取代版本說明觸發按鈕與主要操作按鈕自動選擇的黑色或白色文字 |
 | ⌚ 原生 watchOS 支援 | 27.0 | `SwiftNEW` 現已支援 watchOS 8，提供精簡的目前版本 / 歷史 / 更新介面、自適應視覺備援效果，以及配套 App 的 App Store 自動查詢 |
 | 🚘 CarPlay 模板支援 | 27.0 | 已獲 Apple 核准的 CarPlay host app 可使用同一套本機或遠端 JSON，在原生模板中呈現符合獲准車載用途的更新內容 |
 | 📥 獨立版本說明載入器 | 27.0 | `SwiftNEWReleaseNotesLoader` 無需建立 SwiftUI view，即可載入並解碼本機或遠端 JSON |

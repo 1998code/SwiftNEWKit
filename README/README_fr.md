@@ -70,6 +70,7 @@ C'est tout — SwiftNEW se déclenche automatiquement quand la version de l'app 
 
 | Fonctionnalité | Depuis | Description |
 |---------|:-----:|-------------|
+| 🖋️ Couleur du texte des boutons personnalisable | 27.3 | Définissez `buttonTextColor` directement ou via un binding pour remplacer le texte automatique noir ou blanc du déclencheur et des boutons d’action principaux |
 | ⌚ Prise en charge native de watchOS | 27.0 | SwiftNEW prend en charge watchOS 8 avec des vues compactes, des replis visuels adaptatifs et la recherche automatique de l’app compagnon dans l’App Store |
 | 🚘 Prise en charge des modèles CarPlay | 27.0 | Les apps hôtes CarPlay approuvées par Apple peuvent afficher du contenu admissible dans des modèles natifs de liste et de détail avec le même JSON local ou distant |
 | 📥 Chargeur de versions autonome | 27.0 | `SwiftNEWReleaseNotesLoader` décode le JSON local ou distant sans créer de vue SwiftUI, pour les interfaces natives et les workflows personnalisés |

@@ -1,5 +1,20 @@
 [
     {
+        "version": "27.3",
+        "subVersion": "27.3.0",
+        "new": [
+            {
+                "icons": [
+                    "textformat",
+                    "paintpalette"
+                ],
+                "title": "Color de texto de botones personalizable",
+                "subtitle": "A juego con tu marca",
+                "body": "Establece buttonTextColor directamente o con un binding para elegir el color del texto del botón de notas de la versión y de los botones de acción principales. Si no lo defines, se mantiene el contraste automático en blanco o negro."
+            }
+        ]
+    },
+    {
         "version": "27.2",
         "subVersion": "27.2.0",
         "new": [

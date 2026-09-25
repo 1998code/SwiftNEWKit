@@ -1,5 +1,20 @@
 [
     {
+        "version": "27.3",
+        "subVersion": "27.3.0",
+        "new": [
+            {
+                "icons": [
+                    "textformat",
+                    "paintpalette"
+                ],
+                "title": "버튼 텍스트 색상 사용자 지정",
+                "subtitle": "브랜드에 맞게",
+                "body": "buttonTextColor를 직접 지정하거나 바인딩으로 전달해 릴리스 노트 버튼과 주요 동작 버튼의 텍스트 색상을 설정할 수 있습니다. 지정하지 않으면 검정 또는 흰색 대비가 자동으로 유지됩니다."
+            }
+        ]
+    },
+    {
         "version": "27.2",
         "subVersion": "27.2.0",
         "new": [

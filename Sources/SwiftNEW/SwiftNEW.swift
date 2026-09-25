@@ -74,6 +74,7 @@ public struct SwiftNEW: View {
     @Binding var specialEffect: SwiftNEWSpecialEffect
     @Binding var glass: Bool
     @Binding var buttonCornerRadius: CGFloat
+    @Binding var buttonTextColor: Color?
     @Binding var presentation: SwiftNEWPresentation
     @Binding var showBuild: Bool
     @Binding var showDescription: Bool
@@ -261,6 +262,7 @@ public struct SwiftNEW: View {
         specialEffect: SwiftNEWSpecialEffect? = SwiftNEWSpecialEffect.none,
         glass: Bool? = true,
         buttonCornerRadius: CGFloat? = nil,
+        buttonTextColor: Color? = nil,
         presentation: SwiftNEWPresentation? = .sheet,
         showBuild: Bool? = true,
         showDescription: Bool? = nil,
@@ -295,6 +297,7 @@ public struct SwiftNEW: View {
         _specialEffect = .constant(specialEffect ?? .none)
         _glass = .constant(glass ?? true)
         _buttonCornerRadius = .constant(buttonCornerRadius ?? Self.defaultButtonCornerRadius)
+        _buttonTextColor = .constant(buttonTextColor)
         _presentation = .constant(presentation ?? .sheet)
         _showBuild = .constant(showBuild ?? true)
         _showDescription = .constant(showDescription ?? Self.defaultShowDescription)
@@ -326,6 +329,7 @@ public struct SwiftNEW: View {
         specialEffect: Binding<SwiftNEWSpecialEffect>? = .constant(.none),
         glass: Binding<Bool>? = .constant(true),
         buttonCornerRadius: Binding<CGFloat>? = nil,
+        buttonTextColor: Binding<Color?>? = .constant(nil),
         presentation: Binding<SwiftNEWPresentation>? = .constant(.sheet),
         showBuild: Binding<Bool>? = .constant(true),
         showDescription: Binding<Bool>? = nil,
@@ -360,6 +364,7 @@ public struct SwiftNEW: View {
         _specialEffect = specialEffect ?? .constant(.none)
         _glass = glass ?? .constant(true)
         _buttonCornerRadius = buttonCornerRadius ?? .constant(Self.defaultButtonCornerRadius)
+        _buttonTextColor = buttonTextColor ?? .constant(nil)
         _presentation = presentation ?? .constant(.sheet)
         _showBuild = showBuild ?? .constant(true)
         _showDescription = showDescription ?? .constant(Self.defaultShowDescription)
@@ -408,6 +413,7 @@ extension SwiftNEW {
         specialEffect: SwiftNEWSpecialEffect = .none,
         glass: Bool = true,
         buttonCornerRadius: CGFloat? = nil,
+        buttonTextColor: Color? = nil,
         presentation: SwiftNEWPresentation = .sheet,
         showBuild: Bool = true,
         showDescription: Bool? = nil,
@@ -483,6 +489,7 @@ extension SwiftNEW {
         _specialEffect = .constant(specialEffect)
         _glass = .constant(glass)
         _buttonCornerRadius = .constant(buttonCornerRadius ?? Self.defaultButtonCornerRadius)
+        _buttonTextColor = .constant(buttonTextColor)
         _presentation = .constant(presentation)
         _showBuild = .constant(showBuild)
         _showDescription = .constant(showDescription ?? Self.defaultShowDescription)
