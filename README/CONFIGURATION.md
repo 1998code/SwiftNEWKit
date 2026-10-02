@@ -289,6 +289,16 @@ SwiftNEW(
 )
 ```
 
+Require both the app purchase and a subscription:
+
+```swift
+SwiftNEW(
+    show: $showNew,
+    presentation: .fullScreenCover,
+    purchaseRequirement: .appPurchaseAndSubscription(productIDs: ["com.example.pro.monthly"])
+)
+```
+
 - TestFlight is detected from the sandbox receipt combined with the absence of an embedded provisioning profile. This is reliable on iOS, iPadOS, watchOS, tvOS, and visionOS; macOS TestFlight builds are not detected, so use `.all` there if needed.
 - TestFlight builds talk to the StoreKit **sandbox**: purchases made there are free and separate from production. A TestFlight build therefore cannot see what the tester bought in the App Store version. `.subscription` verifies a subscription started inside the TestFlight build, and `.appPurchase` verifies only that StoreKit signed the app transaction.
 - The App Store listing icon is shown on the Purchase screen once the lookup resolves; a lock badge is used until then or when there is no listing.

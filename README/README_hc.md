@@ -72,7 +72,7 @@
 
 | 功能 | 起始版本 | 說明 |
 |---------|:-----:|-------------|
-| 🔐 購買驗證畫面 | 27.4.0 | 用 `purchaseRequirement` 啟用；入 App 之前用 StoreKit 驗證 App Store 購買紀錄或者指定訂閱 |
+| 🔐 購買驗證畫面 | 27.4.0 | 用 `purchaseRequirement` 啟用；入 App 之前用 StoreKit 驗證 App Store 購買紀錄、指定訂閱，或者兩樣都要；預設只喺 TestFlight build 生效 |
 | 🖋️ 自訂按鈕文字顏色 | 27.3.0 | 直接設定 `buttonTextColor` 或用 binding 控制，取代版本說明觸發按鈕同主要操作按鈕自動揀嘅黑色或白色文字 |
 | ⌚ 原生 watchOS 支援 | 27.0 | `SwiftNEW` 而家支援 watchOS 8，提供精簡嘅目前版本 / 歷史 / 更新畫面、自適應視覺後備效果，同埋配套 App 嘅 App Store 自動查詢 |
 | 🚘 CarPlay Template 支援 | 27.0 | 已獲 Apple 批准嘅 CarPlay host app 可以用同一套本地或遠端 JSON，喺原生 template 顯示符合獲批車載用途嘅更新內容 |
@@ -126,6 +126,7 @@
 ## 📝 備註
 
 - 將遠端 `data` URL 配合 `checkForUpdates: true` 傳入，就會啟用更新檢查。如果遠端最高嘅 `subVersion`（或者 `version`）高過目前安裝嘅 App 版本，SwiftNEW 會顯示更新畫面取代「最新功能」，並用 App 嘅 bundle identifier 經 Apple iTunes Lookup API 自動取得 App Store 目的地。主要操作預設顯示已本地化嘅 **立即下載**；用 `updateButtonTitle` 可以原樣顯示自訂文字。設定 `allowsSkippingUpdate: false` 就可以令更新畫面唔俾用戶略過。
+- 傳入 `purchaseRequirement: .appPurchase`、`.subscription(productIDs:)` 或者 `.appPurchaseAndSubscription(productIDs:)`，SwiftNEW 會喺啟動時用 StoreKit 2 驗證購買；預設只喺 TestFlight build 生效（`purchaseEnvironment: .all` 會喺所有 build 生效）。未符合要求就會喺更新畫面同「最新功能」之前顯示購買畫面，訂閱會有 **還原購買項目**，另外有 App Store 按鈕或者你自訂嘅 `purchaseAction`。呢個畫面係強制嘅，冇得略過。詳情睇 [Configuration](CONFIGURATION.md#purchase-gate)。
 
 ## 📚 深入了解
 

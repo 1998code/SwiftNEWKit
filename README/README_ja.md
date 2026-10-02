@@ -70,7 +70,7 @@
 
 | 機能 | 追加バージョン | 説明 |
 |---------|:-----:|-------------|
-| 🔐 購入確認ゲート | 27.4.0 | `purchaseRequirement` で有効化。アプリに入る前に、App Store でのアプリ購入または指定したサブスクリプションを StoreKit で確認 |
+| 🔐 購入確認ゲート | 27.4.0 | `purchaseRequirement` で有効化。アプリに入る前に、App Store でのアプリ購入、指定したサブスクリプション、またはその両方を StoreKit で確認。デフォルトでは TestFlight ビルドのみ |
 | 🖋️ ボタンの文字色をカスタマイズ | 27.3.0 | `buttonTextColor` を直接指定するか Binding で制御し、リリースノートボタンと主要アクションボタンの自動（黒または白）の文字色を上書き |
 | ⌚ watchOS ネイティブ対応 | 27.0 | watchOS 8 で、現在・履歴・アップデートのコンパクト表示、適応型フォールバック、コンパニオン App の App Store 自動検索に対応 |
 | 🚘 CarPlay テンプレート対応 | 27.0 | Apple の承認を受けた CarPlay ホスト App で、対象となる更新内容を同じローカル / リモート JSON からネイティブのリスト・詳細テンプレートに表示 |
@@ -124,6 +124,7 @@
 ## 📝 注意事項
 
 - リモートの `data` URL と `checkForUpdates: true` を指定すると、更新チェックが有効になります。リモートにある最も高い `subVersion`（なければ `version`）がインストール済みアプリのバージョンより新しい場合、SwiftNEW は「新機能」画面の代わりに更新画面を表示し、アプリのバンドル ID を使って Apple の iTunes Lookup API から App Store のリンク先を取得します。主アクションには、ローカライズされた **今すぐダウンロード** が既定で表示されます。任意の文言をそのまま表示するには `updateButtonTitle` を使用してください。更新画面をスキップ不可にするには `allowsSkippingUpdate: false` を指定します。
+- `purchaseRequirement: .appPurchase`、`.subscription(productIDs:)`、または `.appPurchaseAndSubscription(productIDs:)` を指定すると、起動時に StoreKit 2 で購入を確認します。デフォルトでは TestFlight ビルドのみが対象です（`purchaseEnvironment: .all` ですべてのビルドに適用）。要件を満たしていない場合は、更新画面や新機能画面より先に購入画面を表示し、サブスクリプションには **購入を復元**、さらに App Store ボタンまたは独自の `purchaseAction` を表示します。この画面は必須でスキップできません。詳しくは [Configuration](CONFIGURATION.md#purchase-gate) を参照してください。
 
 ## 📚 詳細情報
 

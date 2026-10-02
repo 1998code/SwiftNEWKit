@@ -70,7 +70,7 @@ Eso es todo — SwiftNEW se activa automáticamente cuando cambia la versión de
 
 | Funcionalidad | Desde | Descripción |
 |---------|:-----:|-------------|
-| 🔐 Verificación de compra | 27.4.0 | Actívala con `purchaseRequirement` para verificar con StoreKit la compra de la app en el App Store o una suscripción designada antes de entrar en la app |
+| 🔐 Verificación de compra | 27.4.0 | Actívala con `purchaseRequirement` para verificar con StoreKit la compra de la app en el App Store, una suscripción designada o ambas antes de entrar en la app; por defecto solo en compilaciones de TestFlight |
 | 🖋️ Color de texto de botones personalizable | 27.3.0 | Establece `buttonTextColor` directamente o con un binding para sustituir el texto automático en blanco o negro del activador y de los botones de acción principales |
 | ⌚ Compatibilidad nativa con watchOS | 27.0 | SwiftNEW admite watchOS 8 con vistas compactas, alternativas visuales adaptativas y la búsqueda automática de la app complementaria en App Store |
 | 🚘 Compatibilidad con plantillas de CarPlay | 27.0 | Las apps host de CarPlay aprobadas por Apple pueden mostrar contenido apto en plantillas nativas de lista y detalle con el mismo JSON local o remoto |
@@ -125,6 +125,7 @@ Eso es todo — SwiftNEW se activa automáticamente cuando cambia la versión de
 ## 📝 Notas
 
 - Al pasar `checkForUpdates: true` con una URL de `data` remota, se habilita la comprobación de actualizaciones. Si el `subVersion` (o `version`) remoto más alto es posterior a la versión instalada de la app, SwiftNEW muestra la pantalla de actualización en lugar de Novedades y obtiene el destino de App Store mediante la API iTunes Lookup de Apple usando el identificador de paquete de la app. La acción principal usa de forma predeterminada el texto localizado **Descargar ahora**; usa `updateButtonTitle` para mostrar un texto personalizado tal cual. Establece `allowsSkippingUpdate: false` para impedir que se omita la pantalla de actualización.
+- Al pasar `purchaseRequirement: .appPurchase`, `.subscription(productIDs:)` o `.appPurchaseAndSubscription(productIDs:)`, SwiftNEW verifica la compra con StoreKit 2 al iniciar; por defecto solo en compilaciones de TestFlight (`purchaseEnvironment: .all` lo aplica en todas). Si el requisito no se cumple, se muestra la pantalla de compra antes de las pantallas de actualización y de novedades, con **Restaurar compras** para las suscripciones y un botón del App Store o tu propio `purchaseAction`. La pantalla es obligatoria y no se puede omitir. Consulta [Configuration](CONFIGURATION.md#purchase-gate).
 
 ## 📚 Más información
 

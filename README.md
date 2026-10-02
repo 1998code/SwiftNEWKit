@@ -145,7 +145,7 @@ implementation, remote data, decoded models, and testing instructions.
 
 | Feature | Since | Description |
 |---------|:-----:|-------------|
-| 🔐 Purchase Gate | 27.4.0 | Opt in with `purchaseRequirement` to verify the App Store app purchase or a designated subscription with StoreKit before the app is entered; TestFlight builds only by default |
+| 🔐 Purchase Gate | 27.4.0 | Opt in with `purchaseRequirement` to verify the App Store app purchase, a designated subscription, or both with StoreKit before the app is entered; TestFlight builds only by default |
 | 🖋️ Custom Button Text Color | 27.3.0 | Set `buttonTextColor` directly or with a binding to override the automatic black-or-white text on the release-note trigger and primary action buttons |
 | ⌚ Native watchOS Support | 27.0 | Run compact current, history, and update views on watchOS 8+, with adaptive visual fallbacks and companion App Store lookup |
 | 🚘 CarPlay Template Support | 27.0 | Present eligible updates from approved CarPlay host apps in native list and detail templates using the same local or remote JSON |
@@ -192,7 +192,7 @@ implementation, remote data, decoded models, and testing instructions.
 - SwiftNEW stores its last-seen version/build using namespaced app storage keys: `swiftnew.version` and `swiftnew.build`.
 - Version comparison is string-safe, so non-numeric values such as `1.0-beta` or `1.0b3` will not crash auto-triggering.
 - Passing `checkForUpdates: true` with a remote `data` URL enables update checks. If the highest remote `subVersion` (or `version`) is newer than the installed app version, SwiftNEW presents the Update screen instead of What's New and resolves the App Store destination from Apple's iTunes Lookup API using the app's bundle identifier. The primary action defaults to localized **Download Now**; use `updateButtonTitle` for custom verbatim text. Set `allowsSkippingUpdate: false` for a non-skippable update screen.
-- Passing `purchaseRequirement: .appPurchase`, `.subscription(productIDs:)`, or `.appPurchaseAndSubscription(productIDs:)` verifies the purchase with StoreKit 2 at launch, in TestFlight builds only by default (`purchaseEnvironment: .all` enforces it everywhere). An unmet requirement presents the Purchase screen ahead of the Update and What's New screens, with **Restore Purchases** and an App Store or custom `purchaseAction` button. The screen is mandatory and cannot be skipped. See [Configuration](README/CONFIGURATION.md#purchase-gate).
+- Passing `purchaseRequirement: .appPurchase`, `.subscription(productIDs:)`, or `.appPurchaseAndSubscription(productIDs:)` verifies the purchase with StoreKit 2 at launch, in TestFlight builds only by default (`purchaseEnvironment: .all` enforces it everywhere). An unmet requirement presents the Purchase screen ahead of the Update and What's New screens, with **Restore Purchases** for subscriptions and an App Store or custom `purchaseAction` button. The screen is mandatory and cannot be skipped. See [Configuration](README/CONFIGURATION.md#purchase-gate).
 - SwiftNEW loads the bundled app-icon raster automatically. In Dark Mode, its fallback smoothly maps bright neutral pixels toward black while preserving saturated artwork and transparency, including apps that use an Icon Composer `.icon` file. An ordinary Any/Dark Image Set named `SwiftNEWAppIcon` remains the art-directed override. See [Configuration](README/CONFIGURATION.md#app-icon-and-icon-composer).
 
 ## 🧪 Testing & Coverage

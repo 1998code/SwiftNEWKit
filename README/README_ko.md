@@ -70,7 +70,7 @@
 
 | 기능 | 도입 버전 | 설명 |
 |---------|:-----:|-------------|
-| 🔐 구입 확인 게이트 | 27.4.0 | `purchaseRequirement`로 활성화하며, 앱에 진입하기 전에 StoreKit으로 App Store 앱 구입 또는 지정한 구독을 확인합니다 |
+| 🔐 구입 확인 게이트 | 27.4.0 | `purchaseRequirement`로 활성화하며, 앱에 진입하기 전에 StoreKit으로 App Store 앱 구입, 지정한 구독 또는 둘 다를 확인합니다. 기본적으로 TestFlight 빌드에서만 적용됩니다 |
 | 🖋️ 버튼 텍스트 색상 사용자 지정 | 27.3.0 | `buttonTextColor`를 직접 지정하거나 바인딩으로 전달해 릴리스 노트 버튼과 주요 동작 버튼의 자동 검정/흰색 텍스트를 변경 |
 | ⌚ 네이티브 watchOS 지원 | 27.0 | watchOS 8에서 현재 버전·버전 기록·업데이트 화면을 간결하게 제공하고 적응형 폴백과 컴패니언 앱의 App Store 자동 조회를 지원 |
 | 🚘 CarPlay 템플릿 지원 | 27.0 | Apple의 승인을 받은 CarPlay 호스트 앱에서 승인된 용도에 적합한 업데이트 콘텐츠를 동일한 로컬 / 원격 JSON 기반의 네이티브 목록 및 상세 템플릿으로 표시 |
@@ -124,6 +124,7 @@
 ## 📝 참고 사항
 
 - 원격 `data` URL과 `checkForUpdates: true`를 전달하면 업데이트 확인이 활성화됩니다. 원격의 가장 높은 `subVersion`(또는 `version`)이 설치된 앱 버전보다 최신이면 SwiftNEW는 새로운 기능 화면 대신 업데이트 화면을 표시하고 앱의 번들 식별자를 사용해 Apple iTunes Lookup API에서 App Store 대상을 확인합니다. 기본 동작은 현지화된 **지금 다운로드**를 표시하며, `updateButtonTitle`을 사용하면 사용자 지정 문구를 그대로 표시할 수 있습니다. 업데이트 화면을 건너뛸 수 없게 하려면 `allowsSkippingUpdate: false`를 설정하세요.
+- `purchaseRequirement: .appPurchase`, `.subscription(productIDs:)` 또는 `.appPurchaseAndSubscription(productIDs:)`를 전달하면 실행 시 StoreKit 2로 구입을 확인합니다. 기본적으로 TestFlight 빌드에서만 적용되며, `purchaseEnvironment: .all`을 사용하면 모든 빌드에 적용됩니다. 요구 사항을 충족하지 못하면 업데이트 화면과 새로운 기능 화면보다 먼저 구입 화면을 표시하고, 구독에는 **구입 항목 복원**과 함께 App Store 버튼 또는 직접 제공한 `purchaseAction`을 표시합니다. 이 화면은 필수이며 건너뛸 수 없습니다. 자세한 내용은 [Configuration](CONFIGURATION.md#purchase-gate)을 참고하세요.
 
 ## 📚 자세히 알아보기
 

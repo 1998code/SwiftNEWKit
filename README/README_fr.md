@@ -70,7 +70,7 @@ C'est tout — SwiftNEW se déclenche automatiquement quand la version de l'app 
 
 | Fonctionnalité | Depuis | Description |
 |---------|:-----:|-------------|
-| 🔐 Vérification d’achat | 27.4.0 | Activez-la avec `purchaseRequirement` pour vérifier avec StoreKit l’achat de l’app sur l’App Store ou un abonnement désigné avant d’entrer dans l’app |
+| 🔐 Vérification d’achat | 27.4.0 | Activez-la avec `purchaseRequirement` pour vérifier avec StoreKit l’achat de l’app sur l’App Store, un abonnement désigné ou les deux avant d’entrer dans l’app ; par défaut uniquement dans les builds TestFlight |
 | 🖋️ Couleur du texte des boutons personnalisable | 27.3.0 | Définissez `buttonTextColor` directement ou via un binding pour remplacer le texte automatique noir ou blanc du déclencheur et des boutons d’action principaux |
 | ⌚ Prise en charge native de watchOS | 27.0 | SwiftNEW prend en charge watchOS 8 avec des vues compactes, des replis visuels adaptatifs et la recherche automatique de l’app compagnon dans l’App Store |
 | 🚘 Prise en charge des modèles CarPlay | 27.0 | Les apps hôtes CarPlay approuvées par Apple peuvent afficher du contenu admissible dans des modèles natifs de liste et de détail avec le même JSON local ou distant |
@@ -125,6 +125,7 @@ C'est tout — SwiftNEW se déclenche automatiquement quand la version de l'app 
 ## 📝 Notes
 
 - Fournir `checkForUpdates: true` avec une URL `data` distante active la recherche de mises à jour. Si la valeur distante la plus élevée de `subVersion` (ou `version`) est plus récente que la version installée de l’app, SwiftNEW affiche l’écran de mise à jour à la place de Nouveautés et obtient la destination App Store via l’API iTunes Lookup d’Apple à partir de l’identifiant de bundle de l’app. L’action principale utilise par défaut le libellé localisé **Télécharger maintenant** ; utilisez `updateButtonTitle` pour afficher un texte personnalisé tel quel. Définissez `allowsSkippingUpdate: false` pour rendre l’écran de mise à jour impossible à ignorer.
+- Fournir `purchaseRequirement: .appPurchase`, `.subscription(productIDs:)` ou `.appPurchaseAndSubscription(productIDs:)` vérifie l’achat avec StoreKit 2 au lancement, par défaut uniquement dans les builds TestFlight (`purchaseEnvironment: .all` l’applique partout). Si l’exigence n’est pas satisfaite, l’écran d’achat s’affiche avant les écrans de mise à jour et de nouveautés, avec **Restaurer les achats** pour les abonnements et un bouton App Store ou votre propre `purchaseAction`. Cet écran est obligatoire et ne peut pas être ignoré. Voir [Configuration](CONFIGURATION.md#purchase-gate).
 
 ## 📚 En savoir plus
 
