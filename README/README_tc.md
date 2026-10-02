@@ -126,7 +126,7 @@
 ## 📝 備註
 
 - 將遠端 `data` URL 搭配 `checkForUpdates: true` 傳入即可啟用更新檢查。若遠端最高的 `subVersion`（或 `version`）高於目前安裝的 App 版本，SwiftNEW 會顯示更新畫面來取代「最新功能」，並使用 App 的套件識別碼，透過 Apple iTunes Lookup API 自動取得 App Store 目的地。主要操作預設顯示已本地化的 **立即下載**；使用 `updateButtonTitle` 可原樣顯示自訂文字。設定 `allowsSkippingUpdate: false` 可讓更新畫面無法略過。
-- 傳入 `purchaseRequirement: .appPurchase`、`.subscription(productIDs:)` 或 `.appPurchaseAndSubscription(productIDs:)`，SwiftNEW 會在啟動時以 StoreKit 2 驗證購買；預設僅在 TestFlight 版本生效（`purchaseEnvironment: .all` 會套用到所有版本）。未符合要求時，會在更新畫面與「最新功能」之前顯示購買畫面，訂閱會提供 **回復購買項目**，並有 App Store 按鈕或你自訂的 `purchaseAction`。此畫面為強制顯示，無法略過。詳見 [Configuration](CONFIGURATION.md#purchase-gate)。
+- 傳入 `purchaseRequirement: .appPurchase`、`.subscription(productIDs:)` 或 `.appPurchaseAndSubscription(productIDs:)`，SwiftNEW 會在啟動時以 StoreKit 2 驗證購買；預設僅在 TestFlight 版本生效（`purchaseEnvironment: .all` 會套用到所有版本）。未符合要求時，會在更新畫面與「最新功能」之前顯示購買畫面，訂閱會提供 **回復購買項目**，並有 App Store 按鈕或你自訂的 `purchaseAction`。此畫面為強制顯示，無法略過。由於 TestFlight 使用 StoreKit sandbox，sandbox 的結果一律不接受：App Store 版本會儲存 Apple 簽署的正式交易，TestFlight 版本再驗證該簽章，因此測試者須先開啟一次 App Store 版本。詳見 [Configuration](CONFIGURATION.md#purchase-gate)。
 
 ## 📚 深入了解
 

@@ -2627,6 +2627,77 @@
           }
         }
       }
+    },
+    "Already purchased? Open the App Store version once, then return to this beta." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "هل اشتريت بالفعل؟ افتح إصدار App Store مرة واحدة ثم عُد إلى هذه النسخة التجريبية."
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bereits gekauft? Öffne die App Store-Version einmal und kehre dann zu dieser Beta zurück."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Already purchased? Open the App Store version once, then return to this beta."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¿Ya la compraste? Abre una vez la versión del App Store y luego vuelve a esta beta."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Déjà acheté ? Ouvrez une fois la version de l’App Store, puis revenez à cette bêta."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Già acquistato? Apri una volta la versione di App Store, poi torna a questa beta."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "すでに購入済みの場合は、App Store 版を一度開いてから、このベータ版に戻ってください。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "이미 구입하셨나요? App Store 버전을 한 번 연 다음 이 베타로 돌아오세요."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "已经购买？请先打开一次 App Store 版本，然后再回到此测试版。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "已經購買？請先開啟一次 App Store 版本，然後再回到此測試版。"
+          }
+        },
+        "zh-HK" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "已經買咗？請先開一次 App Store 版本，然後返嚟呢個測試版。"
+          }
+        }
+      }
     }
   },
   "version" : "1.0"

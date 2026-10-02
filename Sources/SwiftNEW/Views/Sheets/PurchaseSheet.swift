@@ -62,6 +62,12 @@ extension SwiftNEW {
                     .font(.footnote)
                     .foregroundStyle(.secondary)
                     .multilineTextAlignment(textAlignment)
+                if showsBetaPurchaseHint {
+                    Text(betaPurchaseHint)
+                        .font(.caption2)
+                        .foregroundStyle(.secondary)
+                        .multilineTextAlignment(textAlignment)
+                }
 
                 if let purchaseErrorMessage {
                     Text(purchaseErrorMessage)
@@ -106,6 +112,12 @@ extension SwiftNEW {
                     Text(purchaseMessage)
                         .font(.title3)
                         .foregroundStyle(.secondary)
+                    if showsBetaPurchaseHint {
+                        Text(betaPurchaseHint)
+                            .font(.footnote)
+                            .foregroundStyle(.secondary)
+                            .padding(.top, 6)
+                    }
                 }
                 .multilineTextAlignment(textAlignment)
                 .fixedSize(horizontal: false, vertical: true)
@@ -193,6 +205,19 @@ extension SwiftNEW {
     /// to the App Store account and has nothing to restore.
     private var showsRestorePurchases: Bool {
         displayedPurchaseRequirement != .appPurchase
+    }
+
+    /// A TestFlight build cannot see App Store purchases itself; it relies on
+    /// the proof the App Store version stores, so testers are told how to get it.
+    private var showsBetaPurchaseHint: Bool {
+        loadDependencies.isTestFlight()
+    }
+
+    private var betaPurchaseHint: String {
+        String(
+            localized: "Already purchased? Open the App Store version once, then return to this beta.",
+            bundle: .module
+        )
     }
 
     private var purchaseTitle: String {

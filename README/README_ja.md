@@ -126,7 +126,7 @@ Apple の承認を受けた CarPlay ホスト App では、`SwiftNEWCarPlayTempl
 ## 📝 注意事項
 
 - リモートの `data` URL と `checkForUpdates: true` を指定すると、更新チェックが有効になります。リモートにある最も高い `subVersion`（なければ `version`）がインストール済みアプリのバージョンより新しい場合、SwiftNEW は「新機能」画面の代わりに更新画面を表示し、アプリのバンドル ID を使って Apple の iTunes Lookup API から App Store のリンク先を取得します。主アクションには、ローカライズされた **今すぐダウンロード** が既定で表示されます。任意の文言をそのまま表示するには `updateButtonTitle` を使用してください。更新画面をスキップ不可にするには `allowsSkippingUpdate: false` を指定します。
-- `purchaseRequirement: .appPurchase`、`.subscription(productIDs:)`、または `.appPurchaseAndSubscription(productIDs:)` を指定すると、起動時に StoreKit 2 で購入を確認します。デフォルトでは TestFlight ビルドのみが対象です（`purchaseEnvironment: .all` ですべてのビルドに適用）。要件を満たしていない場合は、更新画面や新機能画面より先に購入画面を表示し、サブスクリプションには **購入を復元**、さらに App Store ボタンまたは独自の `purchaseAction` を表示します。この画面は必須でスキップできません。詳しくは [Configuration](CONFIGURATION.md#purchase-gate) を参照してください。
+- `purchaseRequirement: .appPurchase`、`.subscription(productIDs:)`、または `.appPurchaseAndSubscription(productIDs:)` を指定すると、起動時に StoreKit 2 で購入を確認します。デフォルトでは TestFlight ビルドのみが対象です（`purchaseEnvironment: .all` ですべてのビルドに適用）。要件を満たしていない場合は、更新画面や新機能画面より先に購入画面を表示し、サブスクリプションには **購入を復元**、さらに App Store ボタンまたは独自の `purchaseAction` を表示します。この画面は必須でスキップできません。TestFlight は StoreKit のサンドボックスを使うため、サンドボックスの結果は受け付けません。App Store 版が Apple 署名付きの本番トランザクションを保存し、TestFlight ビルドがその署名を再検証するので、テスターは先に App Store 版を一度開く必要があります。詳しくは [Configuration](CONFIGURATION.md#purchase-gate) を参照してください。
 
 ## 📚 詳細情報
 

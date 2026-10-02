@@ -126,7 +126,7 @@ Apple의 승인을 받은 CarPlay 호스트 앱은 `SwiftNEWCarPlayTemplateFacto
 ## 📝 참고 사항
 
 - 원격 `data` URL과 `checkForUpdates: true`를 전달하면 업데이트 확인이 활성화됩니다. 원격의 가장 높은 `subVersion`(또는 `version`)이 설치된 앱 버전보다 최신이면 SwiftNEW는 새로운 기능 화면 대신 업데이트 화면을 표시하고 앱의 번들 식별자를 사용해 Apple iTunes Lookup API에서 App Store 대상을 확인합니다. 기본 동작은 현지화된 **지금 다운로드**를 표시하며, `updateButtonTitle`을 사용하면 사용자 지정 문구를 그대로 표시할 수 있습니다. 업데이트 화면을 건너뛸 수 없게 하려면 `allowsSkippingUpdate: false`를 설정하세요.
-- `purchaseRequirement: .appPurchase`, `.subscription(productIDs:)` 또는 `.appPurchaseAndSubscription(productIDs:)`를 전달하면 실행 시 StoreKit 2로 구입을 확인합니다. 기본적으로 TestFlight 빌드에서만 적용되며, `purchaseEnvironment: .all`을 사용하면 모든 빌드에 적용됩니다. 요구 사항을 충족하지 못하면 업데이트 화면과 새로운 기능 화면보다 먼저 구입 화면을 표시하고, 구독에는 **구입 항목 복원**과 함께 App Store 버튼 또는 직접 제공한 `purchaseAction`을 표시합니다. 이 화면은 필수이며 건너뛸 수 없습니다. 자세한 내용은 [Configuration](CONFIGURATION.md#purchase-gate)을 참고하세요.
+- `purchaseRequirement: .appPurchase`, `.subscription(productIDs:)` 또는 `.appPurchaseAndSubscription(productIDs:)`를 전달하면 실행 시 StoreKit 2로 구입을 확인합니다. 기본적으로 TestFlight 빌드에서만 적용되며, `purchaseEnvironment: .all`을 사용하면 모든 빌드에 적용됩니다. 요구 사항을 충족하지 못하면 업데이트 화면과 새로운 기능 화면보다 먼저 구입 화면을 표시하고, 구독에는 **구입 항목 복원**과 함께 App Store 버튼 또는 직접 제공한 `purchaseAction`을 표시합니다. 이 화면은 필수이며 건너뛸 수 없습니다. TestFlight는 StoreKit 샌드박스를 사용하므로 샌드박스 결과는 인정하지 않습니다. App Store 버전이 Apple이 서명한 프로덕션 거래를 저장하고 TestFlight 빌드가 그 서명을 다시 검증하므로, 테스터는 먼저 App Store 버전을 한 번 열어야 합니다. 자세한 내용은 [Configuration](CONFIGURATION.md#purchase-gate)을 참고하세요.
 
 ## 📚 자세히 알아보기
 

@@ -283,6 +283,11 @@ import UIKit
     renderPurchaseView(
         makePurchaseTestView(purchaseCheckPhase: .checking).sheetPurchase
     )
+    let beta = makePurchaseTestView(purchaseCheckPhase: .required, isTestFlight: true)
+    renderPurchaseView(beta.sheetPurchase)
+    #if DEBUG
+    renderPurchaseView(beta.testingWatchPurchaseContent)
+    #endif
     renderPurchaseView(
         makePurchaseTestView(
             presentation: .embed,
@@ -459,7 +464,9 @@ private func renderPurchaseView<ViewUnderTest: View>(_ view: ViewUnderTest) {
     await appStore.runPurchaseTask(appStore.purchaseTaskID)
     #expect(appStore.activePurchaseRequirement == nil)
     #expect(appStore.isPurchaseGateActive == false)
-    #expect(await verifier.callCount == 0)
+    #expect(appStore.purchaseCheckPhase == .inactive)
+    // The silent pass only lets the verifier store proof of a production purchase.
+    #expect(await verifier.callCount == 1)
 
     let testFlight = makePurchaseTestView(
         verifier: verifier,
