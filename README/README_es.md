@@ -66,6 +66,8 @@ Un framework de presentación **"Novedades"** moderno y nativo de SwiftUI para t
 
 Eso es todo — SwiftNEW se activa automáticamente cuando cambia la versión de la app.
 
+Las apps host de CarPlay aprobadas por Apple también pueden mostrar contenido apto con `SwiftNEWCarPlayTemplateFactory`; un changelog general de producto no es apto automáticamente para CarPlay. Consulta la [guía de integración de CarPlay](CARPLAY.md) para el ciclo de vida de la escena, la carga de datos y los requisitos de entitlement.
+
 ## ✨ Funcionalidades
 
 | Funcionalidad | Desde | Descripción |
@@ -133,6 +135,7 @@ Eso es todo — SwiftNEW se activa automáticamente cuando cambia la versión de
 |-------|--------|
 | [Configuration](CONFIGURATION.md) | Todos los parámetros, ejemplos, fuentes de datos (local / remota / Firebase), modelo de datos |
 | [Platform Support & Installation](PLATFORM.md) | Versiones de SO compatibles, requisitos, matriz de funcionalidades, configuración de SPM |
+| [CarPlay Integration](CARPLAY.md) | Template factory, ciclo de vida de la escena, carga de datos, requisitos de entitlement |
 | [Contributing](CONTRIBUTING.md) | Estructura del proyecto, entorno de desarrollo, pautas de PR, solución de problemas |
 
 ## 📄 Licencia

@@ -66,6 +66,8 @@
 
 これだけ — App のバージョンが変わると、SwiftNEW が自動的に表示されます。
 
+Apple の承認を受けた CarPlay ホスト App では、`SwiftNEWCarPlayTemplateFactory` で対象となる更新内容を表示できます。一般的な製品の変更履歴が自動的に CarPlay の対象になるわけではありません。シーンのライフサイクル、データの読み込み、entitlement の要件は [CarPlay 統合ガイド](CARPLAY.md) を参照してください。
+
 ## ✨ 機能
 
 | 機能 | 追加バージョン | 説明 |
@@ -132,6 +134,7 @@
 |-------|--------|
 | [Configuration](CONFIGURATION.md) | すべてのパラメータ、例、データソース(ローカル / リモート / Firebase)、データモデル |
 | [Platform Support & Installation](PLATFORM.md) | 対応 OS バージョン、要件、機能対応表、SPM セットアップ |
+| [CarPlay Integration](CARPLAY.md) | Template factory、シーンのライフサイクル、データの読み込み、entitlement の要件 |
 | [Contributing](CONTRIBUTING.md) | プロジェクト構成、開発環境、PR ガイドライン、トラブルシューティング |
 
 ## 📄 ライセンス

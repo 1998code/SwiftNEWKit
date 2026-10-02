@@ -11,6 +11,7 @@ extension SwiftNEW {
     var purchaseTaskID: SwiftNEWPurchaseTaskID {
         SwiftNEWPurchaseTaskID(
             requirement: activePurchaseRequirement,
+            proofRequirement: activePurchaseRequirement == nil ? purchaseRequirement : nil,
             reloadID: purchaseReloadID
         )
     }
@@ -46,9 +47,11 @@ extension SwiftNEW {
         guard isCurrentPurchaseTask(taskID) else { return }
         loadStateMachine.resetPurchaseIfRequirementChanged(to: taskID.requirement)
 
-        guard let requirement = taskID.requirement,
-              purchaseCheckPhase != .verified
-        else { return }
+        guard let requirement = taskID.requirement else {
+            await recordPurchaseProof(for: taskID.proofRequirement)
+            return
+        }
+        guard purchaseCheckPhase != .verified else { return }
 
         if loadStateMachine.beginPurchaseCheck() {
             // A cancelled or failed sync still falls through to the check below.
@@ -125,6 +128,14 @@ extension SwiftNEW {
             purchaseUnmetRequirement = unmetRequirement
         } else {
             finishPurchaseVerification()
+        }
+    }
+
+    /// Outside the enforced environment the check never shows anything; it
+    /// only lets the verifier store proof of a production purchase.
+    private func recordPurchaseProof(for requirement: SwiftNEWPurchaseRequirement?) async {
+        for component in requirement?.components ?? [] {
+            _ = try? await loadDependencies.verifyPurchase(component)
         }
     }
 

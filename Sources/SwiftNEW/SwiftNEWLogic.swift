@@ -372,6 +372,9 @@ enum SwiftNEWUpdateResolver {
 
 struct SwiftNEWPurchaseTaskID: Hashable, Sendable {
     let requirement: SwiftNEWPurchaseRequirement?
+    /// Configured but not enforced in this build: verified silently so an
+    /// App Store build can store proof for later TestFlight builds.
+    var proofRequirement: SwiftNEWPurchaseRequirement?
     let reloadID: UUID
 }
 

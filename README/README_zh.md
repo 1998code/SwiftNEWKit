@@ -66,6 +66,8 @@
 
 完成 — 应用版本变更时,SwiftNEW 会自动触发。
 
+已获 Apple 批准的 CarPlay 宿主 App,只有在更新内容直接符合获批车载类别时才可使用 `SwiftNEWCarPlayTemplateFactory`;一般产品 changelog 并不会自动符合资格。Scene lifecycle、内容与 entitlement 限制请参阅 [CarPlay 集成指南](CARPLAY.md)。
+
 ## ✨ 功能
 
 | 功能 | 起始版本 | 说明 |
@@ -132,6 +134,7 @@
 |-------|--------|
 | [Configuration](CONFIGURATION.md) | 全部参数、示例、数据源(本地 / 远程 / Firebase)、数据模型 |
 | [Platform Support & Installation](PLATFORM.md) | 支持的 OS 版本、需求、功能对照表、SPM 设置 |
+| [CarPlay Integration](CARPLAY.md) | Template factory、scene lifecycle、数据加载、entitlement 要求 |
 | [Contributing](CONTRIBUTING.md) | 项目结构、开发环境、PR 规范、故障排查 |
 
 ## 📄 许可证

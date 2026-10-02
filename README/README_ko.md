@@ -66,6 +66,8 @@
 
 이게 전부입니다 — 앱 버전이 변경되면 SwiftNEW 가 자동으로 표시됩니다.
 
+Apple의 승인을 받은 CarPlay 호스트 앱은 `SwiftNEWCarPlayTemplateFactory` 로 승인된 용도에 적합한 업데이트 콘텐츠를 표시할 수 있습니다. 일반적인 제품 변경 내역이 자동으로 CarPlay 대상이 되는 것은 아닙니다. Scene 라이프사이클、데이터 로딩、entitlement 요구 사항은 [CarPlay 통합 가이드](CARPLAY.md)를 참고하세요.
+
 ## ✨ 기능
 
 | 기능 | 도입 버전 | 설명 |
@@ -132,6 +134,7 @@
 |-------|--------|
 | [Configuration](CONFIGURATION.md) | 모든 파라미터、예제、데이터 소스 (로컬 / 원격 / Firebase)、데이터 모델 |
 | [Platform Support & Installation](PLATFORM.md) | 지원 OS 버전、요구 사항、기능 매트릭스、SPM 설정 |
+| [CarPlay Integration](CARPLAY.md) | Template factory、scene 라이프사이클、데이터 로딩、entitlement 요구 사항 |
 | [Contributing](CONTRIBUTING.md) | 프로젝트 구조、개발 환경、PR 가이드라인、문제 해결 |
 
 ## 📄 라이선스
