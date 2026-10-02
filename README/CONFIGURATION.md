@@ -34,6 +34,10 @@
 | `allowsSkippingUpdate` | `Binding<Bool>` | `true` | Show **Not Now** and allow user-initiated dismissal of the Update presentation |
 | `updateButtonTitle` | `String?` / `Binding<String>` | `nil` / blank → `"Download Now"` | Primary App Store action text; a `nil` direct value or blank text uses the package-localized default |
 | `appStoreBundleIdentifier` | `String?` / `Binding<String?>` | `nil` | Optional App Store listing bundle ID override for extensions, companion apps, or previews |
+| `purchaseRequirement` | `SwiftNEWPurchaseRequirement?` / `Binding<SwiftNEWPurchaseRequirement?>` | `nil` | Verify a purchase before the app is entered: `.appPurchase`, `.subscription(productIDs:)`, or `.appPurchaseAndSubscription(productIDs:)`; `nil` disables the check |
+| `purchaseEnvironment` | `SwiftNEWPurchaseEnvironment` / `Binding<SwiftNEWPurchaseEnvironment>` | `.testFlight` | Builds in which `purchaseRequirement` is enforced: `.testFlight` (TestFlight builds only) or `.all` |
+| `purchaseButtonTitle` | `String?` / `Binding<String>` | `nil` / blank → localized default | Primary Purchase screen action text; a `nil` direct value or blank text uses the package-localized default |
+| `purchaseAction` | `(@MainActor () async -> Void)?` | `nil` | Runs your own StoreKit purchase from the primary button; `nil` opens the App Store listing instead |
 
 \* Required parameter
 
@@ -253,6 +257,52 @@ SwiftNEW(
 - When skipping is allowed, **Not Now** closes a sheet/full-screen presentation. In `.embed`, it returns to the normal What's New content.
 - Equal, older, or malformed versions keep the normal What's New flow. Local JSON never triggers the Update screen.
 - If the remote request or decoding fails, SwiftNEW keeps the existing retryable error state and never presents a stale update.
+
+## Purchase Gate
+
+Opt in with `purchaseRequirement` to verify a purchase before the user enters the app. By default the check is enforced in **TestFlight builds only**, so a beta can be limited to purchasers while App Store, development, and simulator builds skip it entirely; pass `purchaseEnvironment: .all` to enforce it in every build. The check runs with StoreKit 2 as soon as the SwiftNEW view appears; when the requirement is not met, SwiftNEW presents the Purchase screen in the configured `presentation`, ahead of the Update and What's New screens.
+
+Require a verified App Store purchase of the app itself:
+
+```swift
+SwiftNEW(
+    show: $showNew,
+    presentation: .fullScreenCover,
+    purchaseRequirement: .appPurchase
+)
+```
+
+Require a designated subscription, and sell it from the Purchase screen:
+
+```swift
+SwiftNEW(
+    show: $showNew,
+    presentation: .fullScreenCover,
+    purchaseRequirement: .subscription(productIDs: ["com.example.pro.monthly", "com.example.pro.yearly"]),
+    purchaseButtonTitle: "Subscribe – $4.99 / month",
+    purchaseAction: {
+        guard let product = try? await Product.products(for: ["com.example.pro.monthly"]).first,
+              case let .success(.verified(transaction))? = try? await product.purchase()
+        else { return }
+        await transaction.finish()
+    }
+)
+```
+
+- TestFlight is detected from the sandbox receipt combined with the absence of an embedded provisioning profile. This is reliable on iOS, iPadOS, watchOS, tvOS, and visionOS; macOS TestFlight builds are not detected, so use `.all` there if needed.
+- TestFlight builds talk to the StoreKit **sandbox**: purchases made there are free and separate from production. A TestFlight build therefore cannot see what the tester bought in the App Store version. `.subscription` verifies a subscription started inside the TestFlight build, and `.appPurchase` verifies only that StoreKit signed the app transaction.
+- The App Store listing icon is shown on the Purchase screen once the lookup resolves; a lock badge is used until then or when there is no listing.
+- `.appPurchaseAndSubscription(productIDs:)` requires both. The app purchase is verified first; the Purchase screen asks for whichever is still missing and switches from **Purchase Required** to **Subscription Required** once the first is met.
+- `.appPurchase` passes when `AppTransaction.shared` is verified by StoreKit. It requires iOS 16 / watchOS 9 or later; on iOS 15 and watchOS 8 the purchase cannot be verified, so the check passes rather than locking the user out.
+- `.subscription(productIDs:)` passes when `Transaction.currentEntitlements` contains a verified, non-revoked transaction for any listed product. This covers active auto-renewable subscriptions and non-consumables. An empty list accepts any current entitlement.
+- When a subscription is being asked for, the Purchase screen offers **Restore Purchases** (`AppStore.sync()` followed by a new check); it is hidden while the app purchase itself is required, since that is tied to the App Store account. The screen re-verifies automatically on StoreKit transaction updates and whenever the app becomes active again.
+- With a `purchaseAction`, the primary button runs your closure and re-verifies when it returns, so await the purchase inside it. The Purchase screen may be a non-dismissible sheet, so use StoreKit's own purchase sheet there rather than presenting another view from underneath. The default title is **Subscribe** (or **Purchase** for `.appPurchase`).
+- Without a `purchaseAction`, the primary button is **Continue in App Store** and opens the listing resolved through the same iTunes Lookup as the Update screen (`appStoreBundleIdentifier` applies). If the lookup fails, the screen shows a retry action instead.
+- `purchaseButtonTitle` is displayed verbatim, so localize it in your app. If you sell a subscription from this screen, include the price and terms App Review expects.
+- The Purchase screen is mandatory. It has no **Not Now** action and user-initiated dismissal is disabled until the requirement is verified. Developer-controlled state changes, removing the view, and quitting the app remain possible.
+- If StoreKit cannot answer (for example an Xcode build without a StoreKit configuration or sandbox account), the Purchase screen appears with an error and **Try Again**. Verification is never cached by SwiftNEW; StoreKit's own on-device cache keeps it working offline.
+- Once verified, a sheet opened only for the Purchase screen closes by itself. If What's New or an update was waiting, that content takes over instead. In `.embed`, the Purchase screen replaces the embedded content until verified.
+- This is a client-side check. Protect server-delivered content with your own receipt or App Store Server API validation.
 
 ### Firebase Realtime Database
 

@@ -1,5 +1,20 @@
 [
     {
+        "version": "27.4",
+        "subVersion": "27.4.0",
+        "new": [
+            {
+                "icons": [
+                    "lock.fill",
+                    "lock.open.fill"
+                ],
+                "title": "Kaufprüfung",
+                "subtitle": "Vor dem Start verifizieren",
+                "body": "Mit purchaseRequirement wird der App-Kauf im App Store oder ein festgelegtes Abonnement per StoreKit geprüft, bevor die App betreten wird. Der Bildschirm ist verpflichtend; „Käufe wiederherstellen“ ist integriert."
+            }
+        ]
+    },
+    {
         "version": "27.3",
         "subVersion": "27.3.0",
         "new": [

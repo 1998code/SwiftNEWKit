@@ -326,13 +326,13 @@ extension SwiftNEW {
         }
     }
 
-    private var frameAlignment: Alignment {
+    var frameAlignment: Alignment {
         if align == .leading { return .leading }
         if align == .trailing { return .trailing }
         return .center
     }
 
-    private var textAlignment: TextAlignment {
+    var textAlignment: TextAlignment {
         if align == .leading { return .leading }
         if align == .trailing { return .trailing }
         return .center
@@ -408,7 +408,7 @@ enum SwiftNEWUpdateEntranceMotion: Equatable {
 }
 
 @available(iOS 15.0, watchOS 8.0, macOS 12.0, tvOS 17.0, *)
-private struct SwiftNEWUpdateEntranceModifier: ViewModifier {
+struct SwiftNEWUpdateEntranceModifier: ViewModifier {
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
     @State private var isVisible = false
 
@@ -436,7 +436,7 @@ private struct SwiftNEWUpdateEntranceModifier: ViewModifier {
 }
 
 @available(iOS 15.0, watchOS 8.0, macOS 12.0, tvOS 17.0, *)
-private struct SwiftNEWUpdateCardGlassModifier: ViewModifier {
+struct SwiftNEWUpdateCardGlassModifier: ViewModifier {
     let cornerRadius: CGFloat
     let fallbackMaterial: SwiftNEWUpdateCardFallbackMaterial
 
@@ -508,7 +508,7 @@ private struct SwiftNEWUpdateCardGlassModifier: ViewModifier {
     }
 }
 
-private enum SwiftNEWUpdateCardFallbackMaterial: Equatable {
+enum SwiftNEWUpdateCardFallbackMaterial: Equatable {
     case thin
     case ultraThin
 }

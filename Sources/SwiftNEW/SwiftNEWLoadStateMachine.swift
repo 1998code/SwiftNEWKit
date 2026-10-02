@@ -12,6 +12,10 @@ struct SwiftNEWLoadDependencies: Sendable {
     typealias URLLoader = @Sendable (URL) async throws -> (Data, URLResponse)
     typealias StringProvider = @Sendable () -> String
     typealias OptionalStringProvider = @Sendable () -> String?
+    typealias BoolProvider = @Sendable () -> Bool
+    typealias PurchaseVerifier = @Sendable (SwiftNEWPurchaseRequirement) async throws -> Bool
+    typealias PurchaseRestorer = @Sendable () async throws -> Void
+    typealias PurchaseUpdates = @Sendable () -> AsyncStream<Void>
 
     let loadReleaseNotes: ReleaseNotesLoader
     let loadURL: URLLoader
@@ -19,6 +23,42 @@ struct SwiftNEWLoadDependencies: Sendable {
     let appStoreBundleIdentifier: OptionalStringProvider
     let currentVersion: StringProvider
     let currentBuild: StringProvider
+    let isTestFlight: BoolProvider
+    let verifyPurchase: PurchaseVerifier
+    let restorePurchases: PurchaseRestorer
+    let purchaseUpdates: PurchaseUpdates
+
+    init(
+        loadReleaseNotes: @escaping ReleaseNotesLoader,
+        loadURL: @escaping URLLoader,
+        regionCode: @escaping OptionalStringProvider,
+        appStoreBundleIdentifier: @escaping OptionalStringProvider,
+        currentVersion: @escaping StringProvider,
+        currentBuild: @escaping StringProvider,
+        isTestFlight: @escaping BoolProvider = { SwiftNEWTestFlight.isTestFlight(bundle: .main) },
+        // LCOV_EXCL_START -- StoreKit is unavailable to the package test runners.
+        verifyPurchase: @escaping PurchaseVerifier = { requirement in
+            try await SwiftNEWPurchaseVerifier.isSatisfied(requirement)
+        },
+        restorePurchases: @escaping PurchaseRestorer = {
+            try await SwiftNEWPurchaseVerifier.restore()
+        },
+        purchaseUpdates: @escaping PurchaseUpdates = {
+            SwiftNEWPurchaseVerifier.updates()
+        }
+        // LCOV_EXCL_STOP
+    ) {
+        self.loadReleaseNotes = loadReleaseNotes
+        self.loadURL = loadURL
+        self.regionCode = regionCode
+        self.appStoreBundleIdentifier = appStoreBundleIdentifier
+        self.currentVersion = currentVersion
+        self.currentBuild = currentBuild
+        self.isTestFlight = isTestFlight
+        self.verifyPurchase = verifyPurchase
+        self.restorePurchases = restorePurchases
+        self.purchaseUpdates = purchaseUpdates
+    }
 
     static let live = Self(
         loadReleaseNotes: { source, bundle in
@@ -66,6 +106,19 @@ final class SwiftNEWLoadStateMachine: ObservableObject {
     @Published var showSearch: Bool
     @Published var searchText: String
     @Published var debouncedSearchText: String
+    @Published var purchaseRequirement: SwiftNEWPurchaseRequirement?
+    @Published var purchaseCheckPhase: SwiftNEWPurchaseCheckPhase
+    @Published var purchaseErrorMessage: String?
+    /// The first check that failed; decides what the purchase screen asks for.
+    @Published var purchaseUnmetRequirement: SwiftNEWPurchaseRequirement?
+    @Published var purchaseAppStoreURL: URL?
+    @Published var purchaseAppIconURL: URL?
+    @Published var purchaseReloadID: UUID
+    @Published var purchaseRestoreRequested: Bool
+    /// The purchase gate presented the sheet itself, so it also closes it.
+    @Published var purchasePresentedGate: Bool
+    /// The pending dismissal belongs to the purchase gate, not to the user.
+    @Published var purchaseClosingGate: Bool
     #if os(iOS)
     @Published var activeDropEpoch: UUID?
     #endif
@@ -93,6 +146,12 @@ final class SwiftNEWLoadStateMachine: ObservableObject {
         showSearch: Bool = false,
         searchText: String = "",
         debouncedSearchText: String = "",
+        purchaseRequirement: SwiftNEWPurchaseRequirement? = nil,
+        purchaseCheckPhase: SwiftNEWPurchaseCheckPhase = .inactive,
+        purchaseErrorMessage: String? = nil,
+        purchaseAppStoreURL: URL? = nil,
+        purchaseAppIconURL: URL? = nil,
+        purchaseReloadID: UUID = UUID(),
         dependencies: SwiftNEWLoadDependencies = .live
     ) {
         self.items = items
@@ -115,6 +174,16 @@ final class SwiftNEWLoadStateMachine: ObservableObject {
         self.showSearch = showSearch
         self.searchText = searchText
         self.debouncedSearchText = debouncedSearchText
+        self.purchaseRequirement = purchaseRequirement
+        self.purchaseCheckPhase = purchaseCheckPhase
+        self.purchaseErrorMessage = purchaseErrorMessage
+        self.purchaseAppStoreURL = purchaseAppStoreURL
+        self.purchaseAppIconURL = purchaseAppIconURL
+        self.purchaseReloadID = purchaseReloadID
+        self.purchaseUnmetRequirement = nil
+        self.purchaseRestoreRequested = false
+        self.purchasePresentedGate = false
+        self.purchaseClosingGate = false
         #if os(iOS)
         self.activeDropEpoch = nil
         #endif
@@ -212,5 +281,55 @@ final class SwiftNEWLoadStateMachine: ObservableObject {
         appStoreLookupRetryRequest = nil
         loadGeneration = nil
         updateCheckPhase = .resolved
+    }
+
+    @discardableResult
+    func resetPurchaseIfRequirementChanged(to requirement: SwiftNEWPurchaseRequirement?) -> Bool {
+        guard purchaseRequirement != requirement else { return false }
+
+        purchaseRequirement = requirement
+        purchaseCheckPhase = .inactive
+        purchaseErrorMessage = nil
+        purchaseAppStoreURL = nil
+        purchaseAppIconURL = nil
+        purchaseUnmetRequirement = nil
+        purchaseRestoreRequested = false
+        return true
+    }
+
+    func requestPurchaseCheck(restoring: Bool = false) {
+        purchaseRestoreRequested = restoring
+        purchaseErrorMessage = nil
+        purchaseReloadID = UUID()
+    }
+
+    /// Starts a check and reports whether it should restore purchases first.
+    func beginPurchaseCheck() -> Bool {
+        let shouldRestore = purchaseRestoreRequested
+        purchaseRestoreRequested = false
+        purchaseCheckPhase = .checking
+        purchaseErrorMessage = nil
+        return shouldRestore
+    }
+
+    func requirePurchase(
+        _ unmetRequirement: SwiftNEWPurchaseRequirement?,
+        listing: SwiftNEWAppStoreListing?,
+        errorMessage: String?
+    ) {
+        purchaseUnmetRequirement = unmetRequirement
+        if let listing {
+            purchaseAppStoreURL = listing.url
+            purchaseAppIconURL = listing.iconURL
+        }
+        purchaseErrorMessage = errorMessage
+        purchaseCheckPhase = .required
+    }
+
+    func finishPurchaseVerification() {
+        purchaseCheckPhase = .verified
+        purchaseUnmetRequirement = nil
+        purchaseErrorMessage = nil
+        purchasePresentedGate = false
     }
 }

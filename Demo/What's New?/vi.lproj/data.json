@@ -1,5 +1,20 @@
 [
     {
+        "version": "27.4",
+        "subVersion": "27.4.0",
+        "new": [
+            {
+                "icons": [
+                    "lock.fill",
+                    "lock.open.fill"
+                ],
+                "title": "Cổng xác minh mua hàng",
+                "subtitle": "Xác minh trước khi vào",
+                "body": "Đặt purchaseRequirement để xác minh bằng StoreKit việc mua ứng dụng trên App Store hoặc một gói đăng ký chỉ định trước khi vào ứng dụng. Màn hình này là bắt buộc và có sẵn Khôi phục mục mua."
+            }
+        ]
+    },
+    {
         "version": "27.3",
         "subVersion": "27.3.0",
         "new": [

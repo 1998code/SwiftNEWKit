@@ -1,5 +1,20 @@
 [
     {
+        "version": "27.4",
+        "subVersion": "27.4.0",
+        "new": [
+            {
+                "icons": [
+                    "lock.fill",
+                    "lock.open.fill"
+                ],
+                "title": "Gerbang Pembelian",
+                "subtitle": "Verifikasi Sebelum Masuk",
+                "body": "Atur purchaseRequirement untuk memverifikasi pembelian app di App Store atau langganan tertentu dengan StoreKit sebelum app dibuka. Layar ini wajib dan sudah menyertakan Pulihkan Pembelian."
+            }
+        ]
+    },
+    {
         "version": "27.3",
         "subVersion": "27.3.0",
         "new": [

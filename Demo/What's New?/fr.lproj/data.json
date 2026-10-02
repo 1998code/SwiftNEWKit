@@ -1,5 +1,20 @@
 [
     {
+        "version": "27.4",
+        "subVersion": "27.4.0",
+        "new": [
+            {
+                "icons": [
+                    "lock.fill",
+                    "lock.open.fill"
+                ],
+                "title": "Vérification d’achat",
+                "subtitle": "Vérifier avant d’entrer",
+                "body": "Définissez purchaseRequirement pour vérifier avec StoreKit l’achat de l’app sur l’App Store ou un abonnement désigné avant d’entrer dans l’app. L’écran est obligatoire et intègre Restaurer les achats."
+            }
+        ]
+    },
+    {
         "version": "27.3",
         "subVersion": "27.3.0",
         "new": [

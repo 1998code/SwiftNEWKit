@@ -1,5 +1,20 @@
 [
     {
+        "version": "27.4",
+        "subVersion": "27.4.0",
+        "new": [
+            {
+                "icons": [
+                    "lock.fill",
+                    "lock.open.fill"
+                ],
+                "title": "Purchase Gate",
+                "subtitle": "Verify Before Entering",
+                "body": "Set purchaseRequirement to verify the App Store app purchase or a designated subscription with StoreKit before the app is entered. The screen is mandatory, with Restore Purchases built in."
+            }
+        ]
+    },
+    {
         "version": "27.3",
         "subVersion": "27.3.0",
         "new": [

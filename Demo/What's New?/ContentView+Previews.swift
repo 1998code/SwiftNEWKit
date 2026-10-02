@@ -50,6 +50,19 @@ import SwiftNEW
     )
 }
 
+// Purchase Gate (>27.4.0) - Verify a designated subscription before entering the app
+#Preview("Purchase Gate") {
+    @Previewable @State var showNew: Bool = false
+    SwiftNEW(
+        show: $showNew,
+        labelImage: "lock",
+        presentation: .fullScreenCover,
+        appStoreBundleIdentifier: "com.apple.TestFlight",
+        purchaseRequirement: .subscription(productIDs: ["com.example.pro"]),
+        purchaseEnvironment: .all
+    )
+}
+
 // Drop (>3.4.0) - Recommended trigger with Remote Notification
 #Preview("Drop") {
     @Previewable @State var showNew: Bool = false

@@ -1,5 +1,20 @@
 [
     {
+        "version": "27.4",
+        "subVersion": "27.4.0",
+        "new": [
+            {
+                "icons": [
+                    "lock.fill",
+                    "lock.open.fill"
+                ],
+                "title": "Købskontrol",
+                "subtitle": "Bekræft før adgang",
+                "body": "Angiv purchaseRequirement for at bekræfte appkøbet i App Store eller et bestemt abonnement med StoreKit, før appen åbnes. Skærmen er obligatorisk, og Gendan køb er indbygget."
+            }
+        ]
+    },
+    {
         "version": "27.3",
         "subVersion": "27.3.0",
         "new": [

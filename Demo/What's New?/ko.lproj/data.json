@@ -1,5 +1,20 @@
 [
     {
+        "version": "27.4",
+        "subVersion": "27.4.0",
+        "new": [
+            {
+                "icons": [
+                    "lock.fill",
+                    "lock.open.fill"
+                ],
+                "title": "구입 확인 게이트",
+                "subtitle": "진입 전에 확인",
+                "body": "purchaseRequirement를 설정하면 앱에 진입하기 전에 StoreKit으로 App Store 앱 구입 또는 지정한 구독을 확인합니다. 이 화면은 필수이며 구입 항목 복원이 기본 제공됩니다."
+            }
+        ]
+    },
+    {
         "version": "27.3",
         "subVersion": "27.3.0",
         "new": [

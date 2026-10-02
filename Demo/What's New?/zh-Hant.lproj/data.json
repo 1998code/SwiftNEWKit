@@ -1,5 +1,20 @@
 [
     {
+        "version": "27.4",
+        "subVersion": "27.4.0",
+        "new": [
+            {
+                "icons": [
+                    "lock.fill",
+                    "lock.open.fill"
+                ],
+                "title": "購買驗證畫面",
+                "subtitle": "入 App 前先驗證",
+                "body": "設定 purchaseRequirement，就可以喺入 App 之前用 StoreKit 驗證 App Store 購買紀錄或者指定訂閱。呢個畫面係強制顯示，並內置「還原購買項目」。"
+            }
+        ]
+    },
+    {
         "version": "27.3",
         "subVersion": "27.3.0",
         "new": [

@@ -259,11 +259,20 @@ struct SwiftNEWAppStoreLookupResponse: Decodable, Equatable, Sendable {
 struct SwiftNEWAppStoreLookupResult: Decodable, Equatable, Sendable {
     let bundleIdentifier: String?
     let trackViewURL: String?
+    let artworkURL512: String?
+    let artworkURL100: String?
 
     enum CodingKeys: String, CodingKey {
         case bundleIdentifier = "bundleId"
         case trackViewURL = "trackViewUrl"
+        case artworkURL512 = "artworkUrl512"
+        case artworkURL100 = "artworkUrl100"
     }
+}
+
+struct SwiftNEWAppStoreListing: Equatable, Sendable {
+    let url: URL
+    let iconURL: URL?
 }
 
 enum SwiftNEWAppStoreLookupError: Error {
@@ -314,6 +323,25 @@ enum SwiftNEWAppStoreLookup {
         }.first
     }
 
+    /// The listing's App Store icon, accepted only from Apple's HTTPS artwork CDN.
+    static func iconURL(from data: Data, bundleIdentifier: String) throws -> URL? {
+        let response = try JSONDecoder().decode(SwiftNEWAppStoreLookupResponse.self, from: data)
+        let normalizedBundleIdentifier = bundleIdentifier.trimmingCharacters(
+            in: .whitespacesAndNewlines
+        )
+
+        return response.results.lazy.compactMap { result -> URL? in
+            guard result.bundleIdentifier?.caseInsensitiveCompare(normalizedBundleIdentifier) == .orderedSame,
+                  let rawURL = result.artworkURL512 ?? result.artworkURL100,
+                  let url = URL(string: rawURL),
+                  url.scheme?.lowercased() == "https",
+                  let host = url.host?.lowercased(),
+                  host == "mzstatic.com" || host.hasSuffix(".mzstatic.com")
+            else { return nil }
+            return url
+        }.first
+    }
+
     static func normalizedCountryCode(_ countryCode: String?) -> String? {
         guard let countryCode else { return nil }
         let trimmed = countryCode.trimmingCharacters(in: .whitespacesAndNewlines)
@@ -339,6 +367,64 @@ enum SwiftNEWUpdateResolver {
             in: releases,
             currentVersion: currentVersion
         )
+    }
+}
+
+struct SwiftNEWPurchaseTaskID: Hashable, Sendable {
+    let requirement: SwiftNEWPurchaseRequirement?
+    let reloadID: UUID
+}
+
+enum SwiftNEWPurchaseCheckPhase: Equatable, Sendable {
+    case inactive
+    case checking
+    case verified
+    case required
+}
+
+enum SwiftNEWTestFlight {
+    /// TestFlight builds carry a sandbox receipt but, unlike development and
+    /// ad hoc builds, no embedded provisioning profile.
+    static func isTestFlight(
+        receiptURL: URL?,
+        hasEmbeddedProvisioningProfile: Bool,
+        isSimulator: Bool
+    ) -> Bool {
+        !isSimulator
+            && !hasEmbeddedProvisioningProfile
+            && receiptURL?.lastPathComponent == "sandboxReceipt"
+    }
+
+    static func isTestFlight(bundle: Bundle) -> Bool {
+        #if targetEnvironment(simulator)
+        let isSimulator = true
+        #else
+        let isSimulator = false
+        #endif
+
+        return isTestFlight(
+            receiptURL: bundle.appStoreReceiptURL,
+            hasEmbeddedProvisioningProfile: bundle.url(
+                forResource: "embedded",
+                withExtension: "mobileprovision"
+            ) != nil,
+            isSimulator: isSimulator
+        )
+    }
+}
+
+enum SwiftNEWPurchaseEntitlement {
+    static func satisfies(
+        _ requirement: SwiftNEWPurchaseRequirement,
+        productID: String,
+        isRevoked: Bool
+    ) -> Bool {
+        guard !isRevoked, case let .subscription(productIDs) = requirement else { return false }
+
+        let designatedProductIDs = productIDs
+            .map { $0.trimmingCharacters(in: .whitespacesAndNewlines) }
+            .filter { !$0.isEmpty }
+        return designatedProductIDs.isEmpty || designatedProductIDs.contains(productID)
     }
 }
 

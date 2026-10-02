@@ -70,6 +70,7 @@
 
 | 功能 | 起始版本 | 说明 |
 |---------|:-----:|-------------|
+| 🔐 购买验证界面 | 27.4.0 | 通过 `purchaseRequirement` 启用；进入 App 前使用 StoreKit 验证 App Store 购买记录或指定订阅 |
 | 🖋️ 自定义按钮文字颜色 | 27.3.0 | 直接设置 `buttonTextColor` 或通过 binding 控制，替换版本说明触发按钮与主要操作按钮自动选择的黑色或白色文字 |
 | ⌚ 原生 watchOS 支持 | 27.0 | `SwiftNEW` 现已支持 watchOS 8，提供紧凑的当前版本 / 历史 / 更新界面、自适应视觉回退，以及配套 App 的 App Store 自动查询 |
 | 🚘 CarPlay 模板支持 | 27.0 | 已获 Apple 批准的 CarPlay 宿主 App 可使用同一套本地或远程 JSON，在原生模板中呈现符合获批车载用途的更新内容 |

@@ -114,25 +114,17 @@ struct ContentView: View {
     @State private var showFullScreen = false
     @State private var showParticles = false
     @State private var showRemote = false
+    @State private var showPurchase = false
+    @State private var purchaseMode: DemoPurchaseMode?
 
     var body: some View {
         ZStack {
             tabBackground
 
             TabView {
-                examplePage(
-                    title: "Default",
-                    description: "The standard SwiftNEW button and sheet presentation."
-                ) {
-                    SwiftNEW(show: $showDefault)
-                }
-                .tabItem {
-                    Label("Default", systemImage: "sparkles")
-                }
-
-                miniToolbarExample
+                defaultExample
                     .tabItem {
-                        Label("Mini", systemImage: "rectangle.compress.vertical")
+                        Label("Default", systemImage: "sparkles")
                     }
 
                 examplePage(
@@ -178,6 +170,30 @@ struct ContentView: View {
                 }
                 .tabItem {
                     Label("Remote", systemImage: "icloud")
+                }
+
+                examplePage(
+                    title: "Purchase",
+                    description: purchaseMode == nil
+                        ? "Choose what must be verified before entering the app."
+                        : "Verify the selected purchase before entering the app."
+                ) {
+                    if let purchaseMode {
+                        SwiftNEW(
+                            show: $showPurchase,
+                            label: "Show Purchase Gate",
+                            labelImage: "lock",
+                            presentation: .fullScreenCover,
+                            appStoreBundleIdentifier: "com.apple.TestFlight",
+                            purchaseRequirement: purchaseMode.requirement,
+                            purchaseEnvironment: .all
+                        )
+                    } else {
+                        purchaseModePicker
+                    }
+                }
+                .tabItem {
+                    Label("Purchase", systemImage: "lock")
                 }
             }
         }
@@ -237,19 +253,16 @@ struct ContentView: View {
         #endif
     }
 
-    private var miniToolbarExample: some View {
+    private var defaultExample: some View {
         NavigationView {
-            VStack(spacing: 8) {
-                Text("Mini")
-                    .font(.largeTitle.bold())
-                Text("Tap the SwiftNEW button in the toolbar.")
-                    .foregroundStyle(.secondary)
-                    .multilineTextAlignment(.center)
+            examplePage(
+                title: "Default",
+                description: "The standard SwiftNEW button and sheet presentation."
+            ) {
+                SwiftNEW(show: $showDefault)
             }
-            .padding()
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .background {
-                tabBackground
+            .overlay(alignment: .topTrailing) {
+                miniToolbarHint
             }
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
@@ -258,6 +271,66 @@ struct ContentView: View {
             }
         }
         .navigationViewStyle(.stack)
+    }
+
+    private var miniToolbarHint: some View {
+        Label("Mini size fits a toolbar", systemImage: "arrow.up")
+            .labelStyle(TrailingIconLabelStyle())
+            .font(.footnote.weight(.medium))
+            .foregroundStyle(.secondary)
+            .padding(.top, 8)
+            .padding(.trailing, 20)
+    }
+
+    private var purchaseModePicker: some View {
+        VStack(spacing: 0) {
+            ForEach(DemoPurchaseMode.allCases) { mode in
+                Button {
+                    purchaseMode = mode
+                } label: {
+                    HStack(spacing: 14) {
+                        Image(systemName: mode.systemImage)
+                            .font(.body.weight(.semibold))
+                            .foregroundStyle(Color.accentColor)
+                            .frame(width: 38, height: 38)
+                            .background(
+                                Color.accentColor.opacity(0.14),
+                                in: RoundedRectangle(cornerRadius: 10, style: .continuous)
+                            )
+
+                        VStack(alignment: .leading, spacing: 2) {
+                            Text(mode.title)
+                                .font(.body.weight(.semibold))
+                                .foregroundStyle(.primary)
+                            Text(mode.detail)
+                                .font(.footnote)
+                                .foregroundStyle(.secondary)
+                        }
+                        .multilineTextAlignment(.leading)
+
+                        Spacer(minLength: 8)
+
+                        Image(systemName: "chevron.right")
+                            .font(.footnote.weight(.semibold))
+                            .foregroundStyle(.tertiary)
+                    }
+                    .padding(.horizontal, 16)
+                    .padding(.vertical, 12)
+                    .contentShape(Rectangle())
+                }
+                .buttonStyle(.plain)
+
+                if mode != DemoPurchaseMode.allCases.last {
+                    Divider()
+                        .padding(.leading, 68)
+                }
+            }
+        }
+        .frame(maxWidth: 360)
+        .background(
+            .regularMaterial,
+            in: RoundedRectangle(cornerRadius: 20, style: .continuous)
+        )
     }
 
     private func examplePage<Content: View>(
@@ -280,6 +353,57 @@ struct ContentView: View {
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background {
             tabBackground
+        }
+    }
+}
+
+private enum DemoPurchaseMode: String, CaseIterable, Identifiable {
+    case appPurchase
+    case subscription
+    case both
+
+    private static let productIDs = ["com.example.pro"]
+
+    var id: String { rawValue }
+
+    var title: String {
+        switch self {
+        case .appPurchase: return "App Store Purchase"
+        case .subscription: return "Subscription"
+        case .both: return "Purchase + Subscription"
+        }
+    }
+
+    var detail: String {
+        switch self {
+        case .appPurchase: return "One-time purchase of the app"
+        case .subscription: return "An active designated subscription"
+        case .both: return "Both are required"
+        }
+    }
+
+    var systemImage: String {
+        switch self {
+        case .appPurchase: return "bag"
+        case .subscription: return "arrow.triangle.2.circlepath"
+        case .both: return "checkmark.seal"
+        }
+    }
+
+    var requirement: SwiftNEWPurchaseRequirement {
+        switch self {
+        case .appPurchase: return .appPurchase
+        case .subscription: return .subscription(productIDs: Self.productIDs)
+        case .both: return .appPurchaseAndSubscription(productIDs: Self.productIDs)
+        }
+    }
+}
+
+private struct TrailingIconLabelStyle: LabelStyle {
+    func makeBody(configuration: Configuration) -> some View {
+        HStack(spacing: 6) {
+            configuration.title
+            configuration.icon
         }
     }
 }

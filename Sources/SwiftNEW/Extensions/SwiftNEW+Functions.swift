@@ -223,6 +223,10 @@ extension SwiftNEW {
     }
 
     private func fetchAppStoreURL(bundleIdentifier: String?) async throws -> URL {
+        try await fetchAppStoreListing(bundleIdentifier: bundleIdentifier).url
+    }
+
+    func fetchAppStoreListing(bundleIdentifier: String?) async throws -> SwiftNEWAppStoreListing {
         guard let bundleIdentifier else {
             throw SwiftNEWAppStoreLookupError.missingBundleIdentifier
         }
@@ -234,7 +238,13 @@ extension SwiftNEW {
             from: defaultData,
             bundleIdentifier: bundleIdentifier
         ) {
-            return appStoreURL
+            return SwiftNEWAppStoreListing(
+                url: appStoreURL,
+                iconURL: try SwiftNEWAppStoreLookup.iconURL(
+                    from: defaultData,
+                    bundleIdentifier: bundleIdentifier
+                )
+            )
         }
 
         guard !Task.isCancelled,
@@ -252,7 +262,13 @@ extension SwiftNEW {
             from: regionalData,
             bundleIdentifier: bundleIdentifier
         ) else { throw SwiftNEWAppStoreLookupError.noResult }
-        return appStoreURL
+        return SwiftNEWAppStoreListing(
+            url: appStoreURL,
+            iconURL: try SwiftNEWAppStoreLookup.iconURL(
+                from: regionalData,
+                bundleIdentifier: bundleIdentifier
+            )
+        )
     }
 
     @MainActor
@@ -340,9 +356,11 @@ extension SwiftNEW {
         if updateCandidate != nil {
             cancelActiveDrop()
             if presentation != .embed,
-               !suppressedAutomaticUpdateRequests.contains(request),
-               !show {
-                withAnimation { show = true }
+               !suppressedAutomaticUpdateRequests.contains(request) {
+                purchasePresentedGate = false
+                if !show {
+                    withAnimation { show = true }
+                }
             }
             return
         }
@@ -376,6 +394,7 @@ extension SwiftNEW {
         historySheet = false
         resetSearch()
 
+        guard !consumePurchaseGateDismissal() else { return }
         guard shouldPrefetchRemoteUpdate else { return }
 
         if updateCheckPhase != .resolved || availableUpdate != nil {
@@ -393,6 +412,7 @@ extension SwiftNEW {
             break
         case .sheet:
             cancelActiveDrop()
+            purchasePresentedGate = false
             withAnimation { show = true }
         case .drop:
             #if os(iOS)

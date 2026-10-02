@@ -46,12 +46,36 @@ public enum SwiftNEWMeshStyle: Equatable {
     case liquid
 }
 
+// Purchase requirement verified with StoreKit before the app is entered
+public enum SwiftNEWPurchaseRequirement: Hashable, Sendable {
+    case appPurchase                         // verified App Store purchase of the app itself
+    case subscription(productIDs: [String])  // active entitlement for any listed product; empty matches any product
+    case appPurchaseAndSubscription(productIDs: [String]) // both of the above are required
+
+    /// The individual checks that must all pass, in the order they are verified.
+    var components: [SwiftNEWPurchaseRequirement] {
+        switch self {
+        case .appPurchase, .subscription:
+            return [self]
+        case let .appPurchaseAndSubscription(productIDs):
+            return [.appPurchase, .subscription(productIDs: productIDs)]
+        }
+    }
+}
+
+// Builds in which `purchaseRequirement` is enforced
+public enum SwiftNEWPurchaseEnvironment: Hashable, Sendable {
+    case testFlight // TestFlight builds only (default)
+    case all        // every build, including App Store and development builds
+}
+
 @available(iOS 15.0, watchOS 8.0, macOS 12.0, tvOS 17.0, *)
 public struct SwiftNEW: View {
     @AppStorage("swiftnew.version") var version = ""
     @AppStorage("swiftnew.build") var build = ""
     @Environment(\.colorScheme) var colorScheme
     @Environment(\.openURL) var openURL
+    @Environment(\.scenePhase) var scenePhase
 
     @StateObject private var loadStateMachineStorage: SwiftNEWLoadStateMachine
     #if DEBUG
@@ -87,6 +111,10 @@ public struct SwiftNEW: View {
     @Binding var allowsSkippingUpdate: Bool
     @Binding var updateButtonTitle: String
     @Binding var appStoreBundleIdentifier: String?
+    @Binding var purchaseRequirement: SwiftNEWPurchaseRequirement?
+    @Binding var purchaseEnvironment: SwiftNEWPurchaseEnvironment
+    @Binding var purchaseButtonTitle: String
+    var purchaseAction: (@MainActor () async -> Void)?
     var dataBundle: Bundle = .main
 
     var loadStateMachine: SwiftNEWLoadStateMachine {
@@ -182,6 +210,46 @@ public struct SwiftNEW: View {
         nonmutating set { loadStateMachine.appStoreLookupRetryRequest = newValue }
     }
 
+    var purchaseCheckPhase: SwiftNEWPurchaseCheckPhase {
+        get { loadStateMachine.purchaseCheckPhase }
+        nonmutating set { loadStateMachine.purchaseCheckPhase = newValue }
+    }
+
+    var purchaseErrorMessage: String? {
+        get { loadStateMachine.purchaseErrorMessage }
+        nonmutating set { loadStateMachine.purchaseErrorMessage = newValue }
+    }
+
+    var purchaseAppStoreURL: URL? {
+        get { loadStateMachine.purchaseAppStoreURL }
+        nonmutating set { loadStateMachine.purchaseAppStoreURL = newValue }
+    }
+
+    var purchaseUnmetRequirement: SwiftNEWPurchaseRequirement? {
+        get { loadStateMachine.purchaseUnmetRequirement }
+        nonmutating set { loadStateMachine.purchaseUnmetRequirement = newValue }
+    }
+
+    var purchaseAppIconURL: URL? {
+        get { loadStateMachine.purchaseAppIconURL }
+        nonmutating set { loadStateMachine.purchaseAppIconURL = newValue }
+    }
+
+    var purchaseReloadID: UUID {
+        get { loadStateMachine.purchaseReloadID }
+        nonmutating set { loadStateMachine.purchaseReloadID = newValue }
+    }
+
+    var purchasePresentedGate: Bool {
+        get { loadStateMachine.purchasePresentedGate }
+        nonmutating set { loadStateMachine.purchasePresentedGate = newValue }
+    }
+
+    var purchaseClosingGate: Bool {
+        get { loadStateMachine.purchaseClosingGate }
+        nonmutating set { loadStateMachine.purchaseClosingGate = newValue }
+    }
+
     var historySheet: Bool {
         get { loadStateMachine.historySheet }
         nonmutating set { loadStateMachine.historySheet = newValue }
@@ -274,7 +342,11 @@ public struct SwiftNEW: View {
         checkForUpdates: Bool? = false,
         allowsSkippingUpdate: Bool? = true,
         updateButtonTitle: String? = nil,
-        appStoreBundleIdentifier: String? = nil
+        appStoreBundleIdentifier: String? = nil,
+        purchaseRequirement: SwiftNEWPurchaseRequirement? = nil,
+        purchaseEnvironment: SwiftNEWPurchaseEnvironment? = .testFlight,
+        purchaseButtonTitle: String? = nil,
+        purchaseAction: (@MainActor () async -> Void)? = nil
     ) {
         let loadStateMachine = SwiftNEWLoadStateMachine()
         _loadStateMachineStorage = StateObject(wrappedValue: loadStateMachine)
@@ -310,6 +382,10 @@ public struct SwiftNEW: View {
         _allowsSkippingUpdate = .constant(allowsSkippingUpdate ?? true)
         _updateButtonTitle = .constant(updateButtonTitle ?? "")
         _appStoreBundleIdentifier = .constant(appStoreBundleIdentifier)
+        _purchaseRequirement = .constant(purchaseRequirement)
+        _purchaseEnvironment = .constant(purchaseEnvironment ?? .testFlight)
+        _purchaseButtonTitle = .constant(purchaseButtonTitle ?? "")
+        self.purchaseAction = purchaseAction
     }
 
     @_disfavoredOverload
@@ -341,7 +417,11 @@ public struct SwiftNEW: View {
         checkForUpdates: Binding<Bool>? = .constant(false),
         allowsSkippingUpdate: Binding<Bool>? = .constant(true),
         updateButtonTitle: Binding<String>? = nil,
-        appStoreBundleIdentifier: Binding<String?>? = .constant(nil)
+        appStoreBundleIdentifier: Binding<String?>? = .constant(nil),
+        purchaseRequirement: Binding<SwiftNEWPurchaseRequirement?>? = .constant(nil),
+        purchaseEnvironment: Binding<SwiftNEWPurchaseEnvironment>? = .constant(.testFlight),
+        purchaseButtonTitle: Binding<String>? = nil,
+        purchaseAction: (@MainActor () async -> Void)? = nil
     ) {
         let loadStateMachine = SwiftNEWLoadStateMachine()
         _loadStateMachineStorage = StateObject(wrappedValue: loadStateMachine)
@@ -377,6 +457,10 @@ public struct SwiftNEW: View {
         _allowsSkippingUpdate = allowsSkippingUpdate ?? .constant(true)
         _updateButtonTitle = updateButtonTitle ?? .constant("")
         _appStoreBundleIdentifier = appStoreBundleIdentifier ?? .constant(nil)
+        _purchaseRequirement = purchaseRequirement ?? .constant(nil)
+        _purchaseEnvironment = purchaseEnvironment ?? .constant(.testFlight)
+        _purchaseButtonTitle = purchaseButtonTitle ?? .constant("")
+        self.purchaseAction = purchaseAction
     }
 }
 
@@ -426,6 +510,14 @@ extension SwiftNEW {
         allowsSkippingUpdate: Bool = true,
         updateButtonTitle: String = "",
         appStoreBundleIdentifier: String? = nil,
+        purchaseRequirement: SwiftNEWPurchaseRequirement? = nil,
+        purchaseEnvironment: SwiftNEWPurchaseEnvironment = .testFlight,
+        purchaseButtonTitle: String = "",
+        purchaseAction: (@MainActor () async -> Void)? = nil,
+        purchaseCheckPhase: SwiftNEWPurchaseCheckPhase = .inactive,
+        purchaseErrorMessage: String? = nil,
+        purchaseAppStoreURL: URL? = nil,
+        purchaseAppIconURL: URL? = nil,
         dataBundle: Bundle = .main,
         showBinding: Binding<Bool>? = nil,
         dataBinding: Binding<String>? = nil,
@@ -469,6 +561,13 @@ extension SwiftNEW {
             showSearch: showSearch,
             searchText: searchText,
             debouncedSearchText: debouncedSearchText,
+            purchaseRequirement: purchaseEnvironment == .all || loadDependencies.isTestFlight()
+                ? purchaseRequirement
+                : nil,
+            purchaseCheckPhase: purchaseCheckPhase,
+            purchaseErrorMessage: purchaseErrorMessage,
+            purchaseAppStoreURL: purchaseAppStoreURL,
+            purchaseAppIconURL: purchaseAppIconURL,
             dependencies: loadDependencies
         )
         _loadStateMachineStorage = StateObject(wrappedValue: loadStateMachine)
@@ -502,6 +601,10 @@ extension SwiftNEW {
         _allowsSkippingUpdate = .constant(allowsSkippingUpdate)
         _updateButtonTitle = .constant(updateButtonTitle)
         _appStoreBundleIdentifier = .constant(appStoreBundleIdentifier)
+        _purchaseRequirement = .constant(purchaseRequirement)
+        _purchaseEnvironment = .constant(purchaseEnvironment)
+        _purchaseButtonTitle = .constant(purchaseButtonTitle)
+        self.purchaseAction = purchaseAction
         self.dataBundle = dataBundle
     }
 }

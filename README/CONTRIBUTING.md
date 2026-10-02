@@ -90,12 +90,14 @@ Sources/SwiftNEW/
 │   ├── Sheets/
 │   │   ├── CurrentVersionSheet.swift
 │   │   ├── HistorySheet.swift
+│   │   ├── PurchaseSheet.swift
 │   │   └── UpdateSheet.swift
 │   └── Components/
 │       ├── HeaderView.swift
 │       └── ButtonComponents.swift
 ├── Extensions/
-│   └── SwiftNEW+Functions.swift  # compareVersion, loadData, drop
+│   ├── SwiftNEW+Functions.swift  # compareVersion, loadData, drop
+│   └── SwiftNEW+Purchase.swift   # purchaseRequirement check + gate
 ├── Styles/
 │   ├── AppIconView.swift
 │   ├── MeshView.swift            # Mesh gradient background
@@ -108,8 +110,9 @@ Sources/SwiftNEW/
 ### Architecture at a Glance
 
 - **Core**: `SwiftNEW` struct holds all configuration via `@Binding`s; multiple `init` overloads accept either direct values or bindings (cross-platform variants for iOS/macOS/watchOS/tvOS/visionOS).
-- **View layer**: `body` resolves to either an embedded view or a button that triggers a sheet / fullScreenCover. Sheets compose `MeshView` + optional `SnowfallView` / `FloatingParticlesView` on top of `sheetCurrent`, `sheetHistory`, or `sheetUpdate`.
+- **View layer**: `body` resolves to either an embedded view or a button that triggers a sheet / fullScreenCover. Sheets compose `MeshView` + optional `SnowfallView` / `FloatingParticlesView` on top of `sheetCurrent`, `sheetHistory`, `sheetUpdate`, or `sheetPurchase`.
 - **Data**: `loadData()` parses local or remote JSON into `[Vmodel]` using Swift Concurrency. `compareVersion()` reads `Bundle.version` / `Bundle.build` and toggles `show` on mismatch. When `checkForUpdates` is enabled for a remote source, the loader selects the highest newer release, resolves `trackViewUrl` through Apple's iTunes Lookup API using the configured App Store bundle identifier (`WKCompanionAppBundleIdentifier` on watchOS when present, otherwise `Bundle.main.bundleIdentifier`), and routes to `sheetUpdate`.
+- **Purchase gate**: when `purchaseRequirement` is set, `runPurchaseTask()` verifies it through the StoreKit closures in `SwiftNEWLoadDependencies` (live implementation in `SwiftNEWPurchaseVerifier`) and routes to `sheetPurchase` ahead of every other sheet until it is verified or skipped. Tests inject those closures; StoreKit itself is never called from the test target.
 
 ## 🔧 Troubleshooting
 

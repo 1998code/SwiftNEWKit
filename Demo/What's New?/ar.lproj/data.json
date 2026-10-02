@@ -1,5 +1,20 @@
 [
     {
+        "version": "27.4",
+        "subVersion": "27.4.0",
+        "new": [
+            {
+                "icons": [
+                    "lock.fill",
+                    "lock.open.fill"
+                ],
+                "title": "بوابة الشراء",
+                "subtitle": "تحقّق قبل الدخول",
+                "body": "عيّن purchaseRequirement للتحقق عبر StoreKit من شراء التطبيق من App Store أو من اشتراك محدد قبل الدخول إلى التطبيق. الشاشة إلزامية وتتضمن «استعادة المشتريات»."
+            }
+        ]
+    },
+    {
         "version": "27.3",
         "subVersion": "27.3.0",
         "new": [

@@ -124,6 +124,46 @@ extension SwiftNEW {
         )
     }
 
+    public var purchaseNowButton: some View {
+        primaryActionButton(
+            title: resolvedPurchaseButtonTitle,
+            systemImage: purchaseAction == nil ? "arrow.up.forward.app.fill" : "lock.open.fill",
+            macWidth: 300,
+            iOSMaxWidth: 380,
+            action: performPurchase
+        )
+    }
+
+    var resolvedPurchaseButtonTitle: String {
+        let normalized = purchaseButtonTitle.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard normalized.isEmpty else { return purchaseButtonTitle }
+
+        if purchaseAction == nil {
+            return String(localized: "Continue in App Store", bundle: .module)
+        }
+        if displayedPurchaseRequirement == .appPurchase {
+            return String(localized: "Purchase", bundle: .module)
+        }
+        return String(localized: "Subscribe", bundle: .module)
+    }
+
+    public var retryPurchaseCheckButton: some View {
+        primaryActionButton(
+            title: String(localized: "Try Again", bundle: .module),
+            systemImage: "arrow.clockwise",
+            macWidth: 300,
+            iOSMaxWidth: 380,
+            action: retryPurchaseCheck
+        )
+    }
+
+    public var restorePurchasesButton: some View {
+        capsuleSecondaryButton(action: restorePurchases) {
+            Text(String(localized: "Restore Purchases", bundle: .module))
+            Image(systemName: "arrow.clockwise.circle")
+        }
+    }
+
     var resolvedButtonCornerRadius: CGFloat {
         max(0, buttonCornerRadius)
     }

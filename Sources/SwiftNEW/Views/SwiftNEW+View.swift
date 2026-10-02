@@ -211,8 +211,14 @@ extension SwiftNEW {
         .task(id: taskID) {
             await runLoadTask(taskID)
         }
+        .task(id: purchaseTaskID) {
+            await runPurchaseTask(purchaseTaskID)
+        }
         .onChange(of: show) { isPresented in
             handleShowChange(isPresented)
+        }
+        .onChange(of: scenePhase) { phase in
+            handleScenePhaseChange(phase)
         }
         .onChange(of: search) { isEnabled in
             if !isEnabled {
@@ -264,7 +270,9 @@ extension SwiftNEW {
 
     private var sheetContent: some View {
         sheetBackground {
-            if shouldPrefetchRemoteUpdate, updateCheckPhase != .resolved {
+            if isPurchaseGateActive {
+                sheetPurchase
+            } else if shouldPrefetchRemoteUpdate, updateCheckPhase != .resolved {
                 sheetUpdateChecking
             } else if availableUpdate != nil {
                 sheetUpdate
@@ -287,7 +295,11 @@ extension SwiftNEW {
     }
 
     var shouldDisableUpdateDismissal: Bool {
-        !allowsSkippingUpdate
+        if isPurchaseGateActive {
+            return true
+        }
+
+        return !allowsSkippingUpdate
             && (
                 availableUpdate != nil
                     || (shouldPrefetchRemoteUpdate && updateCheckPhase != .resolved)

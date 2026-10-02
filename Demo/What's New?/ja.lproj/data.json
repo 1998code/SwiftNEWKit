@@ -1,5 +1,20 @@
 [
     {
+        "version": "27.4",
+        "subVersion": "27.4.0",
+        "new": [
+            {
+                "icons": [
+                    "lock.fill",
+                    "lock.open.fill"
+                ],
+                "title": "購入確認ゲート",
+                "subtitle": "アプリに入る前に確認",
+                "body": "purchaseRequirement を設定すると、アプリに入る前に App Store でのアプリ購入または指定したサブスクリプションを StoreKit で確認します。この画面は必須で、「購入を復元」を標準で備えています。"
+            }
+        ]
+    },
+    {
         "version": "27.3",
         "subVersion": "27.3.0",
         "new": [

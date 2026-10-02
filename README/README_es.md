@@ -70,6 +70,7 @@ Eso es todo — SwiftNEW se activa automáticamente cuando cambia la versión de
 
 | Funcionalidad | Desde | Descripción |
 |---------|:-----:|-------------|
+| 🔐 Verificación de compra | 27.4.0 | Actívala con `purchaseRequirement` para verificar con StoreKit la compra de la app en el App Store o una suscripción designada antes de entrar en la app |
 | 🖋️ Color de texto de botones personalizable | 27.3.0 | Establece `buttonTextColor` directamente o con un binding para sustituir el texto automático en blanco o negro del activador y de los botones de acción principales |
 | ⌚ Compatibilidad nativa con watchOS | 27.0 | SwiftNEW admite watchOS 8 con vistas compactas, alternativas visuales adaptativas y la búsqueda automática de la app complementaria en App Store |
 | 🚘 Compatibilidad con plantillas de CarPlay | 27.0 | Las apps host de CarPlay aprobadas por Apple pueden mostrar contenido apto en plantillas nativas de lista y detalle con el mismo JSON local o remoto |

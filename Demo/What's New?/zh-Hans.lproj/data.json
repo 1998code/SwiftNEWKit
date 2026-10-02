@@ -1,5 +1,20 @@
 [
     {
+        "version": "27.4",
+        "subVersion": "27.4.0",
+        "new": [
+            {
+                "icons": [
+                    "lock.fill",
+                    "lock.open.fill"
+                ],
+                "title": "购买验证界面",
+                "subtitle": "进入前先验证",
+                "body": "设置 purchaseRequirement，即可在进入 App 前使用 StoreKit 验证 App Store 购买记录或指定订阅。此界面为强制显示，并内置“恢复购买”。"
+            }
+        ]
+    },
+    {
         "version": "27.3",
         "subVersion": "27.3.0",
         "new": [
