@@ -1,8 +1,8 @@
+<img width="150" alt="SNK" src="https://github.com/user-attachments/assets/1121ae03-cf96-455e-8119-596f6f5eb58e" />
+
 # SwiftNEW for Android
 
 [SwiftNEWKit](https://github.com/1998code/SwiftNEWKit) on Android — a Jetpack Compose **"What's New"** UI that uses the same release-notes JSON as the Apple platforms.
-
-> Not on Maven Central yet. Include the `:swiftnew` module in your Gradle project (see below).
 
 <img width="2880" height="2160" alt="275" src="https://github.com/user-attachments/assets/95a76362-6a82-4ff7-91ee-260190d3e5d7" />
 
