@@ -1,0 +1,140 @@
+[
+  {
+    "version": "27.5",
+    "subVersion": "27.5.0",
+    "new": [
+      {
+        "icons": [
+          "sparkles.rectangle.stack",
+          "arrow.up.circle.fill"
+        ],
+        "title": "Android",
+        "subtitle": "Compose Port",
+        "body": "SwiftNEW now ships as a Jetpack Compose library for Android — sheets, history, search, glass chrome, Play update checks, and Play Billing purchase gates aligned with the iOS API."
+      }
+    ]
+  },
+  {
+    "version": "27.4",
+    "subVersion": "27.4.0",
+    "new": [
+      {
+        "icons": [
+          "lock.fill",
+          "lock.open.fill"
+        ],
+        "title": "Purchase Gate",
+        "subtitle": "Verify Before Entering",
+        "body": "Set purchaseRequirement to verify the Play Store app purchase or a designated subscription with Play Billing before the app is entered. The screen is mandatory, with Restore Purchases built in."
+      }
+    ]
+  },
+  {
+    "version": "27.3",
+    "subVersion": "27.3.0",
+    "new": [
+      {
+        "icons": [
+          "textformat",
+          "paintpalette"
+        ],
+        "title": "Custom Button Text Color",
+        "subtitle": "Match Your Brand",
+        "body": "Set buttonTextColor directly or with a binding to choose the text color of the release-note trigger and primary action buttons. Leave it unset to keep the automatic black or white contrast."
+      }
+    ]
+  },
+  {
+    "version": "27.2",
+    "subVersion": "27.2.0",
+    "new": [
+      {
+        "icons": [
+          "clock.arrow.circlepath",
+          "checkmark.seal"
+        ],
+        "title": "History Presentation Fix",
+        "subtitle": "Stable in Full Screen",
+        "body": "Show History now opens reliably when the release note is presented as a full-screen cover, instead of flickering open and shut."
+      }
+    ]
+  },
+  {
+    "version": "27.0",
+    "subVersion": "27.0.0",
+    "new": [
+      {
+        "icons": [
+          "applewatch",
+          "checkmark.circle"
+        ],
+        "title": "Native watchOS Support",
+        "subtitle": "Compact Apple Watch Experience",
+        "body": "SwiftNEW now supports compact current, history, and update views, adaptive visual fallbacks, and automatic companion Play Store lookup."
+      },
+      {
+        "icons": [
+          "car.fill",
+          "list.bullet.rectangle"
+        ],
+        "title": "CarPlay Template Support",
+        "subtitle": "Approved Host App Integration",
+        "body": "Approved CarPlay host apps can present eligible update content in native list and detail templates backed by the same local or remote JSON."
+      },
+      {
+        "icons": [
+          "doc.text",
+          "tray.and.arrow.down"
+        ],
+        "title": "Standalone Release Loader",
+        "subtitle": "Local or Remote JSON",
+        "body": "SwiftNEWReleaseNotesLoader decodes release-note data without creating a SwiftUI view, ready for native surfaces and custom workflows."
+      },
+      {
+        "icons": [
+          "rectangle.roundedtop",
+          "slider.horizontal.3"
+        ],
+        "title": "Configurable Button Radius",
+        "subtitle": "Direct Values or Bindings",
+        "body": "Set buttonCornerRadius directly or with a binding to keep the release-note trigger and primary action buttons visually consistent."
+      },
+      {
+        "icons": [
+          "clock.arrow.circlepath",
+          "magnifyingglass"
+        ],
+        "title": "History Search Controls",
+        "subtitle": "Current and Previous Releases",
+        "body": "Enable Search per instance and filter current or historical release notes by title, subtitle, or body."
+      },
+      {
+        "icons": [
+          "text.alignleft",
+          "eye"
+        ],
+        "title": "Optional Descriptions",
+        "subtitle": "Compact Release Rows",
+        "body": "Use showDescription directly or with a binding to hide body text while keeping each icon, title, and subtitle visible."
+      },
+      {
+        "icons": [
+          "paintpalette",
+          "sparkles.rectangle.stack"
+        ],
+        "title": "Reusable SwiftNEW Backdrop",
+        "subtitle": "Mesh and Effects Anywhere",
+        "body": "Use SwiftNEWBackdrop to add the same still or liquid mesh and decorative effects behind custom SwiftUI content."
+      },
+      {
+        "icons": [
+          "eye.slash",
+          "rectangle.on.rectangle.slash"
+        ],
+        "title": "Invisible Trigger Fix",
+        "subtitle": "No Residual Glass",
+        "body": "Release-note triggers configured with size \"invisible\" no longer leave translucent glass chrome on screen."
+      }
+    ]
+  }
+]
