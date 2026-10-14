@@ -1,15 +1,32 @@
 # SwiftNEW for Android
 
-Jetpack Compose port of [SwiftNEWKit](https://github.com/1998code/SwiftNEWKit) — a **"What's New"** presentation UI driven by the same release-notes JSON shape used on Apple platforms.
+[SwiftNEWKit](https://github.com/1998code/SwiftNEWKit) on Android — a Jetpack Compose **"What's New"** UI that uses the same release-notes JSON as the Apple platforms.
 
-This branch is an **orphan** Android tree (no Swift/SPM history).
+> Not on Maven Central yet. Include the `:swiftnew` module in your Gradle project (see below).
 
 ## Modules
 
 | Module | Role |
 | --- | --- |
-| `:swiftnew` | Reusable Compose library (`SwiftNew`, sheets, JSON loader, Play helpers) |
-| `:app` | Demo host app (`applicationId` `io.startway.whatsnew`, from iOS `media.1998.WhatsNew`) |
+| `:swiftnew` | Compose library — `SwiftNew`, sheets, JSON loader, Play Billing & In-App Updates |
+| `:app` | Demo app (`io.startway.whatsnew`) |
+
+## Add the library
+
+In `settings.gradle.kts`:
+
+```kotlin
+include(":swiftnew")
+// project(":swiftnew").projectDir = file("path/to/SwiftNEWKit/swiftnew")
+```
+
+In your app module:
+
+```kotlin
+dependencies {
+  implementation(project(":swiftnew"))
+}
+```
 
 ## Quick start
 
@@ -17,7 +34,25 @@ This branch is an **orphan** Android tree (no Swift/SPM history).
 ./gradlew :app:assembleDebug :swiftnew:test
 ```
 
-Drop a `data.json` into your app `assets/` (same schema as iOS), then:
+**1. Add `data.json` to your app `assets/`** (same schema as iOS):
+
+```json
+[
+  {
+    "version": "1.0",
+    "new": [
+      {
+        "icon": "star.fill",
+        "title": "Welcome",
+        "subtitle": "Get Started",
+        "body": "Thanks for downloading our app!"
+      }
+    ]
+  }
+]
+```
+
+**2. Present it:**
 
 ```kotlin
 var show by rememberSaveable { mutableStateOf(false) }
@@ -31,38 +66,33 @@ SwiftNew(
 )
 ```
 
-Current-version rows match `versionName` (or `subVersion`) against each JSON `version` / `subVersion`.
+Current-version rows match the host `versionName` (or `subVersion`) to each JSON `version` / `subVersion`. Asset name `"data"` loads `assets/data.json`; you can also pass a remote HTTPS URL.
 
-## Port coverage
+## API highlights
 
-| Surface | Status |
+| Parameter | Notes |
 | --- | --- |
-| Current version sheet | Done |
-| History nested sheet + version capsules | Done |
-| Search glass field + 250ms debounce | Done |
-| SF Symbol → Material mapping / icon badges | Done |
-| Glass / mesh / soft scroll chrome | Done (Compose approximation) |
-| Sheet / FullScreen / Embed | Done |
-| Local + remote JSON loader | Done |
-| Play In-App Updates check (`checkForUpdates`) | Done (falls back to JSON version compare) |
-| Play Store listing URL for purchase / update | Done (package → Play URL) |
-| Play Billing purchase verify + Restore | Done (BillingClient; requires Play products) |
-| Purchase gate UI | Done |
-| Host `purchaseAction` demo unlock | Done (host-authoritative) |
-| CarPlay / watch / tv / mac | N/A |
-| Maven / package publish | Not published yet |
+| `presentation` | `Sheet` (Material 3 bottom sheet), `FullScreen`, or `Embed` |
+| `history` / `search` | Version history sheet and in-sheet search (250ms debounce) |
+| `mesh` / `glass` / `specialEffect` | Backdrop and chrome |
+| `appIconName` | Optional drawable/mipmap name above the heading; otherwise the launcher icon |
+| `checkForUpdates` | Play In-App Updates, with JSON version fallback |
+| `purchaseRequirement` | Play purchase / subscription gate before entering |
+| `playStorePackageName` | Package used for Play Store links (defaults to the host app) |
 
-### Purchase notes
+Props and defaults mirror the Apple `SwiftNEW` API where practical.
 
-- `purchaseEnvironment = All` always enforces; `InternalTesting` enforces on debuggable builds (TestFlight analogue).
+## Purchase
+
+- `purchaseEnvironment = All` always enforces the gate; `InternalTesting` enforces only on debuggable builds.
 - Without a host `purchaseAction`, the primary button opens the Play Store listing.
-- **Restore** queries Play Billing entitlements (`INAPP` / `SUBS`). It will fail on sideloaded debug builds with no products — that is expected.
-- Providing `purchaseAction` lets the host complete a custom / demo unlock after the action returns.
+- **Restore** queries Play Billing (`INAPP` / `SUBS`). Sideloaded builds with no Play products will fail — expected.
+- A host `purchaseAction` can complete a custom or demo unlock when the action returns.
 
-### Update notes
+## Updates
 
-- With `checkForUpdates = true`, Android first asks **Play In-App Updates**; if Play reports no update (typical for local debug installs), it falls back to comparing release-notes JSON versions and still attaches the Play Store URL when a package name is known.
+With `checkForUpdates = true`, Android checks **Play In-App Updates** first. If Play reports no update (common for local debug installs), it compares release-notes JSON versions and still attaches a Play Store URL when the package name is known.
 
 ## License
 
-MIT — see the main repository license on `main`.
+MIT — same as the repository on `main`.

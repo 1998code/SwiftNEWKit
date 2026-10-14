@@ -1,11 +1,18 @@
 package io.startway.swiftnew.ui
 
+import android.app.Activity
 import android.content.Intent
 import android.content.pm.ApplicationInfo
 import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Build
+import android.view.View
+import android.view.ViewParent
+import android.view.Window
 import android.widget.Toast
+import androidx.core.view.WindowCompat
+import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.WindowInsetsControllerCompat
 import androidx.compose.animation.AnimatedContent
 import androidx.compose.animation.core.tween
 import androidx.compose.animation.fadeIn
@@ -26,6 +33,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.navigationBarsPadding
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.layout.width
@@ -47,6 +55,7 @@ import androidx.compose.material3.rememberModalBottomSheetState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.SideEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -56,11 +65,13 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalView
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
+import androidx.compose.ui.window.DialogWindowProvider
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import io.startway.swiftnew.data.BillingPurchaseVerifier
@@ -363,6 +374,8 @@ fun SwiftNew(
         showBuild = showBuild,
         showDescription = showDescription,
         iconStyle = iconStyle,
+        appIconName = appIconName,
+        alternateAppIconName = alternateAppIconName,
         history = history,
         search = search,
         showSearch = showSearch,
@@ -436,11 +449,37 @@ fun SwiftNew(
     val canDismiss =
       !purchaseGateActive && (allowsSkippingUpdate || updateCandidate == null || !checkForUpdates)
 
-    fun dismissPresentation() {
-      if (!canDismiss) return
+    // Always remembered so Continue can animate sheet hide (Compose: no conditional remember*).
+    val sheetState =
+      rememberModalBottomSheetState(
+        skipPartiallyExpanded = true,
+        confirmValueChange = { newValue ->
+          canDismiss || newValue != SheetValue.Hidden
+        },
+      )
+
+    fun finishDismiss() {
       onShowChange(false)
       showHistory = false
       resetSearch()
+    }
+
+    fun dismissPresentation() {
+      if (!canDismiss) return
+      // Scrim / swipe: sheet already animating or hidden — just drop state.
+      finishDismiss()
+    }
+
+    fun dismissWithTransition() {
+      if (!canDismiss) return
+      when (presentation) {
+        SwiftNewPresentation.Sheet ->
+          scope.launch {
+            sheetState.hide()
+            finishDismiss()
+          }
+        SwiftNewPresentation.FullScreen, SwiftNewPresentation.Embed -> finishDismiss()
+      }
     }
 
     @Composable
@@ -449,19 +488,19 @@ fun SwiftNew(
       showDragHandle: Boolean = false,
       padStatusBars: Boolean = false,
     ) {
-      Box(modifier = modifier) {
-        // Gradient draws edge-to-edge (under drag handle / status bar).
+      Box(
+        modifier =
+          modifier
+            // Opaque base so transparent ModalBottomSheet never reveals the host tab bar.
+            .background(MaterialTheme.colorScheme.surface)
+      ) {
+        // Gradient draws edge-to-edge (under drag handle / status / nav bars).
         if (mesh) {
           SwiftNewBackdrop(
             accent = accent,
             meshStyle = meshStyle,
             specialEffect = specialEffect,
             modifier = Modifier.fillMaxSize(),
-          )
-        } else {
-          Box(
-            modifier =
-              Modifier.fillMaxSize().background(MaterialTheme.colorScheme.surface)
           )
         }
 
@@ -470,6 +509,7 @@ fun SwiftNew(
             Modifier
               .fillMaxSize()
               .then(if (padStatusBars) Modifier.statusBarsPadding() else Modifier)
+              // Nav-bar inset only — enough clearance under Continue without a second stacked gap.
               .navigationBarsPadding(),
         ) {
           if (showDragHandle) {
@@ -494,6 +534,8 @@ fun SwiftNew(
               showBuild = showBuild,
               showDescription = showDescription,
               iconStyle = iconStyle,
+              appIconName = appIconName,
+              alternateAppIconName = alternateAppIconName,
               history = history,
               search = search,
               showSearch = showSearch,
@@ -512,19 +554,12 @@ fun SwiftNew(
               purchaseError = purchaseError,
               onSearchTextChange = { searchText = it },
               onToggleSearch = { toggleSearch() },
-              onContinue = {
-                onShowChange(false)
-                showHistory = false
-                resetSearch()
-              },
+              onContinue = { dismissWithTransition() },
               onRetry = { reload() },
               onOpenUpdate = { url ->
                 context.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(url)))
               },
-              onSkipUpdate = {
-                onShowChange(false)
-                showHistory = false
-              },
+              onSkipUpdate = { dismissWithTransition() },
               onPurchase = { runPurchase() },
               onRestore = { runRestore() },
               onRetryPurchase = { runRetryPurchase() },
@@ -538,27 +573,21 @@ fun SwiftNew(
     when (presentation) {
       // Native Android sheet — Material 3 modal bottom sheet (not a centered Dialog popup).
       SwiftNewPresentation.Sheet -> {
-        val sheetState =
-          rememberModalBottomSheetState(
-            skipPartiallyExpanded = true,
-            confirmValueChange = { newValue ->
-              canDismiss || newValue != SheetValue.Hidden
-            },
-          )
         ModalBottomSheet(
           onDismissRequest = { dismissPresentation() },
           sheetState = sheetState,
-          // Transparent so the mesh/gradient can paint into the sheet top
-          // (including under the drag handle) without a solid safe-area band.
+          // Transparent chrome — PresentedBody mesh paints the full sheet so the
+          // host UI (tab bar) never shows through a empty bottom band.
           containerColor = Color.Transparent,
           contentColor = MaterialTheme.colorScheme.onSurface,
           tonalElevation = 0.dp,
           dragHandle = null,
           contentWindowInsets = { WindowInsets(0, 0, 0, 0) },
         ) {
+          HideStatusBarWhilePresented()
           PresentedBody(
-            modifier = Modifier.fillMaxWidth().fillMaxHeight(0.92f),
-            showDragHandle = true,
+            modifier = Modifier.fillMaxWidth().fillMaxHeight(fraction = 0.95f),
+            showDragHandle = false,
             padStatusBars = false,
           )
         }
@@ -575,6 +604,7 @@ fun SwiftNew(
               decorFitsSystemWindows = false,
             ),
         ) {
+          HideStatusBarWhilePresented()
           Surface(
             modifier = Modifier.fillMaxSize(),
             shape = RoundedCornerShape(0.dp),
@@ -792,9 +822,14 @@ private fun HistoryPresentation(
         dragHandle = null,
         contentWindowInsets = { WindowInsets(0, 0, 0, 0) },
       ) {
+        HideStatusBarWhilePresented()
         HistoryBody(
-          modifier = Modifier.fillMaxWidth().fillMaxHeight(0.92f),
-          showDragHandle = true,
+          modifier =
+            Modifier
+              .fillMaxWidth()
+              .fillMaxHeight(fraction = 0.95f)
+              .background(MaterialTheme.colorScheme.surface),
+          showDragHandle = false,
           onReturn = {
             scope.launch {
               historySheetState.hide()
@@ -815,6 +850,7 @@ private fun HistoryPresentation(
             decorFitsSystemWindows = false,
           ),
       ) {
+        HideStatusBarWhilePresented()
         Surface(
           modifier = Modifier.fillMaxSize(),
           shape = RoundedCornerShape(0.dp),
@@ -831,6 +867,36 @@ private fun HistoryPresentation(
   }
 }
 
+/** ModalBottomSheet / Dialog windows re-show the status bar — keep it hidden while presented. */
+@Composable
+private fun HideStatusBarWhilePresented() {
+  val view = LocalView.current
+  SideEffect {
+    val windows = linkedSetOf<Window>()
+    findDialogWindow(view)?.let { windows.add(it) }
+    (view.context as? Activity)?.window?.let { windows.add(it) }
+    for (window in windows) {
+      WindowCompat.setDecorFitsSystemWindows(window, false)
+      WindowInsetsControllerCompat(window, view).apply {
+        hide(WindowInsetsCompat.Type.statusBars())
+        systemBarsBehavior =
+          WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
+      }
+    }
+  }
+}
+
+private fun findDialogWindow(view: View): Window? {
+  var parent: ViewParent? = view.parent
+  while (parent != null) {
+    if (parent is DialogWindowProvider) {
+      return parent.window
+    }
+    parent = parent.parent
+  }
+  return null
+}
+
 @Composable
 private fun SwiftNewContent(
   onShowHistoryChange: (Boolean) -> Unit,
@@ -845,6 +911,8 @@ private fun SwiftNewContent(
   showBuild: Boolean,
   showDescription: Boolean,
   iconStyle: SwiftNewIconStyle,
+  appIconName: String? = null,
+  alternateAppIconName: String? = null,
   history: Boolean,
   search: Boolean,
   showSearch: Boolean,
@@ -951,6 +1019,8 @@ private fun SwiftNewContent(
           showBuild = showBuild,
           showDescription = showDescription,
           iconStyle = iconStyle,
+          appIconName = appIconName,
+          alternateAppIconName = alternateAppIconName,
           historyEnabled = history,
           searchEnabled = search,
           showSearch = showSearch,

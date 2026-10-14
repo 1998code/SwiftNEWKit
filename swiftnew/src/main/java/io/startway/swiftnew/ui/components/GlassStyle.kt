@@ -36,7 +36,7 @@ import androidx.compose.ui.unit.dp
 fun Modifier.glassSurface(
   shape: Shape,
   accent: Color = MaterialTheme.colorScheme.primary,
-  elevation: Dp = 12.dp,
+  elevation: Dp = 6.dp,
 ): Modifier {
   val dark = isSystemInDarkTheme()
   val fill =
@@ -57,13 +57,14 @@ fun Modifier.glassSurface(
         )
     )
 
+  // Keep elevation modest — large ambient shadows read as a rectangular “slab” on mesh.
   return this
     .shadow(
       elevation = elevation,
       shape = shape,
       clip = false,
-      ambientColor = Color.Black.copy(alpha = 0.10f),
-      spotColor = accent.copy(alpha = 0.14f),
+      ambientColor = Color.Black.copy(alpha = 0.04f),
+      spotColor = accent.copy(alpha = 0.10f),
     )
     .clip(shape)
     .background(fill)
@@ -91,7 +92,7 @@ fun GlassButton(
   shape: Shape = RoundedCornerShape(25.dp),
   contentPadding: PaddingValues = PaddingValues(horizontal = 20.dp, vertical = 12.dp),
   minHeight: Dp = 50.dp,
-  elevation: Dp = 12.dp,
+  elevation: Dp = 6.dp,
   content: @Composable RowScope.() -> Unit,
 ) {
   val interactionSource = remember { MutableInteractionSource() }

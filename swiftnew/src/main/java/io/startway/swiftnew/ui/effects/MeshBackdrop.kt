@@ -76,8 +76,8 @@ fun MeshView(
               arrayOf(
                 0.0f to accent.copy(alpha = 0.46f),
                 0.32f to accent.copy(alpha = 0.22f),
-                0.7f to accent.copy(alpha = 0.04f),
-                1.0f to accent.copy(alpha = 0.10f),
+                0.72f to accent.copy(alpha = 0.05f),
+                1.0f to accent.copy(alpha = 0.03f),
               )
           )
         )
@@ -127,10 +127,10 @@ fun MeshView(
             Brush.verticalGradient(
               colorStops =
                 arrayOf(
-                  0.0f to wash.copy(alpha = 0.28f),
-                  0.45f to wash.copy(alpha = 0.18f),
-                  0.78f to wash.copy(alpha = 0.12f),
-                  1.0f to wash.copy(alpha = 0.08f),
+                  0.0f to wash.copy(alpha = 0.22f),
+                  0.45f to wash.copy(alpha = 0.12f),
+                  0.78f to wash.copy(alpha = 0.06f),
+                  1.0f to wash.copy(alpha = 0.02f),
                 )
             )
           )

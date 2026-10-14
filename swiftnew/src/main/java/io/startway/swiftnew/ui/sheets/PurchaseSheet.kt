@@ -41,6 +41,7 @@ fun PurchaseCheckingSheet(modifier: Modifier = Modifier) {
     Text(
       text = "Verifying Purchase...",
       style = MaterialTheme.typography.titleLarge.copy(fontWeight = FontWeight.SemiBold),
+      color = MaterialTheme.colorScheme.onSurface,
       textAlign = TextAlign.Center,
     )
     Spacer(modifier = Modifier.height(16.dp))
@@ -107,6 +108,7 @@ fun PurchaseRequiredSheet(
       Text(
         text = title,
         style = MaterialTheme.typography.headlineLarge.copy(fontWeight = FontWeight.Bold),
+        color = MaterialTheme.colorScheme.onSurface,
         textAlign = TextAlign.Center,
       )
       Text(

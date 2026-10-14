@@ -1,6 +1,12 @@
 package io.startway.swiftnew.ui.sheets
 
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.expandVertically
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
+import androidx.compose.animation.shrinkVertically
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -58,7 +64,11 @@ fun HistorySheet(
       modifier = Modifier.padding(bottom = 16.dp),
     )
 
-    if (searchEnabled && showSearch) {
+    AnimatedVisibility(
+      visible = searchEnabled && showSearch,
+      enter = fadeIn() + expandVertically(expandFrom = Alignment.Top),
+      exit = fadeOut() + shrinkVertically(shrinkTowards = Alignment.Top),
+    ) {
       SearchField(
         value = searchText,
         onValueChange = onSearchTextChange,
@@ -73,32 +83,39 @@ fun HistorySheet(
         ContentAlignment.Center -> Alignment.CenterHorizontally
         ContentAlignment.End -> Alignment.End
       }
-    Column(
+    Box(
       modifier =
         Modifier.weight(1f)
-          .widthIn(max = 380.dp)
           .fillMaxWidth()
-          .softScrollEdges()
-          .verticalScroll(rememberScrollState())
-          .padding(bottom = 16.dp),
-      horizontalAlignment = sectionAlignment,
-      verticalArrangement = Arrangement.spacedBy(0.dp),
+          .softScrollEdges(top = 18.dp, bottom = 18.dp),
     ) {
-      Spacer(modifier = Modifier.height(10.dp))
-      releases.forEach { release ->
-        val visibleItems =
-          visibleHistoryItems(release.new, filterQuery, searchEnabled && showSearch)
-        if (visibleItems.isNotEmpty()) {
-          VersionCapsule(version = release.version, accent = accent)
-          visibleItems.forEach { item ->
-            ReleaseRow(
-              item = item,
-              accent = accent,
-              alignment = alignment,
-              showDescription = showDescription,
-              iconStyle = iconStyle,
-              bodyFontSize = 12.sp,
-            )
+      Column(
+        modifier =
+          Modifier
+            .widthIn(max = 380.dp)
+            .fillMaxWidth()
+            .align(Alignment.TopCenter)
+            .verticalScroll(rememberScrollState())
+            .padding(bottom = 16.dp),
+        horizontalAlignment = sectionAlignment,
+        verticalArrangement = Arrangement.spacedBy(0.dp),
+      ) {
+        Spacer(modifier = Modifier.height(10.dp))
+        releases.forEach { release ->
+          val visibleItems =
+            visibleHistoryItems(release.new, filterQuery, searchEnabled && showSearch)
+          if (visibleItems.isNotEmpty()) {
+            VersionCapsule(version = release.version, accent = accent)
+            visibleItems.forEach { item ->
+              ReleaseRow(
+                item = item,
+                accent = accent,
+                alignment = alignment,
+                showDescription = showDescription,
+                iconStyle = iconStyle,
+                bodyFontSize = 12.sp,
+              )
+            }
           }
         }
       }

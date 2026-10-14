@@ -11,14 +11,60 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.PlatformTextStyle
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.LineHeightStyle
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import io.startway.swiftnew.model.ContentAlignment
 import io.startway.swiftnew.model.FeatureItem
 import io.startway.swiftnew.model.SwiftNewIconStyle
+
+/** Matches iOS `.headline.weight(.semibold)`. */
+private val ReleaseTitleStyle =
+  TextStyle(
+    fontSize = 17.sp,
+    lineHeight = 20.sp,
+    fontWeight = FontWeight.SemiBold,
+    platformStyle = PlatformTextStyle(includeFontPadding = false),
+    lineHeightStyle =
+      LineHeightStyle(
+        alignment = LineHeightStyle.Alignment.Center,
+        trim = LineHeightStyle.Trim.Both,
+      ),
+  )
+
+/** Matches iOS `.subheadline.weight(.medium)`. */
+private val ReleaseSubtitleStyle =
+  TextStyle(
+    fontSize = 15.sp,
+    lineHeight = 18.sp,
+    fontWeight = FontWeight.Medium,
+    platformStyle = PlatformTextStyle(includeFontPadding = false),
+    lineHeightStyle =
+      LineHeightStyle(
+        alignment = LineHeightStyle.Alignment.Center,
+        trim = LineHeightStyle.Trim.Both,
+      ),
+  )
+
+/** Matches iOS `.body` (current sheet). */
+private val ReleaseBodyStyle =
+  TextStyle(
+    fontSize = 15.sp,
+    lineHeight = 20.sp,
+    fontWeight = FontWeight.Normal,
+    platformStyle = PlatformTextStyle(includeFontPadding = false),
+    lineHeightStyle =
+      LineHeightStyle(
+        alignment = LineHeightStyle.Alignment.Center,
+        trim = LineHeightStyle.Trim.Both,
+      ),
+  )
 
 @Composable
 fun ReleaseRow(
@@ -62,6 +108,7 @@ fun ReleaseRow(
       )
     }
 
+    // iOS VStack spacing is 3pt between title / subtitle / body.
     Column(
       modifier = Modifier.weight(1f).padding(horizontal = 12.dp),
       horizontalAlignment = columnAlignment,
@@ -69,29 +116,32 @@ fun ReleaseRow(
     ) {
       Text(
         text = item.title,
-        style = MaterialTheme.typography.titleMedium.copy(fontWeight = FontWeight.SemiBold),
+        style = ReleaseTitleStyle,
         color = MaterialTheme.colorScheme.onSurface,
         textAlign = textAlign,
         maxLines = 1,
       )
       Text(
         text = item.subtitle,
-        style = MaterialTheme.typography.titleSmall.copy(fontWeight = FontWeight.Medium),
+        style = ReleaseSubtitleStyle,
         color = MaterialTheme.colorScheme.onSurfaceVariant,
         textAlign = textAlign,
         maxLines = 1,
+        overflow = TextOverflow.Ellipsis,
       )
-      if (showDescription) {
+      if (showDescription && item.body.isNotBlank()) {
         Text(
           text = item.body,
           style =
             if (bodyFontSize != TextUnit.Unspecified) {
-              MaterialTheme.typography.bodySmall.copy(fontSize = bodyFontSize, lineHeight = 16.sp)
+              ReleaseBodyStyle.copy(fontSize = bodyFontSize, lineHeight = (bodyFontSize.value + 4f).sp)
             } else {
-              MaterialTheme.typography.bodySmall
+              ReleaseBodyStyle
             },
           color = MaterialTheme.colorScheme.onSurfaceVariant,
           textAlign = textAlign,
+          maxLines = 2,
+          overflow = TextOverflow.Ellipsis,
         )
       }
     }

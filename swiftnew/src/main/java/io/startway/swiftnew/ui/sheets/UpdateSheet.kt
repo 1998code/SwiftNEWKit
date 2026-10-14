@@ -2,6 +2,7 @@ package io.startway.swiftnew.ui.sheets
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -25,6 +26,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import io.startway.swiftnew.model.ContentAlignment
 import io.startway.swiftnew.model.FeatureItem
@@ -32,6 +34,7 @@ import io.startway.swiftnew.model.SwiftNewIconStyle
 import io.startway.swiftnew.ui.components.IconBadge
 import io.startway.swiftnew.ui.components.NotNowButton
 import io.startway.swiftnew.ui.components.UpdateNowButton
+import io.startway.swiftnew.ui.effects.softScrollEdges
 
 data class UpdateCandidate(
   val version: String,
@@ -86,39 +89,47 @@ fun UpdateAvailableSheet(
   modifier: Modifier = Modifier,
 ) {
   Column(modifier = modifier.fillMaxSize()) {
-    Column(
+    Box(
       modifier =
         Modifier.weight(1f)
           .fillMaxWidth()
-          .verticalScroll(rememberScrollState())
-          .padding(horizontal = 24.dp, vertical = 28.dp),
-      horizontalAlignment = Alignment.CenterHorizontally,
-      verticalArrangement = Arrangement.spacedBy(24.dp),
+          .softScrollEdges(top = 18.dp, bottom = 18.dp),
     ) {
-      Column(horizontalAlignment = Alignment.CenterHorizontally) {
-        IconBadge(
-          systemNames = listOf("arrow.down.app.fill"),
-          accent = accent,
-          iconStyle = iconStyle,
-          size = 56.dp,
-        )
-        Spacer(modifier = Modifier.height(10.dp))
-        Text(
-          text = "Update Available",
-          style = MaterialTheme.typography.headlineMedium.copy(fontWeight = FontWeight.Bold),
-        )
-      }
+      Column(
+        modifier =
+          Modifier
+            .fillMaxWidth()
+            .align(Alignment.TopCenter)
+            .verticalScroll(rememberScrollState())
+            .padding(horizontal = 24.dp, vertical = 28.dp),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.spacedBy(24.dp),
+      ) {
+        Column(horizontalAlignment = Alignment.CenterHorizontally) {
+          IconBadge(
+            systemNames = listOf("arrow.down.app.fill"),
+            accent = accent,
+            iconStyle = iconStyle,
+            size = 56.dp,
+          )
+          Spacer(modifier = Modifier.height(10.dp))
+          Text(
+            text = "Update Available",
+            style = MaterialTheme.typography.headlineMedium.copy(fontWeight = FontWeight.Bold),
+          )
+        }
 
-      VersionSummary(currentVersion = currentVersion, latestVersion = candidate.version, accent = accent)
+        VersionSummary(currentVersion = currentVersion, latestVersion = candidate.version, accent = accent)
 
-      candidate.features.forEach { feature ->
-        UpdateFeatureCard(
-          feature = feature,
-          accent = accent,
-          alignment = alignment,
-          showDescription = showDescription,
-          iconStyle = iconStyle,
-        )
+        candidate.features.forEach { feature ->
+          UpdateFeatureCard(
+            feature = feature,
+            accent = accent,
+            alignment = alignment,
+            showDescription = showDescription,
+            iconStyle = iconStyle,
+          )
+        }
       }
     }
 
@@ -262,12 +273,14 @@ private fun UpdateFeatureCard(
         color = MaterialTheme.colorScheme.onSurfaceVariant,
         textAlign = textAlign,
       )
-      if (showDescription) {
+      if (showDescription && feature.body.isNotBlank()) {
         Text(
           text = feature.body,
           style = MaterialTheme.typography.bodyMedium,
           color = MaterialTheme.colorScheme.onSurfaceVariant,
           textAlign = textAlign,
+          maxLines = 2,
+          overflow = TextOverflow.Ellipsis,
         )
       }
     }

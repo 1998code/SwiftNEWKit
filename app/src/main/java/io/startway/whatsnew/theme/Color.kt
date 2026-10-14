@@ -2,10 +2,11 @@ package io.startway.whatsnew.theme
 
 import androidx.compose.ui.graphics.Color
 
-val TealPrimary = Color(0xFF03A791)
-val TealSecondary = Color(0xFF2BBBAD)
-val TealTertiary = Color(0xFF66D2CE)
+/** Matches launcher icon indigo → purple (`#3B38D1` → `#9B63E3`). */
+val IndigoPrimary = Color(0xFF3B38D1)
+val IndigoSecondary = Color(0xFF6B5AE0)
+val IndigoTertiary = Color(0xFF9B63E3)
 
-val TealPrimaryDark = Color(0xFF5EEAD4)
-val TealSecondaryDark = Color(0xFF99F6E4)
-val TealTertiaryDark = Color(0xFFCCFBF1)
+val IndigoPrimaryDark = Color(0xFFA5A0F5)
+val IndigoSecondaryDark = Color(0xFFC4B5F5)
+val IndigoTertiaryDark = Color(0xFFE9D5FF)

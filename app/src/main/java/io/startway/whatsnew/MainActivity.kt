@@ -16,6 +16,7 @@ import androidx.compose.animation.togetherWith
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -40,6 +41,7 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.ripple
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.SideEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -49,11 +51,15 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalView
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.core.view.WindowCompat
+import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.WindowInsetsControllerCompat
 import io.startway.swiftnew.model.SwiftNewPresentation
 import io.startway.swiftnew.model.SwiftNewPurchaseEnvironment
 import io.startway.swiftnew.model.SwiftNewPurchaseRequirement
@@ -62,9 +68,16 @@ import io.startway.swiftnew.ui.SwiftNew
 import io.startway.swiftnew.ui.components.pressScale
 import io.startway.swiftnew.ui.effects.SwiftNewBackdrop
 import io.startway.swiftnew.ui.icons.SfSymbolMapper
+import io.startway.whatsnew.theme.IndigoPrimary
 import io.startway.whatsnew.theme.SwiftNEWTheme
 
-private val DemoAccent = Color(0xFF03A791)
+/** Deep icon indigo — mesh / sheet chrome (unchanged in dark mode). */
+private val DemoAccent = IndigoPrimary
+
+/** Labels / selected chrome: white in dark mode, indigo in light. */
+@Composable
+private fun demoLabelColor(): Color =
+  if (isSystemInDarkTheme()) MaterialTheme.colorScheme.onSurface else DemoAccent
 
 private object DemoReleaseNotesSource {
   const val remoteURL =
@@ -114,12 +127,23 @@ class MainActivity : ComponentActivity() {
 
     enableEdgeToEdge(
       statusBarStyle =
-        SystemBarStyle.light(AndroidColor.TRANSPARENT, AndroidColor.TRANSPARENT),
+        SystemBarStyle.dark(AndroidColor.TRANSPARENT),
       navigationBarStyle =
         SystemBarStyle.light(AndroidColor.TRANSPARENT, AndroidColor.TRANSPARENT),
     )
     setContent {
       SwiftNEWTheme(dynamicColor = false) {
+        val view = LocalView.current
+        SideEffect {
+          val window = window
+          WindowCompat.setDecorFitsSystemWindows(window, false)
+          WindowInsetsControllerCompat(window, view).apply {
+            hide(WindowInsetsCompat.Type.statusBars())
+            systemBarsBehavior =
+              WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
+          }
+        }
+
         var selectedTab by rememberSaveable { mutableStateOf(DemoTab.Default.name) }
         val tab = DemoTab.valueOf(selectedTab)
 
@@ -235,6 +259,7 @@ class MainActivity : ComponentActivity() {
                           Text(
                             text = purchaseMode.title,
                             style = MaterialTheme.typography.titleMedium,
+                            color = MaterialTheme.colorScheme.onSurface,
                             modifier = Modifier.padding(bottom = 12.dp),
                           )
                           SwiftNew(
@@ -253,7 +278,7 @@ class MainActivity : ComponentActivity() {
                           Spacer(modifier = Modifier.height(12.dp))
                           PressableText(
                             text = "Change mode",
-                            color = DemoAccent,
+                            color = demoLabelColor(),
                             onClick = { purchaseModeName = null },
                           )
                         }
@@ -364,7 +389,7 @@ private fun TransparentBottomBar(
             imageVector = SfSymbolMapper.map(item.symbol),
             contentDescription = item.title,
             tint =
-              if (selected) DemoAccent else MaterialTheme.colorScheme.onSurfaceVariant,
+              if (selected) demoLabelColor() else MaterialTheme.colorScheme.onSurfaceVariant,
             modifier = Modifier.size(22.dp),
           )
         }
@@ -373,7 +398,7 @@ private fun TransparentBottomBar(
           text = item.title,
           fontSize = 11.sp,
           fontWeight = if (selected) FontWeight.SemiBold else FontWeight.Medium,
-          color = if (selected) DemoAccent else MaterialTheme.colorScheme.onSurfaceVariant,
+          color = if (selected) demoLabelColor() else MaterialTheme.colorScheme.onSurfaceVariant,
           textAlign = TextAlign.Center,
           maxLines = 1,
         )
@@ -396,6 +421,7 @@ private fun ExamplePage(
     Text(
       text = title,
       style = MaterialTheme.typography.headlineLarge.copy(fontWeight = FontWeight.Bold),
+      color = MaterialTheme.colorScheme.onSurface,
       textAlign = TextAlign.Center,
     )
     Spacer(modifier = Modifier.height(8.dp))
@@ -452,7 +478,11 @@ private fun PurchaseModePicker(onSelect: (DemoPurchaseMode) -> Unit) {
         }
         Spacer(modifier = Modifier.width(14.dp))
         Column(modifier = Modifier.weight(1f)) {
-          Text(text = mode.title, fontWeight = FontWeight.SemiBold)
+          Text(
+            text = mode.title,
+            fontWeight = FontWeight.SemiBold,
+            color = MaterialTheme.colorScheme.onSurface,
+          )
           Text(
             text = mode.detail,
             style = MaterialTheme.typography.bodySmall,

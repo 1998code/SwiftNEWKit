@@ -19,8 +19,9 @@ import androidx.compose.material.icons.filled.DirectionsCar
 import androidx.compose.material.icons.filled.Download
 import androidx.compose.material.icons.filled.FilterNone
 import androidx.compose.material.icons.filled.Fullscreen
-import androidx.compose.material.icons.filled.History
 import androidx.compose.material.icons.filled.Inventory2
+import androidx.compose.material.icons.filled.History
+import androidx.compose.material.icons.outlined.Schedule
 import androidx.compose.material.icons.filled.Lock
 import androidx.compose.material.icons.filled.LockOpen
 import androidx.compose.material.icons.filled.Palette
@@ -34,7 +35,6 @@ import androidx.compose.material.icons.filled.Star
 import androidx.compose.material.icons.filled.SystemUpdate
 import androidx.compose.material.icons.filled.TextFields
 import androidx.compose.material.icons.filled.Tune
-import androidx.compose.material.icons.filled.Unarchive
 import androidx.compose.material.icons.filled.Verified
 import androidx.compose.material.icons.filled.Visibility
 import androidx.compose.material.icons.filled.VisibilityOff
@@ -59,7 +59,8 @@ object SfSymbolMapper {
       "lock.shield" -> Icons.Filled.Security
       "textformat" -> Icons.Filled.TextFields
       "paintpalette" -> Icons.Filled.Palette
-      "clock.arrow.circlepath", "clock" -> Icons.Filled.History
+      "clock.arrow.circlepath" -> Icons.Filled.History
+      "clock" -> Icons.Outlined.Schedule
       "checkmark.seal" -> Icons.Filled.Verified
       "checkmark.circle", "checkmark.circle.fill" -> Icons.Filled.CheckCircle
       "applewatch" -> Icons.Filled.Watch
@@ -77,7 +78,8 @@ object SfSymbolMapper {
       "arrow.down.circle.fill", "arrow.down.circle" -> Icons.Filled.ArrowCircleDown
       "arrow.up" -> Icons.Filled.ArrowUpward
       "arrow.up.circle", "arrow.up.circle.fill" -> Icons.Filled.ArrowCircleUp
-      "arrow.up.bin", "arrow.up.bin.fill" -> Icons.Filled.Unarchive
+      // iOS uses arrow.up.bin for Show History; Unarchive/History read poorly at capsule size.
+      "arrow.up.bin", "arrow.up.bin.fill" -> Icons.Outlined.Schedule
       "arrow.up.forward.app.fill", "arrow.up.forward.app" -> Icons.AutoMirrored.Filled.OpenInNew
       "rectangle.inset.filled" -> Icons.Filled.Fullscreen
       "circle.hexagongrid.fill", "wand.and.stars" -> Icons.Filled.AutoAwesome

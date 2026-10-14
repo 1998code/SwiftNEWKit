@@ -1,11 +1,16 @@
 package io.startway.swiftnew.ui.components
 
+import androidx.compose.animation.AnimatedContent
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
+import androidx.compose.animation.togetherWith
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
@@ -98,7 +103,18 @@ fun CapsuleSecondaryButton(
       color = secondary,
       modifier = Modifier.padding(horizontal = 2.dp),
     )
-    Icon(imageVector = icon, contentDescription = null, tint = secondary)
+    AnimatedContent(
+      targetState = icon,
+      transitionSpec = { fadeIn() togetherWith fadeOut() },
+      label = "capsuleSecondaryIcon",
+    ) { imageVector ->
+      Icon(
+        imageVector = imageVector,
+        contentDescription = null,
+        tint = secondary,
+        modifier = Modifier.size(20.dp),
+      )
+    }
   }
 }
 

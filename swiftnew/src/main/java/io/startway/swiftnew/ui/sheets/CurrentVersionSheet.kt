@@ -1,6 +1,10 @@
 package io.startway.swiftnew.ui.sheets
 
-import androidx.compose.foundation.background
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.expandVertically
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
+import androidx.compose.animation.shrinkVertically
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -20,7 +24,6 @@ import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -53,6 +56,8 @@ fun CurrentVersionSheet(
   showBuild: Boolean,
   showDescription: Boolean,
   iconStyle: SwiftNewIconStyle,
+  appIconName: String? = null,
+  alternateAppIconName: String? = null,
   historyEnabled: Boolean,
   searchEnabled: Boolean,
   showSearch: Boolean,
@@ -77,7 +82,10 @@ fun CurrentVersionSheet(
     filterActive && filterQuery.isNotBlank() && currentChanges.isEmpty()
 
   Column(
-    modifier = modifier.fillMaxSize().padding(horizontal = 20.dp, vertical = 16.dp),
+    modifier =
+      modifier
+        .fillMaxSize()
+        .padding(start = 20.dp, end = 20.dp, top = 16.dp, bottom = 0.dp),
     horizontalAlignment =
       when (alignment) {
         ContentAlignment.Start -> Alignment.Start
@@ -94,6 +102,8 @@ fun CurrentVersionSheet(
       appName = appName,
       showBuild = showBuild,
       alignment = alignment,
+      appIconName = appIconName,
+      alternateAppIconName = alternateAppIconName,
     )
 
     when {
@@ -122,7 +132,11 @@ fun CurrentVersionSheet(
         }
       }
       else -> {
-        if (canSearch && showSearch) {
+        AnimatedVisibility(
+          visible = canSearch && showSearch,
+          enter = fadeIn() + expandVertically(expandFrom = Alignment.Top),
+          exit = fadeOut() + shrinkVertically(shrinkTowards = Alignment.Top),
+        ) {
           SearchField(
             value = searchText,
             onValueChange = onSearchTextChange,
@@ -131,54 +145,52 @@ fun CurrentVersionSheet(
           )
         }
 
-        Box(modifier = Modifier.weight(1f).fillMaxWidth()) {
-          if (currentChanges.isEmpty()) {
-            EmptyState(
-              showingNoResults = showingNoResults,
-              accent = accent,
-              alignment = alignment,
-              iconStyle = iconStyle,
-              modifier = Modifier.align(Alignment.Center),
-            )
-          } else {
-            Column(
-              modifier =
-                Modifier
-                  .fillMaxSize()
-                  .widthIn(max = 380.dp)
-                  .align(Alignment.TopCenter)
-                  .softScrollEdges(bottom = 0.dp)
-                  .verticalScroll(rememberScrollState())
-                  .padding(top = 10.dp, bottom = 196.dp),
-            ) {
-              currentChanges.forEach { item ->
-                ReleaseRow(
-                  item = item,
-                  accent = accent,
-                  alignment = alignment,
-                  showDescription = showDescription,
-                  iconStyle = iconStyle,
-                )
+        // List above controls (not under them) so softScrollEdges fades at the button boundary.
+        Column(modifier = Modifier.weight(1f).fillMaxWidth()) {
+          Box(modifier = Modifier.weight(1f).fillMaxWidth()) {
+            if (currentChanges.isEmpty()) {
+              EmptyState(
+                showingNoResults = showingNoResults,
+                accent = accent,
+                alignment = alignment,
+                iconStyle = iconStyle,
+                modifier = Modifier.align(Alignment.Center),
+              )
+            } else {
+              Box(
+                modifier =
+                  Modifier
+                    .fillMaxSize()
+                    .softScrollEdges(top = 18.dp, bottom = 18.dp),
+              ) {
+                Column(
+                  modifier =
+                    Modifier
+                      .widthIn(max = 380.dp)
+                      .fillMaxWidth()
+                      .align(Alignment.TopCenter)
+                      .verticalScroll(rememberScrollState())
+                      .padding(top = 10.dp, bottom = 16.dp),
+                ) {
+                  currentChanges.forEach { item ->
+                    ReleaseRow(
+                      item = item,
+                      accent = accent,
+                      alignment = alignment,
+                      showDescription = showDescription,
+                      iconStyle = iconStyle,
+                    )
+                  }
+                }
               }
             }
           }
 
-          val surface = MaterialTheme.colorScheme.surface
           Column(
             modifier =
               Modifier
-                .align(Alignment.BottomCenter)
                 .fillMaxWidth()
-                .background(
-                  Brush.verticalGradient(
-                    listOf(
-                      Color.Transparent,
-                      surface.copy(alpha = 0.55f),
-                      surface.copy(alpha = 0.78f),
-                    )
-                  )
-                )
-                .padding(top = 24.dp),
+                .padding(top = 12.dp, bottom = 8.dp),
             horizontalAlignment = Alignment.CenterHorizontally,
           ) {
             if (canShowHistory || canSearch) {

@@ -2,6 +2,7 @@ package io.startway.swiftnew.ui.components
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
@@ -25,6 +26,9 @@ fun HeaderView(
   showBuild: Boolean,
   alignment: ContentAlignment,
   modifier: Modifier = Modifier,
+  appIconName: String? = null,
+  alternateAppIconName: String? = null,
+  showAppIcon: Boolean = true,
 ) {
   val subtitle =
     when (headingStyle) {
@@ -56,22 +60,65 @@ fun HeaderView(
       ContentAlignment.End -> TextAlign.End
     }
 
-  Column(
-    modifier = modifier.fillMaxWidth().padding(bottom = 16.dp),
-    horizontalAlignment = columnAlignment,
-    verticalArrangement = Arrangement.spacedBy(4.dp),
-  ) {
-    Text(
-      text = headingPrefix,
-      style = MaterialTheme.typography.headlineLarge.copy(fontWeight = FontWeight.Bold),
-      color = MaterialTheme.colorScheme.onSurface,
-      textAlign = textAlign,
-    )
-    Text(
-      text = subtitle,
-      style = MaterialTheme.typography.headlineSmall.copy(fontWeight = FontWeight.Bold),
-      color = MaterialTheme.colorScheme.onSurfaceVariant,
-      textAlign = textAlign,
-    )
+  val titleBlock: @Composable () -> Unit = {
+    Column(
+      horizontalAlignment = columnAlignment,
+      verticalArrangement = Arrangement.spacedBy(4.dp),
+    ) {
+      Text(
+        text = headingPrefix,
+        style = MaterialTheme.typography.headlineLarge.copy(fontWeight = FontWeight.Bold),
+        color = MaterialTheme.colorScheme.onSurface,
+        textAlign = textAlign,
+      )
+      Text(
+        text = subtitle,
+        style = MaterialTheme.typography.headlineSmall.copy(fontWeight = FontWeight.Bold),
+        color = MaterialTheme.colorScheme.onSurfaceVariant,
+        textAlign = textAlign,
+      )
+    }
+  }
+
+  val icon: @Composable () -> Unit = {
+    if (showAppIcon) {
+      AppIconView(
+        assetName = appIconName,
+        alternateIconName = alternateAppIconName,
+        modifier = Modifier.padding(top = 4.dp),
+      )
+    }
+  }
+
+  when (alignment) {
+    ContentAlignment.Center ->
+      Column(
+        modifier = modifier.fillMaxWidth().padding(bottom = 16.dp),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.spacedBy(10.dp),
+      ) {
+        icon()
+        titleBlock()
+      }
+    ContentAlignment.Start ->
+      Row(
+        modifier = modifier.fillMaxWidth().padding(bottom = 16.dp),
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.Start,
+      ) {
+        icon()
+        Column(modifier = Modifier.padding(start = 8.dp)) { titleBlock() }
+      }
+    ContentAlignment.End ->
+      Row(
+        modifier = modifier.fillMaxWidth().padding(bottom = 16.dp),
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.End,
+      ) {
+        Column(modifier = Modifier.padding(end = 8.dp), horizontalAlignment = Alignment.End) {
+          titleBlock()
+        }
+        icon()
+      }
   }
 }

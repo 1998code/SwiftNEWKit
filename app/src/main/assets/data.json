@@ -8,9 +8,72 @@
           "sparkles.rectangle.stack",
           "arrow.up.circle.fill"
         ],
-        "title": "Android",
-        "subtitle": "Compose Port",
-        "body": "SwiftNEW now ships as a Jetpack Compose library for Android — sheets, history, search, glass chrome, Play update checks, and Play Billing purchase gates aligned with the iOS API."
+        "title": "Support Android",
+        "subtitle": "Sheets, history, search & Play Billing.",
+        "body": ""
+      },
+      {
+        "icons": [
+          "rectangle.roundedtop",
+          "paintpalette"
+        ],
+        "title": "Mesh Backdrop",
+        "subtitle": "Still indigo wash behind every sheet.",
+        "body": ""
+      },
+      {
+        "icons": [
+          "clock.arrow.circlepath",
+          "magnifyingglass"
+        ],
+        "title": "History & Search",
+        "subtitle": "Browse past releases and filter by text.",
+        "body": ""
+      },
+      {
+        "icons": [
+          "lock.fill",
+          "lock.open.fill"
+        ],
+        "title": "Play Billing Gate",
+        "subtitle": "Verify purchase or subscription before entry.",
+        "body": ""
+      },
+      {
+        "icons": [
+          "arrow.up.circle.fill",
+          "checkmark.seal"
+        ],
+        "title": "Play Store Updates",
+        "subtitle": "Surface newer versions from the listing.",
+        "body": ""
+      },
+      {
+        "icons": [
+          "star.fill",
+          "sparkles.rectangle.stack"
+        ],
+        "title": "App Icon Header",
+        "subtitle": "Show your launcher icon above What’s New.",
+        "body": ""
+      },
+      {
+        "icons": [
+          "eye",
+          "text.alignleft"
+        ],
+        "title": "Soft Scroll Edges",
+        "subtitle": "Gentle fade where the list meets the frame.",
+        "body": ""
+      },
+      {
+        "icons": [
+          "paintpalette",
+          "textformat"
+        ],
+        "title": "Dark Mesh Labels",
+        "subtitle": "White titles and buttons on deep indigo.",
+        "body": ""
       }
     ]
   },
