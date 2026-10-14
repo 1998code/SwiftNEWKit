@@ -4,6 +4,8 @@
 
 > Not on Maven Central yet. Include the `:swiftnew` module in your Gradle project (see below).
 
+<img width="2880" height="2160" alt="275" src="https://github.com/user-attachments/assets/95a76362-6a82-4ff7-91ee-260190d3e5d7" />
+
 ## Modules
 
 | Module | Role |
