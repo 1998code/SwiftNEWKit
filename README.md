@@ -2,7 +2,7 @@
 
 # SwiftNEW for Android
 
-[SwiftNEWKit](https://github.com/1998code/SwiftNEWKit) on Android — a Jetpack Compose **"What's New"** UI that uses the same release-notes JSON as the Apple platforms.
+[SwiftNEWKit](https://github.com/1998code/SwiftNEWKit) on Android — a Jetpack Compose **"What's New"** UI.
 
 <img width="2880" height="2160" alt="275" src="https://github.com/user-attachments/assets/95a76362-6a82-4ff7-91ee-260190d3e5d7" />
 
